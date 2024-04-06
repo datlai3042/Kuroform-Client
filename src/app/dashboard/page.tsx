@@ -1,13 +1,14 @@
 "use client";
-
-import Image from "next/image";
 import { useState } from "react";
-
-export default function Home() {
+import Auth from "../auth/auth";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+const DashboardPage = () => {
 	const [turnOnModel, setTurnOnModel] = useState<boolean>(false);
+	const router = useRouter();
 
 	return (
-		<main className="min-h-full min-w-full">
+		<main className="min-h-full min-w-full flex items-center justify-center bg-white">
 			<div className="flex w-full min-h-screen h-max bg-[#ffffff] relative">
 				<div
 					className={`${
@@ -32,8 +33,24 @@ export default function Home() {
 					>
 						Open
 					</button>
+
+					<button
+						className=" self-start p-[16px] bg-slate-900 rounded-lg text-[#ffffff]"
+						onClick={async () => {
+							const json = await fetch("/v1/api/auth/logout", { method: "GET" });
+							const result = (await json.json()) as { auth: boolean };
+							if (result.auth) {
+								console.log("OK");
+								router.push("/");
+							}
+						}}
+					>
+						Logout
+					</button>
 				</div>
 			</div>
 		</main>
 	);
-}
+};
+
+export default DashboardPage;
