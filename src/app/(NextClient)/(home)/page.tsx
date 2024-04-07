@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import Auth from "../auth/auth";
+import Auth from "../../auth/auth";
 import { useRouter } from "next/navigation";
 
 const HomePage = () => {
