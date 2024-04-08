@@ -1,30 +1,28 @@
-"use client";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import Auth from "../../auth/auth";
-import { useRouter } from "next/navigation";
+import ButtonOpenModel from "../_components/ButtonOpenModel";
+import LoginForm from "../_components/Model/LoginForm";
+import RegisterForm from "../_components/Model/RegisterForm";
+
+export const colorPrimary = "text-violet-700";
+export const backgroundPrimary = "text-violet-700";
 
 const HomePage = () => {
-	useEffect(() => {
-		localStorage.setItem("isAuthentication", JSON.stringify(false));
-	}, []);
-	const router = useRouter();
-
 	return (
-		<div>
-			HomePage
-			<button
-				onClick={async () => {
-					const json = await fetch("/v1/api/auth/login", { method: "GET" });
-					const result = (await json.json()) as { auth: boolean };
-					if (result.auth) {
-						console.log("OK");
-						router.push("/dashboard");
-					}
-				}}
-			>
-				Login
-			</button>
+		<div
+			className="relative  min-h-screen h-max mx-auto  max-w-full  xl:max-w-[1280px] bg-[#ffffff]"
+			style={{ backgroundImage: "url('/assets/img/backgroundForm/bg.jpg')", backgroundSize: "100% auto" }}
+		>
+			<div className="absolute top-[40px] right-[40px] flex gap-[20px] bg-yellow-300">
+				<ButtonOpenModel ModelComponent={LoginForm} ContentButton="Đăng nhập" />
+				<ButtonOpenModel ModelComponent={RegisterForm} ContentButton="Đăng kí" />
+
+				<Link href={"/login"}>Go to Login Page</Link>
+				<Link href={"/register"}>Go to Register Page</Link>
+			</div>
+			<div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+				Permision Authencation
+			</div>
 		</div>
 	);
 };

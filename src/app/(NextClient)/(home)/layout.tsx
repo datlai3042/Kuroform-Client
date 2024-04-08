@@ -7,7 +7,7 @@ type TProps = {
 const HomeLayout = (props: TProps) => {
 	const { children } = props;
 
-	return <div className=" w-full min-h-screen flex justify-center items-center">{children}</div>;
+	return <div className=" w-full min-h-screen">{children}</div>;
 };
 
 export default HomeLayout;
