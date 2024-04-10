@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Controller, useForm } from "react-hook-form";
 import { LoginType, loginSchema } from "@/app/_schema/auth/login.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Input from "../Input";
+import Input from "../ui/input/Input";
 import Button from "../Button";
 import { log } from "console";
 
@@ -40,14 +40,18 @@ const LoginForm = (props: TProps) => {
 				>
 					<p className="text-center mr-[20px]">Đăng nhập</p>
 					<Input<LoginType>
-						register={loginForm.register}
 						FieldKey="email"
+						placeholder="Email"
+						type="email"
+						register={loginForm.register}
 						error={loginForm.formState.errors}
 						watch={loginForm.watch}
 					/>
 					<Input<LoginType>
-						register={loginForm.register}
 						FieldKey="password"
+						placeholder="Mật khẩu"
+						type="password"
+						register={loginForm.register}
 						error={loginForm.formState.errors}
 						watch={loginForm.watch}
 					/>

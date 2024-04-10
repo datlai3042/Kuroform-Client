@@ -2,7 +2,7 @@ import { AUTHORIZATION_ERROR_STATUS } from "./httpError";
 
 type Method = "GET" | "POST" | "PUT" | "DELETE";
 type CustomRequest = Omit<RequestInit, "method"> & {
-	baseUrl: string;
+	baseUrl?: string;
 };
 
 /**
@@ -24,7 +24,7 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 			? { Authorization: "Bearer 123" }
 			: { Authorization: "Bearer 123", "Content-Type": "application/json" };
 
-	const baseUrl = options?.baseUrl === undefined ? "BackEnd" : options.baseUrl;
+	const baseUrl = options?.baseUrl === undefined ? process.env.NEXT_PUBLIC_BACK_END_URL : options.baseUrl;
 
 	const fullUrl = url.startsWith("/") ? `${baseUrl}${url}` : `${baseUrl}/${url}`;
 
@@ -56,19 +56,32 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 };
 
 class Http {
-	static get<Response>(method: Method = "GET", url: string) {
+	static get<Response>(url: string) {
+		const method: Method = "GET";
 		return resquest<Response>(method, url);
 	}
 
-	static post<Response>(method: Method = "POST", url: string, body: any, options: Omit<CustomRequest, "body">) {
+	/**
+	 *
+	 * @param url endPoint
+	 * @param body body
+	 * @param options
+	 * @returns
+	 */
+	static post<Response>(url: string, body: any, options: Omit<CustomRequest, "body"> = {}) {
+		const method: Method = "POST";
 		return resquest<Response>(method, url, { ...options, body });
 	}
 
-	static put<Response>(method: Method = "PUT", url: string, body: any, options: Omit<CustomRequest, "body">) {
+	static put<Response>(url: string, body: any, options: Omit<CustomRequest, "body">) {
+		const method: Method = "PUT";
 		return resquest<Response>(method, url, { ...options, body });
 	}
 
-	static delete<Response>(method: Method = "DELETE", url: string) {
+	static delete<Response>(url: string) {
+		const method: Method = "DELETE";
 		return resquest<Response>(method, url);
 	}
 }
+
+export default Http;

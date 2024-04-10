@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ReactQueryProvider from "./(NextClient)/_components/provider/ReactQueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,9 @@ type TProps = {
 export default function RootLayout(props: TProps) {
 	return (
 		<html lang="en" suppressHydrationWarning={true}>
-			<body className={inter.className}>{props.children}</body>
+			<body className={inter.className}>
+				<ReactQueryProvider>{props.children}</ReactQueryProvider>
+			</body>
 		</html>
 	);
 }

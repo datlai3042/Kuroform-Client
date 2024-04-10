@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import Auth from "./app/auth/auth";
 
-const authentication = ["/dashboard"];
+const privateRouter = ["/dashboaard"];
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
 	const isAuthentication = Boolean(request.cookies.get("isAuthencation"));
 	console.log(request.nextUrl.pathname, request.cookies);
 
-	if (!isAuthentication && authentication.includes(pathname)) {
+	if (!isAuthentication && privateRouter.includes(pathname)) {
 		return NextResponse.redirect(new URL("/", request.url));
 	}
 	if (isAuthentication && pathname === "/") {
