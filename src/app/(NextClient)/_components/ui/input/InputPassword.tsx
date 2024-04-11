@@ -28,7 +28,7 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
 					type={showPassword ? "text" : "password"}
 					id={`${FieldKey}-${id}`}
 					{...register(FieldKey)}
-					className="w-full h-full p-[6px_12px] border-[2px] border-slate-200 bg-slate-50 focus:bg-[#ffffff] opacity-70 focus:opacity-100 rounded-[6px] "
+					className="w-full h-full p-[6px_12px] border-[2px] border-slate-200 bg-slate-50 focus:bg-[#ffffff] opacity-70 focus:opacity-100 rounded-[6px] placeholder:text-[14px]"
 					placeholder={`Nhập ${placeholder} của bạn`}
 				/>
 				<button

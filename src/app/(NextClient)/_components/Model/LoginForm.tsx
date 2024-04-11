@@ -10,6 +10,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../ui/input/Input";
 import Button from "../Button";
 import { log } from "console";
+import { useMutation } from "@tanstack/react-query";
+import Http from "@/app/_lib/http";
 
 type TProps = {
 	onClose?: (state: boolean) => void;
@@ -25,8 +27,13 @@ const LoginForm = (props: TProps) => {
 		resolver: zodResolver(loginSchema),
 	});
 
+	const loginMutation: any = useMutation({
+		mutationKey: ["login"],
+		mutationFn: (formLogin: LoginType) => Http.post<any>("/v1/api/auth/login", loginMutation, {}),
+	});
+
 	const onSubmit = (data: LoginType) => {
-		console.log({ data });
+		loginMutation.mutate(data);
 	};
 
 	console.log({ errors: loginForm.formState.errors });

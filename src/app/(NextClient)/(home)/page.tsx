@@ -3,11 +3,15 @@ import React, { useEffect } from "react";
 import ButtonOpenModel from "../_components/ButtonOpenModel";
 import LoginForm from "../_components/Model/LoginForm";
 import RegisterForm from "../_components/Model/RegisterForm";
+import { cookies } from "next/headers";
 
 export const colorPrimary = "text-violet-700";
 export const backgroundPrimary = "text-violet-700";
 
 const HomePage = () => {
+	const _cookies = cookies().get("isAuthentication")?.value;
+	console.log({ _cookies });
+
 	return (
 		<div
 			className="relative  min-h-screen h-max mx-auto  max-w-full  xl:max-w-[1280px] bg-[#ffffff]"
@@ -19,6 +23,7 @@ const HomePage = () => {
 
 				<Link href={"/login"}>Go to Login Page</Link>
 				<Link href={"/register"}>Go to Register Page</Link>
+				<Link href={"/me"}>Go to Me Profile</Link>
 			</div>
 			<div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
 				Permision Authencation

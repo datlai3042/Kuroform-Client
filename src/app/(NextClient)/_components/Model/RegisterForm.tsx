@@ -1,18 +1,22 @@
 "use client";
 import React from "react";
-
 import WrapperAuthLayout from "../Layout/WrapperAuthLayout";
-import IconClose from "../IconClose";
-import Image from "next/image";
-import { Controller, useForm } from "react-hook-form";
-import { LoginType, loginSchema } from "@/app/_schema/auth/login.schema";
+
+import {  useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { UserType } from "@/app/_schema/user/user.schema";
+import { RegisterType, registerSchema } from "@/app/_schema/auth/register.schema";
+import { LoginType } from "@/app/_schema/auth/login.schema";
+import { ResponseApi } from "@/app/_schema/api/response.shema";
+
 import Input from "../ui/input/Input";
 import Button from "../Button";
-import { RegisterType, registerSchema } from "@/app/_schema/auth/register.schema";
-import { useMutation } from "@tanstack/react-query";
-import Http from "@/app/_lib/http";
 
+import Http from "@/app/_lib/http";
+import { useMutation } from "@tanstack/react-query";
+
+import IconClose from "../IconClose";
 type TProps = {
 	onClose?: (state: boolean) => void;
 };
@@ -31,8 +35,11 @@ const RegisterForm = (props: TProps) => {
 	const registerMutation = useMutation({
 		mutationKey: ["register"],
 		mutationFn: (formRegister: Omit<LoginType, "confirm_password">) =>
-			Http.post<any>("/v1/api/auth/register", formRegister, {}),
+			Http.post<ResponseApi<{user: UserType}>>("/v1/api/auth/register", formRegister, {}),
+		onSucces: ()
 	});
+
+
 
 	const onSubmit = (data: LoginType) => {
 		registerMutation.mutate(data);
@@ -40,26 +47,38 @@ const RegisterForm = (props: TProps) => {
 
 	return (
 		<WrapperAuthLayout zIndex={300}>
-			<div className="relative group w-full h-[400px] xl:w-[1200px] xl:h-[600px] bg-[#ffffff] flex items-center justify-center rounded-[6px] py-[40px]  ">
+			<div className="relative group w-full h-[400px] sm:h-[600px] xl:w-[1000px] xl:h-[600px]  bg-[rgb(245_245_250)] flex items-center justify-center rounded-[6px] py-[40px] px-[16px] z-[5] overflow-y-hidden ">
 				{/* <div className="absolute w-[500px] h-[600px] z-[3] bg-[#ffffff] blur-[20px] "></div> */}
 				<div
-					className="relative h-full w-[50%] m-[20px] bg-[#ffffff]"
+					className="hidden sm:block animate-scaleIn relative h-full w-[60%] m-[20px] bg-[#ffffff]"
 					style={{
 						backgroundImage: "url('/assets/img/backgroundForm/bg.jpg')",
-						backgroundPosition: "center",
+						backgroundPosition: "top",
 						backgroundSize: "cover",
 						backgroundRepeat: "no-repeat",
 						backgroundColor: "black",
 					}}
 				>
-					<div className="animate-opacityUp w-full h-full bg-[#000000]"></div>
-					<h3 className="animate-topUp  absolute top-[100px] left-[50%] w-max translate-x-[-50%] font-extrabold text-[#ffffff] text-[28px] [letter-spacing:8px]">
-						Project Tally Form
-					</h3>
+					<div className="animate-opacityUp w-full h-full  bg-[#000000]"></div>
+					<div className="animate-topUp   absolute top-[100px] left-[50%] w-max translate-x-[-50%] font-extrabold  text-[28px] [letter-spacing:8px] z-[3] ">
+						<div className="relative left-0 w-full  bg-transparent min-h-ful  flex justify-center">
+							<h3 className="animate-changeColor absolute  ">Project Tally Form</h3>
+						</div>
+					</div>
+					<div className="animate-topDown z-[2] absolute top-0 right-[80px] h-[450px]">
+						<div className=" relative min-h-full bg-red-800 flex justify-center">
+							<div className=" absolute top-0 w-[4px] h-full bg-[#ffffff]"></div>
+
+							<div className="absolute bottom-0 w-[60px] h-[60px] flex justify-center z-[2] ">
+								<div className="animate-sizeLigth rounded-full shadow-2xl shadow-yellow-400 z-[2]"></div>
+							</div>
+						</div>
+					</div>
+					<div className="animate-changeColorSea absolute bottom-0 w-full h-[174px] "></div>
 				</div>
 
 				<form
-					className="relative w-[40%] h-[600px] p-[24px_20px] flex flex-col items-center justify-center gap-[16px] rounded-[12px]"
+					className="relative w-full sm:w-[40%] h-[600px] p-[24px_20px] flex flex-col items-center justify-center gap-[16px] rounded-[12px]"
 					onSubmit={registerForm.handleSubmit(onSubmit)}
 				>
 					<p className="text-center mr-[20px] text-slate-600 text-[24px] [letter-spacing:4px]">Đăng Kí</p>

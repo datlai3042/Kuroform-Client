@@ -13,26 +13,64 @@ const config: Config = {
 				"gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
 			animation: {
-				scaleIn: "scaleIn 2s",
+				scaleIn: "scaleIn 2s forwards",
 				opacityUp: "opacityUp 2s forwards",
-				topUp: "topUp 1s forwards",
+				topUp: "topUp 3s forwards",
+				topDown: "topDown 3s forwards",
+				changeColorSea: "changeColorSea 4s forwards",
+
+				sizeLigth: "sizeLight 1.8s forwards",
+
+				changeColor: "changeColor 4s forwards",
+				rotate: "rotate 1s infinite",
 			},
 			keyframes: {
 				scaleIn: {
-					"0%": { width: "0px" },
-					"100%": { width: "max-content" },
+					"0%": { backgroundPosition: "10%" },
+					"50%": { backgroundPosition: "50%" },
+					"80%": { backgroundPosition: "100%" },
+					"100%": { backgroundPosition: "100% -50%" },
 				},
 				opacityUp: {
 					"0%": { opacity: ".8" },
-					"100%": { opacity: "0" },
+					"50%": { opacity: "0" },
+					"100%": { opacity: ".55" },
 				},
 				topUp: {
 					"0%": { top: "500%" },
 					"100%": { top: "100px" },
 				},
+
 				changeColor: {
-					"0%": { color: "500%" },
-					"100%": { top: "100px" },
+					"0%, 20%,40%,60%": { color: "transparent" },
+					"100%": { color: "white" },
+				},
+
+				topDown: {
+					"0%": { top: "-500%" },
+					"100%": { top: "0px" },
+				},
+
+				rotate: {
+					"0%": {
+						transform: "rotateX(-25deg) ",
+					},
+					"50%": {
+						transform: "rotateX(0deg)",
+					},
+					"100%": {
+						transform: "rotateX(25deg)",
+					},
+				},
+
+				sizeLight: {
+					"0%, 20%,40%,60%": { backgroundColor: "#ccc", width: "50%", height: "50%" },
+					"100%": { backgroundColor: "rgb(254, 224, 71)", width: "100%", height: "100%" },
+				},
+
+				changeColorSea: {
+					"0": { opacity: "0", backgroundColor: "transparent" },
+					"100%": { backgroundColor: "rgb(254 240 138)", opacity: ".25" },
 				},
 			},
 		},
