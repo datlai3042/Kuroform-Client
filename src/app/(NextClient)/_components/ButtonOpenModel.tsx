@@ -14,11 +14,7 @@ const ButtonOpenModel = (props: TProps) => {
 
 	const [openModel, setOpenModel] = useState<boolean>(false);
 
-	useEffect(() => {
-		localStorage.setItem("isAuthentication", JSON.stringify(false));
-	}, []);
-	const router = useRouter();
-
+	console.log({ openModel });
 	return (
 		<>
 			<button onClick={() => setOpenModel(true)}>{ContentButton}</button>

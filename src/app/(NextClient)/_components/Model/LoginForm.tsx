@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 
 import WrapperAuthLayout from "../Layout/WrapperAuthLayout";
 import IconClose from "../IconClose";
@@ -11,7 +11,11 @@ import Input from "../ui/input/Input";
 import Button from "../Button";
 import { log } from "console";
 import { useMutation } from "@tanstack/react-query";
-import Http from "@/app/_lib/http";
+import Http, { clientToken } from "@/app/_lib/http";
+import { useDispatch } from "react-redux";
+import { onLoginUser } from "@/app/_lib/redux/features/authentication.slice";
+import { ResponseApi, ResponseLogin } from "@/app/_schema/api/response.shema";
+import { useRouter } from "next/navigation";
 
 type TProps = {
 	onClose?: (state: boolean) => void;
@@ -19,6 +23,9 @@ type TProps = {
 
 const LoginForm = (props: TProps) => {
 	const { onClose } = props;
+	const dispatch = useDispatch();
+	const router = useRouter();
+
 	const loginForm = useForm<LoginType>({
 		defaultValues: {
 			email: "",
@@ -27,14 +34,52 @@ const LoginForm = (props: TProps) => {
 		resolver: zodResolver(loginSchema),
 	});
 
-	const loginMutation: any = useMutation({
+	const loginMutation = useMutation({
 		mutationKey: ["login"],
-		mutationFn: (formLogin: LoginType) => Http.post<any>("/v1/api/auth/login", loginMutation, {}),
+		mutationFn: (formLogin: LoginType) =>
+			Http.post<ResponseApi<ResponseLogin>>("/v1/api/auth/login", formLogin, {}),
+		onSuccess: (response) => {
+			const {
+				user,
+				token: { access_token, refresh_token },
+			} = response.metadata;
+			dispatch(onLoginUser({ user }));
+			console.log("run");
+			const setTokenResponse = Http.post<{ access_token: string; refresh_token: string; _id: string }>(
+				"/v1/api/auth/set-token",
+				{
+					access_token,
+					refresh_token,
+					_id: user._id,
+				},
+				{ baseUrl: "" }
+			).then((response) => {
+				// console.log({ response });
+				console.log({ clientToken });
+
+				// const { access_token: AT, refresh_token: RF, _id } = response;
+				// clientToken.accessToken = AT;
+				// clientToken.refreshToken = RF;
+				// clientToken.id = _id;
+				if (onClose) {
+					onClose(false);
+				}
+				// console.log({ clientToken });
+			});
+		},
 	});
 
 	const onSubmit = (data: LoginType) => {
 		loginMutation.mutate(data);
 	};
+
+	useEffect(() => {
+		if (loginMutation.isSuccess) {
+			if (onClose) {
+				onClose(false);
+			}
+		}
+	}, [loginMutation.isSuccess]);
 
 	console.log({ errors: loginForm.formState.errors });
 

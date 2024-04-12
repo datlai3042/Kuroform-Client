@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ReactQueryProvider from "./(NextClient)/_components/provider/ReactQueryProvider";
+import ReduxProvider from "./_lib/redux/ReduxProvider";
+import AppProvider from "./(NextClient)/_components/AppProvider";
+import { cookies } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,10 +19,21 @@ type TProps = {
 };
 
 export default function RootLayout(props: TProps) {
+	const cookieStore = cookies();
+	const _id = cookieStore.get("_id")?.value || "";
+	const access_token = cookieStore.get("access_token")?.value || "";
+	const refresh_token = cookieStore.get("refresh_token")?.value || "";
+
 	return (
 		<html lang="en" suppressHydrationWarning={true}>
 			<body className={inter.className}>
-				<ReactQueryProvider>{props.children}</ReactQueryProvider>
+				<ReduxProvider>
+					<ReactQueryProvider>
+						<AppProvider id={_id} access_token={access_token} refresh_token={refresh_token}>
+							{props.children}
+						</AppProvider>
+					</ReactQueryProvider>
+				</ReduxProvider>
 			</body>
 		</html>
 	);

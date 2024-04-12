@@ -18,29 +18,35 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
 
 	console.log(FieldKey);
 
+	const input_id = `${FieldKey}-${id}`;
+	const input_placeholder = `Nhập ${placeholder} của bạn`;
+	const input_erros: React.ReactNode = error[FieldKey]?.message as ReactNode;
+
 	return (
 		<div className="flex flex-col w-full xl:w-[80%] min-h-[115px] h-max gap-[12px]  ">
 			<label htmlFor={`${FieldKey}-${id}`} className="first-letter:uppercase text-slate-700 font-bold">
 				{placeholder}
 			</label>
+
 			<div className="relative w-full h-[80%]">
 				<input
 					type={showPassword ? "text" : "password"}
-					id={`${FieldKey}-${id}`}
+					id={input_id}
 					{...register(FieldKey)}
 					className="w-full h-full p-[6px_12px] border-[2px] border-slate-200 bg-slate-50 focus:bg-[#ffffff] opacity-70 focus:opacity-100 rounded-[6px] placeholder:text-[14px]"
-					placeholder={`Nhập ${placeholder} của bạn`}
+					placeholder={input_placeholder}
 				/>
+
 				<button
+					tabIndex={-1}
+					type="button"
 					className="absolute top-[50%] translate-y-[-50%] right-[10px]"
 					onClick={() => setShowPassword((prev) => !prev)}
 				>
 					{!showPassword ? <Eye /> : <EyeOff />}
 				</button>
 			</div>
-			<div className="min-h-[16px] text-[13px] text-red-400">
-				{error && <p>{error[FieldKey]?.message as ReactNode}</p>}
-			</div>
+			<div className="min-h-[16px] text-[13px] text-red-400">{error && <p>{input_erros}</p>}</div>
 		</div>
 	);
 };

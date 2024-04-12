@@ -11,6 +11,7 @@ type UserAvatar = ClondinaryType & {
 };
 
 export type UserType = {
+	_id: string;
 	user_email: string;
 	user_password: string;
 	user_birthday: Date;

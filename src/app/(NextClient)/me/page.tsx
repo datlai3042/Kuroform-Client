@@ -1,6 +1,8 @@
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+"use client";
+import { RootState } from "@/app/_lib/redux/store";
+import { UserType } from "@/app/_schema/user/user.schema";
 import React from "react";
+import { useSelector } from "react-redux";
 
 export let check = false;
 
@@ -19,12 +21,9 @@ class Authentication {
 export const authentication = new Authentication();
 
 const ProfileMe = () => {
-	const _cookies = cookies().get("isAuthentication");
+	const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
 
-	// console.log("run", authentication.check);
-	if (!false) redirect("/login");
-
-	return <div>ProfileMe</div>;
+	return <div>ProfileMe {user?.user_email || "none"}</div>;
 };
 
 export default ProfileMe;

@@ -23,6 +23,7 @@ const config: Config = {
 
 				changeColor: "changeColor 4s forwards",
 				rotate: "rotate 1s infinite",
+				shipRun: "shipRun 10s forwards",
 			},
 			keyframes: {
 				scaleIn: {
@@ -34,7 +35,7 @@ const config: Config = {
 				opacityUp: {
 					"0%": { opacity: ".8" },
 					"50%": { opacity: "0" },
-					"100%": { opacity: ".55" },
+					"100%": { opacity: ".65" },
 				},
 				topUp: {
 					"0%": { top: "500%" },
@@ -49,6 +50,20 @@ const config: Config = {
 				topDown: {
 					"0%": { top: "-500%" },
 					"100%": { top: "0px" },
+				},
+
+				shipRun: {
+					"0%": { left: "0%" },
+					"10%": { left: "10%" },
+					"20%": { left: "20%" },
+					"30%": { left: "30%" },
+					"40%": { left: "40%" },
+					"50%": { left: "50%" },
+					"60%": { left: "60%" },
+					"70%": { left: "70%" },
+					"80%": { left: "80%" },
+					"90%": { left: "90%" },
+					"100%": { left: "100%" },
 				},
 
 				rotate: {
