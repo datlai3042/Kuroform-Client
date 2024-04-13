@@ -5,6 +5,7 @@ import LoginForm from "../_components/Model/LoginForm";
 import RegisterForm from "../_components/Model/RegisterForm";
 import { cookies } from "next/headers";
 import ButtonLogOut from "../_components/ui/button/ButtonLogOut";
+import CheckPathName from "../_components/CheckPathName";
 
 export const colorPrimary = "text-violet-700";
 export const backgroundPrimary = "text-violet-700";
@@ -26,6 +27,7 @@ const HomePage = () => {
 
 						<Link href={"/login"}>Go to Login Page</Link>
 						<Link href={"/register"}>Go to Register Page</Link>
+						<Link href={"/dashboard"}>Go to DashBoardPage</Link>
 					</>
 				)}
 

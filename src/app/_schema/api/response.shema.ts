@@ -6,7 +6,7 @@ export type ResponseApi<Metadata> = {
 	metadata: Metadata;
 };
 
-export type ResponseLogin = {
+export type ResponseAuth = {
 	user: UserType;
 	token: {
 		access_token: string;

@@ -12,7 +12,7 @@ type TProps = {
 
 const AppProvider = (props: TProps) => {
 	const { id, access_token, refresh_token, children } = props;
-	console.log({ id, access_token, refresh_token });
+	console.log({ message: "re-render when token onChange" });
 	useState(() => {
 		if (typeof window !== undefined) {
 			clientToken.id = id;

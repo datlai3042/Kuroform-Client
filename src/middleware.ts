@@ -8,9 +8,15 @@ const authRouter = ["/login", "/register"];
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl;
+	const requestHeaders = new Headers(request.headers);
+	requestHeaders.set("x-url", request.url);
 
 	const access_token = Boolean(request.cookies.get("access_token")?.value);
-	const response = NextResponse.next();
+	const response = NextResponse.next({
+		request: {
+			headers: requestHeaders,
+		},
+	});
 
 	if (!access_token && privateRouter.includes(pathname)) {
 		return NextResponse.redirect(new URL("/", request.url));

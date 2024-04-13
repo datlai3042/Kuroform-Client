@@ -6,6 +6,8 @@ import ReactQueryProvider from "./(NextClient)/_components/provider/ReactQueryPr
 import ReduxProvider from "./_lib/redux/ReduxProvider";
 import AppProvider from "./(NextClient)/_components/AppProvider";
 import { cookies } from "next/headers";
+import CheckPathName from "./(NextClient)/_components/CheckPathName";
+import ButtonNavigation from "./(NextClient)/_components/ui/button/ButtonNavigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +25,7 @@ export default function RootLayout(props: TProps) {
 	const _id = cookieStore.get("_id")?.value || "";
 	const access_token = cookieStore.get("access_token")?.value || "";
 	const refresh_token = cookieStore.get("refresh_token")?.value || "";
-
+	console.log({ RootLayout: access_token });
 	return (
 		<html lang="en" suppressHydrationWarning={true}>
 			<body className={inter.className}>
@@ -31,6 +33,9 @@ export default function RootLayout(props: TProps) {
 					<ReactQueryProvider>
 						<AppProvider id={_id} access_token={access_token} refresh_token={refresh_token}>
 							{props.children}
+
+							<CheckPathName access_token={access_token} />
+							<ButtonNavigation Url="/see-token" />
 						</AppProvider>
 					</ReactQueryProvider>
 				</ReduxProvider>

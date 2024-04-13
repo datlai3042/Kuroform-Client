@@ -14,7 +14,7 @@ import { useMutation } from "@tanstack/react-query";
 import Http, { clientToken } from "@/app/_lib/http";
 import { useDispatch } from "react-redux";
 import { onLoginUser } from "@/app/_lib/redux/features/authentication.slice";
-import { ResponseApi, ResponseLogin } from "@/app/_schema/api/response.shema";
+import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
 import { useRouter } from "next/navigation";
 
 type TProps = {
@@ -36,8 +36,7 @@ const LoginForm = (props: TProps) => {
 
 	const loginMutation = useMutation({
 		mutationKey: ["login"],
-		mutationFn: (formLogin: LoginType) =>
-			Http.post<ResponseApi<ResponseLogin>>("/v1/api/auth/login", formLogin, {}),
+		mutationFn: (formLogin: LoginType) => Http.post<ResponseApi<ResponseAuth>>("/v1/api/auth/login", formLogin, {}),
 		onSuccess: (response) => {
 			const {
 				user,

@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 
 export async function POST(request: Request) {
 	const { access_token, refresh_token, _id } = await request.json();
+	console.log({ Routers: access_token });
 
 	cookies().set({
 		name: "_id",

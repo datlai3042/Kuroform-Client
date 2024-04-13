@@ -1,7 +1,8 @@
-import { ResponseApi, ResponseLogin } from "../_schema/api/response.shema";
-import { LoginType } from "../_schema/auth/login.schema";
-import { AUTHORIZATION_ERROR_STATUS } from "./httpError";
+import { redirect } from "next/navigation";
+import { ResponseApi, ResponseAuth } from "../_schema/api/response.shema";
+import { AUTHORIZATION_ERROR_STATUS, PERMISSION_ERROR_STATUS } from "./httpError";
 import { normalizePath } from "./utils";
+import { unknown } from "zod";
 
 type Method = "GET" | "POST" | "PUT" | "DELETE";
 type CustomRequest = Omit<RequestInit, "method"> & {
@@ -40,11 +41,13 @@ class ClientToken {
 	}
 
 	get refreshToken() {
-		return this._access_token;
+		return this._refresh_token;
 	}
 }
 
 export const clientToken = new ClientToken();
+
+let NOT_RETRY: null | Promise<any> = null;
 
 /**
  *
@@ -54,8 +57,6 @@ export const clientToken = new ClientToken();
  */
 
 export const resquest = async <Response>(method: Method, url: string, options?: CustomRequest | undefined) => {
-	console.log({ clientToken });
-
 	const body = options?.body
 		? options.body instanceof FormData
 			? options.body
@@ -71,7 +72,6 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 					"x-client-id": clientToken.id,
 			  };
 
-	console.log({ baseHeader, options: options });
 	const baseUrl = options?.baseUrl === undefined ? process.env.NEXT_PUBLIC_BACK_END_URL : options.baseUrl;
 
 	const fullUrl = url.startsWith("/") ? `${baseUrl}${url}` : `${baseUrl}/${url}`;
@@ -87,28 +87,60 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 	});
 
 	const payload: Response = await response.json();
-	console.log({ payload, url });
 	const data = {
 		status: response.status,
 		metadata: payload,
 	};
 
 	if (!response.ok) {
-		console.log({ response });
 		if (+response.status === AUTHORIZATION_ERROR_STATUS) {
-			if (typeof window !== undefined) {
+			if (typeof window !== "undefined") {
+				console.log("client-happy");
+			} else {
+				const { refresh_token } = options?.headers as HeaderToken;
+				const { Authorization } = options?.headers as HeaderToken;
+				const pathName = response.url;
+				const clientId = (options?.headers as HeaderToken)["x-client-id"];
+				const old_token = Authorization.split("")[1];
+
+				const callRefreshToken = await fetch(`${baseUrl}/v1/api/auth/refresh-token`, {
+					method: "GET",
+					headers: {
+						authorization: `Bearer ${old_token}`,
+						"x-client-id": clientId,
+						Cookie: `refresh_token=${refresh_token}`,
+					},
+					cache: "no-store",
+				});
+				const refresh_api = await callRefreshToken.json();
+
+				if (+refresh_api.code === PERMISSION_ERROR_STATUS) {
+					console.log("logout thooi");
+					throw new Error("Token hết hạn");
+				} else {
+					if (refresh_api.metadata && refresh_api.metadata.token && refresh_api.metadata.user) {
+						console.log("call refresh");
+						const { access_token, refresh_token: newRf } = refresh_api.metadata.token;
+						const { _id: user_id } = refresh_api.metadata.user;
+						const old_token = Authorization.split("")[1];
+						const { domain } = options?.headers as any;
+
+						redirect(
+							`/refresh-token?old_token=${refresh_token}&new_access_token=${access_token}&new_refresh_token=${newRf}&user_id=${user_id}&domain=${domain}`
+						);
+					}
+				}
 			}
 		}
 	}
 
 	if (["v1/api/auth/login", "v1/api/auth/register"].some((path) => path === normalizePath(url))) {
 		console.log({ normal: true, url: normalizePath(url) });
-		clientToken.accessToken = (payload as ResponseApi<ResponseLogin>).metadata.token.access_token;
-		clientToken.refreshToken = (payload as ResponseApi<ResponseLogin>).metadata.token.refresh_token;
-		clientToken.id = (payload as ResponseApi<ResponseLogin>).metadata.user._id;
+		clientToken.accessToken = (payload as ResponseApi<ResponseAuth>).metadata.token.access_token;
+		clientToken.refreshToken = (payload as ResponseApi<ResponseAuth>).metadata.token.refresh_token;
+		clientToken.id = (payload as ResponseApi<ResponseAuth>).metadata.user._id;
 	}
 
-	console.log({ normal: false, url: normalizePath(url) });
 	if (["v1/api/auth/logout"].includes(normalizePath(url))) {
 		clientToken.accessToken = "";
 		clientToken.refreshToken = "";
@@ -120,9 +152,9 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 };
 
 class Http {
-	static get<Response>(url: string) {
+	static get<Response>(url: string, options: Omit<CustomRequest, "body"> = {}) {
 		const method: Method = "GET";
-		return resquest<Response>(method, url);
+		return resquest<Response>(method, url, options);
 	}
 
 	/**

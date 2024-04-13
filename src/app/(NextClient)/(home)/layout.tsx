@@ -1,4 +1,5 @@
 import React from "react";
+import CheckPathName from "../_components/CheckPathName";
 
 type TProps = {
 	children: React.ReactNode;
