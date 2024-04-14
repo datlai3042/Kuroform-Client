@@ -12,13 +12,10 @@ export const backgroundPrimary = "text-violet-700";
 
 const HomePage = () => {
 	const _cookies = cookies().get("isAuthentication")?.value;
-	console.log({ _cookies });
+	console.log({ layout: "home page" });
 
 	return (
-		<div
-			className="relative  min-h-screen h-max mx-auto  max-w-full  xl:max-w-[1280px] bg-[#ffffff]"
-			// style={{ backgroundImage: "url('/assets/img/backgroundForm/bg.jpg')", backgroundSize: "100% auto" }}
-		>
+		<div className="relative  min-h-screen h-max mx-auto  max-w-full  xl:max-w-[1280px] bg-[#ffffff]">
 			<div className="absolute top-[40px] right-[40px] flex gap-[20px] bg-yellow-300">
 				{!_cookies && (
 					<>

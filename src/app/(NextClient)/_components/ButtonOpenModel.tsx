@@ -14,7 +14,6 @@ const ButtonOpenModel = (props: TProps) => {
 
 	const [openModel, setOpenModel] = useState<boolean>(false);
 
-	console.log({ openModel });
 	return (
 		<>
 			<button onClick={() => setOpenModel(true)}>{ContentButton}</button>

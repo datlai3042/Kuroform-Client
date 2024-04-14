@@ -43,7 +43,6 @@ const LoginForm = (props: TProps) => {
 				token: { access_token, refresh_token },
 			} = response.metadata;
 			dispatch(onLoginUser({ user }));
-			console.log("run");
 			const setTokenResponse = Http.post<{ access_token: string; refresh_token: string; _id: string }>(
 				"/v1/api/auth/set-token",
 				{
@@ -53,17 +52,9 @@ const LoginForm = (props: TProps) => {
 				},
 				{ baseUrl: "" }
 			).then((response) => {
-				// console.log({ response });
-				console.log({ clientToken });
-
-				// const { access_token: AT, refresh_token: RF, _id } = response;
-				// clientToken.accessToken = AT;
-				// clientToken.refreshToken = RF;
-				// clientToken.id = _id;
 				if (onClose) {
 					onClose(false);
 				}
-				// console.log({ clientToken });
 			});
 		},
 	});

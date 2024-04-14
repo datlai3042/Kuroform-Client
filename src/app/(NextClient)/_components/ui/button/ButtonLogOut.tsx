@@ -23,7 +23,7 @@ const ButtonLogOut = () => {
 	};
 
 	// return <button onClick={handleLogout}>ButtonLogOut</button>;
-	return <Link href={"/"}>Trang chủ</Link>;
+	return <div onClick={() => router.refresh()}>Trang chủ</div>;
 };
 
 export default ButtonLogOut;

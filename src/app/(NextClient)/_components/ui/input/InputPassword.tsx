@@ -16,8 +16,6 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
 	const id = useId();
 	const [showPassword, setShowPassword] = useState<boolean>(false);
 
-	console.log(FieldKey);
-
 	const input_id = `${FieldKey}-${id}`;
 	const input_placeholder = `Nhập ${placeholder} của bạn`;
 	const input_erros: React.ReactNode = error[FieldKey]?.message as ReactNode;

@@ -14,6 +14,7 @@ const CheckPathName = (props: TProps) => {
 	const router = useRouter();
 
 	useEffect(() => {
+		console.log({ Layout: "CheckPathName" });
 		console.log({ access_token });
 		router.refresh();
 	}, [access_token, router]);

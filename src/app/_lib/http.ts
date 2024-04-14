@@ -7,6 +7,7 @@ import { unknown } from "zod";
 type Method = "GET" | "POST" | "PUT" | "DELETE";
 type CustomRequest = Omit<RequestInit, "method"> & {
 	baseUrl?: string;
+	pathName?: string;
 };
 
 class ClientToken {
@@ -95,7 +96,7 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 	if (!response.ok) {
 		if (+response.status === AUTHORIZATION_ERROR_STATUS) {
 			if (typeof window !== "undefined") {
-				console.log("client-happy");
+				console.log({ http: "client-happy" });
 			} else {
 				const { refresh_token } = options?.headers as HeaderToken;
 				const { Authorization } = options?.headers as HeaderToken;
@@ -115,18 +116,17 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 				const refresh_api = await callRefreshToken.json();
 
 				if (+refresh_api.code === PERMISSION_ERROR_STATUS) {
-					console.log("logout thooi");
+					console.log({ http: "logout thooi", refresh_api, token: refresh_token });
 					throw new Error("Token hết hạn");
 				} else {
 					if (refresh_api.metadata && refresh_api.metadata.token && refresh_api.metadata.user) {
-						console.log("call refresh");
+						console.log({ http: "call refresh" });
+						const pathName = options?.pathName;
 						const { access_token, refresh_token: newRf } = refresh_api.metadata.token;
 						const { _id: user_id } = refresh_api.metadata.user;
-						const old_token = Authorization.split("")[1];
 						const { domain } = options?.headers as any;
-
 						redirect(
-							`/refresh-token?old_token=${refresh_token}&new_access_token=${access_token}&new_refresh_token=${newRf}&user_id=${user_id}&domain=${domain}`
+							`/refresh-token?old_token=${refresh_token}&new_access_token=${access_token}&new_refresh_token=${newRf}&user_id=${user_id}&pathName=${pathName}`
 						);
 					}
 				}
@@ -135,7 +135,6 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 	}
 
 	if (["v1/api/auth/login", "v1/api/auth/register"].some((path) => path === normalizePath(url))) {
-		console.log({ normal: true, url: normalizePath(url) });
 		clientToken.accessToken = (payload as ResponseApi<ResponseAuth>).metadata.token.access_token;
 		clientToken.refreshToken = (payload as ResponseApi<ResponseAuth>).metadata.token.refresh_token;
 		clientToken.id = (payload as ResponseApi<ResponseAuth>).metadata.user._id;
@@ -145,7 +144,6 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 		clientToken.accessToken = "";
 		clientToken.refreshToken = "";
 		clientToken.id = "";
-		console.log({ http: clientToken });
 	}
 
 	return payload;

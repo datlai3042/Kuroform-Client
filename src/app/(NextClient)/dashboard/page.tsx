@@ -24,6 +24,8 @@ const DashBoardPage = async () => {
 			refresh_token: refresh_token,
 			domain,
 		},
+		cache: "no-store",
+		pathName: "/dashboard",
 	});
 
 	return (

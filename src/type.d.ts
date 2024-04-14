@@ -10,3 +10,11 @@ type HeaderToken = {
 	Authorization: string;
 	refresh_token: string;
 };
+
+type JwtPayload = {
+	_id: string;
+	user_email: string;
+	user_roles: string;
+	iat: number;
+	exp: number;
+};

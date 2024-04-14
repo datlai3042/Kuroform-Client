@@ -4,12 +4,16 @@ import React from "react";
 
 type TProps = {
 	Url: string;
-};
+} & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const ButtonNavigation = (props: TProps) => {
-	const { Url } = props;
+	const { Url, ...anchorProps } = props;
 
-	return <Link href={Url}>{Url}</Link>;
+	return (
+		<Link href={Url} {...anchorProps}>
+			{Url}
+		</Link>
+	);
 };
 
 export default ButtonNavigation;
