@@ -69,7 +69,7 @@ const LoginForm = (props: TProps) => {
 				onClose(false);
 			}
 		}
-	}, [loginMutation.isSuccess]);
+	}, [loginMutation.isSuccess, onClose]);
 
 	console.log({ errors: loginForm.formState.errors });
 

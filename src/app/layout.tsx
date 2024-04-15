@@ -26,6 +26,8 @@ export default function RootLayout(props: TProps) {
 	const access_token = cookieStore.get("access_token")?.value || "";
 	const refresh_token = cookieStore.get("refresh_token")?.value || "";
 	console.log({ RootLayout: "root layout" });
+	console.log({ access_token });
+	console.log("");
 
 	return (
 		<html lang="en" suppressHydrationWarning={true}>

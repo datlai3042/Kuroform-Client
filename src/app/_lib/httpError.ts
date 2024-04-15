@@ -3,15 +3,15 @@
       403 -> refresh token hết hạn
  */
 
-type ErrorMessage = {
+type ErrorPayload = {
 	message: string;
 	detail: string;
 	[key: string]: any;
 };
 
 type ConstructorError = {
-	status: number;
-	payload: ErrorMessage;
+	status?: number;
+	payload: ErrorPayload;
 };
 
 export const AUTHORIZATION_ERROR_STATUS = 401;
@@ -19,17 +19,17 @@ export const PERMISSION_ERROR_STATUS = 403;
 
 class HttpError extends Error {
 	protected status: number;
-	protected payload: { message: string; detail: string; [key: string]: any };
+	protected payload: ErrorPayload;
 
-	constructor({ status, payload }: ConstructorError) {
-		super("Http Error"), (this.status = status);
+	constructor({ status = 500, payload }: ConstructorError) {
+		super(`Http Error with ${status}`), (this.status = status);
 		this.payload = payload;
 	}
 }
 
 class AuthorizationError extends HttpError {
 	status = AUTHORIZATION_ERROR_STATUS;
-	payload: ErrorMessage;
+	payload: ErrorPayload;
 
 	constructor({ status = AUTHORIZATION_ERROR_STATUS, payload }: ConstructorError) {
 		super({ status, payload });
@@ -39,10 +39,13 @@ class AuthorizationError extends HttpError {
 
 class PermissionError extends HttpError {
 	status = PERMISSION_ERROR_STATUS;
-	payload: ErrorMessage;
+	payload: ErrorPayload;
 
 	constructor({ status = PERMISSION_ERROR_STATUS, payload }: ConstructorError) {
 		super({ status, payload });
 		this.payload = payload;
 	}
 }
+
+export type { ErrorPayload, ConstructorError };
+export { HttpError, AuthorizationError, PermissionError };

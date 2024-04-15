@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { UserType } from "@/app/_schema/user/user.schema";
 import { RegisterType, registerSchema } from "@/app/_schema/auth/register.schema";
 import { LoginType } from "@/app/_schema/auth/login.schema";
-import { ResponseApi, ResponseLogin } from "@/app/_schema/api/response.shema";
+import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
 
 import Input from "../ui/input/Input";
 import Button from "../Button";
@@ -52,7 +52,7 @@ const RegisterForm = (props: TProps) => {
 				token: { access_token, refresh_token },
 			} = response.metadata;
 			dispatch(onLoginUser({ user }));
-			const setTokenResponse = await Http.post<ResponseApi<ResponseLogin>>(
+			const setTokenResponse = await Http.post<ResponseApi<ResponseAuth>>(
 				"/v1/api/auth/set-token",
 				{
 					access_token,

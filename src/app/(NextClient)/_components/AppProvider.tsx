@@ -1,7 +1,7 @@
 "use client";
 import { clientToken } from "@/app/_lib/http";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 type TProps = {
 	id: string;
@@ -12,6 +12,7 @@ type TProps = {
 
 const AppProvider = (props: TProps) => {
 	const { id, access_token, refresh_token, children } = props;
+	const count = useRef(1);
 	console.log({ message: "re-render when token onChange" });
 	useState(() => {
 		if (typeof window !== undefined) {
@@ -20,6 +21,11 @@ const AppProvider = (props: TProps) => {
 			clientToken.refreshToken = refresh_token;
 		}
 	});
+
+	console.log({ App: "App layout" });
+	console.log({ refresh_token });
+	console.log(count.current);
+	count.current += 1;
 
 	return <div>{children}</div>;
 };

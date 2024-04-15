@@ -18,3 +18,9 @@ type JwtPayload = {
 	iat: number;
 	exp: number;
 };
+
+type TokenNextSync = {
+	access_token: string;
+	refresh_token: string;
+	_id: string;
+};
