@@ -4,6 +4,7 @@ import {
 	AUTHORIZATION_ERROR_STATUS,
 	ConstructorError,
 	ErrorPayload,
+	HttpError,
 	PERMISSION_ERROR_STATUS,
 	PermissionError,
 } from "./httpError";
@@ -215,6 +216,8 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 					);
 				}
 			}
+		} else {
+			throw new HttpError({ status: 500 });
 		}
 	}
 

@@ -27,7 +27,7 @@ const AppProvider = (props: TProps) => {
 	console.log(count.current);
 	count.current += 1;
 
-	return <div>{children}</div>;
+	return <div className="p-[16px] xl:p-0">{children}</div>;
 };
 
 export default AppProvider;

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Portal from "../Portal";
 
 type TProps = {
@@ -9,10 +9,17 @@ type TProps = {
 
 const WrapperAuthLayout = (props: TProps) => {
 	const { children, zIndex } = props;
+	const [loader, setLoader] = useState<boolean>(false);
+
+	useEffect(() => {
+		setLoader(true);
+	}, []);
 
 	const styleEffect = {
 		_zIndex: zIndex ? zIndex : 500,
 	};
+
+	if (!loader) return null;
 
 	return (
 		<Portal>

@@ -2,11 +2,11 @@
 
 import React from "react";
 
-interface TProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonCustomProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	textContent: string;
 }
 
-const Button = (props: TProps) => {
+const Button = (props: ButtonCustomProps) => {
 	const { textContent, ...buttonProps } = props;
 	return (
 		<button

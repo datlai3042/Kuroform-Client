@@ -6,8 +6,8 @@ import ReactQueryProvider from "./(NextClient)/_components/provider/ReactQueryPr
 import ReduxProvider from "./_lib/redux/ReduxProvider";
 import AppProvider from "./(NextClient)/_components/AppProvider";
 import { cookies } from "next/headers";
-import CheckPathName from "./(NextClient)/_components/CheckPathName";
 import ButtonNavigation from "./(NextClient)/_components/ui/button/ButtonNavigation";
+import CheckPathName from "./(NextClient)/_components/ui/CheckPathName";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,7 +38,7 @@ export default function RootLayout(props: TProps) {
 							{props.children}
 
 							<CheckPathName access_token={access_token} />
-							<ButtonNavigation Url="/see-token" />
+							{/* <ButtonNavigation urlNavigation="/see-token" textContent="Xem token" /> */}
 						</AppProvider>
 					</ReactQueryProvider>
 				</ReduxProvider>

@@ -1,5 +1,4 @@
 import { expiresToken } from "@/app/_lib/utils";
-import Auth from "@/app/auth/auth";
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 

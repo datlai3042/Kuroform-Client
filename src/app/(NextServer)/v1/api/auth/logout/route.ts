@@ -1,5 +1,4 @@
 import Http from "@/app/_lib/http";
-import Auth from "@/app/auth/auth";
 import { cookies } from "next/headers";
 
 export async function POST() {

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import LoginForm from "./Model/LoginForm";
+import LoginForm from "../../Model/LoginForm";
 
 type TProps = {
 	ModelComponent: React.ComponentType<{ onClose: (state: boolean) => void }>;

@@ -16,8 +16,39 @@
 	}
 }
 
+@layer base {
+	html {
+		font-size: 62.5%;
+	}
+}
+
 @layer utilities {
 	.text-balance {
 		text-wrap: balance;
+	}
+
+	.border-shadow-normal {
+		@apply border-[1px] border-slate-300  rounded-md shadow-md;
+	}
+
+	.text-h2 {
+		@apply text-[3.2rem] text-textMain font-extrabold;
+	}
+
+	.text-h3 {
+		@apply text-[2rem] text-textMain font-extrabold;
+	}
+
+	.text-h4,
+	.text-medium {
+		@apply text-[1.8rem] text-textMain font-extrabold;
+	}
+
+	.text-highlight {
+		@apply text-textMain text-[1.6rem] font-bold;
+	}
+
+	.blockquote-color-1 {
+		@apply text-[rgb(137_136_132)] text-[3rem] font-extrabold;
 	}
 }

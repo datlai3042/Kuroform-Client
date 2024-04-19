@@ -2,13 +2,13 @@
 import React, { useEffect } from "react";
 
 import WrapperAuthLayout from "../Layout/WrapperAuthLayout";
-import IconClose from "../IconClose";
+import IconClose from "../ui/input/IconClose";
 import Image from "next/image";
 import { Controller, useForm } from "react-hook-form";
 import { LoginType, loginSchema } from "@/app/_schema/auth/login.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../ui/input/Input";
-import Button from "../Button";
+import Button from "../ui/button/Button";
 import { log } from "console";
 import { useMutation } from "@tanstack/react-query";
 import Http, { clientToken } from "@/app/_lib/http";
@@ -101,7 +101,7 @@ const LoginForm = (props: TProps) => {
 					<Button type="submit" textContent="Đăng nhập" />
 				</form>
 				<Image
-					src={"/assets/img/backgroundForm/bg.jpg"}
+					src={"/assets/images/backgroundForm/bg.jpg"}
 					width={400}
 					height={400}
 					alt="sub-image"

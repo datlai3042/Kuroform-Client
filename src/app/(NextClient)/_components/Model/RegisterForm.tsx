@@ -11,12 +11,12 @@ import { LoginType } from "@/app/_schema/auth/login.schema";
 import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
 
 import Input from "../ui/input/Input";
-import Button from "../Button";
+import Button from "../ui/button/Button";
 
 import Http, { clientToken } from "@/app/_lib/http";
 import { useMutation } from "@tanstack/react-query";
 
-import IconClose from "../IconClose";
+import IconClose from "../ui/input/IconClose";
 import { useDispatch } from "react-redux";
 import { onLoginUser } from "@/app/_lib/redux/features/authentication.slice";
 import { PlaneTakeoff } from "lucide-react";
@@ -82,11 +82,11 @@ const RegisterForm = (props: TProps) => {
 
 	return (
 		<WrapperAuthLayout zIndex={300}>
-			<div className="relative group w-full h-[400px] sm:h-[600px] xl:w-[1200px] xl:h-[600px]  bg-[rgb(245_245_250)] flex items-center justify-center rounded-[6px] py-[40px] px-[16px] z-[5]">
+			<div className="relative group w-full h-[400px] sm:h-[600px] xl:w-[1200px] xl:h-[600px]  bg-[rgb(245_245_250)] flex items-center justify-center rounded-[6px] py-[28px] px-[8px] z-[5]">
 				<div
 					className="hidden sm:block animate-scaleIn relative  overflow-hidden  h-full w-[55%] m-[20px] bg-[#ffffff]"
 					style={{
-						backgroundImage: "url('/assets/img/backgroundForm/bg.jpg')",
+						backgroundImage: "url('/assets/images/backgroundForm/bg.jpg')",
 						backgroundPosition: "top",
 						backgroundSize: "cover",
 						backgroundRepeat: "no-repeat",
@@ -98,14 +98,16 @@ const RegisterForm = (props: TProps) => {
 						<Image
 							width={80}
 							height={50}
-							src="/assets/img/svg-icon/ship.png"
+							src="/assets/images/icon/ship.png"
 							className="w-full h-full object-fill object-left-bottom"
 							alt="air-plane"
 						/>
 					</div>
 					<div className="animate-topUp   absolute top-[100px] left-[50%] w-max translate-x-[-50%] font-extrabold  text-[28px] [letter-spacing:8px] z-[3] ">
 						<div className="relative left-0 w-full  bg-transparent min-h-ful  flex justify-center">
-							<h3 className="animate-changeColor absolute  ">Project Tally Form</h3>
+							<h3 className="animate-changeColor absolute w-max [text-shadow:4px_4px_2px_rgba(0,0,0,0.2)] text-[30px]">
+								Tally Form
+							</h3>
 						</div>
 					</div>
 					<div className="animate-topDown z-[2] absolute top-[20px] right-[120px] h-[450px]">

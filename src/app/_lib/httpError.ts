@@ -4,7 +4,7 @@
  */
 
 type ErrorPayload = {
-	message: string;
+	message?: string;
 	detail: string;
 	[key: string]: any;
 };
@@ -21,8 +21,12 @@ class HttpError extends Error {
 	protected status: number;
 	protected payload: ErrorPayload;
 
-	constructor({ status = 500, payload }: ConstructorError) {
-		super(`Http Error with ${status}`), (this.status = status);
+	constructor({
+		status = 500,
+		payload = { message: "INTERNAL SERVER ERROR", detail: "" },
+	}: Partial<ConstructorError>) {
+		super(`Http Error with ${status}: ${payload.message} /  ${payload.detail}`);
+		this.status = status;
 		this.payload = payload;
 	}
 }

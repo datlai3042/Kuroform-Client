@@ -8,6 +8,17 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			colors: {
+				textMain: "rgb(55, 53, 47)",
+				pinkCustom: "rgb(248, 28, 229)",
+			},
+			boxShadow: {
+				shadowPink: "rgb(248, 28, 229) 0px 0px 0px 2px, rgba(248, 28, 229, 0.36) 0px 0px 0px 4px",
+			},
+
+			background: {
+				gradientPinkToPurple: "linear-gradient(to right, rgb(138, 70, 255) 0%, rgb(248, 28, 224) 50%) text",
+			},
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
@@ -35,7 +46,7 @@ const config: Config = {
 				opacityUp: {
 					"0%": { opacity: ".8" },
 					"50%": { opacity: "0" },
-					"100%": { opacity: ".65" },
+					"100%": { opacity: ".68" },
 				},
 				topUp: {
 					"0%": { top: "500%" },

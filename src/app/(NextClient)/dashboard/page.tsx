@@ -1,7 +1,9 @@
 import { cookies, headers } from "next/headers";
-import React from "react";
+import React, { Fragment } from "react";
 import ButtonLogOut from "../_components/ui/button/ButtonLogOut";
 import Http from "@/app/_lib/http";
+import parse from "html-react-parser";
+
 import ButtonNavigation from "../_components/ui/button/ButtonNavigation";
 
 const DashBoardPage = async () => {
@@ -31,7 +33,9 @@ const DashBoardPage = async () => {
 	return (
 		<div className="w-full h-screen flex justify-center items-center gap-[20px]">
 			<p>DashBoardPage {JSON.stringify(data)}</p>
-			<ButtonNavigation Url="/see-token" />
+			{parse("<a href='https://www.facebook.com/datlai304'>Me</a>")}
+
+			{/* <ButtonNavigation urlNavigation="/see-token" textContent="Xem token" /> */}
 			<ButtonLogOut />
 		</div>
 	);

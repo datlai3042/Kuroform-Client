@@ -7,11 +7,6 @@ import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
 	const router = useRouter();
-	useEffect(() => {
-		fetch("/v1/api/auth/set-token", { method: "POST", body: "" }).then(() => {
-			router.push("/"), router.refresh();
-		});
-	}, []);
 
 	return (
 		<div className="p-[16px] ">
