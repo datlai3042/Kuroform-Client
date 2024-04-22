@@ -8,6 +8,7 @@ import AppProvider from "./(NextClient)/_components/AppProvider";
 import { cookies } from "next/headers";
 import ButtonNavigation from "./(NextClient)/_components/ui/button/ButtonNavigation";
 import CheckPathName from "./(NextClient)/_components/ui/CheckPathName";
+import SidebarContextProvider from "./(NextClient)/dashboard/SidebarContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,12 +35,14 @@ export default function RootLayout(props: TProps) {
 			<body className={inter.className}>
 				<ReduxProvider>
 					<ReactQueryProvider>
-						<AppProvider id={_id} access_token={access_token} refresh_token={refresh_token}>
-							{props.children}
+						<SidebarContextProvider>
+							<AppProvider id={_id} access_token={access_token} refresh_token={refresh_token}>
+								{props.children}
 
-							<CheckPathName access_token={access_token} />
-							{/* <ButtonNavigation urlNavigation="/see-token" textContent="Xem token" /> */}
-						</AppProvider>
+								<CheckPathName access_token={access_token} />
+								{/* <ButtonNavigation urlNavigation="/see-token" textContent="Xem token" /> */}
+							</AppProvider>
+						</SidebarContextProvider>
 					</ReactQueryProvider>
 				</ReduxProvider>
 			</body>

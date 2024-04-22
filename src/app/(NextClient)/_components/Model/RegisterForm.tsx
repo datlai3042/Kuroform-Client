@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import React from "react";
 import WrapperAuthLayout from "../Layout/WrapperAuthLayout";
@@ -10,7 +11,6 @@ import { RegisterType, registerSchema } from "@/app/_schema/auth/register.schema
 import { LoginType } from "@/app/_schema/auth/login.schema";
 import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
 
-import Input from "../ui/input/Input";
 import Button from "../ui/button/Button";
 
 import Http, { clientToken } from "@/app/_lib/http";
@@ -21,6 +21,8 @@ import { useDispatch } from "react-redux";
 import { onLoginUser } from "@/app/_lib/redux/features/authentication.slice";
 import { PlaneTakeoff } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import Input from "../ui/input/Input";
 type TProps = {
 	onClose?: (state: boolean) => void;
 };
@@ -33,6 +35,8 @@ const RegisterForm = (props: TProps) => {
 		defaultValues: {
 			email: "",
 			password: "",
+			first_name: "",
+			last_name: "",
 			confirm_password: "",
 		},
 		resolver: zodResolver(registerSchema),
@@ -40,7 +44,7 @@ const RegisterForm = (props: TProps) => {
 
 	const registerMutation = useMutation({
 		mutationKey: ["register"],
-		mutationFn: (formRegister: Omit<LoginType, "confirm_password">) =>
+		mutationFn: (formRegister: Omit<RegisterType, "confirm_password">) =>
 			Http.post<ResponseApi<{ user: UserType; token: { access_token: string; refresh_token: string } }>>(
 				"/v1/api/auth/register",
 				formRegister,
@@ -76,57 +80,42 @@ const RegisterForm = (props: TProps) => {
 		},
 	});
 
-	const onSubmit = (data: LoginType) => {
+	const onSubmit = (data: RegisterType) => {
 		registerMutation.mutate(data);
 	};
 
 	return (
 		<WrapperAuthLayout zIndex={300}>
-			<div className="relative group w-full h-[400px] sm:h-[600px] xl:w-[1200px] xl:h-[600px]  bg-[rgb(245_245_250)] flex items-center justify-center rounded-[6px] py-[28px] px-[8px] z-[5]">
-				<div
-					className="hidden sm:block animate-scaleIn relative  overflow-hidden  h-full w-[55%] m-[20px] bg-[#ffffff]"
-					style={{
-						backgroundImage: "url('/assets/images/backgroundForm/bg.jpg')",
-						backgroundPosition: "top",
-						backgroundSize: "cover",
-						backgroundRepeat: "no-repeat",
-						backgroundColor: "black",
-					}}
-				>
-					<div className="animate-opacityUp w-full h-full  bg-[#000000]"></div>
-					<div className="animate-shipRun absolute bottom-[155px] w-[80px] h-[50px]">
-						<Image
-							width={80}
-							height={50}
-							src="/assets/images/icon/ship.png"
-							className="w-full h-full object-fill object-left-bottom"
-							alt="air-plane"
-						/>
-					</div>
-					<div className="animate-topUp   absolute top-[100px] left-[50%] w-max translate-x-[-50%] font-extrabold  text-[28px] [letter-spacing:8px] z-[3] ">
-						<div className="relative left-0 w-full  bg-transparent min-h-ful  flex justify-center">
-							<h3 className="animate-changeColor absolute w-max [text-shadow:4px_4px_2px_rgba(0,0,0,0.2)] text-[30px]">
-								Tally Form
-							</h3>
-						</div>
-					</div>
-					<div className="animate-topDown z-[2] absolute top-[20px] right-[120px] h-[450px]">
-						<div className=" relative min-h-full bg-red-800 flex justify-center">
-							<div className=" absolute top-0 w-[1px] h-full bg-zinc-400 "></div>
-
-							<div className="absolute bottom-0 w-[60px] h-[60px] flex justify-center z-[2] ">
-								<div className="animate-sizeLigth rounded-full shadow-2xl shadow-yellow-400 z-[2]"></div>
-							</div>
-						</div>
-					</div>
-					<div className="animate-changeColorSea absolute bottom-0 w-full h-[174px] "></div>
+			<div className="relative   w-[70rem] h-[80rem]  bg-[#ffffff] flex justify-start xl:justify-center items-center flex-col  gap-[2rem] rounded-[1.2rem] p-[2.4rem_2rem]">
+				<div className="mb-[4rem] flex items-center flex-col gap-[.2rem] ">
+					<p className="text-[2.4rem] xl:text-[3.8rem] font-semibold text-center">
+						Create your Tally account
+					</p>
+					<p className="text-[1.6rem] xl:text-[1.8rem] text-slate-400 text-center">
+						Don’t lose access to your forms by creating a Tally account.
+					</p>
 				</div>
-
 				<form
-					className="relative w-full sm:w-[45%] h-[600px] p-[24px_20px] flex flex-col items-center justify-center gap-[16px] rounded-[12px]"
+					className="w-[85%] sm:w-[55%] flex flex-col justify-center  gap-[1.8rem] rounded-[1.2rem] "
 					onSubmit={registerForm.handleSubmit(onSubmit)}
 				>
-					<p className="text-center mr-[20px] text-slate-600 text-[24px] [letter-spacing:4px]">Đăng Kí</p>
+					<Input<RegisterType>
+						FieldKey="first_name"
+						placeholder="Nhập họ của bạn"
+						type="text"
+						register={registerForm.register}
+						watch={registerForm.watch}
+						error={registerForm.formState.errors}
+					/>
+
+					<Input<RegisterType>
+						FieldKey="last_name"
+						placeholder="Nhập tên của bạn"
+						type="text"
+						register={registerForm.register}
+						watch={registerForm.watch}
+						error={registerForm.formState.errors}
+					/>
 					<Input<RegisterType>
 						FieldKey="email"
 						placeholder="email"
@@ -153,11 +142,18 @@ const RegisterForm = (props: TProps) => {
 						watch={registerForm.watch}
 						error={registerForm.formState.errors}
 					/>
-
-					<Button type="submit" textContent="Đăng kí" className="!bg-slate-800" />
+					<Button type="submit" textContent="Đăng nhập" className="!w-full !h-[4rem] !bg-blue-600 " />
 				</form>
+
+				<p className="text-[1.4rem]">
+					Do have an account yet?{" "}
+					<Link href={"/login"} className="text-blue-400 underline">
+						Login
+					</Link>
+				</p>
+
 				{onClose && (
-					<div className="absolute top-[-20px] right-[-10px] xl:right-[-20px] z-[3]">
+					<div className="absolute  top-[-20px] right-[-10px] xl:right-[-20px]">
 						<IconClose onClose={onClose} />
 					</div>
 				)}

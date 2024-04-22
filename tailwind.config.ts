@@ -11,6 +11,7 @@ const config: Config = {
 			colors: {
 				textMain: "rgb(55, 53, 47)",
 				pinkCustom: "rgb(248, 28, 229)",
+				textGray: "rgb(137,136,132)",
 			},
 			boxShadow: {
 				shadowPink: "rgb(248, 28, 229) 0px 0px 0px 2px, rgba(248, 28, 229, 0.36) 0px 0px 0px 4px",

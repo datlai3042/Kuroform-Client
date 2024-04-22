@@ -32,11 +32,11 @@
 	}
 
 	.text-h2 {
-		@apply text-[3.2rem] text-textMain font-extrabold;
+		@apply text-[2.6rem] sm:text-[3.2rem] text-textMain font-extrabold;
 	}
 
 	.text-h3 {
-		@apply text-[2rem] text-textMain font-extrabold;
+		@apply text-[1.6rem] sm:text-[2rem] text-textMain font-extrabold;
 	}
 
 	.text-h4,

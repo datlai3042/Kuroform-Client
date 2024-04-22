@@ -11,7 +11,7 @@ const Button = (props: ButtonCustomProps) => {
 	return (
 		<button
 			{...buttonProps}
-			className={`w-full xl:w-[50%] min-h-[30px] h-max p-[16px_20px] bg-slate-900 text-white  rounded-md ${buttonProps.className}`}
+			className={` ${buttonProps.className} w-full xl:w-[50%] min-h-[3rem] h-max p-[1.6rem_2rem] bg-slate-900 flex items-center justify-center text-white  rounded-md text-[1.4rem]`}
 		>
 			{textContent}
 		</button>

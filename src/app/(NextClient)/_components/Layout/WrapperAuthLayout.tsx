@@ -25,7 +25,7 @@ const WrapperAuthLayout = (props: TProps) => {
 		<Portal>
 			<div
 				style={{ zIndex: styleEffect._zIndex }}
-				className="fixed top-0 xl:top-0 left-0 ] w-full min-h-full h-max pt-[100px] xl:pt-0 flex justify-center  xl:items-center bg-[rgba(0,0,0,.3)] px-[20px]"
+				className="relative top-0 xl:top-0 left-0 w-full min-h-screen h-max  xl:pt-0 flex justify-center  items-center bg-[#ffffff] px-[20px]"
 			>
 				{children}
 			</div>

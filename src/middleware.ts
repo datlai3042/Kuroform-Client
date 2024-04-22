@@ -12,16 +12,16 @@ export function middleware(request: NextRequest) {
 	const refresh_token = Boolean(request.cookies.get("refresh_token")?.value);
 
 	const response = NextResponse.next();
-	if (!access_token && !refresh_token && privateRouter.includes(pathname)) {
-		return NextResponse.redirect(new URL("/", request.url));
-	}
-	if ((access_token || refresh_token) && authRouter.includes(pathname)) {
-		return NextResponse.redirect(new URL("/dashboard", request.url));
-	}
+	// if (!access_token && !refresh_token && privateRouter.includes(pathname)) {
+	// 	return NextResponse.redirect(new URL("/", request.url));
+	// }
+	// if ((access_token || refresh_token) && authRouter.includes(pathname)) {
+	// 	return NextResponse.redirect(new URL("/dashboard", request.url));
+	// }
 
-	if ((access_token || refresh_token) && pathname === "/") {
-		return NextResponse.redirect(new URL("/dashboard", request.url));
-	}
+	// if ((access_token || refresh_token) && pathname === "/") {
+	// 	return NextResponse.redirect(new URL("/dashboard", request.url));
+	// }
 
 	return response;
 }

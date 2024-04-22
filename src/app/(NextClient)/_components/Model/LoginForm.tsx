@@ -1,21 +1,21 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import React, { useEffect } from "react";
 
 import WrapperAuthLayout from "../Layout/WrapperAuthLayout";
 import IconClose from "../ui/input/IconClose";
-import Image from "next/image";
 import { Controller, useForm } from "react-hook-form";
 import { LoginType, loginSchema } from "@/app/_schema/auth/login.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../ui/input/Input";
 import Button from "../ui/button/Button";
-import { log } from "console";
 import { useMutation } from "@tanstack/react-query";
 import Http, { clientToken } from "@/app/_lib/http";
 import { useDispatch } from "react-redux";
 import { onLoginUser } from "@/app/_lib/redux/features/authentication.slice";
 import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type TProps = {
 	onClose?: (state: boolean) => void;
@@ -75,12 +75,12 @@ const LoginForm = (props: TProps) => {
 
 	return (
 		<WrapperAuthLayout zIndex={300}>
-			<div className="relative w-full h-[400px] xl:w-[800px] xl:h-[400px] bg-[#ffffff] flex rounded-[12px] p-[24px_20px]">
+			<div className="relative  h-[40rem] w-[40rem] xl:h-[40rem] bg-[#ffffff] flex justify-center items-center flex-col  gap-[2rem] rounded-[1.2rem] p-[2.4rem_2rem]">
+				<p className="mb-[4rem] text-[3rem] font-semibold">Welcome back</p>
 				<form
-					className="w-full h-full flex flex-col justify-center  gap-[16px] rounded-[12px]"
+					className="w-full h-full flex flex-col justify-center  gap-[1.8rem] rounded-[1.2rem]"
 					onSubmit={loginForm.handleSubmit(onSubmit)}
 				>
-					<p className="text-center mr-[20px]">Đăng nhập</p>
 					<Input<LoginType>
 						FieldKey="email"
 						placeholder="Email"
@@ -97,17 +97,16 @@ const LoginForm = (props: TProps) => {
 						error={loginForm.formState.errors}
 						watch={loginForm.watch}
 					/>
-					{/* <Input register={loginForm.register} key="password" /> */}
-					<Button type="submit" textContent="Đăng nhập" />
+					<Button type="submit" textContent="Đăng nhập" className="!w-full !h-[4rem] !bg-blue-600 " />
 				</form>
-				<Image
-					src={"/assets/images/backgroundForm/bg.jpg"}
-					width={400}
-					height={400}
-					alt="sub-image"
-					fill={false}
-					style={{ objectFit: "fill" }}
-				/>
+
+				<p className="text-[1.4rem]">
+					Don't have an account yet?{" "}
+					<Link href={"/register"} className="text-blue-400 underline">
+						Sign up
+					</Link>
+				</p>
+
 				{onClose && (
 					<div className="absolute  top-[-20px] right-[-10px] xl:right-[-20px]">
 						<IconClose onClose={onClose} />

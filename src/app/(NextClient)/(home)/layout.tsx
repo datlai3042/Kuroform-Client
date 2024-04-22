@@ -1,5 +1,4 @@
 import React from "react";
-import CheckPathName from "../_components/CheckPathName";
 
 type TProps = {
 	children: React.ReactNode;
@@ -8,7 +7,7 @@ type TProps = {
 const HomeLayout = (props: TProps) => {
 	const { children } = props;
 
-	return <div className=" w-full min-h-screen">{children}</div>;
+	return <div className=" w-full min-h-screen px-[16px] sm:px-[30px] xl:p-0 ">{children}</div>;
 };
 
 export default HomeLayout;
