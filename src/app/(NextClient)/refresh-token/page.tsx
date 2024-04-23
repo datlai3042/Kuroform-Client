@@ -3,7 +3,6 @@
 import Http, { clientToken } from "@/app/_lib/http";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { Suspense } from "react";
 
 import ButtonNavigation from "../_components/ui/button/ButtonNavigation";
 import { abort } from "process";
@@ -51,25 +50,21 @@ const RefreshTokenPage = () => {
 
 	if (token_expires !== clientToken.refreshToken) {
 		return (
-			<Suspense>
-				<div className="w-screen h-screen flex  justify-center items-center gap-[20px]">
-					<div className="w-[500px] h-[500px] flex flex-col justify-center items-center shadow-2xl shadow-blue-400 rounded-xl">
-						<p>Page Không tồn tại {JSON.stringify(process)}</p>;
-						<ButtonNavigation urlNavigation="/dashboard" textContent="Dashboard" onClick={() => {}} />
-					</div>
+			<div className="w-screen h-screen flex  justify-center items-center gap-[20px]">
+				<div className="w-[500px] h-[500px] flex flex-col justify-center items-center shadow-2xl shadow-blue-400 rounded-xl">
+					<p>Page Không tồn tại {JSON.stringify(process)}</p>;
+					<ButtonNavigation urlNavigation="/dashboard" textContent="Dashboard" onClick={() => {}} />
 				</div>
-			</Suspense>
+			</div>
 		);
 	}
 
 	return (
-		<Suspense>
-			<div className="flex flex-col gap-10 ">
-				<p className="w-[360px] break-words">Client ref: {clientToken.refreshToken}</p>
-				<p className="w-[360px] break-words">Server ref: {token_expires}</p>
-				<ButtonNavigation urlNavigation="/dashboard" textContent="Dashboard" onClick={() => {}} />
-			</div>
-		</Suspense>
+		<div className="flex flex-col gap-10 ">
+			<p className="w-[360px] break-words">Client ref: {clientToken.refreshToken}</p>
+			<p className="w-[360px] break-words">Server ref: {token_expires}</p>
+			<ButtonNavigation urlNavigation="/dashboard" textContent="Dashboard" onClick={() => {}} />
+		</div>
 	);
 };
 
