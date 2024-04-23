@@ -78,7 +78,7 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 					"Content-Type": "application/json",
 			  };
 
-	const baseUrl = options?.baseUrl === undefined ? process.env.NEXT_PUBLIC_BACK_END_URL : options.baseUrl;
+	const baseUrl = options?.baseUrl === undefined ? process.env.BACK_END_URL : options.baseUrl;
 
 	const fullUrl = url.startsWith("/") ? `${baseUrl}${url}` : `${baseUrl}/${url}`;
 
@@ -142,7 +142,7 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 						refresh_token,
 						client_id,
 					};
-					const syncToken = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}v1/api/auth/set-token`, {
+					const syncToken = await fetch(`${process.env.CLIENT_URL}v1/api/auth/set-token`, {
 						body: JSON.stringify(bodySyncTokenAPI),
 						method: "POST",
 					});
