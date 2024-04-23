@@ -142,7 +142,7 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 						refresh_token,
 						client_id,
 					};
-					const syncToken = await fetch(`${process.env.CLIENT_URL}v1/api/auth/set-token`, {
+					const syncToken = await fetch(`${process.env.CLIENT_URL}/v1/api/auth/set-token`, {
 						body: JSON.stringify(bodySyncTokenAPI),
 						method: "POST",
 					});
