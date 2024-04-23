@@ -1,4 +1,4 @@
-import { UserType } from "../user/user.schema";
+import { UserType } from "../user/user.type";
 
 export type ResponseApi<Metadata> = {
 	code: number;
@@ -12,4 +12,6 @@ export type ResponseAuth = {
 		access_token: string;
 		refresh_token: string;
 	};
+	client_id: string;
+	expireToken: string;
 };

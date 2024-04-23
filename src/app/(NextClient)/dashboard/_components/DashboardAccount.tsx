@@ -5,19 +5,23 @@ import { ChevronsLeft } from "lucide-react";
 import ButtonIcon from "../../_components/ui/button/ButtonIcon";
 
 import DashBoardButtonModel from "./DashBoardButtonModel";
+import { UserType } from "@/app/_schema/user/user.type";
+import { RootState } from "@/app/_lib/redux/store";
+import { useSelector } from "react-redux";
 
 const DashboardAccount = () => {
 	const { openSidebar, setOpenSidebar } = useContext(SidebarContext);
+	const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
 
 	return (
 		<div className="pl-[.6rem] group max-w-full h-[3rem] flex items-center justify-between ">
 			<div className="max-w-[90%] flex gap-[1rem] items-center ">
 				<div className="min-w-[2rem] h-[2rem] bg-green-300 rounded-full flex items-center justify-center">
-					L
+					{user?.user_first_name.slice(0, 1)}
 				</div>
 
 				<span className="font-semibold w-[90%] break-words line-clamp-2 " title={"Nickname"}>
-					Lại Huỳnh Phát Đạt
+					{user?.user_first_name + " " + user?.user_last_name}
 				</span>
 				<DashBoardButtonModel />
 			</div>

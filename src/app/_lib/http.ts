@@ -73,54 +73,52 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 
 	const baseHeader =
 		options?.body instanceof FormData
-			? { Authorization: `Bearer ${clientToken.accessToken}`, "x-client-id": clientToken.id }
+			? {}
 			: {
-					Authorization: `Bearer ${clientToken.accessToken}`,
 					"Content-Type": "application/json",
-					"x-client-id": clientToken.id,
 			  };
 
 	const baseUrl = options?.baseUrl === undefined ? process.env.NEXT_PUBLIC_BACK_END_URL : options.baseUrl;
 
 	const fullUrl = url.startsWith("/") ? `${baseUrl}${url}` : `${baseUrl}/${url}`;
 
+	console.log({ body, baseHeader, fullUrl, options, method });
+	console.log("fetch");
 	const response = await fetch(fullUrl, {
-		...options,
 		headers: {
 			...baseHeader,
 			...options?.headers,
 		} as any,
 		body,
 		method,
+		credentials: "include",
 	});
 
+	console.log({ response });
 	const payload: Response = await response.json();
 
 	//RESPONSE: ERROR
 	if (!response.ok) {
 		//ERROR: ACCESS_TOKEN
 		if (+response.status === AUTHORIZATION_ERROR_STATUS) {
-			const { refresh_token } = options?.headers as HeaderToken;
-			const { Authorization } = options?.headers as HeaderToken;
-
-			const clientId = (options?.headers as HeaderToken)["x-client-id"];
-			const token_expires = Authorization.split("")[1];
-
 			//TOKEN EXPRIES NEXT-CLIENT
 			if (typeof window !== "undefined") {
 				//refresh-token api
-				const options: RequestInit = {
-					method: "GET",
-					headers: {
-						authorization: `Bearer ${token_expires}`,
-						"x-client-id": clientId,
-						Cookie: `refresh_token=${refresh_token}`,
-					},
-					cache: "no-store",
+				// const options: RequestInit = {
+				// 	method: "GET",
+				// 	headers: {
+				// 		authorization: `Bearer ${token_expires}`,
+				// 		"x-client-id": clientId,
+				// 		Cookie: `refresh_token=${refresh_token}`,
+				// 	},
+				// 	cache: "no-store",
+				// };
+				const option: RequestInit = {
+					credentials: "include",
 				};
-				const callRefreshToken = await fetch(`${baseUrl}/v1/api/auth/refresh-token`, options);
+				const callRefreshToken = await fetch(`${baseUrl}/v1/api/auth/refresh-token`, option);
 				const refresh_api: ResponseApi<ResponseAuth> = await callRefreshToken.json();
-
+				console.log({ token_new: refresh_api });
 				//validate refresh-token
 				//---*---//
 
@@ -137,13 +135,12 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 				//CASE: SUCCESS
 				else {
 					const { access_token, refresh_token } = refresh_api.metadata.token;
-					const { _id: user_id } = refresh_api.metadata.user;
-
+					const { client_id } = refresh_api.metadata;
 					//PROCESS SYNC TOKEN BETWEEN NEXT-CLIENT AND NEXT-SERVER
 					const bodySyncTokenAPI = {
 						access_token,
 						refresh_token,
-						_id: user_id,
+						client_id,
 					};
 					const syncToken = await fetch("http://localhost:3000/v1/api/auth/set-token", {
 						body: JSON.stringify(bodySyncTokenAPI),
@@ -153,42 +150,46 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 					const tokenResponse = await syncToken.json();
 
 					//AFTER
-					if (tokenResponse) {
-						const { access_token, refresh_token } = tokenResponse.metadata.token;
-						const { _id } = tokenResponse.metadata.user;
+					// if (tokenResponse) {
+					// const { access_token, client_id } = tokenResponse;
+					// console.log({ tokenResponse, syncToken, fullUrl });
 
-						//NEW TOKEN CLIENT
-						clientToken.accessToken = access_token;
-						clientToken.refreshToken = refresh_token;
-						clientToken.id = _id;
+					//CALL API AGAIN WITH NEW TOKEN
+					const call_again = await fetch(fullUrl, {
+						method,
+						body,
+						credentials: "include",
+						// cache: "no-store",
+						headers: {
+							...baseHeader,
 
-						//CALL API AGAIN WITH NEW TOKEN
-						const call_again = await fetch(fullUrl, {
-							method,
-							body,
-							headers: {
-								...baseHeader,
-								Authorization: `Bearer ${access_token}`,
-							} as any,
-						});
+							// Authorization: `Bearer ${access_token}`,
+						} as any,
+					});
 
-						//FINALLY
-						const response_again: Response = await call_again.json();
-						return response_again;
+					if (!call_again.ok) {
+						console.log("LOI");
 					}
-				}
-			}
 
+					//FINALLY
+					const response_again: Response = await call_again.json();
+					console.log({ response_again });
+					return response_again;
+				}
+				// }
+				// console.log("12");
+			}
 			//TOKEN EXPRIES NEXT-SERVER
 			else {
 				//refresh-token api
+				const { refresh_token } = options?.headers as HeaderToken;
 				const optionsRefreshAPI: RequestInit = {
 					method: "GET",
 					headers: {
-						authorization: `Bearer ${token_expires}`,
-						"x-client-id": clientId,
+						// "x-client-id": clientId,
 						Cookie: `refresh_token=${refresh_token}`,
 					},
+					credentials: "include",
 					cache: "no-store",
 				};
 				const callRefreshToken = await fetch(`${baseUrl}/v1/api/auth/refresh-token`, { ...optionsRefreshAPI });
@@ -222,21 +223,15 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
 	}
 
 	if ("v1/api/auth/set-token".includes(normalizePath(url))) {
-		clientToken.accessToken = (payload as TokenNextSync).access_token;
-		clientToken.refreshToken = (payload as TokenNextSync).refresh_token;
-		clientToken.id = (payload as TokenNextSync)._id;
+		localStorage.setItem("exprireToken", (payload as ResponseApi<ResponseAuth>).metadata.expireToken);
 	}
 
 	if (["v1/api/auth/login", "v1/api/auth/register"].some((path) => path === normalizePath(url))) {
-		clientToken.accessToken = (payload as ResponseApi<ResponseAuth>).metadata.token.access_token;
-		clientToken.refreshToken = (payload as ResponseApi<ResponseAuth>).metadata.token.refresh_token;
-		clientToken.id = (payload as ResponseApi<ResponseAuth>).metadata.user._id;
+		localStorage.setItem("exprireToken", (payload as ResponseApi<ResponseAuth>).metadata.expireToken);
 	}
 
 	if (["v1/api/auth/logout"].includes(normalizePath(url))) {
-		clientToken.accessToken = "";
-		clientToken.refreshToken = "";
-		clientToken.id = "";
+		localStorage.removeItem("exprireToken");
 	}
 
 	return payload;

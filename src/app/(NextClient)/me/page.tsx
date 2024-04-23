@@ -1,6 +1,6 @@
 "use client";
 import { RootState } from "@/app/_lib/redux/store";
-import { UserType } from "@/app/_schema/user/user.schema";
+import { UserType } from "@/app/_schema/user/user.type";
 import React from "react";
 import { useSelector } from "react-redux";
 

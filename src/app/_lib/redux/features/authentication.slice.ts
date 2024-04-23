@@ -1,4 +1,4 @@
-import { UserType } from "@/app/_schema/user/user.schema";
+import { UserType } from "@/app/_schema/user/user.type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type InitialState = {
@@ -13,7 +13,7 @@ const authenticationSlice = createSlice({
 	name: "authentication",
 	initialState,
 	reducers: {
-		onLoginUser: (state, payload: PayloadAction<{ user: UserType }>) => {
+		onFetchUser: (state, payload: PayloadAction<{ user: UserType }>) => {
 			state.user = payload.payload.user;
 		},
 
@@ -23,5 +23,5 @@ const authenticationSlice = createSlice({
 	},
 });
 
-export const { onLoginUser, onLogout } = authenticationSlice.actions;
+export const { onFetchUser, onLogout } = authenticationSlice.actions;
 export default authenticationSlice.reducer;

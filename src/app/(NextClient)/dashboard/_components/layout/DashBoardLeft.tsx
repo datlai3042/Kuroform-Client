@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { SidebarContext } from "../../SidebarContext";
+import React from "react";
 
 import DashBoardWork from "../DashBoardWork";
 import DashboardAccount from "../DashboardAccount";

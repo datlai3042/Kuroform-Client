@@ -4,7 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { UserType } from "@/app/_schema/user/user.schema";
+import { UserType } from "@/app/_schema/user/user.type";
 import { RegisterType, registerSchema } from "@/app/_schema/auth/register.schema";
 import { LoginType } from "@/app/_schema/auth/login.schema";
 import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";

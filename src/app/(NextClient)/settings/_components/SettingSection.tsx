@@ -3,7 +3,7 @@ import SettingUpdateAvatar from "./SettingUpdateAvatar";
 
 const SettingSection = () => {
 	return (
-		<div className="w-[90%] xl:w-[69%] h-max min-h-[30rem] mx-auto flex flex-col gap-[4rem]">
+		<div className="w-full h-[30rem]  flex flex-col gap-[4rem]">
 			<div className="flex flex-col gap-[2rem]">
 				<h3 className="text-h3 !text-[2.8rem]">Settings</h3>
 				<div className="min-h-[3rem] flex items-center justify-between border-b-[.1rem] border-slate-200 ">

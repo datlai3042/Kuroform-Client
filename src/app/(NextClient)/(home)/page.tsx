@@ -1,6 +1,5 @@
 import Link from "next/link";
-import React, { Fragment, useEffect } from "react";
-import { cookies } from "next/headers";
+import React from "react";
 import Image from "next/image";
 import ButtonNavigation from "../_components/ui/button/ButtonNavigation";
 import ButtonCreateForm from "../_components/ui/button/ButtonCreateForm";
@@ -33,7 +32,6 @@ import {
 	Link2,
 	ExternalLink,
 	Globe,
-	Grid3X3,
 } from "lucide-react";
 import BlockQuote from "../_components/ui/BlockQuote";
 import FeatureInfoV1 from "../_components/ui/FeatureInfoV1";
@@ -41,9 +39,6 @@ import Grid6x6, { GridIconText } from "../_components/ui/Grid6x6";
 import ImageAndText from "../_components/ui/ImageAndText";
 import IconTextLink from "../_components/ui/IconTextLink";
 import Grid3x3 from "../_components/ui/Grid3x3";
-
-export const colorPrimary = "text-violet-700";
-export const backgroundPrimary = "text-violet-700";
 
 const brandImages = [
 	"/assets/images/HomePage/notion.png",

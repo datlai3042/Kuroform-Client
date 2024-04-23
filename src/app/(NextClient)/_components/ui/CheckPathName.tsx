@@ -3,13 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
-type TProps = {
-	access_token: string;
-};
-
-const CheckPathName = (props: TProps) => {
-	const { access_token } = props;
-
+const CheckPathName = () => {
 	const pathName = usePathname();
 	const router = useRouter();
 

@@ -29,6 +29,7 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
 				{placeholder}
 			</label>
 			<input
+				value={watch(FieldKey)}
 				id={`${FieldKey}-${id}`}
 				{...register(FieldKey)}
 				className="w-full h-[60%] p-[.6rem_1.2rem] border-[.2rem] border-slate-300 bg-slate-50 focus:bg-[#ffffff] opacity-70 focus:opacity-100 rounded-[.6rem]  placeholder:text-[1.4rem] outline outline-[4px] outline-transparent focus:outline-blue-200 focus:border-transparent"
