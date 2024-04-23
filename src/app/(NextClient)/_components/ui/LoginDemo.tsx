@@ -13,9 +13,9 @@ import { log } from "console";
 import { useMutation } from "@tanstack/react-query";
 import Http, { clientToken } from "@/app/_lib/http";
 import { useDispatch } from "react-redux";
-import { onLoginUser } from "@/app/_lib/redux/features/authentication.slice";
 import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
 import { useRouter } from "next/navigation";
+import { onFetchUser } from "@/app/_lib/redux/features/authentication.slice";
 
 type TProps = {
 	onClose?: (state: boolean) => void;
@@ -42,7 +42,7 @@ const LoginDemo = (props: TProps) => {
 				user,
 				token: { access_token, refresh_token },
 			} = response.metadata;
-			dispatch(onLoginUser({ user }));
+			dispatch(onFetchUser({ user }));
 			const setTokenResponse = Http.post<{ access_token: string; refresh_token: string; _id: string }>(
 				"/v1/api/auth/set-token",
 				{

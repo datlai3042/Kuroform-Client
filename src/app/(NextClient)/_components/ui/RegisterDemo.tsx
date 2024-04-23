@@ -13,13 +13,13 @@ import Http, { clientToken } from "@/app/_lib/http";
 import { useMutation } from "@tanstack/react-query";
 
 import { useDispatch } from "react-redux";
-import { onLoginUser } from "@/app/_lib/redux/features/authentication.slice";
 import { PlaneTakeoff } from "lucide-react";
 import Image from "next/image";
 import WrapperAuthLayout from "../Layout/WrapperAuthLayout";
 import Button from "./button/Button";
 import IconClose from "./input/IconClose";
 import Input from "./input/Input";
+import { onFetchUser } from "@/app/_lib/redux/features/authentication.slice";
 type TProps = {
 	onClose?: (state: boolean) => void;
 };
@@ -50,7 +50,7 @@ const RegisterDemo = (props: TProps) => {
 				user,
 				token: { access_token, refresh_token },
 			} = response.metadata;
-			dispatch(onLoginUser({ user }));
+			dispatch(onFetchUser({ user }));
 			const setTokenResponse = await Http.post<ResponseApi<ResponseAuth>>(
 				"/v1/api/auth/set-token",
 				{
