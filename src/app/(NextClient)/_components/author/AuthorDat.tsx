@@ -21,14 +21,16 @@ const AuthorDat = (props: TProps) => {
 	const colorStyle = color || "text-text-theme";
 	const backgroundColorStyle = backgroundColor || "bg-color-section-theme";
 
+	const background = openDetailAuthor ? "bg-[#fff]" : "bg-transparent";
+
 	return (
 		<ClickOutSide setOpenModel={setOpenDetailAuthor}>
 			<button
 				onClick={() => setOpenDetailAuthor((prev) => !prev)}
-				className={`${colorStyle} ${backgroundColorStyle} fixed z-[2] bottom-[4rem] right-[.3rem] flex items-center justify-center gap-[1rem] transition-[width] duration-1000 min-w-[6rem] w-max  border-[.1rem] border-text-theme rounded-full p-[.4rem_1.6rem]`}
+				className={`${colorStyle} ${backgroundColorStyle} ${background} fixed z-[2] bottom-[4rem] right-[.3rem] flex items-center justify-center gap-[1rem] transition-[width] duration-1000 min-w-[6rem] w-max rounded-full p-[.4rem_1.6rem]`}
 			>
 				{openDetailAuthor && <span className={`${colorStyle}`}>Được thiết kế và phát triển bởi Đạt</span>}
-				<div className={`${colorStyle} ${backgroundColorStyle} w-[3rem] h-[3rem] relative`}>
+				<div className={`${colorStyle} ${backgroundColorStyle} w-[4rem] h-[4rem] relative`}>
 					<Image
 						width={70}
 						height={70}
