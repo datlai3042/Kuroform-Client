@@ -10,7 +10,7 @@ const NotificationItemWrapper = (props: TProps) => {
 	const { children, callbackDelete } = props;
 
 	return (
-		<div className="relative h-max p-[2rem_1rem] xl:p-[2rem_1.8rem] flex flex-col xl:flex-row xl:items-center gap-[2rem] hover:bg-blue-300 transition-all duration-300 rounded-xl hover:cursor-pointer">
+		<div className="relative h-max p-[2rem_1rem] xl:p-[2rem_1.8rem] flex flex-col xl:flex-row xl:items-center gap-[2rem] bg-color-section-theme hover:bg-color-main hover:text-[#fff] text-text-theme rounded-xl hover:cursor-pointer">
 			{children}
 
 			<button

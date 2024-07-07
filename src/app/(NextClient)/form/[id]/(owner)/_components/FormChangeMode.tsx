@@ -40,7 +40,7 @@ const FormChangeMode = (props: TProps) => {
 	const styleEffect = {
 		linkActive: (checkLink: boolean) => {
 			if (!checkLink) return "border-transparent";
-			return "border-text-theme font-bold";
+			return "border-[#0bceb2] font-bold";
 		},
 	};
 
@@ -61,7 +61,7 @@ const FormChangeMode = (props: TProps) => {
 
 	return (
 		<div className=" w-full p-[6rem]  mx-auto h-full flex  flex-col gap-[2rem] text-text-theme">
-			<div className="w-full flex justify-between">
+			<div className="w-full flex flex-col gap-[2rem] xl:flex-row justify-between">
 				<h1
 					title={formCore.form_title.form_title_value}
 					className="line-clamp-2 w-[80%] text-text-theme"
@@ -82,12 +82,12 @@ const FormChangeMode = (props: TProps) => {
 									.writeText(`${window.location.origin}/form/${formCore._id}`)
 									.then(() => setCopySuccess(true));
 							}}
-							className="flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
+							className="hover:text-[#fff] flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
 						>
 							<LinkIcon size={iconSize} />
 						</button>
 						{copySuccess && (
-							<div className="absolute bottom-[-4rem] left-[-10rem] xl:left-0 ">
+							<div className="absolute bottom-[-4rem] left-[-10rem] xl:left-0 text-text-theme">
 								<BoxCopySuccess message="Copy link chia sẽ thành công" />
 							</div>
 						)}
@@ -106,14 +106,14 @@ const FormChangeMode = (props: TProps) => {
 					)}
 
 					<button
-						className="flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
+						className="hover:text-[#fff] flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
 						onClick={(e) => {
 							e.preventDefault();
 							router.push(`/form/${formCore._id}/edit`);
 						}}
 					>
 						<Pencil size={iconSize} />
-						<span>Edit</span>
+						<span>Chỉnh sửa</span>
 					</button>
 				</div>
 			</div>
@@ -124,19 +124,19 @@ const FormChangeMode = (props: TProps) => {
 					href={`/form/${formCore._id}/summary`}
 					className={`${styleEffect.linkActive(
 						formPageMode === "summary"
-					)} border-b-[.2rem] pb-[.5rem] font-semibold  hover:border-slate-500 `}
+					)} border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
 				>
 					Bản tóm tắt
 				</Link>
 
 				<Link
-					onClick={() => setFormPageMode("submit")}
-					href={`/form/${formCore._id}/submit`}
+					onClick={() => setFormPageMode("download")}
+					href={`/form/${formCore._id}/download`}
 					className={`${styleEffect.linkActive(
-						formPageMode === "submit"
-					)} border-b-[.2rem] pb-[.5rem] font-semibold  hover:border-slate-500 `}
+						formPageMode === "download"
+					)}  border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
 				>
-					Bản đầy đủ
+					Tải xuống
 				</Link>
 
 				<Link
@@ -144,14 +144,14 @@ const FormChangeMode = (props: TProps) => {
 					href={`/form/${formCore._id}/share`}
 					className={`${styleEffect.linkActive(
 						formPageMode === "share"
-					)} border-b-[.2rem] pb-[.5rem] font-semibold  hover:border-slate-500 `}
+					)}  border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
 				>
 					Chia sẽ
 				</Link>
 			</div>
 
-			<div className="overflow-scroll scroll-color-main pr-[2rem]">
-				<div className="mt-[1rem]">{children}</div>
+			<div className="   h-[30rem]">
+				<div className="mt-[1rem] h-full">{children}</div>
 			</div>
 		</div>
 	);

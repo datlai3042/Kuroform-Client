@@ -21,18 +21,27 @@ const FormAvatar = () => {
 		formCore,
 	});
 
+	const styleEffect = {
+		onCheckBackground: () => {
+			if (formCore.form_background?.form_background_iamge_url) return "h-[23rem] xl:min-h-[40rem] ";
+			return "min-h-[20rem]";
+		},
+	};
+
 	return (
 		<React.Fragment>
-			<Image
-				width={150}
-				height={150}
-				src={formCore.form_avatar?.form_avatar_url || formCore.form_setting_default.form_avatar_default_url}
-				quality={100}
-				onClick={onControllModel}
-				alt="avatar"
-				className={`${position} ${shape} absolute bottom-0 z-[3] object-center translate-y-[50%] w-[14rem] h-[14rem] xl:w-[20rem] xl:h-[20rem] hover:cursor-pointer `}
-			/>
-			{openModel && <ModelFormImage setOpenModel={setOpenModel} MODE="AVATAR" />}
+			<div className={`${styleEffect.onCheckBackground()} w-full xl:max-w-[70rem] mx-auto relative`}>
+				<Image
+					width={150}
+					height={150}
+					src={formCore.form_avatar?.form_avatar_url || formCore.form_setting_default.form_avatar_default_url}
+					quality={100}
+					onClick={onControllModel}
+					alt="avatar"
+					className={`${position} ${shape} absolute bottom-0 z-[3] object-center translate-y-[50%] w-[14rem] h-[14rem] xl:w-[20rem] xl:h-[20rem] hover:cursor-pointer `}
+				/>
+				{openModel && <ModelFormImage setOpenModel={setOpenModel} MODE="AVATAR" />}
+			</div>
 		</React.Fragment>
 	);
 };

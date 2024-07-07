@@ -12,17 +12,18 @@ import NotFoundPage from "../../_components/_StatusCodeComponent/NotFoundPage";
 import FormAnswerHeader from "./_components/FormAnswerHeader";
 import { stringToSlug } from "@/app/_lib/utils";
 import FormAnswerEmpty from "./_components/InputAnswer/FormAnswerEmpty";
+import AuthorDat from "../../_components/author/AuthorDat";
 
 const getFormCache = cache(FormService.getFormGuess);
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
 	const form_id = params.id;
 
-	const res = await getFormCache({ form_id, options: { cache: "no-cache" } });
+	const res = await getFormCache({ form_id, options: { cache: "no-store" } });
 	const { form } = res.metadata;
 
 	const iconForm = form?.form_avatar?.form_avatar_url || form?.form_setting_default.form_avatar_default_url;
-	const title = stringToSlug(form?.form_title.form_title_value || "");
+	const title = form.form_title.form_title_value || "Form không có tiêu đề";
 
 	return {
 		title: title || "Không tìm thấy thông tin",
@@ -46,6 +47,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 const FormPage = async ({ params }: { params: { id: string } }) => {
 	const getFormQuery = await getFormCache({ form_id: params.id, options: { cache: "no-store" } });
 	const formCore = getFormQuery.metadata.form;
+	const form_answer_id = getFormQuery.metadata.form_answer_id;
 
 	if (!formCore)
 		return (
@@ -80,12 +82,14 @@ const FormPage = async ({ params }: { params: { id: string } }) => {
 							formCore.form_background?.form_background_iamge_url ? "mt-[6rem]" : ""
 						} w-full rounded-lg`}
 					>
-						<DivNative className="flex flex-col gap-[3rem]">
-							<FormAnswerProvider formCore={formCore}>
+						<DivNative className="flex flex-col gap-[3rem] pb-[20rem]">
+							<FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
 								<RenderInputAnswers formCore={formCore} />
 							</FormAnswerProvider>
 						</DivNative>
 					</DivNative>
+
+					<AuthorDat color={"text-[#000]"} backgroundColor={"bg-[#fff]"} />
 				</DivNative>
 			)}
 		</div>

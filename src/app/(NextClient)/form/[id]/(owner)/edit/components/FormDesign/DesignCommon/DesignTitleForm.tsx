@@ -24,10 +24,10 @@ const DesignTitleForm = () => {
 	};
 
 	return (
-		<div className=" w-full min-h-[4rem] h-max p-[2rem_0rem] flex flex-wrap gap-[3rem]">
+		<div className=" w-full min-h-[4rem] h-max p-[1rem_0rem] flex flex-wrap gap-[3rem]">
 			<button
 				onClick={() => onAddTitleSub("Text")}
-				className="min-w-[12rem] h-[4rem] flex items-center gap-[1rem] p-[.1rem_.7rem] text-[#fff] bg-blue-400 hover:bg-color-main rounded-lg"
+				className="btn-design min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] p-[.6rem] text-[#fff] rounded-lg"
 			>
 				<Type size={iconSize} />
 				<span>{FormText.title.optionText.message}</span>
@@ -35,7 +35,7 @@ const DesignTitleForm = () => {
 
 			<button
 				onClick={() => onAddTitleSub("FullDescription")}
-				className="min-w-[12rem] h-[4rem] flex items-center gap-[1rem] p-[.1rem_.7rem] text-[#fff] bg-blue-400 hover:bg-color-main rounded-lg"
+				className="btn-design min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] p-[.6em] text-[#fff] bg-color-main rounded-lg"
 			>
 				<Type size={iconSize} />
 
@@ -45,14 +45,15 @@ const DesignTitleForm = () => {
 
 			<button
 				onClick={() => onAddTitleSub("Image")}
-				className="min-w-[12rem] h-[4rem] flex items-center gap-[1rem] p-[.1rem_.7rem] text-[#fff] bg-blue-400 hover:bg-color-main rounded-lg"
+				className="btn-design min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] p-[.6rem] text-[#fff] bg-color-main rounded-lg"
 			>
 				{/* // eslint-disable-next-line jsx-a11y/alt-text */}
 				<Image size={iconSize} />
 				<span>{FormText.title.optionImage.message}</span>
 			</button>
-
-			<FormTitleModeImage />
+			{formCore.form_title.form_title_sub.filter((ft) => ft.type === "Image" && ft?.core?.url).length > 0 && (
+				<FormTitleModeImage />
+			)}
 		</div>
 	);
 };

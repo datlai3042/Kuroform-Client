@@ -10,6 +10,7 @@ import { RootState } from "@/app/_lib/redux/store";
 import { notification } from "antd";
 import { useQueryClient } from "@tanstack/react-query";
 import { onDisableAnimation, onFetchNotification } from "@/app/_lib/redux/features/notification.slice";
+import Portal from "../Portal";
 const Notification = () => {
 	const notification = useSelector((state: RootState) => state.notification.notification);
 	const animation = useSelector((state: RootState) => state.notification.animation);
@@ -31,7 +32,9 @@ const Notification = () => {
 
 	return (
 		<button
-			className={`${openModelNotification ? "bg-blue-100" : ""} relative flex items-center p-[.4rem] rounded-xl `}
+			className={`${
+				openModelNotification ? "bg-color-main text-[#fff]" : ""
+			} relative flex items-center p-[.4rem] rounded-xl text-text-theme `}
 			onClick={() => {
 				setOpenNotification((prev) => !prev);
 				dispatch(onDisableAnimation({ animation: false }));
@@ -41,19 +44,21 @@ const Notification = () => {
 			<div
 				className={`${
 					animation ? "animate-ping" : ""
-				} absolute top-[-.6rem] right-[-.6rem] w-[1.6rem] h-[1.6rem] flex items-center justify-center bg-red-600 rounded-full`}
+				} absolute top-[-.6rem] right-[-.6rem] w-[1.8rem] h-[1.8rem] flex items-center justify-center bg-red-600 rounded-full`}
 			>
-				<span className="text-[#fff] text-[1.1rem]">{notification?.length || 0}</span>
+				<span className="text-[#fff] text-[1rem]">{notification?.length || 0}</span>
 			</div>
 
 			{openModelNotification && (
-				<div className="fixed top-[0] right-[0rem] z-[11] bg-[rgba(0,0,0,.2)] w-screen h-screen">
-					<div className="absolute z-[11] top-[4.7rem] right-[3rem]">
-						<ClickOutSide setOpenModel={setOpenNotification}>
-							<ModelNotification />
-						</ClickOutSide>
+				<Portal>
+					<div className="fixed top-[0] right-[0rem] z-[999] bg-[rgba(0,0,0,.2)] w-screen h-screen">
+						<div className="absolute z-[999] top-[4.7rem] right-[3rem]">
+							<ClickOutSide setOpenModel={setOpenNotification}>
+								<ModelNotification />
+							</ClickOutSide>
+						</div>
 					</div>
-				</div>
+				</Portal>
 			)}
 		</button>
 	);

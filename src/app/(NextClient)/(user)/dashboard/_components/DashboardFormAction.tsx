@@ -24,7 +24,10 @@ const DashboardFormAction = (props: TProps) => {
 		mutationKey: ["delete-form", form_id],
 		mutationFn: (formId: string) => FormService.deleteFormId({ form_id: formId }),
 		onSuccess: (res) => {
-			queryClient.invalidateQueries({ queryKey: ["get-forms"] });
+			queryClient.invalidateQueries({
+				queryKey: ["get-form-pagination"],
+			});
+
 			queryClient.invalidateQueries({ queryKey: ["get-list-form-delete"] });
 
 			// router.refresh();
@@ -63,14 +66,14 @@ const DashboardFormAction = (props: TProps) => {
 	return (
 		<div className="flex  gap-[1rem]">
 			<button
-				className="flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-gray-300 rounded-lg"
+				className="flex items-center gap-[1rem] p-[.5rem_.7rem]  bg-color-main text-[#fff] rounded-lg"
 				onClick={(e) => {
 					e.preventDefault();
 					router.push(`/form/${form_id}/edit`);
 				}}
 			>
 				<Pencil size={iconSize} />
-				<span>Edit</span>
+				<span>Chỉnh sửa</span>
 			</button>
 
 			<div className="relative  ">
@@ -82,7 +85,7 @@ const DashboardFormAction = (props: TProps) => {
 							.writeText(`${window.location.origin}/form/${form_id}`)
 							.then(() => setCopySuccess(true));
 					}}
-					className="w-full h-full flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-gray-300 rounded-lg"
+					className="w-full h-full flex items-center gap-[1rem] p-[.5rem_.7rem] bg-color-main text-[#fff] rounded-lg"
 				>
 					<LinkIcon size={iconSize} />
 				</button>
@@ -101,7 +104,7 @@ const DashboardFormAction = (props: TProps) => {
 
 					onDeleteForm();
 				}}
-				className="flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-gray-300 rounded-lg"
+				className="flex items-center gap-[1rem] p-[.5rem_.7rem] bg-color-main text-[#fff] rounded-lg"
 			>
 				<Trash2 size={iconSize} />
 			</button>

@@ -31,6 +31,10 @@ const FormDeleteItem = (props: TProps) => {
 			queryClient.invalidateQueries({
 				queryKey: ["get-list-form-delete"],
 			});
+
+			queryClient.invalidateQueries({
+				queryKey: ["get-form-pagination"],
+			});
 		}
 	}, [changeFormMode.isSuccess]);
 

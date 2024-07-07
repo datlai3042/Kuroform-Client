@@ -11,6 +11,7 @@ import InputEmailAnswer from "../../form/[id]/_components/InputAnswer/_email/Inp
 import InputTextAnswer from "../../form/[id]/_components/InputAnswer/_text/InputTextAnswer";
 import { checkErrorFinal } from "../../form/[id]/_components/InputAnswer/_utils/formAnswer.uti";
 import RenderInputAnswers from "../../form/[id]/_components/RenderInputAnswers";
+import FormAnswerHeader from "../../form/[id]/_components/FormAnswerHeader";
 
 type TProps = {
 	FormCore: FormCore.Form;
@@ -108,60 +109,10 @@ const FormPageGuess = (props: TProps) => {
 	let flag = false;
 
 	return (
-		<div className="px-[2rem] xl:px-0 w-full max-w-full min-h-screen h-max flex justify-center  p-[2rem] bg-formCoreBgColor  ">
+		<div className="px-[2rem] xl:px-0 min-h-screen h-max flex justify-center  p-[2rem] bg-formCoreBgColor  ">
 			<DivNative className="w-full sm:w-[66.8rem] flex flex-col gap-[4rem] ">
 				<DivNative className="relative w-full min-h-[20rem] aspect-[3.01/1]">
-					{FormCore.form_background?.form_background_iamge_url && (
-						<Image
-							style={{
-								marginLeft: (formBackgroundPosition.y as number) * -1,
-								objectFit: "cover",
-								objectPosition: ` ${formBackgroundPosition?.y || 0}px ${
-									formBackgroundPosition?.x || 0
-								}px`,
-							}}
-							src={formBackgroundImageUrl}
-							width={800}
-							height={160}
-							quality={100}
-							alt="form background"
-							className="w-[66.8rem] aspect-[3/1]   rounded-lg"
-						/>
-					)}
-
-					{!FormCore.form_background?.form_background_iamge_url && (
-						<div
-							style={{ backgroundColor: colorMain }}
-							className="w-full xl:w-[66.8rem] aspect-[3/1] rounded-lg opacity-90"
-						></div>
-					)}
-
-					{FormCore.form_avatar_state && (
-						// <DivNative className="absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%]  border-[.3rem] border-blue-800 rounded-full">
-						<Image
-							style={{
-								border: `.4rem solid ${
-									FormCore.form_title.form_title_color ||
-									FormCore.form_setting_default.form_title_color_default
-								}`,
-							}}
-							src={
-								FormCore.form_avatar?.form_avatar_url ||
-								FormCore.form_setting_default.form_avatar_default_url
-							}
-							width={800}
-							height={160}
-							quality={100}
-							alt="form background"
-							className={`${styleEffect.onCheckModeAvatar(
-								modeAvatar
-							)} ${styleEffect.onCheckPositionAvatar(
-								positionAvatar
-							)} absolute bottom-0 z-[3] object-center translate-y-[50%] w-[16rem] h-[16rem]  `}
-							// className="w-[16rem] h-[16rem] object-cover object-center rounded-full"
-						/>
-						// </DivNative>
-					)}
+					<FormAnswerHeader formCore={FormCore} />
 				</DivNative>
 				<DivNative
 					className={`${styleEffect.formMarginTop(
@@ -169,7 +120,7 @@ const FormPageGuess = (props: TProps) => {
 					)} w-full flex flex-col gap-[3rem] rounded-lg`}
 				>
 					<DivNative className="flex flex-col gap-[3rem]">
-						<FormAnswerProvider formCore={FormCore}>
+						<FormAnswerProvider formCore={FormCore} form_answer_id="">
 							<RenderInputAnswers formCore={FormCore} />
 						</FormAnswerProvider>
 					</DivNative>

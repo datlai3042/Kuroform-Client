@@ -24,9 +24,10 @@ const InputSettingRequire = <
 			if (inputItem.core.setting.require) return "bg-blue-400";
 			return "bg-slate-300";
 		},
+
 		onActiveRequireCircle: () => {
-			if (inputItem.core.setting.require) return "right-0";
-			return " left-0";
+			if (inputItem.core.setting.require) return " animate-ltr";
+			return "animate-rtl bg-[#fff]";
 		},
 	};
 
@@ -39,7 +40,7 @@ const InputSettingRequire = <
 	};
 
 	return (
-		<DivNative className="flex items-center justify-between gap-[.5rem]">
+		<DivNative className="flex items-center justify-between gap-[.5rem] ">
 			<label htmlFor="">Bắt buộc</label>
 			<DivNative
 				className={`${styleEffect.onActiveRequireWrapper()} relative  w-[5rem] h-[2.4rem] transition-all duration-700 rounded-3xl border-[1px] border-slate-300 hover:cursor-pointer`}

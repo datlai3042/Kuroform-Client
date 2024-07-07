@@ -6,11 +6,13 @@ import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormD
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import { onEditForm } from "@/app/_lib/redux/features/formEdit.slice";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 
 type TProps = {};
 
 const ButtonDesignAvatar = (props: TProps) => {
 	const { isDesignForm, setIsDesginForm } = useContext(FormDesignContext);
+	const { theme } = useContext(ThemeContext);
 
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
 	const formAvatar = !!formCore.form_avatar?.form_avatar_url || false;
@@ -75,9 +77,9 @@ const ButtonDesignAvatar = (props: TProps) => {
 					}}
 					className={`${styleEffect.onCheckStyleActive(
 						positionAvatar === "left"
-					)} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-[#ffffff]`}
+					)} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-color-section-theme`}
 				>
-					<AlignLeft size={18} style={{ color: colorMain }} />
+					<AlignLeft size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
 				</button>
 
 				<button
@@ -88,9 +90,9 @@ const ButtonDesignAvatar = (props: TProps) => {
 					}}
 					className={`${styleEffect.onCheckStyleActive(
 						positionAvatar === "center"
-					)} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-[#ffffff]`}
+					)} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-color-section-theme`}
 				>
-					<AlignCenter size={18} style={{ color: colorMain }} />
+					<AlignCenter size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
 				</button>
 				<button
 					disabled={!formAvatar}
@@ -100,9 +102,9 @@ const ButtonDesignAvatar = (props: TProps) => {
 					}}
 					className={`${styleEffect.onCheckStyleActive(
 						positionAvatar === "right"
-					)} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300  rounded-full  bg-[#ffffff]`}
+					)} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300  rounded-full  bg-color-section-theme`}
 				>
-					<AlignRight size={18} style={{ color: colorMain }} />
+					<AlignRight size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
 				</button>
 			</div>
 
@@ -115,9 +117,9 @@ const ButtonDesignAvatar = (props: TProps) => {
 					}}
 					className={`${styleEffect.onCheckStyleActive(
 						modeCurrent === "circle"
-					)} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-[#ffffff]`}
+					)} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-color-section-theme`}
 				>
-					<Circle size={18} style={{ color: colorMain }} />
+					<Circle size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
 				</button>
 				<button
 					disabled={!formAvatar}
@@ -127,9 +129,9 @@ const ButtonDesignAvatar = (props: TProps) => {
 					}}
 					className={`${styleEffect.onCheckStyleActive(
 						modeCurrent === "square"
-					)} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-[#ffffff]`}
+					)} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-color-section-theme`}
 				>
-					<Square size={18} style={{ color: colorMain }} />
+					<Square size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
 				</button>
 			</div>
 		</div>

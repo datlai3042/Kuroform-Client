@@ -2,8 +2,8 @@ import { validateEmail } from "@/app/_lib/utils";
 import * as z from "zod";
 
 export const registerSchema = z.object({
-	first_name: z.string().min(5, { message: "Họ là bắt buộc" }),
-	last_name: z.string().min(5, { message: "Tên là bắt buộc" }),
+	first_name: z.string().min(1, { message: "Họ là bắt buộc" }),
+	last_name: z.string().min(1, { message: "Tên là bắt buộc" }),
 	email: z
 		.string()
 		.min(1, { message: "Email là bắt buộc" })

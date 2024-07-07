@@ -81,8 +81,7 @@ const FormTitleImage = (props: TProps) => {
 
 	const widthPage = page === "Edit" ? "w-[35rem] sm:w-[51rem] xl:w-[70rem] " : "w-[62rem]  items-center";
 
-	const heightWithModeNormal =
-		mode === "Normal" ? (page === "Edit" ? "h-[50rem] w-full" : "max-h-[30rem]  w-[70%]") : "";
+	const heightWithModeNormal = mode === "Normal" ? (page === "Edit" ? "h-[50rem] w-full" : "  w-full") : "";
 	const heightWithModeSlider = mode === "Slider" ? (page === "Edit" ? "w-full xl:w-[70%]" : "h-[30rem] w-[90%]") : "";
 
 	const colorMain = formCore.form_title.form_title_color || formCore.form_setting_default.form_title_color_default;
@@ -101,7 +100,7 @@ const FormTitleImage = (props: TProps) => {
 				<div className="flex items-center gap-[2rem]">
 					<button
 						onClick={onClickButton}
-						className="min-w-[7rem] w-max h-[4rem] text-[1.4rem] flex justify-center items-center gap-[1rem] p-[.1rem_.7rem] bg-gray-200 rounded-lg"
+						className="btn-design min-w-[7rem] w-max h-[4rem] text-[1.4rem] flex justify-center items-center gap-[1rem] p-[.1rem_.7rem] text-[#fff]  rounded-lg"
 					>
 						{FormText.title.optionImage.complete}
 					</button>
@@ -115,7 +114,7 @@ const FormTitleImage = (props: TProps) => {
 
 	return (
 		<div
-			className={`${widthPage}   flex flex-col   gap-[.5rem]   outline-none rounded-lg my-[2rem]`}
+			className={`${widthPage}   flex flex-col   gap-[.5rem]   outline-none rounded-lg `}
 			ref={setNodeRef}
 			{...attributes}
 			{...listeners}
@@ -131,7 +130,7 @@ const FormTitleImage = (props: TProps) => {
 					{FormText.title.optionImage.remove}
 				</button>
 			)}
-			{subTitleItem.core.url && (
+			{subTitleItem?.core?.url && (
 				<div className={` flex justify-center  w-full `}>
 					<Image
 						// style={{ backgroundColor: colorMain }}

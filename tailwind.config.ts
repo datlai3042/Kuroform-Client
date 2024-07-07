@@ -20,6 +20,9 @@ const config = {
 				"color-gap-empty": "var(--color-gap-empty)",
 				"text-theme": "var(--text-theme)",
 				"border-color": "var(--border-color)",
+				"bg-input-theme": "var(--bg-input-theme)",
+				"bg-form-nav": "var(--bg-form-nav)",
+				"btn-design": "var(--btn-design)",
 
 				formCoreBgColor: "rgb(253 242 248)",
 				textHeader: "rgb(119, 118, 114)",
@@ -94,6 +97,35 @@ const config = {
 					"0%": { opacity: "0.5", left: "0" },
 					"100%": { opacity: "1", left: "150%" },
 				},
+
+				ltr: {
+					"0%": { left: "0" },
+					"40%": { left: "40%" },
+					"80%": { left: "60%" },
+
+					"100%": { right: ".2rem" },
+				},
+
+				rtl: {
+					"0%": { right: "0" },
+					"40%": { right: "40%" },
+					"80%": { right: "80%" },
+
+					"100%": { left: "0" },
+				},
+
+				btt: {
+					"0%": { bottom: "-100%", opacity: "0" },
+
+					"100%": { bottom: "150%", opacity: "1" },
+				},
+
+				ttb: {
+					"0%": { bottom: "150%", opacity: "1" },
+					"10%": { bottom: "140%", opacity: ".3" },
+
+					"100%": { bottom: "-100%", opacity: "0" },
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -112,6 +144,10 @@ const config = {
 				modeScreen: "modeScreen .3s forwards",
 				runLTR: "runLTR 5s forwards",
 				hiddenToast: "hiddenToast 2s forwards",
+				ltr: "ltr .1s forwards",
+				rtl: "rtl .1s forwards ",
+				btt: "btt .2s forwards ",
+				ttb: "ttb .2s forwards ",
 			},
 		},
 	},

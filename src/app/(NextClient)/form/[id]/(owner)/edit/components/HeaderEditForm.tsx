@@ -23,6 +23,7 @@ import Image from "next/image";
 import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
 import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkMode";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import LogoHome from "@/app/(NextClient)/_components/logo/LogoHome";
 
 type TProps = {
 	showHeaderAction: boolean;
@@ -64,33 +65,15 @@ const HeaderEditForm = (props: TProps) => {
 
 	if (modeScreen === "FULL") return null;
 
-	const top = pathName.endsWith("/edit") ? "top-0" : "top-[2rem] rounded-xl";
+	const top = pathName.endsWith("/edit") ? "top-0" : "";
 
 	return (
 		<DivNative
-			className={`${top}    bg-color-section-theme sticky  z-[101]  h-[6rem] py-[2rem]  flex items-center justify-between gap-[1rem]  px-[2rem] text-[1.3rem]`}
+			className={`${top}    bg-color-section-theme sticky top-0 z-[101]  h-[6rem]  flex items-center justify-between gap-[1rem]  px-[1rem] text-[1.3rem]`}
 		>
-			<DivNative className="h-[3.6rem] flex items-center   text-textHeader ">
+			<DivNative className="flex h-[3.6rem]  items-center   text-textHeader ">
 				{!openSidebar && <ButtonIcon Icon={<ChevronsRight />} onClick={() => setOpenSidebar(true)} />}
-				<Link href={"/dashboard"} className=" p-[.6rem] rounded-xl">
-					{theme === "light" ? (
-						<Image
-							src={"/assets/images/icon/navigation/home2.png"}
-							width={18}
-							height={18}
-							alt="icon"
-							className="w-[2.4rem] h-[2.4rem]"
-						/>
-					) : (
-						<Image
-							src={"/assets/images/icon/navigation/home_dark.png"}
-							width={18}
-							height={18}
-							alt="icon"
-							className="bg-text-theme p-[.3rem] w-[3rem] h-[3rem]"
-						/>
-					)}
-				</Link>
+				<LogoHome />
 				<DivNative className="h-full hidden xl:flex  items-center  ">
 					<ButtonIcon Icon={<ChevronRight size={16} />} />
 					<ParagraphNative
@@ -98,32 +81,36 @@ const HeaderEditForm = (props: TProps) => {
 						textContent="Nơi làm việc"
 					/>
 				</DivNative>
+
 				<DivNative className="h-full flex  items-center gap-[.1rem] ">
-					<ButtonIcon Icon={<ChevronRight size={16} />} />
+					<ButtonIcon Icon={<ChevronRight size={16} />} className="hidden xl:inline" />
 					<ParagraphNative
 						className={`${styleEffect.onCheckLengthTitle()} truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
 						textContent={formCore?.form_title.form_title_value || "Không tiêu đề"}
 					/>
 				</DivNative>
 			</DivNative>
+			<div className="ml-auto">
+				<ButtonDarkMode />
+			</div>
 			<div className="flex justify-end gap-[2rem]">
 				{showHeaderAction && (
 					<DivNative className="flex gap-[1rem]">
 						<DivNative className=" flex items-center justify-center " title="Review">
 							<ButtonNative
 								textContent={`Xem trước  `}
-								className="p-[.8rem] rounded-md text-slate-700 opacity-70 hover:opacity-80"
+								className="p-[.8rem] rounded-md text-text-theme"
 								onClick={onSetScreen}
 							/>
 						</DivNative>
 
 						<DivNative
 							className="relative  z-[103] xl:z-[105]  flex items-center justify-center "
-							title="Publish"
+							title={label}
 						>
 							<ButtonNative
 								textContent={label}
-								className=" p-[.8rem] rounded-md bg-color-main-hover hover:bg-color-main text-white"
+								className=" p-[.8rem] rounded-md bg-color-main text-white"
 								onClick={() => setOpenModelFormState((prev) => !prev)}
 							/>
 							{openModelFormState && (
@@ -136,7 +123,7 @@ const HeaderEditForm = (props: TProps) => {
 						</DivNative>
 
 						<DivNative
-							className="p-[.2rem_.8rem] hidden xl:flex items-center gap-[.8rem] hover:bg-slate-200 rounded-md"
+							className="p-[.2rem_.8rem] hidden xl:flex items-center gap-[.8rem] text-text-theme rounded-md"
 							title="Tìm kiếm"
 						>
 							<Search className="w-[1.6rem]" />
@@ -145,15 +132,13 @@ const HeaderEditForm = (props: TProps) => {
 
 						<Link
 							href={"/settings"}
-							className="p-[.2rem_.8rem] hidden xl:flex items-center gap-[.8rem] hover:bg-slate-200 rounded-md"
+							className="p-[.2rem_.8rem] hidden xl:flex items-center gap-[.8rem] text-text-theme rounded-md"
 							title="Cài đặt"
 						>
 							<Settings className="w-[1.6rem]" />
 						</Link>
 					</DivNative>
 				)}
-
-				<ButtonDarkMode />
 			</div>
 		</DivNative>
 	);

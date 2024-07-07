@@ -67,10 +67,10 @@ const LoginForm = (props: TProps) => {
 	}, [loginForm.formState.errors]);
 
 	return (
-		<div className="relative  h-[40rem] w-[32rem] sm:w-[37rem] xl:w-[40rem] xl:h-[40rem] mx-auto bg-[#ffffff] flex justify-center items-center flex-col  gap-[2rem] rounded-[1.2rem] p-[2.4rem_2rem]">
-			<p className="mb-[4rem] text-[3rem] font-semibold">Xin chào bạn</p>
+		<div className="relative  min-h-[40rem] w-[32rem] sm:w-[37rem] xl:w-[40rem] h-max mx-auto  flex justify-center items-center flex-col  gap-[2rem] rounded-[1.2rem] p-[2.4rem_2rem]">
+			<p className="mb-[1rem] xl:mb-[4rem] text-[3rem] font-semibold">Xin chào bạn</p>
 
-			<div className="my-[1rem] w-full flex flex-col gap-[6rem]">
+			<div className="my-[1rem] w-full flex flex-col gap-[2rem] xl:gap-[6rem]">
 				<div className="w-full flex gap-[1rem]">
 					<div className="w-[50%]">
 						<ButtonLoginGoogle />

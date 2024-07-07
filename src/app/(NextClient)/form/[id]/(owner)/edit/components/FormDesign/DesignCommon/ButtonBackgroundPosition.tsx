@@ -1,8 +1,10 @@
 import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import { onEditForm } from "@/app/_lib/redux/features/formEdit.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import { FormCore } from "@/type";
 import { useDebouncedCallback } from "@mantine/hooks";
+import { theme } from "antd";
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,6 +14,7 @@ const ButtonBackgroundPostition = () => {
 	const dispatch = useDispatch();
 
 	const { isDesignForm, setIsDesginForm } = useContext(FormDesignContext);
+	const { theme } = useContext(ThemeContext);
 
 	const debounced = useDebouncedCallback((position: number, type: "x" | "y") => onChangePosition(position, type), 0);
 
@@ -59,7 +62,7 @@ const ButtonBackgroundPostition = () => {
 border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 				>
 					<input
-						style={{ color: colorMain }}
+						style={{ color: theme === "light" ? colorMain : "#000" }}
 						disabled={!formBackground}
 						defaultValue={directionY}
 						type="number"
@@ -67,7 +70,7 @@ border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 						onChange={(e) => debounced(+e.target.value, "y")}
 					/>
 
-					<span className="opacity-75">%</span>
+					<span className="opacity-75 text-[#000]">%</span>
 				</div>
 			</div>
 			<div className="flex items-center gap-[2rem] ">
@@ -79,14 +82,14 @@ border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 				>
 					<input
-						style={{ color: colorMain }}
+						style={{ color: theme === "light" ? colorMain : "#000" }}
 						disabled={!formBackground}
 						defaultValue={directionX}
 						type="number"
 						className={` w-[80%] disabled:cursor-not-allowed  `}
 						onChange={(e) => debounced(+e.target.value, "x")}
 					/>
-					<span className="opacity-75">%</span>
+					<span className="opacity-75 text-[#000]">%</span>
 				</div>
 			</div>
 		</div>

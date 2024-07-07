@@ -50,16 +50,16 @@ const InputCoreEmail = (props: TProps) => {
 	}, [modeScreen]);
 
 	const InputEmail = (
-		<DivNative className="flex flex-col gap-[.3rem]">
+		<DivNative className="flex flex-col gap-[.3rem] ">
 			<SpanNative
 				textContent="Nhập email của bạn"
 				className={`${
-					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-[#000]"
+					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme "
 				} text-[1.6rem] font-semibold`}
 			/>
 			<DivNative className={`w-full relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
 				<input
-					className="w-full h-full p-[1rem] rounded-lg text-[#000]  border-[.1rem] border-gray-400  outline-none focus:outline-blue-200 focus:border-transparent"
+					className="w-full h-full p-[1rem] rounded-lg text-text-theme  border-[.1rem] border-gray-400  outline-none focus:outline-blue-200 focus:border-transparent  bg-bg-input-theme"
 					ref={inputRef}
 					onKeyDown={onPressEnter}
 					onChange={(e) => setInputValue(e.target.value)}

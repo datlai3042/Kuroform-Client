@@ -64,10 +64,11 @@ const SliderImages = (props: TProps) => {
 
 	return (
 		<Image
-			className="!min-w-full h-full opacity-0 transition-all duration-500   object-cover "
+			className="w-full xl:w-[50rem] h-[36rem] xl:h-[46rem] opacity-0 transition-all duration-500   object-fill "
 			src={Images[imageIndex]}
 			width={1800}
-			height={500}
+			height={100}
+			unoptimized={true}
 			alt="slider index"
 			ref={image}
 		/>

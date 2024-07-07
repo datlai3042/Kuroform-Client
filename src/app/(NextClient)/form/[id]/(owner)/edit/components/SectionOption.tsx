@@ -1,7 +1,7 @@
 import DivWrapper from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import { FormCore, InputCore, ReactCustom } from "@/type";
 import { GripVertical, Plus, Trash2 } from "lucide-react";
-import React, { SetStateAction, useState } from "react";
+import React, { SetStateAction, memo, useState } from "react";
 import ModelInputType from "./ModelInputType";
 import InputSettingWrapper from "./InputSettings/InputSettingWrapper";
 import { useSelector } from "react-redux";
@@ -30,7 +30,6 @@ const SectionOption = (props: TProps) => {
 		},
 	};
 
-	console.log({ openSetting });
 	return (
 		<>
 			<DivWrapper className={`flex  h-full  items-center gap-[.3rem] `}>
@@ -55,10 +54,14 @@ const SectionOption = (props: TProps) => {
 					/>
 					{openSetting && <InputSettingWrapper setOpenModel={setOpenSetting} inputItem={inputItem} />}
 				</DivWrapper>
+
+				{inputItem.core.setting.require && !inputItem.input_title && (
+					<span className="text-red-700 text-[1.8rem]">*</span>
+				)}
 			</DivWrapper>
 			{openSelectType && <ModelInputType setOpenModel={setOpenSelectType} inputItem={inputItem} />}
 		</>
 	);
 };
 
-export default SectionOption;
+export default memo(SectionOption);

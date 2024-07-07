@@ -44,6 +44,9 @@ import ButtonAddInput from "@/app/(NextClient)/_components/ui/button/ButtonAddIn
 import useUpdateForm from "@/app/hooks/useUpdateForm";
 import InputCoreVote from "./InputCore/InputCoreVote";
 import InputCorePhone from "./InputCore/InputCorePhone";
+import { theme } from "antd";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import InputCoreImage from "./InputCore/InputCoreImage";
 
 export const generateInputForms = (Inputs: InputCore.InputForm[]): React.ReactNode => {
 	return Inputs.map((ele, index) => {
@@ -66,6 +69,9 @@ export const generateInputForms = (Inputs: InputCore.InputForm[]): React.ReactNo
 				return <InputCoreOptionMultiple inputItem={ele} key={ele._id} />;
 			case "DATE":
 				return <InputCoreDate inputItem={ele} key={ele._id} />;
+
+			case "FILE_IMAGE":
+				return <InputCoreImage inputItem={ele} key={ele._id} />;
 			default:
 				return <InputCoreText inputItem={ele} key={index} />;
 		}
@@ -78,6 +84,7 @@ const FormCore = () => {
 	const { modeScreen, setModeScreen } = useContext(FormModeScreenContext);
 	const { openFormDesign } = useContext(FormDesignContext);
 	const { openSidebar, setOpenSidebar } = useContext(SidebarContext);
+	const { theme } = useContext(ThemeContext);
 
 	const updateFormAPI = useUpdateForm();
 
@@ -95,7 +102,7 @@ const FormCore = () => {
 	const styleEffect = {
 		onCheckModeScreen: () => {
 			if (modeScreen === "FULL")
-				return " !min-h-screen !w-screen  !h-max relative !top-0 !left-0   !transition-[scale] animate-modeScreen z-[50]";
+				return " !min-h-screen !w-screen  !h-max relative   !transition-[scale] animate-modeScreen z-[50]";
 			return "";
 		},
 	};
@@ -143,23 +150,29 @@ const FormCore = () => {
 		? " sm:min-h-[7rem]"
 		: "sm:min-h-[4rem]";
 
+	useEffect(() => {
+		if (modeScreen === "FULL") {
+			window.scrollTo(0, 0);
+		}
+	}, [modeScreen]);
+
 	return (
 		<>
 			{modeScreen === "NORMAL" && (
 				<DivNative
-					className={` w-full  pb-[50rem] sm:pb-[30rem] px-[2rem] sm:px-0  h-max  xl:ml-0 flex flex-col gap-[3rem] bg-color-section-theme text-text-theme`}
+					className={` w-full  pb-[50rem] sm:pb-[30rem] xl:px-[2rem] sm:px-0  h-max  xl:ml-0 flex flex-col gap-[3rem] bg-color-section-theme text-text-theme`}
 				>
 					{showComponentImage && <FormImage />}
 
 					<DivNative
-						className={` px-[1rem]  w-full xl:max-w-[70rem] mx-auto  h-max xl:pl-0  flex flex-col  xl:pb-[4rem] gap-[4rem] xl:gap-[2rem] `}
+						className={` px-[4rem]  w-full xl:max-w-[70rem] mx-auto  h-max xl:pl-0  flex flex-col  xl:pb-[4rem] gap-[4rem] xl:gap-[2rem] `}
 					>
 						<DivNative className={`${gapWhenAppearImage}`}>
 							<DivNative
 								className={`${heightWhenAppearImage} group max-h-[18rem] sm:max-h-[8rem] xl:min-h-max `}
 							>
 								<DivNative className="mt-[2rem] w-full xl:min-w-[80rem] xl:w-max h-full   flex flex-wrap flex-col sm:flex-row sm:items-center  gap-[2rem]">
-									<ButtonDesgin className={`${openFormDesign ? "xl:ml-[8rem]" : "ml-0"}`} />
+									<ButtonDesgin className={`${openFormDesign ? "" : "ml-0"}`} />
 
 									<DivNative className="flex flex-col sm:flex-row w-max  h-max sm:h-[4rem]   gap-[2rem]">
 										{!formCore.form_avatar_state && !formCore.form_avatar && (
@@ -173,10 +186,10 @@ const FormCore = () => {
 							</DivNative>
 						</DivNative>
 
-						<DivNative className={`${openFormDesign ? "xl:ml-[8rem]" : "ml-0"} flex flex-col gap-[4rem]`}>
+						<DivNative className={`${openFormDesign ? "" : "ml-0"} flex flex-col gap-[4rem]`}>
 							<InputCoreTitle />
 							{formCore.form_inputs.length > 0 && (
-								<DivNative className=" h-max w-full flex flex-col gap-[8rem] ">
+								<DivNative className="mt-[6rem] h-max w-full flex flex-col gap-[8rem] ">
 									<DndContext
 										sensors={sensors}
 										collisionDetection={closestCorners}
@@ -197,7 +210,7 @@ const FormCore = () => {
 							)}
 							<ButtonAddInput />
 							<ButtonNative
-								style={{ backgroundColor: colorMain }}
+								style={{ backgroundColor: theme === "light" ? colorMain : "var(--color-main)" }}
 								textContent="Gửi"
 								className="mt-[1rem] w-[25%] h-[5rem]  text-white rounded-lg  text-[1.6rem]"
 								onClick={onGetDataDemo}

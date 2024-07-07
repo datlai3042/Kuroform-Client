@@ -1,19 +1,14 @@
 "use client";
 
 import { RootState } from "@/app/_lib/redux/store";
-import FormAnswerService from "@/app/_services/formAnswer.service";
-import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import "moment/locale/vi"; // without this line it didn't work
 
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import AnswerDetailModel from "./_components/AnswerDetailModel";
 import { FormCore, InputCore } from "@/type";
 import AnalysisAnswer from "./_components/AnalysisAnswer";
-import { addFormAnswer } from "@/app/_lib/redux/features/formAnswer.slice";
-import { set } from "date-fns";
-import StatusCodeResponse from "@/app/(NextClient)/_components/_StatusCodeComponent/StatusCodeResponse";
 import NotFoundPage from "@/app/(NextClient)/_components/_StatusCodeComponent/NotFoundPage";
 
 moment.locale("vi");
@@ -38,9 +33,10 @@ const SummaryFormPage = () => {
 	if (!formCache) return <NotFoundPage />;
 
 	const { dataFormShowChart } = formCache;
+	console.log({ dataFormShowChart });
 
 	return (
-		<div className="flex flex-col gap-[6rem] min-h-[30rem] pb-[8rem] text-text-theme">
+		<div className="flex flex-col gap-[6rem] min-h-[30rem] pb-[8rem] text-text-theme overflow-auto scroll-color-main max-h-full">
 			{formAnswer &&
 				Object.keys(dataFormShowChart).map((dt, i) => {
 					const type = dt.split("_#_")[1] as InputCore.InputForm["type"];
@@ -70,9 +66,9 @@ const SummaryFormPage = () => {
 											}}
 											className={`${
 												formAnswerId === info.form_answer_id ? "bg-color-main text-[#fff]" : ""
-											} pb-[.3rem] px-[1rem] min-h-[4rem] flex items-center justify-between border-b-[.1rem] border-gray-200 hover:cursor-pointer`}
+											}  px-[1rem] min-h-[4rem] flex items-center justify-between border-b-[.1rem] border-gray-200 hover:cursor-pointer hover:bg-color-main hover:text-[#fff]`}
 										>
-											<span className="max-w-[50%] break-words leading-10">
+											<span className="min-w-[30%] max-w-[30%] xl:min-w-[50%] xl:max-w-[50%] truncate xl:break-words leading-10">
 												{(typeof info.value === "string"
 													? info.value
 													: info.value.join(", ")) || "Người dùng không nhập dữ liệu"}
@@ -84,7 +80,12 @@ const SummaryFormPage = () => {
 													</span>
 												)}
 												<span>{moment(new Date(info.time)).format("h:mm")}</span>
-												<span>{moment(new Date(info.time)).format(" Do MMMM YYYY")} </span>
+												<span className="hidden xl:inline">
+													{moment(new Date(info.time)).format(" Do MMMM YYYY")}{" "}
+												</span>
+												<span className="inline xl:hidden">
+													{moment(new Date(info.time)).format(" MM / YYYY")}{" "}
+												</span>
 											</p>
 										</div>
 									);

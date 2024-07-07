@@ -21,6 +21,28 @@ class FormService {
 		});
 	}
 
+	static async getSearch({ text }: { text: string }) {
+		return Http.get<ResponseApi<{ forms: FormCore.Form[] }>>(`/v1/api/form/search?text=${text}`);
+	}
+
+	static async getFormPagination({ page, limit }: { page: number; limit: number }) {
+		return Http.get<ResponseApi<{ forms: FormCore.Form[]; total_page: number }>>(
+			`/v1/api/form/get-form-pagination?page=${page}&limit=${limit}`
+		);
+	}
+
+	static async getAllFormState() {
+		return Http.get<ResponseApi<{ formDelete: number; formActive: number; formPrivate: number }>>(
+			`/v1/api/form/get-all-form-state`
+		);
+	}
+
+	static async getFormBaseOnDate({ date_begin, date_over }: { date_begin: string; date_over: string }) {
+		return Http.get<ResponseApi<{ results: FormCore.Form[]; date_begin: string; date_over: string }>>(
+			`/v1/api/form/get-form-base-on-date?date_begin=${date_begin}&date_over=${date_over}`
+		);
+	}
+
 	static async deleteFormForever({ form_id }: { form_id: string }) {
 		return Http.delete<ResponseApi<{ message: string }>>(`/v1/api/form/delete-form-forever?form_id=${form_id}`);
 	}
@@ -121,7 +143,7 @@ class FormService {
 	}
 
 	static async getFormGuess({ form_id, options }: { form_id: string; options?: RequestInit }) {
-		return Http.get<ResponseApi<{ form: FormCore.Form }>>(
+		return Http.get<ResponseApi<{ form: FormCore.Form; form_answer_id: string }>>(
 			`/v1/api/form/get-form-guess?form_id=${form_id}`,
 			options
 		);

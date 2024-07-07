@@ -2,7 +2,7 @@ import useUpdateForm from "@/app/hooks/useUpdateForm";
 import { RootState } from "@/app/_lib/redux/store";
 import { InputCore } from "@/type";
 import { Circle, Plus, Trash2 } from "lucide-react";
-import React, { SetStateAction, useEffect, useRef } from "react";
+import React, { SetStateAction, useContext, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
 import useAddOptionClient from "@/app/hooks/useAddOptionClient";
@@ -12,6 +12,7 @@ import { UniqueIdentifier } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import { useAddInputToEnter } from "@/app/hooks/useAddInputToEnter";
 import useDeleteOptionId from "@/app/hooks/useDeleteOptionId";
+import { ThemeContext } from "../../provider/ThemeProvider";
 
 type TProps = {
 	index: number;
@@ -29,6 +30,8 @@ const ButtonOptionsValue = (props: TProps) => {
 		inputItem,
 		controllSelect: { selectValue, setSelectValue },
 	} = props;
+
+	const { theme } = useContext(ThemeContext);
 
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
 	const checkModeDisplay = formCore.form_mode_display === "custom" ? true : false;
@@ -112,7 +115,9 @@ const ButtonOptionsValue = (props: TProps) => {
 			<div className="w-[2rem] aspect-square rounded-full border-[.1rem] border-slate-400 flex items-center justify-center">
 				{selectValue.includes(option.option_id) && (
 					<div
-						style={{ backgroundColor: checkModeDisplay ? colorMain : "#000" }}
+						style={{
+							backgroundColor: checkModeDisplay && theme === "light" ? colorMain : "var(--text-theme)",
+						}}
 						className={`${
 							checkModeDisplay ? "group-hover:!bg-[#ffffff]" : "bg-blue-300"
 						} min-w-[60%] min-h-[60%] rounded-full `}

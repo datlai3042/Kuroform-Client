@@ -25,7 +25,7 @@ const ButtonCreateForm = (props: TProps) => {
 		onSuccess: (dataResponse) => {
 			const { form_id } = dataResponse.metadata;
 			router.push(`/form/${form_id}/edit`);
-			queryClient.invalidateQueries({ queryKey: ["get-forms"] });
+			queryClient.invalidateQueries({ queryKey: ["get-form-pagination"] });
 		},
 	});
 
@@ -35,7 +35,7 @@ const ButtonCreateForm = (props: TProps) => {
 			tabIndex={-1}
 			href={urlNavigation}
 			{...AnchorProps}
-			className={`${AnchorProps.className} w-[60%] xl:w-[20rem] h-[4rem]  p-[1rem_2rem] flex  justify-center items-center gap-[.8rem] text-[1.8rem] text-[#ffffff] bg-color-main opacity-[.95] hover:opacity-100 transition-colors duration-200 rounded-[.4rem]`}
+			className={`${AnchorProps.className} w-[60%] xl:w-[17rem] h-[4rem]  p-[1rem_2rem] flex  justify-center items-center gap-[.8rem] text-[1.8rem] text-[#ffffff] bg-color-main opacity-[.95] hover:opacity-100 transition-colors duration-200 rounded-[.4rem]`}
 		>
 			{position === "LEFT" && icon && icon}
 			{textContent}

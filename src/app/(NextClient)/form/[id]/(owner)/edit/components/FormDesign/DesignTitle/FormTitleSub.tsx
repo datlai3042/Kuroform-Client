@@ -74,8 +74,6 @@ const FormTitleSub = () => {
 
 	const updateFormAPI = useUpdateForm();
 
-	const dispatch = useDispatch();
-
 	const renderSubTitle = useMemo(() => {
 		return generateSubTitle(formCore);
 	}, [formCore]) as React.ReactNode;

@@ -61,7 +61,9 @@ const InputVoteIntroduce = (props: TProps) => {
 				<DivNative className="flex flex-col gap-[1rem]">
 					<SpanNative textContent="Đánh giá" className="text-[1.6rem] font-bold" />
 					<DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
-						<Rate allowHalf value={start} onChange={(e) => setStart(e)} />
+						<div className="p-[1rem_2rem] rounded-lg bg-color-section-theme border-[.1rem] border-text-theme">
+							<Rate allowHalf value={start} onChange={(e) => setStart(e)} />
+						</div>
 					</DivNative>
 					<span className="text-[1.4rem]">Số đánh giá bạn chọn là: {start}</span>
 				</DivNative>

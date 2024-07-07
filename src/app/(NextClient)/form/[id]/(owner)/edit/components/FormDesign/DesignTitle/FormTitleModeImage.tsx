@@ -41,7 +41,7 @@ const FormTitleModeImage = () => {
 	return (
 		<ClickOutSide setOpenModel={setOpenModel}>
 			<div
-				className="cursor-pointer relative w-[30rem] min-h-[4rem]  px-[2rem] flex items-center bg-gray-200 rounded-lg"
+				className="cursor-pointer relative w-[30rem] min-h-[4rem]  px-[2rem] flex items-center bg-color-main rounded-lg text-[#fff]"
 				onClick={() => setOpenModel((prev) => !prev)}
 			>
 				<span>{FormText.title.optionImageMode.label}</span>

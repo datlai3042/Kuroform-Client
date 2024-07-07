@@ -6,12 +6,12 @@ const Logo = () => {
 	return (
 		<Link href={"/"}>
 			<Image
-				src={"/assets/images/icon/logo/png/logo-black.png"}
+				src={"/assets/images/icon/logo/logo_home.png"}
 				width={70}
 				height={70}
 				quality={100}
 				alt="logo"
-				className="w-[17rem] h-[12rem] object-contain"
+				className="w-[15rem] h-[12rem] object-contain"
 				unoptimized={true}
 			/>
 		</Link>

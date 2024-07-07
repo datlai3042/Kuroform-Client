@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Portal from "../Portal";
+import ButtonDarkMode from "../ui/button/ButtonDarkMode";
 
 type TProps = {
 	children: React.ReactNode;

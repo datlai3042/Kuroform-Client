@@ -24,9 +24,9 @@ const HeaderFormAnswer = (props: TProps) => {
 	return (
 		<header
 			style={{ borderTopColor: colorMain }}
-			className="w-full min-h-[20rem] h-max p-[1.4rem] flex flex-col gap-[.4rem]   break-words	 border-t-[1rem]  bg-[#ffffff] rounded-2xl"
+			className="w-full min-h-[14rem] h-max p-[1.4rem] flex flex-col gap-[.4rem]   break-words	 border-t-[1rem]  bg-[#ffffff] rounded-2xl"
 		>
-			<h1 className="text-[3.2rem] ">{formCore.form_title.form_title_value}</h1>
+			<h1 className="text-[3.6rem] font-extrabold ">{formCore.form_title.form_title_value}</h1>
 
 			{formCore.form_title.form_title_sub.map((ft) => {
 				if (ft.type === "Text" && ft?.core?.value)
@@ -55,6 +55,18 @@ const HeaderFormAnswer = (props: TProps) => {
 							/>
 						);
 					}
+				}
+
+				if (ft.type === "FullDescription") {
+					return (
+						<div
+							className="w-[calc(100%+2.8rem)] ml-[-1.4rem] text-[1.4rem] my-[1rem] border-y-[.1rem] border-gray-200 flex flex-col gap-[1.6rem] p-[2rem_1rem]"
+							key={ft._id}
+						>
+							<span className="font-bold">{ft.core.header_value}</span>
+							<span>{ft.core.value}</span>
+						</div>
+					);
 				}
 			})}
 

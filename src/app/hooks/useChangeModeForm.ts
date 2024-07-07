@@ -15,6 +15,9 @@ const useChangeModeForm = () => {
 		onSuccess: (res) => {
 			const { form } = res.metadata;
 			dispatch(onFetchForm({ form }));
+			queryClient.invalidateQueries({
+				queryKey: ["get-form-pagination"],
+			});
 			queryClient.invalidateQueries({ queryKey: ["get-forms"] });
 		},
 	});

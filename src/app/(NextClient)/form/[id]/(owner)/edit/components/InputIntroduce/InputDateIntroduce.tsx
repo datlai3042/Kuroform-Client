@@ -6,11 +6,12 @@ import { RootState } from "@/app/_lib/redux/store";
 import FormService from "@/app/_services/form.service";
 import { FormCore, InputCore, ReactCustom } from "@/type";
 import { useMutation } from "@tanstack/react-query";
-import { Calendar } from "antd";
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ArrowBigRight } from "lucide-react";
 import { inputSettingDate } from "@/app/_constant/input.constant";
+import Calendar from "@/app/(NextClient)/test/calendar/Calendar";
+import useChangeTypeInput from "@/app/hooks/useChangeTypeInput";
 
 type TProps = {
 	inputItem: InputCore.InputDate.InputTypeDate;
@@ -21,35 +22,10 @@ const InputDateIntroduce = (props: TProps) => {
 	const { inputItem, setOpenModel } = props;
 
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
-	const dispatch = useDispatch();
-
-	const updateTypeInputMutation = useMutation({
-		mutationKey: ["choose type input"],
-		mutationFn: (form: FormCore.Form) => FormService.updateForm(form),
-		onSuccess: (res) => {
-			const { form } = res.metadata;
-			dispatch(onFetchForm({ form }));
-			setOpenModel(false);
-		},
-	});
+	const changeTypeInput = useChangeTypeInput();
 
 	const handleChooseInputType = () => {
-		const newForm = structuredClone(formCore);
-
-		newForm.form_inputs = newForm.form_inputs.map((ip) => {
-			if (ip._id === inputItem._id) {
-				const newIp = structuredClone(ip);
-
-				newIp.type = "DATE";
-				if (newIp.type === "DATE") {
-					newIp.core.setting = { ...inputSettingDate };
-					return newIp;
-				}
-			}
-			return ip;
-		});
-
-		updateTypeInputMutation.mutate(newForm);
+		changeTypeInput.mutate({ form: formCore, inputItem, type: "DATE" });
 	};
 
 	return (
@@ -73,7 +49,7 @@ const InputDateIntroduce = (props: TProps) => {
 					Ví dụ
 				</DivNative>
 				<DivNative className={`h-[90%]  flex flex-col  gap-[1rem] `}>
-					<Calendar fullscreen={false} />
+					<Calendar />
 				</DivNative>
 			</DivNative>
 		</DivNative>

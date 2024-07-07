@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuid } from "uuid";
 import LayoutRequestLoading from "../../_components/Layout/LayoutRequestLoading";
+import NotPermissionPage from "../../_components/_StatusCodeComponent/NotPermissionPage";
 const OauthGooglePage = () => {
 	const router = useRouter();
 
@@ -39,6 +40,11 @@ const OauthGooglePage = () => {
 		AuthService.syncNextToken(params).then(() => router.push("/dashboard"));
 	});
 
+	const not_permission = client_id && expireToken && access_token && refresh_token && code_verify_token;
+
+	if (!not_permission) {
+		return <NotPermissionPage />;
+	}
 	return <LayoutRequestLoading message="Service đang xử lí các thông tin xin vui lòng đợi..." />;
 };
 

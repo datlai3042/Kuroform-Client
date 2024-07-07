@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-type FormDataFilter = {
+export type FormDataFilter = {
 	[key: string]: { _id: string; title: string; value: string | string[]; time: Date; form_answer_id: string }[];
 };
 

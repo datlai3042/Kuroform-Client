@@ -38,7 +38,10 @@ const NotificationFormAnswers = (props: TProps) => {
 	let titleForm = infoFormNotification.data?.metadata.form?.form_title.form_title_value;
 
 	return (
-		<div className=" my-[.4rem] h-max  flex  gap-[2rem] pb-[2rem] border-b-[.1rem] border-slate-200" ref={ref}>
+		<div
+			className=" my-[.4rem] h-max  flex  gap-[2rem] pb-[2rem] border-b-[.1rem] border-slate-200 text-text-theme"
+			ref={ref}
+		>
 			{image_src ? (
 				<Image
 					src={image_src}
@@ -56,7 +59,7 @@ const NotificationFormAnswers = (props: TProps) => {
 				<div className="h-max text-left break-words flex flex-col gap-[.2rem] max-w-full">
 					<span className="font-bold text-[1.4rem]">Thông báo biểu mẫu: </span>
 					{titleForm ? (
-						<p className="text-[1.2rem] text-slate-900">
+						<p className="text-[1.2rem] ">
 							<span> Form [{titleForm}] của </span>
 
 							<span className="h-max ">{notification_item.core.message}</span>
@@ -67,7 +70,7 @@ const NotificationFormAnswers = (props: TProps) => {
 						</div>
 					)}
 				</div>
-				<span className="text-left text-slate-500">
+				<span className="text-left">
 					{moment(new Date(notification_item.create_time)).format("hh:mm Do MMMM YYYY")}
 				</span>
 				<div className="flex items-center gap-[2rem]">
@@ -77,7 +80,7 @@ const NotificationFormAnswers = (props: TProps) => {
 					>
 						Xem chi tiết
 						{new_notification.includes(notification_item._id) && (
-							<div className="w-[.8rem] h-[.8rem] bg-blue-600 rounded-full"></div>
+							<div className="w-[.8rem] h-[.8rem] bg-btn-design rounded-full hover:bg-[#fff]"></div>
 						)}
 					</Link>
 				</div>

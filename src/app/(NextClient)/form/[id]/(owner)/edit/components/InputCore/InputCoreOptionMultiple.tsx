@@ -25,12 +25,14 @@ import {
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import usePositionOption from "@/app/hooks/usePositionOption";
 import ButtonOptionsValue from "@/app/(NextClient)/_components/ui/button/ButtonOptionsValue";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 
 type TProps = {
 	inputItem: TInputCore.InputOptionMultiple.InputTypeOptionMultiple;
 };
 
 const InputCoreOptionMultiple = (props: TProps) => {
+	const { theme } = useContext(ThemeContext);
 	const [selectValue, setSelectValue] = useState<string[]>([]);
 
 	const { inputItem } = props;
@@ -88,7 +90,7 @@ const InputCoreOptionMultiple = (props: TProps) => {
 			<SpanNative
 				textContent="Chọn các lựa chọn bên dưới"
 				className={`${
-					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-[#000]"
+					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"
 				} text-[1.6rem] font-semibold`}
 			/>
 
@@ -112,7 +114,7 @@ const InputCoreOptionMultiple = (props: TProps) => {
 
 			<button
 				onClick={handleAddOption}
-				style={{ color: form_mode_display ? colorMain : "text-[#000]" }}
+				style={{ color: form_mode_display && theme === "light" ? colorMain : "#000" }}
 				className={`${
 					form_mode_display ? "group-hover:!bg-[#ffffff]" : ""
 				} min-h-[4rem] w-[20rem]  bg-gray-100 px-[2rem] flex items-center gap-[1rem]  rounded-lg`}

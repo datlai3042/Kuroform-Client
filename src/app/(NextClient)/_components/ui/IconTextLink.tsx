@@ -14,7 +14,7 @@ const IconTextLink = (props: TProps) => {
 	const { Icon, Title, TextSub, TextLink, LinkColorBg, LinkTextColor, LinkIcon } = props;
 
 	return (
-		<div className="border-shadow-normal p-[30px] bg-[#ffffff] flex flex-col gap-[20px] rounded-xl text-[1.4rem] sm:text-[1.6rem]">
+		<div className="border-shadow-normal p-[30px] bg-color-section-theme flex flex-col gap-[20px] rounded-xl text-[1.4rem] sm:text-[1.6rem]">
 			{Icon}
 			<p className="text-medium">{Title}</p>
 			<p>{TextSub}</p>

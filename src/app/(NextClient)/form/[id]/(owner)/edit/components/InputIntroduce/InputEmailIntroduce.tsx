@@ -22,24 +22,12 @@ const InputEmailIntroduce = (props: TProps) => {
 	const { inputItem, setOpenModel } = props;
 
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
-	const dispatch = useDispatch();
+
 	const changeTypeInput = useChangeTypeInput();
 
 	const handleChooseInputType = () => {
-		const newForm = structuredClone(formCore);
-		newForm.form_inputs = newForm.form_inputs.map((ip) => {
-			if (ip._id === inputItem._id) {
-				const newIp = structuredClone(ip);
-				newIp.type = "EMAIL";
-				if (newIp.type === "EMAIL") {
-					changeTypeInput.mutate({ form: formCore, inputItem, type: "EMAIL" });
-					return newIp;
-				}
-			}
-			return ip;
-		});
+		changeTypeInput.mutate({ form: formCore, inputItem, type: "EMAIL" });
 	};
-
 	return (
 		<DivNative className="w-full h-full flex flex-col py-[1rem] ">
 			<DivNative className="w-full h-[50%] flex flex-col gap-[3rem] border-b-[.2rem] border-gray-100  ">
@@ -64,10 +52,10 @@ const InputEmailIntroduce = (props: TProps) => {
 					<SpanNative textContent="Email" className="text-[1.6rem] font-bold" />
 					<DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
 						<input
-							className="w-full h-full p-[1rem] rounded-lg text-[1.6rem]   border-[.1rem] border-gray-400  outline-none focus:outline-blue-200 focus:border-transparent"
+							className="w-full h-full p-[1rem] rounded-lg text-[1.6rem]   border-[.1rem] border-gray-400  outline-none focus:outline-blue-200 focus:border-transparent text-[#000]"
 							placeholder="Nhập email của bạn"
 						/>
-						<AtSign className="absolute z-[2] right-[1rem] text-textMain opacity-50" size={18} />
+						<AtSign className="absolute z-[2] right-[1rem]  opacity-50" size={18} />
 					</DivNative>
 				</DivNative>
 			</DivNative>

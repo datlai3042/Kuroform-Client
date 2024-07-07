@@ -28,8 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 	const fullName = user?.user_first_name + " " + user?.user_last_name;
 	const imageAvatar = user?.user_avatar_current || "/icon_core.png";
-	console.log({ imageAvatar, user });
-
+	// console.clear();
 	return {
 		title: fullName,
 		icons: {
@@ -55,7 +54,7 @@ const UserAuthenticationPage = ({ children }: { children: React.ReactNode }) => 
 		<>
 			<SocketProvider>
 				{children}
-				{/* <CheckExprireToken /> */}
+				<CheckExprireToken />
 			</SocketProvider>
 		</>
 	);

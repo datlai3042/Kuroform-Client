@@ -7,7 +7,7 @@ type ThemeContextType = {
 };
 
 export const ThemeContext = createContext<ThemeContextType>({
-	theme: "light",
+	theme: "dark",
 	setTheme: () => {},
 });
 
@@ -18,10 +18,9 @@ type TProps = {
 const ThemeProvider = (props: TProps) => {
 	const { children } = props;
 
-	const [theme, setTheme] = useState<"dark" | "light">("light");
+	const [theme, setTheme] = useState<"dark" | "light">("dark");
 
 	useEffect(() => {
-		console.log({ theme });
 		if (theme === "dark") {
 			document.body.classList.remove("light");
 			document.body.classList.add("dark");

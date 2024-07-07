@@ -11,8 +11,8 @@ const FormImage = () => {
 
 	const styleEffect = {
 		onCheckBackground: (check: boolean) => {
-			if (check) return "";
-			return "h-[20rem]";
+			if (check) return "h-[23rem] xl:min-h-[40rem] ";
+			return "min-h-[20rem]";
 		},
 	};
 
@@ -20,7 +20,7 @@ const FormImage = () => {
 		<DivNative
 			className={`${styleEffect.onCheckBackground(
 				!!formCore.form_background?.form_background_iamge_url
-			)} group  relative w-full min-h-[40rem] h-max `}
+			)} group  relative w-full  h-max px-[4rem] xl:px-0`}
 		>
 			{(formCore.form_background || formCore.form_background_state) && <FormBackground />}
 

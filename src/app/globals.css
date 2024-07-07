@@ -36,17 +36,21 @@
 		--ring: 222.2 84% 4.9%;
 		--radius: 0.5rem;
 
-		--color-gap-empty: #f6f5f8;
+		--color-gap-empty: #f1f4fb;
 		--color-main: #6262e5;
 		--color-section-theme: #fff;
 		--text-theme: #000;
 		--color-main-hover: rgb(229 231 235);
 		--border-color: hwb(0 10% 88% / 0.189);
+		--bg-form-nav: #fff;
+		--bg-input-theme: #fff;
+		--btn-design: #2d68ff;
 	}
 
 	body.light {
-		--color-gap-empty: #f6f5f8;
-		--color-main: #6262e5;
+		--bg-form-nav: #fff;
+		--color-gap-empty: #eef1f9;
+		--color-main: #3b36db;
 		--color-section-theme: #fff;
 		--text-theme: #000;
 		--border-color: hwb(0 10% 88% / 0.189);
@@ -55,16 +59,38 @@
 	}
 
 	body.dark {
-		--color-gap-empty: #444;
-		--color-main: #6262e5;
-		--color-section-theme: rgba(0, 0, 0, 1);
+		--bg-form-nav: #393c73;
+		--color-gap-empty: #000;
+		--color-main: #3b36db;
+		--color-section-theme: #0f1623;
 		--text-theme: #ccc;
 		--color-main-hover: rgb(229 231 235);
-		--border-color: #525252;
+		--border-color: #14113c;
 	}
 
 	body {
-		transition: all 1s;
+		overflow-x: auto !important;
+		background: var(--color-gap-empty);
+	}
+
+	table {
+		width: 70%;
+		border-collapse: collapse;
+	}
+
+	th {
+		height: 80%;
+	}
+
+	table,
+	th,
+	td {
+		border: 1px solid;
+		padding: 1rem;
+	}
+
+	td {
+		padding: 3.4rem 6rem;
 	}
 
 	.dark {
@@ -100,6 +126,7 @@
 		--scorll-form-answer-detail-width: 0.1rem;
 	}
 
+	/* #e6ebf7 */
 	.custom-color-title .react-colorful {
 		height: 10rem;
 	}
@@ -107,6 +134,10 @@
 		width: 2rem;
 		height: 2rem;
 		border-radius: 50%;
+	}
+
+	.btn-design {
+		@apply p-[.8rem] bg-btn-design;
 	}
 
 	.custom-color-title .react-colorful__saturation-pointer {
@@ -160,11 +191,11 @@
 	}
 
 	.scroll-common::-webkit-scrollbar {
-		width: 0.6rem;
+		width: 0.4rem;
 	}
 
 	.scroll-common::-webkit-scrollbar-thumb {
-		background: #000;
+		background: var(--btn-desgin);
 		border-radius: 0.2rem;
 	}
 
@@ -182,7 +213,8 @@
 	}
 
 	.scroll-color-main::-webkit-scrollbar {
-		width: 0.8rem;
+		padding: 0px;
+		width: 0.2rem;
 	}
 	.scroll-color-main::-webkit-scrollbar-thumb {
 		background: var(--color-main);
@@ -208,7 +240,7 @@
 	}
 
 	body {
-		background-color: var(--color-gap-empty);
+		/* background-color: var(--color-gap-empty); */
 	}
 
 	[contentEditable="true"]:empty:not(:focus):before {
@@ -339,5 +371,9 @@
 
 	.section {
 		@apply px-[3rem] py-[2rem];
+	}
+
+	.star {
+		clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 	}
 }

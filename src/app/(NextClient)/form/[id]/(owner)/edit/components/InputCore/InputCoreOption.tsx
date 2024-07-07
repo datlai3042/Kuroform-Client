@@ -24,12 +24,15 @@ import {
 } from "@dnd-kit/core";
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import usePositionOption from "@/app/hooks/usePositionOption";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 
 type TProps = {
 	inputItem: TInputCore.InputOption.InputTypeOption;
 };
 
 const InputCoreOption = (props: TProps) => {
+	const { theme } = useContext(ThemeContext);
+
 	const [selectValue, setSelectValue] = useState<string>("");
 
 	const { inputItem } = props;
@@ -88,7 +91,7 @@ const InputCoreOption = (props: TProps) => {
 			<SpanNative
 				textContent="Chọn một lựa chọn"
 				className={`${
-					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-[#000]"
+					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"
 				} text-[1.6rem] font-semibold`}
 			/>
 
@@ -112,7 +115,7 @@ const InputCoreOption = (props: TProps) => {
 
 			<button
 				onClick={handleAddOption}
-				style={{ color: checkModeDisplay ? colorMain : "text-[#000]" }}
+				style={{ color: checkModeDisplay && theme === "light" ? colorMain : "#000" }}
 				className={`${
 					checkModeDisplay ? "group-hover:!bg-[#ffffff]" : ""
 				} min-h-[4rem] w-[20rem]  bg-gray-100 px-[2rem] flex items-center gap-[1rem]  rounded-lg`}

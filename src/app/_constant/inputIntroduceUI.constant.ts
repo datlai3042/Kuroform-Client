@@ -34,3 +34,8 @@ export const inputIntroduceDate = {
 	title: "Thời gian",
 	description: "Input Date cho một mốc thời gian nào đó cho câu trả lời",
 };
+
+export const inputIntroduceImage = {
+	title: "Upload ảnh",
+	description: "Cho phép người dùng cải ảnh lên form trả lời",
+};

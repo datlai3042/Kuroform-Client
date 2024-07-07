@@ -19,7 +19,7 @@ const ButtonSubmitForm = (props: TProps) => {
 	const tempMode = segment.startsWith("/form") && segment.endsWith("/edit");
 
 	const {
-		formAnswer: { inputFormRequire, inputFormErrors, inputFormData, submitState },
+		formAnswer: { inputFormRequire, inputFormErrors, inputFormData, submitState, form_answer_id },
 		setFormAnswer,
 	} = useContext(FormAnswerContext);
 
@@ -31,6 +31,7 @@ const ButtonSubmitForm = (props: TProps) => {
 			form_id: string;
 			answers: FormCore.FormAnswer.InputFormData[];
 			form_owner: string;
+			form_answer_id: string;
 		}) => FormAnswerService.addNewFormReport(formAnswer),
 	});
 
@@ -52,6 +53,7 @@ const ButtonSubmitForm = (props: TProps) => {
 				form_id: formCore._id,
 				form_owner: formCore.form_owner,
 				answers,
+				form_answer_id,
 			};
 
 			if (tempMode) {

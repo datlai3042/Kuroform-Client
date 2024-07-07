@@ -26,6 +26,10 @@ export const inputSettingDate: InputCore.InputDate.InputSettingDate = {
 	...inputSettingCommon,
 };
 
+export const inputSettingImage: InputCore.InputImage.InputSettingImage = {
+	...inputSettingCommon,
+};
+
 export const regexEmail = /[^\s@]+@[^\s@]+\.[^\s@]+/gi;
 
 export const REQUIRE_ERROR = "Đây là một câu trả lời bắt buộc";

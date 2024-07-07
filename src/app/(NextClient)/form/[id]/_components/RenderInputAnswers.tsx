@@ -15,6 +15,8 @@ import InputOptionAnswer from "./InputAnswer/_option/InputOptionAnswer";
 import InputOptionMultipleAnswer from "./InputAnswer/_options/InputOptionMultipleAnswer";
 import InputPhoneAnswer from "./InputAnswer/_phone/InputPhoneAnswer";
 import InputVoteAnswer from "./InputAnswer/_vote/InputVoteAnswer";
+import InputDateAnswer from "./InputAnswer/_date/InputDateAnswer";
+import InputImageAnswer from "./InputAnswer/_image/InputImageAnswer";
 
 type TProps = {
 	formCore: FormCore.Form;
@@ -34,6 +36,12 @@ const generateInputAnswer = (Inputs: InputCore.InputForm[], formCore: FormCore.F
 			case "VOTE":
 				return <InputVoteAnswer inputItem={ip} formCore={formCore} key={ip._id} />;
 
+			case "DATE":
+				return <InputDateAnswer inputItem={ip} formCore={formCore} key={ip._id} />;
+
+			case "FILE_IMAGE":
+				return <InputImageAnswer inputItem={ip} formCore={formCore} key={ip._id} />;
+
 			case "OPTION":
 				return <InputOptionAnswer inputItem={ip} formCore={formCore} key={ip._id} />;
 
@@ -51,7 +59,6 @@ const RenderInputAnswers = (props: TProps) => {
 		formAnswer: { inputFormErrors, openModelError, submitState },
 	} = useContext(FormAnswerContext);
 	const colorMain = formCore.form_title.form_title_color || formCore.form_setting_default.form_title_color_default;
-
 	const count = useRef(1);
 
 	console.log("");
@@ -138,7 +145,7 @@ const RenderInputAnswers = (props: TProps) => {
 						/>
 					)}
 
-					<ButtonSubmitForm formCore={formCore} />
+					{formCore.form_inputs.length > 0 && <ButtonSubmitForm formCore={formCore} />}
 				</>
 			)}
 

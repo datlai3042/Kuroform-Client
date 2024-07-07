@@ -12,7 +12,7 @@ import { useSelectedLayoutSegment, useSelectedLayoutSegments } from "next/naviga
 import LayoutSidebar from "@/app/(NextClient)/_components/Layout/LayoutSidebar";
 import Link from "next/link";
 
-export type FormPageMode = "edit" | "submit" | "share" | "summary";
+export type FormPageMode = "edit" | "download" | "share" | "summary";
 
 const FormModeLayout = ({ children, params }: { children: React.ReactNode; params: { id: string } }) => {
 	const { modeScreen } = useContext(FormModeScreenContext);
@@ -40,13 +40,15 @@ const FormModeLayout = ({ children, params }: { children: React.ReactNode; param
 	return (
 		<LayoutSidebar>
 			{getFormQuery.data?.metadata.form && (
-				<DivNative className={`bg-gap-empty  min-h-screen  h-max  flex flex-col  text-[1.4rem]   max-w-full `}>
+				<DivNative
+					className={`bg-color-gap-empty  min-h-screen  h-max  flex flex-col  text-[1.4rem]   max-w-full `}
+				>
 					<DivNative className={` w-full min-h-screen rounded-lg h-max  `}>
 						{segment[0] !== "edit" && getFormQuery.data?.metadata.form && (
-							<div className="px-[4rem] flex flex-col gap-[4rem]">
+							<div className="px-[2rem] h-screen flex flex-col gap-[2rem] ">
 								<HeaderEditForm showHeaderAction={segment[1] === "edit"} />
 
-								<div className="layout-down bg-color-section-theme">
+								<div className="sticky top-[8rem] h-[50rem] layout-down bg-color-section-theme">
 									<FormChangeMode formPageMode={formPageMode} setFormPageMode={setFormPageMode}>
 										{children}
 									</FormChangeMode>

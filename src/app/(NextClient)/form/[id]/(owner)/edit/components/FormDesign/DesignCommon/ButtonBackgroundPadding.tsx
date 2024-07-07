@@ -1,4 +1,5 @@
 import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import { onEditForm } from "@/app/_lib/redux/features/formEdit.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import { FormCore } from "@/type";
@@ -12,6 +13,7 @@ const ButtonBackgroundPadding = () => {
 	const dispatch = useDispatch();
 
 	const { isDesignForm, setIsDesginForm } = useContext(FormDesignContext);
+	const { theme } = useContext(ThemeContext);
 
 	const debounced = useDebouncedCallback(
 		(position: number, type: "x" | "y") => onChangePosition(position, type),
@@ -60,14 +62,14 @@ const ButtonBackgroundPadding = () => {
 border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 				>
 					<input
-						style={{ color: colorMain }}
+						style={{ color: theme === "light" ? colorMain : "#000" }}
 						disabled={!formBackground}
 						defaultValue={paddingX}
 						type="number"
 						className={` w-[80%] disabled:cursor-not-allowed  `}
 						onChange={(e) => debounced(+e.target.value, "x")}
 					/>
-					<span className="opacity-75">px</span>
+					<span className="opacity-75 text-[#000]">px</span>
 				</div>
 			</div>
 
@@ -80,14 +82,14 @@ border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 				>
 					<input
-						style={{ color: colorMain }}
+						style={{ color: theme === "light" ? colorMain : "#000" }}
 						disabled={!formBackground}
 						defaultValue={paddingY}
 						type="number"
 						onChange={(e) => debounced(+e.target.value, "y")}
 						className={` w-[80%] disabled:cursor-not-allowed  `}
 					/>
-					<span className="opacity-75">px</span>
+					<span className="opacity-75 text-[#000]">px</span>
 				</div>
 			</div>
 		</div>

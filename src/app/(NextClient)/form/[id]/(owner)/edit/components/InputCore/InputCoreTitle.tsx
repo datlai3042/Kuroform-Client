@@ -64,7 +64,7 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
 	};
 
 	return (
-		<div className="flex flex-col gap-[1.4rem]">
+		<div className="flex flex-col gap-[2rem]">
 			{modeScreen === "NORMAL" && (
 				<DivNativeRef
 					style={{

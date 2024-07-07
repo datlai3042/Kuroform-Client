@@ -16,16 +16,29 @@ export function middleware(request: NextRequest) {
 
 	const requestHeaders = new Headers(request.headers);
 	requestHeaders.set("x-url", pathname);
-
+	console.log({ pathname });
 	const response = NextResponse.next({
 		headers: requestHeaders,
 	});
 
 	const regexUrlFormEdit = /^\/form\/[a-zA-Z0-9]+\/edit$/;
-
-	console.log({ pathname });
+	const regexUrlFormShare = /^\/form\/[a-zA-Z0-9]+\/share$/;
+	const regexUrlFormSummary = /^\/form\/[a-zA-Z0-9]+\/summary$/;
+	const regexUrlFormSubmit = /^\/form\/[a-zA-Z0-9]+\/submit$/;
 
 	if (regexUrlFormEdit.test(pathname) && !authentication) {
+		return NextResponse.redirect(new URL("/login", request.url));
+	}
+
+	if (regexUrlFormSummary.test(pathname) && !authentication) {
+		return NextResponse.redirect(new URL("/login", request.url));
+	}
+
+	if (regexUrlFormSubmit.test(pathname) && !authentication) {
+		return NextResponse.redirect(new URL("/login", request.url));
+	}
+
+	if (regexUrlFormShare.test(pathname) && !authentication) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 
@@ -40,7 +53,6 @@ export function middleware(request: NextRequest) {
 	if (authentication && pathname === "/") {
 		return NextResponse.redirect(new URL("/dashboard", request.url));
 	}
-
 	return response;
 }
 

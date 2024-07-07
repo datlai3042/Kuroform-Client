@@ -51,7 +51,7 @@ const InputSettingOption = (props: TProps) => {
 	}, [updateTypeInputMutation.isSuccess, setOpenModel]);
 
 	return (
-		<DivNative className="h-max flex flex-col gap-[2.4rem]">
+		<DivNative className="h-max flex flex-col gap-[2.4rem] text-text-theme">
 			<InputSettingRequire inputItem={inputItemString} setInputItemString={setInputItemString} />
 			<InputSettingError inputItem={inputItemString} setInputItemString={setInputItemString} />
 			<ButtonNative

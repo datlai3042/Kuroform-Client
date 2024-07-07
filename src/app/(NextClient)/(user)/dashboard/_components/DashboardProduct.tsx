@@ -1,9 +1,10 @@
 "use client";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import { Bell, LayoutPanelTop, LayoutTemplate, Map, SmilePlus, Sparkles, Store, Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useContext } from "react";
 
 const WorkItem = [
 	{ Title: "Tempaltes", Icon: <LayoutPanelTop className="w-[1.8rem]" />, Href: "#" },
@@ -26,35 +27,47 @@ const WorkItem = [
 ];
 
 const DashboardProduct = () => {
+	const { theme } = useContext(ThemeContext);
+
 	const pathName = usePathname();
 
-	return (
-		<div className=" flex flex-col gap-[.6rem]  ">
-			<p className="pl-[.6rem] text-[1.2rem] text-textGray">Product</p>
+	const colorTheme = theme === "light" ? "text-text-theme hover:text-[#fff]" : "!text-text-theme ";
 
-			<Link href={"/"} className={`nav ${pathName === "/templates" ? "nav__isActive" : "nav__normal"}  `}>
-				<LayoutTemplate color={pathName === "/templates" ? "#fff" : "#000"} size={18} />
+	return (
+		<div className={` flex flex-col gap-[.6rem] text-text-theme `}>
+			<p className="pl-[.6rem] text-[1.2rem] ">Các đường dẫn khác</p>
+
+			<Link
+				href={"/"}
+				className={`nav ${colorTheme} ${pathName === "/templates" ? "nav__isActive" : "nav__normal "}  `}
+			>
+				<LayoutTemplate size={18} />
 				<span className="font-medium ">Thư viện form</span>
 			</Link>
 
 			<Link
 				href={"/notification"}
-				className={`nav ${pathName === "/notification" ? "nav__isActive" : "nav__normal"}  `}
+				className={`nav ${colorTheme} ${pathName === "/notification" ? "nav__isActive" : "nav__normal "}  `}
 			>
-				<Store color={pathName === "/notification" ? "#fff" : "#000"} size={18} />
+				<Store size={18} />
 				<span className="font-medium ">Kho của bạn</span>
 			</Link>
 
 			<Link
 				href={"/notification"}
-				className={`nav ${pathName === "/notification" ? "nav__isActive" : "nav__normal"}  `}
+				className={`nav ${colorTheme} ${pathName === "/notification" ? "nav__isActive" : "nav__normal "}  `}
 			>
-				<Bell color={pathName === "/notification" ? "#fff" : "#000"} size={18} />
+				<Bell size={18} />
 				<span className="font-medium ">Quản lí thông báo</span>
 			</Link>
 
-			<Link href={"/trash"} className={`nav ${pathName === "/trash" ? "nav__isActive" : "nav__normal"}  `}>
-				<Trash2 color={pathName === "/trash" ? "#fff" : "#000"} size={18} />
+			<Link
+				href={"/trash"}
+				className={`nav ${colorTheme} ${
+					pathName === "/trash" ? "nav__isActive" : "nav__normal !text-text-theme"
+				}  `}
+			>
+				<Trash2 />
 				<span className="font-medium ">Thùng rác</span>
 			</Link>
 		</div>

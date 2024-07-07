@@ -47,7 +47,6 @@ export const generateInfoRequest = (url: string, options: CustomRequest) => {
 			? options.body
 			: JSON.stringify(options.body)
 		: undefined;
-
 	const baseHeader =
 		options?.body instanceof FormData
 			? {}
@@ -189,7 +188,7 @@ export const stringToSlug = (str: string) => {
 
 export const checkValueHref = (value: string) => {
 	const regex = new RegExp("^(http|https)://", "i");
-	return value.match(regex);
+	return value?.match(regex) || false;
 };
 
 export const filterTypeInput = <InputType extends InputCore.InputForm>(
@@ -224,26 +223,29 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
 	reports.map((rp) => {
 		let dataXlsx = {};
 		rp.answers.map((ans) => {
-			const convertArrayValueToString = typeof ans.value === "string" ? ans.value : ans.value.join(", ");
+			const titleExcel = ans.title || `${ans.type}_${ans._id}`;
+			const titleHeaderTable = ans.title || `Không có tiêu đề`;
+
+			const input_value = generateValueInputAnswer(ans);
 			dataXlsx = {
 				...dataXlsx,
 				"Thời gian gửi": moment(new Date(rp.createdAt)).format("hh:mm Do MMMM YYYY"),
-				[ans.title]: convertArrayValueToString,
+				[titleExcel]: input_value,
 			};
 			if (!filterFormShowChart[ans._id]) {
 				filterFormShowChart[ans._id] = [];
 				filterFormShowChart[ans._id].push({
 					_id: ans._id,
-					title: ans.title,
-					value: convertArrayValueToString,
+					title: titleHeaderTable,
+					value: input_value,
 					time: rp.createdAt,
 					form_answer_id: rp._id,
 				});
 			} else {
 				filterFormShowChart[ans._id] = filterFormShowChart[ans._id].concat({
 					_id: ans._id,
-					title: ans.title,
-					value: convertArrayValueToString,
+					title: titleHeaderTable,
+					value: input_value,
 					time: rp.createdAt,
 					form_answer_id: rp._id,
 				});
@@ -254,8 +256,8 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
 
 				const answerItem = {
 					_id: ans._id,
-					title: ans.title,
-					value: ans.value as string,
+					title: titleHeaderTable,
+					value: input_value,
 					time: rp.createdAt,
 					form_answer_id: rp._id,
 				};
@@ -266,8 +268,8 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
 					ans._id + "_#_" + ans.type
 				].concat({
 					_id: ans._id,
-					title: ans.title,
-					value: ans.value,
+					title: titleHeaderTable,
+					value: input_value,
 					time: rp.createdAt,
 					form_answer_id: rp._id,
 				});
@@ -288,6 +290,22 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
 	return true;
 };
 
+export const generateValueInputAnswer = (answer: FormCore.FormAnswer.Answer) => {
+	let value_answer = "";
+
+	if (typeof answer.value === "object") {
+		value_answer = answer.value.join(", ");
+		return value_answer;
+	}
+	if (answer.type === "DATE") {
+		value_answer = moment(new Date(answer.value)).format(" Do MMMM YYYY");
+		return value_answer;
+	}
+
+	value_answer = answer.value;
+	return value_answer;
+};
+
 export const generateContentToUrl = (url: string) => {
 	let content = "";
 	if (url === "/dashboard") return (content = "Trang chủ");
@@ -301,4 +319,11 @@ export const generateContentToUrl = (url: string) => {
 export const generateFullNameUser = (user: UserType | undefined) => {
 	if (!user) return;
 	return user?.user_first_name + " " + user?.user_last_name;
+};
+
+export const generateContentToFormState = (form_state: FormCore.Form["form_state"]) => {
+	let content = "";
+	if (form_state === "isDelete") return (content = "Form đã bị xóa");
+	if (form_state === "isPrivate") return (content = "Form riêng tư");
+	if (form_state === "isPublic") return (content = "Form công khai");
 };

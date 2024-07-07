@@ -68,12 +68,10 @@ const RegisterForm = (props: TProps) => {
 	};
 
 	return (
-		<div className="relative  xl:w-[47rem] mx-auto h-[80rem]  bg-[#ffffff] flex justify-start xl:justify-center items-center flex-col  gap-[2rem] rounded-[1.2rem] p-[2.4rem_2rem] mb-[4rem]">
+		<div className="relative w-full xl:min-w-[50rem] max-w-[50rem] mx-auto min-h-[80rem]  h-max flex justify-start xl:justify-center items-center flex-col  gap-[2rem] rounded-[1.2rem] p-[2.4rem_2rem] mb-[4rem]">
 			<div className="mb-[2rem] flex items-center flex-col gap-[.2rem] ">
 				<p className="text-[2.4rem] xl:text-[3.8rem] font-semibold text-center">Tạo tài khoản</p>
-				<p className="text-[1.6rem] xl:text-[1.8rem] text-slate-400 text-center">
-					Đăng kí tài khoản để tạo cho bạn.
-				</p>
+				<p className="text-[1.6rem] xl:text-[1.8rem]  text-center">Đăng kí tài khoản để tạo cho bạn.</p>
 			</div>
 
 			<div className="w-full flex gap-[1rem] my-[2rem]">

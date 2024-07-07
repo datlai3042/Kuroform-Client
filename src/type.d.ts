@@ -63,6 +63,8 @@ namespace InputCore {
 		type InputSettingVoteCommon = InputCore.Setting.InputSettingCommon;
 		type InputSettingPhoneCommon = InputCore.Setting.InputSettingCommon;
 		type InputSettingDate = InputCore.Setting.InputSettingCommon;
+		type InputSettingImage = InputCore.Setting.InputSettingCommon & { url?: string; public_id?: string };
+
 		type SettingAll = InputSettingTextCommon & InputSettingOptionCommon & InputSettingDate;
 	}
 
@@ -85,6 +87,7 @@ namespace InputCore {
 
 		type InputCommonOption = { core: { setting: InputCore.Setting.InputSettingOptionCommon }; _id?: string };
 		type InputCommonDate = { core: { setting: InputCore.Setting.InputSettingDate }; _id?: string };
+		type InputCommonImage = { core: { setting: InputCore.Setting.InputSettingImage }; _id?: string };
 
 		type ErrorText = "REQUIRE" | "MIN" | "MAX" | "INVAILD";
 	}
@@ -163,16 +166,11 @@ namespace InputCore {
 	}
 
 	namespace InputImage {
-		export type InputTypeImage = InputCore.Commom.InputCommon & {
-			type: "IMAGE";
-			_id?: string;
-			caption: string;
-			alt: string;
-			url: string;
-			secure_url: string;
-			public_id: string;
-			setting: { a: number };
-		};
+		export type InputSettingImage = InputCore.Setting.InputSettingImage;
+		export type InputTypeImage = InputCore.Commom.InputCommon &
+			InputCore.Commom.InputCommonImage & {
+				type: "FILE_IMAGE";
+			};
 	}
 
 	type InputForm =
@@ -182,8 +180,8 @@ namespace InputCore {
 		| InputPhone.InputTypePhone
 		| InputOption.InputTypeOption
 		| InputOptionMultiple.InputTypeOptionMultiple
-		| InputDate.InputTypeDate;
-	// | InputImage.InputTypeImage;
+		| InputDate.InputTypeDate
+		| InputImage.InputTypeImage;
 }
 
 namespace FormCore {
@@ -295,10 +293,13 @@ namespace FormCore {
 		_id: string;
 		form_owner: string;
 		form_title: FormCore.FormTitle;
+		form_views: number;
+		form_response: number;
+
 		form_background_state: boolean;
 		form_avatar_state: boolean;
-		createdAt?: Date;
-		updatedAt?: Date;
+		createdAt?: string;
+		updatedAt?: string;
 		form_background?: FormCore.FormBackground;
 		form_setting_default: FormCore.FormSettingDefault;
 		form_state: FormCore.FormState;
@@ -471,4 +472,44 @@ namespace Toast {
 		| ToastWarning.ToastWarningCore
 		| ToastError.ToastErrorCore
 		| ToastFormAnswer.ToastFormAnswerCore;
+}
+
+namespace UI {
+	namespace Calender {
+		type DateNameInWeek = "Sunday" | "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday";
+		type DateInfo = {
+			day: number;
+			day_name_in_week: string;
+			month: number;
+			year: number;
+			date_full: string;
+			state: DateState;
+		};
+
+		type DateState = "previos" | "current" | "next";
+
+		type DateInWeekInfo = {
+			[key in DateNameInWeek]: DateInfo[];
+		};
+
+		type RenderDateInMonth = {
+			week_count: number;
+			week_menber: DateInfo[];
+		};
+
+		namespace Event {
+			type DateResult = {
+				day: number;
+				month: number;
+				year: number;
+				date_string: string;
+			};
+			type ChangeEvent = (dateReturn: DateResult) => void;
+		}
+	}
+
+	namespace Rate {
+		type RatePoint = "none" | "mid" | "hight";
+		type RateControl = { point: RatePoint; index: number };
+	}
 }

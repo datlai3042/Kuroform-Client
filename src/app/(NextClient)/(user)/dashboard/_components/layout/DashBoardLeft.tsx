@@ -14,10 +14,14 @@ import LogoColor from "@/app/(NextClient)/_components/logo/LogoColor";
 import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
 import { ChevronsLeft } from "lucide-react";
 import { SidebarContext } from "../../SidebarContext";
+import DashboardInfoUser from "../DashboardInfoUser";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import Logo from "@/app/(NextClient)/_components/logo/Logo";
 
 const DashBoardLeft = () => {
 	const dispatch = useDispatch();
 	const { setOpenSidebar } = useContext(SidebarContext);
+	const { theme } = useContext(ThemeContext);
 
 	const fetchMe = useQuery({
 		queryKey: ["/me"],
@@ -32,15 +36,21 @@ const DashBoardLeft = () => {
 		}
 	}, [fetchMe.isSuccess, dispatch, fetchMe]);
 
-	return (
-		<div className="p-[1rem] flex flex-col gap-[1.1rem] text-text-theme text-[1.4rem]">
-			<div className="mb-[2rem] flex items-center justify-between gap-[1rem]">
-				<LogoColor />
+	const scrollThemeStyle = theme === "dark" ? "scroll-color-main" : "scroll-common";
 
+	return (
+		<div
+			className={`${scrollThemeStyle} overflow-auto max-h-[97%]  p-[1rem] flex flex-col gap-[1rem] text-text-theme text-[1.4rem]`}
+		>
+			<div className="relative w-full mb-[1rem] flex items-center justify-center gap-[1rem]">
+				{/* <LogoColor /> */}
+				{/* <DashboardInfoUser /> */}
+
+				<Logo />
 				<ButtonIcon
 					Icon={<ChevronsLeft className="w-[1.4rem]" />}
 					onClick={() => setOpenSidebar(false)}
-					className=" bg-transparent hover:bg-slate-200 rounded-lg"
+					className=" absolute top-[1rem] right-[1rem] bg-transparent hover:bg-color-main text-text-theme hover:text-[#fff] rounded-lg"
 				/>
 			</div>
 			<DashBoardWork />

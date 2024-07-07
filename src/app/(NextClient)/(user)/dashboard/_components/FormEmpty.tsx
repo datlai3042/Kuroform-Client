@@ -19,7 +19,7 @@ const FormEmpty = (props: TProps) => {
 				className="w-[30rem] h-[30rem]"
 				unoptimized={true}
 			/>
-			<div className="text-[4rem]">{content}</div>
+			<div className="text-[4rem] text-text-theme">{content}</div>
 		</div>
 	);
 };

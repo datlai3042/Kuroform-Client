@@ -1,5 +1,5 @@
 "use client";
-import { addFormAnswer } from "@/app/_lib/redux/features/formAnswer.slice";
+import { addFormAnswer, onFetchTotalAnswer, onFetchTotalViews } from "@/app/_lib/redux/features/formAnswer.slice";
 import { onAddNewNotification, onFetchNotification } from "@/app/_lib/redux/features/notification.slice";
 import { addOneToastFormAnswer, addOneToastSuccess } from "@/app/_lib/redux/features/toast.slice";
 import { RootState } from "@/app/_lib/redux/store";
@@ -47,9 +47,12 @@ const SocketProvider = ({ children }: { children: React.ReactNode }) => {
 			notification: { notifications: Notification.NotificationUser["notifications"] };
 			notification_item_id: string;
 			form_origin: FormCore.Form;
+			total_views: number;
+			total_answers: number;
 		}) => {
 			console.log({ dataSocket });
-			const { form_answer_id, notification, notification_item_id, form_origin, form_answer_item_id } = dataSocket;
+			const { total_views, total_answers, notification, notification_item_id, form_origin, form_answer_item_id } =
+				dataSocket;
 			dispatch(onFetchNotification({ notification: notification.notifications, animation: true }));
 			dispatch(onAddNewNotification({ notification_item_id }));
 			dispatch(
@@ -59,19 +62,24 @@ const SocketProvider = ({ children }: { children: React.ReactNode }) => {
 						type: "FormAnswer",
 						toast_title: "Bạn nhận được 1 phiếu trả lời",
 						core: {
-							message: `Bạn nhận được 1 phản hồi từ Form [${form_origin.form_title.form_title_value}]`,
+							message: `Bạn nhận được 1 phản hồi từ Form [${
+								form_origin?.form_title?.form_title_value || "Trống"
+							}]`,
 							url: `/form/${form_origin._id}/summary#${form_answer_item_id}`,
 						},
 					},
 				})
 			);
+
+			dispatch(onFetchTotalViews({ total_views }));
+			dispatch(onFetchTotalAnswer({ total_answers }));
+			console.log("dispatch api", form_origin._id);
 			FormAnswerService.getFormAnswer(form_origin._id).then((data) => {
 				const { formAnswer } = data.metadata;
 				dispatch(addFormAnswer({ form_id: formAnswer.form_id, reports: formAnswer }));
 
 				const { reports } = formAnswer;
 				const arrayReserver = [...reports];
-				console.log("dispatch api");
 
 				const OK = handleDataForm(arrayReserver.reverse(), formAnswer.form_id);
 			});

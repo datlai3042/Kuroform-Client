@@ -39,8 +39,12 @@ const ButtonColor = (props: TProps) => {
 	let color = useMemo(() => selectColorWithMode(typeEdit, formCore), [formCore, typeEdit]);
 
 	return (
-		<div className="relative max-h-[8rem] xl:h-[4rem] px-[2.5rem] flex  flex-col xl:flex-row  xl:items-center justify-between gap-[.5rem] xl:gap-[1rem]">
+		<div className="relative max-h-[20rem] xl:h-[16rem] px-[2.5rem] flex  flex-col   xl:items-center justify-between gap-[.5rem] xl:gap-[1rem]">
 			{<SelectColor setOpenColorModel={setOpenColorModel} typeEdit={typeEdit} />}
+			<span className=" text-[1.2rem] opacity-55">
+				Lưu ý: Chế độ chỉnh màu chỉnh không hợp thích với Dark mode nhưng render ra màu chữ trong form như bình
+				thường
+			</span>
 		</div>
 	);
 };

@@ -19,18 +19,18 @@ const InputCorePhone = (props: TProps) => {
 	const [phone, setPhone] = useState<number>(0);
 
 	const InputPhone = (
-		<DivNative className="flex flex-col gap-[1rem] text-[#000] ">
+		<DivNative className="flex flex-col gap-[1rem] text-text-theme ">
 			<SpanNative
 				textContent="Số điện thoại"
 				className={`${
-					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-[#000]"
+					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"
 				} text-[1.6rem] font-semibold`}
 			/>
 			<DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
 				<input
 					value={phone}
 					type="number"
-					className="w-full h-full text-[#000] p-[1rem] rounded-lg text-[1.6rem]   border-[.1rem] border-gray-400  outline-none focus:outline-blue-200 focus:border-transparent"
+					className="w-full h-full text-text-theme p-[1rem] rounded-lg text-[1.6rem]   border-[.1rem] border-gray-400  outline-none focus:outline-blue-200 focus:border-transparent"
 					placeholder="Nhập số điện thoại của bạn"
 					onChange={(e) => setPhone(+e.target.value)}
 				/>

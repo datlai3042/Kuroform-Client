@@ -1,14 +1,16 @@
 "use client";
 import { Flower, Globe, Home, HomeIcon, LogOut, LogOutIcon, Search, Settings, User, Users } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import AuthService from "@/app/_services/auth.service";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import path from "path";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import { onFocusSearch } from "@/app/_lib/redux/features/formEdit.slice";
 
 const WorkItem = [
 	{
@@ -59,15 +61,16 @@ const WorkItem = [
 ];
 
 const DashBoardWork = () => {
-	const user = useSelector((state: RootState) => state.authReducer.user);
+	const { theme } = useContext(ThemeContext);
 
-	const [openModelDomain, setOpenModelDomain] = useState<boolean>(false);
-	const [openModelSearch, setopenModelSearch] = useState<boolean>(false);
+	const user = useSelector((state: RootState) => state.authReducer.user);
+	const focusSearch = useSelector((state: RootState) => state.form.focus_search);
+
 	const router = useRouter();
 
 	const pathName = usePathname();
 
-	console.log({ pathName });
+	const dispatch = useDispatch();
 
 	const logoutMutation = useMutation({
 		mutationKey: ["logout"],
@@ -77,16 +80,22 @@ const DashBoardWork = () => {
 		},
 	});
 
-	const matchPathName = (link: string) => link === pathName;
+	const handleSearch = () => {
+		dispatch(onFocusSearch({ focus: true }));
+	};
+
+	const matchPathName = (link: string) => link === pathName && !focusSearch;
 
 	const urlProlife = `/profile/${user?.user_atlas}`;
 
+	const colorTheme = theme === "light" ? "text-text-theme hover:text-[#fff]" : "!text-text-theme ";
+
 	return (
-		<div className="flex flex-col gap-[.8rem] text-[1.4rem] ">
+		<div className={`flex flex-col gap-[.8rem] text-[1.4rem] `}>
 			<Link
 				href={"/"}
-				className={`nav ${
-					matchPathName("/dashboard") ? "nav__isActive" : "nav__normal !text-text-theme "
+				className={`nav ${colorTheme} ${
+					matchPathName("/dashboard") ? "nav__isActive" : "nav__normal  "
 				} group  `}
 			>
 				<HomeIcon size={18} />
@@ -95,31 +104,35 @@ const DashBoardWork = () => {
 
 			<Link
 				href={urlProlife}
-				className={`nav ${matchPathName(urlProlife) ? "nav__isActive" : "nav__normal !text-text-theme "} group`}
+				className={`nav ${colorTheme} ${
+					matchPathName(urlProlife) ? "nav__isActive" : "nav__normal"
+				} group hover:text-[#fff]`}
 			>
 				<User size={18} />
 				<span className="font-medium  ">Trang cá nhân</span>
 			</Link>
 
-			<Link
-				href={urlProlife}
-				className={`nav ${matchPathName("/search") ? "nav__isActive" : "nav__normal !text-text-theme"} group `}
+			<button
+				onClick={handleSearch}
+				className={`nav ${colorTheme} ${
+					focusSearch ? "nav__isActive" : "nav__normal text-text-theme"
+				} group hover:text-[#fff] `}
 			>
 				<Search size={18} />
 				<span className="font-medium">Tìm kiếm</span>
-			</Link>
+			</button>
 
 			<Link
 				href={"/settings"}
-				className={`nav ${
-					matchPathName("/settings") ? "nav__isActive" : "nav__normal !text-text-theme"
-				} group `}
+				className={`nav ${colorTheme} ${
+					matchPathName("/settings") ? "nav__isActive" : "nav__normal text-text-theme"
+				} group hover:text-[#fff]`}
 			>
 				<Settings size={18} />
 				<span className="font-medium">Cài đặt</span>
 			</Link>
 
-			<button className="nav nav__normal !text-text-theme " onClick={() => logoutMutation.mutate()}>
+			<button className={`${colorTheme} nav nav__normal`} onClick={() => logoutMutation.mutate()}>
 				<LogOutIcon size={18} />
 				Đăng xuất
 			</button>

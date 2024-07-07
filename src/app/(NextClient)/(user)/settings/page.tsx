@@ -10,9 +10,9 @@ const SettingPage = () => {
 	const user = useSelector((state: RootState) => state.authReducer.user);
 
 	return (
-		<div className="w-full h-max   p-[.8rem_1.8rem_4rem] flex flex-col gap-[5rem] text-[1.4rem] mb-[2rem]">
+		<div className="w-full h-max   p-[.8rem_1.8rem_6rem_.8rem] flex flex-col gap-[5rem] text-[1.4rem]  bg-color-section-theme">
 			<SettingHeader />
-			<div className="w-[90%] xl:w-[69%] mx-auto">
+			<div className="w-[90%] xl:w-[69%] mx-auto text-text-theme">
 				<SettingSection />
 				{user && <SettingAccount />}
 				{!user && (

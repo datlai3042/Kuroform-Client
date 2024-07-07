@@ -24,7 +24,7 @@ const RenderSettingItem = (props: TProps) => {
 	const { inputItem } = props;
 
 	return (
-		<div className="h-full">
+		<div className="h-full text-[#000]">
 			{inputItem.type === "TEXT" && (
 				<div className="flex flex-col justify-center h-full px-[4rem] py-[1.8rem] gap-[1rem] xl:text-[1.3rem]">
 					{Object.keys(inputItem.core.setting).map((setting) => (

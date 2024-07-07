@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { ChevronDown, ChevronRight, Notebook } from "lucide-react";
 import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
 import useGetAllFormUser from "@/app/hooks/useGetAllFormUser";
@@ -13,14 +13,21 @@ const DashboardWorkspaces = () => {
 	const { forms, pending, success } = useGetAllFormUser();
 	const { theme } = useContext(ThemeContext);
 
+	const divWrapper = useRef<HTMLDivElement | null>(null);
+	const divFormItem = useRef<HTMLAnchorElement | null>(null);
+
 	const pathName = usePathname();
 
-	const Icon = openWorkspace ? <ChevronDown className="w-[1.4rem] " /> : <ChevronRight className="w-[1.4rem] " />;
+	const Icon = openWorkspace ? (
+		<ChevronDown className="w-[1.4rem] text-[#fff] " />
+	) : (
+		<ChevronRight className="w-[1.4rem] text-[#fff] " />
+	);
 
 	const styleEffect = {
 		onCheckFocus: (state: boolean) => {
 			if (state) return "bg-blue-400 text-[#fff] outline outline-[2px] outline-blue-200";
-			return "bg-transparent hover:bg-slate-200";
+			return "hover:border-[.1rem] hover:border-text-theme";
 		},
 	};
 
@@ -28,6 +35,28 @@ const DashboardWorkspaces = () => {
 		theme === "dark" ? "hover:bg-blue-400 scroll-color-main" : "hover:bg-blue-100 scroll-common";
 
 	const scrollThemeStyle = theme === "dark" ? "scroll-color-main" : "scroll-common";
+
+	const formIsFocusing = pathName.startsWith("/form") && pathName?.split("/form")[1].split("/edit")[0].slice(1);
+	useEffect(() => {
+		if (
+			forms.map((form) => {
+				if (form._id === formIsFocusing) {
+					return setOpenWorkspace(true);
+				}
+			})
+		) {
+		}
+	}, [pathName, forms]);
+
+	useEffect(() => {
+		console.log("OK", formIsFocusing);
+		if (openWorkspace) {
+			if (divFormItem.current && divWrapper.current) {
+				console.log("OK", 123);
+				divWrapper.current.scrollTop = divFormItem.current.offsetTop;
+			}
+		}
+	}, [pathName, openWorkspace]);
 
 	return (
 		<div
@@ -47,33 +76,64 @@ const DashboardWorkspaces = () => {
 							Icon={Icon}
 							className={`${styleEffect.onCheckFocus(
 								openWorkspace
-							)} flex  rounded-lg !w-[16px] !h-[16px]`}
+							)} flex bg-color-main rounded-lg !w-[1.4rem] !h-[1.4rem]`}
 						/>
 						<span className="">Nơi làm việc</span>
 					</div>
 					{openWorkspace && forms.length > 0 && (
 						<div
-							className={`${scrollThemeStyle} ml-[2rem]  min-h-[2rem] max-h-[12rem]  transition-[height] duration-500 overflow-y-scroll  flex flex-col gap-[1.4rem] text-text-theme`}
+							ref={divWrapper}
+							className={`${scrollThemeStyle} ml-[2rem]  min-h-[2rem] max-h-[34rem]  transition-[height] duration-500 overflow-y-scroll  flex flex-col gap-[1.4rem] text-text-them e pr-[2rem]`}
 						>
-							{forms.map((form) => (
-								<Link
-									key={form._id}
-									href={`/form/${form._id}/edit`}
-									className={`${hoverThemeStyle} flex items-center w-full h-[5rem]  gap-[.8rem] text-[1.4rem]  p-[.6rem_1rem] `}
-								>
-									<Image
-										src={"/assets/images/icon/navigation/one_item.png"}
-										width={18}
-										height={18}
-										alt="icon"
-										className="w-[2rem] h-[2rem]"
-										unoptimized={true}
-									/>
-									<p className="max-w-[80%] truncate ">
-										{form.form_title.form_title_value || "Chưa tạo tiêu đề"}
-									</p>
-								</Link>
-							))}
+							{forms.map((form) => {
+								if (formIsFocusing == form._id) {
+									return (
+										<Link
+											ref={divFormItem}
+											key={form._id}
+											href={`/form/${form._id}/edit`}
+											className={`${hoverThemeStyle} ${
+												formIsFocusing === form._id
+													? "bg-color-main text-[#fff] rounded-md"
+													: ""
+											} flex items-center w-full h-[4rem]  gap-[.8rem] text-[1.4rem]  p-[.6rem_1rem] `}
+										>
+											<Image
+												src={"/assets/images/icon/navigation/one_item.png"}
+												width={18}
+												height={18}
+												alt="icon"
+												className="w-[2rem] h-[2rem]"
+												unoptimized={true}
+											/>
+											<p className="max-w-[80%] truncate ">
+												{form.form_title.form_title_value || "Chưa tạo tiêu đề"}
+											</p>
+										</Link>
+									);
+								}
+								return (
+									<Link
+										key={form._id}
+										href={`/form/${form._id}/edit`}
+										className={`${hoverThemeStyle} ${
+											formIsFocusing === form._id ? "bg-color-main" : ""
+										} flex items-center w-full h-[5rem]  gap-[.8rem] text-[1.4rem]  p-[.6rem_1rem] `}
+									>
+										<Image
+											src={"/assets/images/icon/navigation/one_item.png"}
+											width={18}
+											height={18}
+											alt="icon"
+											className="w-[2rem] h-[2rem]"
+											unoptimized={true}
+										/>
+										<p className="max-w-[80%] truncate ">
+											{form.form_title.form_title_value || "Chưa tạo tiêu đề"}
+										</p>
+									</Link>
+								);
+							})}
 						</div>
 					)}
 					{openWorkspace && forms.length === 0 && (

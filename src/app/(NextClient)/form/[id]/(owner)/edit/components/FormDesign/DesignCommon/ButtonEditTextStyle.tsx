@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TypeEdit } from "./ButtonColor";
 import { Form } from "react-hook-form";
 import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 
 type TProps = {
 	typeEdit: TypeEdit;
@@ -17,6 +18,7 @@ const ButtonEditTextStyle = (props: TProps) => {
 	const { typeEdit, inputItem } = props;
 
 	const { isDesignForm, setIsDesginForm } = useContext(FormDesignContext);
+	const { theme } = useContext(ThemeContext);
 
 	const FormCore = useSelector((state: RootState) => state.form.formCoreOriginal);
 	const colorMain = useSelector((state: RootState) => state.form.colorCore);
@@ -74,9 +76,9 @@ const ButtonEditTextStyle = (props: TProps) => {
 					}}
 					className={`${styleEffect.onCheckStyleActive(
 						styleCurrent === "normal"
-					)} p-[.2rem_.8rem] border-[.1rem]  bg-[#ffffff] rounded-lg`}
+					)} p-[.2rem_.8rem] border-[.1rem]  bg-color-section-theme rounded-lg`}
 				>
-					<RemoveFormatting style={{ color: colorMain }} />
+					<RemoveFormatting style={{ color: theme === "light" ? colorMain : "#fff" }} />
 				</button>
 
 				<button
@@ -84,11 +86,10 @@ const ButtonEditTextStyle = (props: TProps) => {
 						onChangeStyleText("italic");
 						setStyleCurrent("italic");
 					}}
-					className={`${styleEffect.onCheckStyleActive(
-						styleCurrent === "italic"
-					)} p-[.2rem_.8rem] border-[.1rem] bg-[#ffffff]  rounded-lg`}
+					className={`${styleEffect.onCheckStyleActive(styleCurrent === "italic")}
+					)} p-[.2rem_.8rem] border-[.1rem]  bg-color-section-theme rounded-lg`}
 				>
-					<Italic style={{ color: colorMain }} />
+					<Italic style={{ color: theme === "light" ? colorMain : "#fff" }} />
 				</button>
 			</div>
 		</div>

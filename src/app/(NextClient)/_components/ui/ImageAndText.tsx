@@ -23,10 +23,12 @@ type TProps = {
 	ImageRight?: string;
 	TextSub?: string;
 	Position: PostionHighlight;
+	position_header?: "left" | "right";
 };
 
 const ImageAndText = (props: TProps) => {
 	const {
+		position_header = "left",
 		BeforeTextHighlight,
 		TextHighlight,
 		AfterTextHighlight,
@@ -48,26 +50,30 @@ const ImageAndText = (props: TProps) => {
 		},
 	};
 
+	const order = position_header === "left" ? "order-3" : "order-1";
+
 	return (
-		<div className="flex min-w-full  ">
+		<div className="flex min-w-full justify-between items-center ">
 			<div
 				className={`${styleEffect.onCheckImageRight(
 					ImageRight ? true : false
-				)} mt-[80px] flex flex-col gap-[12px]`}
+				)}  flex flex-col gap-[12px] order-2`}
 			>
-				<h2 className="text-h2 ">
+				<h2 className="text-h2  ">
 					{BeforeTextHighlight}
 					<span className="relative px-[6px]">
 						{TextHighlight}
-						<Image
-							src={ImageHighlight}
-							width={78}
-							height={24}
-							className={`${styleEffect.onCheckPosition(
-								Position
-							)} hidden xl:inline absolute left-0 right-0 w-full bottom-[-12px]  xl:h-[16px]`}
-							alt="highlight-text"
-						/>
+						{TextHighlight && (
+							<Image
+								src={ImageHighlight}
+								width={78}
+								height={24}
+								className={`${styleEffect.onCheckPosition(
+									Position
+								)} hidden xl:inline absolute left-0 right-0 w-full bottom-[-12px]  xl:h-[16px] object-contain`}
+								alt="highlight-text"
+							/>
+						)}
 					</span>
 					{AfterTextHighlight}
 				</h2>
@@ -75,8 +81,8 @@ const ImageAndText = (props: TProps) => {
 			</div>
 
 			{ImageRight && (
-				<div className="w-[50%] hidden xl:flex justify-end">
-					<Image src={ImageRight} width={320} height={237} alt="Person clicking on a plus sign" />
+				<div className={`${order} w-[30%] h-[40%] hidden xl:flex justify-end`}>
+					<Image src={ImageRight} width={320} height={150} alt="Minh họa input" className="w-full h-full" />
 				</div>
 			)}
 		</div>

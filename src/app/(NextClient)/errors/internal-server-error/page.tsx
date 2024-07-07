@@ -3,7 +3,7 @@ import React from "react";
 
 const InternalServerErrorPage = () => {
 	return (
-		<div className="w-full h-screen flex flex-col items-center justify-center gap-[6rem]">
+		<div className="w-full h-screen flex flex-col items-center justify-center gap-[6rem] text-text-theme">
 			<Image
 				src={"/assets/images/icon/errors/500.png"}
 				width={50}

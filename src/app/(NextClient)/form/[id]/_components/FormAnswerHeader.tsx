@@ -44,13 +44,13 @@ const FormAnswerHeader = (props: TProps) => {
 	return (
 		<div
 			style={{ backgroundColor: formCore.form_background?.backgroundColor || "" }}
-			className="relative w-full min-h-[17rem] rounded-xl "
+			className="relative w-full h-[20rem] rounded-xl "
 		>
 			{formCore.form_background?.form_background_iamge_url && (
 				// <div className="absolute top-[50%] translate-x-[-50%] mx-auto">
 				<Image
 					style={{
-						marginLeft: (formBackgroundPosition.y as number) * -1,
+						// marginLeft: (formBackgroundPosition.y as number) * -1,
 						objectFit: formBackgroundSize,
 						objectPosition: ` ${formBackgroundPosition?.y || 0}% ${formBackgroundPosition?.x || 0}%`,
 					}}
@@ -59,7 +59,7 @@ const FormAnswerHeader = (props: TProps) => {
 					height={160}
 					quality={100}
 					alt="form background"
-					className="w-full aspect-[3/1]   rounded-lg"
+					className="w-full h-full   rounded-lg"
 				/>
 				// </div>
 			)}
@@ -75,7 +75,7 @@ const FormAnswerHeader = (props: TProps) => {
 				<div
 					className={`${styleEffect.onCheckPositionAvatar(
 						formCore.form_avatar.position
-					)} absolute bottom-0 translate-y-[50%]  w-[20%] aspect-square`}
+					)} absolute bottom-0 translate-y-[50%] w-[35%] xl:w-[20%] aspect-square`}
 				>
 					<Image
 						src={

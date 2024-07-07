@@ -77,8 +77,6 @@ const InputCore = (props: TProps) => {
 
 	return (
 		<div
-			onMouseEnter={() => ($color = "#fff")}
-			onMouseLeave={() => ($color = "#000")}
 			className={`${
 				formCore.form_mode_display === "custom"
 					? "input-core shadow-md border-[.2rem] min-h-[40rem] p-[2rem] xl:p-[4rem]"
@@ -145,7 +143,7 @@ const InputCore = (props: TProps) => {
 					</div>
 					<div
 						style={{ backgroundColor: colorMain }}
-						className="absolute group-hover:!bg-[#ffffff] bottom-0 right-0 w-[8rem] xl:w-[26rem] h-[77%]  rounded-tl-[10rem]"
+						className="absolute group-hover:!bg-[#ffffff]  text-[#000] bottom-0 right-0 w-[8rem] xl:w-[26rem] h-[77%]  rounded-tl-[10rem]"
 					>
 						<div
 							className={`${

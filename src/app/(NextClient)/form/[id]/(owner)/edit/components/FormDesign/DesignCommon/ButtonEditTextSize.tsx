@@ -8,6 +8,7 @@ import { inputSettingText } from "@/app/_constant/input.constant";
 import { ArrowDown, ArrowUp, ChevronDown, ChevronUp } from "lucide-react";
 import { useDebouncedCallback } from "@mantine/hooks";
 import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 
 type TProps = {
 	typeEdit: TypeEdit;
@@ -16,6 +17,7 @@ type TProps = {
 
 const ButtonEditTextSize = (props: TProps) => {
 	const { isDesignForm, setIsDesginForm } = useContext(FormDesignContext);
+	const { theme } = useContext(ThemeContext);
 
 	const { typeEdit, inputItem } = props;
 
@@ -130,12 +132,12 @@ const ButtonEditTextSize = (props: TProps) => {
 				className="w-[3rem] h-[3rem] flex items-center justify-center rounded-full   border-[.1rem] border-slate-300"
 				onClick={() => debounced(titleCoreSize, "Decrease")}
 			>
-				<ChevronDown size={18} style={{ color: colorMain }} />
+				<ChevronDown size={18} style={{ color: theme == "light" ? colorMain : "var(--text-theme)" }} />
 			</button>
 
 			<div className="w-[6rem] flex items-center justify-center">
 				<input
-					style={{ color: colorMain }}
+					style={{ color: theme == "light" ? colorMain : "#000" }}
 					onClick={(e) => {
 						e.stopPropagation();
 						e.preventDefault();
@@ -152,7 +154,7 @@ const ButtonEditTextSize = (props: TProps) => {
 				className="w-[3rem] h-[3rem] flex items-center justify-center rounded-full   border-[.1rem] border-slate-300"
 				onClick={() => debounced(titleCoreSize, "Increase")}
 			>
-				<ChevronUp size={18} style={{ color: colorMain }} />
+				<ChevronUp size={18} style={{ color: theme == "light" ? colorMain : "var(--text-theme)" }} />
 			</button>
 
 			{openModelSize && (

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { SidebarContext } from "../SidebarContext";
 
 import { ChevronsLeft } from "lucide-react";
@@ -11,14 +11,17 @@ import Image from "next/image";
 import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
 
 const DashboardAccount = () => {
-	const { openSidebar, setOpenSidebar } = useContext(SidebarContext);
+	const [openModel, setOpenModel] = useState<boolean>(false);
 	const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
 
 	return (
-		<div className="group min-w-[17.2rem] h-[3rem] flex items-center justify-between ">
+		<div className="group min-w-[17.2rem] h-[3rem] flex items-center justify-between text-text-theme">
 			{user && (
 				<>
-					<div className="max-w-[90%] flex gap-[1rem] items-center ">
+					<div
+						className="max-w-[90%] flex gap-[1rem] items-center hover:cursor-pointer "
+						onClick={() => setOpenModel(true)}
+					>
 						{user?.user_avatar_current && (
 							<Image
 								src={user.user_avatar_current}
@@ -37,7 +40,7 @@ const DashboardAccount = () => {
 						<span className="font-semibold w-fullbreak-words line-clamp-2 " title={"Nickname"}>
 							{user?.user_first_name + " " + user?.user_last_name}
 						</span>
-						<DashBoardButtonModel />
+						<DashBoardButtonModel openModel={openModel} setOpenModel={setOpenModel} />
 					</div>
 				</>
 			)}

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const RegisterPage = () => {
 	return (
-		<div className="w-full p-[16px] ">
+		<div className="w-full  ">
 			<RegisterForm />
 		</div>
 	);

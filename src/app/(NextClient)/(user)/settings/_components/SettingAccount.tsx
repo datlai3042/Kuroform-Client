@@ -27,8 +27,6 @@ const SettingAccount = () => {
 
 	useEffect(() => {}, [user]);
 
-	console.log({ value: formUpdate.formState.defaultValues });
-
 	return (
 		<div className="flex flex-col ">
 			{user && (
@@ -64,7 +62,7 @@ const SettingAccount = () => {
 					<button
 						type="submit"
 						form="form_update"
-						className="w-[10%] p-[.8rem] h-[3.6rem] flex justify-center items-center gap-[.8rem] bg-blue-700 text-white rounded-lg"
+						className="min-w-[10%] w-max p-[.8rem] h-[3.6rem] flex justify-center items-center gap-[.8rem] bg-blue-700 text-white rounded-lg"
 					>
 						Cập nhập
 					</button>

@@ -14,7 +14,7 @@ const LayoutSidebar = ({ children }: { children: React.ReactNode }) => {
 
 	const styleEffect = {
 		onCheckSidebar: (check: boolean) => {
-			if (check) return "w-full sm:w-[65%] xl:w-[calc(100vw-24rem)]   xl:left-[22rem]  duration-[300ms]";
+			if (check) return "w-full  xl:w-[calc(100vw-30rem)]   xl:ml-[26rem] xl:right-[2rem]  duration-[300ms]";
 			return "w-full inset-0 duration-[600ms]";
 		},
 	};
@@ -25,12 +25,12 @@ const LayoutSidebar = ({ children }: { children: React.ReactNode }) => {
 		<div className={` relative max-w-screen min-h-screen h-max w-full   flex  `}>
 			{openSidebar && (
 				<aside
-					className={` fixed z-[2] w-[0%] sm:w-[35%] xl:w-[22rem] h-full overflow-hidden  hidden sm:block transition-[width]  duration-1000  bg-color-section-theme border-r-[.1rem] border-border-color`}
+					className={` fixed z-[2] w-[0%] xl:w-[24rem] h-full overflow-hidden  hidden sm:block transition-[width]  duration-1000  bg-color-section-theme`}
 				>
 					{openSidebar && <DashBoardLeft />}
 				</aside>
 			)}
-			<div className={`${styleEffect.onCheckSidebar(openSidebar)} absolute  min-h-full h-max transition-all   `}>
+			<div className={`${styleEffect.onCheckSidebar(openSidebar)}   min-h-full h-max transition-all   `}>
 				{children}
 			</div>
 		</div>

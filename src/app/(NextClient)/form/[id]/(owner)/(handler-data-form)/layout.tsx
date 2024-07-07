@@ -16,13 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 const HanderlDataFormLayout = ({ params, children }: { params: { id: string }; children: React.ReactNode }) => {
 	const dispatch = useDispatch();
 
-	const formAnswerStore = useSelector((state: RootState) => state.formAsnwer.formAnswerStore);
-
 	const formAnswer = useSelector((state: RootState) => state.formAsnwer.formAnswerStore[params.id]);
-
-	const formCache = useSelector((state: RootState) => state.dataFormHandler.form_cache[params.id]);
-
-	const dataExcel = useRef<{ [key: string]: string }[]>([]);
 
 	const [ready, setReady] = useState<boolean>(false);
 
@@ -36,16 +30,9 @@ const HanderlDataFormLayout = ({ params, children }: { params: { id: string }; c
 		if (!formAnswer && getFormAnswer.isSuccess && getFormAnswer.data.metadata.formAnswer) {
 			const { formAnswer } = getFormAnswer.data.metadata;
 			dispatch(addFormAnswer({ form_id: formAnswer.form_id, reports: formAnswer }));
-			let filterForm: {
-				[key: string]: {
-					_id: string;
-					title: string;
-					value: string | string[];
-					time: Date;
-					form_answer_id: string;
-				}[];
-			} = {};
+
 			const { reports } = getFormAnswer.data.metadata.formAnswer;
+			console.log({ reports });
 			const arrayReserver = [...reports];
 			console.log("dispatch api");
 
@@ -63,7 +50,7 @@ const HanderlDataFormLayout = ({ params, children }: { params: { id: string }; c
 		}
 	}, [formAnswer, getFormAnswer.data]);
 
-	return <>{ready ? children : <LoadingSpinner color="#000" />}</>;
+	return <>{ready ? children : <LoadingSpinner color="#0bceb2" />}</>;
 };
 
 export default HanderlDataFormLayout;

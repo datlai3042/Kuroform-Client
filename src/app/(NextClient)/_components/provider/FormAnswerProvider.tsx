@@ -8,6 +8,7 @@ export type FormAnswerControl = {
 	inputFormErrors: FormCore.FormAnswer.InputFormError[];
 	openModelError: boolean;
 	submitState: "pending" | "success" | "fail" | "clear";
+	form_answer_id: string;
 };
 
 type TFormAnswerContext = {
@@ -21,6 +22,8 @@ export const FormAnswerContext = createContext<TFormAnswerContext>({
 		inputFormErrors: [],
 		inputFormRequire: [],
 		openModelError: false,
+		form_answer_id: "",
+
 		submitState: "clear",
 	},
 
@@ -29,12 +32,13 @@ export const FormAnswerContext = createContext<TFormAnswerContext>({
 
 type TProps = {
 	formCore: FormCore.Form;
+	form_answer_id: string;
 	children: React.ReactNode;
 };
 
 const FormAnswerProvider = (props: TProps) => {
-	const { formCore, children } = props;
-
+	const { formCore, children, form_answer_id } = props;
+	console.log({ props });
 	const [formAnswer, setFormAnswer] = useState<FormAnswerControl>(() => {
 		return {
 			inputFormData: formCore.form_inputs.map((ip) => {
@@ -42,7 +46,7 @@ const FormAnswerProvider = (props: TProps) => {
 					return {
 						setting: ip.core.setting,
 						_id: ip._id!,
-						title: ip.input_title || "Không có tiêu đề",
+						title: ip.input_title || "",
 						mode: ip.core.setting.require
 							? "Require"
 							: ("Optional" as FormCore.FormAnswer.InputFormData["mode"]),
@@ -54,7 +58,7 @@ const FormAnswerProvider = (props: TProps) => {
 				return {
 					setting: ip.core.setting,
 					_id: ip._id!,
-					title: ip.input_title || "Không có tiêu đề",
+					title: ip.input_title || "",
 					mode: ip.core.setting.require
 						? "Require"
 						: ("Optional" as FormCore.FormAnswer.InputFormData["mode"]),
@@ -63,6 +67,7 @@ const FormAnswerProvider = (props: TProps) => {
 				};
 			}),
 			inputFormErrors: [],
+			form_answer_id,
 			inputFormRequire: formCore.form_inputs.reduce(
 				(newArray: FormCore.FormAnswer.InputFormRequire[], inputItem) => {
 					if (inputItem.core.setting.require)

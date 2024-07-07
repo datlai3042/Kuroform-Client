@@ -78,7 +78,7 @@ const SelectColor = (props: TProps) => {
 	return (
 		<DivNativeRef
 			ref={divColorRef}
-			className="custom-color-title absolute z-[2] top-[0rem] left-0"
+			className="custom-color-title  h-[10rem] "
 			onBlur={() => setOpenColorModel(false)}
 			onClick={(e) => e.stopPropagation()}
 		>

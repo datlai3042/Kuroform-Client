@@ -38,7 +38,7 @@ const ButtonAddBackgroundForm = (props: ButtonAddBackgroundFormProps) => {
 			{...buttonProps}
 			className={` ${
 				buttonProps.className ? buttonProps.className : ""
-			} min-w-[14rem] h-[4rem] w-max p-[1rem] flex items-center sm:justify-center gap-[.5rem] text-textHeader  rounded-xl text-[1.5rem] font-bold hover:bg-gray-200 hover:text-slate-700`}
+			} btn-design min-w-[14rem] h-[4rem] w-max flex items-center sm:justify-center gap-[.5rem]   rounded-xl text-[1.5rem] font-bold text-[#fff] `}
 			onClick={onAddBackgroud}
 		>
 			<PanelTop />

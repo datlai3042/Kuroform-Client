@@ -5,6 +5,7 @@ import ButtonCreateForm from "./ui/button/ButtonCreateForm";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import Logo from "./logo/Logo";
+import ButtonDarkMode from "./ui/button/ButtonDarkMode";
 
 const Header = () => {
 	const cookieStore = cookies();
@@ -16,7 +17,7 @@ const Header = () => {
 	const authentication = !!client_id && !!access_token && !!refresh_token;
 
 	return (
-		<header className="px-[10px] xl:px-[20px] flex justify-between items-center ">
+		<header className="px-[10px] xl:px-[20px] py-[1rem] flex flex-col xl:flex-row gap-[2rem] xl:gap-0 justify-between items-center ">
 			<Logo />
 			<div className="flex gap-[20px]">
 				{!authentication && (
@@ -28,6 +29,7 @@ const Header = () => {
 				{authentication && (
 					<ButtonNavigation urlNavigation="/logout" textContent="Đăng xuất" className="hidden xl:flex" />
 				)}{" "}
+				<ButtonDarkMode />
 				{/* <Link
 					href={"/login"}
 					// urlNavigation="create-form"

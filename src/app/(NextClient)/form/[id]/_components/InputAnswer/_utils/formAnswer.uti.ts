@@ -7,6 +7,7 @@ import { InputError } from "../_email/InputEmailAnswer";
 import { REQUIRE_ERROR } from "@/app/_constant/input.constant";
 import { superPhoneValidate } from "../_validate/inputPhone.validate";
 import { superVoteValidate } from "../_validate/inputVote.validate";
+import { superDateValidate } from "../_validate/inputDate.validate";
 
 //thêm lỗi của input vào global
 
@@ -162,6 +163,22 @@ export const checkErrorFinal = (
 
 		if (!ipError && ip.type === "VOTE") {
 			const { _next, message, type } = superVoteValidate(
+				ip.value as string,
+				ip.setting as InputCore.Setting.InputSettingTextCommon
+			);
+			if (_next) return;
+			const inputErrorInfo: FormCore.FormAnswer.InputFormError = {
+				_id: ip._id,
+				title: ip.title,
+				type: type as InputCore.Commom.ErrorText,
+				message,
+			};
+
+			newArrayErrorGlobal.push(inputErrorInfo);
+		}
+
+		if (!ipError && ip.type === "DATE") {
+			const { _next, message, type } = superDateValidate(
 				ip.value as string,
 				ip.setting as InputCore.Setting.InputSettingTextCommon
 			);

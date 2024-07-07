@@ -26,11 +26,12 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
 	// 	? "w-[79rem]"
 	// 	: "min-w-[35rem] sm:min-w-[45rem] xl:min-w-[60rem] xl:w-max";
 
-	const containerStyleWhenOpenSideBar = openSidebar && !openFormDesign ? "w-[calc(100vw-25rem)]" : "";
+	const containerStyleWhenOpenSideBar = openSidebar && !openFormDesign ? "w-full xl:w-[calc(100vw-28rem)]" : "";
 
 	const containerStyleWhenNormal = !openFormDesign && !openSidebar ? " w-full" : "";
 
-	const containerStyleWhenOver = openFormDesign && openSidebar ? " w-[calc(100vw-54rem)] " : "";
+	const containerStyleWhenOver =
+		openFormDesign && openSidebar ? "w-[calc(100vw-[24rem])] xl:w-[calc(100vw-55.7rem)] " : "";
 
 	return (
 		<div

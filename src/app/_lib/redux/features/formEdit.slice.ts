@@ -6,11 +6,17 @@ type InitialState = {
 	formCoreOriginal: FormCore.Form;
 	formCoreBackUp: FormCore.Form;
 	colorCore: string;
+	form_delete: number;
+	form_public: number;
+	form_private: number;
+	focus_search: boolean;
 };
 
 const formInitital: FormCore.Form = {
 	_id: "",
 	form_owner: "",
+	form_views: 0,
+	form_response: 0,
 	form_title: {
 		form_title_mode_image: "Normal",
 		form_title_value: "",
@@ -44,6 +50,10 @@ const initialState: InitialState = {
 	formCoreOriginal: formInitital,
 	formCoreBackUp: formInitital,
 	colorCore: "",
+	form_delete: 0,
+	form_public: 0,
+	form_private: 0,
+	focus_search: false,
 };
 
 const formEditSlice = createSlice({
@@ -64,8 +74,22 @@ const formEditSlice = createSlice({
 				data.payload.form.form_title.form_title_color ||
 				data.payload.form.form_setting_default.form_title_color_default;
 		},
+
+		onFetchFormState: (
+			state,
+			data: PayloadAction<{ form_delete: number; form_public: number; form_private: number }>
+		) => {
+			const { form_delete, form_private, form_public } = data.payload;
+			(state.form_delete = form_delete), (state.form_private = form_private);
+			state.form_public = form_public;
+		},
+
+		onFocusSearch: (state, data: PayloadAction<{ focus: boolean }>) => {
+			const { focus } = data.payload;
+			state.focus_search = focus;
+		},
 	},
 });
 
-export const { onFetchForm, onEditForm } = formEditSlice.actions;
+export const { onFetchForm, onEditForm, onFetchFormState, onFocusSearch } = formEditSlice.actions;
 export default formEditSlice.reducer;

@@ -18,7 +18,7 @@ const ButtonDesignTitle = (props: ButtonDesginProps) => {
 			{...buttonProps}
 			className={` ${
 				buttonProps.className || ""
-			}    rounded-xl text-[1.5rem] font-bold bg-blue-400 text-[#fff] hover:bg-color-main  w-max px-[1rem] h-[4rem]  flex items-center sm:justify-center gap-[.5rem]  outline-none`}
+			} btn-design  rounded-lg text-[1.5rem] font-bold text-[#fff] hover:bg-color-main  w-max  h-[4rem]  flex items-center sm:justify-center gap-[.5rem]  outline-none`}
 		>
 			<LayoutTemplate />
 			{textContent}

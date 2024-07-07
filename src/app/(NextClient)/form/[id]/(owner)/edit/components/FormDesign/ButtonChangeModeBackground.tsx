@@ -1,4 +1,5 @@
 import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import { FormCore } from "@/type";
@@ -10,11 +11,17 @@ const ButtonChangeModeBackground = () => {
 
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
 	const { isDesignForm, setIsDesginForm } = useContext(FormDesignContext);
+	const { theme } = useContext(ThemeContext);
 
 	const styleEffect = {
 		onCheckModeSelect: (check: boolean) => {
-			if (check) return "bg-slate-900 text-[#fff]";
-			return "bg-gray-100 text-[#000] hover:bg-gray-200";
+			if (check) {
+				if (theme === "light") return "bg-slate-900 text-white";
+				return "bg-[#fff] text-color-section-theme";
+			} else {
+				if (theme === "light") return "bg-white text-slate-700 border-[.1rem] border-slate-200";
+				return "bg-colorr-section-theme text-[#fff] border-[.1rem] border-[#fff]";
+			}
 		},
 	};
 
