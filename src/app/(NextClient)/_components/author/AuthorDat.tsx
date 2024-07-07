@@ -30,7 +30,7 @@ const AuthorDat = (props: TProps) => {
 				className={`${colorStyle} ${backgroundColorStyle} ${background} fixed z-[2] bottom-[4rem] right-[.3rem] flex items-center justify-center gap-[1rem] transition-[width] duration-1000 min-w-[6rem] w-max rounded-full p-[.4rem_1.6rem]`}
 			>
 				{openDetailAuthor && <span className={`${colorStyle}`}>Được thiết kế và phát triển bởi Đạt</span>}
-				<div className={`${colorStyle} ${backgroundColorStyle} w-[4rem] h-[4rem] relative`}>
+				<div className={`${colorStyle} ${backgroundColorStyle} w-[4rem] h-[4rem] relative rounded-full`}>
 					<Image
 						width={70}
 						height={70}
@@ -40,7 +40,7 @@ const AuthorDat = (props: TProps) => {
 					/>
 
 					<div
-						className={`${setAnimation} ${backgroundColor} absolute z-[1] bottom-[150%] right-[3rem] min-w-[9rem] p-[.6rem_.4rem] min-h-[8rem]  flex flex-col gap-[2rem] rounded-lg `}
+						className={`${setAnimation} bg-[#fff] absolute z-[1] bottom-[150%] right-[3rem] min-w-[9rem] p-[.6rem_.4rem] min-h-[8rem]  flex flex-col gap-[2rem] rounded-lg `}
 					>
 						<a
 							onClick={(e) => e.stopPropagation()}

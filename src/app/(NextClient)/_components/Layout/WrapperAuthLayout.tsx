@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Portal from "../Portal";
 import ButtonDarkMode from "../ui/button/ButtonDarkMode";
+import AuthorDat from "../author/AuthorDat";
 
 type TProps = {
 	children: React.ReactNode;
@@ -29,6 +30,7 @@ const WrapperAuthLayout = (props: TProps) => {
 				className="relative top-0 xl:top-0 left-0 w-full min-h-screen h-max  xl:pt-0 flex justify-center  items-center bg-[#ffffff] px-[20px]"
 			>
 				{children}
+				<AuthorDat />
 			</div>
 		</Portal>
 	);

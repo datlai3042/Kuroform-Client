@@ -24,7 +24,7 @@ export function middleware(request: NextRequest) {
 	const regexUrlFormEdit = /^\/form\/[a-zA-Z0-9]+\/edit$/;
 	const regexUrlFormShare = /^\/form\/[a-zA-Z0-9]+\/share$/;
 	const regexUrlFormSummary = /^\/form\/[a-zA-Z0-9]+\/summary$/;
-	const regexUrlFormSubmit = /^\/form\/[a-zA-Z0-9]+\/submit$/;
+	const regexUrlFormDownload = /^\/form\/[a-zA-Z0-9]+\/download$/;
 
 	if (regexUrlFormEdit.test(pathname) && !authentication) {
 		return NextResponse.redirect(new URL("/login", request.url));
@@ -34,7 +34,7 @@ export function middleware(request: NextRequest) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 
-	if (regexUrlFormSubmit.test(pathname) && !authentication) {
+	if (regexUrlFormDownload.test(pathname) && !authentication) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 
