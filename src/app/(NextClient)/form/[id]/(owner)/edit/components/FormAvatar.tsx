@@ -21,16 +21,9 @@ const FormAvatar = () => {
 		formCore,
 	});
 
-	const styleEffect = {
-		onCheckBackground: () => {
-			if (formCore.form_background?.form_background_iamge_url) return "h-[23rem] xl:min-h-[40rem] ";
-			return "min-h-[20rem]";
-		},
-	};
-
 	return (
 		<React.Fragment>
-			<div className={`${styleEffect.onCheckBackground()} w-full xl:max-w-[70rem] mx-auto relative`}>
+			<div className={`h-[23rem] xl:min-h-[40rem]  w-full xl:max-w-[70rem] mx-auto relative`}>
 				<Image
 					width={150}
 					height={150}

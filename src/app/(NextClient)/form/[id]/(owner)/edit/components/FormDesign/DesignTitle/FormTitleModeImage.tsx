@@ -47,7 +47,7 @@ const FormTitleModeImage = () => {
 				<span>{FormText.title.optionImageMode.label}</span>
 				{openModel && (
 					<ul
-						className="absolute bottom-[-1rem] w-full rounded-lg translate-y-[100%] left-0 z-[50] flex flex-col  bg-text-theme text-color-section-theme border-[.1rem] border-slate-300"
+						className="absolute bottom-[-1rem] w-full rounded-lg translate-y-[100%] left-0 z-[50] flex flex-col  bg-color-section-theme text-text-theme border-[.1rem] border-slate-300"
 						onClick={(e) => e.stopPropagation()}
 					>
 						<li
