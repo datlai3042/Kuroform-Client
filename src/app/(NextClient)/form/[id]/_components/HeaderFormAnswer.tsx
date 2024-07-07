@@ -21,12 +21,32 @@ const HeaderFormAnswer = (props: TProps) => {
 
 	let flag = false;
 
+	const styleTitle = {
+		fontSize: `${
+			formCore.form_title.form_title_size
+				? formCore.form_title.form_title_size / 10 + "rem"
+				: formCore.form_setting_default.form_title_size_default / 10 + "rem"
+		}`,
+		color: `${
+			formCore.form_title.form_title_color
+				? formCore.form_title.form_title_color
+				: formCore.form_setting_default.form_title_color_default
+		}`,
+		fontStyle: `${
+			formCore.form_title.form_title_style
+				? formCore.form_title.form_title_style
+				: formCore.form_setting_default.form_title_style_default
+		}`,
+	};
+
 	return (
 		<header
 			style={{ borderTopColor: colorMain }}
 			className="w-full min-h-[14rem] m h-max p-[1.8rem] flex flex-col gap-[.4rem]   break-words	 border-t-[1rem]  bg-[#ffffff] rounded-2xl"
 		>
-			<h1 className="text-[3.6rem] font-extrabold ">{formCore.form_title.form_title_value}</h1>
+			<h1 style={styleTitle} className="text-[3.6rem] font-extrabold ">
+				{formCore.form_title.form_title_value}
+			</h1>
 
 			{formCore.form_title.form_title_sub.map((ft) => {
 				if (ft.type === "Text" && ft?.core?.value)
@@ -60,7 +80,7 @@ const HeaderFormAnswer = (props: TProps) => {
 				if (ft.type === "FullDescription") {
 					return (
 						<div
-							className="w-[calc(100%+2.8rem)] ml-[-1.4rem] text-[1.4rem] my-[1rem] border-y-[.1rem] border-gray-200 flex flex-col gap-[1.6rem] p-[2rem_1rem]"
+							className="w-[calc(100%+2.8rem)] ml-[-1.4rem] text-[1.4rem] my-[1rem] border-t-[.1rem] border-gray-200 flex flex-col gap-[1.6rem] p-[2rem_1rem]"
 							key={ft._id}
 						>
 							<span className="font-bold">{ft.core.header_value}</span>

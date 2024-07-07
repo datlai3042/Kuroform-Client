@@ -20,9 +20,6 @@ const FormAnswerHeader = (props: TProps) => {
 
 	const formBackgroundSize = formCore.form_background?.mode_show;
 
-	const modeAvatar = formCore.form_avatar?.mode_shape || formCore.form_setting_default.form_avatar_default_mode;
-	const positionAvatar = formCore.form_avatar?.position || formCore.form_setting_default.form_avatar_default_postion;
-
 	const styleEffect = {
 		onCheckModeAvatar: (mode: FormCore.FormAvatarMode) => {
 			if (mode === "circle") return "rounded-full";

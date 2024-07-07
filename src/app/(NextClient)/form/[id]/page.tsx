@@ -77,11 +77,7 @@ const FormPage = async ({ params }: { params: { id: string } }) => {
 					<DivNative className="relative w-full ">
 						<FormAnswerHeader formCore={formCore} />
 					</DivNative>
-					<DivNative
-						className={`${
-							formCore.form_background?.form_background_iamge_url ? "mt-[8rem]" : ""
-						} w-full rounded-lg`}
-					>
+					<DivNative className={`${formCore.form_background_state ? "mt-[6rem]" : ""} w-full rounded-lg`}>
 						<DivNative className="flex flex-col gap-[3rem] pb-[20rem]">
 							<FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
 								<RenderInputAnswers formCore={formCore} />
