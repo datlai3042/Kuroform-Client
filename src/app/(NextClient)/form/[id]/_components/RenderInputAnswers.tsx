@@ -112,9 +112,11 @@ const RenderInputAnswers = (props: TProps) => {
 							</button>
 						)}
 
-						<p>
-							Số trang:{page} / {totalPage}
-						</p>
+						{formCore.form_inputs.length > 0 && (
+							<p>
+								Số trang:{page} / {totalPage}
+							</p>
+						)}
 						{page < totalPage && page !== 1 && (
 							<button
 								tabIndex={0}

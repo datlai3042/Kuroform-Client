@@ -24,7 +24,7 @@ const HeaderFormAnswer = (props: TProps) => {
 	return (
 		<header
 			style={{ borderTopColor: colorMain }}
-			className="w-full min-h-[14rem] h-max p-[1.4rem] flex flex-col gap-[.4rem]   break-words	 border-t-[1rem]  bg-[#ffffff] rounded-2xl"
+			className="w-full min-h-[14rem] m h-max p-[1.8rem] flex flex-col gap-[.4rem]   break-words	 border-t-[1rem]  bg-[#ffffff] rounded-2xl"
 		>
 			<h1 className="text-[3.6rem] font-extrabold ">{formCore.form_title.form_title_value}</h1>
 

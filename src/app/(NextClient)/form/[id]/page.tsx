@@ -79,7 +79,7 @@ const FormPage = async ({ params }: { params: { id: string } }) => {
 					</DivNative>
 					<DivNative
 						className={`${
-							formCore.form_background?.form_background_iamge_url ? "mt-[6rem]" : ""
+							formCore.form_background?.form_background_iamge_url ? "mt-[8rem]" : ""
 						} w-full rounded-lg`}
 					>
 						<DivNative className="flex flex-col gap-[3rem] pb-[20rem]">

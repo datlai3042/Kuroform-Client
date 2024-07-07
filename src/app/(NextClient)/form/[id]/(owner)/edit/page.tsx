@@ -21,7 +21,8 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
 	const colorMain = useSelector((state: RootState) => state.form.colorCore);
 
-	const containerStyleWhenOpenFormDesign = openFormDesign && !openSidebar ? "mr-[28rem]  " : "";
+	const containerStyleWhenOpenFormDesign =
+		openFormDesign && !openSidebar && modeScreen === "NORMAL" ? "mr-[28rem]  " : "";
 	// const wrapperStyleWhenOpenSideBar = openFormDesign && !openSidebar
 	// 	? "w-[79rem]"
 	// 	: "min-w-[35rem] sm:min-w-[45rem] xl:min-w-[60rem] xl:w-max";

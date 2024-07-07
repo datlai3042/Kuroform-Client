@@ -55,7 +55,7 @@ const SliderImage = (props: TProps) => {
 		}
 	}, [indexImage]);
 
-	const widthPage = page === "Edit" ? "w-[35rem] sm:w-[50rem] xl:w-[70rem] w-full" : "w-[62rem]";
+	const widthPage = page === "Edit" ? "w-[35rem] sm:w-[50rem] xl:w-[70rem] w-full" : "w-full xl:w-[62rem]";
 
 	return (
 		<div
