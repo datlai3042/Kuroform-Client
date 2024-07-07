@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 	const { form } = res.metadata;
 
 	const iconForm = form?.form_avatar?.form_avatar_url || form?.form_setting_default.form_avatar_default_url;
-	const title = form.form_title.form_title_value || "Form không có tiêu đề";
+	const title = form?.form_title.form_title_value || "Form không có tiêu đề";
 
 	return {
 		title: title || "Không tìm thấy thông tin",
