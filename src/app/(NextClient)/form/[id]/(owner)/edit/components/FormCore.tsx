@@ -163,7 +163,11 @@ const FormCore = () => {
 					{showComponentImage && <FormImage />}
 					<div
 						className={`${
-							formCore.form_avatar?.form_avatar_url ? (openFormDesign ? "mt-[10rem]" : "mt-[8rem]") : ""
+							formCore.form_avatar?.form_avatar_url || formCore.form_avatar_state
+								? openFormDesign
+									? "mt-[10rem]"
+									: "mt-[8rem]"
+								: ""
 						} min-h-screen h-max bg-color-section-theme `}
 					>
 						<DivNative
