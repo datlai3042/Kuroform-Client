@@ -55,6 +55,7 @@ export const generateInfoRequest = (url: string, options: CustomRequest) => {
 			  };
 
 	let baseUrl;
+	console.log({ mode: process.env.NEXT_PUBLIC_MODE });
 	if (options?.baseUrl === undefined) {
 		if (process.env.NEXT_PUBLIC_MODE === "DEV") {
 			baseUrl = "http://localhost:4000";
