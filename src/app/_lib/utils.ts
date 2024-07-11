@@ -49,9 +49,7 @@ export const generateInfoRequest = (url: string, options: CustomRequest) => {
 		: undefined;
 	const baseHeader =
 		options?.body instanceof FormData
-			? {
-					"Content-Type": "multipart/form-data",
-			  }
+			? {}
 			: {
 					"Content-Type": "application/json",
 			  };
