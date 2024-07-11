@@ -57,12 +57,13 @@ const NotificationFormAnswers = (props: TProps) => {
 			)}
 			<div className="w-[80%]  flex flex-col gap-[1rem] text-[1.4rem] leading-10">
 				<div className="h-max text-left break-words flex flex-col gap-[.2rem] max-w-full">
-					<span className="font-bold text-[1.4rem]">Thông báo biểu mẫu: </span>
+					<span className="font-semibold text-[1.4rem]">Thông báo biểu mẫu: </span>
 					{titleForm ? (
 						<p className="text-[1.2rem] ">
-							<span> Form [{titleForm}] của </span>
+							<span>Form</span>
+							<span className="font-semibold"> [{titleForm}] </span>
 
-							<span className="h-max ">{notification_item.core.message}</span>
+							<span className="h-max ">của {notification_item.core.message}</span>
 						</p>
 					) : (
 						<div className="w-[3rem] h-[2rem]">

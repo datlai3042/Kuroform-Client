@@ -29,7 +29,7 @@ const AnswerDetailModel = (props: TProps) => {
 		<Portal>
 			<div className="fixed z-[200] inset-0 max-w-full overflow-hidden  flex items-center justify-center bg-[rgba(0,0,0,.6)] hover:cursor-pointer">
 				<ClickOutSide setOpenModel={setOpenModel}>
-					<div className="relative w-[28rem] xl:w-[50rem] min-h-[20rem] h-max mx-auto px-[2rem] py-[3rem] bg-color-section-theme text-text-theme rounded-lg">
+					<div className="relative w-[36rem] xl:w-[50rem] min-h-[20rem] h-max mx-auto px-[2rem] py-[3rem] bg-color-section-theme text-text-theme rounded-lg">
 						<h3 style={{ color }} className="mb-[2rem] text-center font-medium text-[2.4rem]">
 							{formCore.form_title.form_title_value}
 						</h3>

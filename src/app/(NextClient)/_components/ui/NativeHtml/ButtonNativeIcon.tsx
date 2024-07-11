@@ -11,7 +11,7 @@ const ButtonNativeIcon = (props: ButtonNativeIconProps) => {
 	const { textContent, icon, ...buttonProps } = props;
 	return (
 		<button {...buttonProps} className={` ${buttonProps.className}`}>
-			{icon}
+			<span className="hidden xl:inline">{icon}</span>
 			{textContent}
 		</button>
 	);

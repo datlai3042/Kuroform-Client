@@ -70,16 +70,19 @@ const FormPage = async ({ params }: { params: { id: string } }) => {
 	};
 
 	return (
-		<div className="px-[2rem] xl:px-0 w-full  min-h-screen h-max flex justify-center  p-[2rem] bg-formCoreBgColor ">
+		<div
+			style={{ backgroundColor: "#f2f2f2" }}
+			className="px-[2rem] xl:px-0 w-full  min-h-screen h-max flex justify-center  p-[2rem] bg-formCoreBgColor "
+		>
 			{formCore.form_inputs.length === 0 && !formCore.form_title.form_title_value && <FormAnswerEmpty />}
 			{(formCore.form_inputs.length > 0 || formCore.form_title.form_title_value) && (
-				<DivNative className="w-full sm:w-[64rem] flex flex-col gap-[1.5rem] ">
+				<DivNative className="w-full sm:w-[72rem] flex flex-col gap-[1.5rem] ">
 					<DivNative className="relative w-full ">
 						<FormAnswerHeader formCore={formCore} />
 					</DivNative>
 					<DivNative
 						className={`${
-							formCore.form_background?.form_background_iamge_url ? "mt-[6rem]" : "mt-[2rem]"
+							formCore.form_avatar?.form_avatar_url ? "mt-[7rem]" : "mt-[2rem]"
 						} w-full rounded-lg`}
 					>
 						<DivNative className="flex flex-col gap-[3rem] pb-[20rem]">

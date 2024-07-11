@@ -142,9 +142,7 @@ const FormCore = () => {
 		formCore.form_background_state ||
 		formCore.form_avatar_state;
 
-	const gapWhenAppearImage = !(formCore.form_avatar || formCore.form_avatar_state)
-		? "pt-0"
-		: "pt-[5rem] sm:pt-[8rem]";
+	const gapWhenAppearImage = !(formCore.form_avatar || formCore.form_avatar_state) ? "pt-0" : "";
 
 	const heightWhenAppearImage = !(formCore.form_avatar_state && formCore.form_background_state)
 		? " sm:min-h-[7rem]"
@@ -160,63 +158,70 @@ const FormCore = () => {
 		<>
 			{modeScreen === "NORMAL" && (
 				<DivNative
-					className={` w-full  pb-[50rem] sm:pb-[30rem] xl:px-[2rem] sm:px-0  h-max  xl:ml-0 flex flex-col gap-[3rem] bg-color-section-theme text-text-theme`}
+					className={` w-full   pb-[4rem] sm:px-0    xl:ml-0 flex flex-col gap-[3rem] bg-color-section-theme text-text-theme min-h-screen h-max`}
 				>
 					{showComponentImage && <FormImage />}
-
-					<DivNative
-						className={` px-[4rem]  w-full xl:max-w-[70rem] mx-auto  h-max xl:pl-0  flex flex-col  xl:pb-[4rem] gap-[4rem] xl:gap-[2rem] `}
+					<div
+						className={`${
+							formCore.form_avatar?.form_avatar_url ? (openFormDesign ? "mt-[10rem]" : "mt-[8rem]") : ""
+						} min-h-screen h-max bg-color-section-theme `}
 					>
-						<DivNative className={`${gapWhenAppearImage}`}>
-							<DivNative
-								className={`${heightWhenAppearImage} group max-h-[18rem] sm:max-h-[8rem] xl:min-h-max `}
-							>
-								<DivNative className="mt-[2rem] w-full xl:min-w-[80rem] xl:w-max h-full   flex flex-wrap flex-col sm:flex-row sm:items-center  gap-[2rem]">
-									<ButtonDesgin className={`${openFormDesign ? "" : "ml-0"}`} />
+						<DivNative
+							className={`flex-1 px-[6rem] xl:px-[4rem] min-h-full h-max  w-full xl:max-w-[70rem] mx-auto   xl:pl-0  flex flex-col  xl:pb-[4rem] gap-[4rem] xl:gap-[2rem]  `}
+						>
+							<DivNative className={`${gapWhenAppearImage}`}>
+								<DivNative
+									className={`${heightWhenAppearImage} group max-h-[18rem] sm:max-h-[8rem] xl:min-h-max `}
+								>
+									<DivNative className="mt-[2rem] w-full xl:min-w-[80rem] xl:w-max h-full   flex flex-wrap flex-col sm:flex-row sm:items-center  gap-[2rem]">
+										<ButtonDesgin className={`${openFormDesign ? "" : "ml-0"}`} />
 
-									<DivNative className="flex flex-col sm:flex-row w-max  h-max sm:h-[4rem]   gap-[2rem]">
-										{!formCore.form_avatar_state && !formCore.form_avatar && (
-											<ButtonAddAvatarForm />
-										)}
-										{!formCore.form_background_state && !formCore.form_background && (
-											<ButtonAddBackgroundForm />
-										)}
+										<DivNative className="flex flex-col sm:flex-row w-max  h-max sm:h-[4rem]   gap-[2rem]">
+											{!formCore.form_avatar_state && !formCore.form_avatar && (
+												<ButtonAddAvatarForm />
+											)}
+											{!formCore.form_background_state && !formCore.form_background && (
+												<ButtonAddBackgroundForm />
+											)}
+										</DivNative>
 									</DivNative>
 								</DivNative>
 							</DivNative>
-						</DivNative>
 
-						<DivNative className={`${openFormDesign ? "" : "ml-0"} flex flex-col gap-[4rem]`}>
-							<InputCoreTitle />
-							{formCore.form_inputs.length > 0 && (
-								<DivNative className="mt-[6rem] h-max w-full flex flex-col gap-[8rem] ">
-									<DndContext
-										sensors={sensors}
-										collisionDetection={closestCorners}
-										onDragEnd={onDrapEnd}
-									>
-										<SortableContext
-											items={
-												formCore.form_inputs.map(
-													(ip) => ip._id
-												) as unknown as UniqueIdentifier[]
-											}
-											strategy={verticalListSortingStrategy}
+							<DivNative
+								className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[4rem] min-h-full`}
+							>
+								<InputCoreTitle />
+								{formCore.form_inputs.length > 0 && (
+									<DivNative className="mt-[6rem] h-max w-full flex flex-col gap-[8rem] ">
+										<DndContext
+											sensors={sensors}
+											collisionDetection={closestCorners}
+											onDragEnd={onDrapEnd}
 										>
-											{RenderArrayInput}
-										</SortableContext>
-									</DndContext>
-								</DivNative>
-							)}
-							<ButtonAddInput />
-							<ButtonNative
-								style={{ backgroundColor: theme === "light" ? colorMain : "var(--color-main)" }}
-								textContent="Gửi"
-								className="mt-[1rem] w-[25%] h-[5rem]  text-white rounded-lg  text-[1.6rem]"
-								onClick={onGetDataDemo}
-							/>
+											<SortableContext
+												items={
+													formCore.form_inputs.map(
+														(ip) => ip._id
+													) as unknown as UniqueIdentifier[]
+												}
+												strategy={verticalListSortingStrategy}
+											>
+												{RenderArrayInput}
+											</SortableContext>
+										</DndContext>
+									</DivNative>
+								)}
+								<ButtonAddInput />
+								<ButtonNative
+									style={{ backgroundColor: theme === "light" ? colorMain : "var(--color-main)" }}
+									textContent="Gửi"
+									className="mt-[1rem] w-[15%] xl:w-[25%] h-[5rem]  text-white rounded-lg  text-[1.6rem]"
+									onClick={onGetDataDemo}
+								/>
+							</DivNative>
 						</DivNative>
-					</DivNative>
+					</div>
 				</DivNative>
 			)}
 

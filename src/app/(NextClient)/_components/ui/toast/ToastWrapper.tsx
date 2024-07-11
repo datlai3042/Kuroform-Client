@@ -55,7 +55,7 @@ const ToastWrapper = (props: TProps) => {
 			style={{ top: indexItem === 0 ? indexItem : indexItem * 160 }}
 			className={`${
 				addAnimation ? "animate-hiddenToast absolute" : ""
-			} transition-all duration-500 absolute  w-full min-h-[8rem] h-max `}
+			} shadow-2xl transition-all duration-500 absolute  w-full min-h-[8rem] h-max rounded-lg `}
 		>
 			{children}
 		</div>

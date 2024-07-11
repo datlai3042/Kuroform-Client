@@ -188,8 +188,8 @@ const ModelInputType = (props: TProps) => {
 					className="w-[80rem] min-h-[40rem] h-max xl:w-[80rem] xl:h-[68rem]  flex flex-col bg-color-section-theme text-text-theme rounded-lg border-[.1rem] border-text-theme "
 					ref={modelRef}
 				>
-					<DivNative className="flex-1 w-full h-full flex  ">
-						<DivNative className=" w-[35%] xl:w-[30%] h-full p-[2rem_1.4rem] flex flex-col gap-[1rem]">
+					<DivNative className="flex-1 w-full min-h-full flex  ">
+						<DivNative className=" w-[40%] xl:w-[30%] h-full p-[1rem_.6rem] xl:p-[2rem_1.4rem] flex flex-col gap-[1rem] border-r-[.2rem] border-gray-100 ">
 							<ParagraphNative
 								className="text-textGray text-[1.2rem] font-bold opacity-80"
 								textContent="Input"
@@ -198,7 +198,7 @@ const ModelInputType = (props: TProps) => {
 								{buttons.map((btn) => (
 									<ButtonNativeIcon
 										key={btn.content + btn.type}
-										className="w-full p-[.4rem_.6rem] flex items-center justify-start gap-[2rem] text-[1.6rem] hover:bg-text-theme hover:text-color-section-theme transition-colors duration-300"
+										className="w-full p-[.4rem_.6rem]  flex items-center justify-start gap-[2rem] text-[1.6rem] hover:bg-text-theme hover:text-color-section-theme transition-colors duration-300"
 										onClick={() => setInputIntroduce(btn.type)}
 										textContent={btn.content}
 										icon={btn.Icon}
@@ -206,9 +206,7 @@ const ModelInputType = (props: TProps) => {
 								))}
 							</DivNative>
 						</DivNative>
-						<DivNative className="flex w-[65%] xl:w-[70%] h-full border-l-[.2rem] border-gray-100 ">
-							{renderInputIntroduce}
-						</DivNative>
+						<DivNative className="flex w-[65%] xl:w-[70%] h-full ">{renderInputIntroduce}</DivNative>
 					</DivNative>
 				</DivNativeRef>
 			</DivNative>

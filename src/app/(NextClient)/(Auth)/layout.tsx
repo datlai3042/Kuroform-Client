@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "../_components/logo/Logo";
 import ButtonDarkMode from "../_components/ui/button/ButtonDarkMode";
+import AuthorDat from "../_components/author/AuthorDat";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
 	const [loader, setLoader] = useState<boolean>(false);
@@ -23,6 +24,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
 					<ButtonDarkMode />
 				</header>
 				<div className="pt-[12rem] xl:pt-[6rem] w-full text-text-theme">{children}</div>
+				<AuthorDat />
 			</div>
 		</Portal>
 	);

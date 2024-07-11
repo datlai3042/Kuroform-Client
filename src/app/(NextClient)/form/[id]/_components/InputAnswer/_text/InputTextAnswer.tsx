@@ -41,7 +41,7 @@ const InputTextAnswer = (props: TProps) => {
 	});
 	const [write, setWrite] = useState<boolean>(false);
 	const [value, setValue] = useState<string>(
-		() => inputFormData.filter((data) => data._id === inputItem._id)[0].value as string
+		() => inputFormData.filter((data) => data._id === inputItem._id)[0]?.value as string
 	);
 
 	//Xem input này có bắt buộc nhập không

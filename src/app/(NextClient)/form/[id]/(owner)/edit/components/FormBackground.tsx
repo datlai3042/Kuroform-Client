@@ -31,32 +31,38 @@ const FormBackground = () => {
 		return setModeScreen("FULL");
 	};
 
-	const myBackgroundStyle = generateStyleBackgroundImageForm({ formCore });
+	const myBackgroundStyle = generateStyleBackgroundImageForm({ formCore, mode: "edit" });
 
 	const paddingX = formCore.form_background?.padding.x;
 	const paddingY = formCore.form_background?.padding.y;
 
-	const padding = `${paddingY}px ${paddingX}px`;
+	const padding = `${paddingY}% ${paddingX}%`;
+
+	console.log({ myBackgroundStyle });
 
 	return (
 		<React.Fragment>
 			<DivNativeRef
 				onClick={() => setOpenModel(true)}
-				style={{ backgroundColor: formBackgroundColor, padding }}
-				className="absolute inset-0 z-[2]  hover:cursor-pointer "
+				className="absolute inset-0 z-[2]  hover:cursor-pointer max-h-[40rem] overflow-hidden"
 			>
-				<Image
-					src={
-						formCore.form_background?.form_background_iamge_url ||
-						formCore.form_setting_default.form_background_default_url
-					}
-					width={800}
-					height={160}
-					quality={100}
-					style={myBackgroundStyle.style_background}
-					alt="form background"
-					className="w-full h-full   rounded-lg"
-				/>
+				<div
+					style={{ backgroundColor: formBackgroundColor, padding }}
+					className="relative inset-0 min-h-full  w-full overflow-hidden "
+				>
+					<Image
+						src={
+							formCore.form_background?.form_background_iamge_url ||
+							formCore.form_setting_default.form_background_default_url
+						}
+						width={800}
+						height={160}
+						quality={100}
+						style={myBackgroundStyle.style_background}
+						alt="form background"
+						className="absolute w-full h-full max-h-[40rem]   rounded-lg"
+					/>
+				</div>
 			</DivNativeRef>
 			{modeScreen === "NORMAL" && (
 				<React.Fragment>

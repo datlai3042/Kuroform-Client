@@ -33,7 +33,7 @@ const Notification = () => {
 	return (
 		<button
 			className={`${
-				openModelNotification ? "bg-color-main text-[#fff]" : ""
+				openModelNotification ? "bg-color-main !text-[#fff]" : ""
 			} relative flex items-center p-[.4rem] rounded-xl text-text-theme `}
 			onClick={() => {
 				setOpenNotification((prev) => !prev);

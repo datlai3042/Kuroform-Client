@@ -14,7 +14,7 @@ const authenticationSlice = createSlice({
 	initialState,
 	reducers: {
 		onFetchUser: (state, payload: PayloadAction<{ user: UserType }>) => {
-			state.user = payload.payload.user;
+			state.user = { ...payload.payload.user };
 		},
 
 		onLogout: (state) => {

@@ -11,6 +11,15 @@ class UserService {
 	static async uploadAvatar(file: User.uploadFile) {
 		return Http.post<ResponseApi<{ user: UserType }>>("/v1/api/account/upload-avatar", file);
 	}
+
+	static async createPassword({ password }: { password: string }) {
+		return Http.post<ResponseApi<{ user: UserType }>>("/v1/api/account/create-password", { password });
+	}
+
+	static async updatePassword({ password, new_password }: { password: string; new_password: string }) {
+		const payload = { password, new_password };
+		return Http.post<ResponseApi<{ user: UserType }>>("/v1/api/account/update-password", payload);
+	}
 }
 
 export default UserService;

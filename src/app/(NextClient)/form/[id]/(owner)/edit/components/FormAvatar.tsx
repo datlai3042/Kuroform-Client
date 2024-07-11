@@ -5,11 +5,13 @@ import { RootState } from "@/app/_lib/redux/store";
 import { generateStyleAvatarForm } from "@/app/utils/form.utils";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useSelector } from "react-redux";
+import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
 
 const FormAvatar = () => {
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
+	const { openFormDesign } = useContext(FormDesignContext);
 
 	const [openModel, setOpenModel] = useState<boolean>(false);
 
@@ -23,7 +25,11 @@ const FormAvatar = () => {
 
 	return (
 		<React.Fragment>
-			<div className={`h-[23rem] xl:min-h-[40rem]  w-full xl:max-w-[70rem] mx-auto relative`}>
+			<div
+				className={`${
+					openFormDesign ? "xl:min-h-[31rem] xl:max-h-[31rem]" : "xl:min-h-[40rem] max-h-[40rem]"
+				} h-[23rem] xl:min-h-[40rem]  w-full xl:max-w-[70rem] mx-auto relative`}
+			>
 				<Image
 					width={150}
 					height={150}
@@ -31,7 +37,7 @@ const FormAvatar = () => {
 					quality={100}
 					onClick={onControllModel}
 					alt="avatar"
-					className={`${position} ${shape} absolute bottom-0 z-[3] object-center translate-y-[50%] w-[14rem] h-[14rem] xl:w-[20rem] xl:h-[20rem] hover:cursor-pointer `}
+					className={`${position} ${shape} absolute bottom-0 z-[3] object-center translate-y-[50%] w-[14rem] h-[14rem] xl:w-[16rem] xl:h-[16rem] hover:cursor-pointer `}
 				/>
 				{openModel && <ModelFormImage setOpenModel={setOpenModel} MODE="AVATAR" />}
 			</div>

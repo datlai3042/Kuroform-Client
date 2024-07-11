@@ -242,9 +242,20 @@ namespace FormCore {
 
 	export type FormBackground = {
 		form_background_iamge_url?: string;
-		form_background_position?: { x?: number; y?: number };
 		backgroundColor?: string;
 		mode_show: "cover" | "contain";
+		position: {
+			top: number;
+			left: number;
+		};
+		object: {
+			x: number;
+			y: number;
+		};
+		size: {
+			width: number;
+			height: number;
+		};
 		padding: {
 			x: number;
 			y: number;
@@ -262,10 +273,6 @@ namespace FormCore {
 		form_title_color_default: string;
 		form_title_size_default: number;
 		form_title_style_default: FormTextStyle;
-		form_background_position_default: {
-			x: number;
-			y: number;
-		};
 	};
 
 	export type FormState = "isPrivate" | "isPublic" | "isDelete";

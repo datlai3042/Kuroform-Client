@@ -30,7 +30,6 @@ const WrapperAuthLayout = (props: TProps) => {
 				className="relative top-0 xl:top-0 left-0 w-full min-h-screen h-max  xl:pt-0 flex justify-center  items-center bg-[#ffffff] px-[20px]"
 			>
 				{children}
-				<AuthorDat />
 			</div>
 		</Portal>
 	);

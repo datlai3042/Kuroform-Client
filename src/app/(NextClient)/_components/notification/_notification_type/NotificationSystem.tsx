@@ -1,4 +1,5 @@
 import { Notification } from "@/type";
+import { Settings2 } from "lucide-react";
 import moment from "moment";
 import Image from "next/image";
 import React from "react";
@@ -11,17 +12,11 @@ const NotificationSystem = (props: TProps) => {
 	const { notification_item } = props;
 
 	return (
-		<div className=" my-[2rem] h-max px-[1.4rem] flex  gap-[1rem] ">
-			<Image
-				src={"/assets/images/icon/system.png"}
-				width={50}
-				height={50}
-				alt="avatar form"
-				className="min-w-[6rem] h-[6rem] rounded-full"
-			/>
+		<div className=" my-[2rem] h-max px-[1.4rem] flex  gap-[1rem]   pb-[2rem] border-b-[.1rem] border-slate-200 text-text-theme">
+			<Settings2 size={28} />
 
 			<div className="w-[80%]  flex flex-col gap-[1rem] text-[1.4rem] leading-10">
-				<p className="text-left">Thông báo hệ thống</p>
+				<p className="font-semibold text-left">Thông báo hệ thống</p>
 				<p className="h-max text-left break-words max-w-full">
 					<span className="font-bold">Tin nhắn: </span>
 

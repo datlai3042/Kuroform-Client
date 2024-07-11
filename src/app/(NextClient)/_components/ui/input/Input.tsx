@@ -33,7 +33,7 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
 				value={watch(FieldKey)}
 				id={`${FieldKey}-${id}`}
 				{...register(FieldKey)}
-				className="inline-block w-full min-h-[4rem] p-[.6rem_1.2rem] border-[.2rem] border-slate-300 bg-[#ffffff] opacity-100 rounded-[.6rem] text-[#000] placeholder:text-[#000] outline outline-[4px] outline-transparent focus:outline-blue-200 focus:border-transparent placeholder:opacity-50"
+				className="inline-block w-full min-h-[4rem] p-[.6rem_1.2rem] border-[.2rem] border-slate-300 bg-[#ffffff] opacity-100 rounded-[.6rem] text-[#000] placeholder:text-[#000] outline outline-[4px] outline-transparent focus:outline-blue-200 focus:border-transparent placeholder:opacity-70"
 				placeholder={`Nhập ${placeholder} của bạn`}
 			/>
 			<div className="min-h-[1rem] text-[1.2rem] text-red-400">

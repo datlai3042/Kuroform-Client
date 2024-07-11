@@ -8,7 +8,7 @@ import { theme } from "antd";
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const ButtonBackgroundPostition = () => {
+const ButtonBackgroundObject = () => {
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
 	const colorMain = useSelector((state: RootState) => state.form.colorCore);
 	const dispatch = useDispatch();
@@ -16,10 +16,7 @@ const ButtonBackgroundPostition = () => {
 	const { isDesignForm, setIsDesginForm } = useContext(FormDesignContext);
 	const { theme } = useContext(ThemeContext);
 
-	const debounced = useDebouncedCallback(
-		(position: number, type: "left" | "top") => onChangePosition(position, type),
-		0
-	);
+	const debounced = useDebouncedCallback((position: number, type: "x" | "y") => onChangePosition(position, type), 0);
 
 	const formBackground = !!formCore.form_background?.form_background_iamge_url || false;
 
@@ -30,15 +27,16 @@ const ButtonBackgroundPostition = () => {
 		},
 	};
 
-	const directionX = formCore.form_background?.position?.left;
-	const directionY = formCore.form_background?.position?.top;
-	const onChangePosition = (position: number, type: "left" | "top") => {
+	const objectX = formCore.form_background?.object.x;
+	const objectY = formCore.form_background?.object.y;
+
+	const onChangePosition = (object: number, type: "x" | "y") => {
 		const formClone = structuredClone(formCore);
 		const newForm: FormCore.Form = {
 			...formClone,
 			form_background: {
 				...formClone.form_background,
-				position: { ...formClone.form_background?.position, [type]: position },
+				object: { ...formClone.form_background?.object, [type]: object },
 			} as FormCore.Form["form_background"],
 		};
 
@@ -50,42 +48,43 @@ const ButtonBackgroundPostition = () => {
 	};
 
 	return (
-		<div className=" flex justify-between">
-			<div className="flex w-[50%] flex-col gap-[.5rem] ">
-				<span className="">Translate X</span>
+		<div className=" flex flex-col gap-[2rem]">
+			<div className="flex flex-col  gap-[.6rem] ">
+				<span className="text-[1.3rem]">Di chuyển bên trong ảnh theo trục X</span>
 				<div
 					className={`${styleEffect.onCheckHasBackground(
 						formBackground
-					)} w-[90%] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
+					)} w-[7rem] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
 border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 				>
 					<input
 						style={{ color: theme === "light" ? colorMain : "#000" }}
 						disabled={!formBackground}
-						value={directionX}
+						value={objectX}
 						type="number"
 						className={` w-[80%] disabled:cursor-not-allowed  `}
-						onChange={(e) => debounced(+e.target.value, "left")}
+						onChange={(e) => debounced(+e.target.value, "x")}
 					/>
 
 					<span className="opacity-75 text-[#000]">%</span>
 				</div>
 			</div>
-			<div className="flex w-[50%] flex-col gap-[.5rem] ">
-				<span className="">Translate Y</span>
+			<div className="flex flex-col  gap-[.6rem] ">
+				<span className="text-[1.3rem]">Di chuyển bên trong ảnh theo trục Y</span>
+
 				<div
 					className={`${styleEffect.onCheckHasBackground(
 						formBackground
-					)} w-[90%] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
+					)} w-[7rem] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
 border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 				>
 					<input
 						style={{ color: theme === "light" ? colorMain : "#000" }}
 						disabled={!formBackground}
-						value={directionY}
+						value={objectY}
 						type="number"
 						className={` w-[80%] disabled:cursor-not-allowed  `}
-						onChange={(e) => debounced(+e.target.value, "top")}
+						onChange={(e) => debounced(+e.target.value, "y")}
 					/>
 					<span className="opacity-75 text-[#000]">%</span>
 				</div>
@@ -94,4 +93,4 @@ border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 	);
 };
 
-export default ButtonBackgroundPostition;
+export default ButtonBackgroundObject;

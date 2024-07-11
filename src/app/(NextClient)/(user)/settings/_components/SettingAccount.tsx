@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import { UserType } from "@/app/_schema/user/user.type";
 import Input from "@/app/(NextClient)/_components/ui/input/Input";
+import SettingUpdateAvatar from "./SettingUpdateAvatar";
 
 const userUpdateSchema = registerSchema.pick({ first_name: true, last_name: true, email: true });
 type UserUpdateInfo = z.infer<typeof userUpdateSchema>;
@@ -25,10 +26,10 @@ const SettingAccount = () => {
 
 	const onSubmit = (dataForm: UserUpdateInfo) => {};
 
-	useEffect(() => {}, [user]);
-
 	return (
 		<div className="flex flex-col ">
+			<SettingUpdateAvatar />
+
 			{user && (
 				<>
 					<form onSubmit={formUpdate.handleSubmit(onSubmit)} id="form_update">

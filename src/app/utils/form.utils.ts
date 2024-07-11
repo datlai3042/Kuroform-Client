@@ -8,24 +8,34 @@ type FormResultBaseOnDate = {
 	match: boolean;
 };
 
-export const generateStyleBackgroundImageForm = ({ formCore }: { formCore: FormCore.Form }) => {
-	const formBackgroundImageUrl =
-		formCore.form_background?.form_background_iamge_url ||
-		formCore.form_setting_default.form_background_default_url;
-	const formBackgroundPosition =
-		formCore.form_background?.form_background_position ||
-		formCore.form_setting_default.form_background_position_default;
+export const generateStyleBackgroundImageForm = ({
+	formCore,
+	mode,
+}: {
+	formCore: FormCore.Form;
+	mode: "edit" | "answer";
+}) => {
+	const object = formCore.form_background?.object;
 
+	const postion = formCore.form_background?.position;
+
+	const size = formCore.form_background?.size;
 	const formBackgroundSize = formCore.form_background?.mode_show;
 
 	const positionAvatar = formCore.form_avatar?.position;
 
+	console.log({ postion });
+
 	return {
 		style_background: {
-			// backgroundImage: `url("${formBackgroundImageUrl}")`,
-			// backgroundRepeat: "no-repeat",
 			objectFit: formBackgroundSize,
-			objectPosition: ` ${formBackgroundPosition?.y || 0}% ${formBackgroundPosition?.x || 0}%`,
+			top: `${postion?.top}%`,
+			left: `${postion?.left}%`,
+			transform: `translate(${postion?.left || 0 * -1}%, ${postion?.top || 0 * -1}%)`,
+			width: `${size?.width}%` || "100%",
+			height: `${size?.height ? size?.height + "%" : "100%"}`,
+
+			objectPosition: ` ${object?.x}% ${object?.y}%`,
 		},
 
 		position_buttn: positionAvatar === "left" ? "right-[2rem] xl:right-[6rem]" : "left-[2rem] xl:left-[6rem]",

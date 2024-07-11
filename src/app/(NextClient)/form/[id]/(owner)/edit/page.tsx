@@ -36,12 +36,12 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
 
 	return (
 		<div
-			className={`${containerStyleWhenNormal} ${containerStyleWhenOpenFormDesign} ${containerStyleWhenOpenSideBar} ${containerStyleWhenOver} flex flex-col  `}
+			className={`${containerStyleWhenNormal} ${containerStyleWhenOpenFormDesign} ${containerStyleWhenOpenSideBar} ${containerStyleWhenOver} flex flex-col min-h-screen h-max  `}
 			style={{ "--bg-input-core": colorMain } as CSS.Properties}
 		>
 			<HeaderEditForm showHeaderAction={true} />
 			{formCore && (
-				<div className={`  flex `}>
+				<div className={`  flex min-h-screen h-max`}>
 					<FormCore />
 					{openFormDesign && modeScreen === "NORMAL" ? <FormDesignCustom /> : null}
 				</div>

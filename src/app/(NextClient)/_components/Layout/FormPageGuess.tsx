@@ -43,9 +43,7 @@ const FormPageGuess = (props: TProps) => {
 	const formBackgroundImageUrl =
 		FormCore.form_background?.form_background_iamge_url ||
 		FormCore.form_setting_default.form_background_default_url;
-	const formBackgroundPosition =
-		FormCore.form_background?.form_background_position ||
-		FormCore.form_setting_default.form_background_position_default;
+	const formBackgroundPosition = FormCore.form_background?.position;
 
 	const modeAvatar = FormCore.form_avatar?.mode_shape || FormCore.form_setting_default.form_avatar_default_mode;
 	const positionAvatar = FormCore.form_avatar?.position || FormCore.form_setting_default.form_avatar_default_postion;

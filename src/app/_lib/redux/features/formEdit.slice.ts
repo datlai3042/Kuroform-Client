@@ -38,7 +38,6 @@ const formInitital: FormCore.Form = {
 		form_title_color_default: "#00000",
 		form_avatar_default_mode: "circle",
 		form_avatar_default_postion: "left",
-		form_background_position_default: { x: 0, y: 0 },
 		input_color: "",
 		input_size: 14,
 		input_style: "normal",

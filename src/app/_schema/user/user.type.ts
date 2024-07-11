@@ -25,4 +25,5 @@ export type UserType = {
 	user_password_state: boolean;
 	user_auth: "email" | "oAuth";
 	user_avater_used: UserAvatar[];
+	user_create_password: boolean;
 };

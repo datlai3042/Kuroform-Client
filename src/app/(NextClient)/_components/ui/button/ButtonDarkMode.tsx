@@ -12,7 +12,7 @@ const ButtonDarkMode = () => {
 		setTheme((prev) => (prev === "dark" ? "light" : "dark"));
 	};
 
-	const changeCirclePosition = theme === "light" ? "animate-rtl bg-[#fff]" : " animate-ltr bg-blue-500";
+	const changeCirclePosition = theme === "light" ? "animate-rtl bg-[#fff]" : " animate-ltr bg-[#fff]";
 
 	return (
 		<button
@@ -20,7 +20,7 @@ const ButtonDarkMode = () => {
 			className="relative text-text-theme min-w-[4rem] bg-[#fff] w-[6rem] h-[3rem] rounded-full"
 		>
 			<div
-				className={`${changeCirclePosition} w-[2.4rem] h-[2.4rem] rounded-full absolute top-[50%] translate-y-[-50%]  `}
+				className={`${changeCirclePosition} w-[2.2rem] h-[2.2rem] rounded-full absolute top-[50%] translate-y-[-50%]  `}
 			></div>
 			{theme === "light" ? (
 				<Image

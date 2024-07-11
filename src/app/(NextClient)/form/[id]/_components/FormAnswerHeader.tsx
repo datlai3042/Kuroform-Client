@@ -1,6 +1,7 @@
+import { generateStyleBackgroundImageForm } from "@/app/utils/form.utils";
 import { FormCore } from "@/type";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 
 type TProps = {
 	formCore: FormCore.Form;
@@ -14,9 +15,7 @@ const FormAnswerHeader = (props: TProps) => {
 	const formBackgroundImageUrl =
 		formCore.form_background?.form_background_iamge_url ||
 		formCore.form_setting_default.form_background_default_url;
-	const formBackgroundPosition =
-		formCore.form_background?.form_background_position ||
-		formCore.form_setting_default.form_background_position_default;
+	const formBackgroundPosition = formCore.form_background?.position;
 
 	const formBackgroundSize = formCore.form_background?.mode_show;
 
@@ -27,9 +26,9 @@ const FormAnswerHeader = (props: TProps) => {
 		},
 
 		onCheckPositionAvatar: (position: FormCore.FormAvatarPosition) => {
-			if (position === "left") return "left-[calc(25%-6.4rem)] ";
+			if (position === "left") return "left-[calc(25%-4rem)] ";
 			if (position === "center") return "left-[50%] translate-x-[-50%]";
-			return "right-[calc(25%-6.4rem)]";
+			return "right-[calc(25%-4rem)]";
 		},
 
 		onCheckPostionShowAvatar: (check: boolean) => {
@@ -38,26 +37,30 @@ const FormAnswerHeader = (props: TProps) => {
 		},
 	};
 
+	const paddingX = formCore.form_background?.padding.x || 0;
+	const paddingY = formCore.form_background?.padding.y || 0;
+	const padding = `${paddingY}% ${paddingX}%`;
+
+	const myBackgroundStyle = generateStyleBackgroundImageForm({ formCore, mode: "answer" });
+
 	return (
-		<div
-			style={{ backgroundColor: formCore.form_background?.backgroundColor || "" }}
-			className="relative w-full h-[20rem] rounded-xl "
-		>
+		<div className="relative w-full h-[17.5rem] rounded-2xl max-h-[17.5rem] ">
 			{formCore.form_background?.form_background_iamge_url && (
 				// <div className="absolute top-[50%] translate-x-[-50%] mx-auto">
-				<Image
-					style={{
-						// marginLeft: (formBackgroundPosition.y as number) * -1,
-						objectFit: formBackgroundSize,
-						objectPosition: ` ${formBackgroundPosition?.y || 0}% ${formBackgroundPosition?.x || 0}%`,
-					}}
-					src={formBackgroundImageUrl}
-					width={800}
-					height={160}
-					quality={100}
-					alt="form background"
-					className="w-full h-full   rounded-lg"
-				/>
+				<div
+					style={{ backgroundColor: formCore.form_background?.backgroundColor || "", padding }}
+					className="w-full h-full rounded-2xl relative overflow-hidden"
+				>
+					<Image
+						style={myBackgroundStyle.style_background}
+						src={formBackgroundImageUrl}
+						width={800}
+						height={160}
+						quality={100}
+						alt="form background"
+						className="w-full h-full max-h-[17.5rem]  rounded-lg absolute"
+					/>
+				</div>
 				// </div>
 			)}
 
@@ -72,7 +75,7 @@ const FormAnswerHeader = (props: TProps) => {
 				<div
 					className={`${styleEffect.onCheckPositionAvatar(
 						formCore.form_avatar.position
-					)} absolute bottom-0 translate-y-[50%] w-[35%] xl:w-[20%] aspect-square`}
+					)} absolute bottom-0 translate-y-[50%] w-[20%] xl:w-[16%] aspect-square`}
 				>
 					<Image
 						src={

@@ -11,6 +11,7 @@ import { useDebouncedCallback } from "@mantine/hooks";
 import React, { useId } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import ButtonDarkMode from "../../_components/ui/button/ButtonDarkMode";
 
 const ToastPage = () => {
 	const dispatch = useDispatch();
@@ -62,6 +63,7 @@ const ToastPage = () => {
 
 	return (
 		<div className="relative w-full min-h-screen flex flex-col  gap-[2rem] text-[1.4rem] p-[10rem]">
+			<ButtonDarkMode />
 			<button
 				onClick={debounceSuccess}
 				className=" bg-green-600 rounded-lg text-[#fff] min-w-[16rem] max-w-[20rem] p-[1rem] h-[4rem]"

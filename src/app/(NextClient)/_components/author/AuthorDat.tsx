@@ -21,7 +21,9 @@ const AuthorDat = (props: TProps) => {
 	const colorStyle = color || "text-text-theme";
 	const backgroundColorStyle = backgroundColor || "bg-color-section-theme";
 
-	const background = openDetailAuthor ? "bg-[#fff]" : "bg-transparent";
+	const background = openDetailAuthor
+		? "bg-[#fff] border-[.1rem] border-[#000]"
+		: "bg-transparent border-[.1rem] border-transparent";
 
 	return (
 		<ClickOutSide setOpenModel={setOpenDetailAuthor}>
@@ -40,7 +42,7 @@ const AuthorDat = (props: TProps) => {
 					/>
 
 					<div
-						className={`${setAnimation} bg-[#fff] absolute z-[1] bottom-[150%] right-[3rem] min-w-[9rem] p-[.6rem_.4rem] min-h-[8rem]  flex flex-col gap-[2rem] rounded-lg `}
+						className={`${setAnimation} bg-[#fff] text-[#000] absolute z-[1] bottom-[250%] right-[3rem] min-w-[9rem] p-[1rem_.8rem] min-h-[8rem]  flex flex-col gap-[2rem] rounded-lg shadow-2xl `}
 					>
 						<a
 							onClick={(e) => e.stopPropagation()}
