@@ -23,7 +23,7 @@ const SocketProvider = ({ children }: { children: React.ReactNode }) => {
 
 	useEffect(() => {
 		if (socketState === null) {
-			setSocketState(io(URL!, { withCredentials: true }));
+			setSocketState(io(URL!, { withCredentials: true, transports: ["websocket", "polling", "flashsocket"] }));
 			return;
 		}
 		function onConnect() {
