@@ -38,8 +38,6 @@ const FormBackground = () => {
 
 	const padding = `${paddingY}% ${paddingX}%`;
 
-	console.log({ myBackgroundStyle });
-
 	return (
 		<React.Fragment>
 			<DivNativeRef

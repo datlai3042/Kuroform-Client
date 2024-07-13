@@ -69,7 +69,7 @@ const HeaderEditForm = (props: TProps) => {
 
 	return (
 		<DivNative
-			className={`${top}    bg-color-section-theme sticky top-0 z-[101]  h-[6rem]  flex items-center justify-between gap-[1rem]  px-[1rem] text-[1.3rem]`}
+			className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101]  h-[8rem] w-auto  flex items-center justify-between gap-[1rem]  px-[1rem] text-[1.3rem]`}
 		>
 			<DivNative className="flex h-[3.6rem]  items-center   text-textHeader ">
 				{!openSidebar && <ButtonIcon Icon={<ChevronsRight />} onClick={() => setOpenSidebar(true)} />}

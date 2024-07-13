@@ -26,6 +26,7 @@ import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-ki
 import usePositionOption from "@/app/hooks/usePositionOption";
 import ButtonOptionsValue from "@/app/(NextClient)/_components/ui/button/ButtonOptionsValue";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import { SyncDataOption } from "./InputCoreOption";
 
 type TProps = {
 	inputItem: TInputCore.InputOptionMultiple.InputTypeOptionMultiple;
@@ -34,6 +35,14 @@ type TProps = {
 const InputCoreOptionMultiple = (props: TProps) => {
 	const { theme } = useContext(ThemeContext);
 	const [selectValue, setSelectValue] = useState<string[]>([]);
+
+	const [syncData, setSyncData] = useState<SyncDataOption>({
+		option_id_focus: "",
+		option_process_pending: false,
+		btn_click_add: false,
+	});
+
+	const btnAddOptionRef = useRef<HTMLButtonElement | null>(null);
 
 	const { inputItem } = props;
 
@@ -46,6 +55,10 @@ const InputCoreOptionMultiple = (props: TProps) => {
 	const addOptionServer = useAddOptionServer();
 
 	const handleAddOption = () => {
+		if (syncData.option_id_focus && syncData.option_process_pending) {
+			setSyncData((prev) => ({ ...prev, btn_click_add: true }));
+			return;
+		}
 		addOptionServer.mutate({
 			form: formCore,
 			option_id: "",
@@ -53,6 +66,18 @@ const InputCoreOptionMultiple = (props: TProps) => {
 			inputItem,
 		});
 	};
+
+	useEffect(() => {
+		if (btnAddOptionRef.current && syncData.btn_click_add && !syncData.option_process_pending) {
+			btnAddOptionRef.current.click();
+		}
+	}, [syncData.btn_click_add, syncData.option_process_pending]);
+
+	useEffect(() => {
+		return () => {
+			btnAddOptionRef.current = null;
+		};
+	}, []);
 
 	const sensors = useSensors(
 		useSensor(MouseSensor, {
@@ -107,6 +132,7 @@ const InputCoreOptionMultiple = (props: TProps) => {
 								index={i}
 								inputItem={inputItem}
 								controllSelect={{ selectValue, setSelectValue }}
+								syncDataController={{ syncData, setSyncData }}
 							/>
 						))}
 				</SortableContext>

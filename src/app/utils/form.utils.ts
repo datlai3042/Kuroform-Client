@@ -24,8 +24,6 @@ export const generateStyleBackgroundImageForm = ({
 
 	const positionAvatar = formCore.form_avatar?.position;
 
-	console.log({ postion });
-
 	return {
 		style_background: {
 			objectFit: formBackgroundSize,

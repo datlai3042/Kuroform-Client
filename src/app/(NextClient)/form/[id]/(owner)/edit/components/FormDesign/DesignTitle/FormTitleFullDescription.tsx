@@ -103,7 +103,6 @@ const FormTitleFullDescription = (props: TProps) => {
 				onKeyDown={onKeyEnter}
 				onBlur={(e) => onSetValue(e, "Header")}
 				data-text={content.header_value || "Nhập tiêu đề"}
-				tabIndex={0}
 				spellCheck={false}
 				suppressContentEditableWarning={true}
 			>
@@ -116,8 +115,8 @@ const FormTitleFullDescription = (props: TProps) => {
 				onKeyDown={onKeyEnter}
 				onBlur={(e) => onSetValue(e, "Value")}
 				data-text={content.value || "Nhập mô tả"}
-				tabIndex={0}
 				spellCheck={false}
+				tabIndex={1}
 				suppressContentEditableWarning={true}
 			>
 				{content.value}

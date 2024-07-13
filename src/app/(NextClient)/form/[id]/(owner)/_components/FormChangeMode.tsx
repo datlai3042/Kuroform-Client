@@ -150,7 +150,10 @@ const FormChangeMode = (props: TProps) => {
 				</Link>
 			</div>
 
-			<div className="   h-[30rem]">
+			<div
+				className="   h-[70%
+]"
+			>
 				<div className="mt-[1rem] h-full">{children}</div>
 			</div>
 		</div>

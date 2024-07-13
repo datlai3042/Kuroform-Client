@@ -222,6 +222,17 @@
 		/* border-radius: 10px; */
 	}
 
+	.scroll-images::-webkit-scrollbar {
+		padding: 0px !important;
+		width: 2rem;
+		height: 0.4rem;
+	}
+	.scroll-images::-webkit-scrollbar-thumb {
+		background: var(--color-main);
+		border-radius: 0.1rem;
+		/* border-radius: 10px; */
+	}
+
 	.color-core:hover {
 		background-color: var(--bg-input-core);
 	}

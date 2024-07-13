@@ -23,6 +23,8 @@ const FormAvatar = () => {
 		formCore,
 	});
 
+	const positionAbsoluteImage = openFormDesign ? "translate-y-[50%] xl:xl:translate-y-0 " : "translate-y-[50%] ";
+
 	return (
 		<React.Fragment>
 			<div
@@ -37,7 +39,7 @@ const FormAvatar = () => {
 					quality={100}
 					onClick={onControllModel}
 					alt="avatar"
-					className={`${position} ${shape} absolute bottom-0 z-[3] object-center translate-y-[50%] w-[14rem] h-[14rem] xl:w-[16rem] xl:h-[16rem] hover:cursor-pointer `}
+					className={`${position} ${shape} ${positionAbsoluteImage} absolute bottom-0 z-[3] object-center w-[14rem] h-[14rem] xl:w-[16rem] xl:h-[16rem] hover:cursor-pointer `}
 				/>
 				{openModel && <ModelFormImage setOpenModel={setOpenModel} MODE="AVATAR" />}
 			</div>

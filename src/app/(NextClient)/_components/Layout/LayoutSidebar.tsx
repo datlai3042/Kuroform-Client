@@ -15,7 +15,7 @@ const LayoutSidebar = ({ children }: { children: React.ReactNode }) => {
 	const styleEffect = {
 		onCheckSidebar: (check: boolean) => {
 			if (check)
-				return "w-full  xl:w-[calc(100vw-30rem)]   xl:ml-[26rem] xl:right-[2rem]  duration-[300ms] min-h-screen";
+				return "w-full  xl:w-[calc(100vw-28rem)]   xl:ml-[26rem] xl:right-[2rem]  duration-[300ms] min-h-screen";
 			return "w-full inset-0 duration-[600ms]";
 		},
 	};

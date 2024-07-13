@@ -13,6 +13,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { useAddInputToEnter } from "@/app/hooks/useAddInputToEnter";
 import useDeleteOptionId from "@/app/hooks/useDeleteOptionId";
 import { ThemeContext } from "../../provider/ThemeProvider";
+import { SyncDataOption } from "@/app/(NextClient)/form/[id]/(owner)/edit/components/InputCore/InputCoreOption";
 
 type TProps = {
 	index: number;
@@ -22,6 +23,10 @@ type TProps = {
 		selectValue: string;
 		setSelectValue: React.Dispatch<SetStateAction<string>>;
 	};
+	syncDataController: {
+		syncData: SyncDataOption;
+		setSyncData: React.Dispatch<SetStateAction<SyncDataOption>>;
+	};
 };
 
 const ButtonOptionValue = (props: TProps) => {
@@ -29,6 +34,7 @@ const ButtonOptionValue = (props: TProps) => {
 		option,
 		inputItem,
 		controllSelect: { selectValue, setSelectValue },
+		syncDataController: { setSyncData },
 	} = props;
 
 	const { theme } = useContext(ThemeContext);
@@ -60,6 +66,7 @@ const ButtonOptionValue = (props: TProps) => {
 	};
 
 	const handleBlur = () => {
+		console.log("blur", option.option_id);
 		const content = divContentRef.current?.textContent;
 		if (!content) return;
 		if (!addOptionServer.isPending && content && content !== option.option_value && option.option_id) {
@@ -69,11 +76,11 @@ const ButtonOptionValue = (props: TProps) => {
 				option_value: content,
 				inputItem,
 			});
+			setSyncData((prev) => ({ ...prev, option_id_focus: option.option_id, option_process_pending: true }));
 		}
 	};
 
 	const onSelectValue = (value: string) => {
-		console.log({ value });
 		setSelectValue(value);
 	};
 
@@ -93,6 +100,12 @@ const ButtonOptionValue = (props: TProps) => {
 			divContentRef.current.textContent = option.option_value;
 		}
 	}, []);
+
+	useEffect(() => {
+		if (addOptionServer.isSuccess || addOptionServer.isError) {
+			setSyncData((prev) => ({ ...prev, option_id_focus: "", option_process_pending: false }));
+		}
+	}, [addOptionServer.isSuccess || addOptionServer.isError]);
 
 	const style = {
 		transition,

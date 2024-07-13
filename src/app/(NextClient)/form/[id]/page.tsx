@@ -76,7 +76,7 @@ const FormPage = async ({ params }: { params: { id: string } }) => {
 		>
 			{formCore.form_inputs.length === 0 && !formCore.form_title.form_title_value && <FormAnswerEmpty />}
 			{(formCore.form_inputs.length > 0 || formCore.form_title.form_title_value) && (
-				<DivNative className="w-full sm:w-[72rem] flex flex-col gap-[1.5rem] ">
+				<DivNative className="w-full sm:w-[72rem] flex flex-col gap-[1rem] ">
 					<DivNative className="relative w-full ">
 						<FormAnswerHeader formCore={formCore} />
 					</DivNative>

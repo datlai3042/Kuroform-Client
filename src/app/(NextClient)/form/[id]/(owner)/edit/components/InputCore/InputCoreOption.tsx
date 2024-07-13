@@ -30,12 +30,26 @@ type TProps = {
 	inputItem: TInputCore.InputOption.InputTypeOption;
 };
 
+export type SyncDataOption = {
+	option_id_focus: string;
+	option_process_pending: boolean;
+	btn_click_add: boolean;
+};
+
 const InputCoreOption = (props: TProps) => {
 	const { theme } = useContext(ThemeContext);
 
 	const [selectValue, setSelectValue] = useState<string>("");
 
 	const { inputItem } = props;
+
+	const btnAddOptionRef = useRef<HTMLButtonElement | null>(null);
+
+	const [syncData, setSyncData] = useState<SyncDataOption>({
+		option_id_focus: "",
+		option_process_pending: false,
+		btn_click_add: false,
+	});
 
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
 	const form_mode_display = formCore.form_mode_display === "custom";
@@ -47,6 +61,11 @@ const InputCoreOption = (props: TProps) => {
 	const addOptionServer = useAddOptionServer();
 
 	const handleAddOption = () => {
+		if (syncData.option_id_focus && syncData.option_process_pending) {
+			setSyncData((prev) => ({ ...prev, btn_click_add: true }));
+			return;
+		}
+
 		addOptionServer.mutate({
 			form: formCore,
 			option_id: "",
@@ -54,7 +73,19 @@ const InputCoreOption = (props: TProps) => {
 			inputItem,
 		});
 	};
+	useEffect(() => {
+		if (btnAddOptionRef.current && syncData.btn_click_add && !syncData.option_process_pending) {
+			btnAddOptionRef.current.click();
+		}
+	}, [syncData.btn_click_add, syncData.option_process_pending]);
 
+	useEffect(() => {
+		return () => {
+			btnAddOptionRef.current = null;
+		};
+	}, []);
+
+	// drap các option
 	const sensors = useSensors(
 		useSensor(MouseSensor, {
 			activationConstraint: {
@@ -74,11 +105,13 @@ const InputCoreOption = (props: TProps) => {
 		const postOver = getPos(over?.id as unknown as UniqueIdentifier);
 
 		const newArray = arrayMove(inputItem.core.options, posActive, postOver);
-		const newForm = structuredClone(inputItem);
-		newForm.core.options = newArray;
-		updatePostionOption.mutate({ form: formCore, inputItem, coreOption: newForm.core.options });
+		const newOptionArray = structuredClone(inputItem);
+		newOptionArray.core.options = newArray;
+		updatePostionOption.mutate({ form: formCore, inputItem, coreOption: newOptionArray.core.options });
 		return newArray;
 	};
+
+	//
 
 	useEffect(() => {
 		if (!selectValue && inputItem.core.options[0]) {
@@ -108,12 +141,14 @@ const InputCoreOption = (props: TProps) => {
 								index={i}
 								inputItem={inputItem}
 								controllSelect={{ selectValue, setSelectValue }}
+								syncDataController={{ syncData, setSyncData }}
 							/>
 						))}
 				</SortableContext>
 			</DndContext>
 
 			<button
+				ref={btnAddOptionRef}
 				onClick={handleAddOption}
 				style={{ color: checkModeDisplay && theme === "light" ? colorMain : "#000" }}
 				className={`${

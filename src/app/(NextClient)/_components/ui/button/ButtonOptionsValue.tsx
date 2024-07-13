@@ -13,6 +13,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { useAddInputToEnter } from "@/app/hooks/useAddInputToEnter";
 import useDeleteOptionId from "@/app/hooks/useDeleteOptionId";
 import { ThemeContext } from "../../provider/ThemeProvider";
+import { SyncDataOption } from "@/app/(NextClient)/form/[id]/(owner)/edit/components/InputCore/InputCoreOption";
 
 type TProps = {
 	index: number;
@@ -22,6 +23,11 @@ type TProps = {
 		selectValue: string[];
 		setSelectValue: React.Dispatch<SetStateAction<string[]>>;
 	};
+
+	syncDataController: {
+		syncData: SyncDataOption;
+		setSyncData: React.Dispatch<SetStateAction<SyncDataOption>>;
+	};
 };
 
 const ButtonOptionsValue = (props: TProps) => {
@@ -29,6 +35,7 @@ const ButtonOptionsValue = (props: TProps) => {
 		option,
 		inputItem,
 		controllSelect: { selectValue, setSelectValue },
+		syncDataController: { syncData, setSyncData },
 	} = props;
 
 	const { theme } = useContext(ThemeContext);
@@ -69,11 +76,18 @@ const ButtonOptionsValue = (props: TProps) => {
 				option_value: content,
 				inputItem,
 			});
+
+			setSyncData((prev) => ({ ...prev, option_id_focus: option.option_id, option_process_pending: true }));
 		}
 	};
 
+	useEffect(() => {
+		if (addOptionServer.isSuccess || addOptionServer.isError) {
+			setSyncData((prev) => ({ ...prev, option_id_focus: "", option_process_pending: false }));
+		}
+	}, [addOptionServer.isSuccess || addOptionServer.isError]);
+
 	const onSelectValue = (value: string) => {
-		console.log({ value });
 		if (selectValue.includes(value)) {
 			return setSelectValue((prev) => prev.filter((prev) => prev !== value));
 		}
