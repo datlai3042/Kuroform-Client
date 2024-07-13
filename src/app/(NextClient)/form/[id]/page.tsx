@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 			locale: "vi",
 			title: title,
 			siteName: "Một cách để tạo Form nhanh chóng",
-			url: process.env.NEXT_PUBLIC_BACK_END_URL + "/form/" + form?._id,
+			url: process.env.NEXT_PUBLIC_CLIENT_URL + "/form/" + form?._id,
 			images: [{ url: iconForm }],
 		},
 	};
