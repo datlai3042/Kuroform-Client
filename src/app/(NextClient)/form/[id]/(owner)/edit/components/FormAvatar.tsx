@@ -23,14 +23,18 @@ const FormAvatar = () => {
 		formCore,
 	});
 
-	const positionAbsoluteImage = openFormDesign ? "translate-y-[50%] xl:xl:translate-y-0 " : "translate-y-[50%] ";
+	const positionAbsoluteImage = openFormDesign ? "translate-y-[50%]" : "translate-y-[50%] ";
 
 	return (
 		<React.Fragment>
 			<div
 				className={`${
-					openFormDesign ? "xl:min-h-[31rem] xl:max-h-[31rem]" : "xl:min-h-[40rem] max-h-[40rem]"
-				} h-[23rem] xl:min-h-[40rem]  w-full xl:max-w-[70rem] mx-auto relative`}
+					openFormDesign &&
+					formCore.form_background_state &&
+					formCore.form_background?.form_background_iamge_url
+						? "xl:min-h-[40rem] max-h-[40rem]"
+						: "xl:min-h-[31rem] max-h-[31rem]"
+				} h-[23rem] w-full xl:max-w-[70rem] mx-auto relative`}
 			>
 				<Image
 					width={150}

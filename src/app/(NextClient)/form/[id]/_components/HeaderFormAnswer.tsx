@@ -64,13 +64,13 @@ const HeaderFormAnswer = (props: TProps) => {
 	return (
 		<header
 			style={{ borderTopColor: colorMain }}
-			className="relative w-full min-h-[14rem] m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	 border-t-[1rem]  bg-[#ffffff] rounded-2xl"
+			className="mt-[2rem] relative w-full min-h-[14rem] m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	 border-t-[1rem]  bg-[#ffffff] rounded-2xl"
 		>
 			{formCore.form_avatar?.form_avatar_url && (
 				<div
 					className={`${styleEffect.onCheckPositionAvatar(
 						formCore.form_avatar.position
-					)} absolute top-0 translate-y-[-50%] w-[20%] xl:w-[22%] aspect-square`}
+					)} absolute top-0 translate-y-[-50%] w-[20%] xl:w-[22%] aspect-square  flex justify-center`}
 				>
 					<Image
 						src={
@@ -82,59 +82,66 @@ const HeaderFormAnswer = (props: TProps) => {
 						height={160}
 						unoptimized={true}
 						alt="form background"
-						className={` w-full h-full  `}
+						className={` w-[70%] h-[70%] aspect-square z-[2] shadow-xl`}
 					/>
+					<div className="absolute top-[50%] translate-y-[-70%] w-full h-[2rem] bg-[#fff] shadow-xl"></div>
 				</div>
 			)}
 			<div className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}>
-				<h1
-					style={styleTitle}
-					className="text-[3.6rem] font-extrabold pb-[2rem] border-b-[.1rem] border-gray-200"
-				>
+				<h1 style={styleTitle} className="text-[3.6rem] font-extrabold ">
 					{formCore.form_title.form_title_value}
 				</h1>
 
-				{formCore.form_title.form_title_sub.map((ft) => {
-					if (ft.type === "Text" && ft?.core?.value)
-						return (
-							<span key={ft._id} className="text-[1.4rem] text-justify leading-10">
-								{ft.core.value}
-							</span>
-						);
-					if (ft.type === "Image") {
-						if (formCore.form_title.form_title_mode_image !== checkMode) {
-							return <FormTitleImage mode="Normal" page={"Answer"} subTitleItem={ft} key={ft._id} />;
-						}
+				{formCore.form_title.form_title_sub.length > 0 && (
+					<div className="pt-[2rem] border-t-[.1rem] border-gray-200 flex flex-col gap-[2rem]">
+						{formCore.form_title.form_title_sub.map((ft) => {
+							if (ft.type === "Text" && ft?.core?.value)
+								return (
+									<span key={ft._id} className="text-[1.4rem] text-justify leading-10">
+										{ft.core.value}
+									</span>
+								);
+							if (ft.type === "Image") {
+								if (formCore.form_title.form_title_mode_image !== checkMode) {
+									return (
+										<FormTitleImage mode="Normal" page={"Answer"} subTitleItem={ft} key={ft._id} />
+									);
+								}
 
-						if (formCore.form_title.form_title_mode_image === "Slider" && !flag) {
-							flag = true;
-							const images = formCore.form_title.form_title_sub.filter(
-								(image) => image.type === "Image" && image.core.url
-							) as FormCore.FormTitleSub.Image.Core[];
-							return (
-								<SliderImage
-									colorMain={colorMain as string}
-									page={"Answer"}
-									type="Components"
-									images={images}
-									key={ft._id}
-								/>
-							);
-						}
-					}
+								if (formCore.form_title.form_title_mode_image === "Slider" && !flag) {
+									flag = true;
+									const images = formCore.form_title.form_title_sub.filter(
+										(image) => image.type === "Image" && image.core.url
+									) as FormCore.FormTitleSub.Image.Core[];
+									return (
+										<SliderImage
+											colorMain={colorMain as string}
+											page={"Answer"}
+											type="Components"
+											images={images}
+											key={ft._id}
+										/>
+									);
+								}
+							}
 
-					if (ft.type === "FullDescription") {
-						return (
-							<div className="  text-[1.4rem] my-[1rem]  flex flex-col gap-[1.6rem] " key={ft._id}>
-								<span className="font-bold">{ft.core.header_value}</span>
-								<span>{ft.core.value}</span>
-							</div>
-						);
-					}
-				})}
+							if (ft.type === "FullDescription") {
+								return (
+									<div
+										className="  text-[1.4rem] my-[1rem]  flex flex-col gap-[1.6rem] "
+										key={ft._id}
+									>
+										<span className="font-bold">{ft.core.header_value}</span>
+										<span>{ft.core.value}</span>
+									</div>
+								);
+							}
+						})}
 
-				{inputFormRequire.length > 0 && (
-					<span className="text-red-600 text-[1.4rem] mt-[2rem]">* Biểu thị câu hỏi bắt buộc</span>
+						{inputFormRequire.length > 0 && (
+							<span className="text-red-600 text-[1.4rem] mt-[2rem]">* Biểu thị câu hỏi bắt buộc</span>
+						)}
+					</div>
 				)}
 			</div>
 		</header>

@@ -33,7 +33,6 @@ const SummaryFormPage = () => {
 	if (!formCache) return <NotFoundPage />;
 
 	const { dataFormShowChart } = formCache;
-	console.log({ dataFormShowChart });
 
 	return (
 		<div className="flex flex-col gap-[6rem] min-h-[30rem] pb-[8rem] text-text-theme overflow-auto scroll-color-main max-h-full">
