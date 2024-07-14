@@ -38,7 +38,7 @@ class FormAnswerService {
 	}
 
 	static async increaseViewFormAnswer({ form_id }: { form_id: string }) {
-		return Http.post<ResponseApi<{ message: string }>>("/v1/api/form-answer/upload-form-view", { form_id });
+		return Http.post<ResponseApi<{ message: string }>>("/v1/api/form-answer/update-form-views", { form_id });
 	}
 }
 
