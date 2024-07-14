@@ -13,6 +13,7 @@ import FormAnswerHeader from "./_components/FormAnswerHeader";
 import { stringToSlug } from "@/app/_lib/utils";
 import FormAnswerEmpty from "./_components/InputAnswer/FormAnswerEmpty";
 import AuthorDat from "../../_components/author/AuthorDat";
+import FormAnswerCore from "./_components/FormAnswerCore";
 
 const getFormCache = cache(FormService.getFormGuess);
 
@@ -76,24 +77,7 @@ const FormPage = async ({ params }: { params: { id: string } }) => {
 		>
 			{formCore.form_inputs.length === 0 && !formCore.form_title.form_title_value && <FormAnswerEmpty />}
 			{(formCore.form_inputs.length > 0 || formCore.form_title.form_title_value) && (
-				<DivNative className="w-full sm:w-[72rem] flex flex-col gap-[1rem] ">
-					<DivNative className="relative w-full ">
-						<FormAnswerHeader formCore={formCore} />
-					</DivNative>
-					<DivNative
-						className={`${
-							formCore.form_avatar?.form_avatar_url ? "mt-[7rem]" : "mt-[2rem]"
-						} w-full rounded-lg`}
-					>
-						<DivNative className="flex flex-col gap-[3rem] pb-[20rem]">
-							<FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
-								<RenderInputAnswers formCore={formCore} />
-							</FormAnswerProvider>
-						</DivNative>
-					</DivNative>
-
-					<AuthorDat color={"text-[#000]"} backgroundColor={"bg-[#fff]"} />
-				</DivNative>
+				<FormAnswerCore formCore={formCore} form_answer_id={form_answer_id} />
 			)}
 		</div>
 	);

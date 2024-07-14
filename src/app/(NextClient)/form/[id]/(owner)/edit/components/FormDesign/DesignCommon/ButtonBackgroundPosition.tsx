@@ -52,7 +52,7 @@ const ButtonBackgroundPostition = () => {
 	return (
 		<div className=" flex justify-between">
 			<div className="flex w-[50%] flex-col gap-[.5rem] ">
-				<span className="">Translate X</span>
+				<span className="">Cách lề trái</span>
 				<div
 					className={`${styleEffect.onCheckHasBackground(
 						formBackground
@@ -72,7 +72,7 @@ border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 				</div>
 			</div>
 			<div className="flex w-[50%] flex-col gap-[.5rem] ">
-				<span className="">Translate Y</span>
+				<span className="">Cách lề trên</span>
 				<div
 					className={`${styleEffect.onCheckHasBackground(
 						formBackground

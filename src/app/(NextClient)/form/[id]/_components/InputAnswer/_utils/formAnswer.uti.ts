@@ -114,6 +114,7 @@ export const checkErrorFinal = (
 			newArrayErrorGlobal.push(ipError);
 		}
 
+		// validate input chữ
 		if (!ipError && ip.type === "TEXT") {
 			const { _next, message, type } = superTextValidate(
 				ip.value as string,
@@ -129,6 +130,8 @@ export const checkErrorFinal = (
 
 			newArrayErrorGlobal.push(inputErrorInfo);
 		}
+
+		//validate input email
 		if (!ipError && ip.type === "EMAIL") {
 			const { _next, message, type } = superEmailValidate(
 				ip.value as string,
@@ -145,6 +148,7 @@ export const checkErrorFinal = (
 			newArrayErrorGlobal.push(inputErrorInfo);
 		}
 
+		//validate input số điện thoại
 		if (!ipError && ip.type === "PHONE") {
 			const { _next, message, type } = superPhoneValidate(
 				ip.value as string,
@@ -161,6 +165,7 @@ export const checkErrorFinal = (
 			newArrayErrorGlobal.push(inputErrorInfo);
 		}
 
+		//validate input đánh giá
 		if (!ipError && ip.type === "VOTE") {
 			const { _next, message, type } = superVoteValidate(
 				ip.value as string,
@@ -177,6 +182,7 @@ export const checkErrorFinal = (
 			newArrayErrorGlobal.push(inputErrorInfo);
 		}
 
+		//validate input ngày
 		if (!ipError && ip.type === "DATE") {
 			const { _next, message, type } = superDateValidate(
 				ip.value as string,
@@ -193,6 +199,7 @@ export const checkErrorFinal = (
 			newArrayErrorGlobal.push(inputErrorInfo);
 		}
 
+		//validate input 1 chọn
 		if (!ipError && ip.type === "OPTION" && ip.value) {
 			return;
 		}
@@ -207,11 +214,27 @@ export const checkErrorFinal = (
 			newArrayErrorGlobal.push(inputErrorInfo);
 		}
 
+		//validate input nhiều chọn
 		if (!ipError && ip.type === "OPTION_MULTIPLE" && ip.value.length > 0) {
 			return;
 		}
 
 		if (!ipError && ip.type === "OPTION_MULTIPLE" && ip.value.length === 0 && ip.setting?.require) {
+			const inputErrorInfo: FormCore.FormAnswer.InputFormError = {
+				_id: ip._id,
+				title: ip.title,
+				type: "REQUIRE",
+				message: REQUIRE_ERROR,
+			};
+			newArrayErrorGlobal.push(inputErrorInfo);
+		}
+
+		//validate input file upload
+		if (!ipError && ip.type === "FILE_IMAGE" && ip.value.length) {
+			return;
+		}
+
+		if (!ipError && ip.type === "FILE_IMAGE" && ip.value.length === 0 && ip.setting?.require) {
 			const inputErrorInfo: FormCore.FormAnswer.InputFormError = {
 				_id: ip._id,
 				title: ip.title,

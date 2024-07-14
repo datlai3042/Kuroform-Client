@@ -36,6 +36,10 @@ class FormAnswerService {
 			formData
 		);
 	}
+
+	static async increaseViewFormAnswer({ form_id }: { form_id: string }) {
+		return Http.post<ResponseApi<{ message: string }>>("/v1/api/form-answer/upload-form-view", form_id);
+	}
 }
 
 export default FormAnswerService;

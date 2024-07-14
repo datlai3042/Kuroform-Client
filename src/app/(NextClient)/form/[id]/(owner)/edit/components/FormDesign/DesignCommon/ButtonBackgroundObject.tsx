@@ -50,7 +50,7 @@ const ButtonBackgroundObject = () => {
 	return (
 		<div className=" flex flex-col gap-[2rem]">
 			<div className="flex flex-col  gap-[.6rem] ">
-				<span className="text-[1.3rem]">Di chuyển bên trong ảnh theo trục X</span>
+				<span className="text-[1.3rem]">Căn chỉnh ảnh theo trục ngang</span>
 				<div
 					className={`${styleEffect.onCheckHasBackground(
 						formBackground
@@ -70,7 +70,7 @@ border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
 				</div>
 			</div>
 			<div className="flex flex-col  gap-[.6rem] ">
-				<span className="text-[1.3rem]">Di chuyển bên trong ảnh theo trục Y</span>
+				<span className="text-[1.3rem]">Căn chỉnh ảnh theo trục dọc</span>
 
 				<div
 					className={`${styleEffect.onCheckHasBackground(
