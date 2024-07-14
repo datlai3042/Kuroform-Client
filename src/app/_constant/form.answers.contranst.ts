@@ -1,1 +1,1 @@
-export const timerIncreaseViews = 10 * 10000;
+export const timerIncreaseViews = 10 * 1000;
