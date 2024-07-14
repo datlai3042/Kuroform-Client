@@ -7,6 +7,7 @@ import React from "react";
 import DashboardFormAction from "./DashboardFormAction";
 import Image from "next/image";
 import { Eye, Pencil, View } from "lucide-react";
+import { calcPercentForm } from "@/app/utils/form.utils";
 
 type TProps = {
 	form: FormCore.Form;
@@ -20,7 +21,7 @@ const DashboardFormItem = (props: TProps) => {
 	return (
 		<Link
 			prefetch={false}
-			href={`/form/${form._id}/share`}
+			href={`/form/${form._id}/summary`}
 			key={form._id}
 			className="rounded-lg min-h-[16rem]  w-full xl:w-full p-[1rem_2rem] max-w-full flex    justify-center gap-[1rem] text-[1.2rem]  text-text-theme bg-bg-form-nav  "
 		>
@@ -41,11 +42,11 @@ const DashboardFormItem = (props: TProps) => {
 							<Eye size={16} />
 							<span>{form.form_views || 0}</span>
 						</p>
-
 						<p className="flex gap-[1rem] items-center">
 							<Pencil size={16} />
 							<span>{form.form_response || 0}</span>
 						</p>
+						Tỉ lệ: {calcPercentForm({ formAnswer: form.form_response, formView: form.form_views })}%
 					</div>
 				</DivNative>
 			</div>

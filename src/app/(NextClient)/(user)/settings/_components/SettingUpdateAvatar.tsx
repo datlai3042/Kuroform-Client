@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { onFetchUser } from "@/app/_lib/redux/features/authentication.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import Image from "next/image";
+import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpinner";
 
 const SettingUpdateAvatar = () => {
 	const user = useSelector((state: RootState) => state.authReducer.user);
@@ -64,12 +65,13 @@ const SettingUpdateAvatar = () => {
 					</div>
 				)}
 
-				<div className="hidden group-hover:flex">
+				<div className="flex">
 					<button
 						onClick={onClickButton}
-						className="p-[.8rem] h-[30%] flex items-center gap-[.8rem] hover:bg-slate-200 rounded-lg"
+						className="p-[.8rem] h-[30%] flex items-center gap-[1rem] bg-color-main rounded-lg"
 					>
 						Tải ảnh lên
+						{uploadAvatar.isPending && <LoadingSpinner color="#fff" />}
 					</button>
 					<input type="file" hidden ref={inputAvatar} onChange={onChangeFile} />
 				</div>

@@ -158,17 +158,12 @@ const FormCore = () => {
 		<>
 			{modeScreen === "NORMAL" && (
 				<DivNative
-					className={` w-full   pb-[4rem] sm:px-0    xl:ml-0 flex flex-col gap-[3rem] bg-color-section-theme text-text-theme min-h-screen h-max`}
+					className={` w-full   pb-[28rem] sm:px-0    xl:ml-0 flex flex-col gap-[3rem] bg-color-section-theme text-text-theme min-h-screen h-max`}
 				>
 					{showComponentImage && <FormImage />}
 					<div
-						className={`${
-							formCore.form_avatar?.form_avatar_url || formCore.form_avatar_state
-								? openFormDesign
-									? "mt-[10rem]"
-									: "mt-[8rem]"
-								: ""
-						} min-h-screen h-max bg-color-section-theme `}
+						className={`mt-[8rem]
+						min-h-screen h-max bg-color-section-theme `}
 					>
 						<DivNative
 							className={`flex-1 px-[6rem] xl:px-[4rem] min-h-full h-max  w-full xl:max-w-[70rem] mx-auto   xl:pl-0  flex flex-col  xl:pb-[4rem] gap-[4rem] xl:gap-[2rem]  `}

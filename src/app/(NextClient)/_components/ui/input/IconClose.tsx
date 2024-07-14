@@ -9,7 +9,7 @@ const IconClose = (props: TProps) => {
 
 	return (
 		<button
-			className="w-[48px] h-[48px] bg-[#ffffff] flex items-center justify-center rounded-full shadow text-[12px]"
+			className="w-[4.8rem] h-[4.8rem] bg-[#ffffff] flex items-center justify-center rounded-full shadow text-[12px] text-color-main font-semibold"
 			onClick={() => onClose(false)}
 		>
 			X

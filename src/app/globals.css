@@ -45,6 +45,7 @@
 		--bg-form-nav: #fff;
 		--bg-input-theme: #fff;
 		--btn-design: #2d68ff;
+		--bg-model: #eef1f9;
 	}
 
 	body.light {
@@ -54,7 +55,7 @@
 		--color-section-theme: #fff;
 		--text-theme: #000;
 		--border-color: hwb(0 10% 88% / 0.189);
-
+		--bg-model: #eef1f9;
 		--color-main-hover: rgb(229 231 235);
 	}
 
@@ -66,6 +67,7 @@
 		--text-theme: #ccc;
 		--color-main-hover: rgb(229 231 235);
 		--border-color: #14113c;
+		--bg-model: #0f1623;
 	}
 
 	body {

@@ -15,7 +15,7 @@ const SettingPage = () => {
 	const [tab, setTab] = useState<"account" | "create_password" | "update_password">("account");
 
 	return (
-		<div className="w-full h-max    p-[.8rem_1.8rem_6rem_.8rem] flex flex-col gap-[5rem] text-[1.4rem]  bg-color-section-theme">
+		<div className="w-full min-h-screen h-max    p-[.8rem_1.8rem_6rem_.8rem] flex flex-col gap-[5rem] text-[1.4rem]  bg-color-section-theme">
 			<SettingHeader />
 			<div className="w-[90%] xl:w-[69%] min-h-[60rem] mx-auto text-text-theme">
 				<SettingSection tab={tab} setTab={setTab} />
@@ -25,10 +25,10 @@ const SettingPage = () => {
 
 				{!user && (
 					<div className="flex flex-col gap-[1.8rem]">
-						<div className="animate-pulse w-full h-[20rem] rounded-md bg-slate-200"></div>
-						<div className="animate-pulse w-full h-[20rem] rounded-md bg-slate-200"></div>
-						<div className="animate-pulse w-full h-[20rem] rounded-md bg-slate-200"></div>
-						<div className="animate-pulse w-full h-[20rem] rounded-md bg-slate-200"></div>
+						<div className="animate-pulse w-full h-[10rem] rounded-md bg-slate-200"></div>
+						<div className="animate-pulse w-full h-[10rem] rounded-md bg-slate-200"></div>
+						<div className="animate-pulse w-full h-[10rem] rounded-md bg-slate-200"></div>
+						<div className="animate-pulse w-full h-[10rem] rounded-md bg-slate-200"></div>
 						<div className="animate-pulse bg-slate-200 w-[10%] p-[.2rem_.8rem] h-[20.7rem] d"></div>
 					</div>
 				)}

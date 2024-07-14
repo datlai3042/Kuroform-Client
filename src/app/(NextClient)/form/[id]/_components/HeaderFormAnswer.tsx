@@ -82,9 +82,8 @@ const HeaderFormAnswer = (props: TProps) => {
 						height={160}
 						unoptimized={true}
 						alt="form background"
-						className={` w-[70%] h-[70%] aspect-square z-[2] shadow-xl`}
+						className={` w-[90%] h-[90%] aspect-square z-[2] shadow-xl`}
 					/>
-					<div className="absolute top-[50%] translate-y-[-70%] w-full h-[2rem] bg-[#fff] shadow-xl"></div>
 				</div>
 			)}
 			<div className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}>

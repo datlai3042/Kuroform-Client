@@ -30,6 +30,7 @@ import InputVoteIntroduce from "./InputIntroduce/InputVoteIntroduce";
 import InputPhoneIntroduce from "./InputIntroduce/InputPhoneIntroduce";
 import Image from "next/image";
 import InputImageIntroduce from "./InputIntroduce/InputImageIntroduct";
+import IconClose from "@/app/(NextClient)/_components/ui/input/IconClose";
 
 type TProps = {
 	setOpenModel: React.Dispatch<SetStateAction<boolean>>;
@@ -185,11 +186,11 @@ const ModelInputType = (props: TProps) => {
 		<Portal>
 			<DivNative className="fixed inset-0 bg-[rgba(0,0,0,0.5)] z-[999] px-[1rem] flex justify-center items-center">
 				<DivNativeRef
-					className="w-[80rem] min-h-[40rem] h-max xl:w-[80rem] xl:h-[68rem]  flex flex-col bg-color-section-theme text-text-theme rounded-lg border-[.1rem] border-text-theme "
+					className="relative w-[80rem] min-h-[40rem] h-max xl:w-[80rem] xl:h-[68rem]  flex flex-col bg-color-section-theme text-text-theme rounded-lg border-[.1rem] border-text-theme "
 					ref={modelRef}
 				>
 					<DivNative className="flex-1 w-full min-h-full flex  ">
-						<DivNative className=" w-[40%] xl:w-[30%] h-full p-[1rem_.6rem] xl:p-[2rem_1.4rem] flex flex-col gap-[1rem] border-r-[.2rem] border-gray-100 ">
+						<DivNative className=" w-[40%] xl:w-[30%] h-full p-[1rem_.6rem] xl:p-[2rem_1.4rem] flex flex-col gap-[1rem] border-r-[.1rem] border-gray-50 ">
 							<ParagraphNative
 								className="text-textGray text-[1.2rem] font-bold opacity-80"
 								textContent="Input"
@@ -206,8 +207,13 @@ const ModelInputType = (props: TProps) => {
 								))}
 							</DivNative>
 						</DivNative>
-						<DivNative className="flex w-[65%] xl:w-[70%] h-full ">{renderInputIntroduce}</DivNative>
+						<DivNative className="flex w-[65%] xl:w-[70%] h-full py-[2rem] ">
+							{renderInputIntroduce}
+						</DivNative>
 					</DivNative>
+					<div className="absolute right-[-2.4rem] top-[-2.4rem]">
+						<IconClose onClose={setOpenModel} />
+					</div>
 				</DivNativeRef>
 			</DivNative>
 		</Portal>

@@ -23,6 +23,7 @@ const config = {
 				"bg-input-theme": "var(--bg-input-theme)",
 				"bg-form-nav": "var(--bg-form-nav)",
 				"btn-design": "var(--btn-design)",
+				"bg-model": "var(--bg-model)",
 
 				formCoreBgColor: "rgb(253 242 248)",
 				textHeader: "rgb(119, 118, 114)",

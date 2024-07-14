@@ -1,6 +1,7 @@
 import { RootState } from "@/app/_lib/redux/store";
 import useGetFormTotalView from "@/app/hooks/form/useGetFormTotalView";
 import useGetTotalFormAnswer from "@/app/hooks/form/useGetTotalFormAnswer";
+import { calcPercentForm } from "@/app/utils/form.utils";
 import Image from "next/image";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -20,7 +21,7 @@ const DashboardTotalView = () => {
 					<span className="w-full break-words r">Số lượt phản hồi: {total_answer}</span>
 
 					<span className="w-full break-words r">
-						Tỉ lệ: {((total_answer / total_views) * 100).toFixed(2) || 0}%
+						Tỉ lệ: {calcPercentForm({ formAnswer: total_answer, formView: total_views })}%
 					</span>
 				</p>
 			</div>

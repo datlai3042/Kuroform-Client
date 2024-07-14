@@ -145,6 +145,8 @@ const InputImageAnswer = (props: TProps) => {
 				setInputRequireGlobal(setFormAnswer, inputItem._id!, true);
 			}
 
+			deleteErrorGlobal(setFormAnswer, inputItem._id!);
+
 			//xét data global
 			setDataInputGlobal(setFormAnswer, inputItem._id!, url);
 		}

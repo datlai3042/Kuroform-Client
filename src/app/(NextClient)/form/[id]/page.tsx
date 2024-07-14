@@ -73,7 +73,7 @@ const FormPage = async ({ params }: { params: { id: string } }) => {
 	return (
 		<div
 			style={{ backgroundColor: "#f2f2f2" }}
-			className="px-[2rem] xl:px-0 w-full  min-h-screen h-max flex justify-center  p-[2rem] bg-formCoreBgColor "
+			className="px-[2rem] xl:px-0 w-full  min-h-screen h-max flex justify-center  p-[2rem_2rem_10rem_2rem] bg-formCoreBgColor "
 		>
 			{formCore.form_inputs.length === 0 && !formCore.form_title.form_title_value && <FormAnswerEmpty />}
 			{(formCore.form_inputs.length > 0 || formCore.form_title.form_title_value) && (

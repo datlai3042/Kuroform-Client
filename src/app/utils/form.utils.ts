@@ -105,3 +105,8 @@ export const renderArrayFormFilterDate = ({
 		});
 	return { data_in_month, filter_form };
 };
+
+export const calcPercentForm = ({ formAnswer, formView }: { formAnswer: number; formView: number }) => {
+	let percent: number = (formAnswer / formView) * 100;
+	return isNaN(percent) ? 0 : percent.toFixed(2);
+};

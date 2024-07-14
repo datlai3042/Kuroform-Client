@@ -19,7 +19,7 @@ const DashboardForms = () => {
 	return (
 		<DivNative className="my-[2rem] w-full min-h-[40rem] h-max  flex flex-col gap-[0rem] p-0 bg-color-gap-empty">
 			<div className="flex flex-col gap-[1rem]">
-				<p className="text-text-theme">Quản lí Form</p>
+				<p className="text-color-main font-bold text-[2rem]">Quản lí Form</p>
 				{!getFormPagination.isPending &&
 					getFormPagination.isSuccess &&
 					getFormPagination.data.metadata.forms.length > 0 && (

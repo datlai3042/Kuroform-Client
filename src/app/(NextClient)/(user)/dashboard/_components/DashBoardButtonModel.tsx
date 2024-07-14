@@ -23,7 +23,7 @@ const DashBoardButtonModel = (props: TProps) => {
 		<div className="relative ml-[-.2rem] z-[999] text-[#fff]">
 			<ButtonIcon
 				Icon={<ChevronDown className="w-[1.4rem]  " />}
-				className={`${styleEffect.onCheckFocus(openModel)} flex  rounded-lg !w-[20px] !h-[20px]`}
+				className={`flex  bg-color-main  rounded-lg !w-[1.6rem] !h-[1.6rem]`}
 				onClick={() => setOpenModel((prev) => !prev)}
 			/>
 			{openModel && <DashBoardModel setOpenModel={setOpenModel} />}

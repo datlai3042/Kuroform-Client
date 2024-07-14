@@ -40,7 +40,7 @@ const DashBoardRight = () => {
 
 			<div className="   w-full xl:w-full    flex flex-col gap-[2rem] ">
 				<div className="w-full flex flex-col gap-[2rem]  bg-color-section-theme p-[2rem]">
-					<p className="text-text-theme">Phân tích chung</p>
+					<p className="text-color-main font-bold text-[2rem]">Phân tích chung</p>
 					<div className="flex flex-wrap items-center justify-center gap-[2rem] xl:gap-0 h-max xl:h-[30rem]">
 						<div className="flex justify-center items-center  w-[33%] xl:w-[20%] h-full flex-col gap-[4rem]">
 							<Image

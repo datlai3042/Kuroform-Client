@@ -21,10 +21,12 @@ const FormImage = () => {
 	return (
 		<DivNative
 			className={`${
-				openFormDesign && formCore.form_background_state && formCore.form_background?.form_background_iamge_url
+				formCore.form_background_state && formCore.form_background?.form_background_iamge_url
 					? "xl:min-h-[40rem] max-h-[40rem]"
-					: "xl:min-h-[31rem] max-h-[31rem]"
-			} h-[23rem]  group  relative w-full  xl:h-max px-[4rem] xl:px-0`}
+					: " h-[20rem]"
+			}  ${
+				openFormDesign ? "!h-[30rem] !max-h-[30rem] !min-h-[30rem]" : ""
+			} group  relative w-full   px-[4rem] xl:px-0`}
 		>
 			{(formCore.form_background || formCore.form_background_state) && <FormBackground />}
 
