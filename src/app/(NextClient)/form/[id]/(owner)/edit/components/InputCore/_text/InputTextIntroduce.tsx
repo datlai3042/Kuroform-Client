@@ -43,7 +43,7 @@ const InputTextIntroduce = (props: TProps) => {
 
 	return (
 		<DivNative className="w-full h-full flex flex-col py-[1rem] ">
-			<DivNative className="w-full min-h-full xl:h-[50%] flex flex-col gap-[3rem] xl:border-b-[.2rem] border-gray-100  ">
+			<DivNative className="w-full  xl:h-[50%] flex flex-col gap-[3rem] xl:border-b-[.2rem] border-gray-100  ">
 				<DivNative className="min-h-[2rem] flex flex-col xl:flex-row xl:items-center justify-between gap-[4rem] xl:gap-0 px-[2rem]">
 					<DivNative className="text-[2.2rem] font-semibold ">{inputIntroduceText.title}</DivNative>
 					<ButtonIcon

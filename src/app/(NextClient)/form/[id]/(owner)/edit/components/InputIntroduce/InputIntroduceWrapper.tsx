@@ -7,6 +7,7 @@ import ParagraphNative from "@/app/(NextClient)/_components/ui/NativeHtml/Paragr
 import { InputCore, ReactCustom } from "@/type";
 import {
 	ALargeSmall,
+	Anchor,
 	AtSign,
 	Baseline,
 	CalendarDays,
@@ -15,6 +16,7 @@ import {
 	CircleHelp,
 	ListChecks,
 	ListTodo,
+	MapPinned,
 	PhoneOutgoing,
 	Star,
 	Upload,
@@ -63,6 +65,18 @@ const buttons: ButtonInputType[] = [
 		type: "PHONE",
 		Icon: <PhoneOutgoing size={18} />,
 		content: "Số điện thoại",
+	},
+
+	{
+		type: "ADDRESS",
+		Icon: <MapPinned size={18} />,
+		content: "Địa chỉ",
+	},
+
+	{
+		type: "ANCHOR",
+		Icon: <Anchor size={18} />,
+		content: "Liên kết",
 	},
 	{
 		type: "OPTION",
