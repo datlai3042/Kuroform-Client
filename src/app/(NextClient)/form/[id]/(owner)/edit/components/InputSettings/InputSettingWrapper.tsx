@@ -3,12 +3,17 @@ import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNativeRef";
 import { FormCore, InputCore, ReactCustom } from "@/type";
 import React, { SetStateAction, useCallback, useEffect, useMemo, useRef } from "react";
-import InputSettingEmail from "./InputSettingEmail";
-import InputSettingText from "./InputSettingText";
+import InputSettingEmail from "../InputCore/_email/InputSettingEmail";
+import InputSettingText from "../InputCore/_text/InputSettingText";
 import ClickOutSide from "@/app/(NextClient)/_components/Model/ClickOutSide";
-import InputSettingOption from "./InputSettingOption";
-import InputSettingPhone from "./InputSettingPhone";
-import InputSettingVote from "./InputSettingVote";
+import InputSettingOption from "../InputCore/_option/InputSettingOption";
+import InputSettingPhone from "../InputCore/_phone/InputSettingPhone";
+import InputSettingVote from "../InputCore/_vote/InputSettingVote";
+import InputSettingImage from "../InputCore/_image/InputSettingImage";
+import InputSettingDate from "../InputCore/_date/InputSettingDate";
+import InputSettingOptions from "../InputCore/_options/InputSettingOptions";
+import InputSettingAddress from "../InputCore/_address/InputSettingAddress";
+import InputSettingAnchor from "../InputCore/_anchor/InputSettingAnchor";
 
 type TProps = {
 	inputItem: InputCore.InputForm;
@@ -32,10 +37,19 @@ const renderChildren = (inputItem: InputCore.InputForm, setOpenModel: React.Disp
 			return <InputSettingOption inputItem={inputItem} setOpenModel={setOpenModel} />;
 
 		case "DATE":
-			return <InputSettingOption inputItem={inputItem} setOpenModel={setOpenModel} />;
+			return <InputSettingDate inputItem={inputItem} setOpenModel={setOpenModel} />;
+
+		case "FILE_IMAGE":
+			return <InputSettingImage inputItem={inputItem} setOpenModel={setOpenModel} />;
+
+		case "ADDRESS":
+			return <InputSettingAddress inputItem={inputItem} setOpenModel={setOpenModel} />;
+
+		case "ANCHOR":
+			return <InputSettingAnchor inputItem={inputItem} setOpenModel={setOpenModel} />;
 
 		case "OPTION_MULTIPLE":
-			return <InputSettingOption inputItem={inputItem} setOpenModel={setOpenModel} />;
+			return <InputSettingOptions inputItem={inputItem} setOpenModel={setOpenModel} />;
 		default:
 			return <InputSettingText inputItem={inputItem} setOpenModel={setOpenModel} />;
 	}

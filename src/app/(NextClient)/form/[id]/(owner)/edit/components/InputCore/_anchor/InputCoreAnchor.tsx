@@ -1,17 +1,16 @@
 import { FormCore, InputCore as TInputCore } from "@/type";
 import React, { useMemo, useState } from "react";
-import InputCore from "./InputCore";
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative";
-import { regexPhoneVietNam } from "../../../../_components/InputAnswer/_validate/inputPhone.validate";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
+import InputCore from "../InputCore";
 
 type TProps = {
-	inputItem: TInputCore.InputPhone.InputTypePhone;
+	inputItem: TInputCore.InputAnchor.InputTypeAnchor;
 };
 
-const InputCorePhone = (props: TProps) => {
+const InputCoreAnchor = (props: TProps) => {
 	const { inputItem } = props;
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
 	const form_mode_display = formCore.form_mode_display === "custom";
@@ -35,19 +34,6 @@ const InputCorePhone = (props: TProps) => {
 					onChange={(e) => setPhone(+e.target.value)}
 				/>
 			</DivNative>
-			{phone != 0 && !phone.toString().match(regexPhoneVietNam) && (
-				<>
-					<span className="text-[1.4rem]">Số điện thoại bạn nhập không hợp lệ</span>
-
-					<span>Input này chỉ chấp nhập giá trị là số</span>
-				</>
-			)}
-
-			{phone != 0 && phone.toString().match(regexPhoneVietNam) && (
-				<>
-					<span className="text-[1.4rem]">Số điện thoại bạn nhập hợp lệ</span>
-				</>
-			)}
 		</DivNative>
 	);
 
@@ -61,4 +47,4 @@ const InputCorePhone = (props: TProps) => {
 	);
 };
 
-export default InputCorePhone;
+export default InputCoreAnchor;

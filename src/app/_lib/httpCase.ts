@@ -37,7 +37,6 @@ export const httpCaseErrorNextClient = async <TResponse>(
 			const urlAuthentication = ["/v1/api/auth/login", "/v1/api/auth/register"];
 			if (urlAuthentication.includes(url)) {
 				const _id = uuidv4();
-				console.log(msg);
 				store.dispatch(
 					addOneToastError({
 						toast_item: {
@@ -91,7 +90,6 @@ export const nextClient401 = async <Response>(fullUrl: string, options: RetryAPI
 			return redirect("/");
 		}
 		//CASE: SUCCESS
-		console.log("async");
 		const { access_token, code_verify_token, refresh_token } = res.metadata.token;
 		const { client_id, expireToken } = res.metadata;
 
@@ -101,7 +99,6 @@ export const nextClient401 = async <Response>(fullUrl: string, options: RetryAPI
 
 		if (!call_again.ok) {
 			redirect("/errors/internal-server-error");
-			// throw new HttpError({ status: 500 });
 		}
 
 		//FINALLY
@@ -116,7 +113,7 @@ export const nextClient403 = async (url: string) => {
 		if (typeof window !== "undefined") {
 			removeValueLocalStorage("expireToken");
 			removeValueLocalStorage("code_verify_token");
-			window.location.href = "/";
+			window.location.href = "/login";
 		}
 	} else {
 		await AuthService.logoutNextClient();
@@ -136,8 +133,6 @@ export const httpCaseErrorNextServer = async (statusCode: number, options: Custo
 
 		default:
 			redirect("/errors/internal-server-error");
-
-		// throw new HttpError({ status: 500 });
 	}
 };
 
@@ -146,6 +141,5 @@ export const nextServer401 = async (options: CustomRequest) => {
 };
 
 export const nextServer403 = async (options: CustomRequest) => {
-	console.log("OK");
 	return await AuthService.logoutNextServer(options as CustomRequest);
 };

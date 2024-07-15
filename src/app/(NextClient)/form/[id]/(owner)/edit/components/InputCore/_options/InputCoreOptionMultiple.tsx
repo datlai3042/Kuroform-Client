@@ -3,7 +3,7 @@ import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative"
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import { FormModeScreenContext } from "@/app/(NextClient)/_components/provider/FormModeScreen";
 import { InputCore as TInputCore } from "@/type";
-import InputCore from "./InputCore";
+import InputCore from "../InputCore";
 import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNativeRef";
 import ButtonAddOption from "@/app/(NextClient)/_components/ui/button/ButtonOptionValue";
 import { Plus } from "lucide-react";
@@ -24,26 +24,17 @@ import {
 } from "@dnd-kit/core";
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import usePositionOption from "@/app/hooks/usePositionOption";
+import ButtonOptionsValue from "@/app/(NextClient)/_components/ui/button/ButtonOptionsValue";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import { SyncDataOption } from "../_option/InputCoreOption";
 
 type TProps = {
-	inputItem: TInputCore.InputOption.InputTypeOption;
+	inputItem: TInputCore.InputOptionMultiple.InputTypeOptionMultiple;
 };
 
-export type SyncDataOption = {
-	option_id_focus: string;
-	option_process_pending: boolean;
-	btn_click_add: boolean;
-};
-
-const InputCoreOption = (props: TProps) => {
+const InputCoreOptionMultiple = (props: TProps) => {
 	const { theme } = useContext(ThemeContext);
-
-	const [selectValue, setSelectValue] = useState<string>("");
-
-	const { inputItem } = props;
-
-	const btnAddOptionRef = useRef<HTMLButtonElement | null>(null);
+	const [selectValue, setSelectValue] = useState<string[]>([]);
 
 	const [syncData, setSyncData] = useState<SyncDataOption>({
 		option_id_focus: "",
@@ -51,11 +42,14 @@ const InputCoreOption = (props: TProps) => {
 		btn_click_add: false,
 	});
 
+	const btnAddOptionRef = useRef<HTMLButtonElement | null>(null);
+
+	const { inputItem } = props;
+
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
+	const colorMain = formCore.form_title.form_title_color || formCore.form_setting_default.form_title_color_default;
 	const form_mode_display = formCore.form_mode_display === "custom";
 
-	const colorMain = formCore.form_title.form_title_color || formCore.form_setting_default.form_title_color_default;
-	const checkModeDisplay = formCore.form_mode_display === "custom" ? true : false;
 	const title = inputItem.input_title ? inputItem.input_title : "";
 
 	const addOptionServer = useAddOptionServer();
@@ -65,7 +59,6 @@ const InputCoreOption = (props: TProps) => {
 			setSyncData((prev) => ({ ...prev, btn_click_add: true }));
 			return;
 		}
-
 		addOptionServer.mutate({
 			form: formCore,
 			option_id: "",
@@ -73,6 +66,7 @@ const InputCoreOption = (props: TProps) => {
 			inputItem,
 		});
 	};
+
 	useEffect(() => {
 		if (btnAddOptionRef.current && syncData.btn_click_add && !syncData.option_process_pending) {
 			btnAddOptionRef.current.click();
@@ -85,7 +79,6 @@ const InputCoreOption = (props: TProps) => {
 		};
 	}, []);
 
-	// drap các option
 	const sensors = useSensors(
 		useSensor(MouseSensor, {
 			activationConstraint: {
@@ -105,24 +98,22 @@ const InputCoreOption = (props: TProps) => {
 		const postOver = getPos(over?.id as unknown as UniqueIdentifier);
 
 		const newArray = arrayMove(inputItem.core.options, posActive, postOver);
-		const newOptionArray = structuredClone(inputItem);
-		newOptionArray.core.options = newArray;
-		updatePostionOption.mutate({ form: formCore, inputItem, coreOption: newOptionArray.core.options });
+		const newForm = structuredClone(inputItem);
+		newForm.core.options = newArray;
+		updatePostionOption.mutate({ form: formCore, inputItem, coreOption: newForm.core.options });
 		return newArray;
 	};
 
-	//
-
 	useEffect(() => {
 		if (!selectValue && inputItem.core.options[0]) {
-			setSelectValue(inputItem.core.options[0].option_id);
+			setSelectValue((prev) => prev.concat(inputItem.core.options[0].option_id));
 		}
 	}, [inputItem.core.options, selectValue]);
 
 	const InputOption = (
 		<DivNative className={`mt-[.4rem] min-h-[5rem] max-w-full flex flex-col gap-[2rem] h-max  text-[1.4rem]`}>
 			<SpanNative
-				textContent="Chọn một lựa chọn"
+				textContent="Chọn các lựa chọn bên dưới"
 				className={`${
 					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"
 				} text-[1.6rem] font-semibold`}
@@ -135,7 +126,7 @@ const InputCoreOption = (props: TProps) => {
 				>
 					{inputItem.core.options &&
 						inputItem.core.options.map((op, i) => (
-							<ButtonOptionValue
+							<ButtonOptionsValue
 								key={op.option_id || Math.random().toString()}
 								option={op}
 								index={i}
@@ -148,22 +139,31 @@ const InputCoreOption = (props: TProps) => {
 			</DndContext>
 
 			<button
-				ref={btnAddOptionRef}
 				onClick={handleAddOption}
-				style={{ color: checkModeDisplay && theme === "light" ? colorMain : "#000" }}
+				style={{ color: form_mode_display && theme === "light" ? colorMain : "#000" }}
 				className={`${
-					checkModeDisplay ? "group-hover:!bg-[#ffffff]" : ""
+					form_mode_display ? "group-hover:!bg-[#ffffff]" : ""
 				} min-h-[4rem] w-[20rem]  bg-gray-100 px-[2rem] flex items-center gap-[1rem]  rounded-lg`}
 			>
 				<Plus size={16} className="" />
 				Thêm lựa chọn
 			</button>
-			<p className="max-w-[80%] break-words">
-				Kết quả:{" "}
-				<span className="font-medium text-[1.8rem]">
-					{inputItem.core.options.filter((op) => op.option_id === selectValue)[0]?.option_value}
-				</span>
-			</p>
+			<div
+				className="flex flex-wrap items-center gap-[1rem] 
+			"
+			>
+				<span>Kết quả: </span>
+				<p
+					className="flex flex-wrap gap-[1rem] font-medium text-[1.8rem]
+			max-w-[20rem] break-words"
+				>
+					{inputItem.core.options
+						.filter((op) => selectValue.includes(op.option_id))
+						.map((text) => (
+							<span key={text.option_id}>{text.option_value}</span>
+						))}
+				</p>
+			</div>
 		</DivNative>
 	);
 
@@ -177,4 +177,4 @@ const InputCoreOption = (props: TProps) => {
 	);
 };
 
-export default memo(InputCoreOption);
+export default memo(InputCoreOptionMultiple);

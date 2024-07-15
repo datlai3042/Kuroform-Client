@@ -64,6 +64,8 @@ namespace InputCore {
 		type InputSettingPhoneCommon = InputCore.Setting.InputSettingCommon;
 		type InputSettingDate = InputCore.Setting.InputSettingCommon;
 		type InputSettingImage = InputCore.Setting.InputSettingCommon & { url?: string; public_id?: string };
+		type InputSettingAddress = InputCore.Setting.InputSettingCommon;
+		type InputSettingAnchor = InputCore.Setting.InputSettingCommon;
 
 		type SettingAll = InputSettingTextCommon & InputSettingOptionCommon & InputSettingDate;
 	}
@@ -77,7 +79,8 @@ namespace InputCore {
 					| InputCore.Setting.InputSettingOptionCommon
 					| InputCore.Setting.InputSettingDate
 					| InputCore.Setting.InputSettingVoteCommon
-					| InputCore.Setting.InputSettingPhoneCommon;
+					| InputCore.Setting.InputSettingPhoneCommon
+					| InputCore.Setting.InputSettingImage;
 			};
 		};
 
@@ -173,6 +176,22 @@ namespace InputCore {
 			};
 	}
 
+	namespace InputAddress {
+		export type InputSettingAddress = InputCore.Setting.InputSettingAddress;
+		export type InputTypeAddress = InputCore.Commom.InputCommon &
+			InputCore.Commom.InputCommonImage & {
+				type: "ADDRESS";
+			};
+	}
+
+	namespace InputAnchor {
+		export type InputSettingAnchor = InputCore.Setting.InputSettingAnchor;
+		export type InputTypeAnchor = InputCore.Commom.InputCommon &
+			InputCore.Commom.InputCommonImage & {
+				type: "ANCHOR";
+			};
+	}
+
 	type InputForm =
 		| InputEmail.InputTypeEmail
 		| InputText.InputTypeText
@@ -181,7 +200,9 @@ namespace InputCore {
 		| InputOption.InputTypeOption
 		| InputOptionMultiple.InputTypeOptionMultiple
 		| InputDate.InputTypeDate
-		| InputImage.InputTypeImage;
+		| InputImage.InputTypeImage
+		| InputAddress.InputTypeAddress
+		| InputAnchor.InputTypeAnchor;
 }
 
 namespace FormCore {

@@ -7,13 +7,13 @@ import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormD
 import { SidebarContext } from "@/app/(NextClient)/(user)/dashboard/SidebarContext";
 import { FormModeScreenContext } from "@/app/(NextClient)/_components/provider/FormModeScreen";
 
-import InputCoreText from "./InputCore/InputCoreText";
-import InputCoreEmail from "./InputCore/InputCoreEmail";
+import InputCoreText from "./InputCore/_text/InputCoreText";
+import InputCoreEmail from "./InputCore/_email/InputCoreEmail";
 import { InputCore, FormCore as TFormCore } from "@/type";
 import InputCoreTitle from "./InputCore/InputCoreTitle";
-import InputCoreOption from "./InputCore/InputCoreOption";
-import InputCoreOptionMultiple from "./InputCore/InputCoreOptionMultiple";
-import InputCoreDate from "./InputCore/InputCoreDate";
+import InputCoreOption from "./InputCore/_option/InputCoreOption";
+import InputCoreOptionMultiple from "./InputCore/_options/InputCoreOptionMultiple";
+import InputCoreDate from "./InputCore/_date/InputCoreDate";
 
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNative";
@@ -42,11 +42,13 @@ import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
 import { CSS } from "styled-components/dist/types";
 import ButtonAddInput from "@/app/(NextClient)/_components/ui/button/ButtonAddInput";
 import useUpdateForm from "@/app/hooks/useUpdateForm";
-import InputCoreVote from "./InputCore/InputCoreVote";
-import InputCorePhone from "./InputCore/InputCorePhone";
+import InputCoreVote from "./InputCore/_vote/InputCoreVote";
+import InputCorePhone from "./InputCore/_phone/InputCorePhone";
 import { theme } from "antd";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
-import InputCoreImage from "./InputCore/InputCoreImage";
+import InputCoreImage from "./InputCore/_image/InputCoreImage";
+import InputCoreAddress from "./InputCore/_address/InputCoreAddress";
+import InputCoreAnchor from "./InputCore/_anchor/InputCoreAnchor";
 
 export const generateInputForms = (Inputs: InputCore.InputForm[]): React.ReactNode => {
 	return Inputs.map((ele, index) => {
@@ -72,6 +74,11 @@ export const generateInputForms = (Inputs: InputCore.InputForm[]): React.ReactNo
 
 			case "FILE_IMAGE":
 				return <InputCoreImage inputItem={ele} key={ele._id} />;
+
+			case "ADDRESS":
+				return <InputCoreAddress inputItem={ele} key={ele._id} />;
+			case "ANCHOR":
+				return <InputCoreAnchor inputItem={ele} key={ele._id} />;
 			default:
 				return <InputCoreText inputItem={ele} key={index} />;
 		}

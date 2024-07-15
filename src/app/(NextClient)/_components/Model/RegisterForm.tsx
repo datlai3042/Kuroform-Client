@@ -13,7 +13,7 @@ import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
 
 import Button from "../ui/button/Button";
 
-import Http, { clientToken } from "@/app/_lib/http";
+import Http from "@/app/_lib/http";
 import { useMutation } from "@tanstack/react-query";
 
 import IconClose from "../ui/input/IconClose";

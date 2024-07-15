@@ -13,7 +13,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { useAddInputToEnter } from "@/app/hooks/useAddInputToEnter";
 import useDeleteOptionId from "@/app/hooks/useDeleteOptionId";
 import { ThemeContext } from "../../provider/ThemeProvider";
-import { SyncDataOption } from "@/app/(NextClient)/form/[id]/(owner)/edit/components/InputCore/InputCoreOption";
+import { SyncDataOption } from "@/app/(NextClient)/form/[id]/(owner)/edit/components/InputCore/_option/InputCoreOption";
 
 type TProps = {
 	index: number;

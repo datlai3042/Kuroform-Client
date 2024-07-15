@@ -1,5 +1,4 @@
 import React, { SetStateAction, useContext, useEffect, useRef, useState } from "react";
-import InputCore from "./InputCore";
 import { AtSign } from "lucide-react";
 import { validateEmail } from "@/app/_lib/utils";
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
@@ -9,6 +8,7 @@ import { FormCore, InputCore as TInputCore } from "@/type";
 import { inputSettingText } from "@/app/_constant/input.constant";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
+import InputCore from "../InputCore";
 
 type TProps = {
 	inputItem: TInputCore.InputEmail.InputTypeEmail;

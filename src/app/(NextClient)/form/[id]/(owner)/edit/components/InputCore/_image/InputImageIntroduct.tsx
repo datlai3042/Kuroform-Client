@@ -1,16 +1,11 @@
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
-import { inputIntroduceDate, inputIntroduceImage, inputIntroduceText } from "@/app/_constant/inputIntroduceUI.constant";
-import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
+import { inputIntroduceImage } from "@/app/_constant/inputIntroduceUI.constant";
 import { RootState } from "@/app/_lib/redux/store";
-import FormService from "@/app/_services/form.service";
 import { FormCore, InputCore, ReactCustom } from "@/type";
-import { useMutation } from "@tanstack/react-query";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ArrowBigRight } from "lucide-react";
-import { inputSettingDate } from "@/app/_constant/input.constant";
-import Calendar from "@/app/(NextClient)/test/calendar/Calendar";
 import useChangeTypeInput from "@/app/hooks/useChangeTypeInput";
 import Image from "next/image";
 

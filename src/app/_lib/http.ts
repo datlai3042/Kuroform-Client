@@ -5,47 +5,6 @@ import AuthService from "../_services/auth.service";
 import { httpCaseErrorNextClient, httpCaseErrorNextServer } from "./httpCase";
 import { redirect } from "next/navigation";
 
-class ClientToken {
-	private _access_token: string = "";
-	private _refresh_token: string = "";
-	private _id: string = "";
-
-	set id(id: string) {
-		if (typeof window !== undefined) {
-			this._id = id;
-		}
-	}
-
-	get id() {
-		return this._id;
-	}
-
-	set accessToken(at: string) {
-		if (typeof window !== undefined) {
-			console.log("set at");
-			this._access_token = at;
-		}
-	}
-
-	get accessToken() {
-		return this._access_token;
-	}
-
-	set refreshToken(rf: string) {
-		if (typeof window !== undefined) {
-			this._refresh_token = rf;
-		}
-	}
-
-	get refreshToken() {
-		return this._refresh_token;
-	}
-}
-
-export const clientToken = new ClientToken();
-
-let NOT_RETRY: null | Promise<any> = null;
-
 /**
  *
  * @param method phương thức HTTP

@@ -1,11 +1,9 @@
 import useUpdateForm from "@/app/hooks/useUpdateForm";
 import { RootState } from "@/app/_lib/redux/store";
 import { InputCore } from "@/type";
-import { Circle, Plus, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import React, { SetStateAction, useContext, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
-import useAddOptionClient from "@/app/hooks/useAddOptionClient";
+import { useSelector } from "react-redux";
 import useAddOptionServer from "@/app/hooks/useAddOptionServer";
 import { useSortable } from "@dnd-kit/sortable";
 import { UniqueIdentifier } from "@dnd-kit/core";
@@ -13,7 +11,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { useAddInputToEnter } from "@/app/hooks/useAddInputToEnter";
 import useDeleteOptionId from "@/app/hooks/useDeleteOptionId";
 import { ThemeContext } from "../../provider/ThemeProvider";
-import { SyncDataOption } from "@/app/(NextClient)/form/[id]/(owner)/edit/components/InputCore/InputCoreOption";
+import { SyncDataOption } from "@/app/(NextClient)/form/[id]/(owner)/edit/components/InputCore/_option/InputCoreOption";
 
 type TProps = {
 	index: number;

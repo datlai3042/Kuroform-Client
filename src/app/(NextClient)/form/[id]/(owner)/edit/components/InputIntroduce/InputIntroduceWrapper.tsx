@@ -20,17 +20,19 @@ import {
 	Upload,
 } from "lucide-react";
 import React, { SetStateAction, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import InputGuideIntroduce from "./InputIntroduce/InputGuideIntroduce";
-import InputTextIntroduce from "./InputIntroduce/InputTextIntroduce";
-import InputEmailIntroduce from "./InputIntroduce/InputEmailIntroduce";
-import InputOptionIntroduce from "./InputIntroduce/InputOptionIntrudce";
-import InputOptionMultipleIntroduce from "./InputIntroduce/InputOptionMultipleIntroduce";
-import InputDateIntroduce from "./InputIntroduce/InputDateIntroduce";
-import InputVoteIntroduce from "./InputIntroduce/InputVoteIntroduce";
-import InputPhoneIntroduce from "./InputIntroduce/InputPhoneIntroduce";
+import InputGuideIntroduce from "./InputGuideIntroduce";
+import InputTextIntroduce from "../InputCore/_text/InputTextIntroduce";
+import InputEmailIntroduce from "../InputCore/_email/InputEmailIntroduce";
+import InputOptionIntroduce from "../InputCore/_option/InputOptionIntrudce";
+import InputOptionMultipleIntroduce from "../InputCore/_options/InputOptionMultipleIntroduce";
+import InputDateIntroduce from "../InputCore/_date/InputDateIntroduce";
+import InputVoteIntroduce from "../InputCore/_vote/InputVoteIntroduce";
+import InputPhoneIntroduce from "../InputCore/_phone/InputPhoneIntroduce";
 import Image from "next/image";
-import InputImageIntroduce from "./InputIntroduce/InputImageIntroduct";
+import InputImageIntroduce from "../InputCore/_image/InputImageIntroduct";
 import IconClose from "@/app/(NextClient)/_components/ui/input/IconClose";
+import InputAddressIntroduce from "../InputCore/_address/InputAddressIntroduce";
+import InputAnchorIntroduce from "../InputCore/_anchor/InputAnchorIntroduce";
 
 type TProps = {
 	setOpenModel: React.Dispatch<SetStateAction<boolean>>;
@@ -132,6 +134,21 @@ const chooseInputIntroduce = (
 				/>
 			);
 
+		case "ADDRESS":
+			return (
+				<InputAddressIntroduce
+					inputItem={inputItem as InputCore.InputAddress.InputTypeAddress}
+					setOpenModel={setOpenModel}
+				/>
+			);
+
+		case "ANCHOR":
+			return (
+				<InputAnchorIntroduce
+					inputItem={inputItem as InputCore.InputAnchor.InputTypeAnchor}
+					setOpenModel={setOpenModel}
+				/>
+			);
 		case "OPTION":
 			return (
 				<InputOptionIntroduce
@@ -153,7 +170,7 @@ const chooseInputIntroduce = (
 	}
 };
 
-const ModelInputType = (props: TProps) => {
+const InputIntroduceWrapper = (props: TProps) => {
 	const { inputItem, setOpenModel } = props;
 
 	const [inputIntroduce, setInputIntroduce] = useState<ButtonInputType["type"]>("Guide");
@@ -220,4 +237,4 @@ const ModelInputType = (props: TProps) => {
 	);
 };
 
-export default ModelInputType;
+export default InputIntroduceWrapper;

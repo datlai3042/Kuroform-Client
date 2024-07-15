@@ -22,11 +22,7 @@ class AuthService {
 		const urlRequestNextServer = "v1/api/auth/next-logout";
 		const options = { baseUrl: "" };
 		try {
-			const logoutResponse = await Http.post<ResponseApi<MessageResponse>>(
-				urlRequestBackEnd,
-				{ force: true },
-				{}
-			);
+			await Http.post<ResponseApi<MessageResponse>>(urlRequestBackEnd, { force: true }, {});
 		} catch {}
 		const logoutResponseServer = await Http.post<ResponseApi<MessageResponse>>(
 			urlRequestNextServer,
@@ -37,7 +33,7 @@ class AuthService {
 		removeValueLocalStorage("expireToken");
 		removeValueLocalStorage("code_verify_token");
 		if (typeof window !== "undefined") {
-			return (window.location.href = "/login");
+			return (window.location.href = "/login?token_expire=true");
 		}
 		return null;
 	}

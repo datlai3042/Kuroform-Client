@@ -3,17 +3,17 @@ import { RootState } from "@/app/_lib/redux/store";
 import { FormCore, InputCore } from "@/type";
 import React, { SetStateAction, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import InputSettingRequire from "./SettingCommon/InputSettingRequire";
-import InputSettingError from "./SettingCommon/InputSettingError";
 import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNative";
 import useUpdateInputSetting from "@/app/hooks/useUpdateInputSetting";
+import InputSettingRequire from "../../InputSettings/SettingCommon/InputSettingRequire";
+import InputSettingError from "../../InputSettings/SettingCommon/InputSettingError";
 
 type TProps = {
 	inputItem: InputCore.InputForm;
 	setOpenModel: React.Dispatch<SetStateAction<boolean>>;
 };
 
-const InputSettingVote = (props: TProps) => {
+const InputSettingAddress = (props: TProps) => {
 	const { inputItem, setOpenModel } = props;
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
 
@@ -64,4 +64,4 @@ const InputSettingVote = (props: TProps) => {
 	);
 };
 
-export default InputSettingVote;
+export default InputSettingAddress;

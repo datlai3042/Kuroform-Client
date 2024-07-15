@@ -3,11 +3,11 @@ import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative"
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import { FormModeScreenContext } from "@/app/(NextClient)/_components/provider/FormModeScreen";
 import { FormCore, InputCore as TInputCore } from "@/type";
-import InputCore from "./InputCore";
 import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNativeRef";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import InputCore from "../InputCore";
 
 type TProps = {
 	inputItem: TInputCore.InputText.InputTypeText;

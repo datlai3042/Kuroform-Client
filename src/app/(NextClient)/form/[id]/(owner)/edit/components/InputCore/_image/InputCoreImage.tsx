@@ -2,12 +2,8 @@ import { RootState } from "@/app/_lib/redux/store";
 import { FormCore, InputCore as TInputCore, UI } from "@/type";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import InputCore from "./InputCore";
+import InputCore from "../InputCore";
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
-import Calendar from "@/app/(NextClient)/test/calendar/Calendar";
-import { generateFullDateString } from "@/app/utils/time.utils";
-import { CalendarCheckIcon } from "lucide-react";
-import ClickOutSide from "@/app/(NextClient)/_components/Model/ClickOutSide";
 import Image from "next/image";
 
 type TProps = {

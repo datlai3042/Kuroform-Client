@@ -3,17 +3,17 @@ import { RootState } from "@/app/_lib/redux/store";
 import { FormCore, InputCore } from "@/type";
 import React, { SetStateAction, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import InputSettingRequire from "./SettingCommon/InputSettingRequire";
-import InputSettingError from "./SettingCommon/InputSettingError";
 import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNative";
 import useUpdateInputSetting from "@/app/hooks/useUpdateInputSetting";
+import InputSettingRequire from "../../InputSettings/SettingCommon/InputSettingRequire";
+import InputSettingError from "../../InputSettings/SettingCommon/InputSettingError";
 
 type TProps = {
 	inputItem: InputCore.InputForm;
 	setOpenModel: React.Dispatch<SetStateAction<boolean>>;
 };
 
-const InputSettingOption = (props: TProps) => {
+const InputSettingVote = (props: TProps) => {
 	const { inputItem, setOpenModel } = props;
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
 
@@ -51,7 +51,7 @@ const InputSettingOption = (props: TProps) => {
 	}, [updateTypeInputMutation.isSuccess, setOpenModel]);
 
 	return (
-		<DivNative className="h-max flex flex-col gap-[2.4rem] text-text-theme">
+		<DivNative className="h-max flex flex-col gap-[2.4rem]">
 			<InputSettingRequire inputItem={inputItemString} setInputItemString={setInputItemString} />
 			<InputSettingError inputItem={inputItemString} setInputItemString={setInputItemString} />
 			<ButtonNative
@@ -64,4 +64,4 @@ const InputSettingOption = (props: TProps) => {
 	);
 };
 
-export default InputSettingOption;
+export default InputSettingVote;

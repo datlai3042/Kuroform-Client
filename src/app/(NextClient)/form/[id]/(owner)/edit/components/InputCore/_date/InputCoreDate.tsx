@@ -2,7 +2,7 @@ import { RootState } from "@/app/_lib/redux/store";
 import { FormCore, InputCore as TInputCore, UI } from "@/type";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import InputCore from "./InputCore";
+import InputCore from "../InputCore";
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import Calendar from "@/app/(NextClient)/test/calendar/Calendar";
 import { generateFullDateString } from "@/app/utils/time.utils";

@@ -2,7 +2,7 @@ import DivWrapper from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import { FormCore, InputCore, ReactCustom } from "@/type";
 import { GripVertical, Plus, Trash2 } from "lucide-react";
 import React, { SetStateAction, memo, useState } from "react";
-import ModelInputType from "./ModelInputType";
+import ModelInputType from "./InputIntroduce/InputIntroduceWrapper";
 import InputSettingWrapper from "./InputSettings/InputSettingWrapper";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";

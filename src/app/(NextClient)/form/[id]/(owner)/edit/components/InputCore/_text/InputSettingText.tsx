@@ -1,11 +1,5 @@
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import React, { SetStateAction, useContext, useEffect, useState } from "react";
-import InputSettingRequire from "./SettingCommon/InputSettingRequire";
-import InputSettingPlaceholder from "./SettingCommon/InputSettingPlaceholder";
-import InputSettingMinLength from "./SettingCommon/InputSettingMinLength";
-import InputSettingMaxLength from "./SettingCommon/InputSettingMaxLength";
-import InputSettingError from "./SettingCommon/InputSettingError";
-import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNative";
 import { FormCore, InputCore } from "@/type";
 import { useMutation } from "@tanstack/react-query";
 import FormService from "@/app/_services/form.service";
@@ -14,6 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
 import useUpdateInputSetting from "@/app/hooks/useUpdateInputSetting";
+import InputSettingRequire from "../../InputSettings/SettingCommon/InputSettingRequire";
+import InputSettingPlaceholder from "../../InputSettings/SettingCommon/InputSettingPlaceholder";
+import InputSettingMinLength from "../../InputSettings/SettingCommon/InputSettingMinLength";
+import InputSettingMaxLength from "../../InputSettings/SettingCommon/InputSettingMaxLength";
+import InputSettingError from "../../InputSettings/SettingCommon/InputSettingError";
+import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNative";
 
 /*
       require

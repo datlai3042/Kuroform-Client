@@ -1,9 +1,9 @@
 import { InputCore as TInputCore } from "@/type";
 import React, { useState } from "react";
-import InputCore from "./InputCore";
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative";
 import { Rate } from "antd";
+import InputCore from "../InputCore";
 
 type TProps = {
 	inputItem: TInputCore.InputVote.InputTypeVote;

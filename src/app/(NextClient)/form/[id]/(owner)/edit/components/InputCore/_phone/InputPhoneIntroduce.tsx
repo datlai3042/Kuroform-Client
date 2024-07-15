@@ -1,6 +1,7 @@
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative";
 import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
+import { regexPhoneVietNam } from "@/app/(NextClient)/form/[id]/_components/InputAnswer/_validate/inputPhone.validate";
 import { inputIntroducePhone } from "@/app/_constant/inputIntroduceUI.constant";
 import { RootState } from "@/app/_lib/redux/store";
 import useChangeTypeInput from "@/app/hooks/useChangeTypeInput";
@@ -8,7 +9,6 @@ import { InputCore, ReactCustom } from "@/type";
 import { ArrowBigRight, AtSign } from "lucide-react";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { regexPhoneVietNam } from "../../../../_components/InputAnswer/_validate/inputPhone.validate";
 
 type TProps = {
 	inputItem: InputCore.InputPhone.InputTypePhone;
