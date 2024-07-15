@@ -6,6 +6,7 @@ import ModelInputType from "./InputIntroduce/InputIntroduceWrapper";
 import InputSettingWrapper from "./InputSettings/InputSettingWrapper";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
+import InputIntroduceWrapper from "./InputIntroduce/InputIntroduceWrapper";
 
 type TProps = {
 	funcRemoveInput: () => void;
@@ -59,7 +60,7 @@ const SectionOption = (props: TProps) => {
 					<span className="text-red-700 text-[1.8rem]">*</span>
 				)}
 			</DivWrapper>
-			{openSelectType && <ModelInputType setOpenModel={setOpenSelectType} inputItem={inputItem} />}
+			{openSelectType && <InputIntroduceWrapper setOpenModel={setOpenSelectType} inputItem={inputItem} />}
 		</>
 	);
 };

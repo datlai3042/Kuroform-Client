@@ -77,7 +77,7 @@ const InputTitle = (props: TProps) => {
 					onBlur={onSetTitle}
 					contentEditable={true}
 					defaultValue={value || "False"}
-					data-text={`${value || dataTextTitle || "Title"}`}
+					data-text={`${value || dataTextTitle || "Tiêu đề"}`}
 					suppressContentEditableWarning={true}
 					tabIndex={0}
 					spellCheck={false}
