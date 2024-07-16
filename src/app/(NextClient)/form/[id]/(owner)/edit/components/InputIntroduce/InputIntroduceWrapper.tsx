@@ -35,6 +35,15 @@ import InputImageIntroduce from "../InputCore/_image/InputImageIntroduct";
 import IconClose from "@/app/(NextClient)/_components/ui/input/IconClose";
 import InputAddressIntroduce from "../InputCore/_address/InputAddressIntroduce";
 import InputAnchorIntroduce from "../InputCore/_anchor/InputAnchorIntroduce";
+import {
+	inputIntroduceAddress,
+	inputIntroduceEmail,
+	inputIntroduceOption,
+	inputIntroduceOptionMultiple,
+	inputIntroducePhone,
+	inputIntroduceText,
+	inputIntroduceVote,
+} from "@/app/_constant/inputIntroduceUI.constant";
 
 type TProps = {
 	setOpenModel: React.Dispatch<SetStateAction<boolean>>;
@@ -49,44 +58,46 @@ const buttons: ButtonInputType[] = [
 	{
 		type: "EMAIL",
 		Icon: <AtSign size={18} />,
-		content: "Email",
+		content: inputIntroduceEmail.title,
 	},
 	{
 		type: "TEXT",
 		Icon: <Baseline size={18} />,
-		content: "Thông tin",
+		content: inputIntroduceText.title,
 	},
 	{
 		type: "VOTE",
 		Icon: <Star size={18} />,
-		content: "Đánh giá",
+
+		content: inputIntroduceVote.title,
 	},
 	{
 		type: "PHONE",
 		Icon: <PhoneOutgoing size={18} />,
-		content: "Số điện thoại",
+		content: inputIntroducePhone.title,
 	},
 
 	{
 		type: "ADDRESS",
 		Icon: <MapPinned size={18} />,
-		content: "Địa chỉ",
+		content: inputIntroduceAddress.title,
 	},
 
 	{
 		type: "ANCHOR",
 		Icon: <Anchor size={18} />,
+
 		content: "Liên kết",
 	},
 	{
 		type: "OPTION",
 		Icon: <Check size={18} />,
-		content: "Một lựa chọn",
+		content: inputIntroduceOption.title,
 	},
 	{
 		type: "OPTION_MULTIPLE",
 		Icon: <CheckCheck size={18} />,
-		content: "Nhiều lựa chọn",
+		content: inputIntroduceOptionMultiple.title,
 	},
 	{ type: "DATE", Icon: <CalendarDays className="" size={18} />, content: "Thời gian" },
 	{ type: "FILE_IMAGE", Icon: <Upload className="" size={18} />, content: "Upload Ảnh" },

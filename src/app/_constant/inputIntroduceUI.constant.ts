@@ -26,7 +26,7 @@ export const inputIntroduceOption = {
 };
 
 export const inputIntroduceOptionMultiple = {
-	title: "Nhiều lựa chọn cùng lúc",
+	title: "Nhiều lựa chọn",
 	description: "Input multiple option cho phép mọi người chọn nhiều lựa chọn cùng lúc trong câu câu hỏi",
 };
 
@@ -37,5 +37,10 @@ export const inputIntroduceDate = {
 
 export const inputIntroduceImage = {
 	title: "Upload ảnh",
-	description: "Cho phép người dùng cải ảnh lên form trả lời",
+	description: "Cho phép người dùng tải ảnh lên form trả lời",
+};
+
+export const inputIntroduceAddress = {
+	title: "Địa chỉ Việt Nam",
+	description: "Cho phép lấy địa chỉ người dùng ở Việt Nam",
 };

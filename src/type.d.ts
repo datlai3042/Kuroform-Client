@@ -541,3 +541,44 @@ namespace UI {
 		type RateControl = { point: RatePoint; index: number };
 	}
 }
+
+namespace API {
+	namespace Common {
+		namespace Address {
+			type Province = {
+				_id: string;
+				name: string;
+				type: string;
+				name_with_type: string;
+				code: string;
+				isDeleted: boolean;
+			};
+
+			type District = {
+				_id: string;
+				name: string;
+				type: string;
+				slug: string;
+				name_with_type: string;
+				path: string;
+				path_with_type: string;
+				code: string;
+				parent_code: string;
+				isDeleted: boolean;
+			};
+
+			type Ward = {
+				_id: string;
+				name: string;
+				type: string;
+				slug: string;
+				name_with_type: string;
+				path: string;
+				path_with_type: string;
+				code: string;
+				parent_code: string;
+				isDeleted: boolean;
+			};
+		}
+	}
+}

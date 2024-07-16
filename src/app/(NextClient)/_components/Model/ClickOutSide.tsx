@@ -30,7 +30,7 @@ const ClickOutSide = (props: TProps) => {
 	}, [globalClick]);
 
 	return (
-		<div ref={divWrapper} className="w-max min-h-max ">
+		<div ref={divWrapper} className="min-w-full w-max min-h-max ">
 			{children}
 		</div>
 	);

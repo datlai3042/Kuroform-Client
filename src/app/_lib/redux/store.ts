@@ -5,6 +5,7 @@ import formAnswerSlice from "./features/formAnswer.slice";
 import notificationSlice from "./features/notification.slice";
 import toastSlice from "./features/toast.slice";
 import dataFormSlice from "./features/dataForm.slice";
+import addressSlice from "./features/address.slice";
 const store = configureStore({
 	reducer: {
 		authReducer,
@@ -13,6 +14,7 @@ const store = configureStore({
 		notification: notificationSlice,
 		toast: toastSlice,
 		dataFormHandler: dataFormSlice,
+		address: addressSlice,
 	},
 });
 

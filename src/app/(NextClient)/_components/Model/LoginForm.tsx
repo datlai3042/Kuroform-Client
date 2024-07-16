@@ -32,7 +32,6 @@ const LoginForm = (props: TProps) => {
 	const { onClose } = props;
 	const dispatch = useDispatch();
 	const router = useRouter();
-	const { toast } = useToast();
 
 	const loginForm = useForm<LoginType>({
 		defaultValues: {
