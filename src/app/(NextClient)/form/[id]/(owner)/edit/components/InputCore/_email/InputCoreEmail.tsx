@@ -11,75 +11,75 @@ import { RootState } from "@/app/_lib/redux/store";
 import InputCore from "../InputCore";
 
 type TProps = {
-	inputItem: TInputCore.InputEmail.InputTypeEmail;
+      inputItem: TInputCore.InputEmail.InputTypeEmail;
 };
 
 const InputCoreEmail = (props: TProps) => {
-	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
-	const form_mode_display = formCore.form_mode_display === "custom";
+      const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
+      const form_mode_display = formCore.form_mode_display === "custom";
 
-	const { inputItem } = props;
-	const inputRef = useRef<HTMLInputElement | null>(null);
+      const { inputItem } = props;
+      const inputRef = useRef<HTMLInputElement | null>(null);
 
-	const title = inputItem.input_title ? inputItem.input_title : "";
+      const title = inputItem.input_title ? inputItem.input_title : "";
 
-	const [inputValue, setInputValue] = useState<string>("");
-	const [error, setError] = useState<boolean>(false);
-	const { modeScreen } = useContext(FormModeScreenContext);
+      const [inputValue, setInputValue] = useState<string>("");
+      const [error, setError] = useState<boolean>(false);
+      const { modeScreen } = useContext(FormModeScreenContext);
 
-	const onPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === "Enter") {
-			if (modeScreen === "FULL") {
-				const checkvalidate = validateEmail(inputValue);
-				return checkvalidate ? setError(false) : setError(true);
-			}
-		}
-	};
+      const onPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === "Enter") {
+                  if (modeScreen === "FULL") {
+                        const checkvalidate = validateEmail(inputValue);
+                        return checkvalidate ? setError(false) : setError(true);
+                  }
+            }
+      };
 
-	const onBlur = () => {
-		if (!inputValue) return;
-		const checkvalidate = validateEmail(inputValue);
-		return checkvalidate ? setError(false) : setError(true);
-	};
+      const onBlur = () => {
+            if (!inputValue) return;
+            const checkvalidate = validateEmail(inputValue);
+            return checkvalidate ? setError(false) : setError(true);
+      };
 
-	useEffect(() => {
-		if (inputRef.current) {
-			inputRef.current.value = "";
-			setError(false);
-		}
-	}, [modeScreen]);
+      useEffect(() => {
+            if (inputRef.current) {
+                  inputRef.current.value = "";
+                  setError(false);
+            }
+      }, [modeScreen]);
 
-	const InputEmail = (
-		<DivNative className="flex flex-col gap-[.3rem] ">
-			<SpanNative
-				textContent="Nhập email của bạn"
-				className={`${
-					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme "
-				} text-[1.6rem] font-semibold`}
-			/>
-			<DivNative className={`w-full relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
-				<input
-					className="w-full h-full p-[1rem] rounded-lg text-text-theme  border-[.1rem] border-gray-400  outline-none focus:outline-blue-200 focus:border-transparent  bg-bg-input-theme"
-					ref={inputRef}
-					onKeyDown={onPressEnter}
-					onChange={(e) => setInputValue(e.target.value)}
-					onBlur={onBlur}
-					placeholder={inputItem.core.setting.placeholder}
-				/>
-				<AtSign className="absolute z-[2] right-[1rem] text-textMain opacity-50" size={18} />
-			</DivNative>
-			{error && (
-				<SpanNative
-					className="flex group-focus:hidden opacity-55"
-					tabIndex={-1}
-					textContent="
+      const InputEmail = (
+            <DivNative className="flex flex-col gap-[.3rem] ">
+                  <SpanNative
+                        textContent="Nhập email của bạn"
+                        className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme "} text-[1.6rem] font-semibold`}
+                  />
+                  <DivNative
+                        className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] border-[.1rem] bg-[#fff] border-gray-400 focus:border-transparent  rounded-lg`}
+                  >
+                        <input
+                              className="w-[80%] h-full p-[1rem] rounded-lg text-[1.6rem]     outline-none   text-[#000]"
+                              ref={inputRef}
+                              onKeyDown={onPressEnter}
+                              onChange={(e) => setInputValue(e.target.value)}
+                              onBlur={onBlur}
+                              placeholder={inputItem.core.setting.placeholder}
+                        />
+                        <AtSign className="absolute z-[2] right-[1rem] text-textMain opacity-50" size={18} />
+                  </DivNative>
+                  {error && (
+                        <SpanNative
+                              className="flex group-focus:hidden opacity-55"
+                              tabIndex={-1}
+                              textContent="
 					Email khong dung dinh dang"
-				/>
-			)}
-		</DivNative>
-	);
+                        />
+                  )}
+            </DivNative>
+      );
 
-	return <InputCore inputItem={inputItem} InputComponent={InputEmail} inputTitle={title} />;
+      return <InputCore inputItem={inputItem} InputComponent={InputEmail} inputTitle={title} />;
 };
 
 export default InputCoreEmail;

@@ -44,6 +44,7 @@ import {
 	inputIntroduceText,
 	inputIntroduceVote,
 } from "@/app/_constant/inputIntroduceUI.constant";
+import ClickOutSide from "@/app/(NextClient)/_components/Model/ClickOutSide";
 
 type TProps = {
 	setOpenModel: React.Dispatch<SetStateAction<boolean>>;
@@ -205,57 +206,43 @@ const InputIntroduceWrapper = (props: TProps) => {
 		[inputIntroduce, inputItem, setOpenModel]
 	);
 
-	const modelRef = useRef<HTMLDivElement | null>(null);
-	const checkDocumentClick = useCallback(
-		(e: MouseEvent) => {
-			if (modelRef.current && !modelRef.current.contains(e.target as Node)) {
-				console.log("check");
-				setOpenModel(false);
-			}
-		},
-		[setOpenModel]
-	);
-
-	useEffect(() => {
-		document.addEventListener("click", checkDocumentClick);
-
-		return () => {
-			document.removeEventListener("click", checkDocumentClick);
-		};
-	}, [checkDocumentClick]);
-
 	return (
 		<Portal>
 			<DivNative className="fixed inset-0 bg-[rgba(0,0,0,0.5)] z-[999] px-[1rem] flex justify-center items-center">
-				<DivNativeRef
-					className="relative w-[80rem] min-h-[40rem] h-max xl:w-[80rem] xl:h-[68rem]  flex flex-col bg-color-section-theme text-text-theme rounded-lg border-[.1rem] border-text-theme "
-					ref={modelRef}
-				>
-					<DivNative className="flex-1 w-full min-h-full flex  ">
-						<DivNative className=" w-[40%] xl:w-[30%] h-full p-[1rem_.6rem] xl:p-[2rem_1.4rem] flex flex-col gap-[1rem] border-r-[.1rem] border-gray-50 ">
-							<ParagraphNative
-								className="text-textGray text-[1.2rem] font-bold opacity-80"
-								textContent="Input"
-							/>
-							<DivNative className="flex flex-col gap-[1.2rem] ">
-								{buttons.map((btn) => (
-									<ButtonNativeIcon
-										key={btn.content + btn.type}
-										className="w-full p-[.4rem_.6rem]  flex items-center justify-start gap-[2rem] text-[1.6rem] hover:bg-text-theme hover:text-color-section-theme transition-colors duration-300"
-										onClick={() => setInputIntroduce(btn.type)}
-										textContent={btn.content}
-										icon={btn.Icon}
+				<DivNativeRef className="relative w-[80rem] h-[62rem]  xl:w-[80rem] xl:h-[68rem]   flex flex-col bg-color-section-theme text-text-theme rounded-lg border-[.1rem] border-text-theme ">
+					<ClickOutSide
+						width="w-full xl:w-[80rem]"
+						height="h-[62rem] xl:h-[68rem]"
+						setOpenModel={setOpenModel}
+					>
+						<>
+							<DivNative className="flex-1 w-full min-h-full flex  ">
+								<DivNative className=" w-[40%] xl:w-[30%] min-h-full p-[1rem_.6rem] xl:p-[2rem_1.4rem] flex flex-col gap-[1rem] border-r-[.1rem] border-gray-100 ">
+									<ParagraphNative
+										className="text-textGray text-[1.2rem] font-bold opacity-80"
+										textContent="Input"
 									/>
-								))}
+									<DivNative className="flex flex-col gap-[1.2rem] ">
+										{buttons.map((btn) => (
+											<ButtonNativeIcon
+												key={btn.content + btn.type}
+												className="w-full p-[.4rem_.6rem]  flex items-center justify-start gap-[2rem] text-[1.5rem] xl:text-[1.6rem] hover:bg-color-btn-primarily text-text-theme hover:text-[#fff] transition-colors duration-300 rounded-lg"
+												onClick={() => setInputIntroduce(btn.type)}
+												textContent={btn.content}
+												icon={btn.Icon}
+											/>
+										))}
+									</DivNative>
+								</DivNative>
+								<DivNative className="flex w-[60%] xl:w-[70%] min-h-full py-[2rem] ">
+									{renderInputIntroduce}
+								</DivNative>
 							</DivNative>
-						</DivNative>
-						<DivNative className="flex w-[65%] xl:w-[70%] h-full py-[2rem] ">
-							{renderInputIntroduce}
-						</DivNative>
-					</DivNative>
-					<div className="absolute right-[-2.4rem] top-[-2.4rem]">
-						<IconClose onClose={setOpenModel} />
-					</div>
+							<div className="absolute right-[-1rem] top-[-1rem] xl:right-[-2.4rem] xl:top-[-2.4rem]">
+								<IconClose onClose={setOpenModel} />
+							</div>
+						</>
+					</ClickOutSide>
 				</DivNativeRef>
 			</DivNative>
 		</Portal>

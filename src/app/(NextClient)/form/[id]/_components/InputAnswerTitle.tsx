@@ -2,11 +2,11 @@ import { FormCore, InputCore } from "@/type";
 import React from "react";
 
 type TProps = {
-	inputItem: InputCore.InputText.InputTypeText;
+	inputItem: InputCore.InputForm;
 	formCore: FormCore.Form;
 };
 
-const InputTextAnswerTitle = (props: TProps) => {
+const InputAnswerTitle = (props: TProps) => {
 	const { formCore, inputItem } = props;
 
 	const styleEffect = {
@@ -27,4 +27,4 @@ const InputTextAnswerTitle = (props: TProps) => {
 	);
 };
 
-export default InputTextAnswerTitle;
+export default InputAnswerTitle;

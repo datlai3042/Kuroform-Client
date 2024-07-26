@@ -62,20 +62,20 @@ const SliderImage = (props: TProps) => {
 		}
 	}, []);
 
-	const widthPage = page === "Edit" ? "w-[35rem] sm:w-[50rem] xl:w-[70rem] w-full" : "w-full xl:w-[62rem]";
+	const widthPage = page === "Edit" ? "w-[30rem] sm:w-[75rem] " : "w-full xl:w-[62rem]";
 
 	return (
-		<div className="w-full flex justify-center">
+		<div className="w-max flex justify-center">
 			<div
 				ref={divContainerRef}
-				className={`${widthPage} relative h-[47rem] pb-[6rem]  overflow-y-hidden overflow-x-hidden`}
+				className={`${widthPage}  relative h-[38rem] xl:h-[47rem] pb-[6rem]  overflow-y-hidden overflow-x-hidden`}
 			>
-				<div className={`${widthPage} relative`}>
+				<div className={`w-full relative`}>
 					<button
 						style={{ backgroundColor: colorMain }}
 						disabled={indexImage + 1 >= images.length}
 						onClick={handleIncrease}
-						className="absolute top-[50%] translate-y-[-50%] right-0 z-[100] w-[4rem] h-[4rem] flex items-center justify-center    rounded-full disabled:hover:cursor-not-allowed"
+						className="absolute top-[50%] translate-y-[-50%] right-0 z-[100] w-[3rem] h-[3rem] xl:w-[4rem] xl:h-[4rem] flex items-center justify-center    rounded-full disabled:hover:cursor-not-allowed"
 					>
 						<ChevronRight color="white" />
 					</button>
@@ -87,8 +87,7 @@ const SliderImage = (props: TProps) => {
 							(images as FormCore.FormTitleSub.Image.Core[]).map((img) => (
 								<div
 									key={img._id}
-									style={{ width: widthWrapper * -1 }}
-									className={` max-h-[30rem]`}
+									className={` max-h-[30rem] w-full flex justify-center`}
 									onClick={() => setShowImageModel(true)}
 								>
 									<FormTitleImage
@@ -105,7 +104,7 @@ const SliderImage = (props: TProps) => {
 						style={{ backgroundColor: colorMain }}
 						disabled={indexImage === 0}
 						onClick={handleDecrease}
-						className="absolute top-[50%] translate-y-[-50%] left-0 w-[4rem] h-[4rem] flex items-center justify-center bg-[#ffffff] border-[.1rem]  rounded-full disabled:hover:cursor-not-allowed"
+						className="absolute top-[50%] translate-y-[-50%] left-0 w-[3rem] h-[3rem] xl:w-[4rem] xl:h-[4rem] flex items-center justify-center bg-[#ffffff] border-[.1rem]  rounded-full disabled:hover:cursor-not-allowed"
 					>
 						<ChevronLeft color="white" />
 					</button>
@@ -119,7 +118,7 @@ const SliderImage = (props: TProps) => {
 					/>
 				)}
 
-				<div className="absolute bottom-[0rem]  left-[50%] translate-x-[-50%] flex gap-[2rem]">
+				<div className="absolute bottom-[1rem]  left-[50%] translate-x-[-50%] flex gap-[2rem]">
 					{images.map((btn, i) => (
 						<button
 							key={i}
@@ -133,7 +132,7 @@ const SliderImage = (props: TProps) => {
 					))}
 				</div>
 				{type === "Components" && (
-					<div className="absolute bottom-[5rem] w-full left-[50%] translate-x-[-50%] flex gap-[4rem] pb-[2rem]  scroll-images overflow-x-auto hover:cursor-pointer">
+					<div className="absolute bottom-[5rem] w-full left-[50%] translate-x-[-50%] flex justify-center gap-[4rem] pb-[2rem]  scroll-images overflow-x-auto hover:cursor-pointer">
 						{images.map((img, i) => (
 							<div
 								key={img._id}

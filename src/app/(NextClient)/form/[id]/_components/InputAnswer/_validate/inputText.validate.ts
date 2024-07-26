@@ -1,15 +1,21 @@
 import { MAX_LENGTH_ERROR, MIN_LENGTH_ERROR, REQUIRE_ERROR } from "@/app/_constant/input.constant";
 import { InputCore } from "@/type";
 
-export const superTextValidate = (inputValue: string, inputTextSetting: InputCore.InputText.InputSettingText) => {
+export const superTextValidate = ({
+	inputValue,
+	inputSetting,
+}: {
+	inputValue: string;
+	inputSetting: InputCore.InputText.InputSettingText;
+}) => {
 	let _next = true;
 	let message = "";
 
 	let type: InputCore.Commom.ErrorText | null = null;
 
-	const valueLength = inputValue.length;
+	const valueLength = inputValue?.length || 0;
 
-	const { require, minLength, maxLength } = inputTextSetting;
+	const { require, minLength, maxLength } = inputSetting;
 
 	if (!require && !inputValue) return { _next: true, message: "Đây là trường không bắt buộc", type: null };
 

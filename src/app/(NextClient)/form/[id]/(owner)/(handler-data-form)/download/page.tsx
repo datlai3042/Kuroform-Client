@@ -21,58 +21,54 @@ moment.locale("vi");
 type TProps = {};
 
 const DownloadFormPage = () => {
-	const { form_id_current } = useSelector((state: RootState) => state.dataFormHandler);
+      const { form_id_current } = useSelector((state: RootState) => state.dataFormHandler);
 
-	const formCache = useSelector((state: RootState) => state.dataFormHandler.form_cache[form_id_current]);
+      const formCache = useSelector((state: RootState) => state.dataFormHandler.form_cache[form_id_current]);
 
-	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
-	const formAnswer = useSelector((state: RootState) => state.formAsnwer.formAnswerStore[form_id_current]);
-	const [render, setRender] = useState<{ createAt: Date; answer: FormCore.FormAnswer.Answer[] }>();
+      const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
+      const formAnswer = useSelector((state: RootState) => state.formAsnwer.formAnswerStore[form_id_current]);
+      const [render, setRender] = useState<{ createAt: Date; answer: FormCore.FormAnswer.Answer[] }>();
 
-	const [openDetailAnswer, setOpenDetailAnswer] = useState<boolean>(false);
-	const [formAnswerDetail, setFormAnswerDetail] = useState<FormCore.FormAnswer.OneReport | null>(null);
+      const [openDetailAnswer, setOpenDetailAnswer] = useState<boolean>(false);
+      const [formAnswerDetail, setFormAnswerDetail] = useState<FormCore.FormAnswer.OneReport | null>(null);
 
-	if (!formCache) return <NotFoundPage />;
+      if (!formCache) return <NotFoundPage />;
 
-	const { dataExcel, dataFormShowExcel, dataFormShowChart } = formCache;
-	console.log({ dataFormShowExcel, formAnswer });
+      const { dataExcel, dataFormShowExcel, dataFormShowChart } = formCache;
 
-	const color = formCore.form_title.form_title_color
-		? formCore.form_title.form_title_color
-		: formCore.form_setting_default.form_title_color_default;
-	const handleDownloadExcel = () => {
-		const worksheet = XLSX.utils.json_to_sheet(dataExcel);
+      const color = formCore.form_title.form_title_color ? formCore.form_title.form_title_color : formCore.form_setting_default.form_title_color_default;
+      const handleDownloadExcel = () => {
+            const worksheet = XLSX.utils.json_to_sheet(dataExcel);
 
-		let new_workSheet_col: XLSX.ColInfo[] = [];
-		dataExcel.map((excel) => {
-			Object.keys(excel).map((value) => {
-				const length_title = value.length;
-				const length_input = excel[value].length + 5;
-				const width = length_input < length_title ? length_title : length_input;
-				console.log({ width });
-				new_workSheet_col.push({ width });
-			});
-		});
-		worksheet["!cols"] = new_workSheet_col;
-		const workbook = XLSX.utils.book_new();
-		XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
-		const namefile = stringToSlug(formCore.form_title.form_title_value);
+            let new_workSheet_col: XLSX.ColInfo[] = [];
+            dataExcel.map((excel) => {
+                  Object.keys(excel).map((value) => {
+                        const length_title = value.length;
+                        const length_input = excel[value].length + 5;
+                        const width = length_input < length_title ? length_title : length_input;
+                        new_workSheet_col.push({ width });
+                  });
+            });
+            worksheet["!cols"] = new_workSheet_col;
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+            const namefile = stringToSlug(formCore.form_title.form_title_value);
 
-		XLSX.writeFile(workbook, `${namefile}.xlsx`);
-	};
+            XLSX.writeFile(workbook, `${namefile}.xlsx`);
+      };
 
-	return (
-		<>
-			{formAnswer && (
-				<div className=" flex flex-col gap-[2rem] text-text-theme ">
-					<button
-						onClick={handleDownloadExcel}
-						style={{ backgroundColor: color }}
-						className="w-[16rem] h-[4rem] ml-auto flex items-center justify-center text-[#ffffff] rounded-lg "
-					>
-						Download File Excel
-					</button>
-					{/* <div
+      return (
+            <>
+                  {formAnswer && (
+                        <div className=" flex flex-col gap-[2rem] text-text-theme ">
+                              <button
+                                    onClick={handleDownloadExcel}
+                                    style={{ backgroundColor: color }}
+                                    className="w-[16rem] h-[4rem] ml-auto flex items-center justify-center text-[#ffffff] rounded-lg "
+                              >
+                                    Tải File Excel
+                              </button>
+                              {/* <div
 						style={{ "--scorll-form-answer-detail": color } as React.CSSProperties}
 						className="scroll-form-answer-detail mb-[8rem] min-h-[8rem] overflow-y-scroll overflow-x-scroll flex flex-col xl:flex-row max-h-[37rem] max-w-full xl:max-h-[30rem]"
 					>
@@ -124,19 +120,15 @@ const DownloadFormPage = () => {
 								);
 							})}{" "}
 					</div> */}
-					{openDetailAnswer && formAnswerDetail && (
-						<AnswerDetailModel
-							setOpenModel={setOpenDetailAnswer}
-							formAnswer={formAnswerDetail}
-							time={formAnswerDetail.createdAt}
-						/>
-					)}
-				</div>
-			)}
+                              {openDetailAnswer && formAnswerDetail && (
+                                    <AnswerDetailModel setOpenModel={setOpenDetailAnswer} formAnswer={formAnswerDetail} time={formAnswerDetail.createdAt} />
+                              )}
+                        </div>
+                  )}
 
-			{!formAnswer && <NotFoundPage gap="2rem" />}
-		</>
-	);
+                  {!formAnswer && <NotFoundPage gap="2rem" />}
+            </>
+      );
 };
 
 export default DownloadFormPage;

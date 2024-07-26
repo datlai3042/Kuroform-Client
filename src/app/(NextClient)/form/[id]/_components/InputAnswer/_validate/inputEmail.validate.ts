@@ -7,7 +7,13 @@ import {
 } from "@/app/_constant/input.constant";
 import { InputCore } from "@/type";
 
-export const superEmailValidate = (inputValue: string, inputTextSetting: InputCore.InputText.InputSettingText) => {
+export const superEmailValidate = ({
+	inputValue,
+	inputSetting,
+}: {
+	inputValue: string;
+	inputSetting: InputCore.InputText.InputSettingText;
+}) => {
 	let _next = true;
 	let message = "";
 
@@ -18,7 +24,7 @@ export const superEmailValidate = (inputValue: string, inputTextSetting: InputCo
 
 	const valueLength = inputValue.length;
 
-	const { require, minLength, maxLength } = inputTextSetting;
+	const { require, minLength, maxLength } = inputSetting;
 
 	if (!require && !inputValue) return { _next: true, message: "Đây là trường không bắt buộc", type: null };
 

@@ -27,7 +27,7 @@ const DesignTitleForm = () => {
 		<div className=" w-full min-h-[4rem] h-max p-[1rem_0rem] flex flex-wrap gap-[3rem]">
 			<button
 				onClick={() => onAddTitleSub("Text")}
-				className="btn-design min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] p-[.6rem] text-[#fff] rounded-lg"
+				className="btn-primarily min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] p-[.6rem] text-[#fff] rounded-lg"
 			>
 				<Type size={iconSize} />
 				<span>{FormText.title.optionText.message}</span>
@@ -35,7 +35,7 @@ const DesignTitleForm = () => {
 
 			<button
 				onClick={() => onAddTitleSub("FullDescription")}
-				className="btn-design min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] text-[#fff]  rounded-lg"
+				className="btn-primarily min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] text-[#fff]  rounded-lg"
 			>
 				<Type size={iconSize} />
 
@@ -45,7 +45,7 @@ const DesignTitleForm = () => {
 
 			<button
 				onClick={() => onAddTitleSub("Image")}
-				className="btn-design min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] text-[#fff]  rounded-lg"
+				className="btn-primarily min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] text-[#fff]  rounded-lg"
 			>
 				{/* // eslint-disable-next-line jsx-a11y/alt-text */}
 				<Image size={iconSize} />

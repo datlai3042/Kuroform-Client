@@ -2,18 +2,18 @@ import { Check } from "lucide-react";
 import React from "react";
 
 type TProps = {
-	message: string;
+      message: string;
 };
 
 const BoxCopySuccess = (props: TProps) => {
-	const { message } = props;
+      const { message } = props;
 
-	return (
-		<div className="w-max min-h-[3rem] flex items-center gap-[1rem]  bg-color-gap-empty text-[#0bceb2] px-[2rem] rounded-lg border-[.1rem] border-[#fff]">
-			{message}
-			<Check size={16} />
-		</div>
-	);
+      return (
+            <div className="w-max min-h-[3rem] flex items-center gap-[1rem]   text-[#fff] px-[2rem] rounded-lg  bg-color-main">
+                  {message}
+                  <Check size={16} />
+            </div>
+      );
 };
 
 export default BoxCopySuccess;

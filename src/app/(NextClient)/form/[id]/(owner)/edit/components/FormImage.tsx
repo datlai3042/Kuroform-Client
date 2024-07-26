@@ -8,31 +8,27 @@ import { FormCore } from "@/type";
 import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
 
 const FormImage = () => {
-	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
-	const { openFormDesign } = useContext(FormDesignContext);
+      const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
+      const { openFormDesign } = useContext(FormDesignContext);
 
-	// const styleEffect = {
-	// 	onCheckBackground: (check: boolean) => {
-	// 		if (check) return  ";
-	// 		return "min-h-[20rem]";
-	// 	},
-	// };
+      // const styleEffect = {
+      // 	onCheckBackground: (check: boolean) => {
+      // 		if (check) return  ";
+      // 		return "min-h-[20rem]";
+      // 	},
+      // };
 
-	return (
-		<DivNative
-			className={`${
-				formCore.form_background_state && formCore.form_background?.form_background_iamge_url
-					? "xl:min-h-[40rem] max-h-[40rem]"
-					: " h-[20rem]"
-			}  ${
-				openFormDesign ? "!h-[30rem] !max-h-[30rem] !min-h-[30rem]" : ""
-			} group  relative w-full   px-[4rem] xl:px-0`}
-		>
-			{(formCore.form_background || formCore.form_background_state) && <FormBackground />}
+      return (
+            <DivNative
+                  className={` ${
+                        openFormDesign ? "!h-[33rem] !max-h-[33rem] !min-h-[33rem]" : ""
+                  } group  relative w-full xl:w-[90rem] mx-auto  px-[4rem] xl:px-0 min-h-[40rem] max-h-[40rem]`}
+            >
+                  {(formCore.form_background || formCore.form_background_state) && <FormBackground />}
 
-			{(formCore.form_avatar || formCore.form_avatar_state) && <FormAvatar />}
-		</DivNative>
-	);
+                  {(formCore.form_avatar || formCore.form_avatar_state) && <FormAvatar />}
+            </DivNative>
+      );
 };
 
 export default FormImage;

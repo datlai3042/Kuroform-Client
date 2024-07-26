@@ -28,7 +28,7 @@ const ModelShowImage = (props: TProps) => {
 		<div className="animate-modeScreen transition-[scale] duration-300 fixed inset-0  h-screen flex items-center justify-center  bg-[rgba(0,0,0,.87)] z-[1000] hover:cursor-pointer">
 			<ClickOutSide setOpenModel={setOpenModel}>
 				<div className="w-full  xl:h-[60rem]  flex flex-col items-center gap-[5rem]">
-					<div className="w-[35rem] h-[35rem] xl:w-[40rem] min-h-[70%] max-h-[70%]">
+					<div className="w-[35rem] h-[35rem] xl:w-[45rem] min-h-[70%] max-h-[70%]">
 						<Image
 							src={imageShow}
 							width={400}

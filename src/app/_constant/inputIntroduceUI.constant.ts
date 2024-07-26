@@ -5,7 +5,7 @@ export const inputIntroduceEmail = {
 };
 
 export const inputIntroduceText = {
-	title: "Dạng chữ",
+	title: "Thông tin",
 	description:
 		"Input type Text được dùng để thu thập dạng chữ, với những dữ liệu nào cần nhiều dòng thông tin thì Input Text là phù hợp nhất",
 };
@@ -43,4 +43,9 @@ export const inputIntroduceImage = {
 export const inputIntroduceAddress = {
 	title: "Địa chỉ Việt Nam",
 	description: "Cho phép lấy địa chỉ người dùng ở Việt Nam",
+};
+
+export const inputIntroduceAnchor = {
+	title: "Các đường dẫn khác",
+	description: "Cho người dùng nhập link liên kết đến các website khác",
 };

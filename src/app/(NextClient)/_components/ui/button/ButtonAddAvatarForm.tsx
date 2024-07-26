@@ -11,40 +11,40 @@ import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
 import { FormText } from "@/app/_constant/formUi.constant";
 
 export interface ButtonAddAvatarFormProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	textContent?: string;
+      textContent?: string;
 }
 
 const ButtonAddAvatarForm = (props: ButtonAddAvatarFormProps) => {
-	const dispatch = useDispatch();
-	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
+      const dispatch = useDispatch();
+      const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
 
-	const { textContent = FormText.buttonDesign.avatar, ...buttonProps } = props;
+      const { textContent = FormText.buttonDesign.avatar, ...buttonProps } = props;
 
-	const addAvatarMutation = useMutation({
-		mutationKey: ["add-background"],
-		mutationFn: (form: FormCore.Form) => FormService.addAvatar(formCore),
-		onSuccess: (res) => {
-			const { form } = res.metadata;
-			dispatch(onFetchForm({ form }));
-		},
-	});
+      const addAvatarMutation = useMutation({
+            mutationKey: ["add-background"],
+            mutationFn: (form: FormCore.Form) => FormService.addAvatar(formCore),
+            onSuccess: (res) => {
+                  const { form } = res.metadata;
+                  dispatch(onFetchForm({ form }));
+            },
+      });
 
-	const onAddAvatar = () => {
-		addAvatarMutation.mutate(formCore);
-	};
+      const onAddAvatar = () => {
+            addAvatarMutation.mutate(formCore);
+      };
 
-	return (
-		<button
-			{...buttonProps}
-			className={` ${
-				buttonProps.className ? buttonProps.className : ""
-			} btn-design min-w-[14rem]  w-max  h-[4rem] flex items-center sm:justify-center gap-[.5rem]   rounded-xl text-[1.5rem] font-bold text-[#fff] `}
-			onClick={onAddAvatar}
-		>
-			<Hexagon />
-			{textContent}
-		</button>
-	);
+      return (
+            <button
+                  {...buttonProps}
+                  className={` ${
+                        buttonProps.className ? buttonProps.className : ""
+                  } btn-primarily min-w-[14rem]  w-max  h-[4rem] flex items-center sm:justify-center gap-[.5rem]   rounded-xl  font-bold text-[#fff] `}
+                  onClick={onAddAvatar}
+            >
+                  <Hexagon />
+                  {textContent}
+            </button>
+      );
 };
 
 export default ButtonAddAvatarForm;

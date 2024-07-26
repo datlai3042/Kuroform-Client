@@ -11,33 +11,33 @@ import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormD
 import { FormText } from "@/app/_constant/formUi.constant";
 
 export interface ButtonDesginProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	textContent?: string;
+      textContent?: string;
 }
 
 const ButtonDesgin = (props: ButtonDesginProps) => {
-	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
+      const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
 
-	const { setOpenFormDesign } = useContext(FormDesignContext);
-	const { textContent = FormText.buttonDesign.custom, ...buttonProps } = props;
+      const { setOpenFormDesign } = useContext(FormDesignContext);
+      const { textContent = FormText.buttonDesign.custom, ...buttonProps } = props;
 
-	const onOpenDesignModel = () => {
-		setOpenFormDesign((prev) => !prev);
-	};
+      const onOpenDesignModel = () => {
+            setOpenFormDesign((prev) => !prev);
+      };
 
-	return (
-		<>
-			<button
-				{...buttonProps}
-				className={` ${
-					buttonProps.className || ""
-				}  btn-design min-w-[14rem] w-max h-[4rem] flex items-center sm:justify-center gap-[.5rem]   rounded-lg text-[1.5rem] font-bold text-[#fff] `}
-				onClick={onOpenDesignModel}
-			>
-				<PanelTop />
-				{textContent}
-			</button>
-		</>
-	);
+      return (
+            <>
+                  <button
+                        {...buttonProps}
+                        className={` ${
+                              buttonProps.className || ""
+                        }  btn-primarily min-w-[14rem] w-max h-[4rem] flex items-center sm:justify-center gap-[.5rem]   rounded-lg  font-bold text-[#fff] `}
+                        onClick={onOpenDesignModel}
+                  >
+                        <PanelTop />
+                        {textContent}
+                  </button>
+            </>
+      );
 };
 
 export default ButtonDesgin;

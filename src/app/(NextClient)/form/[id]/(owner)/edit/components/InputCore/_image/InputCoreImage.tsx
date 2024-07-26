@@ -5,70 +5,66 @@ import { useSelector } from "react-redux";
 import InputCore from "../InputCore";
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import Image from "next/image";
+import UploadSuccess from "@/app/(NextClient)/_components/ui/loading/UploadSuccess";
+import UploadPending from "@/app/(NextClient)/_components/ui/loading/UploadPending";
+import UploadNone from "@/app/(NextClient)/_components/ui/loading/UploadNone";
 
 type TProps = {
-	inputItem: TInputCore.InputImage.InputTypeImage;
+      inputItem: TInputCore.InputImage.InputTypeImage;
 };
 
 const InputCoreImage = (props: TProps) => {
-	const { inputItem } = props;
-	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
-	const inputRef = useRef<HTMLInputElement | null>(null);
+      const { inputItem } = props;
+      const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
+      const inputRef = useRef<HTMLInputElement | null>(null);
 
-	const [filePreview, setFilePreview] = useState<string>("");
+      const [filePreview, setFilePreview] = useState<string>("");
 
-	const handleClick = () => {
-		if (inputRef.current) {
-			inputRef.current.click();
-		}
-	};
+      const handleClick = () => {
+            if (inputRef.current) {
+                  inputRef.current.click();
+            }
+      };
 
-	const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files) {
-			const file = e.target.files[0];
-			if (!file) return;
-			const link_preview = URL.createObjectURL(file);
-			setFilePreview(link_preview);
-		}
-	};
+      const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+            if (e.target.files) {
+                  const file = e.target.files[0];
+                  if (!file) return;
+                  const link_preview = URL.createObjectURL(file);
+                  setFilePreview(link_preview);
+            }
+      };
 
-	useEffect(() => {
-		return () => {
-			URL.revokeObjectURL(filePreview);
-		};
-	}, [filePreview]);
+      useEffect(() => {
+            return () => {
+                  URL.revokeObjectURL(filePreview);
+            };
+      }, [filePreview]);
 
-	const InputImage = (
-		<DivNative className="relative flex flex-col items-start gap-[1rem] text-text-theme ">
-			<DivNative className={`h-[90%]  flex flex-col items-start  gap-[3rem] `}>
-				<button
-					onClick={handleClick}
-					className="p-[.8rem] min-w-[12rem] text-text-theme border-[.1rem] border-text-theme bg-color-section-theme text-[1.4rem] rounded-xl"
-				>
-					Tải ảnh lên
-				</button>
-				<input type="file" hidden={true} ref={inputRef} onChange={handleUpload} />
-				{filePreview && (
-					<Image
-						src={filePreview}
-						width={70}
-						height={70}
-						alt="demo upload hình ảnh"
-						className="w-[20rem] h-[20rem]"
-					/>
-				)}
-			</DivNative>
-		</DivNative>
-	);
+      const InputImage = (
+            <DivNative className="relative flex flex-col items-start gap-[1rem] text-text-theme ">
+                  <DivNative className={`h-[90%]  flex flex-col items-start  gap-[3rem] `}>
+                        <button onClick={handleClick} className="btn-primarily min-w-[12rem]   rounded-xl">
+                              {filePreview ? "Tải lên lại" : "Tải ảnh lên"}
+                        </button>
 
-	return (
-		<InputCore
-			InputComponent={InputImage}
-			inputItem={inputItem}
-			inputTitle={inputItem.input_title || ""}
-			dataTextTitle="Thêm mô tả về ngày được chọn"
-		/>
-	);
+                        <input type="file" hidden={true} ref={inputRef} onChange={handleUpload} accept=".jpg, .jpeg, .png" />
+                        {filePreview && (
+                              <Image src={filePreview} width={70} height={70} alt="demo upload hình ảnh" className="w-[10rem] aspect-square xl:w-[20rem]" />
+                        )}
+                        {filePreview ? <UploadSuccess /> : <UploadNone />}
+                  </DivNative>
+            </DivNative>
+      );
+
+      return (
+            <InputCore
+                  InputComponent={InputImage}
+                  inputItem={inputItem}
+                  inputTitle={inputItem.input_title || ""}
+                  dataTextTitle="Thêm mô tả về ngày được chọn"
+            />
+      );
 };
 
 export default InputCoreImage;

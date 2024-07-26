@@ -9,13 +9,19 @@ import {
 } from "@/app/_constant/input.constant";
 import { InputCore } from "@/type";
 
-export const superVoteValidate = (inputValue: string, inputPhoneSetting: InputCore.InputVote.InputSettingVote) => {
+export const superVoteValidate = ({
+	inputValue,
+	inputSetting,
+}: {
+	inputValue: string;
+	inputSetting: InputCore.InputVote.InputSettingVote;
+}) => {
 	let _next = true;
 	let message = "";
 
 	let type: InputCore.Commom.ErrorText | null = null;
 
-	const { require } = inputPhoneSetting;
+	const { require } = inputSetting;
 
 	if (!require && !inputValue) return { _next: true, message: "Đây là trường không bắt buộc", type: null };
 

@@ -9,7 +9,13 @@ import {
 } from "@/app/_constant/input.constant";
 import { InputCore } from "@/type";
 
-export const superPhoneValidate = (inputValue: string, inputPhoneSetting: InputCore.InputPhone.InputSettingPhone) => {
+export const superPhoneValidate = ({
+	inputValue,
+	inputSetting,
+}: {
+	inputValue: string;
+	inputSetting: InputCore.InputPhone.InputSettingPhone;
+}) => {
 	let _next = true;
 	let message = "";
 
@@ -18,7 +24,7 @@ export const superPhoneValidate = (inputValue: string, inputPhoneSetting: InputC
 
 	let type: InputCore.Commom.ErrorText | null = null;
 
-	const { require } = inputPhoneSetting;
+	const { require } = inputSetting;
 
 	if (!require && !inputValue) return { _next: true, message: "Đây là trường không bắt buộc", type: null };
 

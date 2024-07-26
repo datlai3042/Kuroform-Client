@@ -5,10 +5,16 @@ import InputAnswerWrapper from "../InputAnswerWrapper";
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNativeRef";
 import { FormAnswerContext } from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
-import { InputError } from "../_email/InputEmailAnswer";
 import { superTextValidate } from "../_validate/inputText.validate";
 import InputErrorMessage from "../InputError/InputErrorMessage";
-import { deleteErrorGlobal, setDataInputGlobal, setErrorGlobal, setInputRequireGlobal } from "../_utils/formAnswer.uti";
+import {
+      deleteErrorGlobal,
+      renderControllerInputAnswer,
+      renderErrorInput,
+      setDataInputGlobal,
+      setErrorGlobal,
+      setInputRequireGlobal,
+} from "../_utils/formAnswer.uti";
 import MinMaxInput from "../../MinMaxInput";
 import { superPhoneValidate } from "../_validate/inputPhone.validate";
 import { AtSign, CalendarCheckIcon, ImageIcon, Phone } from "lucide-react";
@@ -24,212 +30,174 @@ import useUploadFileFormAnswers from "@/app/hooks/form-answer/useUploadFileFormA
 import { UploadFileAnswer } from "@/app/_services/formAnswer.service";
 import { usePathname } from "next/navigation";
 import { checkValueHref } from "@/app/_lib/utils";
+import UploadNone from "@/app/(NextClient)/_components/ui/loading/UploadNone";
+import UploadPending from "@/app/(NextClient)/_components/ui/loading/UploadPending";
+import UploadSuccess from "@/app/(NextClient)/_components/ui/loading/UploadSuccess";
 
 type TProps = {
-	inputItem: InputCore.InputImage.InputTypeImage;
-	formCore: FormCore.Form;
+      inputItem: InputCore.InputImage.InputTypeImage;
+      formCore: FormCore.Form;
 };
 
 const InputImageAnswer = (props: TProps) => {
-	const { inputItem, formCore } = props;
-	const segment = usePathname();
+      const { inputItem, formCore } = props;
+      const segment = usePathname();
 
-	const tempMode = segment.startsWith("/form") && segment.endsWith("/edit");
+      const tempMode = segment.startsWith("/form") && segment.endsWith("/edit");
 
-	const {
-		formAnswer: { inputFormErrors, inputFormData, submitState, form_answer_id },
-		setFormAnswer,
-	} = useContext(FormAnswerContext);
+      const {
+            formAnswer: { inputFormErrors, inputFormData, submitState, form_answer_id },
+            setFormAnswer,
+      } = useContext(FormAnswerContext);
 
-	const uploadFile = useUploadFileFormAnswers();
+      const uploadFile = useUploadFileFormAnswers();
 
-	const [value, setValue] = useState<string>(() => {
-		const data_input_item = inputFormData.find((ip) => ip._id === inputItem._id && ip.type === "FILE_IMAGE");
-		return data_input_item?.value as string;
-	});
+      const [value, setValue] = useState<string>(() => {
+            const data_input_item = inputFormData.find((ip) => ip._id === inputItem._id && ip.type === "FILE_IMAGE");
+            return data_input_item?.value as string;
+      });
 
-	useEffect(() => {
-		setValue(() => {
-			const data_input_item = inputFormData.find((ip) => ip._id === inputItem._id && ip.type === "FILE_IMAGE");
-			return data_input_item?.value as string;
-		});
-	}, []);
+      useEffect(() => {
+            setValue(() => {
+                  const data_input_item = inputFormData.find((ip) => ip._id === inputItem._id && ip.type === "FILE_IMAGE");
+                  return data_input_item?.value as string;
+            });
+      }, []);
 
-	const [error, setError] = useState<InputError>(() => {
-		let instanceError: InputError = {} as InputError;
-		const temp = inputFormErrors.filter((dataError) => {
-			if (dataError._id === inputItem._id) {
-				return dataError;
-			}
-		})[0];
-		instanceError = {
-			error: !!temp,
-			message: temp?.message,
-			type: temp?.type,
-		};
-		return instanceError;
-	});
+      const [error, setError] = useState<FormCore.FormAnswer.InputError>(() => {
+            return renderErrorInput(inputFormErrors, inputItem);
+      });
 
-	//Xem input này có bắt buộc nhập không
-	const checkRequire = useMemo(() => {
-		if (inputFormErrors.some((ip) => ip._id === inputItem._id!) && inputItem.core.setting.require) return true;
-		return false;
-	}, [inputItem, inputFormErrors]);
+      const inputItemInArrayGlobal = useMemo(() => {
+            return renderControllerInputAnswer({ inputFormErrors, inputItem, inputFormData });
+      }, [inputItem, inputFormErrors, inputFormData]);
 
-	//Check input này có nằm trong mảng lỗi global khi submit không
-	const checkErrorSubmit = useMemo(() => {
-		let inputError = inputFormErrors.filter((ip) => ip._id === inputItem._id!)[0];
-		return inputError ? inputError : null;
-	}, [inputItem, inputFormErrors]);
+      //focus -> write = true
+      //xóa lỗi local, xóa lỗi global
+      //đặt lại cờ require trong global bằng false
+      //xét data global
 
-	//focus -> write = true
-	//xóa lỗi local, xóa lỗi global
-	//đặt lại cờ require trong global bằng false
-	//xét data global
+      const inputRef = useRef<HTMLInputElement | null>(null);
 
-	const styleEffect = {
-		onCheckError: {
-			borderWrapper: (error: boolean) => {
-				if (error) return "border-red-600";
-				return " border-zinc-100";
-			},
+      const [filePreview, setFilePreview] = useState<string>("");
 
-			borderInput: (error: boolean) => {
-				if (error) return "border-red-600";
-				return "border-gray-300";
-			},
-		},
+      const handleClick = () => {
+            if (inputRef.current) {
+                  inputRef.current.click();
+            }
+      };
 
-		styleTitle: () => {
-			return {
-				fontSize: inputItem.core.setting.input_size || formCore.form_setting_default.input_size,
-				color: inputItem.core.setting.input_color || formCore.form_setting_default.input_color,
-				fontStyle: inputItem.core.setting.input_style || formCore.form_setting_default.input_style,
-			};
-		},
-	};
+      const [write, setWrite] = useState(false);
 
-	const displayError = error.error || checkErrorSubmit;
+      const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+            if (e.target.files) {
+                  setWrite(true);
+                  const file = e.target.files[0];
+                  const formData: UploadFileAnswer = new FormData();
+                  formData.append("file", file);
+                  formData.append("form_answers_id", form_answer_id);
+                  formData.append("form_id", formCore._id);
 
-	const inputRef = useRef<HTMLInputElement | null>(null);
+                  const link_preview = URL.createObjectURL(file);
+                  setFilePreview(link_preview);
+                  if (tempMode) return;
+                  uploadFile.mutate(formData);
+            }
+      };
 
-	const [filePreview, setFilePreview] = useState<string>("");
+      useEffect(() => {
+            if (uploadFile.isSuccess) {
+                  const { url } = uploadFile.data.metadata;
+                  setValue(url);
+                  setFilePreview(url);
+                  if (inputItem.core.setting.require) {
+                        setInputRequireGlobal(setFormAnswer, inputItem._id!, true);
+                  }
 
-	const handleClick = () => {
-		if (inputRef.current) {
-			inputRef.current.click();
-		}
-	};
+                  deleteErrorGlobal(setFormAnswer, inputItem._id!);
 
-	const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.files) {
-			const file = e.target.files[0];
-			const formData: UploadFileAnswer = new FormData();
-			formData.append("file", file);
-			formData.append("form_answers_id", form_answer_id);
-			formData.append("form_id", formCore._id);
+                  //xét data global
+                  setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: url });
+            }
+      }, [uploadFile.isSuccess]);
 
-			const link_preview = URL.createObjectURL(file);
-			setFilePreview(link_preview);
-			if (tempMode) return;
-			uploadFile.mutate(formData);
-		}
-	};
+      useEffect(() => {
+            return () => {
+                  URL.revokeObjectURL(filePreview);
+            };
+      }, [filePreview]);
 
-	useEffect(() => {
-		if (uploadFile.isSuccess) {
-			const { url } = uploadFile.data.metadata;
-			setValue(url);
-			setFilePreview(url);
-			if (inputItem.core.setting.require) {
-				setInputRequireGlobal(setFormAnswer, inputItem._id!, true);
-			}
+      return (
+            <InputAnswerWrapper>
+                  <DivNative
+                        id={`_inputid_${inputItem._id}`}
+                        className={`${
+                              (error && write) || inputItemInArrayGlobal.globalError.state ? "input-answer-invalid" : " border-[.2rem] border-transparent "
+                        } relative w-full min-h-[20rem] h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[1.8rem]  rounded-lg`}
+                  >
+                        <InputImageTitle inputItem={inputItem} formCore={formCore} />
+                        <DivNative className="relative flex  items-center justify-between gap-[1rem] text-text-theme ">
+                              <DivNative className={`h-[12rem] w-[10rem] xl:w-[24rem]   flex flex-col   justify-start  gap-[1.4rem]  `}>
+                                    {value && checkValueHref(value) && (
+                                          <a href={value} target="_blank" className="text-[#000] text-[1.3rem] flex items-center gap-[1rem]">
+                                                <ImageIcon />
+                                                Xem Ảnh
+                                          </a>
+                                    )}
+                                    <p className="w-max text-[1.3rem] text-[#000]">Chỉ nhận các file JPEG, JPEG,PNG</p>
+                                    <button
+                                          onClick={handleClick}
+                                          className="p-[.6rem] border-[.1rem] w-[9rem] border-text-theme bg-slate-900 text-[#fff] text-[1.4rem] rounded-xl"
+                                    >
+                                          {value ? "Tải lại" : "Tải ảnh lên"}
+                                    </button>
 
-			deleteErrorGlobal(setFormAnswer, inputItem._id!);
+                                    {value ? <UploadSuccess /> : uploadFile.isPending ? <UploadPending /> : <UploadNone />}
 
-			//xét data global
-			setDataInputGlobal(setFormAnswer, inputItem._id!, url);
-		}
-	}, [uploadFile.isSuccess]);
+                                    <input type="file" hidden={true} ref={inputRef} onChange={handleUpload} accept=".jpg, .jpeg, .png" />
+                              </DivNative>
 
-	console.log({ filePreview, value });
+                              <div className="w-[12rem] xl:w-[14rem] h-[12rem] flex items-center justify-center">
+                                    {!value && !uploadFile.isPending && (
+                                          <Image
+                                                width={32}
+                                                height={32}
+                                                alt="upload hình ảnh"
+                                                src={"/assets/images/icon/form_answer/photographer.png"}
+                                                unoptimized={true}
+                                                className="w-[10rem] h-[10rem]"
+                                          />
+                                    )}
+                                    {uploadFile.isPending ? (
+                                          <LoadingSpinner color="blue" />
+                                    ) : (
+                                          !tempMode &&
+                                          !!value && (
+                                                <Image
+                                                      src={value}
+                                                      width={70}
+                                                      height={70}
+                                                      alt="file hinh anh"
+                                                      className="w-full h-full rounded-lg"
+                                                      unoptimized={true}
+                                                />
+                                          )
+                                    )}
 
-	useEffect(() => {
-		return () => {
-			URL.revokeObjectURL(filePreview);
-		};
-	}, [filePreview]);
-
-	console.log({ value, inputFormData });
-
-	return (
-		<InputAnswerWrapper>
-			<DivNative
-				id={`_inputid_${inputItem._id}`}
-				className={`${styleEffect.onCheckError.borderWrapper(
-					error.error || checkRequire
-				)} relative w-full min-h-[18rem] h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[2rem]  rounded-lg`}
-			>
-				<InputImageTitle inputItem={inputItem} formCore={formCore} />
-				<DivNative className="relative flex  items-center justify-center gap-[1rem] text-text-theme ">
-					<DivNative className={`h-full w-full  flex flex-col items-start justify-center  gap-[3rem]  `}>
-						{value && checkValueHref(value) && (
-							<a
-								href={value}
-								target="_blank"
-								className="text-[#000] text-[1.4rem] flex items-center gap-[1rem]"
-							>
-								<ImageIcon />
-								Xem Ảnh
-							</a>
-						)}
-						<button
-							onClick={handleClick}
-							className="p-[.8rem] min-w-[12rem] border-[.1rem] border-text-theme bg-slate-900 text-[#fff] text-[1.4rem] rounded-xl"
-						>
-							Tải ảnh lên
-						</button>
-						<input type="file" hidden={true} ref={inputRef} onChange={handleUpload} />
-					</DivNative>
-					<div className="w-[16rem] h-[12rem]">
-						{uploadFile.isPending ? (
-							<LoadingSpinner color="blue" />
-						) : (
-							!tempMode &&
-							!!value && (
-								<Image
-									src={value}
-									width={70}
-									height={70}
-									alt="file hinh anh"
-									className="w-full h-full"
-									unoptimized={true}
-								/>
-							)
-						)}
-
-						{tempMode && filePreview && (
-							<Image
-								src={filePreview}
-								width={70}
-								height={70}
-								alt="file hinh anh"
-								className="w-full h-full"
-								unoptimized={true}
-							/>
-						)}
-					</div>
-				</DivNative>
-
-				{displayError && (
-					<InputErrorMessage
-						message={checkErrorSubmit?.message || error.message}
-						type={checkErrorSubmit?.type || error.type!}
-					/>
-				)}
-			</DivNative>
-		</InputAnswerWrapper>
-	);
+                                    {tempMode && filePreview && (
+                                          <Image src={filePreview} width={70} height={70} alt="file hinh anh" className="w-full h-full" unoptimized={true} />
+                                    )}
+                              </div>
+                        </DivNative>
+                        {(error.error || inputItemInArrayGlobal.globalError.state) && (
+                              <InputErrorMessage
+                                    message={inputItemInArrayGlobal.globalError.message || error.message}
+                                    type={inputItemInArrayGlobal.globalError.type || error.type}
+                              />
+                        )}
+                  </DivNative>
+            </InputAnswerWrapper>
+      );
 };
 
 export default InputImageAnswer;

@@ -3,10 +3,12 @@ import React, { SetStateAction, useCallback, useEffect, useRef, useState } from 
 type TProps = {
 	children: React.ReactElement;
 	setOpenModel: React.Dispatch<SetStateAction<boolean>>;
+	width?: string;
+	height?: string;
 };
 
 const ClickOutSide = (props: TProps) => {
-	const { children, setOpenModel } = props;
+	const { children, width, height, setOpenModel } = props;
 
 	const divWrapper = useRef<HTMLDivElement | null>(null);
 
@@ -29,8 +31,11 @@ const ClickOutSide = (props: TProps) => {
 		};
 	}, [globalClick]);
 
+	const widthStyle = width ? width : "w-max";
+	const heightStyle = height ? height : "w-max";
+
 	return (
-		<div ref={divWrapper} className="min-w-full w-max min-h-max ">
+		<div ref={divWrapper} className={`${width} ${height}`}>
 			{children}
 		</div>
 	);

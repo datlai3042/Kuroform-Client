@@ -7,21 +7,21 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 export const useGetAllFormState = () => {
-	const dispatch = useDispatch();
+      const dispatch = useDispatch();
 
-	const getAllFormState = useQuery({
-		queryKey: ["get-all-form-state"],
-		queryFn: () => FormService.getAllFormState(),
-	});
+      const getAllFormState = useQuery({
+            queryKey: ["get-all-form-state"],
+            queryFn: () => FormService.getAllFormState(),
+      });
 
-	useEffect(() => {
-		if (getAllFormState.isSuccess) {
-			const { formActive, formDelete, formPrivate } = getAllFormState.data.metadata;
-			dispatch(onFetchFormState({ form_delete: formDelete, form_private: formPrivate, form_public: formActive }));
-		}
-	}, [getAllFormState.isSuccess, dispatch, getAllFormState.data?.metadata]);
+      useEffect(() => {
+            if (getAllFormState.isSuccess) {
+                  const { formPublic, formDelete, formPrivate } = getAllFormState.data.metadata;
+                  dispatch(onFetchFormState({ form_delete: formDelete, form_private: formPrivate, form_public: formPublic }));
+            }
+      }, [getAllFormState.isSuccess, dispatch, getAllFormState.data?.metadata]);
 
-	return getAllFormState;
+      return getAllFormState;
 };
 
 export default useGetAllFormState;

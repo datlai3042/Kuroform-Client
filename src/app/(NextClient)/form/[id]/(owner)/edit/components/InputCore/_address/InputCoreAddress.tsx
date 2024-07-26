@@ -1,49 +1,83 @@
-import { FormCore, InputCore as TInputCore } from "@/type";
+import { FormCore, InputCore as TInputCore, UI } from "@/type";
 import React, { useMemo, useState } from "react";
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import InputCore from "../InputCore";
+import superAddressValidate from "@/app/(NextClient)/form/[id]/_components/InputAnswer/_validate/inputAddress.validate";
 import ModelAddress from "@/app/(NextClient)/_components/Model/ModelAddress";
+import { inititalValueInputAddress } from "@/app/_constant/input.constant";
+import InputValidateError from "@/app/(NextClient)/form/[id]/_components/_common/InputValidateError";
+import InputValidateSuccess from "@/app/(NextClient)/form/[id]/_components/_common/InputValidateSuccess";
 
 type TProps = {
-	inputItem: TInputCore.InputAddress.InputTypeAddress;
+      inputItem: TInputCore.InputAddress.InputTypeAddress;
 };
 
 const InputCoreAddress = (props: TProps) => {
-	const { inputItem } = props;
-	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
+      const { inputItem } = props;
 
-	const [address, setAddress] = useState<string>("");
-	const [checkValidate, setCheckValidate] = useState<boolean>(false);
+      const [controlerInput, setControllerInput] = useState<TInputCore.Commom.ControlerInput<UI.Address.AddressEnity>>({
+            value: {
+                  addressString: "",
+                  addressValidate: inititalValueInputAddress,
+                  address_full: "",
+                  addressCore: "",
+            },
+            error: {
+                  message: "",
+            },
+            validate: false,
+      });
 
-	const [phone, setPhone] = useState<number>(0);
+      const onChangeAddress = (address: UI.Address.AddressEnity) => {
+            console.log("change", address);
 
-	const InputAddress = (
-		<div className="flex flex-col gap-[2rem]">
-			<ModelAddress
-				detail={true}
-				onChange={(address) => setAddress(address)}
-				onCheckFullField={(check) => setCheckValidate(check)}
-			/>
-			<div className="flex items-center justify-between">
-				{address && <span className="text-[1.4rem]">{address}</span>}
-				<button className="ml-auto h-[4rem] w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-blue-600 rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]">
-					Xác nhận
-				</button>
-			</div>
-		</div>
-	);
+            const { _next, message, type } = superAddressValidate({
+                  inputValue: address,
+                  inputSetting: inputItem.core.setting,
+            });
 
-	return (
-		<InputCore
-			InputComponent={InputAddress}
-			inputItem={inputItem}
-			inputTitle={inputItem.input_title || ""}
-			dataTextTitle="Thêm tiêu đề cho phần địa chỉ"
-		/>
-	);
+            console.log({ _next, message, type });
+
+            setControllerInput((prev) => ({
+                  ...prev,
+                  validate: !_next,
+                  value: address,
+                  error: {
+                        message,
+                  },
+            }));
+      };
+
+      const InputAddress = (
+            <div className="flex flex-col gap-[2rem]">
+                  <ModelAddress detail={true} onChange={onChangeAddress} />
+                  <div className="flex flex-col h-[8rem] gap-[1rem]   justify-center">
+                        {(controlerInput.validate || controlerInput.value.addressString) && (
+                              <InputValidateSuccess message={controlerInput.value.addressString} />
+                        )}
+                        <button
+                              onClick={() => onChangeAddress(controlerInput.value)}
+                              className=" w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-color-btn-primarily rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
+                        >
+                              Xác nhận
+                        </button>
+
+                        {controlerInput.error.message && <InputValidateError message={controlerInput.error.message} />}
+                  </div>
+            </div>
+      );
+
+      return (
+            <InputCore
+                  InputComponent={InputAddress}
+                  inputItem={inputItem}
+                  inputTitle={inputItem.input_title || ""}
+                  dataTextTitle="Thêm tiêu đề cho phần địa chỉ"
+            />
+      );
 };
 
 export default InputCoreAddress;

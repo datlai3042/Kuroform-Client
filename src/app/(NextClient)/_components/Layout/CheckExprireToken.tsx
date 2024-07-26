@@ -6,27 +6,27 @@ import React, { useEffect } from "react";
 const timeCheck = 3000;
 
 const CheckExprireToken = () => {
-	useEffect(() => {
-		const interval = setInterval(async () => {
-			const now = new Date();
-			const exprireToken = JSON.parse(localStorage.getItem("expireToken") || "0");
-			const exprireTokemTime = new Date(exprireToken);
-			if (differenceInHours(exprireTokemTime, now) < 1) {
-				try {
-					const res = await AuthService.refreshTokenServer();
-				} catch (error) {
-					await AuthService.logoutNextClient();
-					window.location.href = "/";
-				}
-			}
-		}, timeCheck);
+      useEffect(() => {
+            const interval = setInterval(async () => {
+                  const now = new Date();
+                  const exprireToken = JSON.parse(localStorage.getItem("expireToken") || "0");
+                  const exprireTokemTime = new Date(exprireToken);
+                  if (differenceInHours(exprireTokemTime, now) < 1) {
+                        try {
+                              const res = await AuthService.refreshTokenServer();
+                        } catch (error) {
+                              await AuthService.logoutNextClient();
+                              window.location.href = "/";
+                        }
+                  }
+            }, timeCheck);
 
-		return () => {
-			clearInterval(interval);
-		};
-	}, []);
+            return () => {
+                  clearInterval(interval);
+            };
+      }, []);
 
-	return null;
+      return null;
 };
 
 export default CheckExprireToken;

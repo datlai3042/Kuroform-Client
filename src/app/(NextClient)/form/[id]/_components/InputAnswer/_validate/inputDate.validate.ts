@@ -8,18 +8,24 @@ import {
 import { InputCore } from "@/type";
 import moment from "moment";
 
-export const superDateValidate = (date_full: string, inputPhoneSetting: InputCore.InputDate.InputSettingDate) => {
+export const superDateValidate = ({
+	inputValue,
+	inputSetting,
+}: {
+	inputValue: string;
+	inputSetting: InputCore.InputDate.InputSettingDate;
+}) => {
 	let _next = true;
 	let message = "";
 
 	let type: InputCore.Commom.ErrorText | null = null;
 
-	const { require } = inputPhoneSetting;
+	const { require } = inputSetting;
 
 	if (!require) return { _next: true, message: "Đây là trường không bắt buộc", type: null };
 
-	if (require && date_full) {
-		const check_date_vaild = moment(date_full).isValid();
+	if (require && inputValue) {
+		const check_date_vaild = moment(inputValue).isValid();
 		if (!check_date_vaild) {
 			_next = false;
 			message = REQUIRE_ERROR;
@@ -28,7 +34,7 @@ export const superDateValidate = (date_full: string, inputPhoneSetting: InputCor
 		}
 	}
 
-	if (require && !date_full) {
+	if (require && !inputValue) {
 		_next = false;
 		message = REQUIRE_ERROR;
 		type = "REQUIRE";

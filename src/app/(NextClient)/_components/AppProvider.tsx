@@ -6,29 +6,28 @@ import LoadingSpinner from "./ui/loading/LoadingSpinner";
 import LoadingClient from "./LoadingClient";
 
 type TProps = {
-	children: React.ReactNode;
+      children: React.ReactNode;
 };
 
 const AppProvider = (props: TProps) => {
-	const { children } = props;
+      const { children } = props;
 
-	const [isLoading, setIsLoading] = useState(false);
+      const [isLoading, setIsLoading] = useState(false);
 
-	useEffect(() => {
-		if (!isLoading) {
-			setIsLoading(true);
-		}
-		console.log(isLoading);
-	}, [isLoading]);
+      useEffect(() => {
+            if (!isLoading) {
+                  setIsLoading(true);
+            }
+      }, [isLoading]);
 
-	useEffect(() => {
-		console.log(
-			"%cXin chào mình là Lại Huỳnh Phát Đạt, đây là dự án cá nhân mình tự viết rất mong được mọi người góp ý",
-			`color:#64aaa8;font-size:20px;`
-		);
-	}, []);
+      useEffect(() => {
+            console.log(
+                  "%cXin chào mình là Lại Huỳnh Phát Đạt, đây là dự án cá nhân mình tự viết rất mong được mọi người góp ý",
+                  `color:#64aaa8;font-size:20px;`,
+            );
+      }, []);
 
-	return <div className="">{!isLoading ? <LoadingClient /> : children}</div>;
+      return <div className="">{!isLoading ? <LoadingClient /> : children}</div>;
 };
 
 export default AppProvider;

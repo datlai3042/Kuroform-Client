@@ -79,9 +79,9 @@ const FormTitleImage = (props: TProps) => {
 		updateFormAPI.mutate(newForm);
 	};
 
-	const widthPage = page === "Edit" ? "w-[35rem] sm:w-[51rem] xl:w-[70rem] " : "w-full xl:w-[62rem]  items-center";
+	const widthPage = page === "Edit" ? "w-[20rem] sm:w-[51rem] xl:w-[70rem] " : "w-full xl:w-[62rem]  items-center";
 
-	const heightWithModeNormal = mode === "Normal" ? (page === "Edit" ? "h-[50rem] w-full" : "  w-full") : "";
+	const heightWithModeNormal = mode === "Normal" ? (page === "Edit" ? "h-[40rem] w-full" : "  w-full") : "";
 	const heightWithModeSlider = mode === "Slider" ? (page === "Edit" ? "w-full xl:w-[70%]" : "h-[30rem] w-[90%]") : "";
 
 	const colorMain = formCore.form_title.form_title_color || formCore.form_setting_default.form_title_color_default;
@@ -100,7 +100,7 @@ const FormTitleImage = (props: TProps) => {
 				<div className="flex items-center gap-[2rem]">
 					<button
 						onClick={onClickButton}
-						className="btn-design min-w-[7rem] w-max h-[4rem] text-[1.4rem] flex justify-center items-center gap-[1rem] p-[.1rem_.7rem] text-[#fff]  rounded-lg"
+						className="btn-primarily min-w-[7rem] w-max h-[4rem] text-[1.4rem] flex justify-center items-center gap-[1rem] p-[.1rem_.7rem] text-[#fff]  rounded-lg"
 					>
 						{FormText.title.optionImage.complete}
 					</button>

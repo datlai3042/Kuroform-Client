@@ -11,40 +11,40 @@ import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
 import { FormText } from "@/app/_constant/formUi.constant";
 
 export interface ButtonAddBackgroundFormProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	textContent?: string;
+      textContent?: string;
 }
 
 const ButtonAddBackgroundForm = (props: ButtonAddBackgroundFormProps) => {
-	const dispatch = useDispatch();
-	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
+      const dispatch = useDispatch();
+      const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
 
-	const { textContent = FormText.buttonDesign.background, ...buttonProps } = props;
+      const { textContent = FormText.buttonDesign.background, ...buttonProps } = props;
 
-	const addBackgroundMutation = useMutation({
-		mutationKey: ["add-background"],
-		mutationFn: (form: FormCore.Form) => FormService.addBackground(formCore),
-		onSuccess: (res) => {
-			const { form } = res.metadata;
-			dispatch(onFetchForm({ form }));
-		},
-	});
+      const addBackgroundMutation = useMutation({
+            mutationKey: ["add-background"],
+            mutationFn: (form: FormCore.Form) => FormService.addBackground(formCore),
+            onSuccess: (res) => {
+                  const { form } = res.metadata;
+                  dispatch(onFetchForm({ form }));
+            },
+      });
 
-	const onAddBackgroud = () => {
-		addBackgroundMutation.mutate(formCore);
-	};
+      const onAddBackgroud = () => {
+            addBackgroundMutation.mutate(formCore);
+      };
 
-	return (
-		<button
-			{...buttonProps}
-			className={` ${
-				buttonProps.className ? buttonProps.className : ""
-			} btn-design min-w-[14rem] h-[4rem] w-max flex items-center sm:justify-center gap-[.5rem]   rounded-xl text-[1.5rem] font-bold text-[#fff] `}
-			onClick={onAddBackgroud}
-		>
-			<PanelTop />
-			{textContent}
-		</button>
-	);
+      return (
+            <button
+                  {...buttonProps}
+                  className={` ${
+                        buttonProps.className ? buttonProps.className : ""
+                  } btn-primarily min-w-[14rem] h-[4rem] w-max flex items-center sm:justify-center gap-[.5rem]   rounded-xl  font-bold text-[#fff] `}
+                  onClick={onAddBackgroud}
+            >
+                  <PanelTop />
+                  {textContent}
+            </button>
+      );
 };
 
 export default ButtonAddBackgroundForm;

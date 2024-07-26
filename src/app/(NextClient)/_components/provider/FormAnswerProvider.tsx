@@ -1,96 +1,85 @@
 "use client";
+import { inititalValueInputAddress } from "@/app/_constant/input.constant";
 import { FormCore, InputCore } from "@/type";
 import React, { SetStateAction, createContext, useState } from "react";
 
-export type FormAnswerControl = {
-	inputFormData: FormCore.FormAnswer.InputFormData[];
-	inputFormRequire: FormCore.FormAnswer.InputFormRequire[];
-	inputFormErrors: FormCore.FormAnswer.InputFormError[];
-	openModelError: boolean;
-	submitState: "pending" | "success" | "fail" | "clear";
-	form_answer_id: string;
-};
+export const FormAnswerContext = createContext<FormCore.FormAnswer.TFormAnswerContext>({
+      formAnswer: {
+            inputFormData: [],
+            inputFormErrors: [],
+            inputFormRequire: [],
+            openModelError: false,
+            form_answer_id: "",
 
-type TFormAnswerContext = {
-	formAnswer: FormAnswerControl;
-	setFormAnswer: React.Dispatch<SetStateAction<FormAnswerControl>>;
-};
+            submitState: "clear",
+      },
 
-export const FormAnswerContext = createContext<TFormAnswerContext>({
-	formAnswer: {
-		inputFormData: [],
-		inputFormErrors: [],
-		inputFormRequire: [],
-		openModelError: false,
-		form_answer_id: "",
-
-		submitState: "clear",
-	},
-
-	setFormAnswer: () => {},
+      setFormAnswer: () => {},
 });
 
 type TProps = {
-	formCore: FormCore.Form;
-	form_answer_id: string;
-	children: React.ReactNode;
+      formCore: FormCore.Form;
+      form_answer_id: string;
+      children: React.ReactNode;
 };
 
 const FormAnswerProvider = (props: TProps) => {
-	const { formCore, children, form_answer_id } = props;
-	console.log({ props });
-	const [formAnswer, setFormAnswer] = useState<FormAnswerControl>(() => {
-		return {
-			inputFormData: formCore.form_inputs.map((ip) => {
-				if (ip.type === "OPTION_MULTIPLE") {
-					return {
-						setting: ip.core.setting,
-						_id: ip._id!,
-						title: ip.input_title || "",
-						mode: ip.core.setting.require
-							? "Require"
-							: ("Optional" as FormCore.FormAnswer.InputFormData["mode"]),
-						value: [],
-						type: ip.type,
-					};
-				}
+      const { formCore, children, form_answer_id } = props;
+      const [formAnswer, setFormAnswer] = useState<FormCore.FormAnswer.FormAnswerControl>(() => {
+            return {
+                  inputFormData: formCore.form_inputs.map((ip) => {
+                        if (ip.type === "OPTION_MULTIPLE") {
+                              return {
+                                    setting: ip.core.setting,
+                                    _id: ip._id!,
+                                    title: ip.input_title || "",
+                                    mode: ip.core.setting.require ? "Require" : ("Optional" as FormCore.FormAnswer.InputFormData["mode"]),
+                                    value: [],
+                                    type: ip.type,
+                              };
+                        }
 
-				return {
-					setting: ip.core.setting,
-					_id: ip._id!,
-					title: ip.input_title || "",
-					mode: ip.core.setting.require
-						? "Require"
-						: ("Optional" as FormCore.FormAnswer.InputFormData["mode"]),
-					value: "",
-					type: ip.type,
-				};
-			}),
-			inputFormErrors: [],
-			form_answer_id,
-			inputFormRequire: formCore.form_inputs.reduce(
-				(newArray: FormCore.FormAnswer.InputFormRequire[], inputItem) => {
-					if (inputItem.core.setting.require)
-						newArray.push({ _id: inputItem._id, title: inputItem.input_title, checkRequire: false });
-					return newArray;
-				},
-				[]
-			),
-			openModelError: false,
-			submitState: "clear",
-		};
-	});
+                        if (ip.type === "ADDRESS") {
+                              return {
+                                    setting: ip.core.setting,
+                                    _id: ip._id!,
+                                    title: ip.input_title || "",
+                                    mode: ip.core.setting.require ? "Require" : ("Optional" as FormCore.FormAnswer.InputFormData["mode"]),
+                                    value: { addressString: "", address_full: "", addressValidate: inititalValueInputAddress, addressCore: "" },
+                                    type: ip.type,
+                              };
+                        }
 
-	return (
-		<FormAnswerContext.Provider
-			value={{
-				formAnswer,
-				setFormAnswer,
-			}}
-		>
-			{children}
-		</FormAnswerContext.Provider>
-	);
+                        return {
+                              setting: ip.core.setting,
+                              _id: ip._id!,
+                              title: ip.input_title || "",
+                              mode: ip.core.setting.require ? "Require" : ("Optional" as FormCore.FormAnswer.InputFormData["mode"]),
+                              value: "",
+                              type: ip.type,
+                        };
+                  }),
+                  inputFormErrors: [],
+                  form_answer_id,
+                  inputFormRequire: formCore.form_inputs.reduce((newArray: FormCore.FormAnswer.InputFormRequire[], inputItem) => {
+                        if (inputItem.core.setting.require) newArray.push({ _id: inputItem._id, title: inputItem.input_title, checkRequire: false });
+                        return newArray;
+                  }, []),
+                  openModelError: false,
+                  submitState: "clear",
+            };
+      });
+
+      return (
+            <FormAnswerContext.Provider
+                  value={{
+                        formAnswer,
+                        setFormAnswer,
+                  }}
+            >
+                  {children}
+            </FormAnswerContext.Provider>
+      );
 };
 
 export default FormAnswerProvider;

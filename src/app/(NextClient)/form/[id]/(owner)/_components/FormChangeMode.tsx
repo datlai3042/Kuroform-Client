@@ -9,152 +9,141 @@ import Link from "next/link";
 import BoxCopySuccess from "./BoxCopySuccess";
 
 type TProps = {
-	formPageMode: FormPageMode;
-	setFormPageMode: React.Dispatch<SetStateAction<FormPageMode>>;
-	children: React.ReactNode;
+      formPageMode: FormPageMode;
+      setFormPageMode: React.Dispatch<SetStateAction<FormPageMode>>;
+      children: React.ReactNode;
 };
 
 const iconSize = 16;
 
 const FormChangeMode = (props: TProps) => {
-	const { children, formPageMode, setFormPageMode } = props;
+      const { children, formPageMode, setFormPageMode } = props;
 
-	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
-	const router = useRouter();
+      const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
+      const router = useRouter();
 
-	const fontSize = formCore.form_title.form_title_size
-		? formCore.form_title.form_title_size / 10 + "rem"
-		: formCore.form_setting_default.form_title_size_default / 10 + "rem";
+      const fontSize = formCore.form_title.form_title_size
+            ? formCore.form_title.form_title_size / 10 + "rem"
+            : formCore.form_setting_default.form_title_size_default / 10 + "rem";
 
-	const color = formCore.form_title.form_title_color
-		? formCore.form_title.form_title_color
-		: formCore.form_setting_default.form_title_color_default;
+      const color = formCore.form_title.form_title_color ? formCore.form_title.form_title_color : formCore.form_setting_default.form_title_color_default;
 
-	const fontStyle = formCore.form_title.form_title_style
-		? formCore.form_title.form_title_style
-		: formCore.form_setting_default.form_title_style_default;
+      const fontStyle = formCore.form_title.form_title_style ? formCore.form_title.form_title_style : formCore.form_setting_default.form_title_style_default;
 
-	const avatarSrc =
-		formCore.form_avatar?.form_avatar_url || formCore.form_setting_default.form_avatar_default_url || "";
+      const avatarSrc = formCore.form_avatar?.form_avatar_url || formCore.form_setting_default.form_avatar_default_url || "";
 
-	const styleEffect = {
-		linkActive: (checkLink: boolean) => {
-			if (!checkLink) return "border-transparent";
-			return "border-[#0bceb2] font-bold";
-		},
-	};
+      const styleEffect = {
+            linkActive: (checkLink: boolean) => {
+                  if (!checkLink) return "border-transparent";
+                  return "border-[#0bceb2] font-bold";
+            },
+      };
 
-	const [copySuccess, setCopySuccess] = useState<boolean>(false);
+      const [copySuccess, setCopySuccess] = useState<boolean>(false);
 
-	const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+      const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-	useEffect(() => {
-		if (copySuccess) {
-			const time = 3000;
-			timeoutRef.current = setTimeout(() => setCopySuccess(false), time);
-		}
+      useEffect(() => {
+            if (copySuccess) {
+                  const time = 3000;
+                  timeoutRef.current = setTimeout(() => setCopySuccess(false), time);
+            }
 
-		return () => {
-			clearTimeout(timeoutRef.current as NodeJS.Timeout);
-		};
-	}, [copySuccess]);
+            return () => {
+                  clearTimeout(timeoutRef.current as NodeJS.Timeout);
+            };
+      }, [copySuccess]);
 
-	return (
-		<div className=" w-full p-[6rem]  mx-auto h-full flex  flex-col gap-[2rem] text-text-theme">
-			<div className="w-full flex flex-col gap-[2rem] xl:flex-row justify-between">
-				<h1
-					title={formCore.form_title.form_title_value}
-					className="line-clamp-2 w-[80%] text-text-theme"
-					style={{
-						fontSize,
-						fontStyle,
-					}}
-				>
-					{formCore?.form_title?.form_title_value}
-				</h1>
-				<div className="flex items-center gap-[1rem]">
-					<div className="relative ">
-						<button
-							onClick={(e) => {
-								e.stopPropagation();
-								e.preventDefault();
-								navigator.clipboard
-									.writeText(`${window.location.origin}/form/${formCore._id}`)
-									.then(() => setCopySuccess(true));
-							}}
-							className="hover:text-[#fff] flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
-						>
-							<LinkIcon size={iconSize} />
-						</button>
-						{copySuccess && (
-							<div className="absolute bottom-[-4rem] left-[-10rem] xl:left-0 text-text-theme">
-								<BoxCopySuccess message="Copy link chia sẽ thành công" />
-							</div>
-						)}
-					</div>
+      return (
+            <div className=" w-full p-[6rem]  mx-auto h-full flex  flex-col gap-[2rem] text-text-theme">
+                  <div className="w-full flex flex-col gap-[2rem] xl:flex-row justify-between">
+                        <h1
+                              title={formCore.form_title.form_title_value}
+                              className="line-clamp-2 w-[80%] text-text-theme"
+                              style={{
+                                    fontSize,
+                                    fontStyle,
+                              }}
+                        >
+                              {formCore?.form_title?.form_title_value}
+                        </h1>
+                        <div className="flex items-center gap-[1rem]">
+                              <div className="relative ">
+                                    <button
+                                          onClick={(e) => {
+                                                e.stopPropagation();
+                                                e.preventDefault();
+                                                navigator.clipboard
+                                                      .writeText(`${window.location.origin}/form/${formCore._id}`)
+                                                      .then(() => setCopySuccess(true));
+                                          }}
+                                          className="hover:text-[#fff] flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
+                                    >
+                                          <LinkIcon size={iconSize} />
+                                    </button>
+                                    {copySuccess && (
+                                          <div className="absolute bottom-[-4rem] left-0 text-text-theme">
+                                                <BoxCopySuccess message="Copy link chia sẽ thành công" />
+                                          </div>
+                                    )}
+                              </div>
 
-					{avatarSrc ? (
-						<Image
-							src={avatarSrc}
-							width={30}
-							height={30}
-							alt="avatar"
-							className="w-[3rem] h-[3rem] rounded-full"
-						/>
-					) : (
-						<div className="animate-pulse w-[3rem] h-[3rem] rounded-full bg-slate-200 "></div>
-					)}
+                              {avatarSrc ? (
+                                    <Image src={avatarSrc} width={30} height={30} alt="avatar" className="w-[3rem] h-[3rem] rounded-full" />
+                              ) : (
+                                    <div className="animate-pulse w-[3rem] h-[3rem] rounded-full bg-slate-200 "></div>
+                              )}
 
-					<button
-						className="hover:text-[#fff] flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
-						onClick={(e) => {
-							e.preventDefault();
-							router.push(`/form/${formCore._id}/edit`);
-						}}
-					>
-						<Pencil size={iconSize} />
-						<span>Chỉnh sửa</span>
-					</button>
-				</div>
-			</div>
+                              <button
+                                    className="hover:text-[#fff] flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
+                                    onClick={(e) => {
+                                          e.preventDefault();
+                                          router.push(`/form/${formCore._id}/edit`);
+                                    }}
+                              >
+                                    <Pencil size={iconSize} />
+                                    <span>Chỉnh sửa</span>
+                              </button>
+                        </div>
+                  </div>
 
-			<div className="w-full h-max flex items-center gap-[2rem] text-[1.4rem] border-b-[.1rem] border-slate-200 text-text-theme">
-				<Link
-					onClick={() => setFormPageMode("summary")}
-					href={`/form/${formCore._id}/summary`}
-					className={`${styleEffect.linkActive(
-						formPageMode === "summary"
-					)} border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
-				>
-					Bản tóm tắt
-				</Link>
+                  <div className="w-full h-max flex items-center gap-[2rem] text-[1.4rem] border-b-[.1rem] border-slate-200 text-text-theme">
+                        <Link
+                              onClick={() => setFormPageMode("summary")}
+                              href={`/form/${formCore._id}/summary`}
+                              className={`${styleEffect.linkActive(
+                                    formPageMode === "summary",
+                              )} border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
+                        >
+                              Bản tóm tắt
+                        </Link>
 
-				<Link
-					onClick={() => setFormPageMode("download")}
-					href={`/form/${formCore._id}/download`}
-					className={`${styleEffect.linkActive(
-						formPageMode === "download"
-					)}  border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
-				>
-					Tải xuống
-				</Link>
+                        <Link
+                              onClick={() => setFormPageMode("download")}
+                              href={`/form/${formCore._id}/download`}
+                              className={`${styleEffect.linkActive(
+                                    formPageMode === "download",
+                              )}  border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
+                        >
+                              Tải xuống
+                        </Link>
 
-				<Link
-					onClick={() => setFormPageMode("share")}
-					href={`/form/${formCore._id}/share`}
-					className={`${styleEffect.linkActive(
-						formPageMode === "share"
-					)}  border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
-				>
-					Chia sẽ
-				</Link>
-			</div>
+                        <Link
+                              onClick={() => setFormPageMode("share")}
+                              href={`/form/${formCore._id}/share`}
+                              className={`${styleEffect.linkActive(
+                                    formPageMode === "share",
+                              )}  border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
+                        >
+                              Chia sẽ
+                        </Link>
+                  </div>
 
-			<div className="h-[70%]">
-				<div className="mt-[1rem] h-full">{children}</div>
-			</div>
-		</div>
-	);
+                  <div className="h-[50%] xl:h-[70%]">
+                        <div className="mt-[3rem] h-full">{children}</div>
+                  </div>
+            </div>
+      );
 };
 
 export default FormChangeMode;
