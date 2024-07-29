@@ -5,7 +5,7 @@ import useGetDistrictWithPattern from "@/app/hooks/common/address/useGetDistrict
 import useGetWardWithPattern from "@/app/hooks/common/address/useGetWardWithPattern";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
-import { onFetchProvinces } from "@/app/_lib/redux/features/address.slice";
+import { onFetchProvinces } from "@/app/_lib/redux/address.slice";
 import { UI } from "@/type";
 
 type TProps = {
@@ -161,7 +161,6 @@ const ModelAddress = (props: TProps) => {
                                     path_with_type: province.code && district.code && ward.code && detailAddress ? addressString : "",
                               },
                         ];
-                        console.log({ province, addressString, addressValidate });
 
                         onChange({ addressString, addressValidate, addressCore: addressCore, address_full });
                   }
@@ -176,8 +175,6 @@ const ModelAddress = (props: TProps) => {
                   }
             }
       }, [province, district, ward, detailAddress]);
-
-      console.log({ defaultValue });
 
       return (
             <div className="p-[1rem_0rem] flex flex-col gap-[2rem]">

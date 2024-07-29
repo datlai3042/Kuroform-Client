@@ -1,24 +1,23 @@
 "use client";
 import { FormCore, InputCore } from "@/type";
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
-import InputEmailAnswer from "./InputAnswer/_email/InputEmailAnswer";
-import FormAnswerProvider, { FormAnswerContext } from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
+import { FormAnswerContext } from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
 import ButtonSubmitForm from "./ButtonSubmitForm";
-import InputTextAnswer from "./InputAnswer/_text/InputTextAnswer";
 import HeaderFormAnswer from "./HeaderFormAnswer";
 import { number } from "zod";
 import Link from "next/link";
 import ListErrorInput from "./ListErrorInput";
-import ClickOutSide from "@/app/(NextClient)/_components/Model/ClickOutSide";
 import SubmitSuccess from "./InputAnswer/submit/SubmitSuccess";
-import InputOptionAnswer from "./InputAnswer/_option/InputOptionAnswer";
-import InputOptionMultipleAnswer from "./InputAnswer/_options/InputOptionMultipleAnswer";
+import InputEmailAnswer from "./InputAnswer/_email/InputEmailAnswer";
+import InputTextAnswer from "./InputAnswer/_text/InputTextAnswer";
 import InputPhoneAnswer from "./InputAnswer/_phone/InputPhoneAnswer";
 import InputVoteAnswer from "./InputAnswer/_vote/InputVoteAnswer";
 import InputDateAnswer from "./InputAnswer/_date/InputDateAnswer";
 import InputImageAnswer from "./InputAnswer/_image/InputImageAnswer";
 import InputAddressAnswer from "./InputAnswer/_address/InputAddressAnswer";
 import InputAnchorAnswer from "./InputAnswer/_anchor/InputAnchorAnswer";
+import InputOptionAnswer from "./InputAnswer/_option/InputOptionAnswer";
+import InputOptionMultipleAnswer from "./InputAnswer/_options/InputOptionMultipleAnswer";
 
 type TProps = {
       formCore: FormCore.Form;

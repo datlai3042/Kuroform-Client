@@ -23,6 +23,8 @@ import { generateFullDateString, generateFullDateStringV2 } from "@/app/utils/ti
 import ClickOutSide from "@/app/(NextClient)/_components/Model/ClickOutSide";
 import { superDateValidate } from "../_validate/inputDate.validate";
 import InputAnswerTitle from "../../InputAnswerTitle";
+import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
+import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 
 type TProps = {
       inputItem: InputCore.InputDate.InputTypeDate;
@@ -37,29 +39,22 @@ const InputDateAnswer = (props: TProps) => {
             setFormAnswer,
       } = useContext(FormAnswerContext);
 
-      const [error, setError] = useState<FormCore.FormAnswer.InputError>(() => {
-            return renderErrorInput(inputFormErrors, inputItem);
-      });
       const [write, setWrite] = useState<boolean>(false);
 
       //Xem input này có bắt buộc nhập không
 
       const inputItemInArrayGlobal = useMemo(() => {
-            return renderControllerInputAnswer({ inputFormErrors, inputItem, inputFormData });
+            return renderControllerInputAnswer<FormCore.FormAnswer.Data.Date>({ inputFormErrors, inputItem, inputFormData });
       }, [inputItem, inputFormErrors, inputFormData]);
 
-      //focus -> write = true
-      //xóa lỗi local, xóa lỗi global
-      //đặt lại cờ require trong global bằng false
-      //xét data global
+      const [inputValue, setInputValue] = useState<string>(inputItemInArrayGlobal.input?.value || "");
+
       const onFocus = () => {
             //Xét write ?
             setWrite(true);
 
-            deleteErrorWhenFocus({ error, setError, setFormAnswer, inputFormErrors, inputItem });
+            deleteErrorWhenFocus({ setFormAnswer, inputFormErrors, inputItem });
       };
-
-      const [inputValue, setInputValue] = useState<string>(() => inputFormData.filter((data) => data._id === inputItem._id)[0].value as string);
 
       const [openModel, setOpenModel] = useState<boolean>(false);
 
@@ -90,7 +85,6 @@ const InputDateAnswer = (props: TProps) => {
                         validateWhenFocus<InputCore.InputDate.InputSettingDate>({
                               inputItem,
                               inputValue: new Date(date_string).toISOString(),
-                              setError,
                               setFormAnswer,
                               validateCallback: superDateValidate,
                         });
@@ -107,10 +101,7 @@ const InputDateAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper>
-                  <DivNative
-                        id={`_inputid_${inputItem._id}`}
-                        className={` relative w-full min-h-full h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[2rem]  rounded-lg`}
-                  >
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} />
                         <DivNative className="relative flex flex-col items-start gap-[1rem] text-[#000] ">
                               <button
@@ -133,13 +124,10 @@ const InputDateAnswer = (props: TProps) => {
                               </p>
                         </DivNative>
 
-                        {(error.error || inputItemInArrayGlobal?.globalError?.state) && (
-                              <InputErrorMessage
-                                    message={inputItemInArrayGlobal?.globalError?.message || error.message}
-                                    type={inputItemInArrayGlobal?.globalError?.type || error.type}
-                              />
+                        {inputItemInArrayGlobal?.globalError?.state && (
+                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                         )}
-                  </DivNative>
+                  </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );
 };

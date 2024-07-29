@@ -1,14 +1,12 @@
-import { CustomRequest, FormCore, InputCore, User } from "@/type";
+import { CustomRequest, FormCore, InputCore } from "@/type";
 import { inputSettingText } from "../_constant/input.constant";
 import Http from "./http";
 import { ResponseApi } from "../_schema/api/response.shema";
-import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
 import store from "./redux/store";
-import { onCalculationData } from "./redux/features/dataForm.slice";
+import { onCalculationData } from "./redux/dataForm.slice";
 import moment from "moment";
 import { UserType } from "../_schema/user/user.type";
 import { regexHref, regexHrefSub, regexSlugCharVNForm, regexSlugCharVnTo } from "../_constant/regex.constant";
-import { regexPhoneVietNam } from "../(NextClient)/form/[id]/_components/InputAnswer/_validate/inputPhone.validate";
 
 export const validateEmail = (email: string) => {
       const regex = /[^\s@]+@[^\s@]+\.[^\s@]+/gi;
@@ -177,20 +175,18 @@ export const filterTypeInput = <InputType extends InputCore.InputForm>(_id: stri
       return _id === inputItem._id;
 };
 
+/**
+ * 
+ * @param reports 
+ * @param form_id 
+ * @returns 
+
+
+ */
 export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["reports"], form_id: string) => {
       let dataExcel: { [key: string]: string }[] = [];
 
-      let filterFormShowChart: {
-            [key: string]: {
-                  _id: string;
-                  title: string;
-                  value: string | string[];
-                  time: Date;
-                  form_answer_id: string;
-            }[];
-      } = {};
-
-      let filterFormShowExcel: {
+      let dataGroupFilter: {
             [key: string]: {
                   _id: string;
                   title: string;
@@ -206,32 +202,16 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
                   const titleHeaderTable = ans.title || `Không có tiêu đề`;
 
                   const input_value = generateValueInputAnswer(ans);
+
                   dataXlsx = {
                         ...dataXlsx,
                         "Thời gian gửi": moment(new Date(rp.createdAt)).format("hh:mm - Do MMMM YYYY"),
                         [titleExcel]: input_value,
                   };
-                  if (!filterFormShowChart[ans._id]) {
-                        filterFormShowChart[ans._id] = [];
-                        filterFormShowChart[ans._id].push({
-                              _id: ans._id,
-                              title: titleHeaderTable,
-                              value: input_value,
-                              time: rp.createdAt,
-                              form_answer_id: rp._id,
-                        });
-                  } else {
-                        filterFormShowChart[ans._id] = filterFormShowChart[ans._id].concat({
-                              _id: ans._id,
-                              title: titleHeaderTable,
-                              value: input_value,
-                              time: rp.createdAt,
-                              form_answer_id: rp._id,
-                        });
-                  }
+                  dataExcel = dataExcel.concat(dataXlsx);
 
-                  if (!filterFormShowExcel[ans._id + "_#_" + ans.type]) {
-                        filterFormShowExcel[ans._id + "_#_" + ans.type] = [];
+                  if (!dataGroupFilter[ans._id + "_#_" + ans.type]) {
+                        dataGroupFilter[ans._id + "_#_" + ans.type] = [];
 
                         const answerItem = {
                               _id: ans._id,
@@ -241,9 +221,9 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
                               form_answer_id: rp._id,
                         };
 
-                        filterFormShowExcel[ans._id + "_#_" + ans.type].push(answerItem);
+                        dataGroupFilter[ans._id + "_#_" + ans.type].push(answerItem);
                   } else {
-                        filterFormShowExcel[ans._id + "_#_" + ans.type] = filterFormShowExcel[ans._id + "_#_" + ans.type].concat({
+                        dataGroupFilter[ans._id + "_#_" + ans.type] = dataGroupFilter[ans._id + "_#_" + ans.type].concat({
                               _id: ans._id,
                               title: titleHeaderTable,
                               value: input_value,
@@ -252,13 +232,10 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
                         });
                   }
             });
-
-            dataExcel = dataExcel.concat(dataXlsx);
       });
       store.dispatch(
             onCalculationData({
-                  dataFormShowChart: filterFormShowChart,
-                  dataFormShowExcel: filterFormShowExcel,
+                  dataGroupFilter,
                   dataExcel: dataExcel,
                   form_id,
                   form_answer_total: reports.length,
@@ -271,7 +248,11 @@ export const generateValueInputAnswer = (answer: FormCore.FormAnswer.Answer) => 
       let value_answer = "";
 
       if (answer.type === "OPTION_MULTIPLE") {
-            value_answer = (answer.value as string[]).join(", ");
+            value_answer = (answer.value as FormCore.FormAnswer.Data.Options["value"]).map((op) => op.option_value).join(", ");
+            return value_answer;
+      }
+      if (answer.type === "OPTION") {
+            value_answer = (answer.value as FormCore.FormAnswer.Data.Option["value"]).option_value;
             return value_answer;
       }
       if (answer.type === "DATE") {

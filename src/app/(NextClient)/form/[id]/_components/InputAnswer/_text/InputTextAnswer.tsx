@@ -11,6 +11,8 @@ import { deleteErrorWhenFocus, renderControllerInputAnswer, renderErrorInput, va
 import MinMaxInput from "../../MinMaxInput";
 import RenderStyleInputAnswer from "../constant/RenderStyleInputAnswer";
 import InputAnswerTitle from "../../InputAnswerTitle";
+import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
+import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 
 type TProps = {
       inputItem: InputCore.InputText.InputTypeText;
@@ -25,20 +27,7 @@ const InputTextAnswer = (props: TProps) => {
             setFormAnswer,
       } = useContext(FormAnswerContext);
 
-      const [error, setError] = useState<FormCore.FormAnswer.InputError>(() => {
-            return renderErrorInput(inputFormErrors, inputItem);
-      });
       const [write, setWrite] = useState<boolean>(false);
-      const [inputValue, setInputValue] = useState<string>(() => {
-            let value: string = "";
-            inputFormData.filter((data) => {
-                  if (data._id === inputItem._id && data.type === "TEXT") {
-                        value = data.value;
-                        return;
-                  }
-            });
-            return value;
-      });
 
       //Xem input này có bắt buộc nhập không
       const inputItemInArrayGlobal = useMemo(() => {
@@ -47,15 +36,10 @@ const InputTextAnswer = (props: TProps) => {
 
       const divContentRef = useRef<HTMLDivElement | null>(null);
 
-      //focus -> write = true
-      //xóa lỗi local, xóa lỗi global
-      //đặt lại cờ require trong global bằng false
-      //xét data global
       const onFocus = () => {
-            //Xét write ?
             setWrite(true);
 
-            deleteErrorWhenFocus({ error, setError, setFormAnswer, inputFormErrors, inputItem });
+            deleteErrorWhenFocus({ setFormAnswer, inputFormErrors, inputItem });
       };
 
       const onBlur = (e: React.ChangeEvent<HTMLDivElement>) => {
@@ -64,12 +48,10 @@ const InputTextAnswer = (props: TProps) => {
                   //lấy value input để validate
                   if (divContentRef.current) {
                         const titleCurrent = divContentRef.current.textContent;
-                        setInputValue(divContentRef.current.textContent as string);
 
                         validateWhenFocus<InputCore.InputText.InputSettingText>({
                               inputItem,
                               inputValue: titleCurrent as string,
-                              setError,
                               setFormAnswer,
                               validateCallback: superTextValidate,
                         });
@@ -79,18 +61,13 @@ const InputTextAnswer = (props: TProps) => {
 
       useEffect(() => {
             if (divContentRef.current) {
-                  divContentRef.current.textContent = inputValue;
+                  divContentRef.current.textContent = inputItemInArrayGlobal.input?.value as string;
             }
       }, []);
 
       return (
             <InputAnswerWrapper>
-                  <DivNative
-                        id={`_inputid_${inputItem._id}`}
-                        className={`${RenderStyleInputAnswer.BorderInputError({
-                              error,
-                        })} relative w-full min-h-full h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[2rem]  rounded-lg`}
-                  >
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} />
                         <DivNative className="flex flex-col gap-[.3rem]">
                               <DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
@@ -105,25 +82,20 @@ const InputTextAnswer = (props: TProps) => {
                                           onFocus={onFocus}
                                           spellCheck={false}
                                           contentEditable={submitState !== "pending"}
-                                          defaultValue={inputValue}
-                                          onInput={(e) => setInputValue(e.currentTarget.textContent || "")}
                                           data-text={`${inputItem.core.setting?.placeholder || "Typing your text"}`}
                                           suppressContentEditableWarning={true}
                                           tabIndex={0}
-                                    ></DivNativeRef>
+                                    />
                               </DivNative>
                               <p className="absolute bottom-[2.5rem] right-[2.5rem] text-[1.2rem]">
-                                    <MinMaxInput value={inputValue} inputItem={inputItem} />
+                                    <MinMaxInput value={inputItemInArrayGlobal.input?.value as string} inputItem={inputItem} />
                               </p>
                         </DivNative>
 
-                        {(error.error || inputItemInArrayGlobal?.globalError?.state) && (
-                              <InputErrorMessage
-                                    message={inputItemInArrayGlobal.globalError.message || error.message}
-                                    type={inputItemInArrayGlobal.globalError.type || error.type}
-                              />
+                        {inputItemInArrayGlobal?.globalError?.state && (
+                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                         )}
-                  </DivNative>
+                  </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );
 };

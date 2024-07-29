@@ -29,7 +29,7 @@ const DashBoardRight = () => {
 
       return (
             <div
-                  className={`${width} min-h-screen bg-color-gap-empty    h-max   flex flex-col  gap-[4rem] xl:gap-[2rem] text-[1.4rem] pb-[1rem] px-[1rem] xl:px-0`}
+                  className={`${width} min-h-screen bg-color-gap-empty    h-max   flex flex-col  gap-[4rem] xl:gap-[2rem] text-[1.4rem] pb-[5rem] px-[1rem] xl:px-0`}
             >
                   <DashBoardRightHeader />
 
@@ -37,14 +37,14 @@ const DashBoardRight = () => {
                   {/* <DashBoardRightHeader /> */}
 
                   <div className="   w-full xl:w-full    flex flex-col gap-[2rem] ">
-                        <div className="w-full flex flex-col gap-[4rem] xl:gap-[2rem]  bg-color-section-theme p-[2rem]">
+                        <div className="w-full flex flex-col gap-[4rem] xl:gap-[2rem]  bg-color-section-theme p-[2rem_1.4rem] xl:p-[2rem]">
                               <div className="flex justify-between">
                                     <p className="text-color-main font-bold text-[2rem] ">Phân tích chung</p>
                                     <div className=" sm:hidden  flex justify-end my-[1rem]">
                                           <ButtonDarkMode />
                                     </div>
                               </div>
-                              <div className="flex flex-wrap items-center justify-center gap-[6rem] xl:gap-0 h-max xl:h-[30rem]">
+                              <div className="flex flex-wrap items-center justify-center gap-[2rem] xl:gap-0 h-max xl:h-[38rem]">
                                     <div className="flex justify-center items-center order-1 w-[40%] xl:w-[20%] h-full flex-col gap-[4rem]">
                                           <Image
                                                 src={"/assets/images/icon/form/create_form.png"}
@@ -66,7 +66,7 @@ const DashBoardRight = () => {
                                           <DashboardTotalWrapper />
                                     </div>
 
-                                    <div className="mt-[1rem] xl:mt-0 w-[50%] xl:w-[30%] h-full order-2 xl:order-4">
+                                    <div className="mt-[1rem] xl:mt-0 w-[53%] xl:w-[30%] min-h-full h-max order-2 xl:order-4">
                                           <DashboardFilterFormDate />
                                           {/* <DashboardFormAnalysis /> */}
                                     </div>

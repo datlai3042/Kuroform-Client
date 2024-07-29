@@ -3,6 +3,7 @@ import { InputCore, UI } from "@/type";
 const inputSettingCommon = {
       require: false,
       input_error: "Nội dung không hợp lệ",
+      input_error_state: false,
       input_color: "#000000",
       input_size: 16,
       input_style: "normal",

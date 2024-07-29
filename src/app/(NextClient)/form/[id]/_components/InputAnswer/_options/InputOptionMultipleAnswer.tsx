@@ -14,6 +14,8 @@ import { FormAnswerContext } from "@/app/(NextClient)/_components/provider/FormA
 import InputErrorMessage from "../InputError/InputErrorMessage";
 import InputAnswerTitle from "../../InputAnswerTitle";
 import InputChecked from "@/app/(NextClient)/_components/ui/input/InputChecked";
+import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
+import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 
 type TProps = {
       inputItem: InputCore.InputOptionMultiple.InputTypeOptionMultiple;
@@ -28,52 +30,45 @@ const InputOptionMultipleAnswer = (props: TProps) => {
             setFormAnswer,
       } = useContext(FormAnswerContext);
 
-      const [error, setError] = useState<FormCore.FormAnswer.InputError>(() => {
-            return renderErrorInput(inputFormErrors, inputItem);
-      });
-
-      const [choose, setChoose] = useState<{ input_id: string; input_value: string[] }>(() => {
-            const valueGlobal = inputFormData.filter((data) => data._id === inputItem._id)[0];
-            return {
-                  input_id: valueGlobal._id || "",
-                  input_value: valueGlobal.value || [],
-            } as { input_id: string; input_value: string[] };
-      });
-
       const inputItemInArrayGlobal = useMemo(() => {
-            return renderControllerInputAnswer({ inputFormErrors, inputItem, inputFormData });
+            return renderControllerInputAnswer<FormCore.FormAnswer.Data.Options>({ inputFormErrors, inputItem, inputFormData });
       }, [inputItem, inputFormErrors, inputFormData]);
 
+      const [choose, setChoose] = useState<{ value: FormCore.FormAnswer.Data.Options["value"] }>(() => {
+            return {
+                  value: inputItemInArrayGlobal.input?.value || [],
+            };
+      });
+
       const onSelect = (op: InputCore.InputOptionMultiple.Options) => {
-            if (error.error) {
-                  setError({ error: false, message: "", type: null });
-                  deleteErrorGlobal(setFormAnswer, inputItem._id!);
-            }
+            console.log({ op, store: choose.value.map((op) => op.option_id) });
             if (inputItem.core.setting.require) {
-                  if (choose.input_value.includes(op.option_value)) {
+                  if (choose.value.map((op) => op.option_id).includes(op.option_id)) {
                         setInputRequireGlobal(setFormAnswer, inputItem._id!, false);
                   } else {
                         setInputRequireGlobal(setFormAnswer, inputItem._id!, true);
                   }
             }
-            if (choose.input_value.includes(op.option_value)) {
-                  const newArrayOption = choose.input_value.filter((option) => option !== op.option_value);
+            if (choose.value.map((op) => op.option_id).includes(op.option_id)) {
+                  const newArrayOption = choose.value.filter((ops) => {
+                        if (ops.option_id === op.option_id) return null;
+                        return ops;
+                  });
                   setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: newArrayOption });
 
                   setChoose((prev) => {
                         return {
-                              ...prev,
-                              input_value: newArrayOption,
+                              value: newArrayOption,
                         };
                   });
             } else {
-                  const newArrayOption = choose.input_value.concat(op.option_value);
+                  const newArrayOption = choose.value.concat(op);
+
                   setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: newArrayOption });
 
-                  setChoose((prev) => {
+                  setChoose(() => {
                         return {
-                              ...prev,
-                              input_value: newArrayOption,
+                              value: newArrayOption,
                         };
                   });
             }
@@ -81,10 +76,7 @@ const InputOptionMultipleAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper>
-                  <DivNative
-                        id={`_inputid_${inputItem._id}`}
-                        className={` relative inputAnswer w-full min-h-full h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[2rem] border-[.2rem]  rounded-lg`}
-                  >
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} />
                         <DivNative className="flex flex-col gap-[.3rem] text-[1.4rem]">
                               <DivNative className={` relative min-h-[5rem] h-max flex flex-col gap-[1.6rem]  `}>
@@ -92,28 +84,13 @@ const InputOptionMultipleAnswer = (props: TProps) => {
                                           inputItem.core.options.map((op) => {
                                                 if (!op.option_value) return null;
                                                 return (
-                                                      // <div
-                                                      //       key={op.option_id}
-                                                      //       className="p-[1rem] flex items-center gap-[2rem] rounded-lg hover:cursor-pointer hover:bg-formCoreBgColor"
-                                                      //       onClick={() => onSelect(op)}
-                                                      // >
-                                                      //       <input
-                                                      //             type="checkbox"
-                                                      //             name={inputItem._id}
-                                                      //             value={op.option_value}
-                                                      //             checked={choose.input_value.includes(op.option_value)}
-                                                      //             className="hover:cursor-pointer"
-                                                      //             onChange={() => {}}
-                                                      //       />
-                                                      //       {op.option_value}
-                                                      // </div>
                                                       <InputChecked
                                                             key={op.option_id}
                                                             value={op.option_value}
-                                                            value_current={choose.input_value}
+                                                            value_current={choose.value.filter((op) => op.option_id === op.option_id)[0]?.option_value || ""}
                                                             callbackChecked={() => onSelect(op)}
                                                             name_radio={inputItem._id as string}
-                                                            checked={choose.input_value.includes(op.option_value)}
+                                                            checked={choose.value.map((op) => op.option_value).includes(op.option_value)}
                                                       />
                                                 );
                                           }) as unknown as React.ReactNode[]
@@ -121,16 +98,14 @@ const InputOptionMultipleAnswer = (props: TProps) => {
                               </DivNative>
                         </DivNative>
                         <p className="text-[1.4rem]">
-                              Đã chọn: <span className="ml-[.4rem] border-b-[.2rem] border-gray-400">{choose.input_value.join(", ")}</span>
+                              Đã chọn:{" "}
+                              <span className="ml-[.4rem] border-b-[.2rem] border-gray-400">{choose.value.map((op) => op.option_value).join(", ")}</span>
                         </p>
 
-                        {(error.error || inputItemInArrayGlobal.globalError.state) && (
-                              <InputErrorMessage
-                                    message={inputItemInArrayGlobal.globalError.message || error.message}
-                                    type={inputItemInArrayGlobal.globalError.type || error.type}
-                              />
+                        {inputItemInArrayGlobal?.globalError?.state && (
+                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                         )}
-                  </DivNative>
+                  </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );
 };

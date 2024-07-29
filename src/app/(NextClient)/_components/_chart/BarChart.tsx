@@ -24,16 +24,12 @@ export const BarChart = (props: TProps) => {
       const { dataChart } = props;
 
       return (
-            <div className="w-[36rem] h-[15rem] xl:h-[20rem] text-[#000]">
+            <div className="w-full xl:w-[36rem] h-[15rem] xl:h-[20rem] text-[#000]">
                   <Bar
-                        className="w-[20rem] h-[15rem] xl:w-[36rem]  text-inherit"
+                        className="!w-full h-[20rem] xl:w-[36rem]  text-inherit"
                         data={dataChart}
                         options={{
                               plugins: {
-                                    title: {
-                                          display: true,
-                                          text: "Phân loại Form",
-                                    },
                                     legend: {
                                           display: false,
                                     },

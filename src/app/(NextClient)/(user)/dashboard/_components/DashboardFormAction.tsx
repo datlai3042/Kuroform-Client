@@ -1,6 +1,6 @@
 "use client";
 import BoxCopySuccess from "@/app/(NextClient)/form/[id]/(owner)/_components/BoxCopySuccess";
-import { onFetchForm, onFetchFormState } from "@/app/_lib/redux/features/formEdit.slice";
+import { onFetchForm, onFetchFormState } from "@/app/_lib/redux/formEdit.slice";
 import FormService from "@/app/_services/form.service";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Pencil, Link as LinkIcon, Trash2 } from "lucide-react";

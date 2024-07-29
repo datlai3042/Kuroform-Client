@@ -7,10 +7,11 @@ import FormChangeMode from "./_components/FormChangeMode";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import FormService from "@/app/_services/form.service";
-import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
+import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 import { useSelectedLayoutSegment, useSelectedLayoutSegments } from "next/navigation";
 import LayoutSidebar from "@/app/(NextClient)/_components/Layout/LayoutSidebar";
 import Link from "next/link";
+import FormNotFound from "@/app/(NextClient)/_components/_StatusCodeComponent/FormNotFound";
 
 export type FormPageMode = "edit" | "download" | "share" | "summary";
 
@@ -63,19 +64,7 @@ const FormModeLayout = ({ children, params }: { children: React.ReactNode; param
                               </DivNative>
                         </DivNative>
                   )}
-                  {getFormQuery.isSuccess && getFormQuery.data?.metadata.form === null && (
-                        <div className="min-h-screen w-full flex items-center justify-center text-text-theme">
-                              <div className="min-h-full  flex flex-col items-center    gap-[2rem]">
-                                    <p className="text-[6rem] font-medium">Không tìm thấy Form</p>
-                                    <Link
-                                          href={"/dashboard"}
-                                          className="min-w-[16rem] h-[4rem] p-[1rem_2rem] flex items-center justify-center text-[1.6rem] bg-blue-600 text-[#ffffff] rounded-lg"
-                                    >
-                                          Tạo form mới
-                                    </Link>
-                              </div>
-                        </div>
-                  )}
+                  {getFormQuery.isSuccess && getFormQuery.data?.metadata.form === null && <FormNotFound />}
             </LayoutSidebar>
       );
 };

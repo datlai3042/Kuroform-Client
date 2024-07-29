@@ -7,6 +7,7 @@ import { cookies } from "next/headers";
 import Http from "@/app/_lib/http";
 import { ResponseApi } from "@/app/_schema/api/response.shema";
 import { UserType } from "@/app/_schema/user/user.type";
+import Footer from "../_components/Layout/Footer";
 export const fetchCache = "force-no-store";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -53,7 +54,10 @@ const UserAuthenticationPage = ({ children }: { children: React.ReactNode }) => 
       return (
             <>
                   <SocketProvider>
-                        {children}
+                        <div className="relative">
+                              <div className="absolute z-[2] pb-[6rem] xl:pb-0">{children}</div>
+                        </div>
+                        <Footer />
                         <CheckExprireToken />
                   </SocketProvider>
             </>

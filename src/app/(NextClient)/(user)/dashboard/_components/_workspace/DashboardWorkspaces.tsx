@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import DashboardWorkspaceItemContent from "./DashboardWorkspaceItemContent";
 
 const DashboardWorkspaces = () => {
       const [openWorkspace, setOpenWorkspace] = useState<boolean>(false);
@@ -71,7 +72,7 @@ const DashboardWorkspaces = () => {
                               {openWorkspace && forms.length > 0 && (
                                     <div
                                           ref={divWrapper}
-                                          className={`${scrollThemeStyle} ml-[2rem]  min-h-[2rem] max-h-[34rem]  transition-[height] duration-500 overflow-y-scroll  flex flex-col gap-[1.4rem] text-text-them e pr-[2rem]`}
+                                          className={`${scrollThemeStyle} ml-[1rem]  min-h-[2rem] max-h-[34rem]  transition-[height] duration-500 overflow-y-scroll  flex flex-col gap-[1.4rem] text-text-them e pr-[2rem]`}
                                     >
                                           {forms.map((form) => {
                                                 if (formIsFocusing == form._id) {
@@ -81,20 +82,10 @@ const DashboardWorkspaces = () => {
                                                                   key={form._id}
                                                                   href={`/form/${form._id}/edit`}
                                                                   className={`${hoverThemeStyle} ${
-                                                                        formIsFocusing === form._id ? "bg-color-main text-[#fff] rounded-md" : ""
-                                                                  } flex items-center w-full h-[4rem]  gap-[.8rem] text-[1.4rem]  p-[.6rem_1rem] `}
+                                                                        formIsFocusing === form._id ? "bg-color-main text-[#fff] " : ""
+                                                                  } flex items-center w-full h-[4rem]  gap-[1rem] text-[1.4rem]  p-[.6rem_1rem] rounded-xl`}
                                                             >
-                                                                  <Image
-                                                                        src={"/assets/images/icon/navigation/one_item.png"}
-                                                                        width={18}
-                                                                        height={18}
-                                                                        alt="icon"
-                                                                        className="w-[2rem] h-[2rem]"
-                                                                        unoptimized={true}
-                                                                  />
-                                                                  <p className="max-w-[80%] truncate ">
-                                                                        {form.form_title.form_title_value || "Chưa tạo tiêu đề"}
-                                                                  </p>
+                                                                  <DashboardWorkspaceItemContent formCore={form} />
                                                             </Link>
                                                       );
                                                 }
@@ -104,17 +95,9 @@ const DashboardWorkspaces = () => {
                                                             href={`/form/${form._id}/edit`}
                                                             className={`${hoverThemeStyle} ${
                                                                   formIsFocusing === form._id ? "bg-color-main" : ""
-                                                            } flex items-center w-full h-[5rem]  gap-[.8rem] text-[1.4rem]  p-[.6rem_1rem] `}
+                                                            } flex items-center w-full h-[5rem]  gap-[1rem] text-[1.4rem]  p-[.6rem_1rem] `}
                                                       >
-                                                            <Image
-                                                                  src={"/assets/images/icon/navigation/one_item.png"}
-                                                                  width={18}
-                                                                  height={18}
-                                                                  alt="icon"
-                                                                  className="w-[2rem] h-[2rem]"
-                                                                  unoptimized={true}
-                                                            />
-                                                            <p className="max-w-[80%] truncate ">{form.form_title.form_title_value || "Chưa tạo tiêu đề"}</p>
+                                                            <DashboardWorkspaceItemContent formCore={form} />
                                                       </Link>
                                                 );
                                           })}

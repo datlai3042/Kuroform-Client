@@ -14,21 +14,21 @@ const DashboardTotalForm = () => {
       const form_private = useSelector((state: RootState) => state.form.form_private);
 
       const dataChart = {
-            labels: ["Form riêng tư", "Form công khai", "Form Đã xóa"],
+            labels: ["Form riêng tư", "Form công khai", "Form tạm thời xóa"],
             datasets: [
                   {
                         label: "Các Form của bạn",
                         data: [form_private, form_public, form_delete],
-                        backgroundColor: ["black", "blue", "red"],
+                        backgroundColor: ["#6262e5", "#2563eb", "#dc2626"],
                   },
             ],
       };
 
       return (
             <div className="relative w-full h-full text-text-theme rounded-lg flex flex-col     gap-[.5rem] xl:gap-[1rem] ">
-                  <div className="flex items-center">
-                        <p className="w-full  break-words ">Tổng sô Form hiện có</p>
-                        <p className="text-[4rem] xl:text-[4rem]">{forms.length}</p>
+                  <div className="flex items-center gap-[2rem]">
+                        <p className="w-max  break-words ">Tổng số Form hiện có</p>
+                        <p className="text-[4rem] xl:text-[4rem] text-color-main font-normal">{forms.length}</p>
                   </div>
 
                   {/* <div className="w-full flex flex-col justify-center">

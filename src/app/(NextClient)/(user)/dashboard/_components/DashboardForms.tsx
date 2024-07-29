@@ -21,15 +21,15 @@ const DashboardForms = () => {
             <DivNative className="my-[2rem] w-full min-h-[40rem] xl:px-[2rem] h-max  flex flex-col gap-[0rem] p-0 bg-color-gap-empty">
                   <div className="flex flex-col gap-[3rem]">
                         <div className="flex items-center gap-[1rem]">
-                              <Image
+                              {/* <Image
                                     src={"/assets/images/home/form_controller.png"}
                                     width={20}
                                     height={20}
                                     alt="avatar"
                                     unoptimized={true}
                                     className="w-[4rem] h-[4rem] "
-                              />
-                              <p className="text-color-main font-bold text-[2rem]">Quản lí Form</p>
+                              /> */}
+                              <p className="text-color-main font-bold  text-[2rem] ">Quản lí Form</p>
                         </div>
                         {!getFormPagination.isPending && getFormPagination.isSuccess && getFormPagination.data.metadata.forms.length > 0 && (
                               <DivNative className={`flex flex-wrap justify-between gap-[2rem] pb-[2rem] text-[1.3rem] `}>
@@ -42,8 +42,8 @@ const DashboardForms = () => {
                         )}
                   </div>
                   {getFormPagination.isPending && (
-                        <div className="w-full min-h-[6rem]">
-                              <LoadingClient width="w-full" height="h-[50rem]" message="Đang lấy thông tin Form" />
+                        <div className="w-full min-h-[6rem] mt-[2rem]">
+                              <LoadingClient width="w-full" height="h-[50rem]" message="Đang lấy thông tin các form" />
                         </div>
                   )}
 

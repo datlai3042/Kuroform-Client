@@ -33,6 +33,13 @@ import { checkValueHref } from "@/app/_lib/utils";
 import UploadNone from "@/app/(NextClient)/_components/ui/loading/UploadNone";
 import UploadPending from "@/app/(NextClient)/_components/ui/loading/UploadPending";
 import UploadSuccess from "@/app/(NextClient)/_components/ui/loading/UploadSuccess";
+import { superValidateImage } from "../_validate/inputImage.validate";
+import { useDispatch } from "react-redux";
+import { addOneToastError } from "@/app/_lib/redux/toast.slice";
+import { v4 } from "uuid";
+import BoxHandlerError from "../../BoxHandlerInputAnswerError";
+import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
+import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 
 type TProps = {
       inputItem: InputCore.InputImage.InputTypeImage;
@@ -50,36 +57,22 @@ const InputImageAnswer = (props: TProps) => {
             setFormAnswer,
       } = useContext(FormAnswerContext);
 
-      const uploadFile = useUploadFileFormAnswers();
+      const [filePreview, setFilePreview] = useState<string>("");
+      const [write, setWrite] = useState(false);
 
-      const [value, setValue] = useState<string>(() => {
-            const data_input_item = inputFormData.find((ip) => ip._id === inputItem._id && ip.type === "FILE_IMAGE");
-            return data_input_item?.value as string;
-      });
-
-      useEffect(() => {
-            setValue(() => {
-                  const data_input_item = inputFormData.find((ip) => ip._id === inputItem._id && ip.type === "FILE_IMAGE");
-                  return data_input_item?.value as string;
-            });
-      }, []);
-
-      const [error, setError] = useState<FormCore.FormAnswer.InputError>(() => {
-            return renderErrorInput(inputFormErrors, inputItem);
+      const { uploadFileFormAnswerAPI, handleUpload } = useUploadFileFormAnswers({
+            form_id: formCore._id,
+            form_answer_id,
+            mode: tempMode,
+            setFilePreviewCallback: setFilePreview,
+            setWriteCallback: setWrite,
       });
 
       const inputItemInArrayGlobal = useMemo(() => {
             return renderControllerInputAnswer({ inputFormErrors, inputItem, inputFormData });
       }, [inputItem, inputFormErrors, inputFormData]);
 
-      //focus -> write = true
-      //xóa lỗi local, xóa lỗi global
-      //đặt lại cờ require trong global bằng false
-      //xét data global
-
       const inputRef = useRef<HTMLInputElement | null>(null);
-
-      const [filePreview, setFilePreview] = useState<string>("");
 
       const handleClick = () => {
             if (inputRef.current) {
@@ -87,39 +80,22 @@ const InputImageAnswer = (props: TProps) => {
             }
       };
 
-      const [write, setWrite] = useState(false);
-
-      const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-            if (e.target.files) {
-                  setWrite(true);
-                  const file = e.target.files[0];
-                  const formData: UploadFileAnswer = new FormData();
-                  formData.append("file", file);
-                  formData.append("form_answers_id", form_answer_id);
-                  formData.append("form_id", formCore._id);
-
-                  const link_preview = URL.createObjectURL(file);
-                  setFilePreview(link_preview);
-                  if (tempMode) return;
-                  uploadFile.mutate(formData);
-            }
-      };
-
       useEffect(() => {
-            if (uploadFile.isSuccess) {
-                  const { url } = uploadFile.data.metadata;
-                  setValue(url);
+            if (uploadFileFormAnswerAPI.isSuccess) {
+                  const { url } = uploadFileFormAnswerAPI.data.metadata;
                   setFilePreview(url);
                   if (inputItem.core.setting.require) {
                         setInputRequireGlobal(setFormAnswer, inputItem._id!, true);
                   }
 
-                  deleteErrorGlobal(setFormAnswer, inputItem._id!);
+                  if (inputFormErrors.some((ip) => ip._id === inputItem._id)) {
+                        deleteErrorGlobal(setFormAnswer, inputItem._id!);
+                  }
 
                   //xét data global
                   setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: url });
             }
-      }, [uploadFile.isSuccess]);
+      }, [uploadFileFormAnswerAPI.isSuccess]);
 
       useEffect(() => {
             return () => {
@@ -129,36 +105,41 @@ const InputImageAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper>
-                  <DivNative
-                        id={`_inputid_${inputItem._id}`}
-                        className={`${
-                              (error && write) || inputItemInArrayGlobal.globalError.state ? "input-answer-invalid" : " border-[.2rem] border-transparent "
-                        } relative w-full min-h-[20rem] h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[1.8rem]  rounded-lg`}
-                  >
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputImageTitle inputItem={inputItem} formCore={formCore} />
                         <DivNative className="relative flex  items-center justify-between gap-[1rem] text-text-theme ">
-                              <DivNative className={`h-[12rem] w-[10rem] xl:w-[24rem]   flex flex-col   justify-start  gap-[1.4rem]  `}>
-                                    {value && checkValueHref(value) && (
-                                          <a href={value} target="_blank" className="text-[#000] text-[1.3rem] flex items-center gap-[1rem]">
+                              <DivNative className={`h-[12rem] w-[20rem] xl:w-[24rem]   flex flex-col   justify-start  gap-[1.4rem]  `}>
+                                    {(inputItemInArrayGlobal.input?.value as string) && checkValueHref(inputItemInArrayGlobal.input?.value as string) && (
+                                          <a
+                                                href={inputItemInArrayGlobal.input?.value as string}
+                                                target="_blank"
+                                                className="text-[#000] text-[1.3rem] flex items-center gap-[1rem]"
+                                          >
                                                 <ImageIcon />
                                                 Xem Ảnh
                                           </a>
                                     )}
-                                    <p className="w-max text-[1.3rem] text-[#000]">Chỉ nhận các file JPEG, JPEG,PNG</p>
+                                    <p className="w-max text-[1.3rem] text-[#000]">Vui lòng chọn các file JPG, JPEG,PNG</p>
                                     <button
                                           onClick={handleClick}
                                           className="p-[.6rem] border-[.1rem] w-[9rem] border-text-theme bg-slate-900 text-[#fff] text-[1.4rem] rounded-xl"
                                     >
-                                          {value ? "Tải lại" : "Tải ảnh lên"}
+                                          {(inputItemInArrayGlobal.input?.value as string) ? "Tải lại" : "Tải ảnh lên"}
                                     </button>
 
-                                    {value ? <UploadSuccess /> : uploadFile.isPending ? <UploadPending /> : <UploadNone />}
+                                    {(inputItemInArrayGlobal.input?.value as string) ? (
+                                          <UploadSuccess />
+                                    ) : uploadFileFormAnswerAPI.isPending ? (
+                                          <UploadPending />
+                                    ) : (
+                                          <UploadNone />
+                                    )}
 
                                     <input type="file" hidden={true} ref={inputRef} onChange={handleUpload} accept=".jpg, .jpeg, .png" />
                               </DivNative>
 
                               <div className="w-[12rem] xl:w-[14rem] h-[12rem] flex items-center justify-center">
-                                    {!value && !uploadFile.isPending && (
+                                    {!inputItemInArrayGlobal.input?.value && !uploadFileFormAnswerAPI.isPending && (
                                           <Image
                                                 width={32}
                                                 height={32}
@@ -168,13 +149,13 @@ const InputImageAnswer = (props: TProps) => {
                                                 className="w-[10rem] h-[10rem]"
                                           />
                                     )}
-                                    {uploadFile.isPending ? (
+                                    {uploadFileFormAnswerAPI.isPending ? (
                                           <LoadingSpinner color="blue" />
                                     ) : (
                                           !tempMode &&
-                                          !!value && (
+                                          !!inputItemInArrayGlobal.input?.value && (
                                                 <Image
-                                                      src={value}
+                                                      src={inputItemInArrayGlobal.input?.value as string}
                                                       width={70}
                                                       height={70}
                                                       alt="file hinh anh"
@@ -189,13 +170,10 @@ const InputImageAnswer = (props: TProps) => {
                                     )}
                               </div>
                         </DivNative>
-                        {(error.error || inputItemInArrayGlobal.globalError.state) && (
-                              <InputErrorMessage
-                                    message={inputItemInArrayGlobal.globalError.message || error.message}
-                                    type={inputItemInArrayGlobal.globalError.type || error.type}
-                              />
+                        {inputItemInArrayGlobal?.globalError?.state && (
+                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                         )}
-                  </DivNative>
+                  </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );
 };

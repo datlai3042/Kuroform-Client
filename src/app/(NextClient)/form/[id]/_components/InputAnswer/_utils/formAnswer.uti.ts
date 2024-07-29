@@ -88,13 +88,22 @@ export const setDataInputGlobal = <T extends FormCore.FormAnswer.Data.InputData[
 }) => {
       callback((prev) => {
             let newArray = structuredClone(prev);
-            console.log({ input_value });
             newArray.inputFormData = prev.inputFormData.map((ip) => {
                   if (ip._id === input_id && ip.type === "OPTION_MULTIPLE") {
-                        ip.value = input_value as string[];
+                        ip.value = input_value as {
+                              option_value: string;
+                              option_id: string;
+                        }[];
                         return ip;
                   }
 
+                  if (ip._id === input_id && ip.type === "OPTION") {
+                        ip.value = input_value as {
+                              option_value: string;
+                              option_id: string;
+                        };
+                        return ip;
+                  }
                   if (ip._id === input_id) {
                         ip.value = input_value || "";
                         return ip;
@@ -314,7 +323,7 @@ export const renderErrorInput = (inputFormErrors: FormCore.FormAnswer.InputFormE
       };
       return instanceError;
 };
-let _text = ["EMAIL", "PHONE", "VOTE", "FILE_IMAGE", "ANCHOR"];
+let _text = ["TEXT", "EMAIL", "PHONE", "VOTE", "FILE_IMAGE", "ANCHOR", "DATE"];
 let _option = ["OPTION", "OPTION_MULTIPLE"];
 let _address = ["ADDRESS"];
 export const renderControllerInputAnswer = <T extends FormCore.FormAnswer.Data.InputData>({
@@ -375,11 +384,7 @@ export const renderControllerInputAnswer = <T extends FormCore.FormAnswer.Data.I
 };
 
 export const deleteErrorWhenFocus = (props: FormCore.FormAnswer.Common.DeleteErrorWhenFocusProps) => {
-      const { error, inputItem, inputFormErrors, setError, setFormAnswer } = props;
-
-      if (error.error) {
-            setError((prev) => ({ ...prev, error: false, type: null }));
-      }
+      const { inputItem, inputFormErrors, setFormAnswer } = props;
 
       if (inputFormErrors.some((ip) => ip._id === inputItem._id)) {
             deleteErrorGlobal(setFormAnswer, inputItem._id!);
@@ -390,7 +395,7 @@ export const deleteErrorWhenFocus = (props: FormCore.FormAnswer.Common.DeleteErr
 };
 
 export const validateWhenFocus = <T extends InputCore.InputForm["core"]["setting"]>(props: FormCore.FormAnswer.Common.ValidateWhenBlur<T>) => {
-      const { inputValue, inputItem, setError, setFormAnswer, validateCallback } = props;
+      const { inputValue, inputItem, setFormAnswer, validateCallback } = props;
       const { setting } = inputItem.core;
       const checkvalidate = validateCallback({ inputValue, inputSetting: setting as T });
       const { _next, message, type } = checkvalidate;
@@ -409,7 +414,6 @@ export const validateWhenFocus = <T extends InputCore.InputForm["core"]["setting
       }
 
       // Catch lỗi
-      setError && setError((prev) => ({ ...prev, error: true, message, type }));
       setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: inputValue });
 
       setErrorGlobal(setFormAnswer, inputItem._id!, inputItem.input_title || "", type!, message);

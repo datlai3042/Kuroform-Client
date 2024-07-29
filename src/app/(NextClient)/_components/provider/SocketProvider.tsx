@@ -1,18 +1,15 @@
 "use client";
-import { addFormAnswer, onFetchTotalAnswer, onFetchTotalViews } from "@/app/_lib/redux/features/formAnswer.slice";
-import { onAddNewNotification, onFetchNotification } from "@/app/_lib/redux/features/notification.slice";
-import { addOneToastFormAnswer, addOneToastSuccess } from "@/app/_lib/redux/features/toast.slice";
-import { RootState } from "@/app/_lib/redux/store";
+import { addFormAnswer, onFetchTotalAnswer, onFetchTotalViews } from "@/app/_lib/redux/formAnswer.slice";
+import { onAddNewNotification, onFetchNotification } from "@/app/_lib/redux/notification.slice";
+import { addOneToastFormAnswer } from "@/app/_lib/redux/toast.slice";
 import { handleDataForm } from "@/app/_lib/utils";
 import FormAnswerService from "@/app/_services/formAnswer.service";
 import { FormCore, Notification } from "@/type";
 import { useQueryClient } from "@tanstack/react-query";
-import { usePathname } from "next/navigation";
 import React, { createContext, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { io, Socket } from "socket.io-client";
 import { v4 as uunid } from "uuid";
-import LoadingClient from "../LoadingClient";
 
 const URL = process.env.NEXT_PUBLIC_MODE === "PRO" ? process.env.BACK_END_URL : "http://localhost:4000";
 const SocketContext = createContext<Socket | null>(null);
@@ -28,18 +25,6 @@ const SocketProvider = ({ children }: { children: React.ReactNode }) => {
                   return;
             }
             function onConnect() {
-                  dispatch(
-                        addOneToastSuccess({
-                              toast_item: {
-                                    _id: uunid(),
-                                    type: "SUCCESS",
-                                    toast_title: "Socket",
-                                    core: {
-                                          message: `Kết nối socketState thành công`,
-                                    },
-                              },
-                        }),
-                  );
                   socketState!.emit("checkError", { error: "Ok" });
             }
             const socketStateNewForm = (dataSocket: {
@@ -60,7 +45,7 @@ const SocketProvider = ({ children }: { children: React.ReactNode }) => {
                               toast_item: {
                                     _id: uunid(),
                                     type: "FormAnswer",
-                                    toast_title: "Bạn nhận được 1 phiếu trả lời",
+                                    toast_title: "Phản hồi",
                                     core: {
                                           message: `Bạn nhận được 1 phản hồi từ Form [${form_origin?.form_title?.form_title_value || "Trống"}]`,
                                           url: `/form/${form_origin._id}/summary#${form_answer_item_id}`,

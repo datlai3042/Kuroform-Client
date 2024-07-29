@@ -28,24 +28,24 @@ const SummaryFormPage = () => {
 
       if (!formCache) return <NotFoundPage />;
 
-      const { dataFormShowExcel } = formCache;
+      const { dataGroupFilter } = formCache;
 
       return (
             <div className="flex flex-col gap-[6rem] min-h-[30rem] pb-[8rem] text-text-theme overflow-auto scroll-color-main max-h-full">
                   {formAnswer &&
-                        Object.keys(dataFormShowExcel).map((dt, i) => {
+                        Object.keys(dataGroupFilter).map((dt, i) => {
                               const type = dt.split("_#_")[1] as InputCore.InputForm["type"];
                               return (
                                     <div key={dt + i} className="flex flex-col gap-[3rem]  ">
-                                          <h3 className="text-[2.4rem] font-medium text-color-main">{dataFormShowExcel[dt][0]?.title}</h3>
-                                          {type === "OPTION" && <AnalysisAnswer data={dataFormShowExcel[dt]} />}
-                                          {type === "OPTION_MULTIPLE" && <AnalysisAnswer data={dataFormShowExcel[dt]} />}
+                                          <h3 className="text-[2.4rem] font-medium text-color-main">{dataGroupFilter[dt][0]?.title}</h3>
+                                          {type === "OPTION" && <AnalysisAnswer data={dataGroupFilter[dt]} />}
+                                          {type === "OPTION_MULTIPLE" && <AnalysisAnswer data={dataGroupFilter[dt]} />}
 
                                           <div
                                                 style={{ "--scorll-form-answer-detail": colorMain } as React.CSSProperties}
                                                 className="scroll-form-answer-detail flex flex-col gap-[.8rem] max-h-[30rem] overflow-y-scroll  pb-[.8rem]"
                                           >
-                                                {dataFormShowExcel[dt].map((info, i) => {
+                                                {dataGroupFilter[dt].map((info, i) => {
                                                       return (
                                                             <div
                                                                   title="Xem phiếu trả lời này"

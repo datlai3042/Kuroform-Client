@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState } from "react";
+import React from "react";
 
 type TProps = {
       value: string;
@@ -11,7 +11,7 @@ type TProps = {
 
 const InputChecked = (props: TProps) => {
       const { value, value_current, checked, callbackChecked, getStateCheck } = props;
-
+      console.log({ value_current, value });
       const onChangeInput = () => {
             const inputChecked = value_current === value;
             console.log({ inputChecked, value, value_current });

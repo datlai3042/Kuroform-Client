@@ -47,6 +47,9 @@
             --btn-design: #2d68ff;
             --bg-model: #eef1f9;
             --color-btn-primarily: rgb(37, 104, 170);
+            --toast-success: #4299de;
+            --toast-error: #f4454c;
+            --toast-warning: #ea580c;
       }
 
       body.light {
@@ -96,39 +99,6 @@
 
       td {
             padding: 3.4rem 6rem;
-      }
-
-      .dark {
-            --background: 222.2 84% 4.9%;
-            --foreground: 210 40% 98%;
-
-            --card: 222.2 84% 4.9%;
-            --card-foreground: 210 40% 98%;
-
-            --popover: 222.2 84% 4.9%;
-            --popover-foreground: 210 40% 98%;
-
-            --primary: 210 40% 98%;
-            --primary-foreground: 222.2 47.4% 11.2%;
-
-            --secondary: 217.2 32.6% 17.5%;
-            --secondary-foreground: 210 40% 98%;
-
-            --muted: 217.2 32.6% 17.5%;
-            --muted-foreground: 215 20.2% 65.1%;
-
-            --accent: 217.2 32.6% 17.5%;
-            --accent-foreground: 210 40% 98%;
-
-            --destructive: 0 62.8% 30.6%;
-            --destructive-foreground: 210 40% 98%;
-
-            --border: 217.2 32.6% 17.5%;
-            --input: 217.2 32.6% 17.5%;
-            --ring: 212.7 26.8% 83.9%;
-
-            --scorll-form-answer-detail: #000000;
-            --scorll-form-answer-detail-width: 0.1rem;
       }
 
       /* #e6ebf7 */
@@ -240,6 +210,9 @@
 
       .color-core:hover {
             background-color: var(--bg-input-core);
+      }
+
+      .toast-item {
       }
 
       button,
@@ -376,7 +349,7 @@
       }
 
       .input-answer-invalid {
-            @apply border-red-600 border-[.2rem] border-dotted;
+            @apply border-red-600 border-[.3rem] border-dotted;
       }
 
       /*
@@ -426,7 +399,7 @@
       }
 
       .form-state__message--private {
-            @apply bg-black;
+            @apply bg-color-main;
       }
 
       .form-state__message--delete {

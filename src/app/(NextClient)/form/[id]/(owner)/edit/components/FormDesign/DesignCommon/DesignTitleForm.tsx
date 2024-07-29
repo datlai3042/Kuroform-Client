@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
+import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import FormService from "@/app/_services/form.service";
 import { useMutation } from "@tanstack/react-query";
@@ -15,47 +15,45 @@ import useAddSectionSubTitle from "@/app/hooks/useAddSectionSubTitle";
 const iconSize = 16;
 
 const DesignTitleForm = () => {
-	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
+      const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
 
-	const addSubTitleItem = useAddSectionSubTitle();
+      const addSubTitleItem = useAddSectionSubTitle();
 
-	const onAddTitleSub = (type: FormCore.FormTitleSub.FormTitleBase["type"]) => {
-		addSubTitleItem.mutate({ type, form_id: formCore._id });
-	};
+      const onAddTitleSub = (type: FormCore.FormTitleSub.FormTitleBase["type"]) => {
+            addSubTitleItem.mutate({ type, form_id: formCore._id });
+      };
 
-	return (
-		<div className=" w-full min-h-[4rem] h-max p-[1rem_0rem] flex flex-wrap gap-[3rem]">
-			<button
-				onClick={() => onAddTitleSub("Text")}
-				className="btn-primarily min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] p-[.6rem] text-[#fff] rounded-lg"
-			>
-				<Type size={iconSize} />
-				<span>{FormText.title.optionText.message}</span>
-			</button>
+      return (
+            <div className=" w-full min-h-[4rem] h-max p-[1rem_0rem] flex flex-wrap gap-[3rem]">
+                  <button
+                        onClick={() => onAddTitleSub("Text")}
+                        className="btn-primarily min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] p-[.6rem] text-[#fff] rounded-lg"
+                  >
+                        <Type size={iconSize} />
+                        <span>{FormText.title.optionText.message}</span>
+                  </button>
 
-			<button
-				onClick={() => onAddTitleSub("FullDescription")}
-				className="btn-primarily min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] text-[#fff]  rounded-lg"
-			>
-				<Type size={iconSize} />
+                  <button
+                        onClick={() => onAddTitleSub("FullDescription")}
+                        className="btn-primarily min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] text-[#fff]  rounded-lg"
+                  >
+                        <Type size={iconSize} />
 
-				{/* // eslint-disable-next-line jsx-a11y/alt-text */}
-				<span>{FormText.title.optionFullDescription.message}</span>
-			</button>
+                        {/* // eslint-disable-next-line jsx-a11y/alt-text */}
+                        <span>{FormText.title.optionFullDescription.message}</span>
+                  </button>
 
-			<button
-				onClick={() => onAddTitleSub("Image")}
-				className="btn-primarily min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] text-[#fff]  rounded-lg"
-			>
-				{/* // eslint-disable-next-line jsx-a11y/alt-text */}
-				<Image size={iconSize} />
-				<span>{FormText.title.optionImage.message}</span>
-			</button>
-			{formCore.form_title.form_title_sub.filter((ft) => ft.type === "Image" && ft?.core?.url).length > 0 && (
-				<FormTitleModeImage />
-			)}
-		</div>
-	);
+                  <button
+                        onClick={() => onAddTitleSub("Image")}
+                        className="btn-primarily min-w-[12rem] h-[3.2rem] flex items-center gap-[1rem] text-[#fff]  rounded-lg"
+                  >
+                        {/* // eslint-disable-next-line jsx-a11y/alt-text */}
+                        <Image size={iconSize} />
+                        <span>{FormText.title.optionImage.message}</span>
+                  </button>
+                  {formCore.form_title.form_title_sub.filter((ft) => ft.type === "Image" && ft?.core?.url).length > 0 && <FormTitleModeImage />}
+            </div>
+      );
 };
 
 export default DesignTitleForm;

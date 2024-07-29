@@ -16,6 +16,8 @@ import InputAnswerTitle from "../../InputAnswerTitle";
 import RenderStyleInputAnswer from "../constant/RenderStyleInputAnswer";
 import InputValidateSuccess from "../../_common/InputValidateSuccess";
 import superAnchorValidate from "../_validate/inputAnchor.validate";
+import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
+import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 
 type TProps = {
       inputItem: InputCore.InputAnchor.InputTypeAnchor;
@@ -36,16 +38,14 @@ const InputAnchorAnswer = (props: TProps) => {
             return renderControllerInputAnswer<FormCore.FormAnswer.Data.Anchor>({ inputFormErrors, inputItem, inputFormData });
       }, [inputItem, inputFormErrors]);
 
-      const [error, setError] = useState<FormCore.FormAnswer.InputError>(() => {
-            return renderErrorInput(inputFormErrors, inputItem);
-      });
+      const [_validate, setValidate] = useState<boolean>(false);
 
-      const [inputValue, setInputValue] = useState<string>(() => inputItemInArrayGlobal.input?.value || "");
+      const [inputValue, setInputValue] = useState<string>(inputItemInArrayGlobal.input?.value || "");
       const [write, setWrite] = useState<boolean>(false);
 
       const onFocus = () => {
             setWrite(true);
-            deleteErrorWhenFocus({ error, setError, setFormAnswer, inputFormErrors, inputItem });
+            deleteErrorWhenFocus({ setFormAnswer, inputFormErrors, inputItem });
       };
 
       const onBlur = () => {
@@ -53,7 +53,6 @@ const InputAnchorAnswer = (props: TProps) => {
                   validateWhenFocus<InputCore.InputAnchor.InputSettingAnchor>({
                         inputItem,
                         inputValue,
-                        setError,
                         setFormAnswer,
                         validateCallback: superAnchorValidate,
                   });
@@ -64,34 +63,24 @@ const InputAnchorAnswer = (props: TProps) => {
             const { _next, message, type } = validateWhenFocus<InputCore.InputAnchor.InputSettingAnchor>({
                   inputItem,
                   inputValue,
-                  setError,
                   setFormAnswer,
                   validateCallback: superAnchorValidate,
             });
+            setValidate(_next);
             if (_next) {
-                  // setControllerInput((prev) => ({ ...prev, error: { message: "" }, validate: true }));
                   if (inputFormErrors.some((ip) => ip._id === inputItem._id)) {
                         deleteErrorGlobal(setFormAnswer, inputItem._id!);
                   }
-            } else {
-                  // setControllerInput((prev) => ({ ...prev, error: { message }, validate: false }));
             }
       };
 
       const onChangeValue = (valueInput: string) => {
             setInputValue(valueInput);
-            // setControllerInput((prev) => ({ ...prev, value: { href: valueInput } }));
       };
 
       return (
             <InputAnswerWrapper>
-                  <DivNative
-                        id={`_inputid_${inputItem._id}`}
-                        className={`${RenderStyleInputAnswer.BorderWrapperError({
-                              error,
-                              inputItemInArrayGlobal,
-                        })} relative inputAnswer w-full min-h-full h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[2rem]   rounded-lg`}
-                  >
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} />
                         <DivNative className="flex flex-col gap-[.3rem]">
                               <DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
@@ -106,7 +95,7 @@ const InputAnchorAnswer = (props: TProps) => {
                                     <div className="absolute z-[2] right-[1rem]  opacity-70">www</div>
                               </DivNative>
                               <div className="flex flex-col h-[8rem] gap-[1rem]   justify-center">
-                                    {!error && !inputItemInArrayGlobal.globalError.state && <InputValidateSuccess message={"Đường dẫn hợp lệ"} />}
+                                    {write && _validate && !inputItemInArrayGlobal.globalError.state && <InputValidateSuccess message={"Đường dẫn hợp lệ"} />}
                                     <button
                                           onClick={onValidate}
                                           className=" w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-blue-600 rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
@@ -115,13 +104,10 @@ const InputAnchorAnswer = (props: TProps) => {
                                     </button>
                               </div>
                         </DivNative>
-                        {(error.error || inputItemInArrayGlobal.globalError.state) && (
-                              <InputErrorMessage
-                                    message={inputItemInArrayGlobal.globalError.message || error.message}
-                                    type={inputItemInArrayGlobal.globalError.type || error.type}
-                              />
+                        {inputItemInArrayGlobal?.globalError?.state && (
+                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                         )}
-                  </DivNative>
+                  </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );
 };

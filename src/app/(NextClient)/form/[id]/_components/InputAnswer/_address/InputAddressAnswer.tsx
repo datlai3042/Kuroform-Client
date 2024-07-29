@@ -18,6 +18,8 @@ import {
 import ModelAddress from "@/app/(NextClient)/_components/Model/ModelAddress";
 import { inititalValueInputAddress } from "@/app/_constant/input.constant";
 import superAddressValidate from "../_validate/inputAddress.validate";
+import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
+import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 
 type TProps = {
       inputItem: InputCore.InputAddress.InputTypeAddress;
@@ -32,68 +34,19 @@ const InputAddressAnswer = (props: TProps) => {
             setFormAnswer,
       } = useContext(FormAnswerContext);
 
-      const [error, setError] = useState<FormCore.FormAnswer.InputError>(() => {
-            return renderErrorInput(inputFormErrors, inputItem);
-      });
-
       const inputItemInArrayGlobal = useMemo(() => {
             return renderControllerInputAnswer<FormCore.FormAnswer.Data.Address>({ inputFormErrors, inputItem, inputFormData });
       }, [inputItem, inputFormErrors, inputFormData]);
-
-      const [controlerInput, setControllerInput] = useState<InputCore.Commom.ControlerInput<UI.Address.AddressEnity & { address_full: string }>>(() => {
-            const input = inputItemInArrayGlobal.input;
-
-            if (input?.value.addressString) {
-                  return {
-                        value: {
-                              addressString: input.value.addressString,
-                              addressValidate: input.value.addressValidate,
-                              address_full: input.value.address_full,
-                              addressCore: input.value.addressCore,
-                        },
-                        error: {
-                              message: inputItemInArrayGlobal.globalError.message,
-                        },
-                        validate: !inputItemInArrayGlobal.globalError.state,
-                  };
-            } else {
-                  return {
-                        value: {
-                              addressString: "",
-                              addressValidate: inititalValueInputAddress,
-                              address_full: "",
-                              addressCore: "",
-                        },
-                        error: {
-                              message: "",
-                        },
-                        validate: false,
-                  };
-            }
-      });
-
-      // useEffect(() => {
-      //       console.log({ controlerInput });
-      // }, [controlerInput]);
 
       const onChangeAddress = (address: UI.Address.AddressEnity) => {
             const _validate = validateWhenFocus<InputCore.InputAddress.InputSettingAddress>({
                   inputItem,
                   inputValue: address,
-                  setError,
                   setFormAnswer,
                   validateCallback: superAddressValidate,
             });
 
             const { _next, type } = _validate;
-            setControllerInput((prev) => ({
-                  ...prev,
-                  validate: type !== "NO-RULE" ? !_validate?._next : true,
-                  value: address,
-                  error: {
-                        message: _validate?.message || "",
-                  },
-            }));
 
             if (_next) {
                   if (inputFormErrors.some((ip) => ip._id === inputItem._id)) {
@@ -104,12 +57,7 @@ const InputAddressAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper>
-                  <DivNative
-                        id={`_inputid_${inputItem._id}`}
-                        className={`${
-                              inputItemInArrayGlobal.globalError.state ? "input-answer-invalid" : " border-[.2rem] border-transparent "
-                        } relative w-full min-h-full h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[2rem] rounded-lg `}
-                  >
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} />
                         <DivNative className="relative flex flex-col items-start gap-[1rem] text-[#000] ">
                               <div className="flex flex-col gap-[2rem]">
@@ -163,11 +111,11 @@ const InputAddressAnswer = (props: TProps) => {
                                           }}
                                     />
                                     <div className="flex flex-col h-[8rem] gap-[1rem]   justify-center">
-                                          {(controlerInput.validate || controlerInput.value.address_full) && (
-                                                <span className="text-[1.4rem]">{controlerInput.value.address_full}</span>
+                                          {(!inputItemInArrayGlobal.globalError.state || inputItemInArrayGlobal.input?.value.address_full) && (
+                                                <span className="text-[1.4rem]">{inputItemInArrayGlobal.input?.value.address_full}</span>
                                           )}
                                           <button
-                                                onClick={() => onChangeAddress(controlerInput.value)}
+                                                onClick={() => onChangeAddress(inputItemInArrayGlobal.input?.value!)}
                                                 className=" w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-blue-600 rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
                                           >
                                                 Xác nhận
@@ -176,13 +124,10 @@ const InputAddressAnswer = (props: TProps) => {
                               </div>
                         </DivNative>
 
-                        {(controlerInput.validate || inputItemInArrayGlobal.globalError.state) && (
-                              <InputErrorMessage
-                                    message={inputItemInArrayGlobal.globalError?.message || controlerInput.error.message}
-                                    type={inputItemInArrayGlobal.globalError?.type || error.type! || ""}
-                              />
+                        {inputItemInArrayGlobal.globalError.state && (
+                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                         )}
-                  </DivNative>
+                  </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );
 };

@@ -11,6 +11,10 @@ class FormService {
             return Http.post<ResponseApi<{ form_id: string }>>("/v1/api/form/create-form", {});
       }
 
+      static async getAllForm() {
+            return Http.get<ResponseApi<{ forms: FormCore.Form[] }>>(`/v1/api/form/get-all-form`, { cache: "no-store" });
+      }
+
       static async getForms() {
             return Http.get<ResponseApi<{ forms: FormCore.Form[] }>>(`/v1/api/form/get-forms`, { cache: "no-store" });
       }

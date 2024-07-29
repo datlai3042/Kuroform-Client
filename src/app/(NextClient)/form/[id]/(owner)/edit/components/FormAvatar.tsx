@@ -23,12 +23,15 @@ const FormAvatar = () => {
             formCore,
       });
 
+      const _checkAvatar = formCore.form_background_state || formCore.form_background?.form_background_iamge_url;
+
       return (
             <React.Fragment>
                   <div
                         className={`
    ${openFormDesign ? "!h-[33rem] !max-h-[33rem] !min-h-[33rem]" : ""}
-  w-full xl:max-w-[70rem] mx-auto min-h-[40rem] max-h-[40rem] relative flex items-end`}
+ ${_checkAvatar ? "min-h-[40rem] max-h-[40rem]" : "min-h-[15rem] max-h-[15rem]"}
+  w-full xl:max-w-[70rem] mx-auto  relative flex items-end`}
                   >
                         <div className="absolute h-max w-full bottom-0 flex justify-center">
                               <div className="relative w-full ">
@@ -42,9 +45,9 @@ const FormAvatar = () => {
                                           className={`${position} ${shape} absolute top-[0] translate-y-[-50%] z-[3] object-center w-[14rem] h-[14rem] xl:w-[16rem] xl:h-[16rem] hover:cursor-pointer `}
                                     />
 
-                                    {(!formCore.form_background?.form_background_iamge_url || !formCore.form_background_state) && (
+                                    {/* {(!formCore.form_background?.form_background_iamge_url || !formCore.form_background_state) && (
                                           <div className="absolute left-0 right-0 h-[.4rem] bg-blue-400 z-[2] top-[50%] translate-y-[-50%]"></div>
-                                    )}
+                                    )} */}
                               </div>
                         </div>
                         {openModel && <ModelFormImage setOpenModel={setOpenModel} MODE="AVATAR" />}

@@ -1,8 +1,6 @@
-import { onFetchTotalAnswer, onFetchTotalViews } from "@/app/_lib/redux/features/formAnswer.slice";
-import { onFetchFormState } from "@/app/_lib/redux/features/formEdit.slice";
+import { onFetchFormState } from "@/app/_lib/redux/formEdit.slice";
 import FormService from "@/app/_services/form.service";
-import FormAnswerService from "@/app/_services/formAnswer.service";
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 

@@ -11,9 +11,9 @@ export const PieChart = (props: TProps) => {
       const { dataChart } = props;
 
       return (
-            <div className="w-full h-[15rem] text-[#000]">
+            <div className="w-full h-[13rem] xl:h-[15rem] flex justify-center  text-[#000]">
                   <Pie
-                        className="w-[20rem] h-[15rem] text-inherit border-none"
+                        className="w-[16rem] xl:w-[20rem] h-[13rem] xl:h-[15rem] text-inherit border-none"
                         data={dataChart}
                         options={{
                               plugins: {

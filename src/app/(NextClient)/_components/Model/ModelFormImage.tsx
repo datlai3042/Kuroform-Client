@@ -6,26 +6,21 @@ import FormBackgoundUpload from "../../form/[id]/(owner)/edit/components/FormBac
 import FormAvatarUpload from "../../form/[id]/(owner)/edit/components/FormAvatarUpload";
 
 type TProps = {
-	setOpenModel: ReactCustom.SetStateBoolean;
-	MODE: "AVATAR" | "COVER";
+      setOpenModel: ReactCustom.SetStateBoolean;
+      MODE: "AVATAR" | "BACKGROUND";
 };
 
 const ModelFormImage = (props: TProps) => {
-	const { MODE, setOpenModel } = props;
+      const { MODE, setOpenModel } = props;
 
-	return (
-		<ModelWrapper
-			ModelWidth="w-[90%] xl:w-[80rem]"
-			ModelHeight="h-[45rem]"
-			ModelWrapperOpacity="bg-[rgba(0,0,0,.6)]"
-			setOpenModel={setOpenModel}
-		>
-			<DivNative className="w-full h-full py-[1.6rem]">
-				{MODE === "COVER" && <FormBackgoundUpload setOpenModel={setOpenModel} />}
-				{MODE === "AVATAR" && <FormAvatarUpload setOpenModel={setOpenModel} />}
-			</DivNative>
-		</ModelWrapper>
-	);
+      return (
+            <ModelWrapper ModelWidth="w-[90%] xl:w-[80rem]" ModelHeight="h-[45rem]" ModelWrapperOpacity="bg-[rgba(0,0,0,.6)]" setOpenModel={setOpenModel}>
+                  <DivNative className="w-full h-full py-[1.6rem]">
+                        {MODE === "BACKGROUND" && <FormBackgoundUpload setOpenModel={setOpenModel} />}
+                        {MODE === "AVATAR" && <FormAvatarUpload setOpenModel={setOpenModel} />}
+                  </DivNative>
+            </ModelWrapper>
+      );
 };
 
 export default ModelFormImage;

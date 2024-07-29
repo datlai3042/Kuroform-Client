@@ -1,16 +1,13 @@
 "use client";
 
 import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpinner";
-import { onCalculationData, onChangeFormId } from "@/app/_lib/redux/features/dataForm.slice";
-import { addFormAnswer } from "@/app/_lib/redux/features/formAnswer.slice";
+import { onChangeFormId } from "@/app/_lib/redux/dataForm.slice";
+import { addFormAnswer } from "@/app/_lib/redux/formAnswer.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import { handleDataForm } from "@/app/_lib/utils";
 import FormAnswerService from "@/app/_services/formAnswer.service";
-import { FormCore } from "@/type";
-import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import moment from "moment";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const HanderlDataFormLayout = ({ params, children }: { params: { id: string }; children: React.ReactNode }) => {
@@ -35,7 +32,6 @@ const HanderlDataFormLayout = ({ params, children }: { params: { id: string }; c
                   const arrayReserver = [...reports];
 
                   const OK = handleDataForm(arrayReserver.reverse(), params.id);
-                  console.log({ OK });
                   setReady(OK);
             }
       }, [getFormAnswer.isSuccess, getFormAnswer.data, formAnswer]);
@@ -43,7 +39,6 @@ const HanderlDataFormLayout = ({ params, children }: { params: { id: string }; c
       useEffect(() => {
             if (!getFormAnswer.data?.metadata.formAnswer) {
                   dispatch(onChangeFormId({ form_id_current: params.id }));
-                  console.log({ API: true });
 
                   return setReady(true);
             }

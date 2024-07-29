@@ -1,32 +1,25 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import React, { useEffect } from "react";
-import WrapperAuthLayout from "../Layout/WrapperAuthLayout";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { UserType } from "@/app/_schema/user/user.type";
 import { RegisterType, registerSchema } from "@/app/_schema/auth/register.schema";
-import { LoginType } from "@/app/_schema/auth/login.schema";
 import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
 
 import Button from "../ui/button/Button";
 
-import Http from "@/app/_lib/http";
 import { useMutation } from "@tanstack/react-query";
 
 import IconClose from "../ui/input/IconClose";
 import { useDispatch } from "react-redux";
-import { PlaneTakeoff } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import Input from "../ui/input/Input";
-import { onFetchUser } from "@/app/_lib/redux/features/authentication.slice";
+import { onFetchUser } from "@/app/_lib/redux/authentication.slice";
 import { useRouter } from "next/navigation";
 import AuthService from "@/app/_services/auth.service";
 import ButtonLoginGoogle from "../ui/button/ButtonLoginGoogle";
-import ButtonLoginFacebook from "../ui/button/ButtonLoginGithub";
 import ButtonLoginGithub from "../ui/button/ButtonLoginGithub";
 type TProps = {
       onClose?: (state: boolean) => void;

@@ -6,7 +6,7 @@ import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative
 import ParagraphNative from "@/app/(NextClient)/_components/ui/NativeHtml/ParagraphNative";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
-import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
+import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 import ButtonDesgin from "../FormDesign/DesignCommon/ButtonDesgin";
 import ButtonDesignTitle from "../FormDesign/DesignTitle/ButtonDesignTitle";
 import DesignTitleForm from "../FormDesign/DesignCommon/DesignTitleForm";

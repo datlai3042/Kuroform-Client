@@ -30,7 +30,7 @@ import { DndContext, DragEndEvent, MouseSensor, UniqueIdentifier, closestCorners
 
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
 
-import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
+import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 import { CSS } from "styled-components/dist/types";
 import ButtonAddInput from "@/app/(NextClient)/_components/ui/button/ButtonAddInput";
 import useUpdateForm from "@/app/hooks/useUpdateForm";

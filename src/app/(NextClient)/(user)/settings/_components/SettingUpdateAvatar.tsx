@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { User } from "@/type";
 import UserService from "@/app/_services/user.service";
 import { useDispatch, useSelector } from "react-redux";
-import { onFetchUser } from "@/app/_lib/redux/features/authentication.slice";
+import { onFetchUser } from "@/app/_lib/redux/authentication.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import Image from "next/image";
 import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpinner";

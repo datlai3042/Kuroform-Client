@@ -14,6 +14,8 @@ import { deleteErrorWhenFocus, renderControllerInputAnswer, renderErrorInput, va
 import MinMaxInput from "../../MinMaxInput";
 import InputAnswerTitle from "../../InputAnswerTitle";
 import RenderStyleInputAnswer from "../constant/RenderStyleInputAnswer";
+import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
+import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 
 type TProps = {
       inputItem: InputCore.InputEmail.InputTypeEmail;
@@ -31,28 +33,16 @@ const InputEmailAnswer = (props: TProps) => {
       } = useContext(FormAnswerContext);
 
       const inputItemInArrayGlobal = useMemo(() => {
-            return renderControllerInputAnswer({ inputFormErrors, inputItem, inputFormData });
+            return renderControllerInputAnswer<FormCore.FormAnswer.Data.Email>({ inputFormErrors, inputItem, inputFormData });
       }, [inputItem, inputFormErrors, inputFormData]);
 
-      const [error, setError] = useState<FormCore.FormAnswer.InputError>(() => {
-            return renderErrorInput(inputFormErrors, inputItem);
-      });
+      const [inputValue, setInputValue] = useState<string>(inputItemInArrayGlobal.input?.value || "");
 
-      const [inputValue, setInputValue] = useState<string>(() => {
-            let value: string = "";
-            inputFormData.filter((data) => {
-                  if (data._id === inputItem._id && data.type === "EMAIL") {
-                        value = data.value;
-                        return;
-                  }
-            });
-            return value;
-      });
       const [write, setWrite] = useState<boolean>(false);
 
       const onFocus = () => {
             setWrite(true);
-            deleteErrorWhenFocus({ error, setError, setFormAnswer, inputFormErrors, inputItem });
+            deleteErrorWhenFocus({ setFormAnswer, inputFormErrors, inputItem });
       };
 
       const onBlur = () => {
@@ -60,7 +50,6 @@ const InputEmailAnswer = (props: TProps) => {
                   validateWhenFocus<InputCore.InputText.InputSettingText>({
                         inputItem,
                         inputValue,
-                        setError,
                         setFormAnswer,
                         validateCallback: superEmailValidate,
                   });
@@ -69,20 +58,14 @@ const InputEmailAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper>
-                  <DivNative
-                        id={`_inputid_${inputItem._id}`}
-                        className={`${RenderStyleInputAnswer.BorderWrapperError({
-                              error,
-                              inputItemInArrayGlobal,
-                        })} relative inputAnswer w-full min-h-full h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[2rem]   rounded-lg`}
-                  >
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} />
                         <DivNative className="flex flex-col gap-[.3rem]">
                               <DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
                                     <input
                                           disabled={submitState === "pending"}
                                           defaultValue={inputValue}
-                                          className={`${RenderStyleInputAnswer.BorderInputError({ error })}
+                                          className={`
 							)}  ${RenderStyleInputAnswer.StyleTitle({
                                                 formCore,
                                                 inputItem,
@@ -97,13 +80,10 @@ const InputEmailAnswer = (props: TProps) => {
                                     </DivNative>
                               </DivNative>
                         </DivNative>
-                        {(error.error || inputItemInArrayGlobal.globalError.state) && (
-                              <InputErrorMessage
-                                    message={inputItemInArrayGlobal.globalError.message || error.message}
-                                    type={inputItemInArrayGlobal.globalError.type || error.type}
-                              />
+                        {inputItemInArrayGlobal?.globalError?.state && (
+                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                         )}
-                  </DivNative>
+                  </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );
 };

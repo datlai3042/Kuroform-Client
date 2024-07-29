@@ -1,24 +1,19 @@
-import React, { SetStateAction, forwardRef, memo, useContext, useEffect, useRef, useState } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 import InputTitle from "./InputTitle";
 import { FormCore, InputCore as TInputCore } from "@/type";
-import SectionLabelTitle from "../SetTitleInput";
 import SectionOption from "../SectionOption";
 import DivWrapper from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import { FormModeScreenContext } from "@/app/(NextClient)/_components/provider/FormModeScreen";
-import InputSettingWrapper from "../InputSettings/InputSettingWrapper";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
-import { onFetchForm } from "@/app/_lib/redux/features/formEdit.slice";
 import { useSortable } from "@dnd-kit/sortable";
 import { UniqueIdentifier } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import SetTitleInput from "../SetTitleInput";
 import { useAddInputToEnter } from "@/app/hooks/useAddInputToEnter";
-import RenderSettingItem from "../RenderSettingItem";
 import FormModeCustomSetting from "../FormModeCustomSetting";
 import useRemoveInputItem from "@/app/hooks/form/useRemoveInputItem";
-import { useQueryClient } from "@tanstack/react-query";
-import { clearFormAnswer } from "@/app/_lib/redux/features/formAnswer.slice";
+import { clearFormAnswer } from "@/app/_lib/redux/formAnswer.slice";
 
 type TProps = {
       InputComponent: React.ReactNode;

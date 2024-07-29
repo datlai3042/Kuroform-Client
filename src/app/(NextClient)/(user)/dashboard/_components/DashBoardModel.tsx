@@ -1,10 +1,9 @@
 "use client";
 import ClickOutSide from "@/app/(NextClient)/_components/Model/ClickOutSide";
-import Portal from "@/app/(NextClient)/_components/Portal";
-import { onFocusSearch } from "@/app/_lib/redux/features/formEdit.slice";
-import { ChevronDown, Flower, Globe, Home, Search, Settings, Users } from "lucide-react";
+import { onFocusSearch } from "@/app/_lib/redux/formEdit.slice";
+import { Home, Search, Settings } from "lucide-react";
 import Link from "next/link";
-import React, { SetStateAction, useCallback, useEffect, useRef, useState } from "react";
+import React, { SetStateAction } from "react";
 import { useDispatch } from "react-redux";
 
 const WorkItem = [
@@ -35,7 +34,7 @@ const DashBoardModel = (props: TProps) => {
                                                 href={work.Href}
                                                 className="p-[.2rem_.8rem] flex items-center gap-[1.6rem] hover:bg-slate-200 rounded-md"
                                           >
-                                                {work.Icon}
+                                                <span className="min-w-[2.2rem]">{work.Icon}</span>
                                                 <span className="font-medium">{work.Title}</span>
                                           </Link>
                                     );
@@ -44,10 +43,11 @@ const DashBoardModel = (props: TProps) => {
                                     return (
                                           <button
                                                 key={work.Title}
-                                                className="p-[.2rem_.8rem] flex items-center gap-[1rem] hover:bg-slate-200 rounded-md"
+                                                className="p-[.2rem_.8rem] flex items-center gap-[1.6rem] hover:bg-slate-200 rounded-md"
                                                 onClick={() => setopenModelSearch()}
                                           >
-                                                {work.Icon}
+                                                <span className="min-w-[2.2rem]">{work.Icon}</span>
+
                                                 <span className="font-medium text-slate-600">{work.Title}</span>
                                           </button>
                                     );

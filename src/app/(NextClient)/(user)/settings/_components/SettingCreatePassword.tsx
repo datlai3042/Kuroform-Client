@@ -1,6 +1,6 @@
 import Input from "@/app/(NextClient)/_components/ui/input/Input";
-import { onFetchUser } from "@/app/_lib/redux/features/authentication.slice";
-import { addOneToastSuccess } from "@/app/_lib/redux/features/toast.slice";
+import { onFetchUser } from "@/app/_lib/redux/authentication.slice";
+import { addOneToastSuccess } from "@/app/_lib/redux/toast.slice";
 import { CreatePasswordType, createPasswordSchema } from "@/app/_schema/user/createPassword.schema";
 import useCreatePassword from "@/app/hooks/user/useCreatePassword";
 import { zodResolver } from "@hookform/resolvers/zod";

@@ -4,12 +4,12 @@ import DashboardTotalView from "./DashboardTotalView";
 
 const DashboardTotalWrapper = () => {
       return (
-            <div className="w-full flex  justify-center  h-full gap-[4rem] text-[#fff]">
-                  <div className="w-[65%] h-[22rem] xl:h-full order-1 ">
+            <div className="mt-[4rem] xl:mt-0 w-full flex flex-col  sm:flex-row justify-center  h-full gap-[6rem] text-[#fff]">
+                  <div className="sm:w-[50%] h-[22rem] xl:h-full order-1 ">
                         <DashboardTotalForm />
                   </div>
 
-                  <div className="w-[38%] h-[22rem] xl:h-full  order-3 xl:order-2">
+                  <div className=" sm:w-[50%] h-[22rem] xl:h-full  order-3 xl:order-2">
                         <DashboardTotalView />
                   </div>
 

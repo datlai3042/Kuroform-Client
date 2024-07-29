@@ -39,6 +39,21 @@ const FormAnswerProvider = (props: TProps) => {
                               };
                         }
 
+                        if (ip.type === "OPTION") {
+                              return {
+                                    setting: ip.core.setting,
+                                    _id: ip._id!,
+                                    title: ip.input_title || "",
+                                    mode: ip.core.setting.require ? "Require" : ("Optional" as FormCore.FormAnswer.InputFormData["mode"]),
+
+                                    type: ip.type,
+                                    value: {
+                                          option_value: "",
+                                          option_id: "",
+                                    },
+                              };
+                        }
+
                         if (ip.type === "ADDRESS") {
                               return {
                                     setting: ip.core.setting,

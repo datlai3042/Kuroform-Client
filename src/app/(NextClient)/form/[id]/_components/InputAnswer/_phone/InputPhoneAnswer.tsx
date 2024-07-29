@@ -22,6 +22,8 @@ import { superPhoneValidate } from "../_validate/inputPhone.validate";
 import { AtSign, Phone } from "lucide-react";
 import RenderStyleInputAnswer from "../constant/RenderStyleInputAnswer";
 import InputAnswerTitle from "../../InputAnswerTitle";
+import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
+import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 
 type TProps = {
       inputItem: InputCore.InputPhone.InputTypePhone;
@@ -37,19 +39,16 @@ const InputPhoneAnswer = (props: TProps) => {
       } = useContext(FormAnswerContext);
 
       const [write, setWrite] = useState<boolean>(false);
-      const [phone, setPhone] = useState<string>(() => inputFormData.filter((data) => data._id === inputItem._id)[0].value as string);
 
       const inputItemInArrayGlobal = useMemo(() => {
-            return renderControllerInputAnswer({ inputFormErrors, inputItem, inputFormData });
+            return renderControllerInputAnswer<FormCore.FormAnswer.Data.Phone>({ inputFormErrors, inputItem, inputFormData });
       }, [inputItem, inputFormErrors, inputFormData]);
 
-      const [error, setError] = useState<FormCore.FormAnswer.InputError>(() => {
-            return renderErrorInput(inputFormErrors, inputItem);
-      });
+      const [phone, setPhone] = useState<string>(inputItemInArrayGlobal.input?.value || "");
 
       const onFocus = () => {
             setWrite(true);
-            deleteErrorWhenFocus({ error, setError, setFormAnswer, inputFormErrors, inputItem });
+            deleteErrorWhenFocus({ setFormAnswer, inputFormErrors, inputItem });
       };
 
       const onBlur = () => {
@@ -57,7 +56,6 @@ const InputPhoneAnswer = (props: TProps) => {
                   validateWhenFocus<InputCore.InputPhone.InputSettingPhone>({
                         inputItem,
                         inputValue: phone,
-                        setError,
                         setFormAnswer,
                         validateCallback: superPhoneValidate,
                   });
@@ -66,10 +64,7 @@ const InputPhoneAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper>
-                  <DivNative
-                        id={`_inputid_${inputItem._id}`}
-                        className={` relative w-full min-h-full h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[2rem]  rounded-lg`}
-                  >
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} />
                         <DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
                               <input
@@ -77,9 +72,7 @@ const InputPhoneAnswer = (props: TProps) => {
                                     onBlur={onBlur}
                                     value={phone ? +phone : ""}
                                     type="number"
-                                    className={`${RenderStyleInputAnswer.BorderInputError({
-                                          error,
-                                    })}  ${RenderStyleInputAnswer.StyleTitle({
+                                    className={` ${RenderStyleInputAnswer.StyleTitle({
                                           formCore,
                                           inputItem,
                                     })} w-[90%] h-full pb-[2rem] border-b-[.1rem] border-gray-300  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
@@ -91,13 +84,10 @@ const InputPhoneAnswer = (props: TProps) => {
                               </DivNative>
                         </DivNative>
 
-                        {(error.error || inputItemInArrayGlobal.globalError.state) && (
-                              <InputErrorMessage
-                                    message={inputItemInArrayGlobal.globalError.message || error.message}
-                                    type={inputItemInArrayGlobal.globalError.type || error.type}
-                              />
+                        {inputItemInArrayGlobal?.globalError?.state && (
+                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                         )}
-                  </DivNative>
+                  </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );
 };

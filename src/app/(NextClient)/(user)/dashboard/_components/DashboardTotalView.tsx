@@ -20,20 +20,20 @@ const DashboardTotalView = () => {
                   {
                         label: "Thống kê của bạn",
                         data: [total_views, total_answer],
-                        backgroundColor: ["blue", "green"],
+                        backgroundColor: ["#4299de", "#3b36db"],
                         borderWith: 0,
                   },
             ],
       };
 
       return (
-            <div className="relative w-full h-full text-text-theme rounded-lg  flex flex-col items-center gap-[.5rem] xl:gap-[2rem]">
-                  <div className="w-full flex  gap-[2rem]">
-                        <p className="flex flex-col gap-[1rem] h-max w-full text-[1.3rem]">
-                              <span className="w-full break-words ">Tổng sô lượt xem Form: {total_views}</span>
-                              <span className="w-full break-words r">Số lượt phản hồi: {total_answer}</span>
+            <div className="relative w-full h-full text-text-theme  rounded-lg  flex flex-col items-center  gap-[2rem] xl:gap-[2rem]">
+                  <div className="w-full flex justify-center gap-[2rem]">
+                        <p className="flex flex-row xl:flex-col flex-wrap xl:items-center gap-[1rem] h-max w-full text-[1.3rem]">
+                              <span className="w-max  break-words ">Tổng sô lượt xem Form: {total_views}</span>
+                              <span className="w-max  break-words r">Số lượt phản hồi: {total_answer}</span>
 
-                              <span className="w-full break-words r">Tỉ lệ: {calcPercentForm({ formAnswer: total_answer, formView: total_views })}%</span>
+                              <span className="w-max  break-words r">Tỉ lệ: {calcPercentForm({ formAnswer: total_answer, formView: total_views })}%</span>
                         </p>
                   </div>
 

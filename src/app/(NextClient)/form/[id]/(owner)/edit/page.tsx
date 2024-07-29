@@ -30,8 +30,6 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
 
       const containerStyleWhenOver = openFormDesign && openSidebar ? "w-[calc(100vw-30rem)] xl:w-[calc(100vw-55.7rem)] " : "";
 
-      console.log({ formCore });
-
       return (
             <div
                   className={`${containerStyleWhenNormal} ${containerStyleWhenOpenFormDesign} ${containerStyleWhenOpenSideBar} ${containerStyleWhenOver} flex flex-col min-h-screen h-max  `}

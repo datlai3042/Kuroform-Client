@@ -47,7 +47,8 @@ namespace InputCore {
       namespace Setting {
             export type InputSettingCommon = {
                   require: boolean;
-                  input_error?: string;
+                  input_error: string;
+                  input_error_state: boolean;
                   input_color: string;
                   input_size: number;
                   input_style: FormCore.FormTextStyle;
@@ -61,6 +62,8 @@ namespace InputCore {
             } & InputCore.Setting.InputSettingCommon;
 
             type InputSettingOptionCommon = InputCore.Setting.InputSettingCommon;
+            type InputSettingOptionsCommon = InputCore.Setting.InputSettingCommon;
+
             type InputSettingVoteCommon = InputCore.Setting.InputSettingCommon;
             type InputSettingPhoneCommon = InputCore.Setting.InputSettingCommon;
             type InputSettingDate = InputCore.Setting.InputSettingCommon;
@@ -90,8 +93,12 @@ namespace InputCore {
             type InputCommonPhone = { core: { setting: InputCore.Setting.InputSettingPhoneCommon }; _id?: string };
 
             type InputCommonOption = { core: { setting: InputCore.Setting.InputSettingOptionCommon }; _id?: string };
+            type InputCommonOptions = { core: { setting: InputCore.Setting.InputSettingOptionCommon }; _id?: string };
+
             type InputCommonDate = { core: { setting: InputCore.Setting.InputSettingDate }; _id?: string };
             type InputCommonImage = { core: { setting: InputCore.Setting.InputSettingImage }; _id?: string };
+            type InputCommonAddress = { core: { setting: InputCore.Setting.InputSettingImage }; _id?: string };
+            type InputCommonAnchor = { core: { setting: InputCore.Setting.InputSettingImage }; _id?: string };
 
             type ErrorText = "REQUIRE" | "MIN" | "MAX" | "INVAILD" | "NO-RULE";
 
@@ -367,12 +374,18 @@ namespace FormCore {
 
                   interface Option extends Common {
                         type: "OPTION";
-                        value: string;
+                        value: {
+                              option_value: string;
+                              option_id: string;
+                        };
                   }
 
                   interface Options extends Common {
                         type: "OPTION_MULTIPLE";
-                        value: string[];
+                        value: {
+                              option_id: string;
+                              option_value: string;
+                        }[];
                   }
 
                   interface Phone extends Common {
@@ -470,8 +483,6 @@ namespace FormCore {
 
             namespace Common {
                   type DeleteErrorWhenFocusProps = {
-                        error: InputError;
-                        setError: React.Dispatch<SetStateAction<InputError>>;
                         inputItem: InputCore.InputForm;
                         setFormAnswer: React.Dispatch<React.SetStateAction<FormAnswerControl>>;
                         inputFormErrors: InputFormError[];
@@ -480,7 +491,6 @@ namespace FormCore {
                   type ValidateWhenBlur<T extends InputCore.InputForm["core"]["setting"]> = {
                         inputValue: string | any;
                         inputItem: InputCore.InputForm;
-                        setError?: React.Dispatch<SetStateAction<InputError>>;
 
                         setFormAnswer: React.Dispatch<React.SetStateAction<FormAnswerControl>>;
                         validateCallback: ({ inputValue, inputSetting }: { inputValue: string | any; inputSetting: T }) => {

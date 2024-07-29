@@ -4,10 +4,10 @@ import { redirect, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 
 import AuthService from "@/app/_services/auth.service";
-import LayoutTokenFailure from "../_components/Layout/LayoutTokenFailure";
-import LayoutRequestLoading from "../_components/Layout/LayoutRequestLoading";
+import LayoutTokenFailure from "../../_components/Layout/LayoutTokenFailure";
+import LayoutRequestLoading from "../../_components/Layout/LayoutRequestLoading";
 import { useDispatch } from "react-redux";
-import { addOneToastSuccess } from "@/app/_lib/redux/features/toast.slice";
+import { addOneToastSuccess } from "@/app/_lib/redux/toast.slice";
 import { v4 as uuid } from "uuid";
 
 export const fetchCache = "force-no-store";
@@ -30,8 +30,6 @@ const RefreshTokenPage = () => {
 
             const codeLocal = localStorage.getItem("code_verify_token");
             const code_verify_token_cl = codeLocal ? JSON.parse(codeLocal) : "";
-
-            console.log({ code_verify_token_cl, code_verify_token_sv });
 
             if (!code_verify_token_cl) {
                   setError(true);
@@ -58,7 +56,6 @@ const RefreshTokenPage = () => {
                   });
                   return;
             } else {
-                  console.log("set-state");
                   setError(true);
             }
             return () => {

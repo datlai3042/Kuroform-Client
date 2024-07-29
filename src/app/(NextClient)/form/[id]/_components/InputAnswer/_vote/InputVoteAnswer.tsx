@@ -9,6 +9,8 @@ import { deleteErrorWhenFocus, renderControllerInputAnswer, renderErrorInput, va
 import { Rate } from "antd";
 import { superVoteValidate } from "../_validate/inputVote.validate";
 import InputAnswerTitle from "../../InputAnswerTitle";
+import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
+import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 
 type TProps = {
       inputItem: InputCore.InputVote.InputTypeVote;
@@ -23,21 +25,17 @@ const InputVoteAnswer = (props: TProps) => {
             setFormAnswer,
       } = useContext(FormAnswerContext);
 
-      const [start, setStart] = useState<string>(() => inputFormData.filter((data) => data._id === inputItem._id)[0].value as string);
-
-      const [error, setError] = useState<FormCore.FormAnswer.InputError>(() => {
-            return renderErrorInput(inputFormErrors, inputItem);
-      });
-
       const inputItemInArrayGlobal = useMemo(() => {
-            return renderControllerInputAnswer({ inputFormErrors, inputItem, inputFormData });
+            return renderControllerInputAnswer<FormCore.FormAnswer.Data.Vote>({ inputFormErrors, inputItem, inputFormData });
       }, [inputItem, inputFormErrors, inputFormData]);
+
+      const [start, setStart] = useState<string>(inputItemInArrayGlobal.input?.value || "");
 
       const [write, setWrite] = useState<boolean>(false);
 
       const onFocus = () => {
             setWrite(true);
-            deleteErrorWhenFocus({ error, setError, setFormAnswer, inputFormErrors, inputItem });
+            deleteErrorWhenFocus({ setFormAnswer, inputFormErrors, inputItem });
       };
 
       const onBlur = () => {
@@ -45,7 +43,6 @@ const InputVoteAnswer = (props: TProps) => {
                   validateWhenFocus<InputCore.InputVote.InputSettingVote>({
                         inputItem,
                         inputValue: start,
-                        setError,
                         setFormAnswer,
                         validateCallback: superVoteValidate,
                   });
@@ -54,10 +51,7 @@ const InputVoteAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper>
-                  <DivNative
-                        id={`_inputid_${inputItem._id}`}
-                        className={`relative w-full min-h-full h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[2rem]  rounded-lg`}
-                  >
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} />
                         <DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
                               <DivNative className="flex flex-col gap-[1rem]">
@@ -68,13 +62,10 @@ const InputVoteAnswer = (props: TProps) => {
                               </DivNative>
                         </DivNative>
 
-                        {(error.error || inputItemInArrayGlobal.globalError.state) && (
-                              <InputErrorMessage
-                                    message={inputItemInArrayGlobal.globalError.message || error.message}
-                                    type={inputItemInArrayGlobal.globalError.type || error.type}
-                              />
+                        {inputItemInArrayGlobal?.globalError?.state && (
+                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                         )}
-                  </DivNative>
+                  </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );
 };

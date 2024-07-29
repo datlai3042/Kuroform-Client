@@ -3,26 +3,21 @@
 import React, { useEffect } from "react";
 
 import { useForm } from "react-hook-form";
-import WrapperAuthLayout from "../Layout/WrapperAuthLayout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginType, loginSchema } from "@/app/_schema/auth/login.schema";
 
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
-import Http from "@/app/_lib/http";
 import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
 
 import IconClose from "../ui/input/IconClose";
 import Input from "../ui/input/Input";
 import Button from "../ui/button/Button";
 import Link from "next/link";
-import { onFetchUser } from "@/app/_lib/redux/features/authentication.slice";
+import { onFetchUser } from "@/app/_lib/redux/authentication.slice";
 import AuthService from "@/app/_services/auth.service";
-import { useToast } from "@/components/ui/use-toast";
-import { ConstructorError } from "@/app/_lib/httpError";
 import ButtonLoginGoogle from "../ui/button/ButtonLoginGoogle";
-import ButtonLoginFacebook from "../ui/button/ButtonLoginGithub";
 import ButtonLoginGithub from "../ui/button/ButtonLoginGithub";
 
 type TProps = {

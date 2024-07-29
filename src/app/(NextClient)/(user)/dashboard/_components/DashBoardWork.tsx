@@ -1,5 +1,5 @@
 "use client";
-import { Flower, Globe, Home, HomeIcon, LogOut, LogOutIcon, Search, Settings, User, Users } from "lucide-react";
+import { Home, HomeIcon, LogOutIcon, Search, Settings } from "lucide-react";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import path from "path";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
-import { onFocusSearch } from "@/app/_lib/redux/features/formEdit.slice";
+import { onFocusSearch } from "@/app/_lib/redux/formEdit.slice";
 
 const WorkItem = [
       {

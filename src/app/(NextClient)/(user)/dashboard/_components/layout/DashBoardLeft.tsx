@@ -2,16 +2,15 @@
 import React, { useContext, useEffect } from "react";
 
 import DashBoardWork from "../DashBoardWork";
-import DashboardWorkspaces from "../DashboardWorkspaces";
+import DashboardWorkspaces from "../_workspace/DashboardWorkspaces";
 import DashboardProduct from "../DashboardProduct";
 import { useQuery } from "@tanstack/react-query";
 import UserService from "@/app/_services/user.service";
-import { onFetchUser } from "@/app/_lib/redux/features/authentication.slice";
+import { onFetchUser } from "@/app/_lib/redux/authentication.slice";
 import { useDispatch } from "react-redux";
 import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
 import { ChevronsLeft } from "lucide-react";
 import { SidebarContext } from "../../SidebarContext";
-import DashboardInfoUser from "../DashboardInfoUser";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import Logo from "@/app/(NextClient)/_components/logo/Logo";
 

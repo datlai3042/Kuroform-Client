@@ -25,6 +25,9 @@ const config = {
                         "btn-design": "var(--btn-design)",
                         "bg-model": "var(--bg-model)",
                         "color-btn-primarily": "var(--color-btn-primarily)",
+                        "toast-success": "var(--toast-success)",
+                        "toast-error": "var(--toast-error)",
+                        "toast-warning": "var(--toast-warning)",
 
                         formCoreBgColor: "rgb(253 242 248)",
                         textHeader: "rgb(119, 118, 114)",
@@ -128,6 +131,46 @@ const config = {
 
                               "100%": { bottom: "-100%", opacity: "0" },
                         },
+
+                        ltrColor: {
+                              "0%": { width: "-10%" },
+                              "5%": { width: "0%" },
+                              "10%": { width: "10%" },
+
+                              "20%": { width: "15%" },
+                              "30%": { width: "20%" },
+
+                              "40%": { width: "25%" },
+                              "50%": { width: "35%" },
+                              "60%": { width: "45%" },
+                              "70%": { width: "50%" },
+                              "80%": { width: "60%" },
+                              "90%": { width: "80%" },
+                              "100%": { width: "100%" },
+                        },
+
+                        rtlColor: {
+                              "0%": { width: "100%" },
+                              "20%": { width: "90%" },
+                              "30%": { width: "70%" },
+                              "40%": { width: "60%" },
+                              "50%": { width: "50%" },
+                              "60%": { width: "40%" },
+                              "70%": { width: "30%" },
+                              "80%": { width: "20%" },
+                              "90%": { width: "10%" },
+
+                              "100%": { width: "-10%" },
+                        },
+
+                        changeColorWithTime: {
+                              "0%": { color: "#000" },
+                              "100%": { color: "#fff" },
+                        },
+
+                        changeBgColorWithTime: {
+                              "100%": { background: "#fff" },
+                        },
                   },
                   animation: {
                         "accordion-down": "accordion-down 0.2s ease-out",
@@ -150,6 +193,11 @@ const config = {
                         rtl: "rtl .1s forwards ",
                         btt: "btt .2s forwards ",
                         ttb: "ttb .2s forwards ",
+                        ltrColor: "ltrColor 3s linear forwards ",
+                        rtlColor: "rtlColor 3s linear forwards ",
+
+                        changeColorWithTime: "changeColorWithTime 2.4s linear forwards ",
+                        changeBgColorWithTime: "changeBgColorWithTime 2.4s linear forwards ",
                   },
             },
       },

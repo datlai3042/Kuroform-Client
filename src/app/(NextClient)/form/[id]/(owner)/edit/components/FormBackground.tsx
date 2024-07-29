@@ -92,7 +92,7 @@ const FormBackground = () => {
                               </DivNative>
                         </React.Fragment>
                   )}
-                  {openModel && <ModelFormImage setOpenModel={setOpenModel} MODE="COVER" />}
+                  {openModel && <ModelFormImage setOpenModel={setOpenModel} MODE="BACKGROUND" />}
             </React.Fragment>
       );
 };

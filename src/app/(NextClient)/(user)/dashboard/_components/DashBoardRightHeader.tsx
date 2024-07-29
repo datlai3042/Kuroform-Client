@@ -4,18 +4,13 @@ import { Bell, ChevronsRight, Flower, Plus, Search, Settings } from "lucide-reac
 import { SidebarContext } from "../SidebarContext";
 import Link from "next/link";
 import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
-import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import Notification from "@/app/(NextClient)/_components/notification/Notification";
 import Image from "next/image";
 import DashboardAccount from "./DashboardAccount";
-import ButtonCreateForm from "@/app/(NextClient)/_components/ui/button/ButtonCreateForm";
 import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkMode";
 import { usePathname } from "next/navigation";
 import { generateContentToUrl, generateFullNameUser } from "@/app/_lib/utils";
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/_lib/redux/store";
 import DashboardSearchForm from "./DashboardSearchForm";
-import Logo from "@/app/(NextClient)/_components/logo/Logo";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 
 const DashBoardRightHeader = () => {
@@ -57,21 +52,14 @@ const DashBoardRightHeader = () => {
                               <ButtonDarkMode />
                         </div>
 
-                        <div className="hidden xl:flex items-center gap-[.8rem]">
-                              <div
-                                    className={`${
-                                          theme === "light" ? "bg-transparent" : "bg-[#fff]"
-                                    }  w-[4rem] h-[4rem] rounded-full flex items-center justify-center`}
-                              >
-                                    <Image src={"/icon_core.png"} width={20} height={20} alt="avatar" unoptimized={true} className="w-[3.4rem] h-[3.4rem] " />
+                        <div className={`${theme === "light" ? "bg-transparent" : "bg-[#fff]"} hidden xl:flex items-center gap-[.8rem] rounded-md`}>
+                              <div className="flex justify-center items-center">
+                                    <p className="ml-[2rem] ">
+                                          <span className="text-[#000] text-[2.8rem]">Kuro</span>
+                                          <span className="text-color-main text-[2.8rem]">form</span>
+                                    </p>
+                                    <Image src={"/icon_core.png"} width={20} height={20} alt="avatar" unoptimized={true} className="w-[3rem] h-[3rem] " />
                               </div>
-                              <ButtonCreateForm
-                                    textContent="Tạo Form"
-                                    urlNavigation="/"
-                                    className=" xl:[&]:p-[4px_8px] !text-[1.4rem]"
-                                    position="LEFT"
-                                    icon={<Plus />}
-                              />
                         </div>
 
                         <div className="flex justify-end gap-[1rem] xl:gap-[20px]">

@@ -18,11 +18,14 @@ const FormImage = () => {
       // 	},
       // };
 
+      const _checkBackground = formCore.form_background_state || formCore.form_background?.form_background_iamge_url;
+
       return (
             <DivNative
-                  className={` ${
-                        openFormDesign ? "!h-[33rem] !max-h-[33rem] !min-h-[33rem]" : ""
-                  } group  relative w-full xl:w-[90rem] mx-auto  px-[4rem] xl:px-0 min-h-[40rem] max-h-[40rem]`}
+                  className={` ${openFormDesign ? "!h-[33rem] !max-h-[33rem] !min-h-[33rem]" : ""}
+ ${_checkBackground ? "min-h-[40rem] max-h-[40rem]" : "!min-h-[15rem] !max-h-[15rem]"}
+
+ group  relative w-full xl:w-[90rem] mx-auto  px-[4rem] xl:px-0 min-h-[40rem] max-h-[40rem]`}
             >
                   {(formCore.form_background || formCore.form_background_state) && <FormBackground />}
 

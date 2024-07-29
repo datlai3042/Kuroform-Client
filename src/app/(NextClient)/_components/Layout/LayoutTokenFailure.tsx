@@ -9,7 +9,7 @@ const LayoutTokenFailure = (props: TProps) => {
 
       return (
             <div className="relative inset-0 w-screen h-screen px-[2rem] flex justify-center items-center">
-                  <p className="font-bold text-[3rem] text-[#0bceb2]">{message}</p>
+                  <p className="font-bold text-[3rem] text-color-main">{message}</p>
             </div>
       );
 };
