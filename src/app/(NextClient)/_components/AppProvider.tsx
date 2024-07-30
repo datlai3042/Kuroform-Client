@@ -26,16 +26,11 @@ const AppProvider = (props: TProps) => {
       const searchParams = useSearchParams();
       const code = searchParams.get("code");
 
-      const timer = useRef<NodeJS.Timeout | null>(null);
 
       useEffect(() => {
             if (!isLoading) {
-                  timer.current = setTimeout(() => {
                         setIsLoading(true);
                         setTheme("dark");
-                  }, 2400);
-            } else {
-                  clearTimeout(timer.current as NodeJS.Timeout);
             }
       }, [isLoading]);
 
