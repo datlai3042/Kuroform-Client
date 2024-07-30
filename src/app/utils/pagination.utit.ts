@@ -73,6 +73,5 @@ export const renderPageArrayLast = (props: TProps & { total_page: number }) => {
 			return page_next;
 		});
 
-	console.log({ many_loop_start, many_loop_end, newArrayEnd });
 	return cb([...newArrayStart, ...newArrayEnd].sort((a, b) => a - b));
 };

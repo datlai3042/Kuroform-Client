@@ -30,7 +30,6 @@ const InputCoreAnchor = (props: TProps) => {
 
       const onValidate = () => {
             const { _next, message, type } = superAnchorValidate({ inputValue: controlerInput.value.href, inputSetting: inputItem.core.setting });
-            console.log({ _next });
             if (_next) {
                   setControllerInput((prev) => ({ ...prev, error: { message: "" }, validate: true }));
             } else {

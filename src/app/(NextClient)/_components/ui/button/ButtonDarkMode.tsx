@@ -8,7 +8,6 @@ const ButtonDarkMode = () => {
 	const { theme, setTheme } = useContext(ThemeContext);
 
 	const onChangeTheme = () => {
-		console.log("click");
 		setTheme((prev) => (prev === "dark" ? "light" : "dark"));
 	};
 

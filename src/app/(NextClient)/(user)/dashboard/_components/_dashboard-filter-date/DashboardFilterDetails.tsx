@@ -29,7 +29,7 @@ const DashboardFilterDetails = (props: TProps) => {
 
                               <div className="absolute right-[2rem] top-[2rem]">
                                     <button
-                                          className="w-[3rem] h-[3rem] xl:w-[4rem] xl:h-[4rem] hover:bg-[#ffffff] flex items-center justify-center rounded-full shadow text-[12px] text-[#fff] hover:text-[#000] font-semibold"
+                                          className="w-[3rem] h-[3rem] xl:w-[4rem] xl:h-[4rem] hover:bg-[#ffffff] flex items-center justify-center rounded-full shadow text-[12px] text-[#000] font-semibold"
                                           onClick={() => setOpenModel(false)}
                                     >
                                           X

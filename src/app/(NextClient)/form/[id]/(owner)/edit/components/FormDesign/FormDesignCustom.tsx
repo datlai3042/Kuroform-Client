@@ -11,6 +11,7 @@ import FormDesignFormMode from "./FormDesignFormMode";
 import useUpdateForm from "@/app/hooks/useUpdateForm";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNative";
+import FormDesignColorAndSubmit from "./FormDesignColorAndSubmit";
 
 const FormDesignCustom = () => {
       const { isDesignForm, setOpenModelNotSave, setIsDesginForm, setOpenFormDesign } = useContext(FormDesignContext);
@@ -46,7 +47,8 @@ const FormDesignCustom = () => {
                   <div className="relative min-h-full h-max pb-[8rem]  border-b-[.2rem] border-l-[.2rem] border-gray-200 rounded-lg ">
                         <div className="relative w-full min-h-full h-max  py-[2rem] px-[1rem] flex flex-col  gap-[2rem]  ">
                               <p className="mt-[1rem] text-[1.6rem]  font-medium text-center pb-[2rem] border-b-[.1rem] border-[#ccc]">Tùy biến giao diện</p>
-                              <FormDesignFormMode />
+                              {/* <FormDesignFormMode /> */}
+                              <FormDesignColorAndSubmit />
                               <FormDesignText title={"Tùy chỉnh tiêu đề chính"} type="Form" />
 
                               <FormDesignBackground />
@@ -54,17 +56,17 @@ const FormDesignCustom = () => {
                               <FormDesignText title={"Tùy chỉnh tiêu đề phụ"} type="Common" />
 
                               <button
-                                    style={{ backgroundColor: theme === "light" ? colorMain : "#fff" }}
-                                    className="absolute top-[.6rem] right-[.6rem] p-[.6rem] text-[1.3rem] rounded-lg  text-color-section-theme"
+                                    // style={{ backgroundColor: theme === "light" ? colorMain : "#fff" }}
+                                    className="absolute top-[.6rem] right-[.6rem] p-[.6rem] text-[1.3rem] rounded-lg  text-[#fff] bg-blue-300 hover:bg-blue-500"
                                     onClick={onCloseFormDesign}
                               >
                                     Đóng
                               </button>
                         </div>
                         <ButtonNative
-                              style={{ backgroundColor: theme === "light" ? colorMain : "#fff" }}
+                              // style={{ backgroundColor: theme === "light" ? colorMain : "#fff" }}
                               textContent="Lưu"
-                              className="absolute right-[10%]  w-[25%] h-[4rem] text-color-section-theme rounded-lg "
+                              className="absolute right-[10%]  w-[25%] h-[4rem] text-[#fff] bg-blue-500 rounded-lg "
                               onClick={onSaveDesign}
                         />
                   </div>

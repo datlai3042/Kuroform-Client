@@ -30,7 +30,6 @@ const NotificationFormAnswers = (props: TProps) => {
 		notification_id: notification_item._id,
 	});
 
-	console.log({ notification_item });
 
 	let image_src =
 		infoFormNotification.data?.metadata.form?.form_avatar?.form_avatar_url ||

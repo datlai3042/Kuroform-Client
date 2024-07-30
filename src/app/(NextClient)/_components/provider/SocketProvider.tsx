@@ -36,7 +36,6 @@ const SocketProvider = ({ children }: { children: React.ReactNode }) => {
                   total_views: number;
                   total_answers: number;
             }) => {
-                  console.log({ dataSocket });
                   const { total_views, total_answers, notification, notification_item_id, form_origin, form_answer_item_id } = dataSocket;
                   dispatch(onFetchNotification({ notification: notification.notifications, animation: true }));
                   dispatch(onAddNewNotification({ notification_item_id }));
@@ -56,7 +55,6 @@ const SocketProvider = ({ children }: { children: React.ReactNode }) => {
 
                   dispatch(onFetchTotalViews({ total_views }));
                   dispatch(onFetchTotalAnswer({ total_answers }));
-                  console.log("dispatch api", form_origin._id);
                   FormAnswerService.getFormAnswer(form_origin._id).then((data) => {
                         const { formAnswer } = data.metadata;
                         dispatch(addFormAnswer({ form_id: formAnswer.form_id, reports: formAnswer }));
@@ -75,7 +73,6 @@ const SocketProvider = ({ children }: { children: React.ReactNode }) => {
                   socketState.on("disconnect", onDisconnect);
                   socketState.on("add-new-reports", socketStateNewForm);
 
-                  socketState.on("mai", (data) => console.log({ data }));
 
                   socketState.on("connect_error", (error) => {
                         // the connection was denied by the server
@@ -85,7 +82,6 @@ const SocketProvider = ({ children }: { children: React.ReactNode }) => {
             }
 
             function onDisconnect() {
-                  console.log("OK");
             }
             return () => {
                   socketState.off("connect", onConnect);

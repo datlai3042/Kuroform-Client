@@ -89,7 +89,7 @@ const Calendar = (props: TProps) => {
       };
 
       return (
-            <div className="max-w-full  w-[24rem] xl:w-[44rem] h-max min-h-[33rem] xl:min-h-[31rem] text-[1rem] flex flex-col gap-[.8rem] xl:gap-[1rem]  rounded-2xl bg-[#fff] text-[#000]">
+            <div className="max-w-full  w-[22rem] xl:w-[44rem] h-max min-h-[33rem] xl:min-h-[31rem] text-[1rem] flex flex-col gap-[.8rem] xl:gap-[1rem]  rounded-2xl bg-[#fff] text-[#000]">
                   <div className="w-full flex flex-col xl:flex-row xl:items-center gap-[1rem] justify-between bg-color-main text-[#fff] p-[1.4rem] xl:p-[1.6rem_1.4rem] rounded-2xl">
                         <span className=" text-[1.3rem]">
                               Ngày bạn chọn là: {generateFullDateStringV2({ day: pickDate.day, month: pickDate.month, year: pickDate.year })}{" "}
@@ -104,10 +104,10 @@ const Calendar = (props: TProps) => {
                                           className="border-[.1rem] border-color-section-theme! flex-1"
                                     />
                               </div>
-                              <Image src={"/icon_core.png"} width={20} height={20} alt="avatar" unoptimized={true} className="w-[3rem] h-[3rem] " />
+                              <Image src={"/icon_core.png"} width={20} height={20} alt="avatar" unoptimized={true} className="hidden sm:inline w-[3rem] h-[3rem] " />
                         </div>
                   </div>
-                  <div className="flex w-[23rem] xl:w-[44rem] flex-col p-[.8rem] xl:p-[1rem_1.4rem] ">
+                  <div className="flex w-[20rem] xl:w-[44rem] flex-col p-[.8rem] xl:p-[1rem_1.4rem] ">
                         <div className="w-full flex xl:justify-center">
                               {name_in_week.map((day_name, i) => (
                                     <p className="w-[3.4rem] xl:w-[6rem] h-[3rem]  flex justify-center items-center" key={day_name + i}>

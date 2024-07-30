@@ -39,7 +39,6 @@ export const superTextValidate = ({
 		type = "MIN";
 	}
 
-	console.log({ message, type });
 
 	return { _next, message, type };
 };

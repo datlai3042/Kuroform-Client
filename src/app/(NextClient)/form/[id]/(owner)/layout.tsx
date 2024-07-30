@@ -36,9 +36,7 @@ const FormModeLayout = ({ children, params }: { children: React.ReactNode; param
             }
       }, [getFormQuery.isSuccess, params.id, getFormQuery.data, dispatch]);
 
-      useEffect(() => {
-            console.log({ "Chế độ": segment, getFormQuery });
-      }, []);
+
 
       return (
             <LayoutSidebar>

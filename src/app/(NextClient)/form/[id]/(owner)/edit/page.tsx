@@ -28,7 +28,12 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
 
       const containerStyleWhenNormal = !openFormDesign && !openSidebar ? " w-full" : "";
 
-      const containerStyleWhenOver = openFormDesign && openSidebar ? "w-[calc(100vw-30rem)] xl:w-[calc(100vw-55.7rem)] " : "";
+      const containerStyleWhenOver = openFormDesign && openSidebar ? "w-full xl:w-[calc(100vw-55.7rem)] " : "";
+
+      const formColor = formCore.form_color || 'bg-color-section-theme'
+
+
+
 
       return (
             <div
@@ -37,7 +42,7 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
             >
                   <HeaderEditForm showHeaderAction={true} />
                   {formCore && (
-                        <div className={`  flex min-h-screen h-max`}>
+                        <div style={{backgroundColor:formCore.form_color || '' }} className={`${formColor}  flex min-h-screen h-max `}>
                               <FormCore />
                               {openFormDesign && modeScreen === "NORMAL" ? <FormDesignCustom /> : null}
                         </div>

@@ -59,7 +59,6 @@ const Rate = (props: TProps) => {
 		setItemHover(index);
 	};
 
-	console.log({ itemHover });
 
 	return (
 		<div className={` min-w-[30rem] w-max bg-red-800 h-[30rem] flex flex-col items-center justify-center`}>

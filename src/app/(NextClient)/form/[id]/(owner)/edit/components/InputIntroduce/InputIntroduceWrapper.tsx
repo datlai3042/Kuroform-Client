@@ -53,7 +53,6 @@ type TProps = {
 };
 
 type ButtonInputType = { type: InputCore.InputForm["type"] | "Guide"; Icon: React.ReactNode; content: string };
-type TInputIntroduce = ButtonInputType["type"] | "Guide";
 const buttons: ButtonInputType[] = [
 	{ type: "Guide", Icon: <CircleHelp className="" size={18} />, content: "Hướng dẫn" },
 	{
@@ -209,10 +208,10 @@ const InputIntroduceWrapper = (props: TProps) => {
 	return (
 		<Portal>
 			<DivNative className="fixed inset-0 bg-[rgba(0,0,0,0.5)] z-[999] px-[1rem] flex justify-center items-center">
-				<DivNativeRef className="relative w-[80rem] h-[62rem]  xl:w-[80rem] xl:h-[68rem]   flex flex-col bg-color-section-theme text-text-theme rounded-lg border-[.1rem] border-text-theme ">
+				<DivNativeRef className="relative w-[80rem] h-[64rem]  xl:w-[80rem] xl:h-[68rem]   flex flex-col bg-color-section-theme text-text-theme rounded-lg border-[.1rem] border-text-theme ">
 					<ClickOutSide
 						width="w-full xl:w-[80rem]"
-						height="h-[62rem] xl:h-[68rem]"
+						height="h-[64rem] xl:h-[68rem]"
 						setOpenModel={setOpenModel}
 					>
 						<>
@@ -234,7 +233,7 @@ const InputIntroduceWrapper = (props: TProps) => {
 										))}
 									</DivNative>
 								</DivNative>
-								<DivNative className="flex w-[60%] xl:w-[70%] min-h-full py-[2rem] ">
+								<DivNative className="flex w-[60%] xl:w-[70%] min-h-full py-[1rem] ">
 									{renderInputIntroduce}
 								</DivNative>
 							</DivNative>

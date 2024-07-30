@@ -33,7 +33,6 @@ const dataFormSlice = createSlice({
                   }>,
             ) => {
                   const { dataExcel, dataGroupFilter, form_id, form_answer_total } = data.payload;
-                  console.log({ dispatch: data.type });
                   const dataObject = { dataExcel, dataGroupFilter, form_id, form_answer_total };
                   state.form_cache[form_id] = { ...dataObject };
                   state.form_id_current = form_id;

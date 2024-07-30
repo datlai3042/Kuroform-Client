@@ -9,7 +9,6 @@ export type ButtonCustomNavigation = {
 
 const ButtonNavigation = (props: ButtonCustomNavigation) => {
 	const { urlNavigation, textContent, ...anchorProps } = props;
-	console.log({ props });
 	return (
 		<>
 			<Link

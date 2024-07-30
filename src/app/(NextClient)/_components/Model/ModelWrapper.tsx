@@ -33,7 +33,6 @@ const ModelWrapper = (props: TProps) => {
 	const checkDocumentClick = useCallback(
 		(e: MouseEvent) => {
 			if (modelRef.current && !modelRef.current.contains(e.target as Node)) {
-				console.log("check");
 				setOpenModel(false);
 			}
 		},

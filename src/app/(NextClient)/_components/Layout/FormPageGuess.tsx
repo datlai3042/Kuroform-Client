@@ -56,8 +56,6 @@ const FormPageGuess = (props: TProps) => {
 	const totalPage = Math.ceil(allInputAnswer.length / numberInputAPage);
 
 	const generateInputWithPage = { start: numberInputAPage * (page - 1), end: numberInputAPage * page };
-	console.log({ length: allInputAnswer.length });
-	console.log({ input: allInputAnswer.slice(numberInputAPage * (page - 1), numberInputAPage * page) });
 
 	const styleEffect = {
 		formMarginTop: (check: boolean) => {
@@ -92,7 +90,7 @@ const FormPageGuess = (props: TProps) => {
 
 			setFormAnswer((prev) => ({ ...prev, submitState: "pending" }));
 
-			return console.log({ answers });
+			return
 		}
 
 		let inputErrorArray: FormCore.FormAnswer.InputFormError[] = [];

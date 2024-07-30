@@ -14,7 +14,6 @@ const renderBaseOnApiSlice = createSlice({
       reducers: {
             fetchStatusCode: (state, data: PayloadAction<RenderBaseOnApi>) => {
                   const { type } = data.payload;
-                  console.log({ type });
                   state.type = type;
             },
       },

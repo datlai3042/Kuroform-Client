@@ -46,7 +46,6 @@ const InputOptionAnswer = (props: TProps) => {
       useEffect(() => {
             const valueInStore = inputItemInArrayGlobal.input?.value;
             setChoose({ option_id: valueInStore?.option_id as string, option_value: valueInStore?.option_value as string });
-            console.log({ valueInStore });
       }, []);
 
       const onSelect = (op: InputCore.InputOption.Options) => {

@@ -27,7 +27,6 @@ const DashboardFilterResult = (props: TProps) => {
                   return acc + (form_item.forms?.length ? form_item.forms.length : 0);
             }, 0);
       }
-      console.log({ match: data_in_month.filter((data) => data.match).length, data_in_month });
 
       return (
             <>

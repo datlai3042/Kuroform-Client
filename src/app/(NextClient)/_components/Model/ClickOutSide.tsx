@@ -23,7 +23,6 @@ const ClickOutSide = (props: TProps) => {
 
 	useEffect(() => {
 		document.addEventListener("click", globalClick);
-		console.log("Check click outside");
 
 		return () => {
 			document.removeEventListener("click", globalClick);

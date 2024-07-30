@@ -57,7 +57,6 @@ const LoginForm = (props: TProps) => {
 
       useEffect(() => {
             if (Object.keys(loginForm.formState.errors).length > 0) {
-                  console.log({ errors: loginForm.formState.errors });
             }
       }, [loginForm.formState.errors]);
 

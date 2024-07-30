@@ -73,7 +73,6 @@ const FormTitleFullDescription = (props: TProps) => {
             deleteTitleSubItem.mutate({ form_id: formCore._id, title_sub_id: subTitleItem._id });
       };
 
-      console.log({ content });
 
       const style = {
             transition,

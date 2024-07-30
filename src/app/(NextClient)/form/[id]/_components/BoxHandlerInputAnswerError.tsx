@@ -1,5 +1,7 @@
+import { RootState } from "@/app/_lib/redux/store";
 import { FormCore } from "@/type";
 import React from "react";
+import { useSelector } from "react-redux";
 
 type TProps = {
       children: React.ReactNode;
@@ -12,9 +14,14 @@ type TProps = {
 const BoxHandlerInputAnswerError = (props: TProps) => {
       const { children, error, inputItemInArrayGlobal, input_id, write } = props;
 
+      const colorMain = useSelector((state: RootState) => state.form.colorCore)
+
+      console.log({colorMain})
+
       return (
             <div
                   id={`_inputid_${input_id}`}
+                  // style={{borderColor: !!error?.error ? '':  colorMain,}}
                   className={`${
                         (error && error.error && write) || inputItemInArrayGlobal?.globalError?.state
                               ? "input-answer-invalid"

@@ -15,7 +15,7 @@ const ModelOneOption = (props: TProps) => {
 	const { content, content_action, content_cancel, callbackAction, callbackCancel } = props;
 
 	return (
-		<div className="fixed z-[50] inset-0 w-screen h-screen flex justify-center items-center bg-[rgba(0,0,0,.6)]">
+		<div className="fixed z-[500] inset-0 w-screen h-screen flex justify-center items-center bg-[rgba(0,0,0,.6)]">
 			<div className="min-w-[30rem] min-h-[8rem]">
 				<ClickOutSide setOpenModel={callbackCancel}>
 					<div className="relative min-w-[30rem] min-h-full h-max  bg-[#ffffff] rounded-lg text-[#000] p-[2rem] flex flex-col justify-between">

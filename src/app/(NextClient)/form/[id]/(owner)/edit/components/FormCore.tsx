@@ -94,8 +94,6 @@ const FormCore = () => {
       }, [formCore?.form_inputs]);
 
       const onGetDataDemo = () => {
-            console.log(true);
-            console.log({ form: formCore });
       };
 
       const styleEffect = {
@@ -150,12 +148,12 @@ const FormCore = () => {
             <>
                   {modeScreen === "NORMAL" && (
                         <DivNative
-                              className={` w-full   pb-[28rem] sm:px-0    xl:ml-0 flex flex-col gap-[3rem] bg-color-section-theme text-text-theme min-h-screen h-max  `}
+                              className={` w-full   pb-[28rem] sm:px-0    xl:ml-0 flex flex-col gap-[3rem] text-text-theme min-h-screen h-max  `}
                         >
                               {showComponentImage && <FormImage />}
                               <div
                                     className={`mt-[8rem]
-						min-h-screen h-max bg-color-section-theme `}
+						min-h-screen h-max `}
                               >
                                     <DivNative
                                           className={`flex-1 px-[6rem] xl:px-[4rem] min-h-full h-max  w-full xl:max-w-[74rem] mx-auto   xl:pl-0  flex flex-col  xl:pb-[4rem] gap-[2rem]  `}
@@ -189,8 +187,9 @@ const FormCore = () => {
                                                 )}
                                                 <ButtonAddInput />
                                                 <ButtonNative
-                                                      textContent="Gửi"
-                                                      className="btn-primarily mt-[1rem] w-[15%] xl:w-[25%] h-[5rem]  text-white rounded-lg  text-[1.6rem]"
+                                                id="submit"
+                                                      textContent={formCore.form_button_text}
+                                                      className="bg-color-btn-primarily text-center px-[1rem] mt-[1rem] min-w-[12rem] w-max h-[5rem]  text-white rounded-lg  text-[1.6rem]"
                                                       onClick={onGetDataDemo}
                                                 />
                                           </DivNative>

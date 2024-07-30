@@ -8,7 +8,7 @@ const ListFormDelete = () => {
       const allFormDelete = useGetListFormDelete();
 
       return (
-            <div className="flex h-full flex-wrap gap-[1.4rem] pb-[10rem]">
+            <div className="flex h-full flex-wrap gap-[1.4rem] ">
                   {allFormDelete.isSuccess &&
                         allFormDelete.data.metadata.forms.length > 0 &&
                         allFormDelete.data.metadata.forms.map((form) => <FormDeleteItem key={form._id} form={form} />)}

@@ -154,7 +154,7 @@ const ButtonEditTextSize = (props: TProps) => {
                   {openModelSize && (
                         <ul
                               ref={ulRef}
-                              className="scroll-text-size absolute z-[3] top-[4rem] right-[0rem] w-[6rem] max-h-[16rem]  overflow-y-scroll bg-[#ffffff] border-[.1rem] border-gray-200 outline-none"
+                              className="scroll-text-size absolute z-[3] top-[4rem] left-[50%] translate-x-[-50%] w-[6rem] max-h-[16rem] text-[#000]  overflow-y-scroll bg-[#ffffff] border-[.1rem] border-gray-200 outline-none"
                         >
                               {Array(typeEdit === "Form" ? 30 : 20)
                                     .fill(0)

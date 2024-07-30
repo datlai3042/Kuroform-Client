@@ -14,7 +14,6 @@ const SettingPage = () => {
 
       const [tab, setTab] = useState<"account" | "create_password" | "update_password">("account");
       useEffect(() => {
-            console.log({ user });
       }, [user?.user_create_password]);
       return (
             <LayoutSidebar>
