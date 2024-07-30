@@ -95,9 +95,9 @@ const HeaderEditForm = (props: TProps) => {
                   <div className="ml-auto mr-[5rem] hidden sm:block">
                         <DashboardSearchForm />
                   </div>
-                  <div className="flex justify-end gap-[2rem]">
+                  <div className="flex items-center justify-end gap-[2rem]">
                         {showHeaderAction && (
-                              <DivNative className="flex gap-[1rem]">
+                              <DivNative className="flex items-center gap-[1rem]">
                                     <DivNative className=" flex items-center justify-center " title="Review">
                                           <ButtonNative textContent={`Xem trước  `} className="p-[.8rem] rounded-md text-text-theme" onClick={onSetScreen} />
                                     </DivNative>

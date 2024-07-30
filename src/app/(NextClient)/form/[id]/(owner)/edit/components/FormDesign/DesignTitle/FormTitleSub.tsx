@@ -79,7 +79,6 @@ const FormTitleSub = () => {
             const newArray = arrayMove(formCore.form_title.form_title_sub, posActive, postOver);
             const newForm = structuredClone(formCore);
             newForm.form_title.form_title_sub = newArray;
-            console.log({ newForm });
             updateFormAPI.mutate(newForm);
             return newArray;
       };

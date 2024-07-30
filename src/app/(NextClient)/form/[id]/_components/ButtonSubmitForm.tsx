@@ -75,11 +75,10 @@ const ButtonSubmitForm = (props: TProps) => {
 
       return (
             <div
-                  style={{ backgroundColor: colorMain }}
                   onClick={handleSubmit}
-                  className="w-[25%] h-[5rem]  ml-auto flex items-center justify-center gap-[1rem] rounded-lg hover:cursor-pointer"
+                  className="w-[25%] h-[5rem]  ml-auto flex items-center justify-center gap-[1rem] rounded-lg hover:cursor-pointer bg-blue-600"
             >
-                  <ButtonNative textContent="Gửi" className=" text-white text-[1.6rem]" />
+                  <ButtonNative textContent={formCore.form_button_text} className=" text-white text-[1.6rem] text-center px-[1rem] min-w-[12rem] w-max" />
 
                   {submitState === "pending" && <LoadingSpinner color="#ffffff" />}
             </div>

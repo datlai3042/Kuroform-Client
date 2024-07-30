@@ -52,6 +52,12 @@
             --toast-warning: #ea580c;
       }
 
+      html{
+            scroll-behavior: smooth;
+
+
+      }
+
       body.light {
             --bg-form-nav: #fff;
             --color-gap-empty: #eef1f9;
@@ -349,7 +355,7 @@
       }
 
       .input-answer-invalid {
-            @apply border-red-600 border-[.3rem] border-dotted;
+            @apply !border-red-600 border-[.3rem] border-dotted;
       }
 
       /*

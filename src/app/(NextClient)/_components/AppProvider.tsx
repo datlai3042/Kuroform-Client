@@ -36,7 +36,7 @@ const AppProvider = (props: TProps) => {
 
       useEffect(() => {
             console.log(
-                  "%cXin chào mình là Lại Huỳnh Phát Đạt, đây là dự án cá nhân mình tự viết rất mong được mọi người góp ý",
+                  "%cXin chào đến với dự án này của mình",
                   `color:#64aaa8;font-size:20px;`,
             );
       }, []);

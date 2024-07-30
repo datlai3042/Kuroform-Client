@@ -31,7 +31,6 @@ export const httpCaseErrorNextClient = async <TResponse>(
       const abort = new AbortController();
       const signal = abort.signal;
       const msg = JSON.parse(await response.text()) as unknown as ErrorResponse;
-      console.log({ statusCode });
       switch (statusCode) {
             case AUTHORIZATION_ERROR_STATUS:
                   const urlAuthentication = ["/v1/api/auth/login", "/v1/api/auth/register"];
@@ -125,7 +124,6 @@ export const nextClient403 = async (url: string) => {
 
 /// NEXT_SERVER_ROOM
 export const httpCaseErrorNextServer = async (statusCode: number, options: CustomRequest) => {
-      console.log({ statusCode });
       switch (statusCode) {
             case AUTHORIZATION_ERROR_STATUS:
                   return await nextServer401(options);

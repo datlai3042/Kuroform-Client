@@ -43,7 +43,6 @@ const RateItem = (props: TProps) => {
 		else setPoint("none");
 	}, [hover]);
 
-	console.log(index, hover);
 
 	return (
 		<div className={`${containerStyle} star relative`}>

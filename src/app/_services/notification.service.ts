@@ -12,7 +12,6 @@ class NotificationService {
 	}
 
 	static async getNotificationType({ type, page, limit }: { type: NotificationMode; page: number; limit: number }) {
-		console.log("run dispatch", page);
 		return Http.get<ResponseApi<{ notification_user: Notification.NotificationUser }>>(
 			`/v1/api/notification/get-notification-type?type=${type}&page=${page}&limit=${limit}`,
 			{ cache: "no-store" }

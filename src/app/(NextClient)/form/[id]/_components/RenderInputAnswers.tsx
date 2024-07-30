@@ -67,11 +67,11 @@ const RenderInputAnswers = (props: TProps) => {
       const colorMain = formCore.form_title.form_title_color || formCore.form_setting_default.form_title_color_default;
       const count = useRef(1);
 
-      // console.log({ message: "Quản lí và validate dữ liệu" });
+      console.log({ message: "Quản lí và validate dữ liệu" });
 
-      // console.log({ "Số lần render": count.current });
-      // console.log({ "Trang hiện tại": page });
-      // if (submitState === "success") console.log("%cThông tin đã được gửi thành công, cảm ơn bạn nha", `color:${colorMain};font-size:16px;`);
+      console.log({ "Số lần render": count.current });
+      console.log({ "Trang hiện tại": page });
+      if (submitState === "success") console.log("%cThông tin đã được gửi thành công, cảm ơn bạn nha", `color:${colorMain};font-size:16px;`);
 
       count.current += 1;
 
@@ -84,7 +84,6 @@ const RenderInputAnswers = (props: TProps) => {
       const generateInputWithPage = { start: numberInputAPage * (page - 1), end: numberInputAPage * page };
 
       useEffect(() => {
-            // console.log({ formOriginal: formCore });
 
             setClient(true);
       }, []);
@@ -96,7 +95,9 @@ const RenderInputAnswers = (props: TProps) => {
                               {page === 1 && <HeaderFormAnswer formCore={formCore} />}
                               {!client && allInputAnswer}
                               {client && allInputAnswer.slice(generateInputWithPage.start, generateInputWithPage.end)}
-                              <div className="flex  gap-[2rem] justify-end text-[1.3rem]">
+                              <div
+                              style={{color: formCore.form_title.form_title_color}}
+                              className="flex  gap-[2rem] justify-end text-[1.3rem]  font-normal">
                                     {page === totalPage && totalPage > 1 && (
                                           <button
                                                 tabIndex={0}

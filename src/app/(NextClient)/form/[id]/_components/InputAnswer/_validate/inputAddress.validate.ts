@@ -41,11 +41,9 @@ const superAddressValidate = ({
 }) => {
       let _next = true;
       let message = "";
-      console.log({ inputValue });
       const { addressValidate, addressString } = inputValue;
       let type: InputCore.Commom.ErrorText | null = null;
       const { require } = inputSetting;
-      console.log({ inputValue });
       const full_field =
             addressValidate &&
             addressValidate[0]?.path_with_type &&
@@ -90,12 +88,7 @@ const superAddressValidate = ({
             ) {
                   (_next = false), (message = "Địa chỉ bạn cung cấp không đầy đủ");
                   type = "INVAILD";
-                  console.log(
-                        !!addressValidate[0]?.path_with_type ||
-                              !!addressValidate[1]?.path_with_type ||
-                              !!addressValidate[2]?.path_with_type ||
-                              !!addressValidate[3]?.path_with_type,
-                  );
+                
                   return { _next, message, type };
             }
 

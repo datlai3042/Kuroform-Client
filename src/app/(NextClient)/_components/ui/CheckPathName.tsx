@@ -7,11 +7,7 @@ const CheckPathName = () => {
 	const pathName = usePathname();
 	const router = useRouter();
 
-	// useEffect(() => {
-	// 	console.log({ Layout: "CheckPathName" });
-	// 	console.log({ access_token });
-	// 	router.refresh();
-	// }, [access_token, router]);
+
 
 	return <div>{/* CheckPathName {pathName} (-) {access_token} */}</div>;
 };

@@ -10,6 +10,8 @@ import useIncreaseFormViews from "@/app/hooks/form-answer/useIncreaseFormAnswer"
 import { timerIncreaseViews } from "@/app/_constant/form.answers.contranst";
 import { clear } from "console";
 import InputChecked from "@/app/(NextClient)/_components/ui/input/InputChecked";
+import { useDispatch } from "react-redux";
+import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 type TProps = {
       formCore: FormCore.Form;
       form_answer_id: string;
@@ -20,6 +22,8 @@ const FormAnswerCore = (props: TProps) => {
 
       const timer = useRef<NodeJS.Timeout | null>(null);
       const increaseViews = useIncreaseFormViews();
+
+      const dispatch = useDispatch()
 
       useEffect(() => {
             timer.current = setTimeout(() => {
@@ -34,6 +38,11 @@ const FormAnswerCore = (props: TProps) => {
                   clearTimeout(timer.current as NodeJS.Timeout);
             };
       }, []);
+
+      useEffect(() => {
+      
+            dispatch(onFetchForm({form:formCore}))
+      }, [formCore])
 
       return (
             <DivNative className="w-full sm:w-[72rem] flex flex-col gap-[1rem] ">

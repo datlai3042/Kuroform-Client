@@ -103,7 +103,6 @@ export const setTitleInput = async (title: string, inputItem: InputCore.InputFor
       newInput.input_title = title;
       newInput._id = inputItem._id;
 
-      console.log({ newInput, inputItem });
       const addInputAPI = await Http.post<ResponseApi<{ form: FormCore.Form }>>("/v1/api/form/update-input-item", {
             newInput,
             form,
@@ -257,7 +256,6 @@ export const generateValueInputAnswer = (answer: FormCore.FormAnswer.Answer) => 
       }
       if (answer.type === "DATE") {
             value_answer = moment(new Date(answer.value as string)).format(" Do MMMM YYYY");
-            console.log({ value_answer });
             return value_answer === "Invalid date" ? "" : value_answer;
       }
 

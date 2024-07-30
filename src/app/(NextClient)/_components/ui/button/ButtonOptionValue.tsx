@@ -64,7 +64,6 @@ const ButtonOptionValue = (props: TProps) => {
 	};
 
 	const handleBlur = () => {
-		console.log("blur", option.option_id);
 		const content = divContentRef.current?.textContent;
 		if (!content) return;
 		if (!addOptionServer.isPending && content && content !== option.option_value && option.option_id) {

@@ -41,7 +41,6 @@ const InputOptionMultipleAnswer = (props: TProps) => {
       });
 
       const onSelect = (op: InputCore.InputOptionMultiple.Options) => {
-            console.log({ op, store: choose.value.map((op) => op.option_id) });
             if (inputItem.core.setting.require) {
                   if (choose.value.map((op) => op.option_id).includes(op.option_id)) {
                         setInputRequireGlobal(setFormAnswer, inputItem._id!, false);

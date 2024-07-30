@@ -11,10 +11,8 @@ type TProps = {
 
 const InputChecked = (props: TProps) => {
       const { value, value_current, checked, callbackChecked, getStateCheck } = props;
-      console.log({ value_current, value });
       const onChangeInput = () => {
             const inputChecked = value_current === value;
-            console.log({ inputChecked, value, value_current });
             getStateCheck && getStateCheck(inputChecked);
             callbackChecked && callbackChecked();
       };

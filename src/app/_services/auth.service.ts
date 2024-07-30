@@ -61,13 +61,11 @@ class AuthService {
 
             const syncToken = await Http.post<TokenNextSync>("/v1/api/auth/set-token", body, { baseUrl: "", signal });
 
-            console.log("da xet local");
 
             return syncToken;
       }
 
       static async refreshTokenClient(signal?: AbortSignal) {
-            console.log({ mode: process.env.NEXT_PUBLIC_MODE });
             const option: RequestInit = {
                   credentials: "include",
             };
@@ -124,7 +122,6 @@ class AuthService {
                   status: +statusCode,
                   payload: payload as ErrorPayload,
             };
-            console.log({ http: "token-client-side:::logout thooi" });
             throw new PermissionError(payloadError);
       }
 }

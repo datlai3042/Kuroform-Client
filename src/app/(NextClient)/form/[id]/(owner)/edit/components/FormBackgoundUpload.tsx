@@ -80,7 +80,6 @@ const FormBackgoundUpload = (props: TProps) => {
                   const formData: FormCore.uploadFile = new FormData();
                   formData.append("file", file);
                   formData.append("form_id", formCore._id);
-                  console.log({ formData, file, _id: formCore._id });
                   fileUploadMutation.mutate(formData);
             }
       };

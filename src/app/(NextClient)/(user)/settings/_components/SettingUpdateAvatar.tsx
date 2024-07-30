@@ -23,12 +23,10 @@ const SettingUpdateAvatar = () => {
       };
 
       const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-            console.log(0);
 
             if (e.target && e.target.files) {
                   const formData: User.uploadFile = new FormData();
                   formData.append("file", e.target.files[0]);
-                  console.log(1);
                   uploadAvatar.mutate(formData);
             }
       };
@@ -42,7 +40,6 @@ const SettingUpdateAvatar = () => {
             },
       });
 
-      console.log({ user });
 
       return (
             <div className="group w-full h-[15rem] flex flex-col gap-[1rem]">

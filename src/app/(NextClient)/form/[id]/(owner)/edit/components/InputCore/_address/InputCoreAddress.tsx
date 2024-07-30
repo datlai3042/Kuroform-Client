@@ -32,14 +32,12 @@ const InputCoreAddress = (props: TProps) => {
       });
 
       const onChangeAddress = (address: UI.Address.AddressEnity) => {
-            console.log("change", address);
 
             const { _next, message, type } = superAddressValidate({
                   inputValue: address,
                   inputSetting: inputItem.core.setting,
             });
 
-            console.log({ _next, message, type });
 
             setControllerInput((prev) => ({
                   ...prev,

@@ -6,7 +6,6 @@ import { UI } from "@/type";
 
 const CalenderPage = () => {
 	const handlerOnchange = (value: UI.Calender.Event.DateResult) => {
-		console.log({ value });
 	};
 
 	return (

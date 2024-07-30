@@ -50,7 +50,6 @@ const toastSlice = createSlice({
 
             removeOneToast: (state, data: PayloadAction<{ toast_item_id: string }>) => {
                   const { toast_item_id } = data.payload;
-                  console.log({ toast_item_id });
                   state.toast_stack = state.toast_stack.filter((toast) => {
                         if (toast._id === toast_item_id) return null;
                         return toast;

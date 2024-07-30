@@ -16,6 +16,7 @@ const formInitital: FormCore.Form = {
       _id: "",
       form_owner: "",
       form_views: 0,
+      form_button_text: '',
       form_response: 0,
       form_title: {
             form_title_mode_image: "Normal",
@@ -25,7 +26,6 @@ const formInitital: FormCore.Form = {
             form_title_style: "normal",
             form_title_sub: [],
       },
-      form_button_label: "",
       form_avatar_state: false,
       form_background_state: false,
       form_mode_display: "basic",

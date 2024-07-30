@@ -348,9 +348,10 @@ namespace FormCore {
             form_setting_default: FormCore.FormSettingDefault;
             form_state: FormCore.FormState;
             form_mode_display: FormCore.FormModeDisplay;
-            form_button_label: FormCore.FormLabel;
             form_avatar?: FormCore.FormAvatar;
             form_inputs: InputCore.InputForm[];
+            form_color?: string,
+            form_button_text: string,
       };
 
       namespace FormAnswer {
