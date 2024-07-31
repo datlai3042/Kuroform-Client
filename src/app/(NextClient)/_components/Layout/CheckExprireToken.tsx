@@ -3,7 +3,7 @@ import AuthService from "@/app/_services/auth.service";
 import { differenceInHours, differenceInMilliseconds, differenceInSeconds } from "date-fns";
 import React, { useEffect } from "react";
 
-const timeCheck = 3000;
+const timeCheck = 1000 * 60 * 30;
 
 const CheckExprireToken = () => {
       useEffect(() => {
