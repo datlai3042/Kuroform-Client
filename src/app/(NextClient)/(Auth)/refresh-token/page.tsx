@@ -37,18 +37,7 @@ const RefreshTokenPage = () => {
             }
             if (code_verify_token_cl === code_verify_token_sv) {
                   AuthService.refreshTokenServer(signal).then(() => {
-                        dispatch(
-                              addOneToastSuccess({
-                                    toast_item: {
-                                          _id: uuid(),
-                                          type: "SUCCESS",
-                                          toast_title: "Bảo mật",
-                                          core: {
-                                                message: "Xin lỗi nha, một số token hết hạn nhưng mình đã xử lí nó xong xuôi hết rồi :D",
-                                          },
-                                    },
-                              }),
-                        );
+                       
                         timer.current = setTimeout(() => {
                               router.replace("/dashboard");
                               router.refresh();

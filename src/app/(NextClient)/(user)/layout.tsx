@@ -57,8 +57,7 @@ const UserAuthenticationPage = ({ children }: { children: React.ReactNode }) => 
                         <div className="relative">
                               <div className="absolute z-[2] pb-[6rem] xl:pb-0">{children}</div>
                         </div>
-                        <Footer />
-                        <CheckExprireToken />
+                              <Footer />
                   </SocketProvider>
             </>
       );

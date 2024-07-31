@@ -16,10 +16,9 @@ export function middleware(request: NextRequest) {
       const client_id = request.cookies.get("next_client_id")?.value;
       const expire_token = request.cookies.get("next_expire_token")?.value;
       const expire_cookie = request.cookies.get("next_expire_cookie")?.value;
-      const code_verify_token = request.cookies.get("code_verify_token")?.value;
+      const code_verify_token = request.cookies.get("next_code_verify_token")?.value;
 
       const authentication = !!client_id && !!access_token && !!refresh_token;
-      console.log({cookies: request.cookies})
       const requestHeaders = new Headers(request.headers);
       requestHeaders.set("x-url", pathname);
       const response = NextResponse.next({
@@ -34,26 +33,22 @@ export function middleware(request: NextRequest) {
       const exprireTokenTime = new Date(expire_token as string);
       const expireCookieTime = new Date(expire_cookie as string);
 
+      console.log({result: differenceInMilliseconds(exprireTokenTime, now) < 0, expireCooke:expire_cookie, code_verify_token})
+
       if (expire_token && differenceInMilliseconds(exprireTokenTime, now) < 0) {
             const response = NextResponse.next();
+
+
 
             if(expire_cookie && differenceInMilliseconds(expireCookieTime, now) < 0) {
 
 
-                  response.cookies.delete("next_access_token");
-                  response.cookies.delete("next_client_id");
-                  response.cookies.delete("next_refresh_token");
-                  response.cookies.delete("next_code_verify_token");
-                  console.log('OK')
-            return NextResponse.redirect(new URL("/login", request.url));
+            return NextResponse.redirect(new URL('/login', request.url));
 
             }
-            if (pathname === "/login") {
-                  return response;
-            }
-            console.log("token hết hạn",differenceInMilliseconds(exprireTokenTime, now) < 0, code_verify_token );
+           
 
-            const url = `/refresh-token?code_verify_token=${code_verify_token}&pathName=/v1/api`
+            const url = `/refresh-token?code_verify_token=${code_verify_token}`
 
             // return NextResponse.redirect(url);
             return NextResponse.redirect(new URL(url, request.url))
