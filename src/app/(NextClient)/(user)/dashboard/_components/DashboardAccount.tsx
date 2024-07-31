@@ -18,7 +18,7 @@ const DashboardAccount = () => {
             <div className="group min-w-[20.2rem] h-[3rem] flex items-center justify-between text-text-theme">
                   {user && (
                         <>
-                              <div className="max-w-full flex gap-[1rem] items-center hover:cursor-pointer " onClick={() => setOpenModel(true)}>
+                              <div className="max-w-full w-full flex gap-[1rem] items-center hover:cursor-pointer " onClick={() => setOpenModel(true)}>
                                     {user?.user_avatar_current && (
                                           <Image
                                                 src={user.user_avatar_current}

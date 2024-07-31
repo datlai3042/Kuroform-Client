@@ -112,7 +112,7 @@ const InputDateAnswer = (props: TProps) => {
                                     <CalendarDays />
                               </button>
                               {openModel && (
-                                    <div className="absolute z-[3] top-0 xl:top-[64%] right-[50%] xl:right-[33%] " onFocus={onFocus}>
+                                    <div className="absolute z-[3] top-[4.2rem] xl:top-[64%] right-[33%] sm:right-[67%] xl:right-[47%] " onFocus={onFocus}>
                                           <ClickOutSide setOpenModel={setOpenModel}>
                                                 <Calendar onChange={handleOnChange} callbackCancel={actionCancle} initialDate={date} />
                                           </ClickOutSide>

@@ -34,7 +34,7 @@ const ClickOutSide = (props: TProps) => {
 	const heightStyle = height ? height : "w-max";
 
 	return (
-		<div ref={divWrapper} className={`${width} ${height}`}>
+		<div ref={divWrapper} className={`${width || ''} ${height || ''}`}>
 			{children}
 		</div>
 	);

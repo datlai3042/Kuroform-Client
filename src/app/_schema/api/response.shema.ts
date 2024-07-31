@@ -15,4 +15,6 @@ export type ResponseAuth = {
 	};
 	client_id: string;
 	expireToken: string;
+	expireCookie: string;
+
 };

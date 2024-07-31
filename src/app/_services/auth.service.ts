@@ -49,14 +49,14 @@ class AuthService {
                   signal,
             });
             const { access_token, refresh_token, code_verify_token } = res.metadata.token;
-            const { client_id, expireToken } = res.metadata;
+            const { client_id, expireToken, expireCookie } = res.metadata;
 
             const body = {
                   access_token,
                   refresh_token,
                   client_id,
                   expireToken,
-                  code_verify_token,
+                  code_verify_token,expireCookie
             };
 
             const syncToken = await Http.post<TokenNextSync>("/v1/api/auth/set-token", body, { baseUrl: "", signal });
@@ -82,12 +82,15 @@ class AuthService {
             code_verify_token,
             client_id,
             expireToken,
+            expireCookie,
       }: {
             access_token: string;
             refresh_token: string;
             code_verify_token: string;
             client_id: string;
             expireToken: string;
+            expireCookie: string
+
       }) {
             const bodySyncTokenAPI = {
                   access_token,
@@ -95,6 +98,7 @@ class AuthService {
                   client_id,
                   code_verify_token,
                   expireToken,
+                  expireCookie
             };
 
             const urlRequest = process.env.NEXT_PUBLIC_MODE === "DEV" ? "http://localhost:3000" : process.env.CLIENT_URL;
@@ -106,6 +110,8 @@ class AuthService {
             setValueLocalStorage("expireToken", expireToken);
 
             setValueLocalStorage("code_verify_token", code_verify_token);
+            setValueLocalStorage("expireCookie", expireCookie);
+
       }
 
       static async tokenExpireRedrict(options: CustomRequest) {

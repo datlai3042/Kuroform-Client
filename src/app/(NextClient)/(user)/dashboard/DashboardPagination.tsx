@@ -62,7 +62,7 @@ const DashboardPagination = (props: TProps) => {
                                     <span>{pageItem}</span>
                               </button>
                         ))}
-                        <div className="absolute right-0 bottom-[-4rem] min-w-[12rem] flex  gap-[1rem]">
+                        <div className="pr-[2rem] xl:pr-0 absolute right-0 bottom-[-4rem] min-w-[12rem] flex  gap-[1rem]">
                               Tổng trang:{" "}
                               <div className="w-[2.4rem] aspect-square rounded-full bg-color-main  flex justify-center items-center text-[1.2rem] text-[#fff]">
                                     {total_page}

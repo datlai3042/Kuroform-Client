@@ -17,14 +17,16 @@ const OauthGooglePage = () => {
       const access_token = searchParams.get("access_token") || "";
       const refresh_token = searchParams.get("refresh_token") || "";
       const code_verify_token = searchParams.get("code_verify_token") || "";
+      const expireCookie = searchParams.get("expireCookie") || "";
+
 
       const dispatch = useDispatch();
 
       useEffect(() => {
-            const params = { access_token, code_verify_token, refresh_token, client_id, expireToken };
+            const params = { access_token, code_verify_token, refresh_token, client_id, expireToken, expireCookie };
 
             console.log({ params });
-            if (!client_id && !expireToken && !access_token && !refresh_token && !code_verify_token) {
+            if (!client_id && !expireToken && !access_token && !refresh_token && !code_verify_token && !expireCookie) {
                   dispatch(
                         addOneToastError({
                               toast_item: {
@@ -40,7 +42,7 @@ const OauthGooglePage = () => {
             AuthService.syncNextToken(params).then(() => router.push("/dashboard"));
       });
 
-      const not_permission = client_id && expireToken && access_token && refresh_token && code_verify_token;
+      const not_permission = client_id && expireToken && access_token && refresh_token && code_verify_token && expireCookie;
 
       if (!not_permission) {
             return <NotPermissionPage />;

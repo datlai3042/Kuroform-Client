@@ -207,7 +207,6 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
                         "Thời gian gửi": moment(new Date(rp.createdAt)).format("hh:mm - Do MMMM YYYY"),
                         [titleExcel]: input_value,
                   };
-                  dataExcel = dataExcel.concat(dataXlsx);
 
                   if (!dataGroupFilter[ans._id + "_#_" + ans.type]) {
                         dataGroupFilter[ans._id + "_#_" + ans.type] = [];
@@ -231,6 +230,9 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
                         });
                   }
             });
+
+            dataExcel = dataExcel.concat(dataXlsx);
+
       });
       store.dispatch(
             onCalculationData({

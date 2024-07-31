@@ -1,25 +1,23 @@
 "use client";
 
 import Http from "@/app/_lib/http";
-import { onLogout } from "@/app/_lib/redux/authentication.slice";
-import { useRouter } from "next/navigation";
+import useLogout from "@/app/hooks/user/useLogout";
+import { LogOutIcon } from "lucide-react";
 import React from "react";
-import { useDispatch } from "react-redux";
 
-const ButtonLogOut = () => {
-      const dispatch = useDispatch();
-      const router = useRouter();
+export interface ButtonCustomProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+	textContent?: string;
+}
 
-      const handleLogout = async () => {
-            const response = await Http.post<{ message: string }>("/v1/api/auth/logout", {}, { baseUrl: "" });
-            if (response) {
-                  dispatch(onLogout());
-                  router.push("/");
-            }
-      };
+const ButtonLogOut = (props: ButtonCustomProps) => {
 
-      // return <button onClick={handleLogout}>ButtonLogOut</button>;
-      return <div onClick={() => router.refresh()}>Trang chủ</div>;
+const {textContent = 'Đăng xuất', ...buttonProps} = props
+      const logoutAPI = useLogout()
+
+    return   <button {...buttonProps} onClick={() => logoutAPI.mutate()}>
+          <LogOutIcon size={18} />
+{textContent}
+    </button>
 };
 
 export default ButtonLogOut;

@@ -18,7 +18,7 @@ const DashboardForms = () => {
       const getFormPagination = useGetFormPagination({ page, limit: LIMIT_PAGINATION_FORM });
 
       return (
-            <DivNative className="my-[2rem] w-full min-h-[40rem] xl:px-[2rem] h-max  flex flex-col gap-[0rem] p-0 bg-color-gap-empty">
+            <DivNative className="my-[2rem]  min-h-[40rem] xl:px-[2rem] h-max  flex flex-col gap-[0rem] p-0 bg-color-gap-empty">
                   <div className="flex flex-col gap-[3rem]">
                         <div className="flex items-center gap-[1rem]">
                               {/* <Image

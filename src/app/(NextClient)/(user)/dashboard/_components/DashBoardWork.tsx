@@ -11,6 +11,7 @@ import { RootState } from "@/app/_lib/redux/store";
 import path from "path";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import { onFocusSearch } from "@/app/_lib/redux/formEdit.slice";
+import ButtonLogOut from "@/app/(NextClient)/_components/ui/button/ButtonLogOut";
 
 const WorkItem = [
       {
@@ -43,13 +44,6 @@ const DashBoardWork = () => {
 
       const dispatch = useDispatch();
 
-      const logoutMutation = useMutation({
-            mutationKey: ["logout"],
-            mutationFn: () => AuthService.logoutNextClient(),
-            onSuccess: () => {
-                  router.push("/");
-            },
-      });
 
       const handleSearch = () => {
             dispatch(onFocusSearch({ focus: true }));
@@ -84,10 +78,7 @@ const DashBoardWork = () => {
                         <span className="font-medium">Cài đặt</span>
                   </Link>
 
-                  <button className={`${colorTheme} nav nav__normal`} onClick={() => logoutMutation.mutate()}>
-                        <LogOutIcon size={18} />
-                        Đăng xuất
-                  </button>
+                <ButtonLogOut  className={`${colorTheme} nav nav__normal `}/>
             </div>
       );
 };

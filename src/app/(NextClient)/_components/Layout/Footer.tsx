@@ -1,6 +1,10 @@
-import { Bell, Home, Settings } from "lucide-react";
+
+
+import { Bell, Home, LogOutIcon, Plus, Settings } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import ButtonCreateForm from "../ui/button/ButtonCreateForm";
+import ButtonLogOut from "../ui/button/ButtonLogOut";
 
 const Footer = () => {
       return (
@@ -8,10 +12,18 @@ const Footer = () => {
                   <Link href={"/settings"}>
                         <Settings size={24} />
                   </Link>
+                  
+                 <ButtonLogOut className="flex items-center gap-[1rem] text-[1.3rem]" />
 
                   <Link href={"/dashboard"}>
                         <Home size={24} />
                   </Link>
+                  <ButtonCreateForm
+                                                textContent="Tạo Form"
+                                                urlNavigation="/"
+                                                className=" xl:[&]:p-[4px_8px] !text-[1.2rem] !w-[10rem]"
+                                                position="LEFT"
+                                          />
 
                   <Link href={"/notification"}>
                         <Bell size={24} />

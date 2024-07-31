@@ -45,27 +45,33 @@ export const resquest = async <Response>(method: Method, url: string, options?: 
       const payload: Response = await response.json();
 
       if ("v1/api/auth/set-token".includes(normalizePath(url))) {
-            const { expireToken, code_verify_token } = payload as { expireToken: string; code_verify_token: string };
+            const { expireToken, code_verify_token, expireCookie } = payload as { expireToken: string; code_verify_token: string,expireCookie: string };
 
             setValueLocalStorage("expireToken", expireToken);
+            setValueLocalStorage("expireCookie", expireCookie);
 
             setValueLocalStorage("code_verify_token", code_verify_token);
       }
 
       if (["v1/api/auth/login", "v1/api/auth/register"].some((path) => path === normalizePath(url))) {
-            const expireTokenJSON = (payload as ResponseApi<ResponseAuth>).metadata.expireToken;
-            setValueLocalStorage("expireToken", expireTokenJSON);
+            // const expireTokenJSON = (payload as ResponseApi<ResponseAuth>).metadata.expireToken;
+            // setValueLocalStorage("expireToken", expireTokenJSON);
 
-            const codeVerifyTokenJSON = (payload as ResponseApi<ResponseAuth>).metadata.token.code_verify_token;
-            setValueLocalStorage("code_verify_token", codeVerifyTokenJSON);
+            // const codeVerifyTokenJSON = (payload as ResponseApi<ResponseAuth>).metadata.token.code_verify_token;
+            // setValueLocalStorage("code_verify_token", codeVerifyTokenJSON);
+
+
+            // const expireCookieJSON = (payload as ResponseApi<ResponseAuth>).metadata.expireCookie;
+            // setValueLocalStorage("expireCookie", expireCookieJSON);
 
             const { metadata } = payload as ResponseApi<ResponseAuth>;
             const {
                   client_id,
                   expireToken,
                   token: { access_token, code_verify_token, refresh_token },
+                  expireCookie
             } = metadata;
-            const params = { access_token, code_verify_token, refresh_token, client_id, expireToken };
+            const params = { access_token, code_verify_token, refresh_token, client_id, expireToken,expireCookie };
 
             await AuthService.syncNextToken(params);
       }

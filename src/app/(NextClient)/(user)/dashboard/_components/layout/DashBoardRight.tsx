@@ -29,14 +29,14 @@ const DashBoardRight = () => {
 
       return (
             <div
-                  className={`${width} min-h-screen bg-color-gap-empty    h-max   flex flex-col  gap-[4rem] xl:gap-[2rem] text-[1.4rem] pb-[5rem] px-[1rem] xl:px-0`}
+                  className={`${width} w-[80%] xl:w-full min-h-screen bg-color-gap-empty    h-max   flex flex-col  gap-[4rem] xl:gap-[2rem] text-[1.4rem] pb-[5rem] px-0`}
             >
                   <DashBoardRightHeader />
 
                   {/* <DashBoardRightHeader /> */}
                   {/* <DashBoardRightHeader /> */}
 
-                  <div className="   w-full xl:w-full    flex flex-col gap-[2rem] ">
+                  <div className="  px-[1rem] xl:p-0  w-full xl:w-full    flex flex-col gap-[2rem] ">
                         <div className="w-full flex flex-col gap-[4rem] xl:gap-[2rem]  bg-color-section-theme p-[2rem_1.4rem] xl:p-[2rem]">
                               <div className="flex justify-between">
                                     <p className="text-color-main font-bold text-[2rem] ">Phân tích chung</p>
@@ -72,7 +72,7 @@ const DashBoardRight = () => {
                                     </div>
                               </div>
                         </div>
-                        <div className="min-h-[40rem]">
+                        <div className="min-h-[40rem] ">
                               <DashboardForms />
                         </div>
                   </div>

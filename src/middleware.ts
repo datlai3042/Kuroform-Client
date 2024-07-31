@@ -2,7 +2,7 @@ import { differenceInMilliseconds, differenceInSeconds } from "date-fns";
 import moment from "moment";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextRequest } from "next/server";
 
 const privateRouter = ["/dashboard", "/me", "/settings", "/v1/api/token/refresh-token"];
 const authRouter = ["/login", "/register", "/"];
@@ -15,9 +15,11 @@ export function middleware(request: NextRequest) {
       const refresh_token = request.cookies.get("next_refresh_token")?.value;
       const client_id = request.cookies.get("next_client_id")?.value;
       const expire_token = request.cookies.get("next_expire_token")?.value;
+      const expire_cookie = request.cookies.get("next_expire_cookie")?.value;
+      const code_verify_token = request.cookies.get("code_verify_token")?.value;
 
       const authentication = !!client_id && !!access_token && !!refresh_token;
-
+      console.log({cookies: request.cookies})
       const requestHeaders = new Headers(request.headers);
       requestHeaders.set("x-url", pathname);
       const response = NextResponse.next({
@@ -29,21 +31,32 @@ export function middleware(request: NextRequest) {
       const regexUrlFormSummary = /^\/form\/[a-zA-Z0-9]+\/summary$/;
       const regexUrlFormDownload = /^\/form\/[a-zA-Z0-9]+\/download$/;
       const now = new Date();
-      const exprireTokemTime = new Date(expire_token as string);
+      const exprireTokenTime = new Date(expire_token as string);
+      const expireCookieTime = new Date(expire_cookie as string);
 
-      if (expire_token && differenceInMilliseconds(exprireTokemTime, now) < 0) {
+      if (expire_token && differenceInMilliseconds(exprireTokenTime, now) < 0) {
             const response = NextResponse.next();
 
-            response.cookies.delete("next_access_token");
-            response.cookies.delete("next_client_id");
-            response.cookies.delete("next_refresh_token");
-            response.cookies.delete("next_code_verify_token");
-            console.log("bao ve");
+            if(expire_cookie && differenceInMilliseconds(expireCookieTime, now) < 0) {
+
+
+                  response.cookies.delete("next_access_token");
+                  response.cookies.delete("next_client_id");
+                  response.cookies.delete("next_refresh_token");
+                  response.cookies.delete("next_code_verify_token");
+                  console.log('OK')
+            return NextResponse.redirect(new URL("/login", request.url));
+
+            }
             if (pathname === "/login") {
                   return response;
             }
+            console.log("token hết hạn",differenceInMilliseconds(exprireTokenTime, now) < 0, code_verify_token );
 
-            return NextResponse.redirect(new URL("/login?expire=true", request.url));
+            const url = `/refresh-token?code_verify_token=${code_verify_token}&pathName=/v1/api`
+
+            // return NextResponse.redirect(url);
+            return NextResponse.redirect(new URL(url, request.url))
       }
 
       if (pathname === "/" && !authentication) {
