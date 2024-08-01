@@ -84,9 +84,7 @@ const InputCore = (props: TProps) => {
 
       return (
             <div
-                  className={`${
-                        formCore.form_mode_display === "custom" ? "input-core shadow-md border-[.2rem] min-h-[40rem] p-[1.2rem] xl:p-[4rem]" : ""
-                  }   group flex flex-col justify-center gap-[1.8rem] outline-none focus:cursor-move     rounded-[1.6rem]  `}
+                  className={`text-text-theme  group flex flex-col justify-center gap-[1.8rem] outline-none focus:cursor-move     rounded-[1.6rem]  `}
                   ref={setNodeRef}
                   {...attributes}
                   {...listeners}
@@ -100,9 +98,7 @@ const InputCore = (props: TProps) => {
                   {title && <InputTitle inputItem={inputItem} dataTextTitle={dataTextTitle} />}
 
                   <DivWrapper
-                        className={`${
-                              formCore.form_mode_display === "custom" ? " w-[100%]  xl:w-[70%]" : "w-full"
-                        }  group relative min-h-[8rem] h-max pt-[2.4rem] flex items-center  `}
+                        className={` group relative min-h-[8rem] h-max pt-[2.4rem] flex items-center  `}
                   >
                         {modeScreen === "NORMAL" && (
                               <DivWrapper className=" absolute top-[-1rem]  xl:left-0  h-[2rem] text-[1.4rem] ">
@@ -116,9 +112,7 @@ const InputCore = (props: TProps) => {
                         )}
 
                         <DivWrapper
-                              className={`${
-                                    formCore.form_mode_display === "custom" ? "input-core-children relative  w-[76%]" : "w-full"
-                              }  h-max flex flex-col gap-[2rem] `}
+                              className={`w-full h-max flex flex-col gap-[2rem] `}
                               onKeyDown={onPressEnter}
                         >
                               {InputComponent}
@@ -126,9 +120,9 @@ const InputCore = (props: TProps) => {
                         {!title && modeScreen === "NORMAL" && <SetTitleInput setTitle={setTitle} focus={focus} />}
                   </DivWrapper>
 
-                  {formCore.form_mode_display === "custom" && (
+                  {/* {formCore.form_mode_display === "custom" && (
                         <FormModeCustomSetting colorMain={colorMain} inputItem={inputItem} openSetting={openSetting} setOpenSetting={setSetting} />
-                  )}
+                  )} */}
             </div>
       );
 };

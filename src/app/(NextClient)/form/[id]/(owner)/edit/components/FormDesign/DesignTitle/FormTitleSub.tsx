@@ -1,17 +1,14 @@
+import SliderImage from "@/app/(NextClient)/_components/Model/SliderImage";
 import { RootState } from "@/app/_lib/redux/store";
+import useUpdateForm from "@/app/hooks/useUpdateForm";
 import { FormCore } from "@/type";
-import React, { useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import FormTitleText from "./FormTitleText";
-import FormTitleImage from "./FormTitleImage";
-import FormTitleList from "./FormTitleList";
-import FormTitleModeImage from "./FormTitleModeImage";
 import { DndContext, DragEndEvent, MouseSensor, UniqueIdentifier, closestCorners, useSensor, useSensors } from "@dnd-kit/core";
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
-import SliderImage from "@/app/(NextClient)/_components/Model/SliderImage";
-import useUpdateForm from "@/app/hooks/useUpdateForm";
+import React, { useMemo } from "react";
+import { useSelector } from "react-redux";
 import FormTitleFullDescription from "./FormTitleFullDescription";
+import FormTitleImage from "./FormTitleImage";
+import FormTitleText from "./FormTitleText";
 
 const generateSubTitle = (formCore: FormCore.Form) => {
       const checkMode: FormCore.FormTitle["form_title_mode_image"] = "Slider";

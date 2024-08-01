@@ -1,21 +1,17 @@
-import React, { memo, useContext, useEffect, useRef, useState } from "react";
-import { addInputToSectionTitle } from "@/app/_lib/utils";
-import { FormCore, ReactCustom } from "@/type";
 import { FormModeScreenContext } from "@/app/(NextClient)/_components/provider/FormModeScreen";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNativeRef";
 import ParagraphNative from "@/app/(NextClient)/_components/ui/NativeHtml/ParagraphNative";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/app/_lib/redux/store";
-import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
-import ButtonDesgin from "../FormDesign/DesignCommon/ButtonDesgin";
-import ButtonDesignTitle from "../FormDesign/DesignTitle/ButtonDesignTitle";
-import DesignTitleForm from "../FormDesign/DesignCommon/DesignTitleForm";
-import FormTitleSub from "../FormDesign/DesignTitle/FormTitleSub";
 import { FormText } from "@/app/_constant/formUi.constant";
-import InputCore from "./InputCore";
-import useSetTitleForm from "@/app/hooks/useSetTitleForm";
+import { RootState } from "@/app/_lib/redux/store";
 import useAddInputSetTitle from "@/app/hooks/useAddInputSetTitle";
-import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import useSetTitleForm from "@/app/hooks/useSetTitleForm";
+import { FormCore } from "@/type";
+import React, { memo, useContext, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import DesignTitleForm from "../FormDesign/DesignCommon/DesignTitleForm";
+import ButtonDesignTitle from "../FormDesign/DesignTitle/ButtonDesignTitle";
+import FormTitleSub from "../FormDesign/DesignTitle/FormTitleSub";
 
 export interface InputCoreTitleProps extends React.ComponentProps<"div"> {}
 

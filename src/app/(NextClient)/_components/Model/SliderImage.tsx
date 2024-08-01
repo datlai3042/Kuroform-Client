@@ -1,12 +1,12 @@
 "use client";
 import { RootState } from "@/app/_lib/redux/store";
+import { FormCore } from "@/type";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { FormCore } from "@/type";
-import ModelShowImage from "./ModelShowImage";
 import FormTitleImage from "../../form/[id]/(owner)/edit/components/FormDesign/DesignTitle/FormTitleImage";
+import ModelShowImage from "./ModelShowImage";
 
 type TProps = {
 	images: FormCore.FormTitleSub.Image.Core[];
@@ -62,13 +62,13 @@ const SliderImage = (props: TProps) => {
 		}
 	}, []);
 
-	const widthPage = page === "Edit" ? "w-[30rem] sm:w-[75rem] " : "w-full xl:w-[62rem]";
+	const widthPage = page === "Edit" ? "w-[26rem] sm:w-[55rem] xl:w-[75rem] " : "w-[26rem] sm:w-[55rem] xl:w-[60rem]";
 
 	return (
-		<div className="w-max flex justify-center">
+		<div className="w-max min-w-full flex justify-center">
 			<div
 				ref={divContainerRef}
-				className={`${widthPage}  relative h-[38rem] xl:h-[47rem] pb-[6rem]  overflow-y-hidden overflow-x-hidden`}
+				className={`${widthPage}  relative h-[48rem] xl:h-[47rem] pb-[6rem]  overflow-y-hidden overflow-x-hidden`}
 			>
 				<div className={`w-full relative`}>
 					<button
@@ -81,13 +81,13 @@ const SliderImage = (props: TProps) => {
 					</button>
 					<div
 						ref={divRef}
-						className="min-w-full max-h-[30rem] w-max  flex flex-wrap items-center justify-center "
+						className="min-w-full max-h-[30rem] w-max  flex  items-center justify-center "
 					>
 						{type === "Components" &&
 							(images as FormCore.FormTitleSub.Image.Core[]).map((img) => (
 								<div
 									key={img._id}
-									className={` max-h-[30rem] w-full flex justify-center`}
+									className={` max-h-[30rem] ${widthPage} flex justify-center`}
 									onClick={() => setShowImageModel(true)}
 								>
 									<FormTitleImage
@@ -126,13 +126,13 @@ const SliderImage = (props: TProps) => {
 							onClick={() => setIndexImage(i)}
 						>
 							{i === indexImage && (
-								<p style={{ backgroundColor: colorMain }} className="w-[60%] h-[60%] rounded-full "></p>
+								<div  className="bg-color-main w-[60%] h-[60%] rounded-full "></div>
 							)}
 						</button>
 					))}
 				</div>
 				{type === "Components" && (
-					<div className="absolute bottom-[5rem] w-full left-[50%] translate-x-[-50%] flex justify-center gap-[4rem] pb-[2rem]  scroll-images overflow-x-auto hover:cursor-pointer">
+					<div className="absolute bottom-[4rem] w-full left-[50%] translate-x-[-50%] flex justify-center gap-[4rem] pb-[2rem]  scroll-images overflow-x-auto hover:cursor-pointer">
 						{images.map((img, i) => (
 							<div
 								key={img._id}

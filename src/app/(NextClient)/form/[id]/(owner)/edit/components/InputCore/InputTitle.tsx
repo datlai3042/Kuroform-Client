@@ -7,7 +7,7 @@ import { RootState } from "@/app/_lib/redux/store";
 import { useUpdateTitleInput } from "@/app/hooks/useUpdateTitleInput";
 import { FormCore, InputCore } from "@/type";
 import React, { memo, useContext, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 type TProps = {
       inputItem: InputCore.InputForm;

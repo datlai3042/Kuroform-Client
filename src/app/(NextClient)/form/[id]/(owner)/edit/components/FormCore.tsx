@@ -2,27 +2,27 @@
 
 import React, { useContext, useEffect, useMemo } from "react";
 
-import { RootState } from "@/app/_lib/redux/store";
-import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
 import { SidebarContext } from "@/app/(NextClient)/(user)/dashboard/SidebarContext";
+import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
 import { FormModeScreenContext } from "@/app/(NextClient)/_components/provider/FormModeScreen";
+import { RootState } from "@/app/_lib/redux/store";
 
-import InputCoreText from "./InputCore/_text/InputCoreText";
-import InputCoreEmail from "./InputCore/_email/InputCoreEmail";
 import { InputCore, FormCore as TFormCore } from "@/type";
 import InputCoreTitle from "./InputCore/InputCoreTitle";
+import InputCoreDate from "./InputCore/_date/InputCoreDate";
+import InputCoreEmail from "./InputCore/_email/InputCoreEmail";
 import InputCoreOption from "./InputCore/_option/InputCoreOption";
 import InputCoreOptionMultiple from "./InputCore/_options/InputCoreOptionMultiple";
-import InputCoreDate from "./InputCore/_date/InputCoreDate";
+import InputCoreText from "./InputCore/_text/InputCoreText";
 
-import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNative";
+import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import ButtonAddAvatarForm from "@/app/(NextClient)/_components/ui/button/ButtonAddAvatarForm";
 import ButtonAddBackgroundForm from "@/app/(NextClient)/_components/ui/button/ButtonAddBackgroudForm";
 
-import FormImage from "./FormImage";
 import FormPageGuess from "@/app/(NextClient)/_components/Layout/FormPageGuess";
 import { useDispatch, useSelector } from "react-redux";
+import FormImage from "./FormImage";
 
 import ButtonDesgin from "./FormDesign/DesignCommon/ButtonDesgin";
 
@@ -30,17 +30,15 @@ import { DndContext, DragEndEvent, MouseSensor, UniqueIdentifier, closestCorners
 
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
 
-import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
-import { CSS } from "styled-components/dist/types";
-import ButtonAddInput from "@/app/(NextClient)/_components/ui/button/ButtonAddInput";
-import useUpdateForm from "@/app/hooks/useUpdateForm";
-import InputCoreVote from "./InputCore/_vote/InputCoreVote";
-import InputCorePhone from "./InputCore/_phone/InputCorePhone";
-import { theme } from "antd";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
-import InputCoreImage from "./InputCore/_image/InputCoreImage";
+import ButtonAddInput from "@/app/(NextClient)/_components/ui/button/ButtonAddInput";
+import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
+import useUpdateForm from "@/app/hooks/useUpdateForm";
 import InputCoreAddress from "./InputCore/_address/InputCoreAddress";
 import InputCoreAnchor from "./InputCore/_anchor/InputCoreAnchor";
+import InputCoreImage from "./InputCore/_image/InputCoreImage";
+import InputCorePhone from "./InputCore/_phone/InputCorePhone";
+import InputCoreVote from "./InputCore/_vote/InputCoreVote";
 
 export const generateInputForms = (Inputs: InputCore.InputForm[]): React.ReactNode => {
       return Inputs.map((ele, index) => {
@@ -93,8 +91,7 @@ const FormCore = () => {
             return generateInputForms(formCore.form_inputs);
       }, [formCore?.form_inputs]);
 
-      const onGetDataDemo = () => {
-      };
+      const onGetDataDemo = () => {};
 
       const styleEffect = {
             onCheckModeScreen: () => {
@@ -147,9 +144,7 @@ const FormCore = () => {
       return (
             <>
                   {modeScreen === "NORMAL" && (
-                        <DivNative
-                              className={` w-full   pb-[28rem] sm:px-0    xl:ml-0 flex flex-col gap-[3rem] text-text-theme min-h-screen h-max  `}
-                        >
+                        <DivNative className={` w-full   pb-[28rem] sm:px-0    xl:ml-0 flex flex-col gap-[3rem] text-text-theme min-h-screen h-max  `}>
                               {showComponentImage && <FormImage />}
                               <div
                                     className={`mt-[8rem]
@@ -187,7 +182,7 @@ const FormCore = () => {
                                                 )}
                                                 <ButtonAddInput />
                                                 <ButtonNative
-                                                id="submit"
+                                                      id="submit"
                                                       textContent={formCore.form_button_text}
                                                       className="bg-color-btn-primarily text-center px-[1rem] mt-[1rem] min-w-[12rem] w-max h-[5rem]  text-white rounded-lg  text-[1.6rem]"
                                                       onClick={onGetDataDemo}
@@ -202,9 +197,9 @@ const FormCore = () => {
                         <div className={`${styleEffect.onCheckModeScreen()}`}>
                               <DivNative className="absolute right-[4rem] top-[3rem] flex items-center justify-center z-[51]" title="Publish">
                                     <ButtonNative
-                                          style={{ borderColor: colorMain, backgroundColor: colorMain }}
-                                          textContent="Back to Editor"
-                                          className="p-[.8rem] rounded-lg  text-[#ffffff] "
+                                          // style={{ borderColor: colorMain, backgroundColor: colorMain }}
+                                          textContent="Trở về Form Design"
+                                          className="p-[.8rem] rounded-lg bg-color-main  text-[#ffffff] "
                                           onClick={() => {
                                                 setModeScreen("NORMAL");
                                                 setOpenSidebar(true);

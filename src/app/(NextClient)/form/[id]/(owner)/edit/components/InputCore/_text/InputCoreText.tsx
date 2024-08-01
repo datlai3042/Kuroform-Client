@@ -55,21 +55,12 @@ const InputCoreText = (props: TProps) => {
 		>
 			<SpanNative
 				textContent="Nhập thông tin của bạn vào ô dưới"
-				className={`${
-					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"
-				} text-[1.6rem] font-semibold`}
+				className={` text-[1.6rem] font-semibold`}
 			/>
 
 			<DivNativeRef
-				style={{ color: "#000" }}
 				ref={divContentRef}
-				className={`${
-					theme === "dark"
-						? form_mode_display
-							? "bg-[#fff] text-[#000]"
-							: " bg-color-section-theme !text-[#fff]"
-						: "group-hover:!bg-[#ffffff]"
-				} relative group   w-full min-h-[8rem] p-[1.6rem] break-words whitespace-pre-wrap h-max border-[.1rem] border-gray-300 rounded-lg outline-none resize-none `}
+				className={` relative group   w-full min-h-[8rem] p-[1.6rem] break-words whitespace-pre-wrap h-max border-[.1rem] border-gray-300 rounded-lg outline-none resize-none `}
 				// onClick={() => divContentRef.current?.focus()}
 				spellCheck={false}
 				onKeyDown={onPressEnter}

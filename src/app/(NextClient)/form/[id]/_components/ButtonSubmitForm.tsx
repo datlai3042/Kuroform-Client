@@ -78,7 +78,7 @@ const ButtonSubmitForm = (props: TProps) => {
                   className="min-w-[25%] w-max h-[5rem]  ml-auto flex items-center justify-center gap-[.5rem] rounded-lg hover:cursor-pointer bg-blue-600"
             >
                   <ButtonNative textContent={formCore.form_button_text} className=" text-white text-[1.6rem] text-center px-[1rem]  w-max" />
-                  {submitState === "pending" && <LoadingSpinner color="#ffffff" width="min-w-[2.4rem]" height="min-w-[2.4rem]"/>}
+                  {submitState === "pending" && <LoadingSpinner color="#ffffff" width="min-w-[2.4rem]" height="min-h-[2.4rem]"/>}
             </div>
       );
 };
