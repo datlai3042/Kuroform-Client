@@ -9,7 +9,10 @@ type TProps = {
 const LoadingSpinner = (props: TProps) => {
       const { color, width = "min-w-[3rem]", height = "min-h-[3rem]" } = props;
 
+
+
       const styleSpinner = `${width} ${height}`;
+
 
       return (
             <div

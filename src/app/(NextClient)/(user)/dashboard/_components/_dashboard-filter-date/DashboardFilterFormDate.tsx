@@ -52,7 +52,6 @@ const DashboardFilterFormDate = () => {
                   month: isDate.month,
                   year: isDate.year,
             });
-            console.log({ time_end_full });
             const time_start_query = new Date(time_start_full).toISOString();
 
             const time_end_query = new Date(time_end_full).toISOString();

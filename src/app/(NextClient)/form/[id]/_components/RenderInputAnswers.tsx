@@ -71,7 +71,11 @@ const RenderInputAnswers = (props: TProps) => {
 
       console.log({ "Số lần render": count.current });
       console.log({ "Trang hiện tại": page });
-      if (submitState === "success") console.log("%cThông tin đã được gửi thành công, cảm ơn bạn nha", `color:${colorMain};font-size:16px;`);
+      if (submitState === "success") console.log("%cHẹn gặp lại bạn, thông tin của bạn đã được gửi thành công",
+            `color:#fff;font-size:1.2rem;background: #3b36db;padding:0.3rem;border-radius:.4rem`,
+
+
+                  );
 
       count.current += 1;
 

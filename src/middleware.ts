@@ -19,8 +19,9 @@ export function middleware(request: NextRequest) {
       const code_verify_token = request.cookies.get("next_code_verify_token")?.value;
 
       const authentication = !!client_id && !!access_token && !!refresh_token;
+
+      
       const requestHeaders = new Headers(request.headers);
-      requestHeaders.set("x-url", pathname);
       const response = NextResponse.next({
             headers: requestHeaders,
       });
@@ -29,18 +30,41 @@ export function middleware(request: NextRequest) {
       const regexUrlFormShare = /^\/form\/[a-zA-Z0-9]+\/share$/;
       const regexUrlFormSummary = /^\/form\/[a-zA-Z0-9]+\/summary$/;
       const regexUrlFormDownload = /^\/form\/[a-zA-Z0-9]+\/download$/;
+
+
+
+
+      const redirectLoginCase1 = pathname === "/" && !authentication
+      const redirectLoginCase2 =  (regexUrlFormEdit.test(pathname) ||
+      regexUrlFormSummary.test(pathname) ||
+      regexUrlFormDownload.test(pathname) ||
+      regexUrlFormShare.test(pathname)) &&
+!authentication
+
+      const redirectLoginCase3 = !authentication && privateRouter.includes(pathname)
+
+
+      const redirectDashboardCase1 = pathname === "/" && authentication
+      const redirectDashboardCase2 = authentication && authRouter.includes(pathname)
+      const redirectDashboardCase3 = authentication && pathname === "/"
+
+
       const now = new Date();
       const exprireTokenTime = new Date(expire_token as string);
       const expireCookieTime = new Date(expire_cookie as string);
 
-      console.log({result: differenceInMilliseconds(exprireTokenTime, now) < 0, expireCooke:expire_cookie, code_verify_token})
-
-      if (expire_token && differenceInMilliseconds(exprireTokenTime, now) < 0) {
-            const response = NextResponse.next();
 
 
+      const checkExpireToken = expire_token ? differenceInMilliseconds(exprireTokenTime, now) < 0 : false
+      const checkExpireCookie = expire_cookie ? differenceInMilliseconds(expireCookieTime, now) < 0 : false
+      console.log({checkExpireToken, checkExpireCookie, pathname, client: client_id})
+      // const routesNotCheckToken = [...privateRouter, '/']
 
-            if(expire_cookie && differenceInMilliseconds(expireCookieTime, now) < 0) {
+      if (checkExpireToken && !authRouter.includes(pathname)) {
+
+
+
+            if(checkExpireCookie) {
 
 
             return NextResponse.redirect(new URL('/login', request.url));
@@ -49,40 +73,21 @@ export function middleware(request: NextRequest) {
            
 
             const url = `/refresh-token?code_verify_token=${code_verify_token}`
-
-            // return NextResponse.redirect(url);
             return NextResponse.redirect(new URL(url, request.url))
       }
 
-      if (pathname === "/" && !authentication) {
+      if (redirectLoginCase1 || redirectLoginCase2 ||redirectLoginCase3) {
             return NextResponse.redirect(new URL("/login", request.url));
       }
 
-      if (pathname === "/" && authentication) {
+      if (redirectDashboardCase1 || redirectDashboardCase2 || redirectDashboardCase3) {
             return NextResponse.redirect(new URL("/dashboard", request.url));
       }
 
-      if (
-            (regexUrlFormEdit.test(pathname) ||
-                  regexUrlFormSummary.test(pathname) ||
-                  regexUrlFormDownload.test(pathname) ||
-                  regexUrlFormShare.test(pathname)) &&
-            !authentication
-      ) {
-            return NextResponse.redirect(new URL("/login", request.url));
-      }
 
-      if (!authentication && privateRouter.includes(pathname)) {
-            return NextResponse.redirect(new URL("/login", request.url));
-      }
 
-      if (authentication && authRouter.includes(pathname)) {
-            return NextResponse.redirect(new URL("/dashboard", request.url));
-      }
+   
 
-      if (authentication && pathname === "/") {
-            return NextResponse.redirect(new URL("/dashboard", request.url));
-      }
       return response;
 }
 

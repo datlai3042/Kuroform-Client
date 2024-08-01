@@ -9,7 +9,7 @@ const BoxCopySuccess = (props: TProps) => {
       const { message } = props;
 
       return (
-            <div className="w-max min-h-[3rem] flex items-center gap-[1rem]   text-[#fff] px-[2rem] rounded-lg  bg-color-main">
+            <div className="w-max min-h-[3rem] flex items-center gap-[1rem]   text-[#fff] px-[2rem] rounded-lg  bg-color-main border-[.1rem] border-[#fff]">
                   {message}
                   <Check size={16} />
             </div>

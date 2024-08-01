@@ -16,7 +16,6 @@ const BoxHandlerInputAnswerError = (props: TProps) => {
 
       const colorMain = useSelector((state: RootState) => state.form.colorCore)
 
-      console.log({colorMain})
 
       return (
             <div

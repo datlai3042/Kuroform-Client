@@ -28,7 +28,7 @@ const FormAnswerHeader = (props: TProps) => {
                   {(formCore.form_background?.form_background_iamge_url || formCore.form_background_state) && (
                         // <div className="absolute top-[50%] translate-x-[-50%] mx-auto">
                         <div
-                              style={{ backgroundColor: formCore.form_background?.backgroundColor || "", padding }}
+                              style={{ backgroundColor: formCore.form_background?.backgroundColor || "#fff", padding }}
                               className="w-full h-full rounded-2xl relative overflow-hidden"
                         >
                               <Image

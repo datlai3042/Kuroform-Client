@@ -23,7 +23,6 @@ const ButtonSubmitForm = (props: TProps) => {
             setFormAnswer,
       } = useContext(FormAnswerContext);
 
-      const colorMain = formCore.form_title.form_title_color || formCore.form_setting_default.form_title_color_default;
 
       const submitFormMutation = useMutation({
             mutationKey: ["add new report form"],
@@ -76,11 +75,10 @@ const ButtonSubmitForm = (props: TProps) => {
       return (
             <div
                   onClick={handleSubmit}
-                  className="w-[25%] h-[5rem]  ml-auto flex items-center justify-center gap-[1rem] rounded-lg hover:cursor-pointer bg-blue-600"
+                  className="min-w-[25%] w-max h-[5rem]  ml-auto flex items-center justify-center gap-[.5rem] rounded-lg hover:cursor-pointer bg-blue-600"
             >
-                  <ButtonNative textContent={formCore.form_button_text} className=" text-white text-[1.6rem] text-center px-[1rem] min-w-[12rem] w-max" />
-
-                  {submitState === "pending" && <LoadingSpinner color="#ffffff" />}
+                  <ButtonNative textContent={formCore.form_button_text} className=" text-white text-[1.6rem] text-center px-[1rem]  w-max" />
+                  {submitState === "pending" && <LoadingSpinner color="#ffffff" width="min-w-[2.4rem]" height="min-w-[2.4rem]"/>}
             </div>
       );
 };

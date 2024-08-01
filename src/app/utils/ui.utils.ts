@@ -67,13 +67,7 @@ export const renderArrayDatesInMonth = ({ month, year }: { month: number; year: 
 				});
 
 				const day_name_in_week = getNameWeekDate({ date: current_info_date_previos });
-				console.log({
-					current_date_previos_number,
-					day_previos,
-					current_info_date_previos,
-					day_name_in_week,
-				});
-
+			
 				info_day = {
 					date_full: current_info_date_previos,
 					day_name_in_week,

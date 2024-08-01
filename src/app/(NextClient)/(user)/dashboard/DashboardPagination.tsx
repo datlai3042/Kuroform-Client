@@ -30,7 +30,6 @@ const DashboardPagination = (props: TProps) => {
       useEffect(() => {
             // const middle = MAX_PAGE_SHOW - ()
 
-            console.log("total_page", total_page);
             const limit_render = total_page - page <= 6;
 
             if (page === 1) return;

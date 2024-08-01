@@ -13,6 +13,7 @@ const Logo = () => {
 				alt="logo"
 				className="w-[15rem] h-[12rem] object-contain"
 				unoptimized={true}
+				priority
 			/>
 		</Link>
 	);

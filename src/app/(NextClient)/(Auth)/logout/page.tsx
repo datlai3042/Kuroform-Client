@@ -42,7 +42,6 @@ const LogoutPage = () => {
                   logoutFunction();
                   return;
             } else {
-                  console.log("set-state");
                   setError(true);
             }
             return () => {

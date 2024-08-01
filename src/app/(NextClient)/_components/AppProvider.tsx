@@ -36,8 +36,8 @@ const AppProvider = (props: TProps) => {
 
       useEffect(() => {
             console.log(
-                  "%cXin chào đến với dự án này của mình",
-                  `color:#64aaa8;font-size:20px;`,
+                  "%cHi, Welcome to Kuroform",
+                  `color:#fff;font-size:1.4rem;background: #3b36db;padding:0.3rem;border-radius:.4rem`,
             );
       }, []);
 

@@ -49,7 +49,7 @@ const FormAnswerCore = (props: TProps) => {
                   <DivNative className="relative w-full ">
                         {(formCore.form_background?.form_background_iamge_url || formCore.form_background_state) && <FormAnswerHeader formCore={formCore} />}
                   </DivNative>
-                  <DivNative className={`${formCore.form_avatar?.form_avatar_url ? "mt-[7rem]" : "mt-[2rem]"} w-full rounded-lg`}>
+                  <DivNative className={`${formCore.form_avatar?.form_avatar_url ? "mt-[4rem]" : "mt-[2rem]"} w-full rounded-lg`}>
                         <DivNative className="flex flex-col gap-[3rem] pb-[20rem]">
                               <FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
                                     <RenderInputAnswers formCore={formCore} />
