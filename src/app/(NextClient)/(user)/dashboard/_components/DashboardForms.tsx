@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import LoadingClient from "@/app/(NextClient)/_components/LoadingClient";
+import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
+import { LIMIT_PAGINATION_FORM } from "@/app/_constant/api.constant";
+import useGetFormPagination from "@/app/hooks/form/useGetFormPagination";
 import moment from "moment";
 import "moment/locale/vi"; // without this line it didn't work
-import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
-import FormEmpty from "./FormEmpty";
+import { useState } from "react";
 import DashboardPagination from "../DashboardPagination";
 import DashboardFormItem from "./DashboardFormItem";
-import useGetFormPagination from "@/app/hooks/form/useGetFormPagination";
-import { LIMIT_PAGINATION_FORM } from "@/app/_constant/api.constant";
-import LoadingClient from "@/app/(NextClient)/_components/LoadingClient";
-import LoadingArea from "@/app/(NextClient)/_components/ui/loading/LoadingArea";
-import Image from "next/image";
+import FormEmpty from "./FormEmpty";
 
 moment.locale("vi");
 

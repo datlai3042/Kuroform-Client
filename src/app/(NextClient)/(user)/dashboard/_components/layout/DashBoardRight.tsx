@@ -1,24 +1,16 @@
-import Button from "@/app/(NextClient)/_components/ui/button/Button";
 import ButtonCreateForm from "@/app/(NextClient)/_components/ui/button/ButtonCreateForm";
-import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
-import { ChevronsRight, Flower, Plus, Search, Settings } from "lucide-react";
-import React, { SetStateAction, Suspense, useContext } from "react";
+import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkMode";
+import { RootState } from "@/app/_lib/redux/store";
+import { UserType } from "@/app/_schema/user/user.type";
+import { Plus } from "lucide-react";
+import Image from "next/image";
+import { useContext } from "react";
+import { useSelector } from "react-redux";
 import { SidebarContext } from "../../SidebarContext";
 import DashBoardRightHeader from "../DashBoardRightHeader";
 import DashboardForms from "../DashboardForms";
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/_lib/redux/store";
-import { generateFullNameUser } from "@/app/_lib/utils";
-import DashboardFormAnalysis from "../DashboardFormAnalysis";
-import { UserType } from "@/app/_schema/user/user.type";
-import DashboardTotalForm from "../DashboardTotalForm";
-import DashboardTotalView from "../DashboardTotalView";
-import DashboardTotalCommon from "../DashboardTotalCommon";
 import DashboardTotalWrapper from "../DashboardTotalWrapper";
 import DashboardFilterFormDate from "../_dashboard-filter-date/DashboardFilterFormDate";
-import Image from "next/image";
-import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkMode";
-import LoadingClient from "@/app/(NextClient)/_components/LoadingClient";
 
 const DashBoardRight = () => {
       const { openSidebar, setOpenSidebar } = useContext(SidebarContext);
@@ -29,14 +21,14 @@ const DashBoardRight = () => {
 
       return (
             <div
-                  className={`${width} w-[80%] xl:w-full min-h-screen bg-color-gap-empty    h-max   flex flex-col  gap-[4rem] xl:gap-[2rem] text-[1.4rem] pb-[5rem] px-0`}
+                  className={`${width} w-full min-h-screen bg-color-gap-empty    h-max   flex flex-col  gap-[4rem] xl:gap-[2rem] text-[1.4rem] pb-[5rem] px-0`}
             >
                   <DashBoardRightHeader />
 
                   {/* <DashBoardRightHeader /> */}
                   {/* <DashBoardRightHeader /> */}
 
-                  <div className="  px-[1rem] xl:p-0  w-full xl:w-full    flex flex-col gap-[2rem] ">
+                  <div className="p-0  w-full xl:w-full    flex flex-col gap-[2rem] ">
                         <div className="w-full flex flex-col gap-[4rem] xl:gap-[2rem]  bg-color-section-theme p-[2rem_1.4rem] xl:p-[2rem]">
                               <div className="flex justify-between">
                                     <p className="text-color-main font-bold text-[2rem] ">Phân tích chung</p>
@@ -72,7 +64,7 @@ const DashBoardRight = () => {
                                     </div>
                               </div>
                         </div>
-                        <div className="min-h-[40rem] ">
+                        <div className="min-h-[40rem] max-w-full w-full px-[1rem] xl:px-0">
                               <DashboardForms />
                         </div>
                   </div>

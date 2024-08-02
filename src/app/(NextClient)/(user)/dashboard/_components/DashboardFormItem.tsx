@@ -24,9 +24,9 @@ const DashboardFormItem = (props: TProps) => {
                   prefetch={false}
                   href={`/form/${form._id}/summary`}
                   key={form._id}
-                  className="rounded-lg min-h-[20rem]  w-full xl:w-full p-[1rem_2rem] max-w-full flex    justify-center gap-[1rem] text-[1.2rem]  text-text-theme bg-bg-form-nav  "
+                  className="rounded-lg min-h-[20rem]  w-full p-[1rem_2rem] max-w-full flex    justify-center gap-[1rem] text-[1.2rem]  text-text-theme bg-bg-form-nav  "
             >
-                  <div className="w-[70%] flex flex-col justify-center gap-[2rem] ">
+                  <div className="w-[70%]  flex flex-col justify-center gap-[2rem] ">
                         <div className="max-w-[70%] flex flex-col justify-center gap-[1rem] ">
                               <FormStateProvider form_state={form.form_state} />
                               <span className="max-w-[90%] truncate text-[1.6rem] font-semibold">

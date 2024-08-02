@@ -19,10 +19,10 @@ const DashBoardRightHeader = () => {
       const pathname = usePathname();
       return (
             <div
-                  className={`w-full px-[1rem] py-[2rem] xl:p-[2rem]  sticky  top-[0rem] z-[2]  h-[6rem]  flex flex-col gap-[1.6rem]  text-[1.3rem] bg-color-section-theme  `}
+                  className={`w-full px-[.5rem] xl:px-[1rem] py-[2rem] xl:p-[2rem]  sticky  top-[0rem] z-[2]  h-[6rem]  flex flex-col gap-[1.6rem]  text-[1.3rem] bg-color-section-theme  `}
             >
                   <div className="h-full w-full flex items-center justify-between">
-                        <div className="flex gap-[1rem]">
+                        <div className="hidden xl:flex gap-[1rem]">
                               {!openSidebar && (
                                     <div className="flex items-center gap-[1rem] ">
                                           <ButtonIcon Icon={<ChevronsRight className="text-text-theme " size={18} />} onClick={() => setOpenSidebar(true)} />
@@ -62,7 +62,7 @@ const DashBoardRightHeader = () => {
                               </div>
                         </div>
 
-                        <div className="flex justify-end gap-[1rem] xl:gap-[20px]">
+                        <div className="flex-1 xl:flex-auto flex xl:justify-end gap-[1.6rem] xl:gap-[2rem]">
                               <Link href={"/settings"} className="p-[.2rem_.8rem] flex items-center gap-[.8rem] text-text-theme rounded-md" title="Cài đặt">
                                     <Settings className="w-[1.6rem]" />
                               </Link>
