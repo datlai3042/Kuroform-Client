@@ -31,7 +31,7 @@ const FormAnswerAvatar = (props: TProps) => {
             <div
                   className={`${styleEffect.onCheckPositionAvatar(
                         formCore?.form_avatar?.position,
-                  )} absolute top-0 translate-y-[-50%] w-[20%] xl:w-[22%] aspect-square  flex justify-center`}
+                  )} absolute top-0 translate-y-[-50%] w-[45%] xl:w-[22%] aspect-square  flex justify-center`}
             >
                   <Image
                         src={formCore.form_avatar?.form_avatar_url || formCore.form_setting_default.form_avatar_default_url}
