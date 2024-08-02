@@ -17,7 +17,7 @@ const DashboardFilterDetails = (props: TProps) => {
       return (
             <div className="fixed top-[0] right-[0rem] z-[100] bg-[rgba(0,0,0,.2)] w-screen h-screen flex items-center justify-center">
                   <ClickOutSide setOpenModel={setOpenModel}>
-                        <div className="relative text-text-theme w-full xl:w-[60rem] min-h-[26rem] flex flex-col gap-[2rem] p-[2rem_2rem_3rem]  bg-bg-model rounded-lg">
+                        <div className="relative text-text-theme w-[50%] mx-auto xl:mx-0 xl:w-[60rem] min-h-[26rem] flex flex-col gap-[2rem] p-[2rem_2rem_3rem]  bg-bg-model rounded-lg">
                               <p className="py-[1rem] w-full text-center text-color-main font-semibold">
                                     Dữ liệu ngày {moment(date_full).format("DD-MMMM-YYYY").toUpperCase()}
                               </p>
@@ -29,7 +29,7 @@ const DashboardFilterDetails = (props: TProps) => {
 
                               <div className="absolute right-[2rem] top-[2rem]">
                                     <button
-                                          className="w-[3rem] h-[3rem] xl:w-[4rem] xl:h-[4rem] hover:bg-[#ffffff] flex items-center justify-center rounded-full shadow text-[12px] text-[#000] font-semibold"
+                                          className="w-[3rem] h-[3rem] xl:w-[4rem] xl:h-[4rem] bg-[#ffffff] flex items-center justify-center rounded-full shadow text-[12px] text-[#000] font-semibold"
                                           onClick={() => setOpenModel(false)}
                                     >
                                           X
