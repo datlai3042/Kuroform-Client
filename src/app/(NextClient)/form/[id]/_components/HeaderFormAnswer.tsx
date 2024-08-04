@@ -39,7 +39,7 @@ const HeaderFormAnswer = (props: TProps) => {
             <header
                   style={{ borderTopColor: colorMain }}
                   className={`${
-                        formCore.form_avatar?.form_avatar_url || formCore.form_avatar_state ? "mt-[8rem]" : "mt-[2rem]"
+                        formCore.form_avatar?.form_avatar_url || formCore.form_avatar_state ? "mt-[10rem]" : "mt-[2rem]"
                   } relative w-full min-h-[14rem] m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	 border-t-[1rem]  bg-[#ffffff] rounded-2xl`}
             >
                   {(formCore.form_avatar?.form_avatar_url || formCore.form_avatar_state) && <FormAnswerAvatar formCore={formCore} />}

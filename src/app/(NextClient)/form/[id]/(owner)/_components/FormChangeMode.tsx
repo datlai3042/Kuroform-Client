@@ -95,7 +95,7 @@ const FormChangeMode = (props: TProps) => {
                               )}
 
                               <button
-                                    className="hover:text-[#fff] flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
+                                    className="hover:text-[#fff] min-w-[10rem] flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
                                     onClick={(e) => {
                                           e.preventDefault();
                                           router.push(`/form/${formCore._id}/edit`);

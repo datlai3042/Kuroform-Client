@@ -57,7 +57,9 @@ const generateInputAnswer = (Inputs: InputCore.InputForm[], formCore: FormCore.F
       });
 };
 
-const RenderInputAnswers = (props: TProps) => {
+const 
+
+RenderInputAnswers = (props: TProps) => {
       const { formCore } = props;
       const [page, setPage] = useState<number>(1);
 
@@ -100,8 +102,8 @@ const RenderInputAnswers = (props: TProps) => {
                               {!client && allInputAnswer}
                               {client && allInputAnswer.slice(generateInputWithPage.start, generateInputWithPage.end)}
                               <div
-                              style={{color: formCore.form_title.form_title_color}}
-                              className="flex  gap-[2rem] justify-end text-[1.3rem]  font-normal">
+                              // style={{color: formCore.form_title.form_title_color}}
+                              className="flex  gap-[2rem] justify-end text-[1.5rem] text-black font-normal">
                                     {page === totalPage && totalPage > 1 && (
                                           <button
                                                 tabIndex={0}

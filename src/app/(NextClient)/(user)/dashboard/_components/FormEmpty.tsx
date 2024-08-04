@@ -16,7 +16,7 @@ const FormEmpty = (props: TProps) => {
 				width={18}
 				height={18}
 				alt="icon"
-				className="w-[30rem] h-[30rem]"
+				className="w-[24rem] h-[24rem]"
 				unoptimized={true}
 			/>
 			<div className="text-[4rem] text-text-theme">{content}</div>

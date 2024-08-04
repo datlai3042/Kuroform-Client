@@ -132,7 +132,7 @@ const SliderImage = (props: TProps) => {
 					))}
 				</div>
 				{type === "Components" && (
-					<div className="absolute bottom-[4rem] w-full left-[50%] translate-x-[-50%] flex justify-center gap-[4rem] pb-[2rem]  scroll-images overflow-x-auto hover:cursor-pointer">
+					<div className="absolute bottom-[4rem] w-full left-[50%] translate-x-[-50%] flex  gap-[4rem] pb-[2rem]  scroll-images overflow-x-auto hover:cursor-pointer">
 						{images.map((img, i) => (
 							<div
 								key={img._id}

@@ -32,7 +32,7 @@ const DashboardForms = () => {
                         {!getFormPagination.isPending && getFormPagination.isSuccess && getFormPagination.data.metadata.forms.length > 0 && (
                               <DivNative className={`flex flex-wrap justify-between gap-[2rem] pb-[2rem] text-[1.3rem] `}>
                                     {getFormPagination.data.metadata.forms.map((form, index) => (
-                                          <div className="w-full xl:w-[49%]" key={form._id}>
+                                          <div className="w-full xl:w-[48%]" key={form._id}>
                                                 <DashboardFormItem form={form} />
                                           </div>
                                     ))}
