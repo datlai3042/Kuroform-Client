@@ -206,7 +206,7 @@
       .scroll-images::-webkit-scrollbar {
             padding: 0px !important;
             width: 2rem;
-            height: 0.4rem;
+            height: 0.3rem;
       }
       .scroll-images::-webkit-scrollbar-thumb {
             background: var(--color-main);

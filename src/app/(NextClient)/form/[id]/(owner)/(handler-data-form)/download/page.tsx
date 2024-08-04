@@ -10,6 +10,7 @@ import "moment/locale/vi"; // without this line it didn't work
 import { FormCore } from "@/type";
 import NotFoundPage from "@/app/(NextClient)/_components/_StatusCodeComponent/NotFoundPage";
 import { stringToSlug } from "@/app/_lib/utils";
+import FormEmptyResponse from "@/app/(NextClient)/_components/_StatusCodeComponent/FormEmptyResponse";
 moment.locale("vi");
 
 type TProps = {};
@@ -22,7 +23,7 @@ const DownloadFormPage = () => {
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
       const formAnswer = useSelector((state: RootState) => state.formAsnwer.formAnswerStore[form_id_current]);
 
-      if (!formCache) return <NotFoundPage />;
+      if (!formCache) return <FormEmptyResponse />;
 
       const { dataExcel } = formCache;
 

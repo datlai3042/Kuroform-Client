@@ -18,20 +18,18 @@ const AuthorDat = (props: TProps) => {
 
       const setAnimation = openDetailAuthor ? "animate-btt" : "animate-ttb";
 
-      const colorStyle = color || "text-text-theme";
-      const backgroundColorStyle = backgroundColor || "bg-color-section-theme";
 
-      const background = openDetailAuthor ? "bg-[#fff] border-[.1rem] border-[#000]" : "bg-transparent border-[.1rem] border-transparent";
+      const background = openDetailAuthor ? " shadow-lg" : " ";
 
       return (
             <button
                   onClick={() => setOpenDetailAuthor((prev) => !prev)}
-                  className={`${colorStyle} ${backgroundColorStyle} ${background} fixed z-[2] bottom-[4rem] right-[.3rem]  transition-[width] duration-1000 min-w-[6rem] w-max rounded-full p-[.4rem_1.6rem]`}
+                  className={` ${background} bg-[#fff] text-[#000] fixed z-[2] bottom-[4rem] right-[2rem]  transition-[width] duration-1000 min-w-[4rem]  rounded-full p-[.4rem]`}
             >
                   <ClickOutSide setOpenModel={setOpenDetailAuthor}>
                         <div className="flex items-center justify-center gap-[1rem]">
-                              {openDetailAuthor && <span className={`${colorStyle}`}>Được phát triển bởi Kuro Đạt</span>}
-                              <div className={`${colorStyle} ${backgroundColorStyle} w-[4rem] h-[4rem] relative flex rounded-full`}>
+                              {openDetailAuthor && <span className="pl-[.6rem]">Được phát triển bởi Kuro Đạt</span>}
+                              <div className={` w-[4rem] h-[4rem] relative flex rounded-full`}>
                                     <Image
                                           width={70}
                                           height={70}
@@ -41,7 +39,7 @@ const AuthorDat = (props: TProps) => {
                                     />
 
                                     <div
-                                          className={`${setAnimation} bg-[#fff] text-[#000] absolute z-[1] bottom-[250%] right-[3rem] min-w-[9rem] p-[1rem_.8rem] min-h-[8rem]  flex flex-col gap-[2rem] rounded-lg shadow-2xl `}
+                                          className={`${setAnimation} bg-[#fff] text-[#000] absolute z-[1] bottom-[450%] right-[3rem] min-w-[11rem] p-[1rem_.8rem] min-h-[8rem]  flex flex-col gap-[2rem] rounded-lg shadow-2xl `}
                                     >
                                           <a
                                                 onClick={(e) => {
@@ -75,6 +73,23 @@ const AuthorDat = (props: TProps) => {
                                                       className="w-[2rem] h-[2rem] rounded-full"
                                                 />
                                                 Github
+                                          </a>
+
+                                          <a
+                                                onClick={(e) => e.stopPropagation()}
+                                                href="/assets/pdf/myCv/LaiHuynhPhatDat_InternFrontEnd.pdf"
+                                                download={'LaiHuynhPhatDat_InternFrontEnd.pdf'}
+                                                target="_blank"
+                                                className="flex items-center gap-[1rem]"
+                                          >
+                                                <Image
+                                                      width={70}
+                                                      height={70}
+                                                      src={"/assets/images/social/pdf.png"}
+                                                      alt="Liên hệ"
+                                                      className="w-[2rem] h-[2rem] rounded-full"
+                                                />
+                                                CV của mình
                                           </a>
                                     </div>
                               </div>

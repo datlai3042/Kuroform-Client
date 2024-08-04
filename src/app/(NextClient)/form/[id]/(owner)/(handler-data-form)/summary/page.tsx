@@ -10,6 +10,7 @@ import AnswerDetailModel from "./_components/AnswerDetailModel";
 import { FormCore, InputCore } from "@/type";
 import AnalysisAnswer from "./_components/AnalysisAnswer";
 import NotFoundPage from "@/app/(NextClient)/_components/_StatusCodeComponent/NotFoundPage";
+import FormEmptyResponse from "@/app/(NextClient)/_components/_StatusCodeComponent/FormEmptyResponse";
 
 moment.locale("vi");
 
@@ -26,7 +27,7 @@ const SummaryFormPage = () => {
       const [openDetailAnswer, setOpenDetailAnswer] = useState<boolean>(false);
       const [formAnswerDetail, setFormAnswerDetail] = useState<FormCore.FormAnswer.OneReport | null>(null);
 
-      if (!formCache) return <NotFoundPage />;
+      if (!formCache) return <FormEmptyResponse />;
 
       const { dataGroupFilter } = formCache;
 

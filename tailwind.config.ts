@@ -129,7 +129,7 @@ const config = {
                               "0%": { bottom: "150%", opacity: "1" },
                               "10%": { bottom: "140%", opacity: ".3" },
 
-                              "100%": { bottom: "-100%", opacity: "0" },
+                              "100%": { bottom: "-450%", opacity: "0" },
                         },
 
                         ltrColor: {

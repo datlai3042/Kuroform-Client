@@ -4,9 +4,9 @@ import React from "react";
 
 const FormNotFound = () => {
       return (
-            <div className="min-h-screen w-full flex flex-col items-center justify-center text-text-theme bg-[#fff]">
+            <div className="min-h-screen w-full flex flex-col items-center justify-center text-text-theme bg-color-section-theme">
                   <Image
-                        src={"/assets/images/icon/form/form-not-found.png"}
+                        src={"/assets/images/icon/form_answer/form_empty_response.png"}
                         width={50}
                         height={50}
                         alt="toast success"

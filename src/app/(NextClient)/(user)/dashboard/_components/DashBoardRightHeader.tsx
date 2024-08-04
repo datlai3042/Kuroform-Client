@@ -21,7 +21,7 @@ const DashBoardRightHeader = () => {
             <div
                   className={`w-full px-[.5rem] xl:px-[1rem] py-[2rem] xl:p-[2rem]  sticky  top-[0rem] z-[2]  h-[6rem]  flex flex-col gap-[1.6rem]  text-[1.3rem] bg-color-section-theme  `}
             >
-                  <div className="h-full w-full flex items-center justify-between gap-[1rem]">
+                  <div className="h-full w-full flex items-center justify-between gap-[2rem]">
                         <div className="hidden xl:flex gap-[1rem]">
                               {!openSidebar && (
                                     <div className="flex items-center gap-[1rem] ">

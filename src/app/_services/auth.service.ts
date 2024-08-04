@@ -22,10 +22,13 @@ class AuthService {
             const urlRequestNextServer = "v1/api/auth/next-logout";
             const options = { baseUrl: "" };
             try {
-                  await Http.post<ResponseApi<MessageResponse>>(urlRequestBackEnd, { force: true }, {});
-            } catch {
-
+                  const a = await Http.post<ResponseApi<MessageResponse>>(urlRequestBackEnd, { force: true }, {});
                   await Http.post<ResponseApi<MessageResponse>>(urlRequestNextServer, object, options);
+
+                  if (typeof window !== "undefined") {
+                        return (window.location.href = "/login");
+                  } 
+            } catch (e) {
                   if (typeof window !== "undefined") {
                         return (window.location.href = "/login?token_expire=true");
                   }
@@ -33,7 +36,7 @@ class AuthService {
 
             removeValueLocalStorage("expireToken");
             removeValueLocalStorage("code_verify_token");
-           
+
             return null;
       }
 
@@ -59,11 +62,11 @@ class AuthService {
                   refresh_token,
                   client_id,
                   expireToken,
-                  code_verify_token,expireCookie
+                  code_verify_token,
+                  expireCookie,
             };
 
             const syncToken = await Http.post<TokenNextSync>("/v1/api/auth/set-token", body, { baseUrl: "", signal });
-
 
             return syncToken;
       }
@@ -92,8 +95,7 @@ class AuthService {
             code_verify_token: string;
             client_id: string;
             expireToken: string;
-            expireCookie: string
-
+            expireCookie: string;
       }) {
             const bodySyncTokenAPI = {
                   access_token,
@@ -101,7 +103,7 @@ class AuthService {
                   client_id,
                   code_verify_token,
                   expireToken,
-                  expireCookie
+                  expireCookie,
             };
 
             const urlRequest = process.env.NEXT_PUBLIC_MODE === "DEV" ? "http://localhost:3000" : process.env.CLIENT_URL;
@@ -114,7 +116,6 @@ class AuthService {
 
             setValueLocalStorage("code_verify_token", code_verify_token);
             setValueLocalStorage("expireCookie", expireCookie);
-
       }
 
       static async tokenExpireRedrict(options: CustomRequest) {
