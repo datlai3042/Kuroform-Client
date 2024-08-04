@@ -6,18 +6,19 @@ import { LogOutIcon } from "lucide-react";
 import React from "react";
 
 export interface ButtonCustomProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	textContent?: string;
+      textContent?: string;
 }
 
 const ButtonLogOut = (props: ButtonCustomProps) => {
+      const { textContent = "Đăng xuất", ...buttonProps } = props;
+      const logoutAPI = useLogout();
 
-const {textContent = 'Đăng xuất', ...buttonProps} = props
-      const logoutAPI = useLogout()
-
-    return   <button {...buttonProps} onClick={() => logoutAPI.mutate()}>
-          <LogOutIcon size={18} />
-{textContent}
-    </button>
+      return (
+            <button {...buttonProps} onClick={() => logoutAPI.mutate()}>
+                  <LogOutIcon size={18} />
+                  {textContent}
+            </button>
+      );
 };
 
 export default ButtonLogOut;
