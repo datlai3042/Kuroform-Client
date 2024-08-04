@@ -23,14 +23,17 @@ class AuthService {
             const options = { baseUrl: "" };
             try {
                   await Http.post<ResponseApi<MessageResponse>>(urlRequestBackEnd, { force: true }, {});
-            } catch {}
-            await Http.post<ResponseApi<MessageResponse>>(urlRequestNextServer, object, options);
+            } catch {
+
+                  await Http.post<ResponseApi<MessageResponse>>(urlRequestNextServer, object, options);
+                  if (typeof window !== "undefined") {
+                        return (window.location.href = "/login?token_expire=true");
+                  }
+            }
 
             removeValueLocalStorage("expireToken");
             removeValueLocalStorage("code_verify_token");
-            if (typeof window !== "undefined") {
-                  return (window.location.href = "/login?token_expire=true");
-            }
+           
             return null;
       }
 
