@@ -24,19 +24,20 @@ class AuthService {
             try {
                   const a = await Http.post<ResponseApi<MessageResponse>>(urlRequestBackEnd, { force: true }, {});
                   await Http.post<ResponseApi<MessageResponse>>(urlRequestNextServer, object, options);
-
+                  
                   if (typeof window !== "undefined") {
                         return (window.location.href = "/login");
                   } 
             } catch (e) {
+                  await Http.post<ResponseApi<MessageResponse>>(urlRequestNextServer, object, options);
                   if (typeof window !== "undefined") {
-                        return (window.location.href = "/login?token_expire=true");
+                        removeValueLocalStorage("expireToken");
+                        removeValueLocalStorage("code_verify_token");
+            
+                        return window.location.href = "/login?token_expire=true"
                   }
             }
-
-            removeValueLocalStorage("expireToken");
-            removeValueLocalStorage("code_verify_token");
-
+         
             return null;
       }
 
@@ -77,7 +78,7 @@ class AuthService {
             };
 
             const urlRequest = process.env.NEXT_PUBLIC_MODE === "DEV" ? "http://localhost:4000" : process.env.BACK_END_URL;
-
+console.log('mai')
             const callRefreshToken: ResponseApi<ResponseAuth> = await Http.get<ResponseApi<ResponseAuth>>(`/v1/api/auth/refresh-token`, undefined);
             return callRefreshToken;
       }

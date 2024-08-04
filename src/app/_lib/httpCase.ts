@@ -1,4 +1,6 @@
+import { CustomRequest, Method } from "@/type";
 import { redirect } from "next/navigation";
+import { ResponseApi, ResponseAuth } from "../_schema/api/response.shema";
 import AuthService from "../_services/auth.service";
 import {
       AUTHORIZATION_ERROR_STATUS,
@@ -9,14 +11,12 @@ import {
       NotFoundError,
       PERMISSION_ERROR_STATUS,
 } from "./httpError";
-import { CustomRequest, Method } from "@/type";
+import { addOneToastError } from "./redux/toast.slice";
 import { removeValueLocalStorage } from "./utils";
-import { ResponseApi, ResponseAuth } from "../_schema/api/response.shema";
-import { addOneToastError, addOneToastSuccess, addOneToastWarning } from "./redux/toast.slice";
 
 import { v4 as uuidv4 } from "uuid";
+import { fetchStatusCode } from "./redux/renderBaseOnApi";
 import store from "./redux/store";
-import { RenderBaseOnApi, fetchStatusCode } from "./redux/renderBaseOnApi";
 
 type RetryAPI = RequestInit;
 
@@ -94,7 +94,14 @@ export const nextClient401 = async <Response>(fullUrl: string, options: RetryAPI
             const { access_token, code_verify_token, refresh_token } = res.metadata.token;
             const { client_id, expireToken, expireCookie } = res.metadata;
 
-            const params = { access_token, code_verify_token, refresh_token, client_id, expireToken: JSON.stringify(expireToken), expireCookie: JSON.stringify(expireCookie)};
+            const params = {
+                  access_token,
+                  code_verify_token,
+                  refresh_token,
+                  client_id,
+                  expireToken: JSON.stringify(expireToken),
+                  expireCookie: JSON.stringify(expireCookie),
+            };
             await AuthService.syncNextToken(params);
             const call_again = await fetch(fullUrl, options);
 
@@ -115,6 +122,7 @@ export const nextClient403 = async (url: string) => {
                   removeValueLocalStorage("expireToken");
                   removeValueLocalStorage("code_verify_token");
                   window.location.href = "/login";
+                  
             }
       } else {
             await AuthService.logoutNextClient();
