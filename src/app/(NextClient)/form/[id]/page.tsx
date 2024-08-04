@@ -57,18 +57,7 @@ const FormPage = async ({ params }: { params: { id: string } }) => {
                   </div>
             );
 
-      const styleEffect = {
-            onCheckModeAvatar: (mode: FormCore.FormAvatarMode) => {
-                  if (mode === "circle") return "rounded-full";
-                  return "";
-            },
-
-            onCheckPositionAvatar: (position: FormCore.FormAvatarPosition) => {
-                  if (position === "left") return "left-[calc(25%-6.4rem)] ";
-                  if (position === "center") return "left-[50%] translate-x-[-50%]";
-                  return "right-[calc(25%-6.4rem)]";
-            },
-      };
+    
 
             const formColor = formCore.form_color ||  "#f2f2f2" 
 

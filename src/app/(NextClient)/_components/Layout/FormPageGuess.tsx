@@ -30,32 +30,13 @@ const generateInputAnswer = (Inputs: InputCore.InputForm[], formCore: FormCore.F
 
 const FormPageGuess = (props: TProps) => {
 	const { FormCore } = props;
-	const {
-		formAnswer: { inputFormData, inputFormErrors, inputFormRequire },
-		setFormAnswer,
-	} = useContext(FormAnswerContext);
+	
 
-	const [page, setPage] = useState<number>(1);
 
-	const colorMain = FormCore.form_title.form_title_color || FormCore.form_setting_default.form_title_color_default;
+	
 
-	const renderInputAnswer = useMemo(() => generateInputAnswer(FormCore.form_inputs, FormCore), [FormCore]);
-	const formBackgroundImageUrl =
-		FormCore.form_background?.form_background_iamge_url ||
-		FormCore.form_setting_default.form_background_default_url;
-	const formBackgroundPosition = FormCore.form_background?.position;
+	
 
-	const modeAvatar = FormCore.form_avatar?.mode_shape || FormCore.form_setting_default.form_avatar_default_mode;
-	const positionAvatar = FormCore.form_avatar?.position || FormCore.form_setting_default.form_avatar_default_postion;
-
-	const numberInputAPage = 3;
-	const allInputAnswer = useMemo(
-		() => generateInputAnswer(FormCore.form_inputs, FormCore),
-		[FormCore]
-	) as React.ReactNode[];
-	const totalPage = Math.ceil(allInputAnswer.length / numberInputAPage);
-
-	const generateInputWithPage = { start: numberInputAPage * (page - 1), end: numberInputAPage * page };
 
 	const styleEffect = {
 		formMarginTop: (check: boolean) => {
@@ -74,38 +55,12 @@ const FormPageGuess = (props: TProps) => {
 		},
 	};
 
-	const handleSubmit = () => {
-		const checkRequire = inputFormRequire.every((ip) => ip.checkRequire);
-		if (checkRequire && inputFormErrors.length === 0) {
-			const answers = inputFormData.map((ip) => {
-				if (ip.setting) delete ip.setting;
-				return ip;
-			});
+	
+	const formColor = FormCore.form_color ||  "#f2f2f2" 
 
-			const payload = {
-				form_id: FormCore._id,
-				form_owner: FormCore.form_owner,
-				answers,
-			};
-
-			setFormAnswer((prev) => ({ ...prev, submitState: "pending" }));
-
-			return
-		}
-
-		let inputErrorArray: FormCore.FormAnswer.InputFormError[] = [];
-		inputErrorArray = checkErrorFinal(inputErrorArray, inputFormErrors, inputFormData);
-		if (inputErrorArray.length > 0) {
-			setFormAnswer((prev) => ({ ...prev, inputFormErrors: inputErrorArray, openModelError: true }));
-		}
-	};
-
-	const checkMode: FormCore.FormTitle["form_title_mode_image"] = "Slider";
-
-	let flag = false;
 
 	return (
-		<div className="px-[2rem] xl:px-0 min-h-screen h-max flex justify-center  p-[2rem] bg-formCoreBgColor  ">
+		<div style={{backgroundColor: formColor}} className="px-[2rem] xl:px-0 min-h-screen h-max flex justify-center  p-[2rem]   ">
 			<DivNative className="w-full sm:w-[66.8rem] flex flex-col gap-[4rem] ">
 				<DivNative className="relative w-full min-h-[20rem] aspect-[3.01/1]">
 					<FormAnswerHeader formCore={FormCore} />
