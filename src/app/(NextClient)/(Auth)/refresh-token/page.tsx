@@ -42,7 +42,7 @@ const RefreshTokenPage = () => {
                               router.replace("/dashboard");
                               router.refresh();
                         }, 1000);
-                  });
+                  }).catch(() => AuthService.logoutNextClient());
                   return;
             } else {
                   setError(true);
