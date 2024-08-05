@@ -54,7 +54,6 @@ const RefreshTokenPage = () => {
       }, [code_verify_token_sv, pathName, router]);
 
       if (error) {
-            window.location.reload()
             return <LayoutTokenFailure message="Yêu cầu không hợp lệ, vui lòng quay về giao diện đăng nhập" />;
       }
       return <LayoutRequestLoading message="Server đang xác thực lại một số thông tin" />;
