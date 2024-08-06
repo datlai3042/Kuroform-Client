@@ -30,7 +30,6 @@ const AppProvider = (props: TProps) => {
       useEffect(() => {
             if (!isLoading) {
                         setIsLoading(true);
-                        setTheme("dark");
             }
       }, [isLoading]);
 
