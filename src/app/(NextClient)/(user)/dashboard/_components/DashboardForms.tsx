@@ -50,7 +50,7 @@ const DashboardForms = () => {
                   )}
 
                   {getFormPagination.isSuccess && getFormPagination.data.metadata.forms.length === 0 && (
-                        <div className="w-full h-full flex items-center justify-center  xl:px-[2rem] ">
+                        <div className="w-full h-full flex items-center justify-center   ">
                               <FormEmpty />
                         </div>
                   )}

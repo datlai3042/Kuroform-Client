@@ -12,14 +12,15 @@ const FormEmpty = (props: TProps) => {
 	return (
 		<div style={{ gap }} className="mt-[4rem] bg-[#fff] rounded-lg w-full h-full min-h-[40rem] flex flex-col items-center justify-center">
 			<Image
-				src={"/assets/images/icon/form/empty.png"}
+                        src={"/assets/images/icon/form_answer/form_empty_response.png"}
+
 				width={18}
 				height={18}
 				alt="icon"
 				className="w-[24rem] h-[24rem]"
 				unoptimized={true}
 			/>
-			<div className="text-[4rem] text-text-theme">{content}</div>
+			<div className="text-[4rem] text-color-main">{content}</div>
 		</div>
 	);
 };

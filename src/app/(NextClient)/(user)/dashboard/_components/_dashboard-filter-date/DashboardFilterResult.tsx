@@ -77,7 +77,7 @@ const DashboardFilterResult = (props: TProps) => {
                                           {i + 1}
                                     </button>
                               ))}
-                              <div className="text-text-theme w-full flex xl:justify-end items-center text-[1.3rem] xl:text-[1.4rem]">Không có dữ liệu</div>
+                              <div className="text-text-theme w-full flex xl:justify-end items-center text-[1.3rem] xl:text-[1.4rem]">Không có form nào được tạo</div>
                         </div>
                   )}
 

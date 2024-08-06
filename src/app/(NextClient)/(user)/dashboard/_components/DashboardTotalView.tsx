@@ -6,6 +6,7 @@ import { calcPercentForm } from "@/app/utils/form.utils";
 import Image from "next/image";
 import React from "react";
 import { useSelector } from "react-redux";
+import FormEmpty from "./FormEmpty";
 
 const DashboardTotalView = () => {
       const data = useGetFormTotalView();
@@ -37,7 +38,20 @@ const DashboardTotalView = () => {
                         </p>
                   </div>
 
-                  <PieChart dataChart={dataChart} />
+                  {total_views === -1 && total_answer === -1 ? (
+                        <div className="w-[15rem] h-[15rem] rounded-xl animate-pulse bg-gray-200"></div>
+                  ) : total_views === 0 && total_answer === 0 ? (
+                        <Image
+                              src={"/assets/images/icon/form_answer/form_empty_response.png"}
+                              width={18}
+                              height={18}
+                              alt="icon"
+                              className="w-[14rem] h-[14rem]"
+                              unoptimized={true}
+                        />
+                  ) : (
+                        <PieChart dataChart={dataChart} />
+                  )}
             </div>
       );
 };

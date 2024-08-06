@@ -15,8 +15,8 @@ type InitialState = {
 
 const initialState: InitialState = {
       formAnswerStore: {},
-      form_total_views: 0,
-      form_total_answers: 0,
+      form_total_views: -1,
+      form_total_answers: -1,
 };
 
 const formAnswerSlice = createSlice({
