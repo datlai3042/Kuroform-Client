@@ -36,15 +36,15 @@ const DashBoardRight = () => {
                                           <ButtonDarkMode />
                                     </div>
                               </div>
-                              <div className="flex flex-wrap items-center justify-center gap-[2rem] xl:gap-0 h-max xl:h-[38rem]">
-                                    <div className="flex justify-center items-center order-1 w-[40%] xl:w-[20%] h-full flex-col gap-[4rem]">
+                              <div className="flex flex-wrap items-center justify-center gap-[2rem] xl:gap-0 h-max xl:h-[34rem]">
+                                    <div className="flex  items-center order-1 w-[40%] xl:w-[20%] h-full flex-col gap-[4rem]">
                                           <Image
                                                 src={"/assets/images/icon/form/create_form.png"}
                                                 width={20}
                                                 height={20}
                                                 alt="avatar"
                                                 unoptimized={true}
-                                                className="w-[12rem] h-[12rem] rounded-full"
+                                                className="mt-[4rem] w-[12rem] h-[12rem] rounded-full"
                                           />
                                           <ButtonCreateForm
                                                 textContent="Tạo Form"
