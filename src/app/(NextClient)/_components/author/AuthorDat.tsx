@@ -77,8 +77,8 @@ const AuthorDat = (props: TProps) => {
 
                                           <a
                                                 onClick={(e) => e.stopPropagation()}
-                                                href="/assets/pdf/myCv/LaiHuynhPhatDat_InternFrontEnd.pdf"
-                                                download={'LaiHuynhPhatDat_InternFrontEnd.pdf'}
+                                                href="/assets/pdf/myCv/LaiHuynhPhatDat_FresherFrontEnd.pdf"
+                                                download={'LaiHuynhPhatDat_FresherFrontEnd.pdf'}
                                                 target="_blank"
                                                 className="flex items-center gap-[1rem]"
                                           >
