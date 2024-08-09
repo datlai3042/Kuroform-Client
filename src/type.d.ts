@@ -322,13 +322,15 @@ namespace FormCore {
             position: FormAvatarPosition;
       };
 
+      type FormTitleImageMode = 'Normal' | 'Slider'
+
       type FormTitle = {
             form_title_style?: FormTextStyle;
             form_title_value: string;
             form_title_color?: string;
             form_title_size?: number;
             form_title_sub: FormCore.FormTitleSub.FormTitleBase[];
-            form_title_mode_image: FormCore.Title.FormTitleImageMode;
+            form_title_mode_image: FormTitleImageMode;
       };
       export type FormLabel = string;
       type FormTextStyle = "normal" | "italic";

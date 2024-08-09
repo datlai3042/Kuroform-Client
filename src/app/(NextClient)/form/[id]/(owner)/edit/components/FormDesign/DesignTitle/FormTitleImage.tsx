@@ -1,20 +1,24 @@
 "use client";
 import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 
+import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpinner";
+import { FormText } from "@/app/_constant/formUi.constant";
 import { RootState } from "@/app/_lib/redux/store";
 import FormService, { UploadFileTitle } from "@/app/_services/form.service";
-import { FormCore, User } from "@/type";
+import useUpdateForm from "@/app/hooks/useUpdateForm";
+import { FormCore } from "@/type";
 import { UniqueIdentifier } from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { useMutation } from "@tanstack/react-query";
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpinner";
-import { FormText } from "@/app/_constant/formUi.constant";
-import useUpdateForm from "@/app/hooks/useUpdateForm";
+import ModelShowImage from "@/app/(NextClient)/_components/Model/ModelShowImage";
+import { superValidateImage } from "@/app/(NextClient)/form/[id]/_components/InputAnswer/_validate/inputImage.validate";
+import { addOneToastError } from "@/app/_lib/redux/toast.slice";
+import { v4 } from "uuid";
 
 type TProps = {
       subTitleItem: FormCore.FormTitleSub.Image.Core;
@@ -30,6 +34,8 @@ const FormTitleImage = (props: TProps) => {
 
       const inputAvatar = useRef<HTMLInputElement | null>(null);
       const dispatch = useDispatch();
+
+      const [showImageModel, setShowImageModel] = useState<boolean>(false);
 
       const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
             id: subTitleItem._id as UniqueIdentifier,
@@ -49,6 +55,12 @@ const FormTitleImage = (props: TProps) => {
 
       const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
             if (e.target && e.target.files) {
+                  const file = e.target.files[0];
+                  const { _check, message } = superValidateImage({ file, sizeAllowOptions: 3 });
+                  if (!_check) {
+                        return dispatch(addOneToastError({ toast_item: { _id: v4(), type: "ERROR", core: { message }, toast_title: "Lỗi File Upload" } }));
+                  }
+
                   const formData: UploadFileTitle = new FormData();
                   formData.append("file", e.target.files[0]);
                   formData.append("titleSubId", subTitleItem._id);
@@ -75,10 +87,10 @@ const FormTitleImage = (props: TProps) => {
             updateFormAPI.mutate(newForm);
       };
 
-      const widthPage = page === "Edit" ? "w-[20rem] sm:w-[51rem] xl:w-[70rem] " : "w-full xl:w-[62rem]  items-center";
+      const widthPage = page === "Edit" ? "w-[20rem] sm:w-[51rem] xl:w-[50rem] " : "w-full xl:w-[62rem]  items-center";
 
-      const heightWithModeNormal = mode === "Normal" ? (page === "Edit" ? "h-[40rem] w-full" : "  w-full") : "";
-      const heightWithModeSlider = mode === "Slider" ? (page === "Edit" ? "w-full xl:w-[70%]" : "h-[30rem] w-[90%]") : "";
+      const heightWithModeNormal = mode === "Normal" ? (page === "Edit" ? "max-h-[40rem] w-full" : "  w-full") : "";
+      const heightWithModeSlider = mode === "Slider" ? (page === "Edit" ? "w-full xl:w-[70%] h-[30rem]" : "h-[30rem] w-[70%]") : "";
 
       const colorMain = formCore.form_title.form_title_color || formCore.form_setting_default.form_title_color_default;
 
@@ -108,9 +120,17 @@ const FormTitleImage = (props: TProps) => {
                   </div>
             );
 
+      const checkModeImage = formCore.form_title.form_title_mode_image === "Normal" ? "!w-[30rem]" : "w-full";
+      const imageList = formCore.form_title.form_title_sub.reduce<string[]>((acc, total) => {
+            if (total.type === "Image" && !!total?.core?.url) {
+                  acc.push(total?.core?.url);
+                  return acc;
+            }
+            return acc;
+      }, []);
       return (
             <div
-                  className={`${widthPage}   flex flex-col   gap-[.5rem]   outline-none rounded-lg `}
+                  className={`${widthPage} ${checkModeImage}  flex flex-col   gap-[.5rem]   outline-none rounded-lg `}
                   ref={setNodeRef}
                   {...attributes}
                   {...listeners}
@@ -127,8 +147,9 @@ const FormTitleImage = (props: TProps) => {
                         </button>
                   )}
                   {subTitleItem?.core?.url && (
-                        <div className={` flex justify-center  w-full `}>
+                        <div className={`w-full h-[30rem] flex justify-center   `}>
                               <Image
+                                    onClick={() => setShowImageModel(true)}
                                     // style={{ backgroundColor: colorMain }}
                                     width={100}
                                     height={100}
@@ -136,10 +157,12 @@ const FormTitleImage = (props: TProps) => {
                                     unoptimized
                                     alt="avatar title"
                                     src={subTitleItem.core.url}
-                                    className={`${className} ${heightWithModeNormal}  ${heightWithModeSlider} object-contain	  object-center rounded-lg`}
+                                    className={`${className} ${heightWithModeNormal}  ${heightWithModeSlider} 	  object-center rounded-lg`}
                               />
                         </div>
                   )}
+
+                  {showImageModel && <ModelShowImage imageActive={subTitleItem.core.url} imagesUrl={imageList} setOpenModel={setShowImageModel} />}
             </div>
       );
 };

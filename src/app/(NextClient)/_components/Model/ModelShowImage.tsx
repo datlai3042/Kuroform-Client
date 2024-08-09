@@ -26,12 +26,19 @@ const ModelShowImage = (props: TProps) => {
       }, []);
 
       return (
-		  <Portal>
-					  <div className="animate-modeScreen transition-[scale] duration-300 fixed inset-0 min-h-screen  flex items-center justify-center pt-[4rem] bg-[rgba(0,0,0,.87)] z-[1000] hover:cursor-pointer">
+            <Portal>
+                  <div className="animate-modeScreen transition-[scale] duration-300 fixed inset-0 min-h-screen  flex items-center justify-center pt-[4rem] bg-[rgba(0,0,0,.87)] z-[1000] hover:cursor-pointer">
                         <ClickOutSide setOpenModel={setOpenModel} width="w-max" height="h-[60rem]">
                               <div className="w-full  xl:h-[60rem]  flex flex-col items-center gap-[5rem] ">
                                     <div className="w-[35rem] h-[35rem] xl:w-[45rem] min-h-[70%] max-h-[70%]">
-                                          <Image src={imageShow} width={400} height={400} alt="image form" className="w-full h-full" unoptimized={false} />
+                                          <Image
+                                                src={imageShow}
+                                                width={400}
+                                                height={400}
+                                                alt="image form"
+                                                className="w-full h-full bg-[#ccc]"
+                                                unoptimized={false}
+                                          />
                                     </div>
                                     <div className="  flex gap-[4rem] max-w-[30rem] xl:max-w-[80rem] pb-[2rem] mx-auto overflow-x-scroll scroll-images">
                                           {imagesUrl.map((img) => (
@@ -44,8 +51,8 @@ const ModelShowImage = (props: TProps) => {
                                                             className={`${
                                                                   img === imageShow
                                                                         ? "z-[2] border-[.4rem] border-color-main"
-                                                                        : "border-[.4rem] border-transparent group-hover:border-color-main"
-                                                            } group-hover:z-[2] absolute inset-0 w-full h-full transition-all duration-500`}
+                                                                        : "border-[.4rem] border-[#ccc] group-hover:border-color-main"
+                                                            } group-hover:z-[2] absolute inset-0 w-full h-full transition-all duration-500 bg-[#ccc]`}
                                                             onClick={() => setImageShow(img)}
                                                       />
 
@@ -55,8 +62,8 @@ const ModelShowImage = (props: TProps) => {
                                     </div>
                               </div>
                         </ClickOutSide>
-            </div>
-                  </Portal>
+                  </div>
+            </Portal>
       );
 };
 

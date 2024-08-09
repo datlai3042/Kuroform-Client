@@ -1,17 +1,15 @@
 "use client";
-import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
-import React, { useEffect, useRef } from "react";
-import FormAnswerHeader from "./FormAnswerHeader";
-import FormAnswerProvider from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
-import RenderInputAnswers from "./RenderInputAnswers";
 import AuthorDat from "@/app/(NextClient)/_components/author/AuthorDat";
-import { FormCore } from "@/type";
-import useIncreaseFormViews from "@/app/hooks/form-answer/useIncreaseFormAnswer";
+import FormAnswerProvider from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
+import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import { timerIncreaseViews } from "@/app/_constant/form.answers.contranst";
-import { clear } from "console";
-import InputChecked from "@/app/(NextClient)/_components/ui/input/InputChecked";
-import { useDispatch } from "react-redux";
 import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
+import useIncreaseFormViews from "@/app/hooks/form-answer/useIncreaseFormAnswer";
+import { FormCore } from "@/type";
+import { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import FormAnswerHeader from "./FormAnswerHeader";
+import RenderInputAnswers from "./RenderInputAnswers";
 type TProps = {
       formCore: FormCore.Form;
       form_answer_id: string;
@@ -23,7 +21,7 @@ const FormAnswerCore = (props: TProps) => {
       const timer = useRef<NodeJS.Timeout | null>(null);
       const increaseViews = useIncreaseFormViews();
 
-      const dispatch = useDispatch()
+      const dispatch = useDispatch();
 
       useEffect(() => {
             timer.current = setTimeout(() => {
@@ -40,9 +38,8 @@ const FormAnswerCore = (props: TProps) => {
       }, []);
 
       useEffect(() => {
-      
-            dispatch(onFetchForm({form:formCore}))
-      }, [formCore])
+            dispatch(onFetchForm({ form: formCore }));
+      }, [formCore]);
 
       return (
             <DivNative className="w-full sm:w-[72rem] flex flex-col gap-[1rem] ">

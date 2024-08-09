@@ -1,18 +1,8 @@
 // "use client";
 import FormService from "@/app/_services/form.service";
-import React, { cache } from "react";
-import Image from "next/image";
-import { FormCore } from "@/type";
-import RenderInputAnswers from "./_components/RenderInputAnswers";
 import { Metadata } from "next";
-import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
-import FormAnswerProvider from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
-import StatusCodeResponse from "@/app/(NextClient)/_components/_StatusCodeComponent/StatusCodeResponse";
+import { cache } from "react";
 import NotFoundPage from "../../_components/_StatusCodeComponent/NotFoundPage";
-import FormAnswerHeader from "./_components/FormAnswerHeader";
-import { stringToSlug } from "@/app/_lib/utils";
-import FormAnswerEmpty from "./_components/InputAnswer/FormAnswerEmpty";
-import AuthorDat from "../../_components/author/AuthorDat";
 import FormAnswerCore from "./_components/FormAnswerCore";
 
 const getFormCache = cache(FormService.getFormGuess);
@@ -57,15 +47,10 @@ const FormPage = async ({ params }: { params: { id: string } }) => {
                   </div>
             );
 
-    
-
-            const formColor = formCore.form_color ||  "#f2f2f2" 
+      const formColor = formCore.form_color || "#f2f2f2";
 
       return (
-            <div
-                  style={{ backgroundColor: formColor }}
-                  className="px-[2rem] xl:px-0 w-full  min-h-screen h-max flex justify-center  p-[2rem_2rem_4rem_2rem]  "
-            >
+            <div style={{ backgroundColor: formColor }} className="px-[2rem] xl:px-0 w-full  min-h-screen h-max flex justify-center  p-[2rem_2rem_4rem_2rem]  ">
                   {/* {formCore.form_inputs.length === 0 && !formCore.form_title.form_title_value && <FormAnswerEmpty />} */}
                   {/* {(formCore.form_inputs.length > 0 || formCore.form_title.form_title_value) && ( */}
                   <FormAnswerCore formCore={formCore} form_answer_id={form_answer_id} />

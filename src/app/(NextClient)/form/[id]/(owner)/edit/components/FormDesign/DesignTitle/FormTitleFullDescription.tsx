@@ -91,7 +91,7 @@ const FormTitleFullDescription = (props: TProps) => {
                         Xóa
                   </button>
                   <div
-                        className="border-none py-[.4rem] outline-none xl:max-w-[80rem] break-all leading-8 text-slate-700 font-semibold"
+                        className="border-none py-[.4rem] outline-none xl:max-w-[80rem] break-all leading-8  font-semibold"
                         contentEditable={setTitleSubDescription.isPending ? false : true}
                         onKeyDown={onKeyEnter}
                         onBlur={(e) => onSetValue(e, "Header")}

@@ -41,13 +41,13 @@ const FormTitleModeImage = () => {
       return (
             <ClickOutSide setOpenModel={setOpenModel}>
                   <div
-                        className="cursor-pointer relative w-[30rem] min-h-[4rem]  px-[2rem] flex items-center btn-primarily rounded-lg text-[#fff]"
+                        className="cursor-pointer relative w-[22rem] min-h-[4rem]  px-[2rem] flex items-center btn-primarily rounded-lg text-[#fff]"
                         onClick={() => setOpenModel((prev) => !prev)}
                   >
                         <span>{FormText.title.optionImageMode.label}</span>
                         {openModel && (
                               <ul
-                                    className="absolute bottom-[-1rem] w-full rounded-lg translate-y-[100%] left-0 z-[50] flex flex-col  bg-color-section-theme text-text-theme border-[.1rem] border-slate-300"
+                                    className="absolute  bottom-[-1rem] w-full rounded-lg translate-y-[100%] left-0 z-[50] flex flex-col  bg-[#fff] text-[#000] border-[.1rem] border-slate-300"
                                     onClick={(e) => e.stopPropagation()}
                               >
                                     <li

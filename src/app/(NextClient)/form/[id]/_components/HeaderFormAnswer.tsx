@@ -49,7 +49,7 @@ const HeaderFormAnswer = (props: TProps) => {
                         </h1>
 
                         {formCore.form_title.form_title_sub.length > 0 && (
-                              <div className="pt-[2rem] border-t-[.1rem] border-gray-200 flex flex-col gap-[2rem]">
+                              <div className="pt-[2rem] border-t-[.1rem] border-gray-200 flex flex-wrap gap-[2rem]">
                                     {formCore.form_title.form_title_sub.map((ft) => {
                                           if (ft.type === "Text" && ft?.core?.value)
                                                 return (
@@ -59,7 +59,11 @@ const HeaderFormAnswer = (props: TProps) => {
                                                 );
                                           if (ft.type === "Image") {
                                                 if (formCore.form_title.form_title_mode_image !== checkMode) {
-                                                      return <FormTitleImage mode="Normal" page={"Answer"} subTitleItem={ft} key={ft._id} />;
+                                                      return (
+                                                            <div className="w-full xl:w-[45%] flex gap-[2rem]" key={ft._id}>
+                                                                  <FormTitleImage mode="Normal" page={"Answer"} subTitleItem={ft} key={ft._id} />
+                                                            </div>
+                                                      );
                                                 }
 
                                                 if (formCore.form_title.form_title_mode_image === "Slider" && !flag) {
