@@ -77,7 +77,7 @@ const RegisterForm = (props: TProps) => {
                               <ButtonLoginGithub />
                         </div>
                   </div>
-                  <form className="w-[85%] xl:w-full flex flex-col justify-center  gap-[2rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
+                  <form className="w-full flex flex-col justify-center  gap-[2rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
                         <Input<RegisterType>
                               FieldKey="first_name"
                               placeholder="Nhập họ của bạn"

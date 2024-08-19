@@ -29,7 +29,7 @@ const LoginPage = () => {
       }, []);
 
       return (
-            <div className=" p-[16px]  ">
+            <div className=" flex justify-center  ">
                   <LoginForm />
             </div>
       );
