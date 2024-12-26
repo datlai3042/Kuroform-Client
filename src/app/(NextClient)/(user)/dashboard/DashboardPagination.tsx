@@ -50,13 +50,13 @@ const DashboardPagination = (props: TProps) => {
       }, [total_page]);
 
       return (
-            <div className="pr-[2rem] text-text-theme flex flex-col xl:flex-row items-center justify-center gap-[2rem] xl:gap-0 h-[4rem] w-full">
+            <div className=" text-text-theme flex flex-col xl:flex-row items-center justify-center gap-[1rem] xl:gap-0 h-[4rem] w-full">
                   <div className=" flex w-full justify-center gap-[2rem] relative">
                         {pageRender.map((pageItem) => (
                               <button
                                     key={pageItem}
                                     onClick={() => onChangePage(pageItem)}
-                                    className={`${onStylePageCurrent(pageItem)} w-[3rem] aspect-square rounded-full flex justify-center items-center`}
+                                    className={`${onStylePageCurrent(pageItem)} min-w-[2rem] aspect-square rounded-full flex justify-center items-center`}
                               >
                                     <span>{pageItem}</span>
                               </button>

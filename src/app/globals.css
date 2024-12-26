@@ -38,7 +38,7 @@
 
             --color-gap-empty: #f1f4fb;
             --color-main: #6262e5;
-            --color-section-theme: #fff;
+            --color-section-theme: #111111;
             --text-theme: #000;
             --color-main-hover: rgb(229 231 235);
             --border-color: hwb(0 10% 88% / 0.189);
@@ -62,11 +62,13 @@
             --bg-form-nav: #fff;
             --color-gap-empty: #eef1f9;
             --color-main: #3b36db;
-            --color-section-theme: #fff;
+            --color-section-theme: #fefdff;
             --text-theme: #000;
             --border-color: hwb(0 10% 88% / 0.189);
             --bg-model: #eef1f9;
             --color-main-hover: rgb(229 231 235);
+            --border-form-item: #e8e8e8;
+            --bg-space: #f6f6f6
             /* --color-btn-primarily: #2d68ff;ư */
       }
 
@@ -74,12 +76,14 @@
             --bg-form-nav: #393c73;
             --color-gap-empty: #000;
             --color-main: #3b36db;
-            --color-section-theme: #0f1623;
+            --color-section-theme: #111111;
             --text-theme: #ccc;
             --color-main-hover: rgb(229 231 235);
             --border-color: #14113c;
             --bg-model: #0f1623;
             --color-btn-primarily: rgb(37, 104, 170);
+            --border-form-item: transparent;
+            --bg-space: #252525;
       }
 
       body {
@@ -194,12 +198,11 @@
       }
 
       .scroll-color-main::-webkit-scrollbar {
-            padding: 0px;
-            width: 0.2rem;
+            width: 1rem;
+            height: 4rem;
       }
       .scroll-color-main::-webkit-scrollbar-thumb {
             background: var(--color-main);
-            border-radius: 0.2rem;
             /* border-radius: 10px; */
       }
 

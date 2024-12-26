@@ -26,7 +26,7 @@ const InputOptionMultipleAnswer = (props: TProps) => {
       const { inputItem, formCore } = props;
 
       const {
-            formAnswer: { inputFormErrors, inputFormData, submitState },
+            formAnswer: { inputFormErrors, inputFormData, submitState, inputFormRequire },
             setFormAnswer,
       } = useContext(FormAnswerContext);
 
@@ -41,6 +41,8 @@ const InputOptionMultipleAnswer = (props: TProps) => {
       });
 
       const onSelect = (op: InputCore.InputOptionMultiple.Options) => {
+            deleteErrorGlobal(setFormAnswer, inputItem._id!);
+
             if (inputItem.core.setting.require) {
                   if (choose.value.map((op) => op.option_id).includes(op.option_id)) {
                         setInputRequireGlobal(setFormAnswer, inputItem._id!, false);

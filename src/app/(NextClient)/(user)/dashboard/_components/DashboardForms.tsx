@@ -16,8 +16,8 @@ const DashboardForms = () => {
       const getFormPagination = useGetFormPagination({ page, limit: LIMIT_PAGINATION_FORM });
 
       return (
-            <DivNative className="my-[2rem]  min-h-[40rem] h-max  flex flex-col gap-[0rem] p-0 bg-color-gap-empty">
-                  <div className="flex flex-col gap-[3rem]">
+            <DivNative className=" bg-color-section-theme   min-h-[40rem]   flex flex-col gap-[0rem] p-[2rem_2rem_4rem_2rem] ">
+                  <div className="flex flex-col gap-[1rem] ">
                         <div className="flex items-center gap-[1rem]">
                               {/* <Image
                                     src={"/assets/images/home/form_controller.png"}
@@ -30,9 +30,9 @@ const DashboardForms = () => {
                               <p className="text-color-main font-bold  text-[2rem] ">Quản lí Form</p>
                         </div>
                         {!getFormPagination.isPending && getFormPagination.isSuccess && getFormPagination.data.metadata.forms.length > 0 && (
-                              <DivNative className={`flex flex-wrap justify-between gap-[2rem] pb-[2rem] text-[1.3rem]  xl:px-[2rem]`}>
+                              <DivNative className={`max-w-full flex flex-wrap justify-between gap-[2rem_1rem] pb-[2rem] text-[1.3rem] `}>
                                     {getFormPagination.data.metadata.forms.map((form, index) => (
-                                          <div className="w-full xl:w-[48%]" key={form._id}>
+                                          <div className="sm:w-full  md:w-[49%] xl:w-[32.5%]" key={form._id}>
                                                 <DashboardFormItem form={form} />
                                           </div>
                                     ))}
@@ -40,7 +40,7 @@ const DashboardForms = () => {
                         )}
                   </div>
                   {getFormPagination.isPending && (
-                        <div className="w-full min-h-[6rem] mt-[2rem]  xl:px-[2rem]">
+                        <div className="w-full min-h-[6rem] mt-[2rem] ">
                               <LoadingClient width="w-full" height="h-[50rem]" message="Đang lấy thông tin các form" />
                         </div>
                   )}

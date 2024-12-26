@@ -4,8 +4,8 @@ import DashboardTotalView from "./DashboardTotalView";
 
 const DashboardTotalWrapper = () => {
       return (
-            <div className="mt-[4rem] xl:mt-0 w-full flex flex-col  sm:flex-row justify-center  h-full gap-[6rem] text-[#fff]">
-                  <div className="sm:w-[50%] h-[22rem] xl:h-full order-1 ">
+            <div className="mt-[4rem] xl:mt-0 w-full flex flex-col  sm:flex-row justify-center  h-full  text-[#fff]">
+                  <div className=" h-[22rem] xl:h-full order-1 ">
                         <DashboardTotalForm />
                   </div>
 

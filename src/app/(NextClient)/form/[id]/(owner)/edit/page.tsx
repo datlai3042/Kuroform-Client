@@ -24,14 +24,13 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
 
       const containerStyleWhenOpenFormDesign = openFormDesign && !openSidebar && modeScreen === "NORMAL" ? "mr-[28rem]  " : "";
 
-      const containerStyleWhenOpenSideBar = openSidebar && !openFormDesign ? "w-full xl:w-[calc(100vw-28rem)]" : "";
+      const containerStyleWhenOpenSideBar = openSidebar && !openFormDesign ? "w-full " : "";
 
       const containerStyleWhenNormal = !openFormDesign && !openSidebar ? " w-full" : "";
 
-      const containerStyleWhenOver = openFormDesign && openSidebar ? "w-full xl:w-[calc(100vw-55.7rem)] " : "";
+      const containerStyleWhenOver = openFormDesign && openSidebar ? "w-[calc(100vw-50.5rem)] " : "";
 
       const formColor = formCore.form_color || 'bg-color-section-theme'
-
 
 
 

@@ -31,7 +31,7 @@ const NotificationMode = () => {
       };
 
       return (
-            <div className="flex flex-col gap-[4rem]">
+            <div className="w-full flex flex-col gap-[4rem]">
                   <div className="flex flex-wrap gap-[2rem]">
                         <button
                               onClick={() => setModeNotification("All")}

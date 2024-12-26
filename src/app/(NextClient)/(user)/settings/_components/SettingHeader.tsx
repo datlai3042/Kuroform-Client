@@ -11,7 +11,7 @@ const SettingHeader = () => {
 	const pathName = usePathname();
 
 	return (
-		<div className="w-full h-[3rem] flex items-center justify-between gap-[1rem] text-[1.3rem]  text-text-theme">
+		<div className="w-full h-[6rem] flex items-center justify-between gap-[1rem] text-[1.3rem]  text-text-theme  bg-color-section-theme">
 			<div className="flex items-center gap-[.5rem] ">
 				{!openSidebar && <ButtonIcon Icon={<ChevronsRight />} onClick={() => setOpenSidebar(true)} />}
 				<LogoHome />

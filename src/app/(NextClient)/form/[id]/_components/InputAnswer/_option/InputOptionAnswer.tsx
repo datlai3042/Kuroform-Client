@@ -49,6 +49,8 @@ const InputOptionAnswer = (props: TProps) => {
       }, []);
 
       const onSelect = (op: InputCore.InputOption.Options) => {
+            deleteErrorGlobal(setFormAnswer, inputItem._id!);
+
             if (inputItem.core.setting.require) {
                   setInputRequireGlobal(setFormAnswer, inputItem._id!, true);
             }

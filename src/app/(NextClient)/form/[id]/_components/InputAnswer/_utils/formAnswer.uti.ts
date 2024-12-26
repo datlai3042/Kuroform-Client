@@ -126,9 +126,9 @@ export const checkErrorFinal = (
       inputFormErrors: FormCore.FormAnswer.InputFormError[],
       inputFormData: FormCore.FormAnswer.InputFormData[],
 ) => {
+      console.log(inputFormErrors)
       inputFormData.map((ip) => {
             const ipError = inputFormErrors.filter((ipr) => ipr._id === ip._id && ip.setting?.require)[0];
-
             if (ipError) {
                   newArrayErrorGlobal.push(ipError);
                   return;

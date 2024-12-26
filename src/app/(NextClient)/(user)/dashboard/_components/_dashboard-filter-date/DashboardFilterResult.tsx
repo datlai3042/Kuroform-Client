@@ -31,7 +31,7 @@ const DashboardFilterResult = (props: TProps) => {
       return (
             <>
                   {data_in_month.length > 0 && (
-                        <div className="flex flex-wrap xl:justify-end gap-[.8rem] mt-[1rem] w-full h-max min-h-[18rem] xl:h-[21rem] rounded-xl text-[1.2rem]  xl:text-[1.3rem]">
+                        <div className="flex flex-wrap justify-end gap-[.4rem]  w-full h-max rounded-xl text-[1.2rem]  xl:text-[1.3rem]">
                               {data_in_month.map((data, i) => {
                                     if (data.match) {
                                           return (
@@ -39,7 +39,7 @@ const DashboardFilterResult = (props: TProps) => {
                                                       key={i}
                                                       title={`${data.forms?.length} form được đăng tải, nhấn vào để xem chi tiết`}
                                                       onClick={() => handleSelectData(data.forms!, data.date_full!.toString())}
-                                                      className={`bg-color-main text-[#fff] w-[2.6rem] h-[2.6rem] xl:w-[3rem] xl:h-[3rem] flex items-center justify-center rounded-md `}
+                                                      className={`bg-color-main text-[#fff] w-[2.4rem] h-[2.4rem] xl:w-[3rem] xl:h-[3rem] flex items-center justify-center rounded-md `}
                                                 >
                                                       {data.date_createdAt}
                                                 </button>
@@ -49,7 +49,7 @@ const DashboardFilterResult = (props: TProps) => {
                                                 <button
                                                       key={i}
                                                       title="Không có dữ liệu"
-                                                      className={`bg-slate-700 text-[#fff] w-[2.6rem] h-[2.6rem] xl:w-[3rem] xl:h-[3rem] flex items-center justify-center rounded-md `}
+                                                      className={`bg-slate-700 text-[#fff] w-[2.4rem] h-[2.4rem] xl:w-[3rem] xl:h-[3rem] flex items-center justify-center rounded-md `}
                                                 >
                                                       {data.date_createdAt}
                                                 </button>
@@ -72,7 +72,7 @@ const DashboardFilterResult = (props: TProps) => {
                                     <button
                                           key={i}
                                           title="Không có dữ liệu"
-                                          className={`bg-slate-700 text-[#fff] w-[2.6rem] h-[2.6rem] xl:w-[3rem] xl:h-[3rem] flex items-center justify-center rounded-md `}
+                                          className={`bg-slate-700 text-[#fff] w-[2.4rem] h-[2.4rem] xl:w-[3rem] xl:h-[3rem] flex items-center justify-center rounded-md `}
                                     >
                                           {i + 1}
                                     </button>

@@ -60,9 +60,9 @@ const DashboardFilterFormDate = () => {
       }, [isDate]);
 
       return (
-            <div className="w-full h-full flex flex-col xl:items-end gap-[2rem] px-[1rem] ">
+            <div className="w-full h-full flex flex-col xl:items-end gap-[1rem] xl:px-[1rem] ">
                   <button
-                        className="ml-auto w-full xl:w-[60%] p-[1rem] bg-color-main text-[#fff] rounded-lg"
+                        className="ml-auto w-max max-w-[80%] p-[1rem] bg-color-main text-[#fff] rounded-lg"
                         // onClick={handleActiveFilter}
                   >
                         Tìm kiếm dữ liệu theo ngày

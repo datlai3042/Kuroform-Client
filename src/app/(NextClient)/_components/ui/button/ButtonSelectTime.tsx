@@ -27,13 +27,13 @@ const ButtonSelectTime = (props: TProps) => {
       };
 
       return (
-            <div className=" flex xl:justify-end gap-[1rem] text-[1.2rem] xl:text-[1.4rem]">
-                  <div className="w-[7rem]">
+            <div className=" flex justify-end gap-[1rem] text-[1.2rem] xl:text-[1.4rem]">
+                  <div className="">
                         <button
                               onClick={(e) => {
                                     setOpenDateModel((prev) => !prev);
                               }}
-                              className={` bg-[#fff] text-[#000] border-text-theme border-[.1rem] h-[2.4rem] min-w-[6rem] xl:min-w-[7rem] rounded-md relative flex items-center justify-center ${buttonProps.className}`}
+                              className={` bg-[#fff] text-[#000] border-text-theme border-[.1rem] h-[2.4rem] p-[.4rem] rounded-md relative flex items-center justify-center ${buttonProps.className}`}
                         >
                               <p>Tháng {month}</p>
                               {openDateModel && (
@@ -61,7 +61,7 @@ const ButtonSelectTime = (props: TProps) => {
                               )}
                         </button>
                   </div>
-                  <div className="w-[8rem]">
+                  <div className="">
                         <ClickOutSide setOpenModel={setOpenYearModel}>
                               <button
                                     className={` bg-[#fff] text-[#000] border-text-theme border-[.1rem] h-[2.4rem] min-w-[8rem] rounded-md relative flex items-center justify-center ${buttonProps.className}`}

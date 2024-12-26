@@ -22,9 +22,8 @@ const SettingSection = (props: TProps) => {
 	};
 
 	return (
-		<div className="w-full h-[16rem]  flex flex-col gap-[4rem] ">
+		<div className="w-full h-[6rem]  flex flex-col gap-[4rem] ">
 			<div className="flex flex-col gap-[2rem]">
-				<h3 className=" !text-[2.8rem]">Cài đặt</h3>
 				<div className="w-full flex gap-[3rem] border-b-[.1rem] border-gray-200">
 					<div className="min-h-[3rem] flex items-center justify-between  ">
 						<button

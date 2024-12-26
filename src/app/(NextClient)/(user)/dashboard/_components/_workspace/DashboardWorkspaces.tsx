@@ -72,7 +72,7 @@ const DashboardWorkspaces = () => {
                               {openWorkspace && forms.length > 0 && (
                                     <div
                                           ref={divWrapper}
-                                          className={`${scrollThemeStyle} ml-[1rem]  min-h-[2rem] max-h-[34rem]  transition-[height] duration-500 overflow-y-scroll  flex flex-col gap-[1.4rem] text-text-them e pr-[2rem]`}
+                                          className={`${scrollThemeStyle} ml-[1rem]  h-[17vh]  transition-[height] duration-500 overflow-y-scroll  flex flex-col gap-[1.4rem] text-text-them e pr-[2rem]`}
                                     >
                                           {forms.map((form) => {
                                                 if (formIsFocusing == form._id) {
