@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /settings/
+Disallow: /notifcations/
+
+Sitemap: https://tally-form-mini-client.vercel.app/sitemap.xml
