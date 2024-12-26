@@ -78,7 +78,6 @@ class AuthService {
             };
 
             const urlRequest = process.env.NEXT_PUBLIC_MODE === "DEV" ? "http://localhost:4000" : process.env.BACK_END_URL;
-console.log('mai')
             const callRefreshToken: ResponseApi<ResponseAuth> = await Http.get<ResponseApi<ResponseAuth>>(`/v1/api/auth/refresh-token`, undefined);
             return callRefreshToken;
       }
