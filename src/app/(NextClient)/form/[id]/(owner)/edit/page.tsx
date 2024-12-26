@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 
 import HeaderEditForm from "./components/HeaderEditForm";
 import FormCore from "./components/FormCore";
@@ -28,20 +28,34 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
 
       const containerStyleWhenNormal = !openFormDesign && !openSidebar ? " w-full" : "";
 
-      const containerStyleWhenOver = openFormDesign && openSidebar ? "w-[calc(100vw-50.5rem)] " : "";
+      const containerStyleWhenOver = openFormDesign && openSidebar ? "w-full sm:w-[calc(100vw-29.5rem)] w-[calc(100vw-50.5rem)]" : "";
 
-      const formColor = formCore.form_color || 'bg-color-section-theme'
+      const formColor = formCore.form_color || "bg-color-section-theme";
 
+      const renderWidthMainContent = useMemo(() => {
+            let width = "w-full";
+            if (modeScreen === "FULL") {
+                  return width;
+            }
+            if (openSidebar && !openFormDesign) {
+                  width = "w-full xl:w-[calc(100vw-25rem)]";
+            }
 
+            if (!openSidebar && openFormDesign) {
+                  width = "w-full md:w-[calc(100vw-28rem)] w-[calc(100vw-28rem)]";
+            }
+
+            if (openSidebar && openFormDesign) {
+                  width = "w-full md:w-[calc(100vw-28rem)] xl:w-[calc(100vw-51.7rem)]";
+            }
+            return width;
+      }, [openFormDesign, openSidebar]);
 
       return (
-            <div
-                  className={`${containerStyleWhenNormal} ${containerStyleWhenOpenFormDesign} ${containerStyleWhenOpenSideBar} ${containerStyleWhenOver} flex flex-col min-h-screen h-max  `}
-                  style={{ "--bg-input-core": colorMain } as CSS.Properties}
-            >
+            <div className={`${renderWidthMainContent} flex flex-col min-h-screen h-max  `} style={{ "--bg-input-core": colorMain } as CSS.Properties}>
                   <HeaderEditForm showHeaderAction={true} />
                   {formCore && (
-                        <div style={{backgroundColor:formCore.form_color || '' }} className={`${formColor}  flex min-h-screen h-max `}>
+                        <div style={{ backgroundColor: formCore.form_color || "" }} className={`${formColor}  flex min-h-screen h-max `}>
                               <FormCore />
                               {openFormDesign && modeScreen === "NORMAL" ? <FormDesignCustom /> : null}
                         </div>

@@ -30,7 +30,7 @@ const DashboardTotalView = () => {
       return (
             <div className="relative w-full h-full text-text-theme  rounded-lg  flex flex-col items-center  gap-[2rem] xl:gap-[2rem]">
                   <div className="w-full flex justify-center gap-[2rem]">
-                        <p className="flex flex-row xl:flex-col flex-wrap xl:items-center gap-[1rem] h-max w-full text-[1.3rem]">
+                        <p className=" flex flex-row justify-end xl:flex-col flex-wrap xl:items-center gap-[1rem] h-max w-full text-[1.3rem]">
                               <span className="w-max  break-words ">Tổng sô lượt xem Form: {total_views}</span>
                               <span className="w-max  break-words r">Số lượt phản hồi: {total_answer}</span>
 

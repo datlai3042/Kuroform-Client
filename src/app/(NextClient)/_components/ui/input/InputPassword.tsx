@@ -21,7 +21,7 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
       const input_erros: React.ReactNode = error[FieldKey]?.message as ReactNode;
 
       return (
-            <div className="flex flex-col w-full min-h-[10rem] h-max gap-[2rem]  ">
+            <div className="flex flex-col w-full min-h-[10rem] h-max gap-[1rem]  ">
                   <label htmlFor={`${FieldKey}-${id}`} className="first-letter:uppercase text-text-theme font-semibold text-[1.4rem]">
                         {placeholder}
                   </label>
@@ -44,7 +44,7 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                               {!showPassword ? <Eye /> : <EyeOff />}
                         </button>
                   </div>
-                  <div className="min-h-[1rem] text-[1.2rem] text-red-400">{error && <p>{input_erros}</p>}</div>
+                  <div className="min-h-[1rem] text-[1.2rem] text-red-400 font-bold" >{error && <p>{input_erros}</p>}</div>
             </div>
       );
 };

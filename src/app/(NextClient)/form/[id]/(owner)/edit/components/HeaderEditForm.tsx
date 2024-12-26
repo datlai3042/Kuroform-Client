@@ -42,6 +42,8 @@ const HeaderEditForm = (props: TProps) => {
 
       const { openSidebar, setOpenSidebar } = useContext(SidebarContext);
       const { modeScreen, setModeScreen } = useContext(FormModeScreenContext);
+      const { openFormDesign } = useContext(FormDesignContext);
+
       const { theme } = useContext(ThemeContext);
 
       const [openModelFormState, setOpenModelFormState] = useState<boolean>(false);
@@ -70,42 +72,49 @@ const HeaderEditForm = (props: TProps) => {
 
       return (
             <DivNative
-                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101]  h-[8rem] w-auto  flex items-center justify-between gap-[1rem]  px-[1rem] text-[1.3rem]`}
+                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101]  min-h-[8rem] w-auto  flex  items-center justify-between flex-wrap gap-[3rem]  p-[2rem_1rem] text-[1.3rem]`}
             >
-                  <DivNative className="flex h-[3.6rem]  items-center   text-textHeader ">
-                        {!openSidebar && <ButtonIcon Icon={<ChevronsRight />} onClick={() => setOpenSidebar(true)} />}
-                        <LogoHome />
-                        <DivNative className="h-full hidden xl:flex  items-center  ">
-                              <ButtonIcon Icon={<ChevronRight size={16} />} />
-                              <ParagraphNative
-                                    className="hidden sm:block text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme"
-                                    textContent="Nơi làm việc"
-                              />
+                  <div className="flex-1 flex h-full items-center">
+                        <DivNative className="flex h-[3.6rem]  items-center   text-textHeader ">
+                              {!openSidebar && <ButtonIcon Icon={<ChevronsRight />} onClick={() => setOpenSidebar(true)} />}
+                              <LogoHome />
+                              <div className="mx-[1rem]">
+                                    <DivNative className="h-full hidden xl:flex  items-center  ">
+                                          <ButtonIcon Icon={<ChevronRight size={16} />} className="hidden xl:inline" style={{ minWidth: "2rem" }} />
+                                          <ParagraphNative
+                                                className="hidden sm:block text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme"
+                                                textContent="Nơi làm việc"
+                                          />
+                                    </DivNative>
+
+                                    <DivNative className="h-full flex  items-center gap-[.1rem] ">
+                                          <ParagraphNative
+                                                className={`${styleEffect.onCheckLengthTitle()} truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
+                                                textContent={formCore?.form_title.form_title_value || "Không tiêu đề"}
+                                          />
+                                    </DivNative>
+                              </div>
                         </DivNative>
 
-                        <DivNative className="h-full flex  items-center gap-[.1rem] ">
-                              <ButtonIcon Icon={<ChevronRight size={16} />} className="hidden xl:inline" />
-                              <ParagraphNative
-                                    className={`${styleEffect.onCheckLengthTitle()} truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
-                                    textContent={formCore?.form_title.form_title_value || "Không tiêu đề"}
-                              />
-                        </DivNative>
-                  </DivNative>
-
-                  <div className="ml-auto mr-[5rem] hidden sm:block">
-                        <DashboardSearchForm />
+                        <div className="ml-auto mr-[5rem] hidden sm:block">
+                              <DashboardSearchForm />
+                        </div>
                   </div>
-                  <div className="flex items-center justify-end gap-[2rem]">
+                  <div className={`${openFormDesign ? 'w-full' : 'w-max'} flex items-center justify-end gap-[2rem]`}>
                         {showHeaderAction && (
-                              <DivNative className="flex items-center gap-[1rem]">
+                              <DivNative className="w-full md:w-max ml-auto flex items-center gap-[1rem]">
                                     <DivNative className=" flex items-center justify-center " title="Review">
-                                          <ButtonNative textContent={`Xem trước  `} className="p-[.8rem] rounded-md text-text-theme" onClick={onSetScreen} />
+                                          <ButtonNative
+                                                textContent={`Xem trước  `}
+                                                className="min-w-[15rem] p-[.8rem] rounded-md text-text-theme"
+                                                onClick={onSetScreen}
+                                          />
                                     </DivNative>
 
                                     <DivNative className="relative  z-[103] xl:z-[105]  flex items-center justify-center " title={label}>
                                           <ButtonNative
                                                 textContent={label}
-                                                className=" p-[.8rem] rounded-md bg-color-main text-white"
+                                                className=" min-w-[15rem] p-[.8rem] rounded-md bg-color-main text-white"
                                                 onClick={() => setOpenModelFormState((prev) => !prev)}
                                           />
                                           {openModelFormState && (

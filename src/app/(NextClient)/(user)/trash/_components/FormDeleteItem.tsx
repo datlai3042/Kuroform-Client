@@ -51,8 +51,8 @@ const FormDeleteItem = (props: TProps) => {
       }, [deleteFormForever.isSuccess]);
 
       return (
-            <div className="min-h-[14rem] w-full xl:w-[49.2%] p-[2rem] flex flex-col justify-between text-[1.2rem] gap-[2rem] bg-red-400 rounded-lg text-[#fff]">
-                  <p className="text-[1.4rem]">{form.form_title.form_title_value.toUpperCase() || "Không có tiêu đề"}</p>
+            <div className="min-h-[14rem] w-full xl:w-[32.2%] p-[2rem] flex flex-col justify-between text-[1.2rem] gap-[2rem] bg-red-400 rounded-lg text-[#fff]">
+                  <p className="text-[1.4rem] truncate">{form.form_title.form_title_value.toUpperCase() || "Không có tiêu đề"}</p>
                   <div className="flex justify-between">
                         <button
                               disabled={changeFormMode.isPending}

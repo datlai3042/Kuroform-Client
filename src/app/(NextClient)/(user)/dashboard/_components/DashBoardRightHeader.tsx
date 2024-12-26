@@ -62,7 +62,7 @@ const DashBoardRightHeader = () => {
                                     
                               </div>
                         </div> */}
-                        <div className="flex items-center gap-[1rem] text-color-main font-semibold text-[1.2rem] xl:text-[1.6rem] w-[58%] xl:w-max ">
+                        <div className="flex items-center gap-[1rem] text-color-main font-semibold text-[1.2rem]  xl:text-[2rem] w-[58%] xl:w-max ">
                               <Image
                                     src={
                                           "https://res.cloudinary.com/cloud304/image/upload/v1723200121/kuroform/users/user_id_66a0a5ca4ed899bf08b8f628/form_id_66b5d4c21795132645a3fbb7/avatar/file_u2uzlx.jpg"

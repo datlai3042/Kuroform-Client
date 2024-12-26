@@ -43,8 +43,8 @@ const FormDesignCustom = () => {
       };
 
       return (
-            <div className="scroll-desgin-custom fixed z-[104] bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen overflow-y-scroll w-[28rem]  shadow-2xl">
-                  <div className="relative min-h-full h-max pb-[8rem]  border-b-[.2rem] border-l-[.2rem] border-gray-200 rounded-lg ">
+            <div className="scroll-desgin-custom fixed z-[104] bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen overflow-y-scroll w-[26rem]  ">
+                  <div className="relative min-h-full h-max pb-[8rem]  border-b-[.2rem] border-gray-200 rounded-lg ">
                         <div className="relative w-full min-h-full h-max  py-[2rem] px-[1rem] flex flex-col  gap-[2rem]  ">
                               <p className="mt-[1rem] text-[1.6rem]  font-medium text-center pb-[2rem] border-b-[.1rem] border-[#ccc]">Tùy biến giao diện</p>
                               {/* <FormDesignFormMode /> */}

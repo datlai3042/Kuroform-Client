@@ -19,14 +19,15 @@ const LayoutSidebar = ({ children }: { children: React.ReactNode }) => {
 
             const pathname = usePathname()
       
+            const gapSpace = pathname === '/dashboard' || pathname?.startsWith('/form')
 
       return (
-            <div className={`${pathname === '/dashboard' ? 'gap-[1rem]': ''} relative max-w-screen min-h-screen h-max w-full   flex  `}>
+            <div className={`${gapSpace ? 'gap-[1rem]': ''}  relative max-w-screen min-h-screen h-max w-full   flex  `}>
                   {openSidebar && (
                         <aside
                               className={`${
                                     openSidebar ? "hidden sm:block" : "hidden   sm:block "
-                              } sticky top-0 z-[2] w-[0%] xl:w-[19rem] xl:min-w-[19rem] h-[100vh] overflow-hidden transition-[width]  duration-1000  bg-color-section-theme`}
+                              } sticky top-0 z-[2] w-[0%] xl:w-[22rem] xl:min-w-[19rem] h-[100vh] overflow-hidden transition-[width]  duration-1000  bg-color-section-theme`}
                         >
                               {openSidebar && <DashBoardLeft />}
                         </aside>

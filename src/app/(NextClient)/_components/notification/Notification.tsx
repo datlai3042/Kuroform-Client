@@ -42,7 +42,7 @@ const Notification = () => {
                   <div
                         className={`${
                               animation ? "animate-ping" : ""
-                        } absolute top-[-.8rem] right-[-.8rem] w-[2.1rem] h-[2.1rem] flex items-center justify-center bg-red-600 rounded-full `}
+                        } absolute top-[-.8rem] right-[-.8rem] w-[2.3rem] h-[2.3rem] flex items-center justify-center bg-red-600 rounded-full `}
                   >
                         <span className="text-[#fff] text-[1rem]">{notification?.length > 99 ? "99+" : notification.length || 0}</span>
                   </div>

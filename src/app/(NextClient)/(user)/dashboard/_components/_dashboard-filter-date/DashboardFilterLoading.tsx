@@ -2,7 +2,7 @@ import React from "react";
 
 const DashboardFilterLoading = () => {
 	return (
-		<div className="flex flex-wrap justify-end gap-[.4rem] w-full h-[28rem] rounded-xl   text-[1.3rem]">
+		<div className="flex flex-wrap justify-end gap-[.4rem] w-full  rounded-xl   text-[1.3rem]">
 			{Array(30)
 				.fill(1)
 				.map((_, i) => (
