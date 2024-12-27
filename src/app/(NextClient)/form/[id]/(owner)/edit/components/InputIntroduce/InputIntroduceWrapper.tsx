@@ -208,7 +208,7 @@ const InputIntroduceWrapper = (props: TProps) => {
 	return (
 		<Portal>
 			<DivNative className="fixed inset-0 bg-[rgba(0,0,0,0.5)] z-[999] px-[1rem] flex justify-center items-center">
-				<DivNativeRef className="relative w-[80rem] h-[64rem]  xl:w-[80rem] xl:h-[68rem]   flex flex-col bg-color-section-theme text-text-theme rounded-lg border-[.1rem] border-text-theme ">
+				<DivNativeRef className="relative w-[80rem]  xl:w-[80rem] h-[50rem] overflow-y-auto   flex flex-col bg-color-section-theme text-text-theme rounded-lg border-[.1rem] border-gray-300  ">
 					<ClickOutSide
 						width="w-full xl:w-[80rem]"
 						height="h-[64rem] xl:h-[68rem]"
@@ -216,7 +216,7 @@ const InputIntroduceWrapper = (props: TProps) => {
 					>
 						<>
 							<DivNative className="flex-1 w-full min-h-full flex  ">
-								<DivNative className=" w-[40%] xl:w-[30%] min-h-full p-[1rem_.6rem] xl:p-[2rem_1.4rem] flex flex-col gap-[1rem] border-r-[.1rem] border-gray-100 ">
+								<DivNative className=" min-w-[16rem] min-h-full p-[1rem_.6rem] xl:p-[2rem_1.4rem] flex flex-col gap-[1rem] border-r-[.1rem] border-gray-300 ">
 									<ParagraphNative
 										className="text-textGray text-[1.2rem] font-bold opacity-80"
 										textContent="Input"
@@ -233,11 +233,11 @@ const InputIntroduceWrapper = (props: TProps) => {
 										))}
 									</DivNative>
 								</DivNative>
-								<DivNative className="flex w-[60%] xl:w-[70%] min-h-full py-[1rem] ">
+								<DivNative className="flex w-max min-h-full py-[1rem] ">
 									{renderInputIntroduce}
 								</DivNative>
 							</DivNative>
-							<div className="absolute right-[-1rem] top-[-1rem] xl:right-[-2.4rem] xl:top-[-2.4rem]">
+							<div className="absolute right-[1rem] top-[1rem] xl:right-[-2.4rem] xl:top-[-2.4rem]">
 								<IconClose onClose={setOpenModel} />
 							</div>
 						</>
