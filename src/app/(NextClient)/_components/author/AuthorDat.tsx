@@ -89,7 +89,7 @@ const AuthorDat = (props: TProps) => {
                                                       alt="Liên hệ"
                                                       className="w-[2rem] h-[2rem] rounded-full"
                                                 />
-                                                CV của mình
+                                                CV Kuro Dev
                                           </a>
                                     </div>
                               </div>
