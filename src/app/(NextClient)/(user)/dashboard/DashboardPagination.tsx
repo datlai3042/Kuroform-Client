@@ -56,7 +56,7 @@ const DashboardPagination = (props: TProps) => {
                               <button
                                     key={pageItem}
                                     onClick={() => onChangePage(pageItem)}
-                                    className={`${onStylePageCurrent(pageItem)} min-w-[2rem] aspect-square rounded-full flex justify-center items-center`}
+                                    className={`${onStylePageCurrent(pageItem)} min-w-[2.1rem] aspect-square rounded-full flex justify-center items-center`}
                               >
                                     <span>{pageItem}</span>
                               </button>

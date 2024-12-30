@@ -42,11 +42,11 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
             }
 
             if (!openSidebar && openFormDesign) {
-                  width = "w-full md:w-[calc(100vw-28rem)] w-[calc(100vw-28rem)]";
+                  width = "w-[calc(100vw-28rem)] w-[calc(100vw-28rem)]";
             }
 
             if (openSidebar && openFormDesign) {
-                  width = "w-full md:w-[calc(100vw-28rem)] xl:w-[calc(100vw-51.7rem)]";
+                  width = "w-[calc(100vw-28rem)] xl:w-[calc(100vw-51.7rem)]";
             }
             return width;
       }, [openFormDesign, openSidebar]);

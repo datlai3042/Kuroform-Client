@@ -14,7 +14,7 @@ const LogoHome = () => {
 				height={70}
 				quality={100}
 				alt="logo"
-				className="w-[4rem] h-[4rem] object-contain"
+				className="min-w-[4rem] min-h-[4rem] object-contain"
 				unoptimized={true}
 			/>
 		</Link>

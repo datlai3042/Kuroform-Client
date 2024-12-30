@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useState } from "react";
-import { Bell, ChevronRight, ChevronsRight, Flower, Search, Settings } from "lucide-react";
+import { Bell, ChevronRight, ChevronsRight, ClipboardEdit, Flower, Search, Settings } from "lucide-react";
 import { RootState } from "@/app/_lib/redux/store";
 import { useSelector } from "react-redux";
 
@@ -25,6 +25,7 @@ import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkM
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import LogoHome from "@/app/(NextClient)/_components/logo/LogoHome";
 import DashboardSearchForm from "@/app/(NextClient)/(user)/dashboard/_components/DashboardSearchForm";
+import { CiEdit } from "react-icons/ci";
 
 type TProps = {
       showHeaderAction: boolean;
@@ -72,22 +73,24 @@ const HeaderEditForm = (props: TProps) => {
 
       return (
             <DivNative
-                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101]  min-h-[8rem] w-auto  flex  items-center justify-between flex-wrap gap-[3rem]  p-[2rem_1rem] text-[1.3rem]`}
+                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101] flex-wrap  min-h-[8rem] w-auto  flex  justify-between  gap-[3rem]  p-[1.5rem_1rem] text-[1.3rem]`}
             >
-                  <div className="flex-1 flex h-full items-center">
-                        <DivNative className="flex h-[3.6rem]  items-center   text-textHeader ">
+                  <div className=" flex h-full items-center">
+                        <DivNative className="flex h-[3.6rem]  items-center gap-[2rem]   text-textHeader ">
                               {!openSidebar && <ButtonIcon Icon={<ChevronsRight />} onClick={() => setOpenSidebar(true)} />}
                               <LogoHome />
-                              <div className="mx-[1rem]">
-                                    <DivNative className="h-full hidden xl:flex  items-center  ">
-                                          <ButtonIcon Icon={<ChevronRight size={16} />} className="hidden xl:inline" style={{ minWidth: "2rem" }} />
+                              <div className="mr-[2rem]">
+                                    <DivNative className="h-full hidden xl:flex gap-[.2rem]  items-center  min-w-max">
+                                          <ButtonIcon Icon={<ChevronRight size={18} />} className="hidden xl:inline" style={{ minWidth: "2rem" }} />
                                           <ParagraphNative
                                                 className="hidden sm:block text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme"
                                                 textContent="Nơi làm việc"
                                           />
                                     </DivNative>
 
-                                    <DivNative className="h-full flex  items-center gap-[.1rem] ">
+                                    <DivNative className="h-full hidden xl:flex gap-[.2rem] items-center  min-w-max">
+                                          <ButtonIcon Icon={<CiEdit size={18} />} className="hidden xl:inline" style={{ minWidth: "2rem" }} />
+
                                           <ParagraphNative
                                                 className={`${styleEffect.onCheckLengthTitle()} truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
                                                 textContent={formCore?.form_title.form_title_value || "Không tiêu đề"}
@@ -96,13 +99,13 @@ const HeaderEditForm = (props: TProps) => {
                               </div>
                         </DivNative>
 
-                        <div className="ml-auto mr-[5rem] hidden sm:block">
+                        <div className="ml-auto  hidden sm:block">
                               <DashboardSearchForm />
                         </div>
                   </div>
-                  <div className={`${openFormDesign ? 'w-full' : 'w-max'} flex items-center justify-end gap-[2rem]`}>
+                  <div className={`${openFormDesign ? "!ml-0" : "w-max "}  flex items-center justify-end gap-[2rem]`}>
                         {showHeaderAction && (
-                              <DivNative className="w-full md:w-max ml-auto flex items-center gap-[1rem]">
+                              <DivNative className="w-full md:w-max ml-auto flex flex-wrap justify-end items-center gap-[1rem]">
                                     <DivNative className=" flex items-center justify-center " title="Review">
                                           <ButtonNative
                                                 textContent={`Xem trước  `}

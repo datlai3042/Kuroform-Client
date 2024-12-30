@@ -216,7 +216,7 @@ const InputIntroduceWrapper = (props: TProps) => {
 					>
 						<>
 							<DivNative className="flex-1 w-full min-h-full flex  ">
-								<DivNative className=" min-w-[16rem] min-h-full p-[1rem_.6rem] xl:p-[2rem_1.4rem] flex flex-col gap-[1rem] border-r-[.1rem] border-gray-300 ">
+								<DivNative className=" min-w-[24rem] min-h-full p-[1rem_.6rem] xl:p-[2rem_1.4rem] flex flex-col gap-[1rem] border-r-[.1rem] border-gray-300 ">
 									<ParagraphNative
 										className="text-textGray text-[1.2rem] font-bold opacity-80"
 										textContent="Input"
@@ -237,7 +237,7 @@ const InputIntroduceWrapper = (props: TProps) => {
 									{renderInputIntroduce}
 								</DivNative>
 							</DivNative>
-							<div className="absolute right-[1rem] top-[1rem] xl:right-[-2.4rem] xl:top-[-2.4rem]">
+							<div className="absolute right-[1rem] top-[1rem] ">
 								<IconClose onClose={setOpenModel} />
 							</div>
 						</>

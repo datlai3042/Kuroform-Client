@@ -18,7 +18,7 @@ type TProps = {
 const ThemeProvider = (props: TProps) => {
       const { children } = props;
 
-      const [theme, setTheme] = useState<"dark" | "light">("light");
+      const [theme, setTheme] = useState<"dark" | "light">("dark");
 
       useEffect(() => {
             if (theme === "dark") {
