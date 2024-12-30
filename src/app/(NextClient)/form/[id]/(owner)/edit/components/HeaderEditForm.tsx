@@ -1,31 +1,27 @@
 "use client";
-import React, { useContext, useState } from "react";
-import { Bell, ChevronRight, ChevronsRight, ClipboardEdit, Flower, Search, Settings } from "lucide-react";
 import { RootState } from "@/app/_lib/redux/store";
+import { ChevronRight, ChevronsRight, Pencil, Settings } from "lucide-react";
+import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { FormModeScreenContext } from "@/app/(NextClient)/_components/provider/FormModeScreen";
 import { SidebarContext } from "@/app/(NextClient)/(user)/dashboard/SidebarContext";
-import { usePathname, useSelectedLayoutSegment } from "next/navigation";
+import { FormModeScreenContext } from "@/app/(NextClient)/_components/provider/FormModeScreen";
+import { usePathname } from "next/navigation";
 
 import { FormCore } from "@/type";
 
-import Link from "next/link";
-import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
-import ParagraphNative from "@/app/(NextClient)/_components/ui/NativeHtml/ParagraphNative";
-import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
-import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative";
-import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNative";
-import useChangeModeForm from "@/app/hooks/useChangeModeForm";
-import ModelFormState from "./ModelFormState";
-import ClickOutSide from "@/app/(NextClient)/_components/Model/ClickOutSide";
-import Image from "next/image";
-import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
-import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkMode";
-import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
-import LogoHome from "@/app/(NextClient)/_components/logo/LogoHome";
 import DashboardSearchForm from "@/app/(NextClient)/(user)/dashboard/_components/DashboardSearchForm";
-import { CiEdit } from "react-icons/ci";
+import LogoHome from "@/app/(NextClient)/_components/logo/LogoHome";
+import ClickOutSide from "@/app/(NextClient)/_components/Model/ClickOutSide";
+import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkMode";
+import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
+import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNative";
+import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
+import ParagraphNative from "@/app/(NextClient)/_components/ui/NativeHtml/ParagraphNative";
+import Link from "next/link";
+import ModelFormState from "./ModelFormState";
 
 type TProps = {
       showHeaderAction: boolean;
@@ -89,7 +85,7 @@ const HeaderEditForm = (props: TProps) => {
                                     </DivNative>
 
                                     <DivNative className="h-full hidden xl:flex gap-[.2rem] items-center  min-w-max">
-                                          <ButtonIcon Icon={<CiEdit size={18} />} className="hidden xl:inline" style={{ minWidth: "2rem" }} />
+                                          <ButtonIcon Icon={<Pencil size={18} />} className="hidden xl:inline" style={{ minWidth: "2rem" }} />
 
                                           <ParagraphNative
                                                 className={`${styleEffect.onCheckLengthTitle()} truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
