@@ -5,7 +5,7 @@ import FormInputService from "../_services/FormInput.service";
 import { useDispatch } from "react-redux";
 import { onFetchForm } from "../_lib/redux/formEdit.slice";
 
-export const useAddInputToEnter = async (inputItem: InputCore.InputForm, form: FormCore.Form) => {
+export const useAddInputToEnter =  (inputItem: InputCore.InputForm, form: FormCore.Form) => {
       const dispatch = useDispatch();
 
       const newForm = structuredClone(form);

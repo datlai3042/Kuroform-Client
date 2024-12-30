@@ -4,7 +4,7 @@ import FormInputService from "../_services/FormInput.service";
 import { useDispatch } from "react-redux";
 import { onFetchForm } from "../_lib/redux/formEdit.slice";
 
-export const useUpdateTitleInput = async () => {
+export const useUpdateTitleInput =  () => {
       const dispatch = useDispatch();
 
       const useUpdateTitleInput = useMutation({
