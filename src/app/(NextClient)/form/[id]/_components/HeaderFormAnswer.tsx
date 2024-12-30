@@ -39,37 +39,37 @@ const HeaderFormAnswer = (props: TProps) => {
             <header
                   style={{ borderTopColor: colorMain }}
                   className={`${
-                        formCore.form_avatar?.form_avatar_url || formCore.form_avatar_state ? "mt-[8rem]" : "mt-[2rem]"
+                        formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state ? "mt-[8rem]" : "mt-[2rem]"
                   } relative w-full min-h-[14rem] m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	 border-t-[1rem]  bg-[#ffffff] rounded-2xl`}
             >
-                  {(formCore.form_avatar?.form_avatar_url || formCore.form_avatar_state) && <FormAnswerAvatar formCore={formCore} />}
+                  {(formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state) && <FormAnswerAvatar formCore={formCore} />}
                   <div className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}>
                         <h1 style={styleTitle} className=" font-light ">
-                              {formCore.form_title.form_title_value}
+                              {formCore?.form_title?.form_title_value}
                         </h1>
 
                         {formCore.form_title.form_title_sub.length > 0 && (
                               <div className="pt-[2rem] border-t-[.1rem] border-gray-200 flex flex-wrap gap-[2rem]">
-                                    {formCore.form_title.form_title_sub.map((ft) => {
+                                    {formCore?.form_title?.form_title_sub.map((ft) => {
                                           if (ft.type === "Text" && ft?.core?.value)
                                                 return (
                                                       <span key={ft._id} className="text-[1.4rem] text-justify leading-10">
-                                                            {ft.core.value}
+                                                            {ft?.core?.value}
                                                       </span>
                                                 );
                                           if (ft.type === "Image") {
-                                                if (formCore.form_title.form_title_mode_image !== checkMode) {
+                                                if (formCore?.form_title?.form_title_mode_image !== checkMode) {
                                                       return (
-                                                            <div className="w-full xl:w-[45%] flex gap-[2rem]" key={ft._id}>
-                                                                  <FormTitleImage mode="Normal" page={"Answer"} subTitleItem={ft} key={ft._id} />
+                                                            <div className="w-full xl:w-[45%] flex gap-[2rem]" key={ft?._id}>
+                                                                  <FormTitleImage mode="Normal" page={"Answer"} subTitleItem={ft} key={ft?._id} />
                                                             </div>
                                                       );
                                                 }
 
-                                                if (formCore.form_title.form_title_mode_image === "Slider" && !flag) {
+                                                if (formCore?.form_title?.form_title_mode_image === "Slider" && !flag) {
                                                       flag = true;
-                                                      const images = formCore.form_title.form_title_sub.filter(
-                                                            (image) => image.type === "Image" && image.core.url,
+                                                      const images = formCore?.form_title?.form_title_sub.filter(
+                                                            (image) => image?.type === "Image" && image?.core?.url,
                                                       ) as FormCore.FormTitleSub.Image.Core[];
                                                       return (
                                                             <SliderImage
@@ -77,7 +77,7 @@ const HeaderFormAnswer = (props: TProps) => {
                                                                   page={"Answer"}
                                                                   type="Components"
                                                                   images={images}
-                                                                  key={ft._id}
+                                                                  key={ft?._id}
                                                             />
                                                       );
                                                 }
@@ -85,9 +85,9 @@ const HeaderFormAnswer = (props: TProps) => {
 
                                           if (ft.type === "FullDescription") {
                                                 return (
-                                                      <div className="  text-[1.4rem] my-[1rem]  flex flex-col gap-[1.6rem] " key={ft._id}>
-                                                            <span className="font-bold">{ft.core.header_value}</span>
-                                                            <span>{ft.core.value}</span>
+                                                      <div className="  text-[1.4rem] my-[1rem]  flex flex-col gap-[1.6rem] " key={ft?._id}>
+                                                            <span className="font-bold">{ft?.core?.header_value}</span>
+                                                            <span>{ft?.core?.value}</span>
                                                       </div>
                                                 );
                                           }
