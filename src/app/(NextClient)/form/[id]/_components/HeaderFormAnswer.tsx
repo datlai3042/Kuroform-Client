@@ -49,7 +49,7 @@ const HeaderFormAnswer = (props: TProps) => {
                         </h1>
 
                         {formCore.form_title.form_title_sub.length > 0 && (
-                              <div className="pt-[2rem] border-t-[.1rem] border-gray-200 flex flex-wrap gap-[2rem]">
+                              <div className="pt-[2rem] border-t-[.1rem] border-gray-200 flex flex-col flex-wrap gap-[1rem]">
                                     {formCore?.form_title?.form_title_sub.map((ft) => {
                                           if (ft.type === "Text" && ft?.core?.value)
                                                 return (
@@ -83,11 +83,11 @@ const HeaderFormAnswer = (props: TProps) => {
                                                 }
                                           }
 
-                                          if (ft.type === "FullDescription") {
+                                          if (ft.type === "FullDescription" && (ft?.core?.header_value || ft?.core.value)) {
                                                 return (
-                                                      <div className="  text-[1.4rem] my-[1rem]  flex flex-col gap-[1.6rem] " key={ft?._id}>
-                                                            <span className="font-bold">{ft?.core?.header_value}</span>
-                                                            <span>{ft?.core?.value}</span>
+                                                      <div className="  text-[1.4rem]  flex flex-col gap-[1.6rem] " key={ft?._id}>
+                                                            {ft?.core?.header_value && <span className="font-bold">{ft?.core?.header_value}</span>}
+                                                            {ft?.core.value && <span>{ft?.core?.value}</span>}
                                                       </div>
                                                 );
                                           }

@@ -105,7 +105,7 @@ const HeaderEditForm = (props: TProps) => {
                                     <DivNative className=" flex items-center justify-center " title="Review">
                                           <ButtonNative
                                                 textContent={`Xem trước  `}
-                                                className="min-w-[12rem] p-[.8rem] rounded-md text-text-theme"
+                                                className="min-w-[9rem] p-[.8rem] rounded-md text-text-theme"
                                                 onClick={onSetScreen}
                                           />
                                     </DivNative>
@@ -113,7 +113,7 @@ const HeaderEditForm = (props: TProps) => {
                                     <DivNative className="relative  z-[103] xl:z-[105]  flex items-center justify-center " title={label}>
                                           <ButtonNative
                                                 textContent={label}
-                                                className=" min-w-[12rem] p-[.8rem] rounded-md bg-color-main text-white"
+                                                className=" min-w-[9rem] p-[.8rem] rounded-md bg-color-main text-white"
                                                 onClick={() => setOpenModelFormState((prev) => !prev)}
                                           />
                                           {openModelFormState && (
