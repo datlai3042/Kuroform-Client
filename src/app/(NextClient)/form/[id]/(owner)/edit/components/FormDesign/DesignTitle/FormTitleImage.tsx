@@ -130,7 +130,7 @@ const FormTitleImage = (props: TProps) => {
       }, []);
       return (
             <div
-                  className={`${widthPage} ${checkModeImage}  flex flex-col   gap-[.5rem]   outline-none rounded-lg `}
+                  className={`${widthPage} ${checkModeImage}  flex flex-col   gap-[1rem]   outline-none rounded-lg `}
                   ref={setNodeRef}
                   {...attributes}
                   {...listeners}
