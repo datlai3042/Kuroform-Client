@@ -157,7 +157,7 @@ const FormTitleImage = (props: TProps) => {
                                     unoptimized
                                     alt="avatar title"
                                     src={subTitleItem.core.url}
-                                    className={`${className} ${heightWithModeNormal}  ${heightWithModeSlider} 	  object-center rounded-lg`}
+                                    className={`${className} ${heightWithModeNormal}  ${heightWithModeSlider}  object-contain	  object-center rounded-lg`}
                               />
                         </div>
                   )}

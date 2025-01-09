@@ -36,7 +36,7 @@ const ModelShowImage = (props: TProps) => {
                                                 width={400}
                                                 height={400}
                                                 alt="image form"
-                                                className="w-full h-full bg-[#ccc]"
+                                                className="w-full h-full bg-[#ccc]  object-contain"
                                                 unoptimized={false}
                                           />
                                     </div>
@@ -52,7 +52,7 @@ const ModelShowImage = (props: TProps) => {
                                                                   img === imageShow
                                                                         ? "z-[2] border-[.4rem] border-color-main"
                                                                         : "border-[.4rem] border-[#ccc] group-hover:border-color-main"
-                                                            } group-hover:z-[2] absolute inset-0 w-full h-full transition-all duration-500 bg-[#ccc]`}
+                                                            } group-hover:z-[2]  object-contain absolute inset-0 w-full h-full transition-all duration-500 bg-[#ccc]`}
                                                             onClick={() => setImageShow(img)}
                                                       />
 

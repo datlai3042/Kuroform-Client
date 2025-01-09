@@ -166,7 +166,7 @@ const FormCore = () => {
                                                 </DivNative>
                                           </DivNative>
 
-                                          <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[4rem] min-h-full`}>
+                                          <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[2rem] min-h-full`}>
                                                 <InputCoreTitle />
                                                 {formCore.form_inputs.length > 0 && (
                                                       <DivNative className="mt-[2rem] h-max w-full flex flex-col gap-[8rem] ">

@@ -136,7 +136,7 @@ const SliderImage = (props: TProps) => {
                                                       width={70}
                                                       height={70}
                                                       alt="image form"
-                                                      className={`group-hover:z-[3] transition-all duration-500 absolute inset-0 w-full h-full  flex items-center justify-center  bg-[#000000] opacity-75 `}
+                                                      className={`group-hover:z-[3] transition-all duration-500 absolute inset-0 w-full h-full  flex items-center justify-center  bg-[#000000] opacity-75 object-contain`}
                                                 />
                                                 <div className=" absolute inset-0 bg-[rgba(0,0,0,.6)] z-[2]"></div>
                                           </div>
