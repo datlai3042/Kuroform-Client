@@ -87,7 +87,7 @@ const FormTitleImage = (props: TProps) => {
             updateFormAPI.mutate(newForm);
       };
 
-      const widthPage = page === "Edit" ? "w-[20rem] sm:w-[51rem] xl:w-[50rem] " : "w-full xl:w-[62rem]  items-center";
+      const widthPage = page === "Edit" ? "w-full " : "w-full xl:w-[62rem]  items-center";
 
       const heightWithModeNormal = mode === "Normal" ? (page === "Edit" ? "max-h-[40rem] w-full" : "  w-full") : "";
       const heightWithModeSlider = mode === "Slider" ? (page === "Edit" ? "w-full xl:w-[70%] h-[30rem]" : "h-[30rem] w-[70%]") : "";

@@ -60,7 +60,7 @@ const HeaderFormAnswer = (props: TProps) => {
                                           if (ft.type === "Image") {
                                                 if (formCore?.form_title?.form_title_mode_image !== checkMode) {
                                                       return (
-                                                            <div className="w-full xl:w-[45%] flex gap-[2rem]" key={ft?._id}>
+                                                            <div className="w-full xl:w-[45%] flex gap-[2rem] justify-center" key={ft?._id}>
                                                                   <FormTitleImage mode="Normal" page={"Answer"} subTitleItem={ft} key={ft?._id} />
                                                             </div>
                                                       );
