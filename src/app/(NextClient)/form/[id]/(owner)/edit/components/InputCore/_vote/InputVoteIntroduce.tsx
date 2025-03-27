@@ -28,21 +28,21 @@ const InputVoteIntroduce = (props: TProps) => {
 	};
 
 	return (
-		<DivNative className="w-full h-full flex flex-col py-[1rem] ">
+		<DivNative className="w-full h-full flex flex-col  sm:py-[4rem] ">
 			<InputIntroduceHeader
 				title={inputIntroduceVote.title}
 				description={inputIntroduceVote.description}
 				action={handleChooseInputType}
 			/>
 
-			<DivNative className="h-[50%] flex flex-col gap-[2.6rem] p-[3rem_2rem]">
-				<DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-gray-200  text-gray-400">
+			<DivNative className="h-[50%] flex flex-col gap-[2.6rem] p-[1rem_2rem] sm:p-[3rem_2rem]">
+				<DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-color-main text-[#fff]">
 					Ví dụ
 				</DivNative>
 				<DivNative className="flex flex-col gap-[1rem]">
 					<SpanNative textContent="Đánh giá" className="text-[1.6rem] font-bold" />
 					<DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
-						<div className="p-[1rem_2rem] rounded-lg bg-color-section-theme border-[.1rem] border-text-theme">
+						<div className="p-[1rem_2rem] rounded-lg bg-[#fff] border-[.1rem] border-[var(--border-color-input)]">
 							<Rate allowHalf value={start} onChange={(e) => setStart(e)} />
 						</div>
 					</DivNative>

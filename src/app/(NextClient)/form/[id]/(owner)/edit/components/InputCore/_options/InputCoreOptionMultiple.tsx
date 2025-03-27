@@ -103,7 +103,7 @@ const InputCoreOptionMultiple = (props: TProps) => {
       }, [inputItem.core.options, selectValue]);
 
       const InputOption = (
-            <DivNative className={`mt-[.4rem] min-h-[5rem] max-w-full flex flex-col gap-[2rem] h-max  text-[1.4rem]`}>
+            <DivNative className={`mt-[.4rem] min-h-[5rem] max-w-full flex flex-col gap-[1rem] h-max  text-[1.4rem]`}>
                   <SpanNative
                         textContent="Chọn các lựa chọn bên dưới"
                         className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"} text-[1.6rem] font-semibold`}

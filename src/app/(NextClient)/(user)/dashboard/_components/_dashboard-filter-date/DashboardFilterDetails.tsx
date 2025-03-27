@@ -16,25 +16,26 @@ const DashboardFilterDetails = (props: TProps) => {
 
       return (
             <div className="fixed top-[0] right-[0rem] z-[100] bg-[rgba(0,0,0,.2)] w-screen h-screen flex items-center justify-center">
-                        <div className="relative text-text-theme w-[70vw] mx-auto xl:mx-0 xl:w-[60rem] min-h-[26rem] flex flex-col gap-[2rem] p-[2rem_2rem_3rem]  bg-bg-model rounded-lg">
-                              <p className="py-[1rem] w-full text-center text-color-main font-semibold">
+                  <div className="relative text-text-theme w-[70vw] mx-auto xl:mx-0 xl:w-[60rem] min-h-[26rem] flex flex-col gap-[2rem] p-[2rem_2rem_3rem]  bg-[#0c1144] rounded-lg">
+                        <div className="flex justify-between">
+                              <p className="py-[1rem] flex-1  text-[#fff] font-semibold">
                                     Dữ liệu ngày {moment(date_full).format("DD-MMMM-YYYY").toUpperCase()}
                               </p>
-                              <div className="max-h-[32rem] overflow-y-scroll scroll-color-main w-full flex flex-col items-center gap-[2rem]">
-                                    {forms.map((form) => (
-                                          <DashboardFormItem form={form} key={form._id} />
-                                    ))}
-                              </div>
 
-                              <div className="absolute right-[2rem] top-[2rem]">
-                                    <button
-                                          className="w-[3rem] h-[3rem] xl:w-[4rem] xl:h-[4rem] bg-[#ffffff] flex items-center justify-center rounded-full shadow text-[12px] text-[#000] font-semibold"
-                                          onClick={() => setOpenModel(false)}
-                                    >
-                                          X
-                                    </button>
-                              </div>
+                              <button
+                                    onClick={() => setOpenModel(false)}
+                                    type="button"
+                                    className="ml-auto  w-[12rem] h-[3.6rem] text-[1.4rem] text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                              >
+                                    Đóng Modal
+                              </button>
                         </div>
+                        <div className="max-h-[32rem] overflow-y-scroll scroll-color-main w-full flex flex-col items-center gap-[2rem]">
+                              {forms.map((form) => (
+                                    <DashboardFormItem form={form} key={form._id} />
+                              ))}
+                        </div>
+                  </div>
             </div>
       );
 };

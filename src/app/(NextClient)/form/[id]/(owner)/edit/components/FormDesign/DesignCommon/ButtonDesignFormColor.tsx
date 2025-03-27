@@ -49,7 +49,7 @@ const ButtonDesignFormColor = () => {
                       ></div>
                 ) : (
                       <div className="w-[5rem] h-[1.5rem] border-[.1rem] border-slate-300 text-[1.1rem] flex items-center justify-center">
-                            Trống
+                            
                       </div>
                 )}
           </div>

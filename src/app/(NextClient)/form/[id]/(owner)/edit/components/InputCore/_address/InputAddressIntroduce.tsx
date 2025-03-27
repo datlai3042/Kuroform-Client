@@ -58,10 +58,10 @@ const InputAddressIntroduce = (props: TProps) => {
       };
 
       return (
-            <DivNative className="w-full h-full flex flex-col py-[1rem] ">
+            <DivNative className="w-full h-full flex flex-col  sm:py-[4rem] ">
                   <InputIntroduceHeader title={inputIntroduceAddress.title} description={inputIntroduceAddress.description} action={handleChooseInputType} />
-                  <DivNative className="h-[70%] xl:h-[50%] flex flex-col gap-[2.6rem] p-[2rem]">
-                        <DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-gray-200  text-gray-400">
+                  <DivNative className="h-[70%] xl:h-[50%] flex flex-col gap-[1rem] p-[1rem_2rem] sm:p-[3rem_2rem] ">
+                        <DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-color-main text-[#fff]">
                               Ví dụ
                         </DivNative>
                         <ModelAddress detail={true} onChange={onChangeAddress} />

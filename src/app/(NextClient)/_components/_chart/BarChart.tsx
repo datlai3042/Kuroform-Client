@@ -24,7 +24,7 @@ export const BarChart = (props: TProps) => {
       const { dataChart } = props;
 
       return (
-            <div className="w-full xl:w-[36rem] h-[15rem] xl:h-[20rem] text-[#000]">
+            <div className="w-[36rem] h-[15rem] xl:h-[20rem] text-[#000]">
                   <Bar
                         className="!w-full h-[20rem] xl:w-[36rem]  text-inherit"
                         data={dataChart}

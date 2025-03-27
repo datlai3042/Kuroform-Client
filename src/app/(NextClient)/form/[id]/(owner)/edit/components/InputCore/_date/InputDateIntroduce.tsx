@@ -30,13 +30,13 @@ const InputDateIntroduce = (props: TProps) => {
       };
 
       return (
-            <DivNative className="w-full h-full flex flex-col py-[1rem] ">
+            <DivNative className="w-full h-full flex flex-col sm:py-[4rem] ">
                   <InputIntroduceHeader title={inputIntroduceDate.title} description={inputIntroduceDate.description} action={handleChooseInputType} />
-                  <DivNative className="h-[76%]  max-h-[76%] overflow-hidden flex flex-col gap-[2.6rem] p-[1rem_1.4rem]  ">
-                        <DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-gray-200  text-gray-400">
+                  <DivNative className=" overflow-hidden flex flex-col gap-[1.6rem] p-[1rem_2rem] sm:p-[3rem_2rem]  ">
+                        <DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-color-main text-[#fff]">
                               Ví dụ
                         </DivNative>
-                        <DivNative className={`h-full   flex flex-col  gap-[1rem] `}>
+                        <DivNative className={`h-full   flex    gap-[1rem] `}>
                               <Calendar />
                         </DivNative>
                   </DivNative>

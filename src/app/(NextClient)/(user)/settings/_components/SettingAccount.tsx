@@ -32,7 +32,7 @@ const SettingAccount = () => {
 
 			{user && (
 				<>
-					<form onSubmit={formUpdate.handleSubmit(onSubmit)} id="form_update">
+					<form onSubmit={formUpdate.handleSubmit(onSubmit)} id="form_update" className="flex flex-wrap justify-between">
 						<Input<UserUpdateInfo>
 							FieldKey="first_name"
 							placeholder="Nhập first name"
@@ -40,6 +40,7 @@ const SettingAccount = () => {
 							type="text"
 							watch={formUpdate.watch}
 							error={formUpdate.formState.errors}
+							style={{width: '49.5%'}}
 						/>
 
 						<Input<UserUpdateInfo>
@@ -49,6 +50,8 @@ const SettingAccount = () => {
 							type="text"
 							watch={formUpdate.watch}
 							error={formUpdate.formState.errors}
+							style={{width: '49.5%'}}
+
 						/>
 
 						<Input<UserUpdateInfo>
@@ -63,7 +66,7 @@ const SettingAccount = () => {
 					<button
 						type="submit"
 						form="form_update"
-						className="min-w-[10%] w-max p-[.8rem] h-[3.6rem] flex justify-center items-center gap-[.8rem] bg-blue-700 text-white rounded-lg"
+						className="min-w-[10%] mt-[1rem] w-max p-[.8rem] h-[3.6rem] flex justify-center items-center gap-[.8rem] bg-blue-700 text-white rounded-lg"
 					>
 						Cập nhập
 					</button>

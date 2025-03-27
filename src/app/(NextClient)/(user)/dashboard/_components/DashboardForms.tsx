@@ -41,7 +41,7 @@ const DashboardForms = () => {
                   </div>
                   {getFormPagination.isPending && (
                         <div className="w-full min-h-[6rem] mt-[2rem] ">
-                              <LoadingClient width="w-full" height="h-[50rem]" message="Đang lấy thông tin các form" />
+                              <LoadingClient width="w-full" height="h-[36rem]" style={{ height: "36rem" }} message="Đang lấy thông tin các form" />
                         </div>
                   )}
 

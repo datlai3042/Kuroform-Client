@@ -231,7 +231,7 @@ const ModelAddress = (props: TProps) => {
                               value={detailAddress}
                               onChange={(e) => setDetalAddress(e.target.value)}
                               placeholder="Nhập địa chỉ chi tiết"
-                              className="heading-answer group w-full h-[4rem] px-[.8rem] flex items-center  text-[1.4rem] break-words whitespace-pre-wrap  border-b-[.1rem] border-gray-300 rounded-lg outline-none resize-none text-[#000]"
+                              className="heading-answer group w-full h-[4rem] px-[.8rem] flex items-center  text-[1.4rem] break-words whitespace-pre-wrap bg-[var(--color-section-theme)] border-[.1rem] rounded-[.4rem] border-[var(--border-color-input)]  outline-none resize-none "
                         />
                   )}
             </div>

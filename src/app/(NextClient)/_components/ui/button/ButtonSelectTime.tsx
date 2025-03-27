@@ -28,24 +28,29 @@ const ButtonSelectTime = (props: TProps) => {
 
       return (
             <div className=" flex justify-end gap-[1rem] text-[1.2rem] xl:text-[1.4rem]">
-                  <div className="">
+                  <div className="" onClick={(e) => e.stopPropagation()}>
                         <button
                               onClick={(e) => {
-                                    setOpenDateModel((prev) => !prev);
+                                    setOpenDateModel(prev => !prev);
+                                    console.log({ openDateModel });
                               }}
                               className={` bg-[#fff] text-[#000] border-text-theme border-[.1rem] h-[2.4rem] p-[.4rem] rounded-md relative flex items-center justify-center ${buttonProps.className}`}
                         >
                               <p>Tháng {month}</p>
                               {openDateModel && (
                                     <ClickOutSide setOpenModel={setOpenDateModel}>
-                                          <button className="absolute z-[2] min-w-[9rem]  max-h-[30rem] overflow-auto scroll-color-main bottom-[-1rem] translate-y-[100%] bg-[#fff] border-[.1rem] border-text-theme left-[0] right-0 min-h-[4rem] h-max flex flex-col items-center text-[#000] rounded-lg text-[1.2rem]">
+                                          <button
+                                                onClick={(e) => e.stopPropagation()}
+                                                className="absolute z-[2] min-w-[9rem]  max-h-[30rem] overflow-auto scroll-color-main bottom-[-1rem] translate-y-[100%] bg-[#fff] border-[.1rem] border-text-theme left-[0] right-0 min-h-[4rem] h-max flex flex-col items-center text-[#000] rounded-lg text-[1.2rem]"
+                                          >
                                                 {months.map((monthItem) => (
                                                       <span
                                                             onClick={(e) => {
+                                                                  e.stopPropagation();
                                                                   e.cancelable = true;
                                                                   if (cb) {
-                                                                        cb(monthItem, "month");
                                                                         setOpenDateModel(false);
+                                                                        cb(monthItem, "month");
                                                                   }
                                                             }}
                                                             key={monthItem}
@@ -72,16 +77,16 @@ const ButtonSelectTime = (props: TProps) => {
                                     <>
                                           <p>Năm {year}</p>
                                           {openYearModel && (
-                                                <div className="absolute z-[2] max-h-[30rem] overflow-auto scroll-color-main bottom-[-1rem] translate-y-[100%] bg-[#fff] left-[0] right-0 min-h-[4rem] h-max flex flex-col items-center  text-[#000] border-[.1rem] border-text-theme  rounded-lg text-[1rem]">
+                                                <div className="absolute z-[2] max-h-[30rem] overflow-auto scroll-color-main bottom-[-1rem] translate-y-[100%] bg-[#fff] left-[0] right-0 min-h-[4rem] h-max flex flex-col items-center  text-[#000] border-[.1rem] border-text-theme  rounded-lg text-[1.2rem]">
                                                       {genderYearArray().map((yearItem) => (
                                                             <p
                                                                   key={yearItem}
                                                                   onClick={(e) => {
                                                                         e.cancelable = true;
-
+                                                                        e.stopPropagation();
                                                                         if (cb) {
-                                                                              cb(yearItem, "year");
                                                                               setOpenYearModel(false);
+                                                                              cb(yearItem, "year");
                                                                         }
                                                                   }}
                                                                   className={`${

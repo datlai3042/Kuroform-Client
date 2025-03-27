@@ -37,7 +37,7 @@ const DashBoardRight = () => {
                                           <ButtonDarkMode />
                                     </div>
                               </div>
-                              <div className="flex flex-wrap items-center justify-center gap-[2rem] xl:gap-0 h-max xl:h-[34rem]">
+                              <div className="flex flex-wrap items-center justify-center gap-[2rem] xl:gap-0 h-max xl:h-[30rem]">
                                     <div className="flex  items-center order-1 w-[40%] xl:w-[20%] h-full flex-col gap-[4rem]">
                                           <Image
                                                 src={"/assets/images/icon/form/create_form.png"}

@@ -44,11 +44,11 @@ const DashBoardRightHeader = () => {
                               </Link>
                         </div>
 
-                        <div className="w-[40%] xl:w-[32%] " title="Tìm kiếm">
+                        <div className="w-[60%] xl:w-[32%] " title="Tìm kiếm">
                               <DashboardSearchForm />
                         </div>
 
-                        <div className="hidden sm:block xl:hidden">
+                        <div className="ml-auto hidden sm:block xl:hidden">
                               <ButtonDarkMode />
                         </div>
                         {/* 
@@ -62,7 +62,8 @@ const DashBoardRightHeader = () => {
                                     
                               </div>
                         </div> */}
-                        <div className="flex items-center gap-[1rem] text-color-main font-semibold text-[1.2rem]  xl:text-[2rem] w-[58%] xl:w-max ">
+                        {/**
+                        *  <div className="flex items-center gap-[1rem] text-color-main font-semibold text-[1.2rem]  xl:text-[2rem] w-[58%] xl:w-max ">
                               <Image
                                     src={
                                           "https://res.cloudinary.com/cloud304/image/upload/v1723200121/kuroform/users/user_id_66a0a5ca4ed899bf08b8f628/form_id_66b5d4c21795132645a3fbb7/avatar/file_u2uzlx.jpg"
@@ -76,8 +77,10 @@ const DashBoardRightHeader = () => {
 
                               <span>Created by KuroDev</span>
                         </div>
+                        * 
+                        */}
 
-                        <div className="flex-1 xl:flex-auto flex justify-end gap-[1.6rem] xl:gap-[2rem]">
+                        <div className=" xl:flex-auto flex justify-end gap-[1.6rem] xl:gap-[2rem]">
                               <Link href={"/settings"} className="p-[.2rem_.8rem] flex items-center gap-[.8rem] text-text-theme rounded-md" title="Cài đặt">
                                     <Settings className="w-[1.6rem]" />
                               </Link>

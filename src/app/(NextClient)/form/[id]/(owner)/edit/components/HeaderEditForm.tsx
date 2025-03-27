@@ -69,20 +69,13 @@ const HeaderEditForm = (props: TProps) => {
 
       return (
             <DivNative
-                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101] flex-wrap  min-h-[8rem] w-auto  flex  justify-between  gap-[3rem]  p-[1.5rem_1rem] text-[1.3rem]`}
+                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101] flex-wrap   w-auto  flex  justify-between  gap-[2rem]  p-[1.2rem_1rem] text-[1.3rem]`}
             >
-                  <div className=" flex h-full items-center">
+                  <div className="hidden sm:flex h-full items-center">
                         <DivNative className="flex h-[3.6rem]  items-center gap-[2rem]   text-textHeader ">
                               {!openSidebar && <ButtonIcon Icon={<ChevronsRight />} onClick={() => setOpenSidebar(true)} />}
-                              <LogoHome />
                               <div className="mr-[2rem]">
-                                    <DivNative className="h-full hidden xl:flex gap-[.2rem]  items-center  min-w-max">
-                                          <ButtonIcon Icon={<ChevronRight size={18} />} className="hidden xl:inline" style={{ minWidth: "2rem" }} />
-                                          <ParagraphNative
-                                                className="hidden sm:block text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme"
-                                                textContent="Nơi làm việc"
-                                          />
-                                    </DivNative>
+                                    
 
                                     <DivNative className="h-full hidden xl:flex gap-[.2rem] items-center  min-w-max">
                                           <ButtonIcon Icon={<Pencil size={18} />} className="hidden xl:inline" style={{ minWidth: "2rem" }} />

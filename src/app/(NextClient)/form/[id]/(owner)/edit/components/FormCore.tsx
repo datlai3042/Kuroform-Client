@@ -135,6 +135,8 @@ const FormCore = () => {
 
       const heightWhenAppearImage = !(formCore.form_avatar_state && formCore.form_background_state) ? " sm:min-h-[7rem]" : "sm:min-h-[4rem]";
 
+      const isImage = formCore.form_avatar || formCore.form_avatar_state;
+
       useEffect(() => {
             if (modeScreen === "FULL") {
                   window.scrollTo(0, 0);
@@ -144,21 +146,23 @@ const FormCore = () => {
       return (
             <>
                   {modeScreen === "NORMAL" && (
-                        <DivNative className={` w-full   pb-[28rem] sm:px-0    xl:ml-0 flex flex-col gap-[3rem] text-text-theme min-h-screen h-max  `}>
+                        <DivNative
+                              className={` w-full !px-[2.6rem] transition-all duration-700  sm:px-0    xl:ml-0 flex flex-col gap-[3rem] text-text-theme min-h-screen h-max  `}
+                        >
                               {showComponentImage && <FormImage />}
                               <div
-                                    className={`mt-[8rem]
-						min-h-screen h-max `}
+                                    className={`${isImage ? "mt-[4rem]" : ""}
+						min-h-screen h-max min-w-[28rem]`}
                               >
                                     <DivNative
-                                          className={`flex-1 px-[6rem] xl:px-[4rem] min-h-full h-max  w-full xl:max-w-[74rem] mx-auto   xl:pl-0  flex flex-col  xl:pb-[4rem] gap-[2rem]  `}
+                                          className={`flex-1 px-[1rem] xl:px-[4rem] min-h-full h-max  w-full xl:max-w-[84rem] mx-auto   xl:pl-0  flex flex-col  xl:py-[4rem] gap-[2rem]  `}
                                     >
                                           <DivNative className={`${gapWhenAppearImage}`}>
                                                 <DivNative className={`${heightWhenAppearImage} group max-h-[18rem] sm:max-h-[8rem] xl:min-h-max `}>
                                                       <DivNative className="mt-[2rem] w-full xl:min-w-[80rem] xl:w-max h-full   flex flex-wrap flex-col sm:flex-row sm:items-center  gap-[2rem]">
                                                             <ButtonDesgin className={`${openFormDesign ? "" : "ml-0"}`} />
 
-                                                            <DivNative className="flex flex-col sm:flex-row w-max  h-max sm:h-[4rem]   gap-[2rem]">
+                                                            <DivNative className="flex flex-col sm:flex-row w-max     gap-[2rem]">
                                                                   {!formCore.form_avatar_state && !formCore.form_avatar && <ButtonAddAvatarForm />}
                                                                   {!formCore.form_background_state && !formCore.form_background && <ButtonAddBackgroundForm />}
                                                             </DivNative>
@@ -166,10 +170,10 @@ const FormCore = () => {
                                                 </DivNative>
                                           </DivNative>
 
-                                          <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[2rem] min-h-full`}>
+                                          <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[1rem] min-h-full`}>
                                                 <InputCoreTitle />
                                                 {formCore.form_inputs.length > 0 && (
-                                                      <DivNative className="mt-[2rem] h-max w-full flex flex-col gap-[8rem] ">
+                                                      <DivNative className="mt-[2rem] h-max w-full flex flex-col gap-[4rem] ">
                                                             <DndContext sensors={sensors} collisionDetection={closestCorners} onDragEnd={onDrapEnd}>
                                                                   <SortableContext
                                                                         items={formCore.form_inputs.map((ip) => ip._id) as unknown as UniqueIdentifier[]}
@@ -184,7 +188,7 @@ const FormCore = () => {
                                                 <ButtonNative
                                                       id="submit"
                                                       textContent={formCore.form_button_text}
-                                                      className="bg-color-btn-primarily text-center px-[1rem] mt-[1rem] min-w-[12rem] w-max h-[5rem]  text-white rounded-lg  text-[1.6rem]"
+                                                      className="bg-color-main text-center px-[1rem] mt-[1rem] min-w-[10rem] w-max h-[3.6rem]  text-white rounded-[.4rem]  text-[1.5rem]"
                                                       onClick={onGetDataDemo}
                                                 />
                                           </DivNative>

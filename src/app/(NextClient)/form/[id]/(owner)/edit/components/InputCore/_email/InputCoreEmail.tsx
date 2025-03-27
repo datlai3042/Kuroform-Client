@@ -53,24 +53,24 @@ const InputCoreEmail = (props: TProps) => {
             <DivNative className="flex flex-col gap-[.3rem] ">
                   <SpanNative
                         textContent="Nhập email của bạn"
-                        className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme "} text-[1.6rem] font-semibold`}
+                        className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme "} text-[1.6rem] font-medium`}
                   />
                   <DivNative
-                        className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] border-[.1rem] bg-[#fff] border-gray-400 focus:border-transparent  rounded-lg`}
+                        className={`text-text-theme relative min-h-[5rem] h-max flex items-center gap-[.5rem] border-[.1rem] bg-[var(--color-section-theme)] border-[var(--border-color-input)] focus:border-transparent  rounded-lg`}
                   >
                         <input
-                              className="w-[80%] h-full p-[1rem] rounded-lg text-[1.6rem]     outline-none   text-[#000]"
+                              className="w-[80%]  h-full p-[1rem] rounded-lg text-[1.6rem]   bg-[var(--color-section-theme)]   outline-none   "
                               ref={inputRef}
                               onKeyDown={onPressEnter}
                               onChange={(e) => setInputValue(e.target.value)}
                               onBlur={onBlur}
                               placeholder={inputItem.core.setting.placeholder}
                         />
-                        <AtSign className="absolute z-[2] right-[1rem] text-textMain opacity-50" size={18} />
+                        <AtSign className="absolute z-[2] right-[1rem]  opacity-50" size={18} />
                   </DivNative>
                   {error && (
                         <SpanNative
-                              className="flex group-focus:hidden opacity-55"
+                              className="mt-[1rem] flex group-focus:hidden opacity-55"
                               tabIndex={-1}
                               textContent="
 					Email khong dung dinh dang"

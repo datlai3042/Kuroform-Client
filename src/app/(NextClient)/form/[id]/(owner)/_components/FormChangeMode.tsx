@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import BoxCopySuccess from "./BoxCopySuccess";
+import { Tabs, TabsProps } from "antd";
 
 type TProps = {
       formPageMode: FormPageMode;
@@ -15,6 +16,21 @@ type TProps = {
 };
 
 const iconSize = 16;
+
+const items: TabsProps["items"] = [
+      {
+            key: "summary",
+            label: "Thông tin chung",
+      },
+      {
+            key: "download",
+            label: "Tải xuống",
+      },
+      {
+            key: "share",
+            label: "Chia sẽ",
+      },
+];
 
 const FormChangeMode = (props: TProps) => {
       const { children, formPageMode, setFormPageMode } = props;
@@ -35,7 +51,7 @@ const FormChangeMode = (props: TProps) => {
       const styleEffect = {
             linkActive: (checkLink: boolean) => {
                   if (!checkLink) return "border-transparent";
-                  return "border-[#0bceb2] font-bold";
+                  return "border-[var(--color-main)] font-bold";
             },
       };
 
@@ -55,14 +71,15 @@ const FormChangeMode = (props: TProps) => {
       }, [copySuccess]);
 
       return (
-            <div className=" w-full p-[6rem]  mx-auto h-full flex  flex-col gap-[2rem] text-text-theme">
+            <div className=" w-full p-[2rem_6rem]  mx-auto h-full flex  flex-col gap-[1rem] text-text-theme">
                   <div className="w-full flex flex-col gap-[2rem] xl:flex-row justify-between">
                         <h1
                               title={formCore.form_title.form_title_value}
                               className="line-clamp-2 w-[80%] text-text-theme"
                               style={{
-                                    fontSize,
+                                    // fontSize,
                                     fontStyle,
+                                    fontSize: "2.4rem",
                               }}
                         >
                               {formCore?.form_title?.form_title_value}
@@ -106,41 +123,56 @@ const FormChangeMode = (props: TProps) => {
                               </button>
                         </div>
                   </div>
+                  <Tabs id="custom-tabs" style={{ color: "#fff" }} defaultActiveKey="summary" onChange={(value) => setFormPageMode(value as FormPageMode)}>
+                        <Tabs.TabPane
+                              key="summary"
+                              tab={
+                                    <Link
+                                          style={{ color: formPageMode === "summary" ? "var(--color-main)" : "", fontWeight: 600 }}
+                                          onClick={() => setFormPageMode("summary")}
+                                          href={`/form/${formCore._id}/summary`}
+                                          className={`${styleEffect.linkActive(
+                                                formPageMode === "summary",
+                                          )} border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
+                                    >
+                                          Thông tin chung
+                                    </Link>
+                              }
+                        />
+                        <Tabs.TabPane
+                              key="download"
+                              tab={
+                                    <Link
+                                          style={{ color: formPageMode === "download" ? "var(--color-main)" : "", fontWeight: 600 }}
+                                          onClick={() => setFormPageMode("download")}
+                                          href={`/form/${formCore._id}/download`}
+                                          className={`${styleEffect.linkActive(
+                                                formPageMode === "download",
+                                          )} border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
+                                    >
+                                          Tải xuống
+                                    </Link>
+                              }
+                        />
+                        <Tabs.TabPane
+                              key="share"
+                              tab={
+                                    <Link
+                                          style={{ color: formPageMode === "share" ? "var(--color-main)" : "", fontWeight: 600 }}
+                                          onClick={() => setFormPageMode("share")}
+                                          href={`/form/${formCore._id}/share`}
+                                          className={`${styleEffect.linkActive(
+                                                formPageMode === "share",
+                                          )} border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
+                                    >
+                                          Chia sẻ
+                                    </Link>
+                              }
+                        />
+                  </Tabs>
 
-                  <div className="w-full h-max flex items-center gap-[2rem] text-[1.4rem] border-b-[.1rem] border-slate-200 text-text-theme">
-                        <Link
-                              onClick={() => setFormPageMode("summary")}
-                              href={`/form/${formCore._id}/summary`}
-                              className={`${styleEffect.linkActive(
-                                    formPageMode === "summary",
-                              )} border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
-                        >
-                              Bản tóm tắt
-                        </Link>
-
-                        <Link
-                              onClick={() => setFormPageMode("download")}
-                              href={`/form/${formCore._id}/download`}
-                              className={`${styleEffect.linkActive(
-                                    formPageMode === "download",
-                              )}  border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
-                        >
-                              Tải xuống
-                        </Link>
-
-                        <Link
-                              onClick={() => setFormPageMode("share")}
-                              href={`/form/${formCore._id}/share`}
-                              className={`${styleEffect.linkActive(
-                                    formPageMode === "share",
-                              )}  border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[#0bceb2] `}
-                        >
-                              Chia sẽ
-                        </Link>
-                  </div>
-
-                  <div className="h-[50%] xl:h-[70%]">
-                        <div className="mt-[3rem] h-full">{children}</div>
+                  <div className="flex-1">
+                        <div className="h-full">{children}</div>
                   </div>
             </div>
       );

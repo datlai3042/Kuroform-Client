@@ -18,23 +18,28 @@ const SettingPage = () => {
 
       return (
             <LayoutSidebar>
-                  <div className={` w-full min-h-screen h-max    p-[.8rem_0rem_0rem_0rem] flex flex-col gap-[2rem]  text-[1.4rem]  bg-color-section-theme`}>
+                  <div className={` w-full min-h-screen h-max   flex flex-col   text-[1.4rem] `}>
                         <SettingHeader />
-                        <div className="flex-1 min-h-[60rem] h-full text-text-theme bg-[var(--bg-space)] p-[0rem_2.6rem_2rem_2.6rem] rounded-[1.2rem_1.2rem_0_0]">
-                              <h3 className="my-[2.2rem] !text-[2.8rem]">Cài đặt</h3>
-                              <div className="w-full bg-[var(--color-section-theme)] p-[2.8rem] rounded-[1.2rem_1.2rem_0_0]">
+                        <div className="flex-1 min-h-[60rem] flex flex-col h-full text-text-theme bg-[var(--bg-module-other)] p-[0rem_2.6rem_2rem_2.6rem] rounded-[1.2rem_1.2rem_0_0]">
+                              <h3 className="my-[2rem] pl-[.8rem] !text-[2.3rem]">Cài đặt</h3>
+                              <div className="w-full bg-[var(--color-section-theme)] flex-1 p-[2.8rem] rounded-[1.2rem_1.2rem_0_0]">
                                     <SettingSection tab={tab} setTab={setTab} />
                                     {user && tab === "account" && <SettingAccount />}
                                     {!user?.user_create_password && tab === "create_password" && <SettingCreatePassword setTab={setTab} />}
                                     {user && tab === "update_password" && <SettingUpdatePassword setTab={setTab} />}
 
                                     {!user && (
-                                          <div className="flex flex-col gap-[1.8rem]">
-                                                <div className="animate-pulse w-full h-[10rem] rounded-md bg-slate-200"></div>
-                                                <div className="animate-pulse w-full h-[10rem] rounded-md bg-slate-200"></div>
-                                                <div className="animate-pulse w-full h-[10rem] rounded-md bg-slate-200"></div>
-                                                <div className="animate-pulse w-full h-[10rem] rounded-md bg-slate-200"></div>
-                                                <div className="animate-pulse bg-slate-200 w-[10%] p-[.2rem_.8rem] h-[20.7rem] d"></div>
+                                          <div className=" h-full flex flex-col gap-[1.8rem]">
+                                                <div className="animate-pulse w-full h-[3rem] rounded-md bg-slate-200"></div>
+                                                <div className="animate-pulse  h-[8rem] w-[8rem] rounded-full bg-slate-200"></div>
+
+                                                <div className="animate-pulse w-full h-[3rem] rounded-md bg-slate-200"></div>
+                                                <div className="animate-pulse bg-slate-200 w-[60%] p-[.2rem_.8rem] h-[2.7rem] "></div>
+
+                                                <div className="animate-pulse bg-slate-200 w-full p-[.2rem_.8rem] h-[3.7rem] "></div>
+                                                <div className="animate-pulse bg-slate-200 w-[70%] p-[.2rem_.8rem] h-[2.7rem] "></div>
+                                                <div className="animate-pulse bg-slate-200 w-[80%] p-[.2rem_.8rem] h-[2.7rem] "></div>
+                                                <div className="animate-pulse w-full h-[3rem] rounded-md bg-slate-200"></div>
                                           </div>
                                     )}
                               </div>

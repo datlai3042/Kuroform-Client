@@ -35,7 +35,9 @@ const DashBoardLeft = () => {
       const scrollThemeStyle = theme === "dark" ? "scroll-color-main" : "scroll-common";
 
       return (
-            <div className={`${scrollThemeStyle} overflow-auto max-h-[97%]  p-[1rem] flex flex-col gap-[1rem] text-text-theme text-[1.4rem]`}>
+            <div 
+            style={{borderRight: '.1rem solid var(--border-color-side'}}
+            className={`${scrollThemeStyle} overflow-auto max-h-[97%] min-h-screen  p-[1rem] pl-0 flex flex-col  text-text-theme text-[1.4rem]`}>
                   <div className="relative w-full mb-[1rem] flex items-center justify-center gap-[1rem]">
                         {/* <LogoColor /> */}
                         {/* <DashboardInfoUser /> */}

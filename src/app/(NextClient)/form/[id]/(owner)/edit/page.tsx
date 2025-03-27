@@ -38,15 +38,15 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
                   return width;
             }
             if (openSidebar && !openFormDesign) {
-                  width = "w-full xl:w-[calc(100vw-25rem)]";
+                  width = "w-full xl:w-[calc(100vw-23rem)]";
             }
 
             if (!openSidebar && openFormDesign) {
-                  width = "w-[calc(100vw-28rem)] w-[calc(100vw-28rem)]";
+                  width = "w-[calc(100vw-28rem)] w-[calc(100vw-27rem)]";
             }
 
             if (openSidebar && openFormDesign) {
-                  width = "w-[calc(100vw-28rem)] xl:w-[calc(100vw-51.7rem)]";
+                  width = "w-[calc(100vw-28rem)] xl:w-[calc(100vw-49.7rem)]";
             }
             return width;
       }, [openFormDesign, openSidebar]);
@@ -55,7 +55,7 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
             <div className={`${renderWidthMainContent} flex flex-col min-h-screen h-max  `} style={{ "--bg-input-core": colorMain } as CSS.Properties}>
                   <HeaderEditForm showHeaderAction={true} />
                   {formCore && (
-                        <div style={{ backgroundColor: formCore.form_color || "" }} className={`${formColor}  flex min-h-screen h-max `}>
+                        <div style={{ backgroundColor: formCore.form_color || "" }} className={`${formColor}   flex min-h-screen h-max `}>
                               <FormCore />
                               {openFormDesign && modeScreen === "NORMAL" ? <FormDesignCustom /> : null}
                         </div>

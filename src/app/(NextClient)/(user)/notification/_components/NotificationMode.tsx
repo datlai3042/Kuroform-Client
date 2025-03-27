@@ -3,6 +3,7 @@ import useGetListFormDelete from "@/app/hooks/useGetListFormDelete";
 import { Notification } from "@/type";
 import React, { useState } from "react";
 import NotificationShow from "./NotificationShow";
+import { Select } from "antd";
 
 export type NotificationMode = "All" | Notification.Type.Common;
 
@@ -31,79 +32,18 @@ const NotificationMode = () => {
       };
 
       return (
-            <div className="w-full flex flex-col gap-[4rem]">
-                  <div className="flex flex-wrap gap-[2rem]">
-                        <button
-                              onClick={() => setModeNotification("All")}
-                              className="bg-stone-400 w-[46%] xl:w-[20%] min-h-[8rem] p-[1rem] flex flex-col justify-start gap-[1rem] text-[#fff] text-[1.4rem]"
-                        >
-                              <span>Tất cả thông báo</span>
-                              <div
-                                    className={`${styleEffect.onActiveRequireWrapper(
-                                          modeNotification === "All",
-                                    )} relative w-[5rem] h-[2rem] flex items-center rounded-2xl`}
-                              >
-                                    <div
-                                          className={`${styleEffect.onActiveRequireCircle(
-                                                modeNotification === "All",
-                                          )} absolute bg-blue-200 w-[2rem] h-[2rem] rounded-full  `}
-                                    ></div>
-                              </div>
-                        </button>
-
-                        <button
-                              onClick={() => setModeNotification("Form_Answers")}
-                              className="bg-teal-700 w-[46%] xl:w-[20%] min-h-[8rem] p-[1rem] flex flex-col justify-start gap-[1rem] text-[#fff] text-[1.4rem]"
-                        >
-                              <span>Thông báo form</span>
-                              <div
-                                    className={`${styleEffect.onActiveRequireWrapper(
-                                          modeNotification === "Form_Answers",
-                                    )} relative w-[5rem] h-[2rem] flex items-center rounded-2xl`}
-                              >
-                                    <div
-                                          className={`${styleEffect.onActiveRequireCircle(
-                                                modeNotification === "Form_Answers",
-                                          )} absolute bg-blue-200 w-[2rem] h-[2rem] rounded-full  `}
-                                    ></div>
-                              </div>
-                        </button>
-                        <button
-                              onClick={() => setModeNotification("System")}
-                              className="bg-green-400 w-[46%] xl:w-[20%] min-h-[8rem] p-[1rem] flex flex-col justify-start gap-[1rem] text-[#fff] text-[1.4rem]"
-                        >
-                              <span>Thông báo hệ thống</span>
-                              <div
-                                    className={`${styleEffect.onActiveRequireWrapper(
-                                          modeNotification === "System",
-                                    )} relative w-[5rem] h-[2rem] flex items-center rounded-2xl`}
-                              >
-                                    <div
-                                          className={`${styleEffect.onActiveRequireCircle(
-                                                modeNotification === "System",
-                                          )} absolute bg-blue-200 w-[2rem] h-[2rem] rounded-full  `}
-                                    ></div>
-                              </div>
-                        </button>
-
-                        <button
-                              onClick={() => setModeNotification("Account")}
-                              className="bg-red-400  w-[46%] xl:w-[20%] min-h-[8rem] p-[1rem] flex flex-col justify-start gap-[1rem] text-[#fff] text-[1.4rem]"
-                        >
-                              <span>Thông báo tài khoản</span>
-                              <div
-                                    className={`${styleEffect.onActiveRequireWrapper(
-                                          modeNotification === "Account",
-                                    )} relative w-[5rem] h-[2rem] flex items-center rounded-2xl`}
-                              >
-                                    <div
-                                          className={`${styleEffect.onActiveRequireCircle(
-                                                modeNotification === "Account",
-                                          )} absolute bg-blue-200 w-[2rem] h-[2rem] rounded-full  `}
-                                    ></div>
-                              </div>
-                        </button>
-                  </div>
+            <div className="w-full flex flex-col gap-[2rem]">
+                  <Select
+                        defaultValue="All"
+                        style={{ width: 240 }}
+                        onChange={(value) => setModeNotification(value as NotificationMode)}
+                        options={[
+                              { value: "All", label: "Tất cả thông báo" },
+                              { value: "Form_Answers", label: "Thông báo của trả lời" },
+                              { value: "System", label: "Thông báo hệ thống" },
+                              { value: "Account", label: "Thông báo tài khoản" },
+                        ]}
+                  />
 
                   <NotificationShow
                         isLoading={getNotificationType.isLoading}

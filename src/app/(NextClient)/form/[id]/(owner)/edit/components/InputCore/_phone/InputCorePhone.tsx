@@ -24,13 +24,13 @@ const InputCorePhone = (props: TProps) => {
 				textContent="Số điện thoại"
 				className={`${
 					form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"
-				} text-[1.6rem] font-semibold`}
+				} text-[1.6rem] font-medium`}
 			/>
-			<DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
+			<DivNative className={` relative min-h-[5rem] bg-[var(--color-section-theme)] border-[.1rem] rounded-[.4rem] border-[var(--border-color-input)] h-max flex items-center gap-[.5rem] `}>
 				<input
 					value={phone}
 					type="number"
-					className="w-full h-full text-text-theme p-[1rem] rounded-lg text-[1.6rem]   border-[.1rem] border-gray-400  outline-none focus:outline-blue-200 focus:border-transparent"
+					className="w-full h-full text-text-theme p-[1rem] rounded-lg text-[1.6rem] bg-[var(--color-section-theme)]    outline-none focus:outline-blue-200 focus:border-transparent"
 					placeholder="Nhập số điện thoại của bạn"
 					onChange={(e) => setPhone(+e.target.value)}
 				/>

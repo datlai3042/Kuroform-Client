@@ -8,7 +8,7 @@ import ButtonLogOut from "../ui/button/ButtonLogOut";
 
 const Footer = () => {
       return (
-            <div className="fixed left-0 right-0 bottom-[-.4rem] w-screen h-[6rem] text-[#000] z-[999] bg-[#fff] xl:hidden flex items-center justify-between px-[1rem]">
+            <div className="fixed left-0 right-0 bottom-[-.4rem]  h-[6rem] text-text-theme z-[999] bg-[var(--color-section-theme)] xl:hidden flex items-center justify-between px-[1rem]">
                   <Link href={"/settings"}>
                         <Settings size={24} />
                   </Link>
@@ -21,7 +21,7 @@ const Footer = () => {
                   <ButtonCreateForm
                                                 textContent="Tạo Form"
                                                 urlNavigation="/"
-                                                className=" xl:[&]:p-[4px_8px] !text-[1.2rem] !w-[10rem]"
+                                                className=" !p-[1rem] !text-[1.4rem] !w-[10rem]"
                                                 position="LEFT"
                                           />
 

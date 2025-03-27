@@ -8,7 +8,7 @@ const generatePercentOption = (data: InputData[]) => {
 	const total = data.length;
 	console.log({ "Tổng số trang": total });
 	data.map((dt) => {
-		const covertValueArrayToString = typeof dt.value === "string" ? dt.value : dt.value.join(", ");
+		const covertValueArrayToString = typeof dt.value === "string" ? dt?.value : dt?.value?.join(", ");
 
 		if (!dataAnalysis[covertValueArrayToString]) {
 			dataAnalysis[covertValueArrayToString] = { count: 1, percent: Number(((1 / total) * 100).toFixed(2)) };

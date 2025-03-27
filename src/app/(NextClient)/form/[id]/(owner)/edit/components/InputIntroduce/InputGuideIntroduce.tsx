@@ -6,7 +6,7 @@ import React from "react";
 
 const InputGuideIntroduce = () => {
 	return (
-		<DivNative className="w-full min-h-[40rem] px-[1rem] xl:px-0 flex flex-col justify-center xl:items-center gap-[1rem] text-[1.3rem] xl:text-[1.8rem] opacity-65">
+		<DivNative className="w-full  px-[1rem] xl:px-[2rem] flex flex-col justify-center  gap-[1rem] text-[1.3rem] xl:text-[1.8rem] opacity-65">
 			<SpanNative textContent="Ngay tại đây" />
 			<DivNative className="flex flex-wrap items-center gap-[1rem] ">
 				<SpanNative textContent="Bạn có thể thêm" />

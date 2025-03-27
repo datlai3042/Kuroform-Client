@@ -50,7 +50,7 @@ const FormBackground = () => {
                                     style={myBackgroundStyle.style_background}
                                     unoptimized={true}
                                     alt="form background"
-                                    className="absolute w-full h-full max-h-[40rem]   rounded-lg"
+                                    className="absolute  w-full h-full max-h-[40rem]   rounded-lg"
                               />
                         </div>
                   </DivNativeRef>

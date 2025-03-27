@@ -20,7 +20,7 @@ const DashboardWorkspaceItemContent = (props: TProps) => {
                               width={18}
                               height={18}
                               alt="icon"
-                              className="w-[3rem] h-[3rem] rounded-full"
+                              className="w-[3rem] h-[3rem] bg-[#fff] p-[.3rem] rounded-full"
                               unoptimized={true}
                         />
                   ) : (
@@ -29,7 +29,7 @@ const DashboardWorkspaceItemContent = (props: TProps) => {
                                     theme === "light" ? "bg-transparent" : "bg-[#fff]"
                               }  min-w-[3rem] h-[3rem] rounded-full flex items-center justify-center`}
                         >
-                              <Image src={"/icon_core.png"} width={20} height={20} alt="avatar" unoptimized={true} className="w-[2rem] h-[2rem] " />
+                              <Image src={"/icon_core.png"} width={20} height={20} alt="avatar" unoptimized={true} className="w-[3rem] h-[3rem] bg-[#fff] p-[.2rem] rounded-full" />
                         </div>
                   )}
                   <p className="max-w-[80%] truncate ">{formCore.form_title.form_title_value || "Chưa tạo tiêu đề"}</p>

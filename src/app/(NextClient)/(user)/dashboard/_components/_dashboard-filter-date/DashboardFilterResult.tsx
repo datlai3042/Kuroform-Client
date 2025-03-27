@@ -31,7 +31,7 @@ const DashboardFilterResult = (props: TProps) => {
       return (
             <>
                   {data_in_month.length > 0 && (
-                        <div className="flex flex-wrap justify-end gap-[.4rem]  w-full h-max rounded-xl text-[1.2rem]  xl:text-[1.3rem]">
+                        <div className="ml-auto flex w-[30rem] flex-wrap justify-end gap-[.4rem]  h-max rounded-xl text-[1.2rem]  xl:text-[1.3rem]">
                               {data_in_month.map((data, i) => {
                                     if (data.match) {
                                           return (
@@ -67,7 +67,7 @@ const DashboardFilterResult = (props: TProps) => {
 
                   {data_in_month.length === 0 && (
                         // <div className="flex flex-col gap-[1rem]">
-                        <div className="flex flex-wrap xl:justify-end gap-[.4rem] w-full h-[18rem] xl:h-[21rem] rounded-xl   text-[1.3rem]">
+                        <div className="ml-auto flex w-[30rem] flex-wrap xl:justify-end gap-[.6rem]    rounded-xl   text-[1.3rem]">
                               {filter_form.map((_, i) => (
                                     <button
                                           key={i}

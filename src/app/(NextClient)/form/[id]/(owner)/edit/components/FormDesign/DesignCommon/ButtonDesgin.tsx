@@ -30,7 +30,7 @@ const ButtonDesgin = (props: ButtonDesginProps) => {
                         {...buttonProps}
                         className={` ${
                               buttonProps.className || ""
-                        }  btn-primarily min-w-[14rem] w-max h-[4rem] flex items-center sm:justify-center gap-[.5rem]   rounded-lg  font-bold text-[#fff] `}
+                        }  btn-primarily bg-color-main min-w-[14rem] w-max h-[3.6rem] flex items-center sm:justify-center gap-[.5rem]   rounded-[.4rem]  font-bold text-[#fff] `}
                         onClick={onOpenDesignModel}
                   >
                         <PanelTop />

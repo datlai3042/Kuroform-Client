@@ -14,8 +14,7 @@ const SettingHeader = () => {
 		<div className="w-full h-[6rem] flex items-center justify-between gap-[1rem] text-[1.3rem]  text-text-theme  bg-color-section-theme">
 			<div className="flex items-center gap-[.5rem] ">
 				{!openSidebar && <ButtonIcon Icon={<ChevronsRight />} onClick={() => setOpenSidebar(true)} />}
-				<LogoHome />
-				<ChevronRight size={16} />
+				{/* <ChevronRight size={16} /> */}
 				<span className="first-letter:uppercase text-[1.4rem] font-medium">{pathName.replace("/", "")}</span>
 			</div>
 			<div className="flex gap-[20px] ">

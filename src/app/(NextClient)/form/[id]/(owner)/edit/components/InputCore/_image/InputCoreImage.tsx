@@ -43,8 +43,8 @@ const InputCoreImage = (props: TProps) => {
 
       const InputImage = (
             <DivNative className="relative flex flex-col items-start gap-[1rem] text-text-theme ">
-                  <DivNative className={`h-[90%]  flex flex-col items-start  gap-[3rem] `}>
-                        <button onClick={handleClick} className="btn-primarily min-w-[12rem]   rounded-xl">
+                  <DivNative className={`h-[90%]  flex flex-col items-start  gap-[1rem] `}>
+                        <button onClick={handleClick} className="btn-primarily bg-color-main min-w-[12rem]   rounded-[.4rem]">
                               {filePreview ? "Tải lên lại" : "Tải ảnh lên"}
                         </button>
 
@@ -62,7 +62,7 @@ const InputCoreImage = (props: TProps) => {
                   InputComponent={InputImage}
                   inputItem={inputItem}
                   inputTitle={inputItem.input_title || ""}
-                  dataTextTitle="Thêm mô tả về ngày được chọn"
+                  dataTextTitle="Thêm mô tả về hình ảnh được chọn"
             />
       );
 };

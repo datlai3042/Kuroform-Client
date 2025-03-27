@@ -33,10 +33,10 @@ const NotificationShow = (props: TProps) => {
 	const renderNotificationArray = useMemo(() => renderNotification(notification_data), [notification_data]);
 
 	return (
-		<div className="flex flex-col gap-[6rem]">
+		<div className="flex flex-col gap-[4rem] py-[2rem]">
 			<div className="flex flex-col gap-[4rem]">{renderNotificationArray}</div>
 			{!isLoading && notification_data.length > 0 && (
-				<div className="flex xl:justify-center text-[1.4rem] ">
+				<div className="flex sm:justify-center text-[1.4rem] ">
 					<button onClick={nextPageCallback} className="bg-blue-500 rounded-xl p-[1rem] text-[#fff]">
 						{isNextPage ? "Tải thêm thông báo" : "Đã hết dữ liệu"}
 					</button>

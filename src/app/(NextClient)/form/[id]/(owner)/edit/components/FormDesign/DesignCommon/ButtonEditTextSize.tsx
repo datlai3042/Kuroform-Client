@@ -63,7 +63,7 @@ const ButtonEditTextSize = (props: TProps) => {
       }, [globalClick]);
 
       const onChangeTextSize = (size: number, type: "Input" | "Decrease" | "Increase") => {
-            const MAX = typeEdit === "Form" ? 30 : 20;
+            const MAX = typeEdit === "Form" ? 40 : 20;
             const MIN = 1;
 
             if (!size) {
@@ -119,10 +119,11 @@ const ButtonEditTextSize = (props: TProps) => {
             typeEdit === "Form"
                   ? formCore.form_title.form_title_size || formCore.form_setting_default.form_title_size_default
                   : formCore.form_setting_default.input_size;
-
+      console.log({ titleCoreSize });
       return (
             <div ref={divColorRef} className="relative w-max  max-h-[8rem] xl:h-[4rem] py-[.3rem] flex items-center justify-between gap-[1rem] bg-transparent ">
                   <button
+                        disabled={titleCoreSize <= 1}
                         className="w-[3rem] h-[3rem] flex items-center justify-center rounded-full   border-[.1rem] border-slate-300"
                         onClick={() => debounced(titleCoreSize, "Decrease")}
                   >
@@ -138,13 +139,14 @@ const ButtonEditTextSize = (props: TProps) => {
                                     setOpenModelSize(true);
                               }}
                               type="number"
-                              max={typeEdit === "Form" ? 30 : 20}
+                              max={typeEdit === "Form" ? 40 : 20}
                               onChange={(e) => debounced(+e.target.value, "Input")}
                               value={titleCoreSize}
                               className="w-[5rem] h-[3.6rem] text-center  bg-[#ffffff]  border-[.1rem] border-slate-300  rounded-lg outline-none"
                         />
                   </div>
                   <button
+                        disabled={titleCoreSize >= 40}
                         className="w-[3rem] h-[3rem] flex items-center justify-center rounded-full   border-[.1rem] border-slate-300"
                         onClick={() => debounced(titleCoreSize, "Increase")}
                   >

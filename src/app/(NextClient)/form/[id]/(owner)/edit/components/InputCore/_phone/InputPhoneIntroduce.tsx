@@ -28,14 +28,14 @@ const InputPhoneIntroduce = (props: TProps) => {
 	};
 
 	return (
-		<DivNative className="w-full h-full flex flex-col py-[1rem] ">
+		<DivNative className="w-full h-full flex flex-col  sm:py-[4rem] ">
 			<InputIntroduceHeader
 				title={inputIntroducePhone.title}
 				description={inputIntroducePhone.description}
 				action={handleChooseInputType}
 			/>
-			<DivNative className="h-[50%] flex flex-col gap-[2.6rem] p-[3rem_2rem]">
-				<DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-gray-200  text-gray-400">
+			<DivNative className="h-[50%] flex flex-col gap-[2.6rem] p-[1rem_2rem] sm:p-[3rem_2rem]">
+				<DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-color-main text-[#fff]">
 					Ví dụ
 				</DivNative>
 				<DivNative className="flex flex-col gap-[1rem]">
@@ -44,7 +44,7 @@ const InputPhoneIntroduce = (props: TProps) => {
 						<input
 							value={phone}
 							type="number"
-							className="w-full h-full p-[1rem] rounded-lg text-[1.6rem]   border-[.1rem] border-gray-400  outline-none focus:outline-blue-200 focus:border-transparent"
+							className="w-full h-full p-[1rem] rounded-lg text-[1.6rem]   border-[.1rem] border-[var(--border-color-input)] bg-color-section-theme text-[#fff]  outline-none "
 							placeholder="Nhập số điện thoại của bạn"
 							onChange={(e) => setPhone(+e.target.value)}
 						/>

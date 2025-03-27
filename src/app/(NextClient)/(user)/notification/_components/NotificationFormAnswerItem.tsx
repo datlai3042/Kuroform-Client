@@ -53,7 +53,7 @@ const NotificationFormAnswerItem = (props: TProps) => {
                               <LoadingArea />
                         </div>
                   )}
-                  <div className="w-[80%]  flex flex-col gap-[1rem] text-[1.4rem] leading-10 ">
+                  <div className="xl:w-[60%]  flex flex-col gap-[1rem] text-[1.4rem] leading-10 ">
                         <div className="h-max flex flex-wrap gap-[1rem] text-left break-words max-w-full">
                               <span className="font-bold">Tin nhắn: </span>
                               {titleForm ? (

@@ -50,7 +50,7 @@ const SettingUpdatePassword = (props: TProps) => {
 
       return (
             <div className="min-h-full h-max">
-                  <form className="flex items-center gap-[2rem]" onSubmit={updatePasswordForm.handleSubmit(onSubmit)}>
+                  <form className="flex flex-wrap items-center" onSubmit={updatePasswordForm.handleSubmit(onSubmit)}>
                         <Input<UpdatePasswordSchema>
                               FieldKey="password"
                               placeholder="Nhập mật khẩu"
@@ -71,7 +71,7 @@ const SettingUpdatePassword = (props: TProps) => {
 
                         <button
                               type="submit"
-                              className=" min-w-[15%] w-max mt-[1.4rem] p-[.8rem] h-[4.4rem] flex justify-center items-center gap-[.8rem] bg-blue-700 text-white rounded-lg"
+                              className=" min-w-[15rem] w-max  p-[.8rem] h-[4.4rem] flex justify-center items-center gap-[.8rem] bg-blue-700 text-white rounded-lg"
                         >
                               Cập nhập mật khẩu
                         </button>

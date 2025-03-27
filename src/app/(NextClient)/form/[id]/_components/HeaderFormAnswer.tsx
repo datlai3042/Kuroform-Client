@@ -83,11 +83,11 @@ const HeaderFormAnswer = (props: TProps) => {
                                                 }
                                           }
 
-                                          if (ft.type === "FullDescription" && (ft?.core?.header_value || ft?.core.value)) {
+                                          if (ft.type === "FullDescription" && (ft?.core?.header_value || ft?.core?.value)) {
                                                 return (
                                                       <div className="  text-[1.4rem]  flex flex-col gap-[1.6rem] " key={ft?._id}>
                                                             {ft?.core?.header_value && <span className="font-bold">{ft?.core?.header_value}</span>}
-                                                            {ft?.core.value && <span>{ft?.core?.value}</span>}
+                                                            {ft?.core?.value && <span>{ft?.core?.value}</span>}
                                                       </div>
                                                 );
                                           }

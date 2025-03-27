@@ -58,7 +58,7 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
       };
 
       return (
-            <div className="flex flex-col gap-[3rem]">
+            <div className="flex flex-col gap-[1rem]">
                   {modeScreen === "NORMAL" && (
                         <DivNativeRef
                               style={{
@@ -77,9 +77,10 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
                                                 ? formCore.form_title.form_title_style
                                                 : formCore.form_setting_default.form_title_style_default
                                     }`,
+                                    wordBreak: "break-word",
                               }}
                               ref={divContentRef}
-                              className={`${styleEffect.onCheckTitle()} text-text-theme py-[1rem] w-full   title-core group min-h-[8rem]  max-w-full xl:max-w-full  break-all flex items-center  h-max border-none outline-none     font-light text-justify hover:cursor-pointer`}
+                              className={`${styleEffect.onCheckTitle()} !text-[3rem]  text-text-theme py-[1rem] w-full   title-core group min-h-[8rem]  max-w-full xl:max-w-full  break-all flex items-center  h-max border-none outline-none     font-light sm:text-justify hover:cursor-pointer`}
                               onClick={() => divContentRef.current?.focus()}
                               onKeyDown={onPressEnter}
                               contentEditable={true}

@@ -43,7 +43,7 @@ const AppProvider = (props: TProps) => {
       useEffect(() => {}, [statusCode]);
       if (statusCode === "500" || code === "500") return <Code500 />;
 
-      return <div className="">{!isLoading ? <LoadingClient /> : children}</div>;
+      return <div className="">{!isLoading ? <LoadingClient style={{background: '#17174bb0'}}/> : children}</div>;
 };
 
 export default AppProvider;

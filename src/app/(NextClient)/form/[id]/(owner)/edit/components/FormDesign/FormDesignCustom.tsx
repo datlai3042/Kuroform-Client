@@ -44,9 +44,9 @@ const FormDesignCustom = () => {
 
       return (
             <div className="scroll-desgin-custom fixed z-[104] bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen overflow-y-scroll w-[26rem]  ">
-                  <div className="relative min-h-full h-max pb-[8rem]  border-b-[.2rem] border-gray-200 rounded-lg ">
-                        <div className="relative w-full min-h-full h-max  py-[2rem] px-[1rem] flex flex-col  gap-[2rem]  ">
-                              <p className="mt-[1rem] text-[1.6rem]  font-medium text-center pb-[2rem] border-b-[.1rem] border-[#ccc]">Tùy biến giao diện</p>
+                  <div style={{borderLeft: '.1rem solid rgb(200 205 214 / 42%)'}} className=" relative min-h-full h-max pb-[8rem]  border-b-[.2rem]  py-[.8rem]">
+                        <div className="relative w-full min-h-full h-max  py-[2rem]  flex flex-col  gap-[2rem]  ">
+                              <p className="mt-[2rem] text-[1.6rem]  font-medium text-center pb-[2rem] border-b-[.1rem] border-[#ccc]">Tùy biến giao diện</p>
                               {/* <FormDesignFormMode /> */}
                               <FormDesignColorAndSubmit />
                               <FormDesignText title={"Tùy chỉnh tiêu đề chính"} type="Form" />
@@ -57,7 +57,7 @@ const FormDesignCustom = () => {
 
                               <button
                                     // style={{ backgroundColor: theme === "light" ? colorMain : "#fff" }}
-                                    className="absolute top-[.6rem] right-[.6rem] p-[.6rem] text-[1.3rem] rounded-lg  text-[#fff] bg-blue-300 hover:bg-blue-500"
+                                    className="absolute top-[.6rem] right-[.6rem] p-[.6rem] text-[1.3rem] rounded-lg  text-[#fff] bg-color-main"
                                     onClick={onCloseFormDesign}
                               >
                                     Đóng

@@ -36,7 +36,7 @@ const DashBoardWork = () => {
       const { theme } = useContext(ThemeContext);
 
       const user = useSelector((state: RootState) => state.authReducer.user);
-      const focusSearch = useSelector((state: RootState) => state.form.focus_search);
+      // const focusSearch = useSelector((state: RootState) => state.form.focus_search);
 
       const router = useRouter();
 
@@ -49,7 +49,7 @@ const DashBoardWork = () => {
             dispatch(onFocusSearch({ focus: true }));
       };
 
-      const matchPathName = (link: string) => link === pathName && !focusSearch;
+      const matchPathName = (link: string) => link === pathName 
 
       const urlProlife = `/profile/${user?.user_atlas}`;
 
@@ -64,7 +64,7 @@ const DashBoardWork = () => {
 
                   <button
                         onClick={handleSearch}
-                        className={`nav ${colorTheme} ${focusSearch ? "nav__isActive" : "nav__normal text-text-theme"} group hover:text-[#fff] `}
+                        className={`nav ${colorTheme}  group hover:text-[#fff] `}
                   >
                         <Search size={18} />
                         <span className="font-medium">Tìm kiếm</span>

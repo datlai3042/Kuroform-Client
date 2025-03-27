@@ -38,7 +38,7 @@
 
             --color-gap-empty: #f1f4fb;
             --color-main: #6262e5;
-            --color-section-theme: #111111;
+            --color-section-theme: #08112b;
             --text-theme: #000;
             --color-main-hover: rgb(229 231 235);
             --border-color: hwb(0 10% 88% / 0.189);
@@ -50,6 +50,8 @@
             --toast-success: #4299de;
             --toast-error: #f4454c;
             --toast-warning: #ea580c;
+            --border-color-input: rgb(209 213 219 / 27%);
+
       }
 
       html{
@@ -69,6 +71,9 @@
             --color-main-hover: rgb(229 231 235);
             --border-form-item: #e8e8e8;
             --bg-space: #f4f6ff;
+            --bg-module-other: #e1e1e100;
+            --border-color-input: #d1d5db;
+            --border-color-side:  rgb(200 205 214 / 42%);
             /* --color-btn-primarily: #2d68ff;ư */
       }
 
@@ -76,7 +81,7 @@
             --bg-form-nav: #393c73;
             --color-gap-empty: #000;
             --color-main: #3b36db;
-            --color-section-theme: #111111;
+            --color-section-theme: #08112b;
             --text-theme: #ccc;
             --color-main-hover: rgb(229 231 235);
             --border-color: #14113c;
@@ -84,6 +89,10 @@
             --color-btn-primarily: rgb(37, 104, 170);
             --border-form-item: transparent;
             --bg-space: #252525;
+            --bg-module-other: #17174bb0;
+            --border-color-input: rgb(209 213 219 / 27%);
+            --border-color-side:  rgb(200 205 214 / 18%);
+
       }
 
       body {
@@ -198,12 +207,12 @@
       }
 
       .scroll-color-main::-webkit-scrollbar {
-            width: 1rem;
+            width: .6rem;
             height: 4rem;
       }
       .scroll-color-main::-webkit-scrollbar-thumb {
-            background: var(--color-main);
-            /* border-radius: 10px; */
+            background: #8b8b8b;
+            border-radius: .2rem;
       }
 
       .scroll-images::-webkit-scrollbar {
@@ -278,7 +287,7 @@
 
       .btn-primarily {
             background-color: var(--color-btn-primarily);
-            padding: 1rem;
+            padding: .4rem;
             opacity: 0.7;
             font-size: 1.3rem;
             color: #fff;
@@ -414,4 +423,12 @@
       .form-state__message--delete {
             @apply bg-red-600;
       }
+
+
+      #custom-tabs .ant-tabs-tab {
+            color: var(--text-theme) !important;
+          }
+          .custom-tabs .ant-tabs-tab-active {
+            color: yellow !important; /* Màu khi tab được chọn */
+          }
 }

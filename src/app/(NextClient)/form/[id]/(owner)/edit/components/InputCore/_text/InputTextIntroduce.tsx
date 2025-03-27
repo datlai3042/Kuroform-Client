@@ -24,17 +24,17 @@ const InputTextIntroduce = (props: TProps) => {
             changeTypeInput.mutate({ form: formCore, inputItem, type: "TEXT" });
       };
       return (
-            <DivNative className="w-full h-full flex flex-col py-[1rem] ">
+            <DivNative className="11 w-full h-full flex flex-col sm:py-[4rem] ">
                   <InputIntroduceHeader title={inputIntroduceText.title} description={inputIntroduceText.description} action={handleChooseInputType} />
 
-                  <DivNative className="h-[50%] flex flex-col gap-[2.6rem] p-[3rem_2rem]">
-                        <DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-gray-200  text-gray-400">
+                  <DivNative className="h-[50%] flex flex-col gap-[2.6rem] p-[1rem_2rem] sm:p-[3rem_2rem]">
+                        <DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-color-main text-[#fff]">
                               Ví dụ
                         </DivNative>
                         <DivNative className={`min-h-[5rem] h-max flex flex-col  gap-[1rem] `}>
                               <SpanNative textContent="Nhập tiêu đề cho đoạn Text" className="text-[1.6rem] font-bold" />
                               <DivNative
-                                    className="group w-full min-h-[8rem] p-[1.6rem] text-[1.6rem] break-words whitespace-pre-wrap h-max border-[.1rem] border-gray-300 rounded-lg outline-none resize-none "
+                                    className="group w-full min-h-[8rem] p-[1.6rem] text-[1.6rem] break-words whitespace-pre-wrap h-max border-[.1rem] border-[var(--border-color-input)] rounded-lg outline-none resize-none "
                                     spellCheck={false}
                                     contentEditable={true}
                                     data-text={`${"Nhập thông tin của bạn"}`}

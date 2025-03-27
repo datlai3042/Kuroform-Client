@@ -22,7 +22,7 @@ const ModelNotification = () => {
 
 			<div
 				onClick={(e) => e.stopPropagation()}
-				className="scroll-hidden overflow-y-scroll pb-[1rem] flex flex-col gap-[.5rem] "
+				className=" overflow-y-scroll pb-[1rem] flex flex-col gap-[.5rem] "
 			>
 				{notifications &&
 					notifications.map((notification) => {

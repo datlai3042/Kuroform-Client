@@ -108,7 +108,7 @@ const FormTitleImage = (props: TProps) => {
                         <div className="flex items-center gap-[2rem]">
                               <button
                                     onClick={onClickButton}
-                                    className="btn-primarily min-w-[7rem] w-max h-[4rem] text-[1.4rem] flex justify-center items-center gap-[1rem] p-[.1rem_.7rem] text-[#fff]  rounded-lg"
+                                    className="btn-primarily bg-color-main min-w-[7rem] w-max h-[4rem] text-[1.4rem] flex justify-center items-center gap-[1rem] p-[.1rem_.7rem] text-[#fff]  rounded-lg"
                               >
                                     {FormText.title.optionImage.complete}
                               </button>

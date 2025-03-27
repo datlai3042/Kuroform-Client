@@ -45,15 +45,15 @@ const InputCoreAnchor = (props: TProps) => {
             <DivNative className="flex flex-col gap-[1rem] text-text-theme ">
                   <SpanNative
                         textContent="Nhập liên kết của bạn"
-                        className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"} text-[1.6rem] font-semibold`}
+                        className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"} text-[1.6rem] font-bold`}
                   />
                   <DivNative
-                        className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] border-[.1rem] bg-[#fff] border-gray-400 focus:border-transparent  rounded-lg`}
+                        className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] bg-[var(--color-section-theme)] border-[.1rem] rounded-[.4rem] border-[var(--border-color-input)] focus:border-transparent `}
                   >
                         <input
                               value={controlerInput.value.href}
                               onChange={(e) => onChangeValue(e.target.value)}
-                              className="w-[80%] h-full p-[1rem] rounded-lg text-[1.6rem]     outline-none   text-[#000]"
+                              className="w-[80%] h-full p-[1rem] rounded-lg text-[1.6rem]     outline-none  bg-[var(--color-section-theme)] "
                               placeholder="Nhập đường dẫn liên kết của bạn"
                         />
                         <div className="absolute z-[2] right-[1rem]  opacity-70">www</div>
