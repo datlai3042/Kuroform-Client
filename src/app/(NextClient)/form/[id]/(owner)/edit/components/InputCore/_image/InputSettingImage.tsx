@@ -9,6 +9,7 @@ import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNat
 import useUpdateInputSetting from "@/app/hooks/useUpdateInputSetting";
 import InputSettingErrorState from "../../InputSettings/SettingCommon/InputSettingErrorState";
 import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpinner";
+import ButtonSaveSetting from "../../InputSettings/ButtonSaveSetting";
 
 type TProps = {
       inputItem: InputCore.InputForm;
@@ -25,9 +26,7 @@ const InputSettingImage = (props: TProps) => {
 
       const { updateTypeInputMutation } = useUpdateInputSetting<InputCore.Setting.InputSettingCommon>();
 
-      const handleSaveSetting = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-            e.stopPropagation();
-
+      const handleSaveSetting = () => {
             const newForm = structuredClone(formCore);
             newForm.form_inputs = newForm.form_inputs.filter((ip) => {
                   if (ip._id !== inputItem._id) return ip;
@@ -49,7 +48,7 @@ const InputSettingImage = (props: TProps) => {
       }, [updateTypeInputMutation.isSuccess, setOpenModel]);
 
       return (
-            <DivNative className="h-max flex flex-col gap-[2.4rem]">
+            <DivNative className="h-max flex flex-col gap-[1.8rem]">
                   <InputSettingRequire inputItem={inputItemString} setInputItemString={setInputItemString} />
                   <InputSettingErrorState inputItem={inputItemString} setInputItemString={setInputItemString} />
 
@@ -59,14 +58,8 @@ const InputSettingImage = (props: TProps) => {
                               setInputItemString={setInputItemString}
                         />
                   )}
-                  <button
-                        style={{ backgroundColor: color }}
-                        onClick={(e) => handleSaveSetting(e)}
-                        className="flex items-center justify-center gap-[1rem] w-[14rem] h-[4rem] text-[#ffffff] rounded-lg"
-                  >
-                        <span>Lưu</span>
-                        {updateTypeInputMutation.isPending && <LoadingSpinner color="#fff" width="min-w-[2.4rem]" height="min-h-[2.4rem]" />}
-                  </button>
+
+                  <ButtonSaveSetting showLoading={updateTypeInputMutation.isPending} onSubmit={handleSaveSetting} />
             </DivNative>
       );
 };

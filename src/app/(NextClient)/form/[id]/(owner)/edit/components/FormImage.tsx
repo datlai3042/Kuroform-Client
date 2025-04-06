@@ -22,10 +22,9 @@ const FormImage = () => {
 
       return (
             <DivNative
-                  className={` ${openFormDesign ? "!h-[33rem] !max-h-[33rem] !min-h-[33rem]" : ""}
- ${_checkBackground ? "min-h-[40rem] max-h-[40rem]" : "!min-h-[15rem] !max-h-[15rem]"}
+                  className={` 
 
- group  relative w-full mx-auto  px-[4rem] xl:px-0 min-h-[40rem] max-h-[40rem]`}
+ group  relative w-full mx-auto  px-[4rem] xl:px-0 `}
             >
                   {(formCore.form_background || formCore.form_background_state) && <FormBackground />}
 

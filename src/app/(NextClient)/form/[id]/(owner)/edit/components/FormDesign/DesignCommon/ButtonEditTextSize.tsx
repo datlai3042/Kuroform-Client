@@ -119,20 +119,18 @@ const ButtonEditTextSize = (props: TProps) => {
             typeEdit === "Form"
                   ? formCore.form_title.form_title_size || formCore.form_setting_default.form_title_size_default
                   : formCore.form_setting_default.input_size;
-      console.log({ titleCoreSize });
       return (
             <div ref={divColorRef} className="relative w-max  max-h-[8rem] xl:h-[4rem] py-[.3rem] flex items-center justify-between gap-[1rem] bg-transparent ">
                   <button
                         disabled={titleCoreSize <= 1}
-                        className="w-[3rem] h-[3rem] flex items-center justify-center rounded-full   border-[.1rem] border-slate-300"
+                        className="w-[3rem] h-[3rem] hover:text-[#fff] flex items-center justify-center rounded-[.4rem] disabled:cursor-not-allowed text-[3rem]  border-[.1rem] border-[var(--border-color-input)] bg-color-section-theme hover:border-none hover:bg-color-main"
                         onClick={() => debounced(titleCoreSize, "Decrease")}
                   >
-                        <ChevronDown size={18} style={{ color: theme == "light" ? colorMain : "var(--text-theme)" }} />
+                        -
                   </button>
 
                   <div className="w-[6rem] flex items-center justify-center">
                         <input
-                              style={{ color: theme == "light" ? colorMain : "#000" }}
                               onClick={(e) => {
                                     e.stopPropagation();
                                     e.preventDefault();
@@ -142,28 +140,28 @@ const ButtonEditTextSize = (props: TProps) => {
                               max={typeEdit === "Form" ? 40 : 20}
                               onChange={(e) => debounced(+e.target.value, "Input")}
                               value={titleCoreSize}
-                              className="w-[5rem] h-[3.6rem] text-center  bg-[#ffffff]  border-[.1rem] border-slate-300  rounded-lg outline-none"
+                              className="w-[5rem] h-[3.6rem] text-center  bg-color-section-theme  border-[.1rem] border-[var(--border-color-input)] text-text-theme rounded-lg outline-none"
                         />
                   </div>
                   <button
                         disabled={titleCoreSize >= 40}
-                        className="w-[3rem] h-[3rem] flex items-center justify-center rounded-full   border-[.1rem] border-slate-300"
+                        className="w-[3rem] h-[3rem]  hover:text-[#fff] flex items-center justify-center rounded-[.4rem] text-[2.6rem]  border-[.1rem] border-[var(--border-color-input)] bg-color-section-theme hover:border-none hover:bg-color-main disabled:cursor-not-allowed"
                         onClick={() => debounced(titleCoreSize, "Increase")}
                   >
-                        <ChevronUp size={18} style={{ color: theme == "light" ? colorMain : "var(--text-theme)" }} />
+                        +
                   </button>
 
                   {openModelSize && (
                         <ul
                               ref={ulRef}
-                              className="scroll-text-size absolute z-[3] top-[4rem] left-[50%] translate-x-[-50%] w-[6rem] max-h-[16rem] text-[#000]  overflow-y-scroll bg-[#ffffff] border-[.1rem] border-gray-200 outline-none"
+                              className=" absolute z-[3] top-[4rem] left-[50%] translate-x-[-50%] w-[6rem] max-h-[16rem] text-[#000]  overflow-y-scroll bg-color-section-theme text-text-theme border-[.1rem] border-[var(--border-color-input)] outline-none"
                         >
-                              {Array(typeEdit === "Form" ? 30 : 20)
+                              {Array(typeEdit === "Form" ? 40 : 20)
                                     .fill(0)
                                     .map((_, i) => {
                                           if (i + 1 === titleCoreSize) {
                                                 return (
-                                                      <li key={i} ref={liRef} className="bg-blue-400 p-[.2rem_2rem] hover:cursor-pointer">
+                                                      <li key={i} ref={liRef} className="bg-color-main p-[.2rem_2rem] hover:cursor-pointer">
                                                             {i + 1}
                                                       </li>
                                                 );
@@ -172,7 +170,7 @@ const ButtonEditTextSize = (props: TProps) => {
                                                 <li
                                                       onClick={() => onChangeTextSize(i + 1, "Decrease")}
                                                       key={i}
-                                                      className="p-[.2rem_2rem] hover:bg-blue-200 hover:cursor-pointer"
+                                                      className="p-[.2rem_2rem] hover:bg-color-main hover:cursor-pointer"
                                                 >
                                                       {i + 1}
                                                 </li>

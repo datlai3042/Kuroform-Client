@@ -28,8 +28,8 @@ const ButtonDesignAvatar = (props: TProps) => {
       );
       const styleEffect = {
             onCheckStyleActive: (active: boolean) => {
-                  if (active) return " border-[#fff] border-[.1rem]";
-                  return "border-transparent border-[.1rem]";
+                  if (active) return " border-transparent border-[.1rem] bg-color-main text-[#fff]";
+                  return "border-[var(--border-color-input)] border-[.1rem] hover:bg-color-main hover:border-transparent text-[#fff]";
             },
       };
 
@@ -67,8 +67,8 @@ const ButtonDesignAvatar = (props: TProps) => {
       };
 
       return (
-            <div className="px-[2rem] flex flex-col  gap-[4rem]">
-                  <div className="flex gap-[4rem] ">
+            <div className="px-[2rem] flex flex-col  gap-[2rem]">
+                  <div className="flex gap-[4rem] border-b-[.1rem] border-[var(--border-color-input)] pb-[2rem] ">
                         <button
                               disabled={!formAvatar}
                               onClick={() => {
@@ -77,7 +77,7 @@ const ButtonDesignAvatar = (props: TProps) => {
                               }}
                               className={`${styleEffect.onCheckStyleActive(
                                     positionAvatar === "left",
-                              )} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-color-section-theme`}
+                              )} w-[3.6rem] h-[3.6rem] disabled:cursor-not-allowed flex items-center justify-center     rounded-full  `}
                         >
                               <AlignLeft size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
                         </button>
@@ -90,7 +90,7 @@ const ButtonDesignAvatar = (props: TProps) => {
                               }}
                               className={`${styleEffect.onCheckStyleActive(
                                     positionAvatar === "center",
-                              )} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-color-section-theme`}
+                              )} w-[3.6rem] h-[3.6rem] disabled:cursor-not-allowed flex items-center justify-center      rounded-full  `}
                         >
                               <AlignCenter size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
                         </button>
@@ -102,13 +102,13 @@ const ButtonDesignAvatar = (props: TProps) => {
                               }}
                               className={`${styleEffect.onCheckStyleActive(
                                     positionAvatar === "right",
-                              )} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300  rounded-full  bg-color-section-theme`}
+                              )} w-[3.6rem] h-[3.6rem] disabled:cursor-not-allowed flex items-center justify-center    rounded-full  `}
                         >
                               <AlignRight size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
                         </button>
                   </div>
 
-                  <div className="flex  gap-[4rem] ">
+                  <div className="flex  gap-[4rem] justify-center ">
                         <button
                               disabled={!formAvatar}
                               onClick={() => {
@@ -117,7 +117,7 @@ const ButtonDesignAvatar = (props: TProps) => {
                               }}
                               className={`${styleEffect.onCheckStyleActive(
                                     modeCurrent === "circle",
-                              )} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-color-section-theme`}
+                              )} w-[3.6rem] h-[3.6rem] disabled:cursor-not-allowed flex items-center justify-center     rounded-full  `}
                         >
                               <Circle size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
                         </button>
@@ -129,7 +129,7 @@ const ButtonDesignAvatar = (props: TProps) => {
                               }}
                               className={`${styleEffect.onCheckStyleActive(
                                     modeCurrent === "square",
-                              )} w-[3rem] h-[3rem] disabled:cursor-not-allowed flex items-center justify-center   border-[.1rem] border-slate-300   rounded-full  bg-color-section-theme`}
+                              )} w-[3.6rem] h-[3.6rem] disabled:cursor-not-allowed flex items-center justify-center     rounded-full  `}
                         >
                               <Square size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
                         </button>

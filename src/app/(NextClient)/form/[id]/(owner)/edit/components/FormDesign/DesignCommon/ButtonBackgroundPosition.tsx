@@ -42,7 +42,6 @@ const ButtonBackgroundPostition = () => {
             if (!isDesignForm) {
                   setIsDesginForm(true);
             }
-
             dispatch(onEditForm({ form: newForm }));
       };
 
@@ -52,35 +51,33 @@ const ButtonBackgroundPostition = () => {
                         <span className="">Cách lề trái</span>
                         <div
                               className={`${styleEffect.onCheckHasBackground(formBackground)} w-[90%] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
-border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
+border-[.1rem] rounded-lg bg-design-size`}
                         >
                               <input
-                                    style={{ color: theme === "light" ? colorMain : "#000" }}
                                     disabled={!formBackground}
-                                    value={directionX}
+                                    value={directionX || 0}
                                     type="number"
-                                    className={` w-[80%] disabled:cursor-not-allowed  `}
+                                    className={` w-[80%] disabled:cursor-not-allowed  bg-design-size`}
                                     onChange={(e) => debounced(+e.target.value, "left")}
                               />
 
-                              <span className="opacity-75 text-[#000]">%</span>
+                              <span className="opacity-75 text-text-theme">%</span>
                         </div>
                   </div>
                   <div className="flex w-[50%] flex-col gap-[.5rem] ">
                         <span className="">Cách lề trên</span>
                         <div
                               className={`${styleEffect.onCheckHasBackground(formBackground)} w-[90%] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
-border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
+border-[.1rem] rounded-lg bg-design-size`}
                         >
                               <input
-                                    style={{ color: theme === "light" ? colorMain : "#000" }}
                                     disabled={!formBackground}
-                                    value={directionY}
+                                    value={directionY || 0}
                                     type="number"
-                                    className={` w-[80%] disabled:cursor-not-allowed  `}
+                                    className={` w-[80%] disabled:cursor-not-allowed bg-design-size `}
                                     onChange={(e) => debounced(+e.target.value, "top")}
                               />
-                              <span className="opacity-75 text-[#000]">%</span>
+                              <span className="opacity-75 text-text-theme">%</span>
                         </div>
                   </div>
             </div>

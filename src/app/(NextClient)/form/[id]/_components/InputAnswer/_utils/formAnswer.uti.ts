@@ -66,7 +66,9 @@ export const setInputRequireGlobal = (cb: React.Dispatch<SetStateAction<FormCore
       cb((prev) => {
             let newArray = structuredClone(prev);
             newArray.inputFormRequire = prev.inputFormRequire.map((ip) => {
+
                   if (ip._id === input_id) {
+                        console.log({ ip })
                         ip.checkRequire = newRuleRequire;
                         return ip;
                   }
@@ -77,35 +79,54 @@ export const setInputRequireGlobal = (cb: React.Dispatch<SetStateAction<FormCore
 };
 
 //đặt data của input trong mảng global
-export const setDataInputGlobal = <T extends FormCore.FormAnswer.Data.InputData["value"]>({
+export const setDataInputGlobal = <T extends FormCore.FormAnswer.Data.InputData["value"], D extends FormCore.FormAnswer.Data.InputData["description"]>({
       callback,
       input_id,
       input_value,
+      description
 }: {
       callback: React.Dispatch<SetStateAction<FormCore.FormAnswer.FormAnswerControl>>;
       input_id: string;
       input_value: T;
+      description: D
+
 }) => {
       callback((prev) => {
             let newArray = structuredClone(prev);
             newArray.inputFormData = prev.inputFormData.map((ip) => {
+                  if (ip._id === input_id && ip.type === "ADDRESS") {
+                        ip.description = description as UI.Address.AddressEnity;
+                        ip.value = (description as UI.Address.AddressEnity).address_full
+                        return ip;
+                  }
+
                   if (ip._id === input_id && ip.type === "OPTION_MULTIPLE") {
-                        ip.value = input_value as {
+                        ip.description = description as {
                               option_value: string;
                               option_id: string;
                         }[];
+                        ip.value = (description as {
+                              option_value: string;
+                              option_id: string;
+                        }[]).map((obj => obj['option_value'])).join(', ')
                         return ip;
                   }
 
                   if (ip._id === input_id && ip.type === "OPTION") {
-                        ip.value = input_value as {
+                        ip.description = description as {
                               option_value: string;
                               option_id: string;
                         };
+                        ip.value = (description as {
+                              option_value: string;
+                              option_id: string;
+                        })['option_value']
+                        
                         return ip;
                   }
                   if (ip._id === input_id) {
                         ip.value = input_value || "";
+                        ip.description = description
                         return ip;
                   }
                   return ip;
@@ -126,7 +147,6 @@ export const checkErrorFinal = (
       inputFormErrors: FormCore.FormAnswer.InputFormError[],
       inputFormData: FormCore.FormAnswer.InputFormData[],
 ) => {
-      console.log(inputFormErrors)
       inputFormData.map((ip) => {
             const ipError = inputFormErrors.filter((ipr) => ipr._id === ip._id && ip.setting?.require)[0];
             if (ipError) {
@@ -264,7 +284,7 @@ export const checkErrorFinal = (
             }
 
             if (!ipError && ip.type === "ADDRESS" && ip.setting && checkInputAnswerType<FormCore.FormAnswer.Data.Address>(ip, "ADDRESS")) {
-                  const { _next, message, type } = superAddressValidate({ inputValue: ip.value, inputSetting: ip.setting });
+                  const { _next, message, type } = superAddressValidate({ inputValue: ip.value, inputSetting: ip.setting, description: ip.description });
                   if (!_next) {
                         const inputErrorInfo: FormCore.FormAnswer.InputFormError = {
                               _id: ip._id,
@@ -344,6 +364,8 @@ export const renderControllerInputAnswer = <T extends FormCore.FormAnswer.Data.I
             if (input_data._id === inputItem._id && input_data.type === inputItem.type) return input_data;
       });
 
+
+
       if (_text.includes(inputItem.type)) {
             controller = {
                   require: inputItem.core.setting.require,
@@ -369,6 +391,7 @@ export const renderControllerInputAnswer = <T extends FormCore.FormAnswer.Data.I
       }
 
       if (_address.includes(inputItem.type)) {
+
             controller = {
                   require: inputItem.core.setting.require,
                   globalError: {
@@ -395,9 +418,9 @@ export const deleteErrorWhenFocus = (props: FormCore.FormAnswer.Common.DeleteErr
 };
 
 export const validateWhenFocus = <T extends InputCore.InputForm["core"]["setting"]>(props: FormCore.FormAnswer.Common.ValidateWhenBlur<T>) => {
-      const { inputValue, inputItem, setFormAnswer, validateCallback } = props;
+      const { inputValue, inputItem, setFormAnswer, validateCallback, description } = props;
       const { setting } = inputItem.core;
-      const checkvalidate = validateCallback({ inputValue, inputSetting: setting as T });
+      const checkvalidate = validateCallback({ inputValue, inputSetting: setting as T, description });
       const { _next, message, type } = checkvalidate;
       if (_next) {
             if (inputItem.core.setting.require) {
@@ -405,16 +428,16 @@ export const validateWhenFocus = <T extends InputCore.InputForm["core"]["setting
             }
 
             if (inputItem.type === "ADDRESS") {
-                  setDataInputGlobal<FormCore.FormAnswer.Data.Address["value"]>({ callback: setFormAnswer, input_id: inputItem._id!, input_value: inputValue });
+                  setDataInputGlobal<FormCore.FormAnswer.Data.Address["value"], FormCore.FormAnswer.Data.Address["description"]>({ callback: setFormAnswer, input_id: inputItem._id!, input_value: inputValue, description });
                   return { _next, message, type };
             }
-            setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: inputValue });
+            setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: inputValue, description });
 
             return { _next, message, type };
       }
 
       // Catch lỗi
-      setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: inputValue });
+      setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: inputValue, description });
 
       setErrorGlobal(setFormAnswer, inputItem._id!, inputItem.input_title || "", type!, message);
       return { _next, message, type };

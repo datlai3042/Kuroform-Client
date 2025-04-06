@@ -6,11 +6,13 @@ import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import { FormAnswerContext } from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
 import InputErrorMessage from "../InputError/InputErrorMessage";
 import { deleteErrorWhenFocus, renderControllerInputAnswer, renderErrorInput, validateWhenFocus } from "../_utils/formAnswer.uti";
-import { Rate } from "antd";
+import { Rate, theme } from "antd";
 import { superVoteValidate } from "../_validate/inputVote.validate";
 import InputAnswerTitle from "../../InputAnswerTitle";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import InputContent from "../InputContent";
 
 type TProps = {
       inputItem: InputCore.InputVote.InputTypeVote;
@@ -19,7 +21,7 @@ type TProps = {
 
 const InputVoteAnswer = (props: TProps) => {
       const { inputItem, formCore } = props;
-
+      const { theme } = useContext(ThemeContext);
       const {
             formAnswer: { inputFormErrors, inputFormData, submitState },
             setFormAnswer,
@@ -45,26 +47,29 @@ const InputVoteAnswer = (props: TProps) => {
                         inputValue: start,
                         setFormAnswer,
                         validateCallback: superVoteValidate,
+                        description: start,
                   });
             }
       };
-
+      const isError = inputItemInArrayGlobal?.globalError?.state;
       return (
             <InputAnswerWrapper>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
-                        <InputAnswerTitle inputItem={inputItem} formCore={formCore} />
-                        <DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
-                              <DivNative className="flex flex-col gap-[1rem]">
-                                    <DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
-                                          <Rate onFocus={onFocus} onBlur={onBlur} allowHalf value={+start} onChange={(e) => setStart(e.toString())} />
+                        <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
+                        <InputContent>
+                              <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}>
+                                    <DivNative className="flex flex-col gap-[1rem] ">
+                                          <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem]  p-[.4rem_0rem] rounded-[.4rem]`}>
+                                                <Rate onFocus={onFocus} onBlur={onBlur} allowHalf value={+start} onChange={(e) => setStart(e.toString())} />
+                                          </DivNative>
+                                          <span className="text-[1.4rem]">Số đánh giá bạn chọn là: {start}</span>
                                     </DivNative>
-                                    <span className="text-[1.4rem]">Số đánh giá bạn chọn là: {start}</span>
                               </DivNative>
-                        </DivNative>
 
-                        {inputItemInArrayGlobal?.globalError?.state && (
-                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
-                        )}
+                              {inputItemInArrayGlobal?.globalError?.state && (
+                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                              )}
+                        </InputContent>
                   </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );

@@ -10,11 +10,10 @@ type TProps = {
 
 const InputErrorMessage = (props: TProps) => {
       const { type, message } = props;
-
       return (
-            <DivNative className="flex items-center gap-[1rem] ">
-                  <CircleAlert className="text-red-800" />
-                  <span className="text-[1.4rem] text-red-800">
+            <DivNative className="flex items-center gap-[.6rem] ">
+                  <CircleAlert className="text-[#e20f0f]" size={20}/>
+                  <span className="text-[1.3rem] text-[#e20f0f]">
                         {`${type ? "Lỗi #" + type + ": " : ""}`} {message}
                   </span>
             </DivNative>

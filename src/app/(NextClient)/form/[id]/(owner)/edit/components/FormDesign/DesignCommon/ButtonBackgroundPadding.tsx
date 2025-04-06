@@ -58,18 +58,18 @@ const ButtonBackgroundPadding = () => {
                         <span className="">Padding X</span>
                         <div
                               className={`${styleEffect.onCheckHasBackground(formBackground)} w-[90%] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
-border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
+border-[.1rem] rounded-lg bg-design-size`}
                         >
                               <input
-                                    style={{ color: theme === "light" ? colorMain : "#000" }}
+                                
                                     disabled={!formBackground}
                                     value={paddingX > 0 ? paddingX : 0}
                                     min={0}
                                     type="number"
-                                    className={` w-[80%] disabled:cursor-not-allowed  `}
+                                    className={` w-[80%] disabled:cursor-not-allowed bg-design-size `}
                                     onChange={(e) => debounced(+e.target.value, "x")}
                               />
-                              <span className="opacity-75 text-[#000]">%</span>
+                              <span className="opacity-75 text-text-theme">%</span>
                         </div>
                   </div>
 
@@ -77,18 +77,18 @@ border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
                         <span className="">Padding Y</span>
                         <div
                               className={`${styleEffect.onCheckHasBackground(formBackground)} w-[90%] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
-border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
+border-[.1rem] rounded-lg bg-design-size`}
                         >
                               <input
-                                    style={{ color: theme === "light" ? colorMain : "#000" }}
+                                  
                                     disabled={!formBackground}
                                     value={paddingY > 0 ? paddingY : 0}
                                     min={0}
                                     type="number"
                                     onChange={(e) => debounced(+e.target.value, "y")}
-                                    className={` w-[80%] disabled:cursor-not-allowed  `}
+                                    className={` w-[80%] disabled:cursor-not-allowed  bg-design-size`}
                               />
-                              <span className="opacity-75 text-[#000]">%</span>
+                              <span className="opacity-75 text-text-theme">%</span>
                         </div>
                   </div>
             </div>

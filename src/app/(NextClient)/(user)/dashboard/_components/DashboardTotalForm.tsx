@@ -1,9 +1,29 @@
-import { BarChart, DataChart } from "@/app/(NextClient)/_components/_chart/BarChart";
 import { RootState } from "@/app/_lib/redux/store";
 import useGetAllFormState from "@/app/hooks/form/useGetAllFormState";
 import useGetAllFormUser from "@/app/hooks/useGetAllFormUser";
+import { CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Card } from "@/components/ui/card";
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { TrendingUp } from "lucide-react";
 import React from "react";
 import { useSelector } from "react-redux";
+import { CartesianGrid, Line, LineChart, XAxis, Bar, BarChart, LabelList } from "recharts";
+
+
+
+const chartConfig = {
+      Public: {
+            label: "Công khai",
+            color: "hsl(var(--chart-primary))",
+      },
+      Private: {
+            label: "Nháp",
+            color: "hsl(var(--chart-normal))",
+      },
+      Delete: {
+            label: "Xóa",
+            color: "hsl(var(--chart-danger))",
+      },
+} satisfies ChartConfig;
 
 const DashboardTotalForm = () => {
       const { forms } = useGetAllFormUser();
@@ -13,41 +33,59 @@ const DashboardTotalForm = () => {
       const form_public = useSelector((state: RootState) => state.form.form_public);
       const form_private = useSelector((state: RootState) => state.form.form_private);
 
-      const dataChart = {
-            labels: ["Form riêng tư", "Form công khai", "Form tạm thời xóa"],
-            datasets: [
-                  {
-                        label: "Các Form của bạn",
-                        data: [form_private, form_public, form_delete],
-                        backgroundColor: ["#6262e5", "#2563eb", "#dc2626"],
-                  },
-            ],
-      };
+     
+
+
+      const chartDataV2 = [{ data: "FORM", Private: form_private, Public: form_public, Delete: form_delete }];
 
       return (
-            <div className="relative w-full h-full text-text-theme rounded-lg flex flex-col     gap-[.5rem] xl:gap-[1rem] ">
-                  <div className="flex items-center gap-[2rem]">
-                        <p className="w-max  break-words ">Tổng số Form hiện có</p>
-                        <p className="text-[4rem] xl:text-[4rem] text-color-main font-normal">{forms.length}</p>
-                  </div>
+            <Card className="h-full bg-color-section-theme overflow-auto">
+                  <CardHeader>
+                        <CardTitle>Tổng hợp</CardTitle>
+                  </CardHeader>
+                  <CardContent className="h-[60%] py-0">
+                        <ChartContainer config={chartConfig} className=" w-full h-full">
+                              <BarChart
+                                    accessibilityLayer
+                                    data={chartDataV2}
+                                    margin={{
+                                          top: 20,
+                                    }}
+                              >
+                                    <CartesianGrid vertical={false} />
+                                    {/* <XAxis dataKey="data" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value.slice(0, 3)} /> */}
+                                    <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+                                    <Bar dataKey="Public" fill="var(--color-Public)" radius={8}>
+                                          <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
+                                    </Bar>
+                                    <Bar dataKey="Private" fill="var(--color-Private)" radius={8}>
+                                          <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
+                                    </Bar>
+                                    <Bar dataKey="Delete" fill="var(--color-Delete)" radius={8}>
+                                          <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
+                                    </Bar>
+                              </BarChart>
+                        </ChartContainer>
+                  </CardContent>
+                  <CardFooter className="mt-[1.2rem] py-[0]">
+                        <div className="flex flex-wrap gap-[1rem_1.6rem] text-[1.2rem] pl-[2.2rem]">
+                              <div className="flex items-center gap-[1rem]">
+                                    <div className="w-[1rem] h-[1rem] rounded-[.4rem] bg-[hsl(var(--chart-primary))]"></div>
+                                    <span>Form công khai</span>
+                              </div>
 
-                  {/* <div className="w-full flex flex-col justify-center">
-                        <p>Form công khai: {form_public}</p>
-                        <p>Form riêng tư: {form_private}</p>
-                        <p>Form ở thùng rác tạm thời: {form_delete}</p>
-                  </div> */}
-                  <BarChart dataChart={dataChart} />
-                  {/* <div className="absolute bottom-[2rem] right-[2rem]">
-                        <Image
-                              src={"/assets/images/icon/form/form_sub.png"}
-                              width={20}
-                              height={20}
-                              alt="avatar"
-                              unoptimized={true}
-                              className="w-[6rem] h-[6rem] rounded-full"
-                        />
-                  </div> */}
-            </div>
+                              <div className="flex items-center gap-[1rem]">
+                                    <div className="w-[1rem] h-[1rem] rounded-[.4rem] bg-[hsl(var(--chart-normal))]"></div>
+                                    <span>Form riêng tư</span>
+                              </div>
+
+                              <div className="flex items-center gap-[1rem]">
+                                    <div className="w-[1rem] h-[1rem] rounded-[.4rem] bg-[hsl(var(--chart-danger))]"></div>
+                                    <span>Form tạm xóa</span>
+                              </div>
+                        </div>
+                  </CardFooter>
+            </Card>
       );
 };
 

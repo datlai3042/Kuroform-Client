@@ -112,7 +112,7 @@ const InputCoreOption = (props: TProps) => {
       }, [inputItem.core.options, selectValue]);
 
       const InputOption = (
-            <DivNative className={`mt-[.4rem] min-h-[5rem] max-w-full flex flex-col gap-[1rem] h-max  text-[1.4rem]`}>
+            <DivNative className={`mt-[.4rem] bg-color-section-theme min-h-[5rem] max-w-full flex flex-col gap-[1rem] h-max  text-[1.4rem]`}>
                   <SpanNative
                         textContent="Chọn một lựa chọn"
                         className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"} text-[1.6rem] font-semibold`}
@@ -140,10 +140,9 @@ const InputCoreOption = (props: TProps) => {
                   <button
                         ref={btnAddOptionRef}
                         onClick={handleAddOption}
-                        style={{ color: checkModeDisplay && theme === "light" ? colorMain : "#000" }}
                         className={`${
                               checkModeDisplay ? "group-hover:!bg-[#ffffff]" : ""
-                        } min-h-[4rem] w-[20rem]  bg-gray-100 px-[2rem] flex items-center gap-[1rem]  rounded-lg`}
+                        } w-max   bg-color-main text-[#fff] p-[.6rem_1rem] flex items-center gap-[1rem]  rounded-[.4rem]`}
                   >
                         <Plus size={16} className="" />
                         Thêm lựa chọn

@@ -184,7 +184,6 @@ export const filterTypeInput = <InputType extends InputCore.InputForm>(_id: stri
  */
 export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["reports"], form_id: string) => {
       let dataExcel: { [key: string]: string }[] = [];
-
       let dataGroupFilter: {
             [key: string]: {
                   _id: string;
@@ -197,9 +196,8 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
       reports.map((rp) => {
             let dataXlsx = {};
             rp.answers.map((ans) => {
-                  const titleExcel = ans.title || `${ans.type}_${ans._id}`;
+                  const titleExcel = ans.title || `[${ans.type}] - Không có tiêu đề`;
                   const titleHeaderTable = ans.title || `Không có tiêu đề`;
-
                   const input_value = generateValueInputAnswer(ans);
 
                   dataXlsx = {
@@ -246,23 +244,23 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
 };
 
 export const generateValueInputAnswer = (answer: FormCore.FormAnswer.Answer) => {
-      let value_answer = "";
+      // let value_answer = "";
 
-      if (answer.type === "OPTION_MULTIPLE") {
-            value_answer = (answer.value as FormCore.FormAnswer.Data.Options["value"]).map((op) => op.option_value).join(", ");
-            return value_answer;
-      }
-      if (answer.type === "OPTION") {
-            value_answer = (answer.value as FormCore.FormAnswer.Data.Option["value"]).option_value;
-            return value_answer;
-      }
-      if (answer.type === "DATE") {
-            value_answer = moment(new Date(answer.value as string)).format(" Do MMMM YYYY");
-            return value_answer === "Invalid date" ? "" : value_answer;
-      }
+      // if (answer.type === "OPTION_MULTIPLE") {
+      //       value_answer = answer.value;
+      //       return value_answer;
+      // }
+      // if (answer.type === "OPTION") {
+      //       value_answer = (answer.value as FormCore.FormAnswer.Data.Option["value"]).option_value;
+      //       return value_answer;
+      // }
+      // if (answer.type === "DATE") {
+      //       value_answer = moment(new Date(answer.value as string)).format(" Do MMMM YYYY");
+      //       return value_answer === "Invalid date" ? "" : value_answer;
+      // }
 
-      value_answer = answer.value as string;
-      return value_answer;
+      // value_answer = answer.value as string;
+      return answer.value;
 };
 
 export const generateContentToUrl = (url: string) => {

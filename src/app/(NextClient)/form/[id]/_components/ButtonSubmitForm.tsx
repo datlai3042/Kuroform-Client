@@ -41,10 +41,7 @@ const ButtonSubmitForm = (props: TProps) => {
             if (checkRequire && inputFormErrors.length === 0) {
                   const answers = inputFormData.map((ip) => {
                         if (ip.setting) delete ip.setting;
-                        if (ip.type === "ADDRESS") {
-                              const { address_full } = ip.value;
-                              ip.value = (address_full ? address_full : "") as unknown as UI.Address.AddressEnity;
-                        }
+                        
                         return ip;
                   });
 
@@ -75,7 +72,7 @@ const ButtonSubmitForm = (props: TProps) => {
       return (
             <div
                   onClick={handleSubmit}
-                  className="min-w-[25%] w-max h-[5rem]  ml-auto flex items-center justify-center gap-[.5rem] rounded-lg hover:cursor-pointer bg-blue-600"
+                  className="min-w-[10rem] w-max h-[3.2rem]  ml-auto flex items-center justify-center gap-[.5rem] rounded-[.4rem] hover:cursor-pointer bg-color-main"
             >
                   <ButtonNative textContent={formCore.form_button_text} className=" text-white text-[1.6rem] text-center px-[1rem]  w-max" />
                   {submitState === "pending" && <LoadingSpinner color="#ffffff" width="min-w-[2.4rem]" height="min-h-[2.4rem]"/>}

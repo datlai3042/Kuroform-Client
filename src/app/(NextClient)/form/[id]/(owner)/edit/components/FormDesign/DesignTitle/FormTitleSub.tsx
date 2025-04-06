@@ -89,7 +89,7 @@ const FormTitleSub = () => {
       );
 
       return (
-            <div className="w-full  h-max  flex flex-col   gap-[4rem] outline-none" tabIndex={0}>
+            <div className="w-full  h-max  flex flex-col   gap-[2rem] outline-none" tabIndex={0}>
                   <DndContext sensors={sensors} collisionDetection={closestCorners} onDragEnd={onDrapEnd}>
                         <SortableContext
                               items={formCore.form_title.form_title_sub.map((ip) => ip._id) as unknown as UniqueIdentifier[]}

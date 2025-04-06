@@ -50,20 +50,20 @@ const InputImageIntroduce = (props: TProps) => {
 	}, [filePreview]);
 
 	return (
-		<DivNative className="w-full h-full flex flex-col  sm:py-[4rem] ">
+		<DivNative className="w-full h-full flex flex-col  sm:pt-[4rem] ">
 			<InputIntroduceHeader
 				title={inputIntroduceImage.title}
 				description={inputIntroduceImage.description}
 				action={handleChooseInputType}
 			/>
-			<DivNative className="h-[90%] flex flex-col gap-[2.6rem] p-[1rem_2rem] sm:p-[3rem_2rem]">
+			<DivNative className="h-[90%] flex flex-col gap-[1.8rem] p-[2rem]">
 				<DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-color-main text-[#fff]">
 					Ví dụ
 				</DivNative>
 				<DivNative className={`h-[90%]  flex flex-col items-start  gap-[3rem] `}>
 					<button
 						onClick={handleClick}
-						className="p-[.8rem] min-w-[12rem] text-text-theme bg-color-main text-[1.4rem] rounded-[.4rem]"
+						className="p-[.8rem] min-w-[12rem] text-[#fff] bg-color-main text-[1.4rem] rounded-[.4rem]"
 					>
 						Tải ảnh lên
 					</button>

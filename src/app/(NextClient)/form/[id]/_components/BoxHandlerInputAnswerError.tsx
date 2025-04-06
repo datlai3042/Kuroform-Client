@@ -16,16 +16,15 @@ const BoxHandlerInputAnswerError = (props: TProps) => {
 
       const colorMain = useSelector((state: RootState) => state.form.colorCore)
 
-
       return (
             <div
                   id={`_inputid_${input_id}`}
                   // style={{borderColor: !!error?.error ? '':  colorMain,}}
                   className={`${
                         (error && error.error && write) || inputItemInArrayGlobal?.globalError?.state
-                              ? "input-answer-invalid"
-                              : " border-[.3rem] border-transparent "
-                  } relative w-full min-h-[24rem] h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[1.8rem]  rounded-lg`}
+                              ? "input-answer-invalid  !text-[#e20f0f]"
+                              : " border-[.1rem] border-transparent"
+                  }  relative w-full min-h-[12rem]  text-text-theme h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[1rem]  rounded-lg`}
             >
                   {children}
             </div>

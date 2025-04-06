@@ -20,7 +20,7 @@ const ButtonDesignTitle = (props: ButtonDesginProps) => {
                         buttonProps.className || ""
                   } mt-[2rem] btn-primarily !bg-color-main   rounded-[.4rem] font-bold text-[#fff]   w-max max-w-[28rem] sm:max-w-max  h-[3.6rem]  flex items-center sm:justify-center gap-[.5rem]  outline-none`}
             >
-                  <LayoutTemplate />
+                  <LayoutTemplate size={20}/>
                   {textContent}
             </button>
       );

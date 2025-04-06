@@ -57,14 +57,13 @@ const generateInputAnswer = (Inputs: InputCore.InputForm[], formCore: FormCore.F
       });
 };
 
-const 
-
-RenderInputAnswers = (props: TProps) => {
+const RenderInputAnswers = (props: TProps) => {
       const { formCore } = props;
       const [page, setPage] = useState<number>(1);
 
       const {
             formAnswer: { inputFormErrors, openModelError, submitState },
+            setFormAnswer,
       } = useContext(FormAnswerContext);
       const colorMain = formCore.form_title.form_title_color || formCore.form_setting_default.form_title_color_default;
       const count = useRef(1);
@@ -73,11 +72,11 @@ RenderInputAnswers = (props: TProps) => {
 
       console.log({ "Số lần render": count.current });
       console.log({ "Trang hiện tại": page });
-      if (submitState === "success") console.log("%cHẹn gặp lại bạn, thông tin của bạn đã được gửi thành công",
-            `color:#fff;font-size:1.2rem;background: #3b36db;padding:0.3rem;border-radius:.4rem`,
-
-
-                  );
+      if (submitState === "success")
+            console.log(
+                  "%cThông tin của bạn đã được gửi thành công",
+                  `color:#fff;font-size:1.2rem;background: #3b36db;padding:0.3rem;border-radius:.4rem`,
+            );
 
       count.current += 1;
 
@@ -90,63 +89,73 @@ RenderInputAnswers = (props: TProps) => {
       const generateInputWithPage = { start: numberInputAPage * (page - 1), end: numberInputAPage * page };
 
       useEffect(() => {
-
             setClient(true);
       }, []);
+
+
+      useEffect(() => {
+            window.scrollTo(0,0)
+      }, [page])
 
       return (
             <>
                   {submitState !== "success" && (
                         <>
-                              {page === 1 && <HeaderFormAnswer formCore={formCore} />}
+                              {<HeaderFormAnswer formCore={formCore} />}
                               {!client && allInputAnswer}
                               {client && allInputAnswer.slice(generateInputWithPage.start, generateInputWithPage.end)}
-                              <div
-                              // style={{color: formCore.form_title.form_title_color}}
-                              className="flex  gap-[2rem] justify-end text-[1.5rem] text-black font-normal">
-                                    {page === totalPage && totalPage > 1 && (
-                                          <button
-                                                tabIndex={0}
-                                                className="pb-[.1rem] border-b-[.3rem] border-red-900"
-                                                onClick={() => setPage((prev) => (prev -= 1))}
-                                          >
-                                                Xem trang trước
-                                          </button>
-                                    )}
-                                    {page > 1 && page !== totalPage && (
-                                          <button
-                                                tabIndex={0}
-                                                className="pb-[.1rem] border-b-[.3rem] border-red-900"
-                                                onClick={() => setPage((prev) => (prev -= 1))}
-                                          >
-                                                Xem trang trước
-                                          </button>
-                                    )}
 
-                                    {formCore.form_inputs.length > 0 && (
-                                          <p>
-                                                Số trang:{page} / {totalPage}
-                                          </p>
-                                    )}
-                                    {page < totalPage && page !== 1 && (
-                                          <button
-                                                tabIndex={0}
-                                                className="pb-[.1rem] border-b-[.3rem] border-red-900"
-                                                onClick={() => setPage((prev) => (prev += 1))}
-                                          >
-                                                Xem trang tiếp theo
-                                          </button>
-                                    )}
+                              <div className="flex flex-col gap-[1.2rem]">
+                                    <div
+                                          // style={{color: formCore.form_title.form_title_color}}
+                                          className="flex flex-wrap gap-[2rem] justify-end text-[1.5rem] text-color-main font-normal"
+                                    >
+                                          {page === totalPage && totalPage > 1 && (
+                                                <button
+                                                      tabIndex={0}
+                                                      className="opacity-60 hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-text-theme"
+                                                      onClick={() => setPage((prev) => (prev -= 1))}
+                                                >
+                                                      Xem trang trước
+                                                </button>
+                                          )}
+                                          {page > 1 && page !== totalPage && (
+                                                <button
+                                                      tabIndex={0}
+                                                      className="opacity-60 hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-text-theme"
+                                                      onClick={() => setPage((prev) => (prev -= 1))}
+                                                >
+                                                      Xem trang trước
+                                                </button>
+                                          )}
 
-                                    {page === 1 && totalPage > 1 && (
-                                          <button
-                                                tabIndex={0}
-                                                className="pb-[.1rem] border-b-[.3rem] border-red-900"
-                                                onClick={() => setPage((prev) => (prev += 1))}
-                                          >
-                                                Xem trang tiếp theo
-                                          </button>
-                                    )}
+                                          {formCore.form_inputs.length > 0 && (
+                                                <p className="p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-text-theme">
+                                                      Số trang:{page} / {totalPage}
+                                                </p>
+                                          )}
+                                          {page < totalPage && page !== 1 && (
+                                                <button
+                                                      tabIndex={0}
+                                                      className="opacity-60 hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-text-theme"
+                                                      onClick={() => setPage((prev) => (prev += 1))}
+                                                >
+                                                      Xem trang tiếp theo
+                                                </button>
+                                          )}
+
+                                          {page === 1 && totalPage > 1 && (
+                                                <button
+                                                      tabIndex={0}
+                                                      className="opacity-60 hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-text-theme"
+                                                      onClick={() => setPage((prev) => (prev += 1))}
+                                                >
+                                                      Xem trang tiếp theo
+                                                </button>
+                                          )}
+                                    </div>
+
+                                    {formCore.form_inputs.length > 0 && <ButtonSubmitForm formCore={formCore} />}
                               </div>
 
                               {inputFormErrors.length > 0 && openModelError && (
@@ -155,10 +164,11 @@ RenderInputAnswers = (props: TProps) => {
                                           setPage={setPage}
                                           inputFormErrors={inputFormErrors}
                                           numberInputAPage={numberInputAPage}
+                                          onClose={() => {
+                                                setFormAnswer((prev) => ({ ...prev, openModelError: false }));
+                                          }}
                                     />
                               )}
-
-                              {formCore.form_inputs.length > 0 && <ButtonSubmitForm formCore={formCore} />}
                         </>
                   )}
 

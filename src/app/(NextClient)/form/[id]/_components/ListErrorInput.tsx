@@ -1,4 +1,7 @@
+import Portal from "@/app/(NextClient)/_components/Portal";
 import { FormAnswerContext } from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
+import useDisableBodyScroll from "@/app/hooks/useDisalbeBodyScroll";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { FormCore, InputCore } from "@/type";
 import { X } from "lucide-react";
 import Link from "next/link";
@@ -9,67 +12,103 @@ type TProps = {
       formCore: FormCore.Form;
       setPage: React.Dispatch<SetStateAction<number>>;
       numberInputAPage: number;
+      onClose: () => void;
 };
 
 const ListErrorInput = (props: TProps) => {
-      const { inputFormErrors, formCore, numberInputAPage, setPage } = props;
+      const { inputFormErrors, formCore, numberInputAPage, setPage, onClose } = props;
 
       const colorMain = formCore.form_title.form_title_color || formCore.form_setting_default.form_title_color_default;
 
       const { setFormAnswer } = useContext(FormAnswerContext);
 
+      const onTargerError = (pageError: number) => {
+            setPage(pageError);
+            onClose();
+      };
+
+      useDisableBodyScroll();
+
+
+
       return (
-            <div className="fixed z-[1000] top-[10rem] xl:top-[50%] xl:translate-y-[-50%] right-[2rem] sm:right-0 xl:right-[4rem] w-[32rem]  h-[24rem] max-h-[24rem] sm:h-[40rem] sm:max-h-[40rem]  border-[.1rem] border-gray-200 text-[1.2rem]">
-                  <div className="  w-full min-h-full max-h-full py-[3rem] flex flex-col gap-[2rem] bg-[#ffffff] shadow-lg">
-                        <span className="text-[1.6rem] px-[1rem] text-center uppercase">Một số dữ liệu không hợp lệ</span>
+            <Portal>
+                  <div className="fixed top-[0] right-[0rem] z-[100] bg-[rgba(0,0,0,.8)] w-screen h-screen flex items-center justify-center">
+                        <div className="relative text-text-theme w-[94vw] mx-auto xl:mx-0 xl:w-[80rem] min-h-[26rem] flex flex-col gap-[2rem] p-[2rem_2rem_3rem]  bg-color-section-theme rounded-[.4rem]">
+                              <div className="flex justify-between">
+                                    <button
+                                          onClick={() => setFormAnswer((prev) => ({ ...prev, openModelError: false }))}
+                                          type="button"
+                                          className="ml-auto  w-[12rem] h-[3.6rem] text-[1.4rem] text-white bg-color-main opacity-70 hover:opacity-100 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg  px-5 py-2.5 me-2 mb-2  focus:outline-none dark:focus:ring-blue-800"
+                                    >
+                                          Đóng Modal
+                                    </button>
+                              </div>
+                              <div className="max-h-full w-full flex flex-col items-center gap-[2rem]">
+                                    <div
+                                          className={` ml-[1rem] w-full   transition-[height] duration-500   flex flex-col gap-[1.8rem] text-text-theme pr-[2rem]`}
+                                    >
+                                          <Table classContainer=" bg-color-section-theme  max-h-[70vh]" className="text-[1.4rem]  overflow-auto !border-[0rem] hidden-border-table rounded-[.4rem]">
+                                                <TableHeader>
+                                                      <TableRow className="group hover:bg-red-700  text-[#fff] border-[var(--border-color-input)]">
+                                                            <TableHead className="w-[100px] max-w-[20rem] group-hover:text-[#fff]">Tiêu đề</TableHead>
 
-                        <div className="scroll-error-input overflow-y-scroll flex flex-col gap-[2rem] bg-[#ffffff] ">
-                              {inputFormErrors.map((ir) => {
-                                    const indexError = formCore.form_inputs.findIndex((ip) => ip._id === ir._id);
-                                    const pageError = Math.ceil((indexError + 1) / numberInputAPage);
+                                                            <TableHead className="w-[100px] whitespace-pre group-hover:text-[#fff] ">Mã lỗi</TableHead>
+                                                            <TableHead className="w-[100px] whitespace-pre group-hover:text-[#fff]">Mô tả</TableHead>
+                                                            <TableHead className="w-[100px] whitespace-pre text-right group-hover:text-[#fff]">Xem chi tiết</TableHead>
+                                                      </TableRow>
+                                                </TableHeader>
+                                                <TableBody>
+                                                      {inputFormErrors.map((ir) => {
+                                                            const indexError = formCore.form_inputs.findIndex((ip) => ip._id === ir._id);
+                                                            const pageError = Math.ceil((indexError + 1) / numberInputAPage);
 
-                                    const title = formCore.form_inputs[indexError].input_title || "";
+                                                            const title = formCore.form_inputs[indexError].input_title || "";
+                                                            return (
+                                                                  <TableRow
+                                                                        key={ir._id}
+                                                                        className="group cursor-pointer hover:bg-red-700 hover:text-[#fff] border-[var(--border-color-input)]"
+                                                                        onClick={() => onTargerError(pageError)}
+                                                                  >
+                                                                        <TableCell className="whitespace-pre">
+                                                                              <span className="font-bold text-color-main group-hover:text-[#fff]">
+                                                                                    {title || "Trống"}
+                                                                              </span>
+                                                                        </TableCell>
+                                                                        <TableCell className="whitespace-pre ">
+                                                                              <span className="text-red-600 group-hover:text-[#fff]  font-semibold">{`[${ir.type}]`}</span>
+                                                                        </TableCell>
+                                                                        <TableCell className="whitespace-pre ">
+                                                                              <span className="">
+                                                                                    {formCore.form_inputs[indexError].core.setting.input_error_state
+                                                                                          ? formCore.form_inputs[indexError].core.setting.input_error
+                                                                                          : ir.message}
+                                                                              </span>
+                                                                        </TableCell>
 
-                                    return (
-                                          <Link
-                                                className="group w-full p-[1rem_3rem] flex flex-col gap-[1rem] border-l-[.4rem] border-red-600 hover:bg-red-50 hover:text-red-600"
-                                                href={`/form/${formCore._id}#_inputid_${ir._id}`}
-                                                key={ir._id}
-                                                onClick={() => setPage(pageError)}
-                                          >
-                                                <p className="w-max flex gap-[.6rem]">
-                                                      <span className="min-w-[4rem] max-w-[15rem] truncate">Tiêu đề: </span>
-                                                      <span style={{ color: colorMain }} className="font-bold">
-                                                            {title || "Trống"}
-                                                      </span>
-                                                </p>
-                                                <div className="w-full flex flex-col justify-between">
-                                                      <p className="flex gap-[.4rem]">
-                                                            <span className="min-w-[4rem]">Mã lỗi:</span>
-                                                            <span className="text-red-600 group-hover:text-red-700 font-semibold">{`[${ir.type}]`}</span>
-                                                      </p>
-
-                                                      <p className="flex gap-[.6rem]">
-                                                            <span className="min-w-[4rem]">Mô tả:</span>
-                                                            <span className="underline underline-offset-4">
-                                                                  {formCore.form_inputs[indexError].core.setting.input_error_state
-                                                                        ? formCore.form_inputs[indexError].core.setting.input_error
-                                                                        : ir.message}
-                                                            </span>
-                                                      </p>
-                                                </div>
-                                          </Link>
-                                    );
-                              })}
+                                                                        <TableCell
+                                                                              className="whitespace-pre text-right"
+                                                                              onClick={() => onTargerError(pageError)}
+                                                                        >
+                                                                              Trang: {pageError}
+                                                                        </TableCell>
+                                                                  </TableRow>
+                                                            );
+                                                      })}
+                                                      {/* {forms.map((form) => {
+                                                      return (
+                                                            <TableRow key={form._id} className="group">
+                                                                  <DashboardWorkspaceItemContent formCore={form} />
+                                                            </TableRow>
+                                                      );
+                                                })} */}
+                                                </TableBody>
+                                          </Table>
+                                    </div>
+                              </div>
                         </div>
                   </div>
-                  <button
-                        onClick={() => setFormAnswer((prev) => ({ ...prev, openModelError: false }))}
-                        className="absolute right-[-2rem] top-[-2rem] w-[4rem] h-[4rem]  flex items-center justify-center rounded-full  bg-red-600 "
-                  >
-                        <X size={14} color="white" />
-                  </button>
-            </div>
+            </Portal>
       );
 };
 

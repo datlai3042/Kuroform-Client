@@ -13,6 +13,7 @@ import RenderStyleInputAnswer from "../constant/RenderStyleInputAnswer";
 import InputAnswerTitle from "../../InputAnswerTitle";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
+import InputContent from "../InputContent";
 
 type TProps = {
       inputItem: InputCore.InputText.InputTypeText;
@@ -54,6 +55,7 @@ const InputTextAnswer = (props: TProps) => {
                               inputValue: titleCurrent as string,
                               setFormAnswer,
                               validateCallback: superTextValidate,
+                              description: titleCurrent as string,
                         });
                   }
             }
@@ -64,37 +66,40 @@ const InputTextAnswer = (props: TProps) => {
                   divContentRef.current.textContent = inputItemInArrayGlobal.input?.value as string;
             }
       }, []);
+      const isError = inputItemInArrayGlobal?.globalError?.state;
 
       return (
             <InputAnswerWrapper>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
-                        <InputAnswerTitle inputItem={inputItem} formCore={formCore} />
-                        <DivNative className="flex flex-col gap-[.3rem]">
-                              <DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
-                                    <DivNativeRef
-                                          ref={divContentRef}
-                                          className={`${RenderStyleInputAnswer.StyleTitle({
-                                                formCore,
-                                                inputItem,
-                                          })} heading-answer group w-full min-h-[2rem] pb-[2rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-gray-300 rounded-lg outline-none resize-none `}
-                                          onClick={() => divContentRef.current?.focus()}
-                                          onBlur={(e) => onBlur(e)}
-                                          onFocus={onFocus}
-                                          spellCheck={false}
-                                          contentEditable={submitState !== "pending"}
-                                          data-text={`${inputItem.core.setting?.placeholder || "Typing your text"}`}
-                                          suppressContentEditableWarning={true}
-                                          tabIndex={0}
-                                    />
+                        <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
+                        <InputContent>
+                              <DivNative className="flex flex-col gap-[.3rem]">
+                                    <DivNative className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}>
+                                          <DivNativeRef
+                                                ref={divContentRef}
+                                                className={`${RenderStyleInputAnswer.StyleTitle({
+                                                      formCore,
+                                                      inputItem,
+                                                })} w-[92%] text-text-theme heading-answer group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
+                                                onClick={() => divContentRef.current?.focus()}
+                                                onBlur={(e) => onBlur(e)}
+                                                onFocus={onFocus}
+                                                spellCheck={false}
+                                                contentEditable={submitState !== "pending"}
+                                                data-text={`${inputItem.core.setting?.placeholder || "Typing your text"}`}
+                                                suppressContentEditableWarning={true}
+                                                tabIndex={0}
+                                          />
+                                    </DivNative>
+                                    <p className="absolute bottom-[2.5rem] right-[2.5rem] text-[1.2rem]">
+                                          <MinMaxInput value={inputItemInArrayGlobal.input?.value as string} inputItem={inputItem} />
+                                    </p>
                               </DivNative>
-                              <p className="absolute bottom-[2.5rem] right-[2.5rem] text-[1.2rem]">
-                                    <MinMaxInput value={inputItemInArrayGlobal.input?.value as string} inputItem={inputItem} />
-                              </p>
-                        </DivNative>
 
-                        {inputItemInArrayGlobal?.globalError?.state && (
-                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
-                        )}
+                              {inputItemInArrayGlobal?.globalError?.state && (
+                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                              )}
+                        </InputContent>
                   </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );

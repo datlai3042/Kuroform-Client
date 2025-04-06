@@ -29,8 +29,7 @@ const InputCore = (props: TProps) => {
 
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
       const colorMain = useSelector((state: RootState) => state.form.colorCore);
-      let formStoreCache = useSelector((state: RootState) => state.formAsnwer.formAnswerStore);
-      const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+      const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
             id: inputItem._id as UniqueIdentifier,
       });
 
@@ -42,18 +41,16 @@ const InputCore = (props: TProps) => {
 
       const { modeScreen } = useContext(FormModeScreenContext);
 
-      const removeInputItemAPI = useRemoveInputItem();
+      const removeInputItemAPI = useRemoveInputItem({
+            onAfterDelete: () => {
+                  dispatch(clearFormAnswer({ form_id: formCore._id }));
+            },
+      });
       const removeInputItem = () => {
             removeInputItemAPI.mutate({ form_id: formCore._id, input_id: inputItem._id! });
       };
 
-      useEffect(() => {
-            if (removeInputItemAPI.isSuccess) {
-                  if (formStoreCache[formCore._id]) {
-                        dispatch(clearFormAnswer({ form_id: formCore._id }));
-                  }
-            }
-      }, [removeInputItemAPI.isSuccess]);
+      
 
       const onPressEnter = async (e: React.KeyboardEvent<HTMLDivElement>) => {
             if (e.key === "Enter") {
@@ -84,7 +81,7 @@ const InputCore = (props: TProps) => {
 
       return (
             <div
-                  className={`text-text-theme  group flex flex-col justify-center gap-[1.8rem] outline-none focus:cursor-move     rounded-[1.6rem]  `}
+                  className={`text-text-theme bg-color-section-theme  group flex flex-col justify-center gap-[.2rem] outline-none focus:cursor-move     rounded-[1.6rem]  `}
                   ref={setNodeRef}
                   {...attributes}
                   {...listeners}
@@ -92,16 +89,15 @@ const InputCore = (props: TProps) => {
                         {
                               ...style,
                               ...checkModeDisplay,
+                              opacity: isDragging ? .4: ''
                         } as React.CSSProperties
                   }
             >
                   {title && <InputTitle inputItem={inputItem} dataTextTitle={dataTextTitle} />}
 
-                  <DivWrapper
-                        className={` group relative min-h-[8rem] h-max pt-[2.4rem] flex items-center  `}
-                  >
+                  <DivWrapper className={` group relative min-h-[8rem] h-max flex   flex-col gap-[.8rem] `}>
                         {modeScreen === "NORMAL" && (
-                              <DivWrapper className=" absolute top-[-1rem]  xl:left-0  h-[2rem] text-[1.4rem] ">
+                              <DivWrapper className="  text-[1.4rem] ">
                                     <SectionOption
                                           openSetting={openSetting}
                                           setOpenSetting={setSetting}
@@ -111,10 +107,7 @@ const InputCore = (props: TProps) => {
                               </DivWrapper>
                         )}
 
-                        <DivWrapper
-                              className={`w-full h-max flex flex-col gap-[2rem] `}
-                              onKeyDown={onPressEnter}
-                        >
+                        <DivWrapper className={`w-full h-max flex flex-col gap-[2rem] `} onKeyDown={onPressEnter}>
                               {InputComponent}
                         </DivWrapper>
                         {!title && modeScreen === "NORMAL" && <SetTitleInput setTitle={setTitle} focus={focus} />}

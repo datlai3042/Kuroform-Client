@@ -2,31 +2,22 @@ import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative";
 import { NotebookPen, Plus } from "lucide-react";
 import { Span } from "next/dist/trace";
+import Image from "next/image";
 import React from "react";
-
 const InputGuideIntroduce = () => {
-	return (
-		<DivNative className="w-full  px-[1rem] xl:px-[2rem] flex flex-col justify-center  gap-[1rem] text-[1.3rem] xl:text-[1.8rem] opacity-65">
-			<SpanNative textContent="Ngay tại đây" />
-			<DivNative className="flex flex-wrap items-center gap-[1rem] ">
-				<SpanNative textContent="Bạn có thể thêm" />
-
-				<DivNative className="w-[3.6rem] h-[3.6rem] hidden xl:flex items-center justify-center rounded-full bg-[#ffffff] border-[.1rem] border-slate-600">
-					<Plus />
-				</DivNative>
-				<SpanNative textContent="các input" />
-			</DivNative>
-
-			<DivNative className=" flex flex-wrap items-center gap-[1rem] ">
-				<SpanNative textContent="Và xem các hướng dẫn ví dụ về từng loại" />
-
-				<DivNative className="w-[3.6rem] h-[3.6rem] hidden xl:flex items-center justify-center rounded-full bg-[#ffffff] border-[.1rem] border-slate-600">
-					<NotebookPen />
-				</DivNative>
-				<SpanNative textContent="các input" />
-			</DivNative>
-		</DivNative>
-	);
+      return (
+            <DivNative className="w-full h-full   px-[1rem] xl:px-[2rem] sm:pt-[8rem] flex flex-col justify-center items-center  gap-[1rem] text-[1.3rem] xl:text-[1.8rem] opacity-65">
+                  <p className="text-[1.5rem] font-bold">Giao diện này giúp bạn có thể thêm các input có sẵn vào Form</p>
+                  <Image
+                        src={"/assets/images/InputIntroduce/introduce.png"}
+                        width={18}
+                        height={18}
+                        alt="icon"
+                        className="w-[42rem] max-h-[36rem] object-cover"
+                        unoptimized={true}
+                  />
+            </DivNative>
+      );
 };
 
 export default InputGuideIntroduce;

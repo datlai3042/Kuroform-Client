@@ -29,9 +29,9 @@ const FormAvatar = () => {
             <React.Fragment>
                   <div
                         className={`
-   ${openFormDesign ? "!h-[33rem] !max-h-[33rem] !min-h-[33rem]" : ""}
- ${_checkAvatar ? "min-h-[40rem] max-h-[40rem]" : "min-h-[15rem] max-h-[15rem]"}
-  w-full xl:max-w-[70rem] mx-auto  relative flex items-end`}
+   ${openFormDesign ? "!max-h-[33rem] " : ""}
+ ${_checkAvatar ? "min-h-[40rem] max-h-[40rem]" : ""}
+  w-full xl:max-w-[70rem] mx-auto  relative flex items-end h-[14rem]`}
                   >
                         <div className="absolute h-max w-full bottom-0 flex justify-center">
                               <div className="relative w-full ">
@@ -42,7 +42,7 @@ const FormAvatar = () => {
                                           quality={100}
                                           onClick={onControllModel}
                                           alt="avatar"
-                                          className={`${position} ${shape} absolute top-[0] translate-y-[-50%] z-[3] object-center w-[14rem] h-[14rem] xl:w-[16rem] xl:h-[16rem] hover:cursor-pointer `}
+                                          className={`${position} ${shape} object-cover absolute top-[0] translate-y-[-50%] z-[3] object-center w-[14rem] h-[14rem] xl:w-[16rem] xl:h-[16rem] hover:cursor-pointer `}
                                     />
 
                                     {/* {(!formCore.form_background?.form_background_iamge_url || !formCore.form_background_state) && (

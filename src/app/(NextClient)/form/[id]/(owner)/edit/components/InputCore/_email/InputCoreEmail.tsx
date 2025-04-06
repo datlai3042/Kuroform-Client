@@ -50,7 +50,7 @@ const InputCoreEmail = (props: TProps) => {
       }, [modeScreen]);
 
       const InputEmail = (
-            <DivNative className="flex flex-col gap-[.3rem] ">
+            <DivNative className="flex flex-col gap-[.3rem]  bg-color-section-theme">
                   <SpanNative
                         textContent="Nhập email của bạn"
                         className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme "} text-[1.6rem] font-medium`}

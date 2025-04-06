@@ -43,8 +43,9 @@ const InputAddressIntroduce = (props: TProps) => {
 
       const onChangeAddress = (address: UI.Address.AddressEnity) => {
             const { _next, message, type } = superAddressValidate({
-                  inputValue: address,
+                  inputValue: address.address_full,
                   inputSetting: inputItem.core.setting,
+                  description: address,
             });
 
             setControllerInput((prev) => ({
@@ -58,19 +59,19 @@ const InputAddressIntroduce = (props: TProps) => {
       };
 
       return (
-            <DivNative className="w-full h-full flex flex-col  sm:py-[4rem] ">
+            <DivNative className="w-full h-full flex flex-col  sm:pt-[4rem] ">
                   <InputIntroduceHeader title={inputIntroduceAddress.title} description={inputIntroduceAddress.description} action={handleChooseInputType} />
-                  <DivNative className="h-[70%] xl:h-[50%] flex flex-col gap-[1rem] p-[1rem_2rem] sm:p-[3rem_2rem] ">
+                  <DivNative className="h-[70%] xl:h-[50%] flex flex-col gap-[1.8rem] p-[2rem]  ">
                         <DivNative className=" w-max p-[.2rem_1.6rem] flex items-center justify-center text-[1.2rem] bg-color-main text-[#fff]">
                               Ví dụ
                         </DivNative>
                         <ModelAddress detail={true} onChange={onChangeAddress} />
-                        <div className="flex flex-col h-[12rem] gap-[1rem]   justify-center">
+                        <div className="flex flex-col gap-[1rem]   justify-center">
                               {controlerInput.validate ||
                                     (controlerInput.value.addressString && <span className="text-[1.4rem]">{controlerInput.value?.addressString}</span>)}
                               <button
                                     onClick={() => onChangeAddress(controlerInput.value)}
-                                    className=" w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-blue-600 rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
+                                    className=" w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-color-main rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
                               >
                                     Xác nhận
                               </button>

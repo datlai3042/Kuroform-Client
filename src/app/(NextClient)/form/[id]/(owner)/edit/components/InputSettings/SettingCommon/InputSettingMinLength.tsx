@@ -3,6 +3,7 @@ import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative
 import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative";
 import { InputCore } from "@/type";
 import React, { SetStateAction, useContext, useRef, useState } from "react";
+import InputSettingLabel from "../InputSettingLabel";
 
 type TProps = {
 	inputItem: InputCore.Commom.InputCommonText;
@@ -31,14 +32,17 @@ const InputSettingMinLength = (props: TProps) => {
 
 	return (
 		<DivNative className="flex items-center justify-between gap-[.5rem]">
-			<SpanNative textContent={`Min`} onClick={labelClick} className="hover:cursor-pointer" />
+
+			<InputSettingLabel  onClick={labelClick} className="hover:cursor-pointer">
+				Min
+			</InputSettingLabel>
 			<input
 				ref={minLengthRef}
 				type="number"
 				value={minLength}
 				onBlur={handleMinLengthInput}
 				onChange={(e) => setMinLength(+e.target.value)}
-				className="w-[40%] border-[1px] border-slate-400 p-[.7rem] rounded-lg  outline-2 outline-blue-400"
+				className="text-right w-[40%] border-[.1rem] bg-color-section-theme text-text-theme border-[var(--border-color-input)] p-[.7rem] rounded-[.4rem]  outline-2 outline-blue-400"
 			/>
 		</DivNative>
 	);

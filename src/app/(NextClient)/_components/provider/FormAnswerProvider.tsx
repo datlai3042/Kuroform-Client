@@ -34,7 +34,8 @@ const FormAnswerProvider = (props: TProps) => {
                                     _id: ip._id!,
                                     title: ip.input_title || "",
                                     mode: ip.core.setting.require ? "Require" : ("Optional" as FormCore.FormAnswer.InputFormData["mode"]),
-                                    value: [],
+                                    description: [],
+                                    value: '',
                                     type: ip.type,
                               };
                         }
@@ -47,7 +48,9 @@ const FormAnswerProvider = (props: TProps) => {
                                     mode: ip.core.setting.require ? "Require" : ("Optional" as FormCore.FormAnswer.InputFormData["mode"]),
 
                                     type: ip.type,
-                                    value: {
+                                    value: '',
+
+                                    description: {
                                           option_value: "",
                                           option_id: "",
                                     },
@@ -60,8 +63,9 @@ const FormAnswerProvider = (props: TProps) => {
                                     _id: ip._id!,
                                     title: ip.input_title || "",
                                     mode: ip.core.setting.require ? "Require" : ("Optional" as FormCore.FormAnswer.InputFormData["mode"]),
-                                    value: { addressString: "", address_full: "", addressValidate: inititalValueInputAddress, addressCore: "" },
+                                    description: { addressString: "", address_full: "", addressValidate: inititalValueInputAddress, addressCore: "" },
                                     type: ip.type,
+                                    value: ''
                               };
                         }
 

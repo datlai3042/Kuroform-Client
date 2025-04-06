@@ -4,10 +4,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import { LinkIcon, Pencil } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSelectedLayoutSegment, useSelectedLayoutSegments } from "next/navigation";
 import Link from "next/link";
 import BoxCopySuccess from "./BoxCopySuccess";
 import { Tabs, TabsProps } from "antd";
+import ContentWrapper from "../(handler-data-form)/ContentWrapper";
+import ButtonDeleteForm from "./ButtonDeleteForm";
 
 type TProps = {
       formPageMode: FormPageMode;
@@ -37,7 +39,8 @@ const FormChangeMode = (props: TProps) => {
 
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
       const router = useRouter();
-
+      const segment = useSelectedLayoutSegments();
+      const defaultTab = segment[1] as FormPageMode;
       const fontSize = formCore.form_title.form_title_size
             ? formCore.form_title.form_title_size / 10 + "rem"
             : formCore.form_setting_default.form_title_size_default / 10 + "rem";
@@ -72,7 +75,7 @@ const FormChangeMode = (props: TProps) => {
 
       return (
             <div className=" w-full p-[2rem_6rem]  mx-auto h-full flex  flex-col gap-[1rem] text-text-theme">
-                  <div className="w-full flex flex-col gap-[2rem] xl:flex-row justify-between">
+                  <div id="content-info" className="w-full flex flex-col gap-[2rem] xl:flex-row justify-between">
                         <h1
                               title={formCore.form_title.form_title_value}
                               className="line-clamp-2 w-[80%] text-text-theme"
@@ -84,7 +87,7 @@ const FormChangeMode = (props: TProps) => {
                         >
                               {formCore?.form_title?.form_title_value}
                         </h1>
-                        <div className="flex items-center gap-[1rem]">
+                        <div className="flex justify-end items-center gap-[1rem]">
                               <div className="relative ">
                                     <button
                                           onClick={(e) => {
@@ -94,7 +97,7 @@ const FormChangeMode = (props: TProps) => {
                                                       .writeText(`${window.location.origin}/form/${formCore._id}`)
                                                       .then(() => setCopySuccess(true));
                                           }}
-                                          className="hover:text-[#fff] flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
+                                          className="text-text-theme flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)] hover:bg-color-main hover:border-transparent hover:text-[#fff] rounded-lg"
                                     >
                                           <LinkIcon size={iconSize} />
                                     </button>
@@ -106,13 +109,13 @@ const FormChangeMode = (props: TProps) => {
                               </div>
 
                               {avatarSrc ? (
-                                    <Image src={avatarSrc} width={30} height={30} alt="avatar" className="w-[3rem] h-[3rem] rounded-full" />
+                                    <Image src={avatarSrc} width={30} height={30} alt="avatar" className="min-w-[3rem] w-[3rem] h-[3rem] rounded-full" />
                               ) : (
-                                    <div className="animate-pulse w-[3rem] h-[3rem] rounded-full bg-slate-200 "></div>
+                                    <div className="animate-pulse min-w-[3rem] w-[3rem] h-[3rem] rounded-full bg-slate-200 "></div>
                               )}
 
                               <button
-                                    className="hover:text-[#fff] min-w-[12rem] flex items-center gap-[1rem] p-[.5rem_.7rem] hover:bg-color-main rounded-lg"
+                                    className=" min-w-[12rem] flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)] hover:bg-color-main hover:border-transparent hover:text-[#fff] text-text-theme rounded-lg"
                                     onClick={(e) => {
                                           e.preventDefault();
                                           router.push(`/form/${formCore._id}/edit`);
@@ -121,9 +124,22 @@ const FormChangeMode = (props: TProps) => {
                                     <Pencil size={iconSize} />
                                     <span>Chỉnh sửa</span>
                               </button>
+
+                              <ButtonDeleteForm
+                                    form_id={formCore._id}
+                                    className=" min-w-[11rem] flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)]  hover:border-transparent hover:text-[#fff] text-text-theme rounded-lg"
+                              >
+                                    <span>Xóa form</span>
+                              </ButtonDeleteForm>
                         </div>
                   </div>
-                  <Tabs id="custom-tabs" style={{ color: "#fff" }} defaultActiveKey="summary" onChange={(value) => setFormPageMode(value as FormPageMode)}>
+                  <Tabs
+                        className="content-tab"
+                        id="custom-tabs"
+                        style={{ color: "#fff" }}
+                        defaultActiveKey={defaultTab}
+                        onChange={(value) => setFormPageMode(value as FormPageMode)}
+                  >
                         <Tabs.TabPane
                               key="summary"
                               tab={
@@ -171,9 +187,7 @@ const FormChangeMode = (props: TProps) => {
                         />
                   </Tabs>
 
-                  <div className="flex-1">
-                        <div className="h-full">{children}</div>
-                  </div>
+                  <ContentWrapper>{children}</ContentWrapper>
             </div>
       );
 };

@@ -13,7 +13,7 @@ const Code500 = () => {
                         className="min-w-[60rem] h-[45rem]"
                         unoptimized={true}
                   />
-                  <div className="text-[4rem]  text-[#000]">Server hiện đang gặp sự cố</div>
+                  <div className="text-[4rem]  text-color-main font-semibold">Server hiện đang gặp sự cố</div>
             </div>
       );
 };

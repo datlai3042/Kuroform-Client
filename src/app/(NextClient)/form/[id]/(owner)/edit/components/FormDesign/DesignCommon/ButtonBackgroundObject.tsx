@@ -48,41 +48,39 @@ const ButtonBackgroundObject = () => {
       };
 
       return (
-            <div className=" flex flex-col gap-[2rem]">
+            <div className=" flex  gap-[2rem]">
                   <div className="flex flex-col  gap-[.6rem] ">
-                        <span className="text-[1.3rem]">Căn chỉnh ảnh theo trục ngang</span>
+                        <span className="text-[1.3rem]">Cách lề X</span>
                         <div
                               className={`${styleEffect.onCheckHasBackground(formBackground)} w-[7rem] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
-border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
+border-[.1rem]   rounded-lg bg-design-size`}
                         >
                               <input
-                                    style={{ color: theme === "light" ? colorMain : "#000" }}
                                     disabled={!formBackground}
                                     value={objectX}
                                     type="number"
-                                    className={` w-[80%] disabled:cursor-not-allowed  `}
+                                    className={` w-[80%] disabled:cursor-not-allowed  bg-design-size `}
                                     onChange={(e) => debounced(+e.target.value, "x")}
                               />
 
-                              <span className="opacity-75 text-[#000]">%</span>
+                              <span className="opacity-75 text-text-theme">%</span>
                         </div>
                   </div>
                   <div className="flex flex-col  gap-[.6rem] ">
-                        <span className="text-[1.3rem]">Căn chỉnh ảnh theo trục dọc</span>
+                        <span className="text-[1.3rem]">Cách lề Y</span>
 
                         <div
                               className={`${styleEffect.onCheckHasBackground(formBackground)} w-[7rem] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
-border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
+border-[.1rem] rounded-lg bg-design-size`}
                         >
                               <input
-                                    style={{ color: theme === "light" ? colorMain : "#000" }}
                                     disabled={!formBackground}
                                     value={objectY}
                                     type="number"
-                                    className={` w-[80%] disabled:cursor-not-allowed  `}
+                                    className={` w-[80%] disabled:cursor-not-allowed  bg-design-size`}
                                     onChange={(e) => debounced(+e.target.value, "y")}
                               />
-                              <span className="opacity-75 text-[#000]">%</span>
+                              <span className="opacity-75 text-text-theme">%</span>
                         </div>
                   </div>
             </div>

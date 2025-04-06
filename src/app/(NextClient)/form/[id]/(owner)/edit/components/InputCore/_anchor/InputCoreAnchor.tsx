@@ -42,7 +42,7 @@ const InputCoreAnchor = (props: TProps) => {
       };
 
       const InputPhone = (
-            <DivNative className="flex flex-col gap-[1rem] text-text-theme ">
+            <DivNative className="flex flex-col gap-[1rem] text-text-theme bg-color-section-theme">
                   <SpanNative
                         textContent="Nhập liên kết của bạn"
                         className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"} text-[1.6rem] font-bold`}
@@ -58,11 +58,11 @@ const InputCoreAnchor = (props: TProps) => {
                         />
                         <div className="absolute z-[2] right-[1rem]  opacity-70">www</div>
                   </DivNative>
-                  <div className="flex flex-col h-[8rem] gap-[1rem]   justify-center">
+                  <div className="flex flex-col  gap-[1rem]   justify-center">
                         {controlerInput.validate && controlerInput.value.href && <InputValidateSuccess message={"Đường dẫn hợp lệ"} />}
                         <button
                               onClick={onValidate}
-                              className=" w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-blue-600 rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
+                              className=" w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-color-main rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
                         >
                               Xác nhận
                         </button>

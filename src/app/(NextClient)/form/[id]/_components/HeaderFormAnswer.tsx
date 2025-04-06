@@ -1,9 +1,12 @@
+'use client'
+
 import { FormCore } from "@/type";
 import React, { useContext } from "react";
 import FormTitleImage from "../(owner)/edit/components/FormDesign/DesignTitle/FormTitleImage";
 import SliderImage from "@/app/(NextClient)/_components/Model/SliderImage";
 import { FormAnswerContext } from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
 import FormAnswerAvatar from "./_avatar/FormAnswerAvatar";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 
 type TProps = {
       formCore: FormCore.Form;
@@ -11,7 +14,7 @@ type TProps = {
 
 const HeaderFormAnswer = (props: TProps) => {
       const { formCore } = props;
-
+      const {theme} = useContext(ThemeContext)
       const {
             formAnswer: { inputFormRequire },
       } = useContext(FormAnswerContext);
@@ -35,12 +38,13 @@ const HeaderFormAnswer = (props: TProps) => {
 
       const marginTopWhenImageAppear = formCore.form_avatar_state || formCore.form_avatar?.form_avatar_url ? "mt-[8rem]" : "mt-0";
 
+      const renderBorder = theme === 'dark' ? {  borderTop: `.1rem solid ${colorMain}` ,borderBottom: '.1rem solid var(--border-color-input)', borderLeft: '.1rem solid var(--border-color-input)', borderRight: '.1rem solid var(--border-color-input)'}: {borderTop: `.1rem solid ${colorMain}`}
       return (
             <header
-                  style={{ borderTopColor: colorMain }}
+                  style={{ ...renderBorder,  }}
                   className={`${
-                        formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state ? "mt-[8rem]" : "mt-[2rem]"
-                  } relative w-full min-h-[14rem] m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	 border-t-[1rem]  bg-[#ffffff] rounded-2xl`}
+                        formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state ? "mt-[10rem]" : ""
+                  } relative w-full  min-h-[14rem] m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	 !border-t-[1rem]   bg-color-section-theme rounded-2xl`}
             >
                   {(formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state) && <FormAnswerAvatar formCore={formCore} />}
                   <div className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}>
@@ -49,7 +53,7 @@ const HeaderFormAnswer = (props: TProps) => {
                         </h1>
 
                         {formCore.form_title.form_title_sub.length > 0 && (
-                              <div className="pt-[2rem] border-t-[.1rem] border-gray-200 flex flex-col flex-wrap gap-[1rem]">
+                              <div className="pt-[2rem] border-t-[.1rem] border-[var(--border-color-input)] flex flex-col flex-wrap gap-[1rem]">
                                     {formCore?.form_title?.form_title_sub.map((ft) => {
                                           if (ft.type === "Text" && ft?.core?.value)
                                                 return (

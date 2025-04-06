@@ -32,8 +32,8 @@ const ButtonEditTextStyle = (props: TProps) => {
 
       const styleEffect = {
             onCheckStyleActive: (active: boolean) => {
-                  if (active) return "border-gray-300";
-                  return "border-transparent";
+                  if (active) return "border-[var(--border-color-input)] ";
+                  return "border-[var(--border-color-input)]";
             },
       };
 
@@ -76,9 +76,9 @@ const ButtonEditTextStyle = (props: TProps) => {
                               }}
                               className={`${styleEffect.onCheckStyleActive(
                                     styleCurrent === "normal",
-                              )} p-[.2rem_.8rem] border-[.1rem]  bg-color-section-theme rounded-lg`}
+                              )} hover:border-transparent hover:bg-color-main  hover:text-[#fff] p-[.2rem_.8rem] border-[.1rem]  bg-color-section-theme rounded-lg`}
                         >
-                              <RemoveFormatting style={{ color: theme === "light" ? colorMain : "#fff" }} />
+                              <RemoveFormatting />
                         </button>
 
                         <button
@@ -87,9 +87,9 @@ const ButtonEditTextStyle = (props: TProps) => {
                                     setStyleCurrent("italic");
                               }}
                               className={`${styleEffect.onCheckStyleActive(styleCurrent === "italic")}
-					)} p-[.2rem_.8rem] border-[.1rem]  bg-color-section-theme rounded-lg`}
+					)} hover:border-transparent  hover:text-[#fff] hover:bg-color-main p-[.2rem_.8rem] border-[.1rem]  bg-color-section-theme rounded-lg`}
                         >
-                              <Italic style={{ color: theme === "light" ? colorMain : "#fff" }} />
+                              <Italic  />
                         </button>
                   </div>
             </div>

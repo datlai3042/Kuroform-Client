@@ -7,6 +7,7 @@ import { onEditForm, onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import { FormDesignContext } from "../provider/FormDesignProvider";
 import { TypeEdit } from "../../form/[id]/(owner)/edit/components/FormDesign/DesignCommon/ButtonColor";
+import ButtonPickerColor from "../../form/[id]/(owner)/edit/components/FormDesign/DesignCommon/ButtonPickerColor";
 
 type TProps = {
       setOpenColorModel: ReactCustom.SetStateBoolean;
@@ -78,11 +79,12 @@ const SelectColor = (props: TProps) => {
       return (
             <DivNativeRef
                   ref={divColorRef}
-                  className="custom-color-title  h-[10rem] "
+                  className="w-full flex items-center gap-[1rem]   "
                   onBlur={() => setOpenColorModel(false)}
                   onClick={(e) => e.stopPropagation()}
             >
-                  <HexColorPicker color={formCore.form_title.form_title_color} onChange={onChangeColor} />
+                  <span>Màu chữ: </span>
+                  <ButtonPickerColor defaultColor={formCore.form_title.form_title_color || ""} onChange={onChangeColor} />
             </DivNativeRef>
       );
 };

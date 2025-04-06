@@ -52,10 +52,9 @@ const Calendar = (props: TProps) => {
                   const { day, month, year, state } = dateInfo;
                   let active = "bg-color-main text-[#fff]";
                   let active_middle = "bg-blue-300 text-[#fff]";
-                  let hover = "hover:bg-blue-300";
                   let day_current = "bg-blue-400 text-[#fff]";
-                  let first_day = "bg-gray-300 text-[#fff] ";
-                  const style_normal = "hover:bg-blue-300 hover:text-[#fff]";
+                  let first_day = "bg-red-500  text-[#fff] ";
+                  const style_normal = "hover:bg-color-main hover:text-[#fff] hover:!opacity-100";
 
                   if (day === pickDate.day && month === pickDate.month && year === pickDate.year) {
                         return active;
@@ -89,10 +88,17 @@ const Calendar = (props: TProps) => {
       };
 
       return (
-            <div className="max-w-full  w-[28rem] xl:w-[44rem] h-max min-h-[33rem] xl:min-h-[31rem] text-[1rem] flex flex-col gap-[.8rem] xl:gap-[1rem]  rounded-2xl bg-[#fff] text-[#000]">
-                  <div className="w-full flex flex-col xl:flex-row xl:items-center gap-[1rem] justify-between bg-color-main text-[#fff] p-[1.4rem] xl:p-[1.6rem_1.4rem] rounded-2xl">
+            <div
+                  onClick={(ev) => {
+                        ev.preventDefault();
+                        ev.stopPropagation();
+                        ev.nativeEvent.stopImmediatePropagation();
+                  }}
+                  className=" max-w-full  w-[23rem] xl:w-[44rem] h-max min-h-[33rem] xl:min-h-[31rem] text-[1rem] flex flex-col gap-[.2rem] xl:gap-[1rem]  rounded-2xl  text-[#000]"
+            >
+                  <div className="w-full flex flex-col xl:flex-row xl:items-center gap-[1rem] justify-between bg-color-main text-[#fff] p-[1.4rem] xl:p-[1.6rem_1.4rem] rounded-[.6rem_.6rem_0rem_0rem]">
                         <span className=" text-[1.3rem]">
-                              Ngày bạn chọn là: {generateFullDateStringV2({ day: pickDate.day, month: pickDate.month, year: pickDate.year })}{" "}
+                              Ngày đang chọn là: {generateFullDateStringV2({ day: pickDate.day, month: pickDate.month, year: pickDate.year })}{" "}
                         </span>
 
                         <div className="flex items-center gap-[1rem]  flex-1">
@@ -101,13 +107,23 @@ const Calendar = (props: TProps) => {
                                           month={month}
                                           year={year}
                                           cb={onChangeDate}
-                                          className="border-[.1rem] border-color-section-theme! flex-1"
+                                          className="border-[.1rem] border-[var(--border-color-input)]! flex-1 "
                                     />
                               </div>
-                              <Image src={"/icon_core.png"} width={20} height={20} alt="avatar" unoptimized={true} className="hidden sm:inline w-[3rem] h-[3rem] " />
+                              <Image
+                                    src={"/icon_core.png"}
+                                    width={20}
+                                    height={20}
+                                    alt="avatar"
+                                    unoptimized={true}
+                                    className="hidden sm:inline w-[3rem] h-[3rem] "
+                              />
                         </div>
                   </div>
-                  <div className="flex w-[26rem] xl:w-[44rem] flex-col p-[.8rem] xl:p-[1rem_1.4rem] ">
+                  <div
+                        onClick={(e) => e.stopPropagation()}
+                        className="bg-[#fff] flex w-[23rem] xl:w-[44rem] flex-col p-[.8rem] xl:p-[1rem_1.4rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] "
+                  >
                         <div className="w-full flex xl:justify-center">
                               {name_in_week.map((day_name, i) => (
                                     <p className="w-[3.4rem] xl:w-[6rem] h-[3rem]  flex justify-center items-center" key={day_name + i}>
@@ -118,7 +134,7 @@ const Calendar = (props: TProps) => {
                                     </p>
                               ))}
                         </div>
-                        <div className="w-full flex flex-col xl:items-center text-[1.3rem] gap-[1.2rem]">
+                        <div className="w-full flex flex-col xl:items-center text-[1.2rem] gap-[.6rem]">
                               {weekRender.map((week, i) => (
                                     <div key={week.week_count + "week_id" + i} className="flex">
                                           {week.week_menber.map((detail) => (
@@ -127,7 +143,7 @@ const Calendar = (props: TProps) => {
                                                       className="w-[3.4rem] h-[2.8rem] xl:w-[5.8rem] xl:h-[3rem] flex items-center justify-center"
                                                 >
                                                       <button
-                                                            style={{ opacity: detail.state !== "current" ? ".3" : "1" }}
+                                                            style={{ opacity: detail.state !== "current" ? ".4" : "1" }}
                                                             onClick={(e) => {
                                                                   e.stopPropagation();
                                                                   setMonth(detail.month);
@@ -136,7 +152,7 @@ const Calendar = (props: TProps) => {
                                                             }}
                                                             className={`${styleEffect.renderStyleDateItem(
                                                                   detail,
-                                                            )} w-[2rem] h-[2rem] xl:w-[3rem] xl:h-[3rem] rounded-full `}
+                                                            )} w-[2.2rem] h-[2.2rem] xl:w-[3rem] xl:h-[3rem] rounded-full `}
                                                       >
                                                             <span>{detail.day}</span>
                                                       </button>
@@ -148,19 +164,19 @@ const Calendar = (props: TProps) => {
                   </div>
 
                   <div className="flex  text-[1.2rem]  flex-col xl:flex-row xl:items-center justify-end gap-[2rem] xl:gap-0 p-[.8rem] xl:px-[1.4rem]">
-                        <div className="flex gap-[1rem]">
+                        <div className="flex justify-end gap-[.6rem]">
                               <button
                                     onClick={(e) => {
                                           e.stopPropagation();
                                           callbackCancel && callbackCancel();
                                     }}
-                                    className="p-[.5rem_1rem] rounded-lg text-red-400 min-w-[6rem] underline"
+                                    className="p-[.5rem] text-[1.3rem] xl:p-[.5rem] rounded-[.4rem] bg-red-600 text-[#fff]  min-w-[6rem] opacity-85 hover:opacity-100 "
                               >
                                     Hủy
                               </button>
                               <button
                                     onClick={onChangeReturn}
-                                    className="p-[.5rem] text-[1rem] xl:text-[1.2rem] xl:p-[.5rem_1rem] rounded-lg bg-[#fff] text-color-main border-[.1rem] border-color-main min-w-[6rem] hover:bg-color-main hover:text-[#fff]"
+                                    className="p-[.5rem] text-[1.3rem] xl:p-[.5rem] rounded-[.4rem] bg-color-main text-[#fff]  min-w-[6rem] opacity-85 hover:opacity-100 "
                               >
                                     Xác nhận
                               </button>

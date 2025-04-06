@@ -45,13 +45,13 @@ const InputCoreDate = (props: TProps) => {
       const dateRender = generateFullDateStringV2({ day: pickDate.day, month: pickDate.month, year: pickDate.year });
 
       const InputDate = (
-            <DivNative className="relative flex flex-col items-start gap-[1rem] text-text-theme ">
+            <DivNative className="relative bg-color-section-theme flex flex-col items-start gap-[1rem] text-text-theme ">
                   <button
                         onClick={() => setOpenModel((prev) => !prev)}
-                        className="bg-color-main text-[#fff] p-[1rem] rounded-xl flex items-center gap-[1rem] text-[1.3rem]"
+                        className="bg-color-main text-[#fff] p-[.6rem] rounded-[.4rem] flex items-center gap-[1rem] text-[1.3rem]"
                   >
                         <span>{dateRender}</span>
-                        <CalendarDays />
+                        <CalendarDays size={18}/>
                   </button>
                   {openModel && (
                         <div className="absolute z-[3] top-0 xl:top-[64%] right-[50%] xl:right-[33%] ">

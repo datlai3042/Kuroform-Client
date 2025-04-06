@@ -3,6 +3,7 @@ import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative
 import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative";
 import { InputCore } from "@/type";
 import React, { SetStateAction, useContext, useRef, useState } from "react";
+import InputSettingLabel from "../InputSettingLabel";
 
 type TProps = {
 	inputItem: InputCore.Commom.InputCommonText;
@@ -31,14 +32,18 @@ const InputSettingMaxLength = (props: TProps) => {
 
 	return (
 		<DivNative className="flex items-center justify-between gap-[.5rem]">
-			<SpanNative textContent={`Max`} onClick={labelClick} className="hover:cursor-pointer" />
+
+			
+			<InputSettingLabel  onClick={labelClick} className="hover:cursor-pointer">
+				Max
+			</InputSettingLabel>
 			<input
 				ref={maxLengthRef}
 				onBlur={handleMaxLengthInput}
 				onChange={(e) => setMaxLength(+e.target.value)}
 				type="number"
 				value={maxLength}
-				className="w-[40%] border-[1px] border-slate-400 p-[.7rem] rounded-lg  outline-2 outline-blue-400"
+				className="text-right w-[40%] bg-color-section-theme text-text-theme border-[.1rem] border-[var(--border-color-input)] p-[.7rem] rounded-[.4rem]  outline-2 outline-blue-400"
 			/>
 		</DivNative>
 	);

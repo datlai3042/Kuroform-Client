@@ -71,7 +71,6 @@ export function middleware(request: NextRequest) {
 
             }
            
-
             const url = `/refresh-token?code_verify_token=${code_verify_token}`
             return NextResponse.redirect(new URL(url, request.url))
       }

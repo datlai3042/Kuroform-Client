@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import { onFocusSearch } from "@/app/_lib/redux/formEdit.slice";
 
-const DashboardSearchForm = () => {
+const DashboardSearchForm = ({ widthInput }: { widthInput?: string }) => {
       const [search, setSearch] = useState<string>("");
       const [debounced] = useDebouncedValue(search, 200);
 
@@ -27,7 +27,8 @@ const DashboardSearchForm = () => {
 
       return (
             <div
-                  className="relative p-[.2rem_1rem] xl:min-w-[30rem] h-[3.2rem]  rounded-lg focus-within:border-[.1rem] focus-within:border-color-main border-[.1rem] border-color-main flex items-center gap-[.8rem]
+                  style={{ width: widthInput || "" }}
+                  className="hidden z-[200] sm:flex relative p-[.2rem_1rem] w-[13rem] xl:w-[20rem] h-[3.2rem]  rounded-lg focus-within:border-[.1rem] focus-within:border-color-main border-[.1rem] border-[var(--border-color-input)]  items-center gap-[.8rem]
 "
             >
                   <Search className="w-[1.6rem] text-text-theme" />
@@ -42,7 +43,7 @@ const DashboardSearchForm = () => {
 
                   {(openFormSearch || focusSearch) && (
                         <ClickOutSide setOpenModel={setOpenFormSearch}>
-                              <div className="absolute bottom-[0rem] translate-y-[100%] left-0 min-w-full w-max right-0 min-h-[2rem] xl:min-h-[4rem] max-h-[24rem] scroll-color-main  bg-[#fff] border-[.1rem] border-gray-300 rounded-lg h-max">
+                              <div style={{bottom: '-0.8rem'}} className="absolute  translate-y-[100%] text-text-theme left-0 min-w-full w-max right-0 min-h-[2rem] xl:min-h-[4rem] max-h-[24rem] scroll-color-main  bg-color-section-theme border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] h-max">
                                     <DashboardSearchResult search={debounced} />
                               </div>
                         </ClickOutSide>

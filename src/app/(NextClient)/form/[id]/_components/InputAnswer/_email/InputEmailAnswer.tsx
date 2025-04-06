@@ -16,6 +16,7 @@ import InputAnswerTitle from "../../InputAnswerTitle";
 import RenderStyleInputAnswer from "../constant/RenderStyleInputAnswer";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
+import InputContent from "../InputContent";
 
 type TProps = {
       inputItem: InputCore.InputEmail.InputTypeEmail;
@@ -52,37 +53,41 @@ const InputEmailAnswer = (props: TProps) => {
                         inputValue,
                         setFormAnswer,
                         validateCallback: superEmailValidate,
+                        description: inputValue as string,
                   });
             }
       };
+      const isError = inputItemInArrayGlobal?.globalError?.state;
 
       return (
             <InputAnswerWrapper>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
-                        <InputAnswerTitle formCore={formCore} inputItem={inputItem} />
-                        <DivNative className="flex flex-col gap-[.3rem]">
-                              <DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
-                                    <input
-                                          disabled={submitState === "pending"}
-                                          defaultValue={inputValue}
-                                          className={`
+                        <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
+                        <InputContent>
+                              <DivNative className="flex flex-col gap-[.3rem]">
+                                    <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}>
+                                          <input
+                                                disabled={submitState === "pending"}
+                                                defaultValue={inputValue}
+                                                className={`
 							)}  ${RenderStyleInputAnswer.StyleTitle({
                                                 formCore,
                                                 inputItem,
-                                          })} w-[90%] h-full pb-[2rem] border-b-[.1rem] border-gray-300  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
-                                          onChange={(e) => setInputValue(e.target.value)}
-                                          onFocus={onFocus}
-                                          onBlur={onBlur}
-                                          placeholder={inputItem.core.setting.placeholder}
-                                    />
-                                    <DivNative className="absolute z-[2] right-[1rem]" title={""}>
-                                          <AtSign className=" text-textMain opacity-50" size={18} />
+                                          })}  w-[92%] bg-color-section-theme text-text-theme border-b-[.1rem] border-[var(--border-color-input)] w-[90%] h-full pb-[1rem]   outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                                onChange={(e) => setInputValue(e.target.value)}
+                                                onFocus={onFocus}
+                                                onBlur={onBlur}
+                                                placeholder={inputItem.core.setting.placeholder}
+                                          />
+                                          <DivNative className="absolute z-[2] right-[1rem]" title={""}>
+                                                <AtSign className=" text-text-theme opacity-50" size={18} />
+                                          </DivNative>
                                     </DivNative>
                               </DivNative>
-                        </DivNative>
-                        {inputItemInArrayGlobal?.globalError?.state && (
-                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
-                        )}
+                              {inputItemInArrayGlobal?.globalError?.state && (
+                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                              )}
+                        </InputContent>
                   </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );

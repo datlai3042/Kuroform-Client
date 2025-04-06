@@ -32,8 +32,9 @@ const NotificationMode = () => {
       };
 
       return (
-            <div className="w-full flex flex-col gap-[2rem]">
+            <div className="w-full h-full flex flex-col gap-[3rem]">
                   <Select
+                        className="customSelect"
                         defaultValue="All"
                         style={{ width: 240 }}
                         onChange={(value) => setModeNotification(value as NotificationMode)}

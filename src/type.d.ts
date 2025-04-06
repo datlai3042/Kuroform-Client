@@ -79,12 +79,12 @@ namespace InputCore {
                   input_title?: string;
                   core: {
                         setting:
-                              | InputCore.Setting.InputSettingTextCommon
-                              | InputCore.Setting.InputSettingOptionCommon
-                              | InputCore.Setting.InputSettingDate
-                              | InputCore.Setting.InputSettingVoteCommon
-                              | InputCore.Setting.InputSettingPhoneCommon
-                              | InputCore.Setting.InputSettingImage;
+                        | InputCore.Setting.InputSettingTextCommon
+                        | InputCore.Setting.InputSettingOptionCommon
+                        | InputCore.Setting.InputSettingDate
+                        | InputCore.Setting.InputSettingVoteCommon
+                        | InputCore.Setting.InputSettingPhoneCommon
+                        | InputCore.Setting.InputSettingImage;
                   };
             };
 
@@ -368,24 +368,30 @@ namespace FormCore {
                   interface Email extends Common {
                         type: "EMAIL";
                         value: string;
+                        description: string
                   }
 
                   interface Text extends Common {
                         type: "TEXT";
                         value: string;
+                        description: string
+
                   }
 
                   interface Option extends Common {
                         type: "OPTION";
-                        value: {
+                        value: string,
+                        description: {
                               option_value: string;
                               option_id: string;
                         };
+
                   }
 
                   interface Options extends Common {
                         type: "OPTION_MULTIPLE";
-                        value: {
+                        value: string,
+                        description: {
                               option_id: string;
                               option_value: string;
                         }[];
@@ -394,31 +400,40 @@ namespace FormCore {
                   interface Phone extends Common {
                         type: "PHONE";
                         value: string;
+                        description: string
                   }
 
                   interface Vote extends Common {
                         type: "VOTE";
                         value: string;
+                        description: string
+
                   }
 
                   interface Image extends Common {
                         type: "FILE_IMAGE";
                         value: string;
+                        description: string
+
                   }
 
                   interface Address extends Common {
                         type: "ADDRESS";
-                        value: UI.Address.AddressEnity;
+                        value: string;
+                        description: UI.Address.AddressEnity
+
                   }
 
                   interface Date extends Common {
                         type: "DATE";
                         value: string;
+                        description: string
                   }
 
                   interface Anchor extends Common {
                         type: "ANCHOR";
                         value: string;
+                        description: string
                   }
 
                   type InputData = Email | Text | Vote | Phone | Option | Options | Image | Address | Anchor | Date;
@@ -494,9 +509,9 @@ namespace FormCore {
                   type ValidateWhenBlur<T extends InputCore.InputForm["core"]["setting"]> = {
                         inputValue: string | any;
                         inputItem: InputCore.InputForm;
-
+                        description: any;
                         setFormAnswer: React.Dispatch<React.SetStateAction<FormAnswerControl>>;
-                        validateCallback: ({ inputValue, inputSetting }: { inputValue: string | any; inputSetting: T }) => {
+                        validateCallback: ({ inputValue, inputSetting, description }: { inputValue: string | any; inputSetting: T, description: FormCore.FormAnswer.Data.Address["description"] }) => {
                               _next: boolean;
                               message: string;
                               type: InputCore.Commom.ErrorText | null;

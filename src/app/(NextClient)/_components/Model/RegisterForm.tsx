@@ -62,80 +62,83 @@ const RegisterForm = (props: TProps) => {
       };
 
       return (
-            <div className="relative w-full xl:min-w-[50rem] max-w-[50rem] mx-auto min-h-[80rem]  h-max flex justify-start xl:justify-center items-center flex-col  gap-[2rem] rounded-[1.2rem] p-[2.4rem_2rem] mb-[4rem]">
-                  <div className="mb-[2rem] flex items-center flex-col gap-[.2rem] ">
-                        <p className="text-[2.4rem] xl:text-[3.8rem] font-semibold text-center">Tạo tài khoản</p>
-                        <p className="text-[1.6rem] xl:text-[1.8rem]  text-center">Đăng kí tài khoản để tạo cho bạn.</p>
+            <div className="relative w-full mb-[1.6rem] h-max flex justify-start xl:justify-center items-center flex-col  gap-[1.6rem] rounded-[1.2rem] p-[.4rem_2rem] ">
+                  <div className="w-full flex flex-col gap-[.2rem] ">
+                        <p className="text-[2.4rem] xl:text-[2.8rem] font-semibold ">Tạo tài khoản</p>
+                        <p className="text-[1.6rem] xl:text-[1.8rem] ">Đăng kí tài khoản để tạo cho bạn.</p>
                   </div>
-
-                  <div className="w-full flex gap-[1rem] my-[2rem]">
-                        <div className="w-[50%]">
-                              <ButtonLoginGoogle />
-                        </div>
-
-                        <div className="w-[50%]">
-                              <ButtonLoginGithub />
-                        </div>
+                  <div className="w-full flex flex-col gap-[.2rem] text-[1.4rem] my-[1.5rem]">
+                        <p className="text-[#6262e5] font-medium text-[1.6rem]">Đăng nhập tài khoản của bạn</p>
+                        <p className="text-[1.4rem]">
+                              Bạn đã có tài khoản?{" "}
+                              <Link href={"/login"} className="text-[#6262e5] underline">
+                                    đăng nhập
+                              </Link>
+                        </p>
                   </div>
-                  <form className="w-full flex flex-col justify-center  gap-[2rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
-                        <Input<RegisterType>
-                              FieldKey="first_name"
-                              placeholder="Nhập họ của bạn"
-                              type="text"
-                              register={registerForm.register}
-                              watch={registerForm.watch}
-                              error={registerForm.formState.errors}
-                        />
+                  <div className=" w-full flex flex-col gap-[3rem] ">
+                        <div className="w-full flex flex-col gap-[1rem]">
+                              <div className="w-full h-[4.6rem]">
+                                    <ButtonLoginGoogle />
+                              </div>
 
-                        <Input<RegisterType>
-                              FieldKey="last_name"
-                              placeholder="Nhập tên của bạn"
-                              type="text"
-                              register={registerForm.register}
-                              watch={registerForm.watch}
-                              error={registerForm.formState.errors}
-                        />
-                        <Input<RegisterType>
-                              FieldKey="email"
-                              placeholder="email"
-                              type="email"
-                              register={registerForm.register}
-                              watch={registerForm.watch}
-                              error={registerForm.formState.errors}
-                        />
-                        <Input<RegisterType>
-                              FieldKey="password"
-                              placeholder="mật khẩu"
-                              type="password"
-                              register={registerForm.register}
-                              watch={registerForm.watch}
-                              error={registerForm.formState.errors}
+                              <div className="w-full h-[4.6rem]">
+                                    <ButtonLoginGithub />
+                              </div>
+                        </div>
+                        <form className="w-full flex flex-col justify-center  gap-[.6rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
+                              <Input<RegisterType>
+                                    FieldKey="first_name"
+                                    placeholder="Nhập họ của bạn"
+                                    type="text"
+                                    register={registerForm.register}
+                                    watch={registerForm.watch}
+                                    error={registerForm.formState.errors}
+                              />
 
-                              // formState={registerForm.formState}
-                        />
-                        <Input<RegisterType>
-                              FieldKey="confirm_password"
-                              placeholder="xác nhận mật khẩu"
-                              type="password"
-                              register={registerForm.register}
-                              watch={registerForm.watch}
-                              error={registerForm.formState.errors}
-                        />
-                        <Button
-                              type="submit"
-                              textContent="Đăng kí"
-                              disabled={registerMutation.isPending}
-                              loading={registerMutation.isPending}
-                              className="!w-full !h-[4rem] !bg-blue-600 "
-                        />
-                  </form>
+                              <Input<RegisterType>
+                                    FieldKey="last_name"
+                                    placeholder="Nhập tên của bạn"
+                                    type="text"
+                                    register={registerForm.register}
+                                    watch={registerForm.watch}
+                                    error={registerForm.formState.errors}
+                              />
+                              <Input<RegisterType>
+                                    FieldKey="email"
+                                    placeholder="email"
+                                    type="email"
+                                    register={registerForm.register}
+                                    watch={registerForm.watch}
+                                    error={registerForm.formState.errors}
+                              />
+                              <Input<RegisterType>
+                                    FieldKey="password"
+                                    placeholder="mật khẩu"
+                                    type="password"
+                                    register={registerForm.register}
+                                    watch={registerForm.watch}
+                                    error={registerForm.formState.errors}
 
-                  <p className="text-[1.4rem]">
-                        Bạn có đã có tài khoản?{" "}
-                        <Link href={"/login"} className="text-blue-400 underline">
-                              Đăng nhập
-                        </Link>
-                  </p>
+                                    // formState={registerForm.formState}
+                              />
+                              <Input<RegisterType>
+                                    FieldKey="confirm_password"
+                                    placeholder="xác nhận mật khẩu"
+                                    type="password"
+                                    register={registerForm.register}
+                                    watch={registerForm.watch}
+                                    error={registerForm.formState.errors}
+                              />
+                              <Button
+                                    type="submit"
+                                    textContent="Đăng kí"
+                                    disabled={registerMutation.isPending}
+                                    loading={registerMutation.isPending}
+                                    className="!w-full !h-[4rem] !bg-blue-600 "
+                              />
+                        </form>
+                  </div>
 
                   {onClose && (
                         <div className="absolute  top-[-20px] right-[-10px] xl:right-[-20px]">

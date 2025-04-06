@@ -1,5 +1,6 @@
 "use client";
 import BoxCopySuccess from "@/app/(NextClient)/form/[id]/(owner)/_components/BoxCopySuccess";
+import ButtonDeleteForm from "@/app/(NextClient)/form/[id]/(owner)/_components/ButtonDeleteForm";
 import { onFetchForm, onFetchFormState } from "@/app/_lib/redux/formEdit.slice";
 import FormService from "@/app/_services/form.service";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -18,23 +19,6 @@ const DashboardFormAction = (props: TProps) => {
       const { form_id } = props;
       const dispatch = useDispatch();
       const router = useRouter();
-      const queryClient = useQueryClient();
-
-      const deleteFormId = useMutation({
-            mutationKey: ["delete-form", form_id],
-            mutationFn: (formId: string) => FormService.deleteFormId({ form_id: formId }),
-            onSuccess: (res) => {
-                  queryClient.invalidateQueries({
-                        queryKey: ["get-form-pagination"],
-                  });
-
-                  const { formDelete, formPrivate, formPublic } = res.metadata;
-                  dispatch(onFetchFormState({ form_delete: formDelete, form_public: formPublic, form_private: formPrivate }));
-                  queryClient.invalidateQueries({ queryKey: ["get-list-form-delete"] });
-
-                  // router.refresh();
-            },
-      });
 
       const [copySuccess, setCopySuccess] = useState<boolean>(false);
 
@@ -60,10 +44,6 @@ const DashboardFormAction = (props: TProps) => {
                   clearTimeout(timeoutRef.current as NodeJS.Timeout);
             };
       }, [copySuccess]);
-
-      const onDeleteForm = () => {
-            deleteFormId.mutate(form_id);
-      };
 
       return (
             <div className="flex  gap-[1rem]">
@@ -96,18 +76,7 @@ const DashboardFormAction = (props: TProps) => {
                               </div>
                         )}
                   </div>
-
-                  <button
-                        onClick={(e) => {
-                              // e.stopPropagation();
-                              e.preventDefault();
-
-                              onDeleteForm();
-                        }}
-                        className="flex items-center gap-[1rem] p-[.5rem_.7rem] bg-color-main text-[#fff] rounded-lg"
-                  >
-                        <Trash2 size={iconSize} />
-                  </button>
+                  <ButtonDeleteForm form_id={form_id} />
             </div>
       );
 };

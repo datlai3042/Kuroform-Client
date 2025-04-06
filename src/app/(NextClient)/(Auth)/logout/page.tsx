@@ -4,6 +4,8 @@ import AuthService from "@/app/_services/auth.service";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { object } from "zod";
+import LayoutTokenFailure from "../../_components/Layout/LayoutTokenFailure";
+import LayoutRequestLoading from "../../_components/Layout/LayoutRequestLoading";
 
 const LogoutPage = () => {
       const [error, setError] = useState(false);
@@ -49,7 +51,15 @@ const LogoutPage = () => {
             };
       }, [code_verify_token_sv, router, force]);
 
-      return <div>{error ? "Yêu cầu không hợp lệ" : "Đang xử lí"}</div>;
+      return (
+            <div>
+                  {error ? (
+                        <LayoutTokenFailure message="Yêu cầu không hợp lệ, vui lòng quay về giao diện đăng nhập" />
+                  ) : (
+                        <LayoutRequestLoading message="Ứng dụng đang xác thực lại một số thông tin" />
+                  )}
+            </div>
+      );
 };
 
 export default LogoutPage;

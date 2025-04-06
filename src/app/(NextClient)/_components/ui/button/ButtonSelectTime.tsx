@@ -34,14 +34,14 @@ const ButtonSelectTime = (props: TProps) => {
                                     setOpenDateModel(prev => !prev);
                                     console.log({ openDateModel });
                               }}
-                              className={` bg-[#fff] text-[#000] border-text-theme border-[.1rem] h-[2.4rem] p-[.4rem] rounded-md relative flex items-center justify-center ${buttonProps.className}`}
+                              className={` bg-[#fff] text-[#000] border-[var(--border-color-input)] border-[.1rem] h-[2.4rem] p-[.4rem] rounded-md relative flex items-center justify-center ${buttonProps.className}`}
                         >
                               <p>Tháng {month}</p>
                               {openDateModel && (
                                     <ClickOutSide setOpenModel={setOpenDateModel}>
                                           <button
                                                 onClick={(e) => e.stopPropagation()}
-                                                className="absolute z-[2] min-w-[9rem]  max-h-[30rem] overflow-auto scroll-color-main bottom-[-1rem] translate-y-[100%] bg-[#fff] border-[.1rem] border-text-theme left-[0] right-0 min-h-[4rem] h-max flex flex-col items-center text-[#000] rounded-lg text-[1.2rem]"
+                                                className="absolute z-[2] min-w-[9rem]  max-h-[30rem] overflow-auto bottom-[-1rem] translate-y-[100%] bg-[#fff] border-[.1rem] border-[var(--border-color-input)] left-[0] right-0 min-h-[4rem] h-max flex flex-col items-center text-[#000] rounded-lg text-[1.2rem]"
                                           >
                                                 {months.map((monthItem) => (
                                                       <span
@@ -49,7 +49,7 @@ const ButtonSelectTime = (props: TProps) => {
                                                                   e.stopPropagation();
                                                                   e.cancelable = true;
                                                                   if (cb) {
-                                                                        setOpenDateModel(false);
+                                                                        // setOpenDateModel(false);
                                                                         cb(monthItem, "month");
                                                                   }
                                                             }}
@@ -69,7 +69,7 @@ const ButtonSelectTime = (props: TProps) => {
                   <div className="">
                         <ClickOutSide setOpenModel={setOpenYearModel}>
                               <button
-                                    className={` bg-[#fff] text-[#000] border-text-theme border-[.1rem] h-[2.4rem] min-w-[8rem] rounded-md relative flex items-center justify-center ${buttonProps.className}`}
+                                    className={` bg-[#fff] text-[#000]  border-[.1rem] border-[var(--border-color-input)] h-[2.4rem] min-w-[8rem] rounded-md relative flex items-center justify-center ${buttonProps.className}`}
                                     onClick={(e) => {
                                           setOpenYearModel((prev) => !prev);
                                     }}
@@ -77,7 +77,7 @@ const ButtonSelectTime = (props: TProps) => {
                                     <>
                                           <p>Năm {year}</p>
                                           {openYearModel && (
-                                                <div className="absolute z-[2] max-h-[30rem] overflow-auto scroll-color-main bottom-[-1rem] translate-y-[100%] bg-[#fff] left-[0] right-0 min-h-[4rem] h-max flex flex-col items-center  text-[#000] border-[.1rem] border-text-theme  rounded-lg text-[1.2rem]">
+                                                <div className="absolute z-[2] max-h-[30rem] overflow-auto  bottom-[-1rem] translate-y-[100%] bg-[#fff] left-[0] right-0 min-h-[4rem] h-max flex flex-col items-center  text-[#000] border-[.1rem] border-[var(--border-color-input)]  rounded-lg text-[1.2rem]">
                                                       {genderYearArray().map((yearItem) => (
                                                             <p
                                                                   key={yearItem}
@@ -85,7 +85,7 @@ const ButtonSelectTime = (props: TProps) => {
                                                                         e.cancelable = true;
                                                                         e.stopPropagation();
                                                                         if (cb) {
-                                                                              setOpenYearModel(false);
+                                                                              // setOpenYearModel(false);
                                                                               cb(yearItem, "year");
                                                                         }
                                                                   }}
@@ -93,7 +93,7 @@ const ButtonSelectTime = (props: TProps) => {
                                                                         yearItem === year
                                                                               ? "bg-color-main text-[#fff]"
                                                                               : "hover:bg-color-main hover:text-[#fff]"
-                                                                  } p-[1.6rem] hover:cursor-pointer w-full h-full flex items-center justify-center`}
+                                                                  } p-[1rem] hover:cursor-pointer w-full h-full flex items-center justify-center`}
                                                             >
                                                                   {yearItem}
                                                             </p>

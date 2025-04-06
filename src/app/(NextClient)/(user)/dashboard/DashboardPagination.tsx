@@ -24,7 +24,7 @@ const DashboardPagination = (props: TProps) => {
       });
 
       const onStylePageCurrent = (_index: number) =>
-            _index === page ? "bg-color-main text-[#fff]" : " bg-color-section-theme text-text-theme hover:text-[#fff] hover:bg-blue-600";
+            _index === page ? "bg-color-main text-[#fff]" : " bg-color-section-theme text-text-theme hover:text-[#fff] hover:bg-color-main";
 
       const onChangePage = (_pageSelct: number) => setPage(_pageSelct);
       useEffect(() => {
@@ -56,7 +56,7 @@ const DashboardPagination = (props: TProps) => {
                               <button
                                     key={pageItem}
                                     onClick={() => onChangePage(pageItem)}
-                                    className={`${onStylePageCurrent(pageItem)} min-w-[2.1rem] aspect-square rounded-full flex justify-center items-center`}
+                                    className={`${onStylePageCurrent(pageItem)} min-w-[2.5rem] aspect-square rounded-full flex justify-center items-center`}
                               >
                                     <span>{pageItem}</span>
                               </button>

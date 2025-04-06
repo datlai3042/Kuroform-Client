@@ -3,9 +3,12 @@ import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormD
 import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import { FormCore } from "@/type";
+import { Col, ColorPicker, ColorPickerProps, Divider, Row, theme } from "antd";
 import React, { useContext, useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { useDispatch, useSelector } from "react-redux";
+import ButtonPickerColor from "./ButtonPickerColor";
+import { Circle } from "lucide-react";
 
 const ButtonBackgroundColor = () => {
       const dispatch = useDispatch();
@@ -28,42 +31,21 @@ const ButtonBackgroundColor = () => {
       const formBackground = !!formCore.form_background?.form_background_iamge_url || formCore.form_background_state;
 
       return (
-            <div className="flex flex-col gap-[1rem]">
+            <div className="flex flex-col gap-[1rem] mt-[1rem]">
                   <button
                         disabled={!formBackground}
                         onClick={() => setOpenModelColor((prev) => !prev)}
-                        className="relative flex items-center gap-[2rem] h-[4rem]"
+                        className="relative flex items-center gap-[.8rem] h-[3rem]"
                   >
-                        <p>Màu nền </p>
-                        <div className="w-[7rem] h-[3.2rem] flex items-center justify-center border-[.1rem] border-slate-300 rounded-md">
-                              {formCore.form_background?.backgroundColor ? (
-                                    <div
-                                          style={{ backgroundColor: formCore.form_background.backgroundColor }}
-                                          className="w-[5rem] h-[1.5rem] border-[.1rem] border-slate-300 text-[1.1rem] flex items-center justify-center"
-                                    ></div>
-                              ) : (
-                                    <div className="w-[5rem] h-[1.5rem] border-[.1rem] border-slate-300 text-[1.1rem] flex items-center justify-center">
-                                          Trống
-                                    </div>
-                              )}
+                        <p>Màu nền: </p>
+                        <div className="flex items-center justify-center ">
+                              <ButtonPickerColor onChange={onChangeColor} defaultColor={formCore.form_background?.backgroundColor || ""} />
                         </div>
-                        {openModelColor && (
-                              <ClickOutSide setOpenModel={setOpenModelColor}>
-                                    <button
-                                          disabled={!formBackground}
-                                          className="absolute top-[100%] z-[2]  left-0  disabled:cursor-not-allowed"
-                                          // onBlur={() => setOpenColorModel(false)}
-                                          onClick={(e) => e.stopPropagation()}
-                                    >
-                                          <HexColorPicker color={formCore.form_background?.backgroundColor} onChange={onChangeColor} />
-                                    </button>
-                              </ClickOutSide>
-                        )}
                   </button>
-
-                  <span className="text-[1.2rem] opacity-55">
-                        Khi hình ảnh quá nhỏ thì màu nền sẽ phủ tiếp cho bức ảnh, còn bức ảnh vừa thì màu nền sẽ không hiển thị
-                  </span>
+                  <p className="flex gap-[1rem] text-[1.2rem] opacity-55 mt-[1rem]">
+                        <Circle className="text-color-main min-w-max"/>
+                        <span className="text-justify">Khi hình ảnh quá nhỏ thì màu nền sẽ phủ tiếp cho bức ảnh, còn bức ảnh vừa thì màu nền sẽ không hiển thị</span>
+                  </p>
             </div>
       );
 };

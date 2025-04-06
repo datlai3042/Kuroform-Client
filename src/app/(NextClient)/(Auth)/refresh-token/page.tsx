@@ -19,30 +19,34 @@ const RefreshTokenPage = () => {
 
       const pathName = searchParams.get("pathName");
 
-
       const timer = useRef<NodeJS.Timeout | null>(null);
       const [error, setError] = useState(false);
 
-
       useEffect(() => {
+            console.log("mount");
             const abort = new AbortController();
             const signal = abort.signal;
 
-            const codeLocal = localStorage.getItem("code_verify_token");
-            const code_verify_token_cl = codeLocal ? JSON.parse(codeLocal) : "";
-
+            const codeLocal = JSON.parse(localStorage.getItem("code_verify_token") || '');
+            const code_verify_token_cl = codeLocal ? codeLocal : "";
+            console.log({ codeLocal, code_verify_token_cl, code_verify_token_sv });
             if (!code_verify_token_cl) {
                   setError(true);
                   return;
             }
             if (code_verify_token_cl === code_verify_token_sv) {
-                  AuthService.refreshTokenServer(signal).then(() => {
-                       
-                        timer.current = setTimeout(() => {
-                              router.replace("/dashboard");
-                              router.refresh();
-                        }, 1000);
-                  }).catch(() => AuthService.logoutNextClient());
+                  AuthService.refreshTokenServer(signal)
+                        .then(() => {
+                              timer.current = setTimeout(() => {
+                                    router.replace("/dashboard");
+                                    router.refresh();
+                              }, 1000);
+                        })
+                        .catch((e: unknown) => {
+                              console.log({ e });
+
+                              AuthService.logoutNextClient();
+                        });
                   return;
             } else {
                   setError(true);
@@ -55,8 +59,8 @@ const RefreshTokenPage = () => {
 
       if (error) {
             setTimeout(() => {
-                  router.push('/')
-            }, 5000)
+                  router.push("/");
+            }, 5000);
             return <LayoutTokenFailure message="Yêu cầu không hợp lệ, vui lòng quay về giao diện đăng nhập" />;
       }
       return <LayoutRequestLoading message="Ứng dụng đang xác thực lại một số thông tin" />;

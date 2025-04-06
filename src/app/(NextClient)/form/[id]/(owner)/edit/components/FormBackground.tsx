@@ -56,7 +56,7 @@ const FormBackground = () => {
                   </DivNativeRef>
                   {modeScreen === "NORMAL" && (
                         <React.Fragment>
-                              <DivNative className={` flex xl:hidden absolute right-[1rem] top-[1rem]  gap-[1rem]`}>
+                              {/* <DivNative className={` flex xl:hidden absolute right-[1rem] top-[1rem]  gap-[1rem]`}>
                                     <DivNative className=" flex items-center justify-center " title="Review">
                                           <ButtonNative
                                                 textContent={`Review ${modeScreen}`}
@@ -70,7 +70,7 @@ const FormBackground = () => {
                                     <DivNative className=" flex items-center justify-center " title="Publish">
                                           <ButtonNative textContent="Publish" className="p-[.8rem] rounded-md bg-color-main text-bg-input-theme" />
                                     </DivNative>
-                              </DivNative>
+                              </DivNative> */}
                               <DivNative
                                     className={`${myBackgroundStyle.position_buttn} hidden group-hover:flex absolute gap-[1rem]  flex-col justify-center items-end   top-[2rem] xl:top-[80%]   z-[3]`}
                               >
@@ -80,7 +80,7 @@ const FormBackground = () => {
                                     <ButtonNative
                                           onClick={() => setOpenModel(true)}
                                           textContent="Thay đổi ảnh bìa"
-                                          className="w-[14rem] h-[3rem] sm:w-[16rem] sm:h-[4rem] px-[1rem] border-[.1rem] border-slate-150 bg-[#ffffff] rounded-lg text-[#000]"
+                                          className="w-[14rem] h-[3rem] sm:w-[16rem] sm:h-[4rem] px-[1rem] border-[.1rem] border-[var(--border-color-input)] bg-[#ffffff] hover:bg-color-main hover:text-[#fff] hover:border-none rounded-lg text-[#000]"
                                     />
                                     <DivNative className=" flex sm:hidden   items-center justify-center " title="Review">
                                           <ButtonNative

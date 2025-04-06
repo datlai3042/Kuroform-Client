@@ -35,13 +35,17 @@ export const renderVietnameseLabelAddress = (labeEnglish: UI.Address.AddressType
 const superAddressValidate = ({
       inputValue,
       inputSetting,
+      description
 }: {
       inputValue: FormCore.FormAnswer.Data.Address["value"];
       inputSetting: InputCore.InputAddress.InputTypeAddress["core"]["setting"];
+      description:FormCore.FormAnswer.Data.Address["description"];
+
 }) => {
       let _next = true;
       let message = "";
-      const { addressValidate, addressString } = inputValue;
+    
+      const { addressValidate, addressString } = description;
       let type: InputCore.Commom.ErrorText | null = null;
       const { require } = inputSetting;
       const full_field =
@@ -50,7 +54,9 @@ const superAddressValidate = ({
             addressValidate[1]?.path_with_type &&
             addressValidate[2]?.path_with_type &&
             addressValidate[3]?.path_with_type;
-      if (require) {
+
+
+            if (require) {
             if (addressString && full_field) {
                   return { _next, message, type };
             }

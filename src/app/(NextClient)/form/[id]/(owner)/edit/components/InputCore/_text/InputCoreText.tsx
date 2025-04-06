@@ -48,7 +48,7 @@ const InputCoreText = (props: TProps) => {
 
       const InputText = (
             <DivNative
-                  className={`${modeScreen === "FULL" ? "w-full sm:w-[75%]" : "w-full"} min-h-[5rem] h-max flex flex-col  gap-[.5rem] `}
+                  className={`${modeScreen === "FULL" ? "w-full sm:w-[75%]" : "w-full"} bg-color-section-theme min-h-[5rem] h-max flex flex-col  gap-[.5rem] `}
                   onClick={() => divContentRef.current?.focus()}
             >
                   <SpanNative textContent="Nhập thông tin của bạn vào ô dưới" className={` text-[1.6rem] font-medium`} />

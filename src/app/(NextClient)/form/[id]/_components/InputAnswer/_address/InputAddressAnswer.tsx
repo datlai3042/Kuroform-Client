@@ -20,6 +20,7 @@ import { inititalValueInputAddress } from "@/app/_constant/input.constant";
 import superAddressValidate from "../_validate/inputAddress.validate";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
+import InputContent from "../InputContent";
 
 type TProps = {
       inputItem: InputCore.InputAddress.InputTypeAddress;
@@ -28,7 +29,7 @@ type TProps = {
 
 const InputAddressAnswer = (props: TProps) => {
       const { inputItem, formCore } = props;
-
+      console.log({ inputItem, formCore });
       const {
             formAnswer: { inputFormErrors, inputFormData },
             setFormAnswer,
@@ -44,9 +45,11 @@ const InputAddressAnswer = (props: TProps) => {
                   inputValue: address,
                   setFormAnswer,
                   validateCallback: superAddressValidate,
+                  description: address,
             });
 
-            const { _next, type } = _validate;
+            const { _next, type, message } = _validate;
+            console.log({ _next, message, type, address });
 
             if (_next) {
                   if (inputFormErrors.some((ip) => ip._id === inputItem._id)) {
@@ -54,79 +57,82 @@ const InputAddressAnswer = (props: TProps) => {
                   }
             }
       };
+      const isError = inputItemInArrayGlobal?.globalError?.state;
 
       return (
             <InputAnswerWrapper>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
-                        <InputAnswerTitle inputItem={inputItem} formCore={formCore} />
-                        <DivNative className="relative flex flex-col items-start gap-[1rem] text-[#000] ">
-                              <div className="flex flex-col gap-[2rem]">
-                                    <ModelAddress
-                                          detail={true}
-                                          onChange={onChangeAddress}
-                                          defaultValue={{
-                                                province: {
-                                                      label: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[0]?.name_with_type
-                                                            : "",
-                                                      value: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[0]?.code
-                                                            : "",
-                                                      name_with_type: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[0]?.name_with_type
-                                                            : "",
-                                                      path_with_type: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[0]?.path_with_type
-                                                            : "",
-                                                },
-                                                district: {
-                                                      label: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[1]?.name_with_type
-                                                            : "",
-                                                      value: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[1]?.code
-                                                            : "",
-                                                      name_with_type: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[1]?.name_with_type
-                                                            : "",
-                                                      path_with_type: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[1]?.path_with_type
-                                                            : "",
-                                                },
-                                                ward: {
-                                                      label: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[2]?.name_with_type
-                                                            : "",
-                                                      value: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[2]?.code
-                                                            : "",
-                                                      name_with_type: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[2]?.name_with_type
-                                                            : "",
-                                                      path_with_type: inputItemInArrayGlobal.input?.value?.addressValidate
-                                                            ? inputItemInArrayGlobal.input?.value?.addressValidate[2]?.path_with_type
-                                                            : "",
-                                                },
-                                                street: inputItemInArrayGlobal.input?.value.addressString,
-                                          }}
-                                    />
-                                    <div className="flex flex-col h-[8rem] gap-[1rem]   justify-center">
-                                          {(!inputItemInArrayGlobal.globalError.state || inputItemInArrayGlobal.input?.value.address_full) && (
-                                                <span className="text-[1.4rem]">{inputItemInArrayGlobal.input?.value.address_full}</span>
-                                          )}
-                                          <button
-                                                onClick={() => onChangeAddress(inputItemInArrayGlobal.input?.value!)}
-                                                className=" w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-blue-600 rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
-                                          >
-                                                Xác nhận
-                                          </button>
+                        <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
+                        <InputContent>
+                              <DivNative className="relative flex flex-col items-start gap-[1rem]  ">
+                                    <div className="w-full flex flex-col gap-[4rem] text-text-theme">
+                                          <ModelAddress
+                                                detail={true}
+                                                onChange={onChangeAddress}
+                                                defaultValue={{
+                                                      province: {
+                                                            label: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[0]?.name_with_type
+                                                                  : "",
+                                                            value: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[0]?.code
+                                                                  : "",
+                                                            name_with_type: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[0]?.name_with_type
+                                                                  : "",
+                                                            path_with_type: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[0]?.path_with_type
+                                                                  : "",
+                                                      },
+                                                      district: {
+                                                            label: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[1]?.name_with_type
+                                                                  : "",
+                                                            value: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[1]?.code
+                                                                  : "",
+                                                            name_with_type: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[1]?.name_with_type
+                                                                  : "",
+                                                            path_with_type: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[1]?.path_with_type
+                                                                  : "",
+                                                      },
+                                                      ward: {
+                                                            label: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[2]?.name_with_type
+                                                                  : "",
+                                                            value: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[2]?.code
+                                                                  : "",
+                                                            name_with_type: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[2]?.name_with_type
+                                                                  : "",
+                                                            path_with_type: inputItemInArrayGlobal.input?.description?.addressValidate
+                                                                  ? inputItemInArrayGlobal.input?.description?.addressValidate[2]?.path_with_type
+                                                                  : "",
+                                                      },
+                                                      street: inputItemInArrayGlobal.input?.description?.addressString,
+                                                }}
+                                          />
+                                          <div className="flex flex-col  gap-[1rem]   justify-center">
+                                                {!inputItemInArrayGlobal.globalError.state && inputItemInArrayGlobal.input?.description?.address_full && (
+                                                      <span className="text-[1.4rem]">{inputItemInArrayGlobal.input?.description?.address_full}</span>
+                                                )}
+                                                <button
+                                                      onClick={() => onChangeAddress(inputItemInArrayGlobal.input?.description!)}
+                                                      className="ml-auto w-max flex items-center justify-center p-[.5rem_.8rem] bg-color-main rounded-[.4rem] text-[1.4rem] text-[#ffffff]"
+                                                >
+                                                      Kiểm tra
+                                                </button>
+                                          </div>
                                     </div>
-                              </div>
-                        </DivNative>
+                              </DivNative>
 
-                        {inputItemInArrayGlobal.globalError.state && (
-                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
-                        )}
+                              {inputItemInArrayGlobal.globalError.state && (
+                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                              )}
+                        </InputContent>
                   </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );

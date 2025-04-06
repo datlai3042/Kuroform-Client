@@ -2,13 +2,13 @@
 import { RootState } from "@/app/_lib/redux/store";
 import { ChevronRight, ChevronsRight, Pencil, Settings } from "lucide-react";
 import { useContext, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { SidebarContext } from "@/app/(NextClient)/(user)/dashboard/SidebarContext";
 import { FormModeScreenContext } from "@/app/(NextClient)/_components/provider/FormModeScreen";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-import { FormCore } from "@/type";
+import { FormCore, Toast } from "@/type";
 
 import DashboardSearchForm from "@/app/(NextClient)/(user)/dashboard/_components/DashboardSearchForm";
 import LogoHome from "@/app/(NextClient)/_components/logo/LogoHome";
@@ -22,6 +22,10 @@ import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import ParagraphNative from "@/app/(NextClient)/_components/ui/NativeHtml/ParagraphNative";
 import Link from "next/link";
 import ModelFormState from "./ModelFormState";
+import ButtonSidebar from "@/app/(NextClient)/_components/ui/button/ButtonSidebar";
+import { useMediaQuery } from "@mantine/hooks";
+import ButtonDeleteForm from "../../_components/ButtonDeleteForm";
+import { addOneToastSuccess } from "@/app/_lib/redux/toast.slice";
 
 type TProps = {
       showHeaderAction: boolean;
@@ -41,14 +45,21 @@ const HeaderEditForm = (props: TProps) => {
       const { modeScreen, setModeScreen } = useContext(FormModeScreenContext);
       const { openFormDesign } = useContext(FormDesignContext);
 
-      const { theme } = useContext(ThemeContext);
+      
 
       const [openModelFormState, setOpenModelFormState] = useState<boolean>(false);
 
       const pathName = usePathname();
 
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
+      const matches = useMediaQuery(
+            "(max-width: 767px)",
+            false,
 
+            {
+                  getInitialValueInEffect: false,
+            },
+      );
       const onSetScreen = () => {
             if (modeScreen === "FULL") return setModeScreen("NORMAL");
             setModeScreen("FULL");
@@ -69,32 +80,42 @@ const HeaderEditForm = (props: TProps) => {
 
       return (
             <DivNative
-                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101] flex-wrap   w-auto  flex  justify-between  gap-[2rem]  p-[1.2rem_1rem] text-[1.3rem]`}
+                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101] flex-wrap   w-auto  flex  justify-between  gap-[.6rem]  p-[1.2rem_1.8rem] text-[1.3rem]`}
             >
-                  <div className="hidden sm:flex h-full items-center">
-                        <DivNative className="flex h-[3.6rem]  items-center gap-[2rem]   text-textHeader ">
-                              {!openSidebar && <ButtonIcon Icon={<ChevronsRight />} onClick={() => setOpenSidebar(true)} />}
-                              <div className="mr-[2rem]">
-                                    
+                  {!matches && (
+                        <div className="w-[60%] hidden sm:flex  h-full items-center">
+                              <DivNative className="flex h-[3.6rem]  items-center gap-[2rem]   text-textHeader ">
+                                    <ButtonSidebar />
+                                    <div className="mr-[2rem]">
+                                          <DivNative className="h-full hidden xl:flex gap-[.2rem] items-center  min-w-max">
+                                                <ButtonIcon Icon={<Pencil size={18} />} className="hidden xl:inline" style={{ minWidth: "2rem" }} />
 
-                                    <DivNative className="h-full hidden xl:flex gap-[.2rem] items-center  min-w-max">
-                                          <ButtonIcon Icon={<Pencil size={18} />} className="hidden xl:inline" style={{ minWidth: "2rem" }} />
+                                                <ParagraphNative
+                                                      className={`${styleEffect.onCheckLengthTitle()} truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
+                                                      textContent={formCore?.form_title.form_title_value || "Không tiêu đề"}
+                                                />
+                                          </DivNative>
+                                    </div>
+                              </DivNative>
 
-                                          <ParagraphNative
-                                                className={`${styleEffect.onCheckLengthTitle()} truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
-                                                textContent={formCore?.form_title.form_title_value || "Không tiêu đề"}
-                                          />
-                                    </DivNative>
+                              <div className=" hidden sm:block w-[30rem]">
+                                    <DashboardSearchForm widthInput="100%" />
                               </div>
-                        </DivNative>
-
-                        <div className="ml-auto  hidden sm:block">
-                              <DashboardSearchForm />
                         </div>
-                  </div>
-                  <div className={`${openFormDesign ? "!ml-0" : "w-max "}  flex items-center justify-end gap-[2rem]`}>
+                  )}
+                  <div className={`${openFormDesign ? "!ml-0" : "w-max "} flex-grow-[1] w-full xl:w-auto flex items-center justify-end gap-[2rem]`}>
                         {showHeaderAction && (
-                              <DivNative className="w-full md:w-max ml-auto flex flex-wrap justify-end items-center gap-[1rem]">
+                              <DivNative
+                                    style={{ justifyContent: matches ? "start" : "" }}
+                                    className="w-full  xl:ml-auto flex flex-wrap justify-end items-center gap-[1rem]"
+                              >
+                                    <ButtonDeleteForm
+                                         
+                                          form_id={formCore._id}
+                                          className=" min-w-[10rem] flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)]  hover:border-transparent hover:text-[#fff] text-text-theme rounded-lg"
+                                    >
+                                          <span>Xóa form</span>
+                                    </ButtonDeleteForm>
                                     <DivNative className=" flex items-center justify-center " title="Review">
                                           <ButtonNative
                                                 textContent={`Xem trước  `}
@@ -118,14 +139,10 @@ const HeaderEditForm = (props: TProps) => {
                                           )}
                                     </DivNative>
 
-                                    <Link
-                                          href={"/settings"}
-                                          className="p-[.2rem_.8rem] hidden xl:flex items-center gap-[.8rem] text-text-theme rounded-md"
-                                          title="Cài đặt"
-                                    >
-                                          <Settings className="w-[1.6rem]" />
-                                    </Link>
-                                    <ButtonDarkMode />
+                                    <div style={{ marginLeft: matches ? "auto" : "" }} className="flex gap-[1rem]">
+                                          <ButtonDarkMode />
+                                          {matches && <ButtonSidebar />}
+                                    </div>
                               </DivNative>
                         )}
                   </div>

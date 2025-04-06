@@ -57,28 +57,28 @@ const DashBoardWork = () => {
 
       return (
             <div className={`flex flex-col gap-[.8rem] text-[1.4rem] `}>
-                  <Link href={"/"} className={`nav ${colorTheme} ${matchPathName("/dashboard") ? "nav__isActive" : "nav__normal  "} group  `}>
+                  <Link href={"/"} className={`nav ${colorTheme} ${matchPathName("/dashboard") ? "nav__isActive" : "nav__normal hover:bg-color-main "} group  `}>
                         <HomeIcon size={18} />
                         <span className="font-medium">Trang chủ</span>
                   </Link>
 
-                  <button
+                  {/* <button
                         onClick={handleSearch}
                         className={`nav ${colorTheme}  group hover:text-[#fff] `}
                   >
                         <Search size={18} />
                         <span className="font-medium">Tìm kiếm</span>
-                  </button>
+                  </button> */}
 
                   <Link
                         href={"/settings"}
-                        className={`nav ${colorTheme} ${matchPathName("/settings") ? "nav__isActive" : "nav__normal text-text-theme"} group hover:text-[#fff]`}
+                        className={`nav ${colorTheme} ${matchPathName("/settings") ? "nav__isActive" : "nav__normal text-text-theme hover:bg-color-main"} group hover:text-[#fff]`}
                   >
                         <Settings size={18} />
                         <span className="font-medium">Cài đặt</span>
                   </Link>
 
-                <ButtonLogOut  className={`${colorTheme} nav nav__normal `}/>
+                <ButtonLogOut  className={`${colorTheme} nav nav__normal hover:bg-color-main`}/>
             </div>
       );
 };

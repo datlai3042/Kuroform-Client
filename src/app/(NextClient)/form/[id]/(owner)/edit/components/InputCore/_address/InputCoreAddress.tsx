@@ -34,8 +34,9 @@ const InputCoreAddress = (props: TProps) => {
       const onChangeAddress = (address: UI.Address.AddressEnity) => {
 
             const { _next, message, type } = superAddressValidate({
-                  inputValue: address,
+                  inputValue: address.addressString,
                   inputSetting: inputItem.core.setting,
+                  description: address,
             });
 
 
@@ -50,7 +51,7 @@ const InputCoreAddress = (props: TProps) => {
       };
 
       const InputAddress = (
-            <div className="flex flex-col gap-[2rem]">
+            <div className="flex flex-col gap-[1rem] bg-color-section-theme">
                   <ModelAddress detail={true} onChange={onChangeAddress} />
                   <div className="flex flex-col  gap-[1rem]   justify-center">
                         {(controlerInput.validate || controlerInput.value.addressString) && (
@@ -58,7 +59,7 @@ const InputCoreAddress = (props: TProps) => {
                         )}
                         <button
                               onClick={() => onChangeAddress(controlerInput.value)}
-                              className=" w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-color-btn-primarily rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
+                              className=" w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-color-main btn-primarily rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
                         >
                               Xác nhận
                         </button>

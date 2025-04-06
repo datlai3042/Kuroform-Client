@@ -38,7 +38,7 @@ const FormAnswerHeader = (props: TProps) => {
                                     height={160}
                                     quality={100}
                                     alt="form background"
-                                    className="w-full h-full min-h-[32.5rem] max-h-[32.5rem]  rounded-lg absolute"
+                                    className="w-full h-full  rounded-lg absolute"
                               />
                         </div>
                         // </div>

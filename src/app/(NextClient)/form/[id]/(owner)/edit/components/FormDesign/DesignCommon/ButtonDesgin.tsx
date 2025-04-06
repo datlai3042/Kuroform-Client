@@ -33,7 +33,7 @@ const ButtonDesgin = (props: ButtonDesginProps) => {
                         }  btn-primarily bg-color-main min-w-[14rem] w-max h-[3.6rem] flex items-center sm:justify-center gap-[.5rem]   rounded-[.4rem]  font-bold text-[#fff] `}
                         onClick={onOpenDesignModel}
                   >
-                        <PanelTop />
+                        <PanelTop size={20}/>
                         {textContent}
                   </button>
             </>

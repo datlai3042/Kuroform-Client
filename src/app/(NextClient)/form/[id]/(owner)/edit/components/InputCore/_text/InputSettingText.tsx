@@ -18,6 +18,7 @@ import { addOneToastError } from "@/app/_lib/redux/toast.slice";
 import { v4 } from "uuid";
 import InputSettingErrorState from "../../InputSettings/SettingCommon/InputSettingErrorState";
 import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpinner";
+import ButtonSaveSetting from "../../InputSettings/ButtonSaveSetting";
 
 /*
       require
@@ -48,8 +49,7 @@ const InputSettingText = (props: TProps) => {
 
       const { updateTypeInputMutation } = useUpdateInputSetting<InputCore.Setting.InputSettingCommon>();
 
-      const handleSaveSetting = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-            e.stopPropagation();
+      const handleSaveSetting = () => {
             if (inputItemString.core.setting.minLength > inputItemString.core.setting.maxLength) {
                   dispatch(
                         addOneToastError({
@@ -79,7 +79,7 @@ const InputSettingText = (props: TProps) => {
       }, [updateTypeInputMutation.isSuccess, setOpenModel]);
 
       return (
-            <DivNative className="h-max flex flex-col gap-[2.4rem]">
+            <DivNative className="h-max flex flex-col gap-[1.8rem]">
                   <InputSettingRequire<InputCore.Commom.InputCommonText, InputCore.Setting.InputSettingTextCommon>
                         inputItem={inputItemString}
                         setInputItemString={setInputItemString}
@@ -97,14 +97,7 @@ const InputSettingText = (props: TProps) => {
                   )}
                   {/* <ButtonNative textContent="Lưu" onClick={(e) => handleSaveSetting(e)} className="w-[14rem] h-[4rem] text-[#ffffff] rounded-lg" /> */}
 
-                  <button
-                        style={{ backgroundColor: color }}
-                        onClick={(e) => handleSaveSetting(e)}
-                        className="flex items-center justify-center gap-[1rem] w-[14rem] h-[4rem] text-[#ffffff] rounded-lg"
-                  >
-                        <span>Lưu</span>
-                        {updateTypeInputMutation.isPending && <LoadingSpinner color="#fff" width="min-w-[2.4rem]" height="min-h-[2.4rem]" />}
-                  </button>
+                  <ButtonSaveSetting showLoading={updateTypeInputMutation.isPending} onSubmit={handleSaveSetting} />
             </DivNative>
       );
 };

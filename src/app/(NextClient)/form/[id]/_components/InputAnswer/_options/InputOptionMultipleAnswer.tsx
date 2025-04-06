@@ -16,6 +16,7 @@ import InputAnswerTitle from "../../InputAnswerTitle";
 import InputChecked from "@/app/(NextClient)/_components/ui/input/InputChecked";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
+import InputContent from "../InputContent";
 
 type TProps = {
       inputItem: InputCore.InputOptionMultiple.InputTypeOptionMultiple;
@@ -34,9 +35,9 @@ const InputOptionMultipleAnswer = (props: TProps) => {
             return renderControllerInputAnswer<FormCore.FormAnswer.Data.Options>({ inputFormErrors, inputItem, inputFormData });
       }, [inputItem, inputFormErrors, inputFormData]);
 
-      const [choose, setChoose] = useState<{ value: FormCore.FormAnswer.Data.Options["value"] }>(() => {
+      const [choose, setChoose] = useState<{ value: FormCore.FormAnswer.Data.Options["description"] }>(() => {
             return {
-                  value: inputItemInArrayGlobal.input?.value || [],
+                  value: inputItemInArrayGlobal.input?.description || [],
             };
       });
 
@@ -55,7 +56,7 @@ const InputOptionMultipleAnswer = (props: TProps) => {
                         if (ops.option_id === op.option_id) return null;
                         return ops;
                   });
-                  setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: newArrayOption });
+                  setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, description: newArrayOption, input_value: "" });
 
                   setChoose((prev) => {
                         return {
@@ -65,7 +66,7 @@ const InputOptionMultipleAnswer = (props: TProps) => {
             } else {
                   const newArrayOption = choose.value.concat(op);
 
-                  setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: newArrayOption });
+                  setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, description: newArrayOption, input_value: "" });
 
                   setChoose(() => {
                         return {
@@ -74,38 +75,50 @@ const InputOptionMultipleAnswer = (props: TProps) => {
                   });
             }
       };
+      const isError = inputItemInArrayGlobal?.globalError?.state;
 
       return (
             <InputAnswerWrapper>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
-                        <InputAnswerTitle formCore={formCore} inputItem={inputItem} />
-                        <DivNative className="flex flex-col gap-[.3rem] text-[1.4rem]">
-                              <DivNative className={` relative min-h-[5rem] h-max flex flex-col gap-[1.6rem]  `}>
-                                    {
-                                          inputItem.core.options.map((op) => {
-                                                if (!op.option_value) return null;
-                                                return (
-                                                      <InputChecked
-                                                            key={op.option_id}
-                                                            value={op.option_value}
-                                                            value_current={choose.value.filter((op) => op.option_id === op.option_id)[0]?.option_value || ""}
-                                                            callbackChecked={() => onSelect(op)}
-                                                            name_radio={inputItem._id as string}
-                                                            checked={choose.value.map((op) => op.option_value).includes(op.option_value)}
-                                                      />
-                                                );
-                                          }) as unknown as React.ReactNode[]
-                                    }
+                        <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
+                        <InputContent>
+                              <DivNative className="flex flex-col gap-[.3rem] text-[1.4rem]">
+                                    <DivNative className={` relative min-h-[5rem] h-max flex flex-col gap-[1.6rem]  `}>
+                                          {
+                                                inputItem.core.options.map((op) => {
+                                                      if (!op.option_value) return null;
+                                                      return (
+                                                            <InputChecked
+                                                                  key={op.option_id}
+                                                                  value={op.option_value}
+                                                                  value_current={
+                                                                        choose.value.filter((op) => op.option_id === op.option_id)[0]?.option_value || ""
+                                                                  }
+                                                                  callbackChecked={() => onSelect(op)}
+                                                                  name_radio={inputItem._id as string}
+                                                                  checked={choose.value.map((op) => op.option_value).includes(op.option_value)}
+                                                            />
+                                                      );
+                                                }) as unknown as React.ReactNode[]
+                                          }
+                                    </DivNative>
                               </DivNative>
-                        </DivNative>
-                        <p className="text-[1.4rem]">
-                              Đã chọn:{" "}
-                              <span className="ml-[.4rem] border-b-[.2rem] border-gray-400">{choose.value.map((op) => op.option_value).join(", ")}</span>
-                        </p>
-
-                        {inputItemInArrayGlobal?.globalError?.state && (
-                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
-                        )}
+                              <p className="text-[1.4rem]">
+                                    Đã chọn:{" "}
+                                    {choose.value.map((op) => op.option_value).join(", ") ? (
+                                          <span className="ml-[.4rem] border-b-[.2rem] border-gray-400">
+                                                {choose.value.map((op) => op.option_value).join(", ")}
+                                          </span>
+                                    ) : (
+                                          <span className="ml-[.6rem] border-b-[.2rem] border-color-main uppercase text-color-main font-medium pb-[.4rem]">
+                                                Chưa chọn
+                                          </span>
+                                    )}
+                              </p>
+                              <div className="mt-[.8rem]">
+                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                              </div>
+                        </InputContent>
                   </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );

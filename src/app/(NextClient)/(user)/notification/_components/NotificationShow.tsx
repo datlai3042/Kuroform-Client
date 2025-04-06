@@ -6,6 +6,7 @@ import NotificationFormAnswerItem from "./NotificationFormAnswerItem";
 import NotificationSystemItem from "./NotificationSystemItem";
 import NotificationEmpty from "@/app/(NextClient)/_components/_StatusCodeComponent/NotificationEmpty";
 import LoadingArea from "@/app/(NextClient)/_components/ui/loading/LoadingArea";
+import LoadingClient from "@/app/(NextClient)/_components/LoadingClient";
 
 type TProps = {
 	notification_data: Notification.NotificationUser["notifications"];
@@ -33,11 +34,11 @@ const NotificationShow = (props: TProps) => {
 	const renderNotificationArray = useMemo(() => renderNotification(notification_data), [notification_data]);
 
 	return (
-		<div className="flex flex-col gap-[4rem] py-[2rem]">
-			<div className="flex flex-col gap-[4rem]">{renderNotificationArray}</div>
+		<div className="h-[80%] overflow-auto flex flex-col gap-[4rem] py-[2rem]">
+			<div className="flex flex-col gap-[1rem]">{renderNotificationArray}</div>
 			{!isLoading && notification_data.length > 0 && (
 				<div className="flex sm:justify-center text-[1.4rem] ">
-					<button onClick={nextPageCallback} className="bg-blue-500 rounded-xl p-[1rem] text-[#fff]">
+					<button onClick={nextPageCallback} className="bg-color-main rounded-[.4rem] h-[3.2rem] p-[.2rem_.8rem] text-[#fff]">
 						{isNextPage ? "Tải thêm thông báo" : "Đã hết dữ liệu"}
 					</button>
 				</div>
@@ -45,7 +46,7 @@ const NotificationShow = (props: TProps) => {
 			{!isLoading && notification_data.length === 0 && <NotificationEmpty />}
 			{isLoading && (
 				<div className="min-w-full h-[30rem]">
-					<LoadingArea />
+					<LoadingClient width="w-full" height="h-full" />
 				</div>
 			)}
 		</div>

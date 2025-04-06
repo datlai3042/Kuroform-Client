@@ -52,37 +52,35 @@ const ButtonBackgroundSize = () => {
                         <span className="">Chiều rộng</span>
                         <div
                               className={`${styleEffect.onCheckHasBackground(formBackground)} w-[90%] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
-border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
+border-[.1rem] border-[var(--border-color-input)]  rounded-lg bg-design-size`}
                         >
                               <input
-                                    style={{ color: theme === "light" ? colorMain : "#000" }}
                                     disabled={!formBackground}
                                     value={width}
                                     type="number"
                                     min={0}
-                                    className={` w-[80%] disabled:cursor-not-allowed  `}
+                                    className={` w-[80%] disabled:cursor-not-allowed bg-design-size `}
                                     onChange={(e) => debounced(+e.target.value, "width")}
                               />
 
-                              {width ? <span className="opacity-75 text-[#000]">%</span> : <span className="opacity-75 text-[#000]">auto</span>}
+                              {width ? <span className="opacity-75 text-text-theme">%</span> : <span className="opacity-75 text-text-theme">auto</span>}
                         </div>
                   </div>
                   <div className="flex w-[50%] flex-col gap-[.5rem] ">
                         <span className="">Chiều dài</span>
                         <div
                               className={`${styleEffect.onCheckHasBackground(formBackground)} w-[90%] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
-border-[.1rem] border-slate-300  rounded-lg bg-[#ffffff]`}
+border-[.1rem] border-[var(--border-color-input)]  rounded-lg bg-design-size`}
                         >
                               <input
-                                    style={{ color: theme === "light" ? colorMain : "#000" }}
                                     disabled={!formBackground}
                                     value={height}
                                     type="number"
                                     min={0}
-                                    className={` w-[80%] disabled:cursor-not-allowed  `}
+                                    className={` w-[80%] disabled:cursor-not-allowed bg-design-size `}
                                     onChange={(e) => debounced(+e.target.value, "height")}
                               />
-                              {height ? <span className="opacity-75 text-[#000]">%</span> : <span className="opacity-75 text-[#000]">auto</span>}
+                              {height ? <span className="opacity-75 text-text-theme">%</span> : <span className="opacity-75 text-text-theme">auto</span>}
                         </div>
                   </div>
             </div>

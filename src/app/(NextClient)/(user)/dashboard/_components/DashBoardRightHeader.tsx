@@ -12,6 +12,7 @@ import { usePathname } from "next/navigation";
 import { generateContentToUrl, generateFullNameUser } from "@/app/_lib/utils";
 import DashboardSearchForm from "./DashboardSearchForm";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import ButtonSidebar from "@/app/(NextClient)/_components/ui/button/ButtonSidebar";
 
 const DashBoardRightHeader = () => {
       const { openSidebar, setOpenSidebar } = useContext(SidebarContext);
@@ -19,15 +20,11 @@ const DashBoardRightHeader = () => {
       const pathname = usePathname();
       return (
             <div
-                  className={`w-full px-[.5rem] xl:px-[1rem] py-[2rem] xl:p-[2rem]  sticky  top-[0rem] z-[2]  h-[6rem]  flex flex-col gap-[1.6rem]  text-[1.3rem] bg-color-section-theme  `}
+                  className={`w-full px-[.5rem] xl:px-[1.6rem] py-[1rem] xl:p-[2rem]  sticky  top-[0rem] z-[2]  h-[6rem]  flex flex-col gap-[1.6rem]  text-[1.3rem] bg-color-section-theme  `}
             >
                   <div className="h-full w-full flex items-center justify-between gap-[2rem] px-[1rem] xl:p-0">
                         <div className="hidden xl:flex gap-[1rem]">
-                              {!openSidebar && (
-                                    <div className="flex items-center gap-[1rem] ">
-                                          <ButtonIcon Icon={<ChevronsRight className="text-text-theme " size={18} />} onClick={() => setOpenSidebar(true)} />
-                                    </div>
-                              )}
+                             
                               <p className="hidden xl:block text-text-theme text-[1.6rem] font-semibold w-max">{generateContentToUrl(pathname)}</p>
                         </div>
                         <div className="hidden sm:block xl:hidden">
@@ -80,7 +77,7 @@ const DashBoardRightHeader = () => {
                         * 
                         */}
 
-                        <div className=" xl:flex-auto flex justify-end gap-[1.6rem] xl:gap-[2rem]">
+                        <div className=" xl:flex-auto flex justify-end gap-[1rem] ">
                               <Link href={"/settings"} className="p-[.2rem_.8rem] flex items-center gap-[.8rem] text-text-theme rounded-md" title="Cài đặt">
                                     <Settings className="w-[1.6rem]" />
                               </Link>
@@ -91,6 +88,7 @@ const DashBoardRightHeader = () => {
                               <div className="hidden xl:block">
                                     <ButtonDarkMode />
                               </div>
+                              <ButtonSidebar />
                         </div>
                   </div>
             </div>

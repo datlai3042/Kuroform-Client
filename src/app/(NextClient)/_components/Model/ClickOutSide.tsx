@@ -26,7 +26,6 @@ const ClickOutSide = (props: TProps) => {
 
 		return () => {
 			document.removeEventListener("click", globalClick);
-			divWrapper.current = null;
 		};
 	}, [globalClick]);
 

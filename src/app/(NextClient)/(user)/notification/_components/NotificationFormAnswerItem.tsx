@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 type TProps = {
       notification_item: Notification.FormAnswers.NotificationFormAnswers;
 };
+moment.locale("vi");
 
 const NotificationFormAnswerItem = (props: TProps) => {
       const { notification_item } = props;
@@ -53,9 +54,9 @@ const NotificationFormAnswerItem = (props: TProps) => {
                               <LoadingArea />
                         </div>
                   )}
-                  <div className="xl:w-[60%]  flex flex-col gap-[1rem] text-[1.4rem] leading-10 ">
-                        <div className="h-max flex flex-wrap gap-[1rem] text-left break-words max-w-full">
-                              <span className="font-bold">Tin nhắn: </span>
+                  <div className="xl:w-[60%]  flex flex-col gap-[.6rem] text-[1.4rem] leading-10 ">
+                        <div className="h-max   gap-[1rem] text-left break-words max-w-full leading-[1.6]">
+                              <span className="font-bold min-w-max mr-[.4rem] text-color-main">Tin nhắn: </span>
                               {titleForm ? (
                                     <span> Form [{titleForm}] của </span>
                               ) : (
@@ -65,10 +66,11 @@ const NotificationFormAnswerItem = (props: TProps) => {
                               )}
                               <span className="h-max ">{notification_item.core.message}</span>
                         </div>
-                        <span className="text-left">Thời gian: {moment(new Date(notification_item.create_time)).format("hh:mm Do MMMM YYYY")}</span>
+                        <span className="text-left">Thời gian: {moment(new Date(notification_item.create_time)).format("hh:mm  DD/MM/YYYY")}</span>
+
                         <Link
                               href={`/form/${notification_item.core.form_id}/summary#${notification_item.core.form_answer_id}`}
-                              className="text-left bg-blue-600 text-[#fff] p-[.5rem] rounded-lg w-max"
+                              className="mt-[.8rem] text-left bg-color-main w-[10rem] flex items-center justify-center h-[2.4rem] text-[#fff] p-[.5rem] rounded-[.4rem] "
                         >
                               Xem chi tiết
                         </Link>

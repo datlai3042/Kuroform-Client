@@ -25,14 +25,14 @@ const DashBoardModel = (props: TProps) => {
 
       return (
             <ClickOutSide setOpenModel={setOpenModel}>
-                  <div className=" absolute z-[3] right-0 w-[20rem] min-h-[10rem] py-[1rem] h-max bg-[#ffffff] rounded-lg border-[.1rem] border-gray-200 shadow-lg flex flex-col gap-[.5rem] text-[1.4rem] text-[#000]">
+                  <div className=" absolute z-[3] right-0 w-[20rem] min-h-[10rem] h-max bg-color-section-theme text-text-theme rounded-lg border-[.1rem]  border-[var(--border-color-input)] shadow-lg flex flex-col gap-[.5rem] text-[1.4rem] ">
                         {WorkItem.map((work) => {
                               if (work.Href)
                                     return (
                                           <Link
                                                 key={work.Title}
                                                 href={work.Href}
-                                                className="p-[.2rem_.8rem] flex items-center gap-[1.6rem] hover:bg-slate-200 rounded-md"
+                                                className="p-[.6rem_.8rem] flex items-center gap-[1.6rem] hover:bg-color-main hover:text-[#fff] rounded-md"
                                           >
                                                 <span className="min-w-[2.2rem]">{work.Icon}</span>
                                                 <span className="font-medium">{work.Title}</span>
@@ -43,12 +43,12 @@ const DashBoardModel = (props: TProps) => {
                                     return (
                                           <button
                                                 key={work.Title}
-                                                className="p-[.2rem_.8rem] flex items-center gap-[1.6rem] hover:bg-slate-200 rounded-md"
+                                                className="p-[.6rem_.8rem] flex items-center gap-[1.6rem] hover:bg-color-main hover:text-[#fff] rounded-md"
                                                 onClick={() => setopenModelSearch()}
                                           >
                                                 <span className="min-w-[2.2rem]">{work.Icon}</span>
 
-                                                <span className="font-medium text-slate-600">{work.Title}</span>
+                                                <span className="font-medium ">{work.Title}</span>
                                           </button>
                                     );
                         })}

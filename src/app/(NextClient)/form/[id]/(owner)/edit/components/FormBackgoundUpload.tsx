@@ -95,19 +95,19 @@ const FormBackgoundUpload = (props: TProps) => {
 
       return (
             <DivNative className="w-full h-full flex flex-col ">
-                  <DivNative className="h-[10%] px-[2.2rem] flex justify-between border-b-[.1rem] border-slate-200">
+                  <DivNative className="h-[10%] px-[2.2rem] flex justify-between border-b-[.1rem] border-[var(--border-color-input)]">
                         <DivNative className="flex gap-[2rem]">
                               <ButtonNative
                                     onClick={() => setMode("UPLOAD")}
                                     className={`${styleEffect.onActive(
                                           "UPLOAD",
-                                    )}  h-full w-max flex items-center border-b-[.2rem]  hover:border-slate-900 text-[1.6rem] font-bold text-textHeader hover:text-slate-800`}
+                                    )}  h-full w-max flex items-center border-b-[.2rem]  hover:border-slate-900 text-[1.6rem] font-bold text-text-theme`}
                                     textContent="Tải ảnh lên"
                               />
                         </DivNative>
 
                         <button
-                              className="flex items-center gap-[.5rem] text-[1.6rem] font-bold text-textHeader hover:text-slate-800"
+                              className="flex items-center gap-[.5rem] text-[1.6rem] font-bold text-text-theme"
                               onClick={actionDelete}
                               disabled={deleteCoverMutaion.isPending}
                         >
@@ -118,13 +118,13 @@ const FormBackgoundUpload = (props: TProps) => {
 
                   {mode === "UPLOAD" && !fileUploadMutation.isPending && (
                         <ButtonNative
-                              className="flex-1 w-full h-full p-[2rem] hover:cursor-pointer"
+                              className="flex-1 w-full h-full p-[2rem] hover:cursor-pointer text-text-theme"
                               textContent=""
                               disabled={fileUploadMutation.isPending}
                               onClick={onClickBtnChangeAvatar}
                         >
                               <input ref={inputCoverRef} type="file" className="hidden" onChange={onChangeFile} />
-                              <DivNative className="w-full h-full border-[.1rem] border-dashed border-slate-300 flex flex-col justify-center items-center gap-[1rem] text-[2rem] ">
+                              <DivNative className="w-full h-full border-[.1rem] border-dashed border-[var(--border-color-input)] flex flex-col justify-center items-center gap-[1rem] text-[2rem] ">
                                     <Upload size={28} />
                                     Chọn file để tải lên
                               </DivNative>

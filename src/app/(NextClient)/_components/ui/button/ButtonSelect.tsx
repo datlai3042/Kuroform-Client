@@ -12,7 +12,7 @@ const ButtonSelect = (props: ButtonCustomProps) => {
 
 	const styleEffect = {
 		onActiveRequireWrapper: () => {
-			if (checked) return "bg-blue-400";
+			if (checked) return "bg-[var(--color-main)]";
 			return "bg-slate-300";
 		},
 		onActiveRequireCircle: () => {

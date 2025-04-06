@@ -54,8 +54,7 @@ const DownloadFormPage = () => {
                         <div className=" flex flex-col gap-[2rem] text-text-theme ">
                               <button
                                     onClick={handleDownloadExcel}
-                                    style={{ backgroundColor: color }}
-                                    className="w-[16rem] h-[4rem] ml-auto flex items-center justify-center text-[#ffffff] rounded-lg "
+                                    className="w-[11rem] bg-color-main h-[3.2rem] ml-auto flex items-center justify-center text-[#ffffff] rounded-lg "
                               >
                                     Tải File Excel
                               </button>

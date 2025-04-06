@@ -1,30 +1,19 @@
 "use client";
-import { FormCore, InputCore, UI } from "@/type";
-import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
-import InputAnswerWrapper from "../InputAnswerWrapper";
-import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
-import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNativeRef";
-import { FormAnswerContext } from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
-import { superTextValidate } from "../_validate/inputText.validate";
-import InputErrorMessage from "../InputError/InputErrorMessage";
-import {
-      deleteErrorGlobal,
-      deleteErrorWhenFocus,
-      renderControllerInputAnswer,
-      renderErrorInput,
-      setDataInputGlobal,
-      setErrorGlobal,
-      setInputRequireGlobal,
-      validateWhenFocus,
-} from "../_utils/formAnswer.uti";
-import { AtSign, CalendarCheckIcon, CalendarDays, Phone } from "lucide-react";
-import Calendar from "@/app/(NextClient)/test/calendar/Calendar";
-import { generateFullDateString, generateFullDateStringV2 } from "@/app/utils/time.utils";
 import ClickOutSide from "@/app/(NextClient)/_components/Model/ClickOutSide";
-import { superDateValidate } from "../_validate/inputDate.validate";
-import InputAnswerTitle from "../../InputAnswerTitle";
+import { FormAnswerContext } from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
+import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
+import { generateFullDateString, generateFullDateStringV2 } from "@/app/utils/time.utils";
+import { FormCore, InputCore, UI } from "@/type";
+import { CalendarDays } from "lucide-react";
+import { useContext, useMemo, useState } from "react";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
+import InputAnswerTitle from "../../InputAnswerTitle";
+import { deleteErrorWhenFocus, renderControllerInputAnswer, validateWhenFocus } from "../_utils/formAnswer.uti";
+import { superDateValidate } from "../_validate/inputDate.validate";
+import InputAnswerWrapper from "../InputAnswerWrapper";
+import Calendar from "@/app/(NextClient)/test/calendar/Calendar";
+import InputContent from "../InputContent";
 
 type TProps = {
       inputItem: InputCore.InputDate.InputTypeDate;
@@ -58,21 +47,24 @@ const InputDateAnswer = (props: TProps) => {
 
       const [openModel, setOpenModel] = useState<boolean>(false);
 
-      let date;
+      let date = undefined;
       if (inputValue) {
             date = new Date(inputValue);
-      } else {
-            date = new Date();
       }
 
-      const month = date.getMonth() + 1;
-      const day = date.getDate();
-      const year = date.getFullYear();
-      const [pickDate, setPickDate] = useState({
-            day,
-            month,
-            year,
-            date_string: generateFullDateString({ day, month, year }),
+      const [pickDate, setPickDate] = useState(() => {
+            if (!date) {
+                  return null;
+            }
+            const month = date!.getMonth() + 1;
+            const day = date!.getDate();
+            const year = date!.getFullYear();
+            return {
+                  day,
+                  month,
+                  year,
+                  date_string: generateFullDateString({ day, month, year }),
+            };
       });
 
       const handleOnChange = (value: UI.Calender.Event.DateResult) => {
@@ -87,6 +79,7 @@ const InputDateAnswer = (props: TProps) => {
                               inputValue: new Date(date_string).toISOString(),
                               setFormAnswer,
                               validateCallback: superDateValidate,
+                              description: new Date(date_string).toISOString(),
                         });
                   }
             }
@@ -94,39 +87,52 @@ const InputDateAnswer = (props: TProps) => {
 
       const actionCancle = () => {
             setOpenModel(false);
-            setPickDate({ day, month, year, date_string: generateFullDateString({ day, month, year }) });
+            // setPickDate({ day, month, year, date_string: generateFullDateString({ day, month, year }) });
       };
 
-      const dateRender = generateFullDateStringV2({ day: pickDate.day, month: pickDate.month, year: pickDate.year });
+      const dateRender = pickDate ? generateFullDateStringV2({ day: pickDate.day, month: pickDate.month, year: pickDate.year }) : null;
 
+      const isError = write || inputItemInArrayGlobal?.globalError?.state;
       return (
             <InputAnswerWrapper>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
-                        <InputAnswerTitle inputItem={inputItem} formCore={formCore} />
-                        <DivNative className="relative flex flex-col items-start gap-[1rem] text-[#000] ">
-                              <button
-                                    onClick={() => setOpenModel((prev) => !prev)}
-                                    className="bg-color-main text-[#fff] p-[.5rem_1rem] rounded-xl flex items-center gap-[1rem] text-[1.3rem]"
-                              >
-                                    <span>{dateRender}</span>
-                                    <CalendarDays />
-                              </button>
-                              {openModel && (
-                                    <div className="absolute z-[3] top-[4.2rem] xl:top-[64%] right-[33%] sm:right-[67%] xl:right-[47%] " onFocus={onFocus}>
-                                          <ClickOutSide setOpenModel={setOpenModel}>
-                                                <Calendar onChange={handleOnChange} callbackCancel={actionCancle} initialDate={date} />
-                                          </ClickOutSide>
-                                    </div>
-                              )}
-                              <p className="text-[1.3rem]">
-                                    Thời gian đang chọn là:
-                                    <span className="text-color-main font-semibold"> {dateRender}</span>
-                              </p>
-                        </DivNative>
+                        <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
+                        <InputContent>
+                              <DivNative className="relative flex flex-col sm:flex-row sm:items-center justify-between gap-[1rem] ">
+                                    <p className="text-[1.2rem] text-text-theme">
+                                          Thời gian đang chọn là:
+                                          {dateRender ? (
+                                                <>
+                                                      <span className=" font-semibold"> {dateRender}</span>
+                                                </>
+                                          ) : (
+                                                <span className="ml-[.6rem] border-b-[.2rem] border-color-main uppercase  font-semibold pb-[.4rem]">
+                                                      Chưa chọn
+                                                </span>
+                                          )}
+                                    </p>
 
-                        {inputItemInArrayGlobal?.globalError?.state && (
-                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
-                        )}
+                                    <button
+                                          onClick={() => setOpenModel((prev) => !prev)}
+                                          className="relative w-max bg-color-main text-[#fff] p-[.2rem_.6rem] sm:p-[.5rem_1rem] rounded-[.4rem] flex items-center gap-[.3rem] text-[1.3rem]"
+                                    >
+                                          {dateRender ? <span>{dateRender}</span> : <span>Click vào để chọn thời gian</span>}
+                                          <CalendarDays size={20} className="aspect-square w-[2rem] sm:w-[3rem]" />
+
+                                          {openModel && (
+                                                <div className="absolute z-[3] top-[4.2rem] xl:top-[110%] left-0 " onFocus={onFocus}>
+                                                      <ClickOutSide setOpenModel={setOpenModel}>
+                                                            <Calendar onChange={handleOnChange} callbackCancel={actionCancle} initialDate={date} />
+                                                      </ClickOutSide>
+                                                </div>
+                                          )}
+                                    </button>
+                              </DivNative>
+
+                              {inputItemInArrayGlobal?.globalError?.state && (
+                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                              )}
+                        </InputContent>
                   </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );

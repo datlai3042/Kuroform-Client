@@ -1,5 +1,5 @@
 import { extend } from "dayjs";
-import React, { SetStateAction, useEffect, useMemo, useRef, useState } from "react";
+import React, { memo, SetStateAction, useEffect, useMemo, useRef, useState } from "react";
 import ClickOutSide from "./ClickOutSide";
 import useGetAllProvinces from "@/app/hooks/common/address/useGetAllProvinces";
 
@@ -25,7 +25,6 @@ const ModelScrollList = (props: TProps) => {
       const [itemSelect, setItemSelect] = useState<ScorllDataItem | undefined>(defaultValue || undefined);
       const ulListRef = useRef<HTMLUListElement | null>(null);
       const liItemSelect = useRef<HTMLLIElement | null>(null);
-
       useEffect(() => {
             if (ulListRef.current && liItemSelect.current && openModel) {
                   ulListRef.current.scrollTop = liItemSelect.current.offsetTop;
@@ -43,7 +42,6 @@ const ModelScrollList = (props: TProps) => {
       useEffect(() => {
             if (clear) setItemSelect(undefined);
       }, [clear]);
-
       return (
             <button
                   disabled={disable}
@@ -52,7 +50,7 @@ const ModelScrollList = (props: TProps) => {
                         e.stopPropagation();
                         setOpenModel((prev) => !prev);
                   }}
-                  className="relative min-w-[18rem] text-[1.4rem] border-[.1rem] border-[#ccc] w-max  max-h-[8rem] xl:h-[3rem] py-[.3rem] flex items-center justify-center gap-[1rem] rounded-lg disabled:cursor-not-allowed "
+                  className="relative min-w-[16rem] px-[.8rem] text-[1.4rem] border-[.1rem] border-[var(--border-color-input)] w-max  max-h-[8rem] xl:h-[3rem] py-[.3rem] flex items-center justify-center gap-[1rem] rounded-lg disabled:cursor-not-allowed "
             >
                   <span>{itemSelect?.label || label}</span>
                   {openModel && (
@@ -60,15 +58,15 @@ const ModelScrollList = (props: TProps) => {
                               <ClickOutSide setOpenModel={setOpenModel}>
                                     <ul
                                           ref={ulListRef}
-                                          className="scroll-text-size text-[1.3rem]  w-full max-h-[16rem]  overflow-y-scroll bg-[#ffffff] text-[#000] border-[.1rem] border-gray-200 outline-none rounded-lg"
+                                          className=" text-[1.3rem]  w-full max-h-[16rem]  overflow-y-scroll bg-[#ffffff] text-[#000] border-[.1rem] border-gray-200 outline-none rounded-lg"
                                     >
                                           {dataRender.map((item, i) => {
-                                                if (item.label === itemSelect?.label) {
+                                                if (item.value === itemSelect?.value) {
                                                       return (
                                                             <li
                                                                   key={itemSelect.label + i}
                                                                   ref={liItemSelect}
-                                                                  className="bg-blue-400 p-[1rem_2rem] hover:cursor-pointer flex items-center justify-center"
+                                                                  className="bg-color-main whitespace-pre text-[#fff] p-[1rem_2rem] hover:cursor-pointer flex items-center justify-center"
                                                             >
                                                                   {itemSelect.label}
                                                             </li>
@@ -81,7 +79,7 @@ const ModelScrollList = (props: TProps) => {
                                                                   setItemSelect({ ...item });
                                                             }}
                                                             key={item?.label + i}
-                                                            className="p-[1rem_2rem] hover:bg-blue-200 hover:cursor-pointer flex items-center justify-center"
+                                                            className="p-[1rem_2rem]  whitespace-pre hover:bg-color-main hover:text-[#fff] hover:cursor-pointer flex items-center justify-center"
                                                       >
                                                             {item.label}
                                                       </li>
@@ -95,4 +93,4 @@ const ModelScrollList = (props: TProps) => {
       );
 };
 
-export default ModelScrollList;
+export default memo(ModelScrollList);

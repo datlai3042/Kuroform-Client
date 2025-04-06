@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import ButtonCreateForm from "../ui/button/ButtonCreateForm";
+import { Plus } from "lucide-react";
 
 const FormNotFound = () => {
       return (
@@ -11,17 +13,18 @@ const FormNotFound = () => {
                         height={50}
                         alt="toast success"
                         quality={100}
-                        className="min-w-[40rem] h-[40rem]"
+                        className="min-w-[30rem] h-[30rem]"
                         unoptimized={true}
                   />
                   <div className="min-h-full  flex flex-col items-center    gap-[2rem]">
                         <p className="text-[6rem] font-medium">Không tìm thấy Form</p>
-                        <Link
-                              href={"/dashboard"}
-                              className="min-w-[16rem] h-[4rem] p-[1rem_2rem] flex items-center justify-center text-[1.6rem] bg-blue-600 text-[#ffffff] rounded-lg"
-                        >
-                              Tạo form mới
-                        </Link>
+                        <ButtonCreateForm
+                              textContent="Tạo form mới"
+                              urlNavigation="/"
+                              className="flex  xl:[&]:p-[.8rem_1.2rem] !gap-[.5rem] !h-[3.6rem] !min-w-[10rem] !w-max !text-[1.3rem]"
+                              position="LEFT"
+                              icon={<Plus size={16} />}
+                        />
                   </div>
             </div>
       );

@@ -13,18 +13,18 @@ const LoadingClient = (props: TProps) => {
       const { height = "h-screen", width = "w-screen", message, style = {} } = props;
 
       const styleContainer = `${width} ${height}`;
-
+      console.log({ width, height });
       return (
             <div
                   style={style}
-                  className={`${styleContainer} relative flex flex-col h-screen  justify-center items-center gap-[0rem] bg-[var(--bg-module-other)]`}
+                  className={`${styleContainer} relative flex flex-col  justify-center items-center gap-[0rem] !bg-[var(--bg-client-loading)]`}
             >
                   <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[2]">
                         <div className="flex justify-center items-center gap-[1rem]">
-                              <LoadingSpinner color="text-color-main" />
+                              <LoadingSpinner color="#fff" />
                               <p className="ml-[2rem] ">
-                                    <span className="text-text-theme text-[6rem]">Kuro</span>
-                                    <span className="text-color-main text-[6rem]">form</span>
+                                    <span className="text-[#fff] text-[6rem]">Kuro</span>
+                                    <span className="text-[#6262e5] text-[6rem]">form</span>
                               </p>
 
                               <div className="flex justify-center items-center bg-[#fff] rounded-full p-[.3rem]">

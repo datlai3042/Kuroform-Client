@@ -19,7 +19,7 @@ const InputCorePhone = (props: TProps) => {
 	const [phone, setPhone] = useState<number>(0);
 
 	const InputPhone = (
-		<DivNative className="flex flex-col gap-[1rem] text-text-theme ">
+		<DivNative className="flex flex-col gap-[1rem] text-text-theme bg-color-section-theme">
 			<SpanNative
 				textContent="Số điện thoại"
 				className={`${

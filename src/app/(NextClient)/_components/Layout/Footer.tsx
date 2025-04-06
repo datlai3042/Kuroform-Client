@@ -8,7 +8,7 @@ import ButtonLogOut from "../ui/button/ButtonLogOut";
 
 const Footer = () => {
       return (
-            <div className="fixed left-0 right-0 bottom-[-.4rem]  h-[6rem] text-text-theme z-[999] bg-[var(--color-section-theme)] xl:hidden flex items-center justify-between px-[1rem]">
+            <div className="fixed left-0 right-0 bottom-[-.4rem] border-t-[.1rem] border-[var(--border-color-input)]  h-[6rem] text-text-theme z-[999] bg-[var(--color-section-theme)] md:hidden flex items-center justify-between px-[1rem]">
                   <Link href={"/settings"}>
                         <Settings size={24} />
                   </Link>

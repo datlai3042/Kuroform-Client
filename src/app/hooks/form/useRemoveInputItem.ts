@@ -3,7 +3,11 @@ import FormInputService from "@/app/_services/FormInput.service";
 import { useMutation } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
 
-const useRemoveInputItem = () => {
+type TProps = {
+      onAfterDelete?: () => void
+}
+
+const useRemoveInputItem = (props?: TProps) => {
       const dispatch = useDispatch();
 
       const removeInputItem = useMutation({
@@ -12,6 +16,9 @@ const useRemoveInputItem = () => {
             onSuccess: (res) => {
                   const { form } = res.metadata;
                   dispatch(onFetchForm({ form }));
+                  if(props && props?.onAfterDelete) {
+                        props?.onAfterDelete()
+                  }
             },
       });
 

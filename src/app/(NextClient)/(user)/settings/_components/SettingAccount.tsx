@@ -13,67 +13,66 @@ const userUpdateSchema = registerSchema.pick({ first_name: true, last_name: true
 type UserUpdateInfo = z.infer<typeof userUpdateSchema>;
 
 const SettingAccount = () => {
-	const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
+      const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
 
-	const formUpdate = useForm<UserUpdateInfo>({
-		defaultValues: {
-			first_name: user?.user_first_name || "",
-			last_name: user?.user_last_name || "",
-			email: user?.user_email || "",
-		},
-		resolver: zodResolver(userUpdateSchema),
-	});
+      const formUpdate = useForm<UserUpdateInfo>({
+            defaultValues: {
+                  first_name: user?.user_first_name || "",
+                  last_name: user?.user_last_name || "",
+                  email: user?.user_email || "",
+            },
+            resolver: zodResolver(userUpdateSchema),
+      });
 
-	const onSubmit = (dataForm: UserUpdateInfo) => {};
+      const onSubmit = (dataForm: UserUpdateInfo) => {};
 
-	return (
-		<div className="flex flex-col ">
-			<SettingUpdateAvatar />
+      return (
+            <div className="flex flex-col ">
+                  <SettingUpdateAvatar />
 
-			{user && (
-				<>
-					<form onSubmit={formUpdate.handleSubmit(onSubmit)} id="form_update" className="flex flex-wrap justify-between">
-						<Input<UserUpdateInfo>
-							FieldKey="first_name"
-							placeholder="Nhập first name"
-							register={formUpdate.register}
-							type="text"
-							watch={formUpdate.watch}
-							error={formUpdate.formState.errors}
-							style={{width: '49.5%'}}
-						/>
+                  {user && (
+                        <>
+                              <form onSubmit={formUpdate.handleSubmit(onSubmit)} id="form_update" className="flex  gap-[1rem] flex-wrap justify-between">
+                                    <Input<UserUpdateInfo>
+                                          FieldKey="first_name"
+                                          placeholder="Nhập first name"
+                                          register={formUpdate.register}
+                                          type="text"
+                                          watch={formUpdate.watch}
+                                          error={formUpdate.formState.errors}
+                                          style={{ width: "48.5%" }}
+                                    />
 
-						<Input<UserUpdateInfo>
-							FieldKey="last_name"
-							placeholder="Nhập last name"
-							register={formUpdate.register}
-							type="text"
-							watch={formUpdate.watch}
-							error={formUpdate.formState.errors}
-							style={{width: '49.5%'}}
+                                    <Input<UserUpdateInfo>
+                                          FieldKey="last_name"
+                                          placeholder="Nhập last name"
+                                          register={formUpdate.register}
+                                          type="text"
+                                          watch={formUpdate.watch}
+                                          error={formUpdate.formState.errors}
+                                          style={{ width: "48.5%" }}
+                                    />
 
-						/>
-
-						<Input<UserUpdateInfo>
-							FieldKey="email"
-							placeholder="Nhập email"
-							register={formUpdate.register}
-							type="text"
-							watch={formUpdate.watch}
-							error={formUpdate.formState.errors}
-						/>
-					</form>
-					<button
-						type="submit"
-						form="form_update"
-						className="min-w-[10%] mt-[1rem] w-max p-[.8rem] h-[3.6rem] flex justify-center items-center gap-[.8rem] bg-blue-700 text-white rounded-lg"
-					>
-						Cập nhập
-					</button>
-				</>
-			)}
-		</div>
-	);
+                                    <Input<UserUpdateInfo>
+                                          FieldKey="email"
+                                          placeholder="Nhập email"
+                                          register={formUpdate.register}
+                                          type="text"
+                                          watch={formUpdate.watch}
+                                          error={formUpdate.formState.errors}
+                                    />
+                              </form>
+                              <button
+                                    type="submit"
+                                    form="form_update"
+                                    className="min-w-[10%] mt-[1rem] w-max p-[.8rem] h-[3.6rem] flex justify-center items-center gap-[.8rem] bg-color-main text-white rounded-lg"
+                              >
+                                    Cập nhập
+                              </button>
+                        </>
+                  )}
+            </div>
+      );
 };
 
 export default SettingAccount;

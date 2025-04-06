@@ -18,6 +18,7 @@ import InputValidateSuccess from "../../_common/InputValidateSuccess";
 import superAnchorValidate from "../_validate/inputAnchor.validate";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
+import InputContent from "../InputContent";
 
 type TProps = {
       inputItem: InputCore.InputAnchor.InputTypeAnchor;
@@ -55,6 +56,7 @@ const InputAnchorAnswer = (props: TProps) => {
                         inputValue,
                         setFormAnswer,
                         validateCallback: superAnchorValidate,
+                        description: inputValue as string,
                   });
             }
       };
@@ -65,7 +67,9 @@ const InputAnchorAnswer = (props: TProps) => {
                   inputValue,
                   setFormAnswer,
                   validateCallback: superAnchorValidate,
+                  description: inputValue,
             });
+            console.log({ _next, message, type });
             setValidate(_next);
             if (_next) {
                   if (inputFormErrors.some((ip) => ip._id === inputItem._id)) {
@@ -77,36 +81,43 @@ const InputAnchorAnswer = (props: TProps) => {
       const onChangeValue = (valueInput: string) => {
             setInputValue(valueInput);
       };
+      const isError = inputItemInArrayGlobal?.globalError?.state;
 
       return (
             <InputAnswerWrapper>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
-                        <InputAnswerTitle formCore={formCore} inputItem={inputItem} />
-                        <DivNative className="flex flex-col gap-[.3rem]">
-                              <DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
-                                    <input
-                                          onBlur={onBlur}
-                                          onFocus={onFocus}
-                                          value={inputValue}
-                                          onChange={(e) => onChangeValue(e.target.value)}
-                                          className="w-full h-full p-[1rem] rounded-lg text-[1.6rem]   border-[.1rem] border-gray-400  outline-none focus:outline-blue-200 focus:border-transparent text-[#000]"
-                                          placeholder="Nhập đường dẫn liên kết của bạn"
-                                    />
-                                    <div className="absolute z-[2] right-[1rem]  opacity-70">www</div>
-                              </DivNative>
-                              <div className="flex flex-col h-[8rem] gap-[1rem]   justify-center">
-                                    {write && _validate && !inputItemInArrayGlobal.globalError.state && <InputValidateSuccess message={"Đường dẫn hợp lệ"} />}
-                                    <button
-                                          onClick={onValidate}
-                                          className=" w-[9rem] flex items-center justify-center p-[.8rem] xl:p-[1rem] bg-blue-600 rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
+                        <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
+                        <InputContent>
+                              <DivNative className="w-full flex flex-col gap-[4rem]">
+                                    <DivNative
+                                          className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] bg-[var(--color-section-theme)] `}
                                     >
-                                          Xác nhận
-                                    </button>
-                              </div>
-                        </DivNative>
-                        {inputItemInArrayGlobal?.globalError?.state && (
-                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
-                        )}
+                                          <input
+                                                onBlur={onBlur}
+                                                onFocus={onFocus}
+                                                value={inputValue}
+                                                onChange={(e) => onChangeValue(e.target.value)}
+                                                className=" pr-[2rem] heading-answer group w-[92%] min-h-[3.8rem] px-[1rem] flex items-center  text-[1.4rem] break-words whitespace-pre-wrap bg-transparent  outline-none resize-none "
+                                                placeholder="Nhập đường dẫn liên kết của bạn"
+                                          />
+                                          <div className="absolute z-[2] right-[1rem]  opacity-70">www</div>
+                                    </DivNative>
+                                    <div className="flex flex-col  gap-[1rem]   justify-center">
+                                          {write && _validate && !inputItemInArrayGlobal.globalError.state && (
+                                                <InputValidateSuccess message={"Đường dẫn hợp lệ"} />
+                                          )}
+                                          <button
+                                                onClick={onValidate}
+                                                className="ml-auto w-max flex items-center justify-center p-[.5rem_.8rem] bg-color-main rounded-[.4rem] text-[1.4rem] text-[#ffffff]"
+                                          >
+                                                Kiểm tra
+                                          </button>
+                                    </div>
+                              </DivNative>
+                              {inputItemInArrayGlobal?.globalError?.state && (
+                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                              )}
+                        </InputContent>
                   </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );

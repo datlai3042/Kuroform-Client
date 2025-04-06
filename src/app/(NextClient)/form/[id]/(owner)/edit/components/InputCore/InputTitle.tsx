@@ -3,11 +3,12 @@ import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvi
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNativeRef";
 import ParagraphNative from "@/app/(NextClient)/_components/ui/NativeHtml/ParagraphNative";
+import { clearFormAnswer } from "@/app/_lib/redux/formAnswer.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import { useUpdateTitleInput } from "@/app/hooks/useUpdateTitleInput";
 import { FormCore, InputCore } from "@/type";
 import React, { memo, useContext, useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 type TProps = {
       inputItem: InputCore.InputForm;
@@ -25,10 +26,17 @@ const InputTitle = (props: TProps) => {
       const [value, setValue] = useState<string>(inputItem.input_title || "");
 
       const updateTitleInput = useUpdateTitleInput();
+      const dispatch = useDispatch();
 
       useEffect(() => {
             titleRef.current?.focus();
       }, []);
+
+      useEffect(() => {
+            if (!updateTitleInput.isPending && updateTitleInput.isSuccess) {
+                  dispatch(clearFormAnswer({ form_id: formCore._id }));
+            }
+      }, [updateTitleInput.isSuccess, updateTitleInput.isPending]);
 
       const onSetTitle = async (e: React.ChangeEvent<HTMLDivElement>) => {
             if (titleRef.current && titleRef.current.textContent !== inputItem.input_title) {
@@ -57,12 +65,25 @@ const InputTitle = (props: TProps) => {
       const fontStyle = inputItem.core.setting.input_style || formCore.form_setting_default.input_style;
 
       useEffect(() => {}, [formCore, inputItem]);
+      const focusCaretToEnd = (el: HTMLElement | null) => {
+            if (!el) return;
+            el.focus();
+            const range = document.createRange();
+            const sel = window.getSelection();
+            if (sel) {
+                  range.selectNodeContents(el);
+                  range.collapse(false);
+                  sel.removeAllRanges();
+                  sel.addRange(range);
+            }
+      };
 
       return (
             <DivNative
-                  className={`${
-                        checkModeDisplay ? "xl:w-[50%]" : "xl:w-[70%]"
-                  } min-h-[2rem] h-max w-[60%] mb-[1rem] flex items-center gap-[1rem] hover:cursor-pointer text-text-theme`}
+                  className={`$ min-h-[2rem] h-max mb-[1rem] flex items-center gap-[1rem] hover:cursor-pointer text-text-theme`}
+                  onClick={() => {
+                        focusCaretToEnd(titleRef.current);
+                  }}
             >
                   {modeScreen === "NORMAL" && (
                         <DivNativeRef
@@ -71,14 +92,12 @@ const InputTitle = (props: TProps) => {
                                     formCore.form_mode_display === "custom" ? "title-input input-core-children" : ""
                               }  group max-w-full gap-[.5rem] break-all whitespace-pre-wrap h-max border-none outline-none resize-none text-[2rem] font-medium sm:text-[2.4rem] `}
                               ref={titleRef}
-                              autoFocus={false}
                               onKeyDown={onPressEnter}
                               onBlur={onSetTitle}
                               contentEditable={true}
                               defaultValue={value || "False"}
                               data-text={`${value || dataTextTitle || "Tiêu đề"}`}
                               suppressContentEditableWarning={true}
-                              tabIndex={0}
                               spellCheck={false}
                         >
                               {inputItem.input_title}

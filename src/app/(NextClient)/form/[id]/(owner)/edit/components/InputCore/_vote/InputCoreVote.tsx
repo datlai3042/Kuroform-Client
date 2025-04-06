@@ -15,10 +15,9 @@ const InputCoreVote = (props: TProps) => {
 	const [start, setStart] = useState<number>(2.5);
 
 	const InputVote = (
-		<DivNative className="flex flex-col gap-[1rem]">
-			<SpanNative textContent="Đánh giá" className="text-[1.6rem] font-sans" />
+		<DivNative className="flex flex-col gap-[1rem] bg-color-section-theme">
 			<DivNative className={` relative min-h-[5rem]  h-max flex items-center gap-[.5rem] `}>
-				<div className="w-max px-[2rem] h-[4rem] bg-bg-input-theme flex items-center rounded-lg ">
+				<div className="w-max   flex items-center  ">
 					<Rate allowHalf value={start} onChange={(e) => setStart(e)} className="" />
 				</div>
 			</DivNative>

@@ -175,10 +175,9 @@ const ModelAddress = (props: TProps) => {
                   }
             }
       }, [province, district, ward, detailAddress]);
-
       return (
-            <div className="p-[1rem_0rem] flex flex-col gap-[2rem]">
-                  <div className="flex flex-col xl:flex-row flex-wrap gap-[2rem]">
+            <div className=" flex flex-col gap-[1rem]">
+                  <div className="flex flex-row flex-wrap gap-[2rem]">
                         <ModelScrollList
                               defaultValue={defaultValue?.province}
                               dataRender={provincesStore}
@@ -206,7 +205,7 @@ const ModelAddress = (props: TProps) => {
                                     const { label, value, name_with_type, path_with_type } = district_item;
                                     setDistrict(() => ({ code: +value, name: label, name_with_type, path_with_type }));
                               }}
-                              disable={typeof province.code === "undefined" ? true : false}
+                              disable={typeof province.code === "undefined" || province.code === 0 ? true : false}
                               clear={clearSelect}
                         />
 
@@ -221,7 +220,11 @@ const ModelAddress = (props: TProps) => {
                                     const { label, value, name_with_type, path_with_type } = ward_item;
                                     setWard(() => ({ code: +value, name: label, name_with_type, path_with_type }));
                               }}
-                              disable={typeof province.code === "undefined" || typeof district.code === "undefined" ? true : false}
+                              disable={
+                                    typeof province.code === "undefined" || typeof district.code === "undefined" || province.code === 0 || district.code === 0
+                                          ? true
+                                          : false
+                              }
                               clear={clearSelect}
                         />
                   </div>
@@ -231,7 +234,7 @@ const ModelAddress = (props: TProps) => {
                               value={detailAddress}
                               onChange={(e) => setDetalAddress(e.target.value)}
                               placeholder="Nhập địa chỉ chi tiết"
-                              className="heading-answer group w-full h-[4rem] px-[.8rem] flex items-center  text-[1.4rem] break-words whitespace-pre-wrap bg-[var(--color-section-theme)] border-[.1rem] rounded-[.4rem] border-[var(--border-color-input)]  outline-none resize-none "
+                              className="heading-answer group w-full min-h-[3.8rem] px-[1rem] flex items-center  text-[1.4rem] break-words whitespace-pre-wrap bg-[var(--color-section-theme)] border-[.1rem] rounded-[.4rem] border-[var(--border-color-input)]  outline-none resize-none "
                         />
                   )}
             </div>

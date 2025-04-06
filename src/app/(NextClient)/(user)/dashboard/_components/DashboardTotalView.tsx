@@ -7,52 +7,69 @@ import Image from "next/image";
 import React from "react";
 import { useSelector } from "react-redux";
 import FormEmpty from "./FormEmpty";
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import useGetAllFormState from "@/app/hooks/form/useGetAllFormState";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { CartesianGrid, Line, LineChart, XAxis, Bar, BarChart, LabelList } from "recharts";
+import useGetAllFormUser from "@/app/hooks/useGetAllFormUser";
 
+const chartConfig = {
+      View: {
+            label: "Lượt xem",
+            color: "hsl(var(--chart-primary))",
+      },
+      Answer: {
+            label: "Lượt phản hồi",
+            color: "hsl(var(--chart-custom-v1))",
+      },
+} satisfies ChartConfig;
 const DashboardTotalView = () => {
-      const data = useGetFormTotalView();
-      const response = useGetTotalFormAnswer();
-
+      useGetFormTotalView();
+      useGetTotalFormAnswer();
       const total_views = useSelector((state: RootState) => state.formAsnwer.form_total_views);
       const total_answer = useSelector((state: RootState) => state.formAsnwer.form_total_answers);
-
-      const dataChart = {
-            labels: ["Số lượt xem Form", "Số lượt phản hồi"],
-            datasets: [
-                  {
-                        label: "Thống kê của bạn",
-                        data: [total_views, total_answer],
-                        backgroundColor: ["#4299de", "#3b36db"],
-                        borderWith: 0,
-                  },
-            ],
-      };
+      const chartDataV2 = [{ data: "FORM", View: total_views, Answer: total_answer }];
 
       return (
-            <div className="relative w-full h-full text-text-theme  rounded-lg  flex flex-col items-center gap-[2rem] xl:gap-[2rem]">
-                  <div className="w-full flex gap-[2rem]">
-                        <p className=" flex flex-row  xl:flex-col flex-wrap xl:items-center gap-[1rem] h-max w-full text-[1.6rem]">
-                              <span className="w-max  break-words ">Tổng sô lượt xem Form: {total_views}</span>
-                              <span className="w-max  break-words r">Số lượt phản hồi: {total_answer}</span>
+            <Card className="h-full bg-color-section-theme">
+                  <CardHeader>
+                        <CardTitle>Tương tác Form</CardTitle>
+                  </CardHeader>
+                  <CardContent className="h-[60%] py-0">
+                        <ChartContainer config={chartConfig} className="h-full w-full ">
+                              <BarChart
+                                    accessibilityLayer
+                                    data={chartDataV2}
+                                    margin={{
+                                          top: 20,
+                                    }}
+                              >
+                                    <CartesianGrid vertical={false} />
+                                    {/* <XAxis dataKey="data" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value.slice(0, 3)} /> */}
+                                    <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+                                    <Bar dataKey="View" fill="var(--color-View)" radius={8}>
+                                          <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
+                                    </Bar>
+                                    <Bar dataKey="Answer" fill="var(--color-Answer)" radius={8}>
+                                          <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
+                                    </Bar>
+                              </BarChart>
+                        </ChartContainer>
+                  </CardContent>
+                  <CardFooter className="mt-[1.2rem] ">
+                        <div className="flex flex-wrap gap-[1rem_1.6rem] text-[1.2rem] pl-[2.2rem]">
+                              <div className="flex  items-center gap-[1rem]">
+                                    <div className="w-[1rem] h-[1rem]  rounded-[.4rem] bg-[hsl(var(--chart-primary))]"></div>
+                                    <span>Lượt xem</span>
+                              </div>
 
-                              <span className="w-max  break-words r">Tỉ lệ: {calcPercentForm({ formAnswer: total_answer, formView: total_views })}%</span>
-                        </p>
-                  </div>
-
-                  {total_views === -1 && total_answer === -1 ? (
-                        <div className="w-[15rem] h-[15rem] rounded-xl  animate-pulse bg-gray-200"></div>
-                  ) : total_views === 0 && total_answer === 0 ? (
-                        <Image
-                              src={"/assets/images/icon/form_answer/form_empty_response.png"}
-                              width={18}
-                              height={18}
-                              alt="icon"
-                              className="w-[14rem] h-[14rem]"
-                              unoptimized={true}
-                        />
-                  ) : (
-                        <PieChart dataChart={dataChart} />
-                  )}
-            </div>
+                              <div className="flex items-center gap-[1rem]">
+                                    <div className="w-[1rem] h-[1rem]  rounded-[.4rem] bg-[hsl(var(--chart-custom-v1))]"></div>
+                                    <span>Lượt phản hồi</span>
+                              </div>
+                        </div>
+                  </CardFooter>
+            </Card>
       );
 };
 

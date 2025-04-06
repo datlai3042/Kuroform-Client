@@ -24,6 +24,7 @@ import RenderStyleInputAnswer from "../constant/RenderStyleInputAnswer";
 import InputAnswerTitle from "../../InputAnswerTitle";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
+import InputContent from "../InputContent";
 
 type TProps = {
       inputItem: InputCore.InputPhone.InputTypePhone;
@@ -58,35 +59,39 @@ const InputPhoneAnswer = (props: TProps) => {
                         inputValue: phone,
                         setFormAnswer,
                         validateCallback: superPhoneValidate,
+                        description: phone,
                   });
             }
       };
+      const isError = inputItemInArrayGlobal?.globalError?.state;
 
       return (
             <InputAnswerWrapper>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
-                        <InputAnswerTitle inputItem={inputItem} formCore={formCore} />
-                        <DivNative className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] `}>
-                              <input
-                                    onFocus={onFocus}
-                                    onBlur={onBlur}
-                                    value={phone ? +phone : ""}
-                                    type="number"
-                                    className={` ${RenderStyleInputAnswer.StyleTitle({
-                                          formCore,
-                                          inputItem,
-                                    })} w-[90%] h-full pb-[2rem] border-b-[.1rem] border-gray-300  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
-                                    placeholder="Nhập số điện thoại của bạn"
-                                    onChange={(e) => setPhone(e.target.value)}
-                              />
-                              <DivNative className="absolute z-[2] right-[1rem]" title={""}>
-                                    <Phone className=" text-textMain opacity-50" size={18} />
+                        <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
+                        <InputContent>
+                              <DivNative className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}>
+                                    <input
+                                          onFocus={onFocus}
+                                          onBlur={onBlur}
+                                          value={phone ? +phone : ""}
+                                          type="number"
+                                          className={` ${RenderStyleInputAnswer.StyleTitle({
+                                                formCore,
+                                                inputItem,
+                                          })}  w-[92%] bg-color-section-theme text-text-theme border-b-[.1rem] border-[var(--border-color-input)] h-full pb-[2rem]        outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          placeholder="Nhập số điện thoại của bạn"
+                                          onChange={(e) => setPhone(e.target.value)}
+                                    />
+                                    <DivNative className="absolute z-[2] right-[1rem]" title={""}>
+                                          <Phone className="  opacity-50" size={18} />
+                                    </DivNative>
                               </DivNative>
-                        </DivNative>
 
-                        {inputItemInArrayGlobal?.globalError?.state && (
-                              <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
-                        )}
+                              {inputItemInArrayGlobal?.globalError?.state && (
+                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                              )}
+                        </InputContent>
                   </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>
       );

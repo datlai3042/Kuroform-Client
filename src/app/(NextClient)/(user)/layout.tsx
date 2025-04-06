@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Socket } from "socket.io-client";
-import { SocketProvider } from "../_components/provider/SocketProvider";
-import CheckExprireToken from "../_components/Layout/CheckExprireToken";
-import { Metadata } from "next";
-import { cookies } from "next/headers";
 import Http from "@/app/_lib/http";
 import { ResponseApi } from "@/app/_schema/api/response.shema";
 import { UserType } from "@/app/_schema/user/user.type";
+import { Metadata } from "next";
+import { cookies } from "next/headers";
+import React from "react";
+import CheckExprireToken from "../_components/Layout/CheckExprireToken";
 import Footer from "../_components/Layout/Footer";
+import { SocketProvider } from "../_components/provider/SocketProvider";
 export const fetchCache = "force-no-store";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -55,7 +54,7 @@ const UserAuthenticationPage = ({ children }: { children: React.ReactNode }) => 
             <>
                   <SocketProvider>
                         <div className="relative">
-                              <div className="w-full absolute z-[2] pb-[6rem] xl:pb-0">{children}</div>
+                              <div className="w-full absolute z-[2] pb-[6rem] sm:pb-0 xl:pb-0">{children}</div>
                         </div>
                         <CheckExprireToken />
                               <Footer />

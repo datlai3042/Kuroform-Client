@@ -51,7 +51,7 @@ const DashboardFormItem = (props: TProps) => {
                         </DivNative>
                   </div>
                   <div className="w-[30%] flex flex-col items-center justify-center gap-[3rem]">
-                        <div className="w-[8rem] h-[8rem] xl:w-[12rem] xl:h-[12rem]">
+                        <div className="w-[12rem] h-[12rem] xl:w-[10rem] xl:h-[10rem]">
                               {form.form_avatar?.form_avatar_url && (
                                     <Image
                                           src={form.form_avatar.form_avatar_url}

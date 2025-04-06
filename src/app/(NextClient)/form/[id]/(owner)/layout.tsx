@@ -12,6 +12,8 @@ import { useSelectedLayoutSegment, useSelectedLayoutSegments } from "next/naviga
 import LayoutSidebar from "@/app/(NextClient)/_components/Layout/LayoutSidebar";
 import Link from "next/link";
 import FormNotFound from "@/app/(NextClient)/_components/_StatusCodeComponent/FormNotFound";
+import HeaderHandlerLayout from "./(handler-data-form)/HeaderHandleLayout";
+import { SocketProvider } from "@/app/(NextClient)/_components/provider/SocketProvider";
 
 export type FormPageMode = "edit" | "download" | "share" | "summary";
 
@@ -36,34 +38,34 @@ const FormModeLayout = ({ children, params }: { children: React.ReactNode; param
             }
       }, [getFormQuery.isSuccess, params.id, getFormQuery.data, dispatch]);
 
-
-
       return (
-            <LayoutSidebar>
-                  {getFormQuery.data?.metadata.form !== null && (
-                        <DivNative className={`bg-color-gap-empty  min-h-screen  h-max  flex flex-col  text-[1.4rem]   max-w-full `}>
-                              <DivNative className={` w-full min-h-screen rounded-lg h-max  `}>
-                                    {segment[0] !== "edit" && getFormQuery.data?.metadata.form && (
-                                          <div className=" h-screen flex flex-col gap-[1rem] ">
-                                                <HeaderEditForm showHeaderAction={segment[1] === "edit"} />
+            <SocketProvider>
+                  <LayoutSidebar>
+                        {getFormQuery.data?.metadata.form !== null && (
+                              <DivNative className={`bg-color-gap-empty  min-h-screen  h-max  flex flex-col  text-[1.4rem]   max-w-full `}>
+                                    <DivNative className={` w-full min-h-screen rounded-lg h-max  `}>
+                                          {segment[0] !== "edit" && getFormQuery.data?.metadata.form && (
+                                                <div className=" h-screen flex flex-col gap-[1rem] ">
+                                                      <HeaderHandlerLayout showHeaderAction={segment[1] === "edit"} />
 
-                                                <div className="flex-1  layout-down ">
-                                                      <div className="h-[98.2%] ">
-                                                            <div className="h-full  bg-color-section-theme  ">
-                                                                  <FormChangeMode formPageMode={formPageMode} setFormPageMode={setFormPageMode}>
-                                                                        {children}
-                                                                  </FormChangeMode>
+                                                      <div className="flex-1  layout-down sm:mx-[1rem]">
+                                                            <div className="h-[98.2%] ">
+                                                                  <div id="content" className="h-full  bg-color-section-theme rounded-[.4rem] ">
+                                                                        <FormChangeMode formPageMode={formPageMode} setFormPageMode={setFormPageMode}>
+                                                                              {children}
+                                                                        </FormChangeMode>
+                                                                  </div>
                                                             </div>
                                                       </div>
                                                 </div>
-                                          </div>
-                                    )}
-                                    {segment[0] === "edit" && getFormQuery.data?.metadata.form && children}
+                                          )}
+                                          {segment[0] === "edit" && getFormQuery.data?.metadata.form && children}
+                                    </DivNative>
                               </DivNative>
-                        </DivNative>
-                  )}
-                  {getFormQuery.isSuccess && getFormQuery.data?.metadata.form === null && <FormNotFound />}
-            </LayoutSidebar>
+                        )}
+                        {getFormQuery.isSuccess && getFormQuery.data?.metadata.form === null && <FormNotFound />}
+                  </LayoutSidebar>
+            </SocketProvider>
       );
 };
 

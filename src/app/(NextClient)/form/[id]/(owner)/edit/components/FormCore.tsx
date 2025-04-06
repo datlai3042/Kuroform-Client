@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useMemo } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 
 import { SidebarContext } from "@/app/(NextClient)/(user)/dashboard/SidebarContext";
 import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
@@ -26,7 +26,7 @@ import FormImage from "./FormImage";
 
 import ButtonDesgin from "./FormDesign/DesignCommon/ButtonDesgin";
 
-import { DndContext, DragEndEvent, MouseSensor, UniqueIdentifier, closestCorners, useSensor, useSensors } from "@dnd-kit/core";
+import { DndContext, DragEndEvent, DragOverlay, MouseSensor, UniqueIdentifier, closestCorners, useSensor, useSensors } from "@dnd-kit/core";
 
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
 
@@ -39,6 +39,10 @@ import InputCoreAnchor from "./InputCore/_anchor/InputCoreAnchor";
 import InputCoreImage from "./InputCore/_image/InputCoreImage";
 import InputCorePhone from "./InputCore/_phone/InputCorePhone";
 import InputCoreVote from "./InputCore/_vote/InputCoreVote";
+import Portal from "@/app/(NextClient)/_components/Portal";
+import Footer from "@/app/(NextClient)/_components/Layout/Footer";
+import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkMode";
+import InputDrap from "./InputDrap";
 
 export const generateInputForms = (Inputs: InputCore.InputForm[]): React.ReactNode => {
       return Inputs.map((ele, index) => {
@@ -77,11 +81,10 @@ export const generateInputForms = (Inputs: InputCore.InputForm[]): React.ReactNo
 
 const FormCore = () => {
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as TFormCore.Form;
-      const colorMain = useSelector((state: RootState) => state.form.colorCore);
       const { modeScreen, setModeScreen } = useContext(FormModeScreenContext);
       const { openFormDesign } = useContext(FormDesignContext);
-      const { openSidebar, setOpenSidebar } = useContext(SidebarContext);
-      const { theme } = useContext(ThemeContext);
+      const { setOpenSidebar } = useContext(SidebarContext);
+      const [activeId, setActiveId] = useState<string | null>(null);
 
       const updateFormAPI = useUpdateForm();
 
@@ -114,6 +117,7 @@ const FormCore = () => {
             newForm.form_inputs = newArray;
             dispatch(onFetchForm({ form: newForm }));
             updateFormAPI.mutate(newForm);
+            setActiveId(null);
             return newArray;
       };
 
@@ -138,24 +142,22 @@ const FormCore = () => {
       const isImage = formCore.form_avatar || formCore.form_avatar_state;
 
       useEffect(() => {
-            if (modeScreen === "FULL") {
-                  window.scrollTo(0, 0);
-            }
+            window.scrollTo(0, 0);
       }, [modeScreen]);
 
       return (
             <>
                   {modeScreen === "NORMAL" && (
                         <DivNative
-                              className={` w-full !px-[2.6rem] transition-all duration-700  sm:px-0    xl:ml-0 flex flex-col gap-[3rem] text-text-theme min-h-screen h-max  `}
+                              className={`relative z-[3]  w-full !px-[2.6rem] pb-[2rem] transition-all duration-700  sm:px-0    xl:ml-0 flex flex-col gap-[3rem] text-text-theme min-h-screen h-max  `}
                         >
                               {showComponentImage && <FormImage />}
                               <div
-                                    className={`${isImage ? "mt-[4rem]" : ""}
+                                    className={`${isImage ? "mt-[3.8rem]" : ""}
 						min-h-screen h-max min-w-[28rem]`}
                               >
                                     <DivNative
-                                          className={`flex-1 px-[1rem] xl:px-[4rem] min-h-full h-max  w-full xl:max-w-[84rem] mx-auto   xl:pl-0  flex flex-col  xl:py-[4rem] gap-[2rem]  `}
+                                          className={`flex-1 px-[1rem] xl:px-[4rem] min-h-full h-max  w-full lg:max-w-[67rem] xl:max-w-[70rem] mx-auto   xl:pl-0  flex flex-col  xl:py-[2rem] gap-[2rem]  `}
                                     >
                                           <DivNative className={`${gapWhenAppearImage}`}>
                                                 <DivNative className={`${heightWhenAppearImage} group max-h-[18rem] sm:max-h-[8rem] xl:min-h-max `}>
@@ -173,14 +175,25 @@ const FormCore = () => {
                                           <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[1rem] min-h-full`}>
                                                 <InputCoreTitle />
                                                 {formCore.form_inputs.length > 0 && (
-                                                      <DivNative className="mt-[2rem] h-max w-full flex flex-col gap-[4rem] ">
-                                                            <DndContext sensors={sensors} collisionDetection={closestCorners} onDragEnd={onDrapEnd}>
+                                                      <DivNative className="mt-[2rem] h-max w-full flex flex-col gap-[6rem] ">
+                                                            <DndContext
+                                                                  onDragStart={(event) => {
+                                                                        setActiveId(event.active.id as string);
+                                                                  }}
+                                                                  onDragEnd={onDrapEnd}
+                                                                  onDragCancel={() => {
+                                                                        setActiveId(null);
+                                                                  }}
+                                                                  sensors={sensors}
+                                                                  collisionDetection={closestCorners}
+                                                            >
                                                                   <SortableContext
                                                                         items={formCore.form_inputs.map((ip) => ip._id) as unknown as UniqueIdentifier[]}
                                                                         strategy={verticalListSortingStrategy}
                                                                   >
                                                                         {RenderArrayInput}
                                                                   </SortableContext>
+                                                                  <DragOverlay>{activeId ? <InputDrap inputId={activeId} listInput={formCore.form_inputs} /> : <></>}</DragOverlay>
                                                             </DndContext>
                                                       </DivNative>
                                                 )}
@@ -188,7 +201,7 @@ const FormCore = () => {
                                                 <ButtonNative
                                                       id="submit"
                                                       textContent={formCore.form_button_text}
-                                                      className="bg-color-main text-center px-[1rem] mt-[1rem] min-w-[10rem] w-max h-[3.6rem]  text-white rounded-[.4rem]  text-[1.5rem]"
+                                                      className="bg-color-main text-center px-[1rem] mt-[1rem] min-w-[7rem] w-max h-[3rem]  text-white rounded-[.4rem]  text-[1.5rem]"
                                                       onClick={onGetDataDemo}
                                                 />
                                           </DivNative>
@@ -199,21 +212,32 @@ const FormCore = () => {
 
                   {modeScreen === "FULL" && (
                         <div className={`${styleEffect.onCheckModeScreen()}`}>
-                              <DivNative className="absolute right-[4rem] top-[3rem] flex items-center justify-center z-[51]" title="Publish">
-                                    <ButtonNative
-                                          // style={{ borderColor: colorMain, backgroundColor: colorMain }}
-                                          textContent="Trở về Form Design"
-                                          className="p-[.8rem] rounded-lg bg-color-main  text-[#ffffff] "
-                                          onClick={() => {
-                                                setModeScreen("NORMAL");
-                                                setOpenSidebar(true);
-                                          }}
-                                    />
-                              </DivNative>
-
+                              <Portal>
+                                    <DivNative className="fixed right-[4rem] text-[1.3rem] top-[2rem] flex items-center justify-center z-[51]" title="Publish">
+                                          <ButtonNative
+                                                // style={{ borderColor: colorMain, backgroundColor: colorMain }}
+                                                textContent="Quay về"
+                                                className="p-[.8rem] rounded-lg bg-color-main  text-[#ffffff] "
+                                                onClick={() => {
+                                                      setModeScreen("NORMAL");
+                                                      setOpenSidebar(true);
+                                                }}
+                                          />
+                                    </DivNative>
+                              </Portal>
+                              <Portal>
+                                    <DivNative
+                                          className="fixed right-[4rem] text-[1.3rem] top-[6.4rem] flex items-center justify-center z-[51]"
+                                          title="Publish"
+                                    >
+                                          <ButtonDarkMode />
+                                    </DivNative>
+                              </Portal>
                               <FormPageGuess FormCore={formCore} />
                         </div>
                   )}
+
+                  <Footer />
             </>
       );
 };

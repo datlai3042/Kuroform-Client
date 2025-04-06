@@ -11,9 +11,8 @@ const DashboardSearchResult = (props: TProps) => {
       const { search } = props;
 
       const formSearchResult = useSearchFormName({ enabled: !!search, text: search });
-
       return (
-            <div className="min-w-[30rem] w-full bg-[#fff] min-h-full h-full max-h-max">
+            <div className=" w-full max-w-[30rem] bg-color-section-theme min-h-full h-full max-h-max border-[.1rem] border-[var(--border-color-input)]">
                   {formSearchResult?.data?.metadata?.forms?.map((form) => <DashboardFormSearchItem form={form} key={form._id} />)}
 
                   {formSearchResult?.data?.metadata?.forms?.length === 0 && (

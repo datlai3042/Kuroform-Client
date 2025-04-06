@@ -5,15 +5,15 @@ import { RootState } from "@/app/_lib/redux/store";
 import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 import ModelOneOption from "@/app/(NextClient)/_components/Model/ModelOneOption";
 import useUpdateForm from "@/app/hooks/useUpdateForm";
+import useDisableBodyScroll from "@/app/hooks/useDisalbeBodyScroll";
 
 const ModelNotSave = () => {
       const { isDesignForm, setOpenFormDesign, setIsDesginForm, setOpenModelNotSave } = useContext(FormDesignContext);
 
       const FormBackUp = useSelector((state: RootState) => state.form.formCoreBackUp);
       const formOriginal = useSelector((state: RootState) => state.form.formCoreOriginal);
-
+      useDisableBodyScroll()
       const dispatch = useDispatch();
-
       const onCancelDesign = () => {
             dispatch(onFetchForm({ form: FormBackUp }));
             setOpenFormDesign(false);
@@ -29,6 +29,8 @@ const ModelNotSave = () => {
             setIsDesginForm(false);
             setOpenModelNotSave(false);
       };
+
+
 
       return (
             // <div className="showModelNotSave fixed top-[4rem] left-[50%] z-[105]  translate-x-[-50%] w-[30rem] xl:w-[40rem] h-[13rem] p-[2rem] flex flex-col justify-between text-[1.7rem] bg-[#ffffff] transition-all duration-700 border-[.1rem] border-slate-200 shadow-md  rounded-lg">
@@ -50,7 +52,7 @@ const ModelNotSave = () => {
             // </div>
 
             <ModelOneOption
-                  content="Bạn chưa lưu các thay đổi của mình"
+                  content="Bạn chưa lưu các thay đổi của mình đó nha !!!"
                   content_action="Lưu"
                   content_cancel="Không lưu"
                   callbackCancel={onCancelDesign}

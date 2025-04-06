@@ -119,15 +119,11 @@ const ButtonOptionValue = (props: TProps) => {
 			onClick={() => onSelectValue(option.option_id)}
 			className="reset-border-outline flex min-h-[5rem]  max-w-full h-max items-center gap-[2rem] text-[1.4rem]"
 		>
-			<div className="min-w-[2rem] aspect-square rounded-full border-[.1rem] border-slate-400 flex items-center justify-center">
+			<div className="min-w-[2rem] aspect-square rounded-full border-[.1rem] border-[var(--border-color-input)] flex items-center justify-center">
 				{selectValue === option.option_id && (
 					<div
-						style={{
-							backgroundColor: checkModeDisplay && theme === "light" ? colorMain : "var(--text-theme)",
-						}}
-						className={`${
-							checkModeDisplay ? "group-hover:!bg-[#ffffff]" : "bg-blue-300"
-						} min-w-[60%] min-h-[60%] rounded-full `}
+						
+						className={`bg-color-main min-w-[60%] min-h-[60%] rounded-full `}
 					></div>
 				)}
 			</div>
@@ -147,16 +143,13 @@ const ButtonOptionValue = (props: TProps) => {
 			</div>
 
 			<button
-				style={{ color: checkModeDisplay ? colorMain : "#000" }}
 				disabled={deleteOptionIdMutation.isPending}
 				onClick={(e) => {
 					e.preventDefault();
 
 					onDeleteOptionId();
 				}}
-				className={`${
-					checkModeDisplay ? "group-hover:!bg-[#ffffff] hover:bg-gray-200" : "bg-gray-200 hover:bg-gray-300"
-				} ml-auto flex items-center gap-[1rem] p-[.5rem_.7rem]  rounded-lg disabled:cursor-not-allowed`}
+				className={` border-[.1rem] border-[var(--border-color-input)] hover:border-transparent hover:bg-red-600 bg-transparent text-text-theme hover:text-[#fff] ml-auto flex items-center gap-[1rem] p-[.5rem_.7rem]  rounded-lg disabled:cursor-not-allowed`}
 			>
 				<Trash2 size={16} />
 			</button>

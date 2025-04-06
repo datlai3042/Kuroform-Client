@@ -40,6 +40,11 @@ class FormAnswerService {
 	static async increaseViewFormAnswer({ form_id }: { form_id: string }) {
 		return Http.post<ResponseApi<{ message: string }>>("/v1/api/form-answer/update-form-views", { form_id });
 	}
+	static async deleteOneReport({ form_id, report_id }: { form_id: string, report_id: string }) {
+		const urlQuery = `/v1/api/form-answer/delete-one-report?form_id=${form_id}&report_id=${report_id}`
+		return Http.delete<ResponseApi<{formAnswer: FormCore.FormAnswer.FormAnswerCore }>>(urlQuery);
+	}
+
 }
 
 export default FormAnswerService;

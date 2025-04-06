@@ -15,10 +15,10 @@ const DashboardAccount = () => {
       const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
 
       return (
-            <div className="group min-w-[10rem] max-w-[26rem] xl:min-w-[20.2rem]  h-[3rem] flex items-center justify-between text-text-theme">
+            <div className="group min-w-[10rem] max-w-[26rem] xl:min-w-[20.2rem]  h-full flex items-center justify-between text-text-theme">
                   {user && (
                         <>
-                              <div className="max-w-full w-full flex gap-[1rem] items-center hover:cursor-pointer " onClick={() => setOpenModel(true)}>
+                              <div className="max-w-full h-full w-full flex gap-[1rem] items-center hover:cursor-pointer " onClick={() => setOpenModel(true)}>
                                     {user?.user_avatar_current && (
                                           <Image
                                                 src={user.user_avatar_current}

@@ -19,6 +19,7 @@ import {
       ListTodo,
       MapPinned,
       PhoneOutgoing,
+      Plus,
       Star,
       Upload,
 } from "lucide-react";
@@ -186,12 +187,12 @@ const InputIntroduceWrapper = (props: TProps) => {
 
       return (
             <Portal>
-                  <DivNative className="fixed inset-0 bg-[rgba(0,0,0,0.5)] z-[999] px-[1rem] flex justify-center items-center">
-                        <DivNativeRef className="relative  h-[50rem] overflow-y-auto   flex flex-col bg-color-section-theme text-text-theme rounded-lg border-[.1rem] border-[var(--border-color-side)]  ">
-                              <ClickOutSide width="w-[92vw] sm:w-[74rem] xl:w-[80rem] " height="h-[64rem] xl:h-[68rem]" setOpenModel={setOpenModel}>
+                  <DivNative className="fixed inset-0 bg-[rgba(0,0,0,0.8)] z-[999] px-[1rem] flex justify-center items-center">
+                        <DivNativeRef className="relative  h-[50rem]   flex flex-col bg-color-section-theme text-text-theme rounded-lg  ">
+                              <ClickOutSide width="w-[92vw]  xl:w-[76rem] " height="h-full" setOpenModel={setOpenModel}>
                                     <>
-                                          <DivNative className="flex-1 flex-col sm:flex-row  min-h-full flex px-0">
-                                                <DivNative className=" min-w-[28rem] min-h-full p-[2rem_1.6rem_1rem_1.6rem] xl:p-[2rem_1.4rem] flex flex-col gap-[1rem] sm:border-r-[.1rem] border-[var(--border-color-side)]  ">
+                                          <DivNative className="flex-1 flex-col sm:flex-row h-full flex px-0">
+                                                <DivNative className=" min-w-[24rem] p-[2rem_1.6rem_1rem_1.6rem] xl:p-[2rem_1.4rem] flex flex-col gap-[1rem] sm:border-r-[.1rem] border-[var(--border-color-side)]  ">
                                                       <ParagraphNative className="text-textGray text-[1.2rem] font-bold opacity-80" textContent="Input" />
                                                       <DivNative className="flex flex-col gap-[1.6rem] " onClick={(e) => e.stopPropagation()}>
                                                             <Select
@@ -217,21 +218,22 @@ const InputIntroduceWrapper = (props: TProps) => {
                                                             />
                                                             {inputIntroduce !== "Guide" && (
                                                                   <ButtonIcon
+                                                                  
                                                                         textContent="Thêm input này"
-                                                                        className="h-[50%] flex items-center p-[.4rem_.8rem] xl:p-[1rem] bg-blue-600 rounded-lg text-[1.2rem] xl:text-[1.4rem] text-[#ffffff]"
-                                                                        Icon={<ArrowBigRight />}
+                                                                        className="h-[50%] flex items-center p-[.4rem_.8rem]  bg-color-main rounded-[.4rem] text-[1.2rem] xl:text-[1.3rem] text-[#ffffff]"
+                                                                        Icon={<Plus size={16} className="mt-[.2rem]"/>}
                                                                         onClick={handleChooseInputType}
                                                                   />
                                                             )}
                                                       </DivNative>
                                                 </DivNative>
-                                                <DivNative className="flex  min-h-full py-[1rem] flex-1">{renderInputIntroduce}</DivNative>
+                                                <DivNative className="h-full py-[1rem] flex-1 overflow-auto ">{renderInputIntroduce}</DivNative>
                                           </DivNative>
                                           <div className="absolute right-[1rem] top-[1rem] ">
                                                 <button
                                                       onClick={() => setOpenModel(false)}
                                                       type="button"
-                                                      className="ml-auto  w-[12rem] h-[3.6rem] text-[1.4rem] text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                                      className="ml-auto  w-[12rem] h-[3.6rem] text-[1.4rem] text-white  bg-color-main  focus:ring-4  font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 "
                                                 >
                                                       Đóng Modal
                                                 </button>

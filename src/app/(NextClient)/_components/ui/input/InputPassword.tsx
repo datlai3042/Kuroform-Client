@@ -21,8 +21,8 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
       const input_erros: React.ReactNode = error[FieldKey]?.message as ReactNode;
 
       return (
-            <div className="flex flex-col w-full min-h-[10rem] h-max gap-[1rem]  ">
-                  <label htmlFor={`${FieldKey}-${id}`} className="first-letter:uppercase text-text-theme font-semibold text-[1.4rem]">
+            <div className="flex flex-col w-full h-max gap-[1rem]  ">
+                  <label htmlFor={`${FieldKey}-${id}`} className="first-letter:uppercase text-[#3d4f58] font-semibold text-[1.4rem]">
                         {placeholder}
                   </label>
 
@@ -31,7 +31,7 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                               type={showPassword ? "text" : "password"}
                               id={input_id}
                               {...register(FieldKey)}
-                              className="inline-block w-full min-h-[4.4rem] p-[.6rem_1.2rem] border-[.2rem] border-slate-300 bg-[#ffffff] opacity-100 rounded-[.6rem] text-[#000] placeholder:text-[#000] placeholder:text-[1.2rem] outline outline-[4px] outline-transparent focus:outline-blue-200 focus:border-transparent placeholder:opacity-50"
+                              className="inline-block w-full min-h-[4.4rem] p-[.6rem_1.2rem] border-[.1rem] border-[rgb(136, 147, 151)] bg-color-section-theme opacity-100 rounded-[.6rem] text-text-theme  placeholder:text-[1.2rem] text-[1.4rem] outline outline-[.2rem]  focus:font-semibold outline-transparent focus:outline-color-main focus:outline-4 focus:border-transparent placeholder:opacity-100 "
                               placeholder={input_placeholder}
                         />
 
@@ -41,10 +41,10 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                               className="absolute top-[50%] translate-y-[-50%] right-[1rem]"
                               onClick={() => setShowPassword((prev) => !prev)}
                         >
-                              {!showPassword ? <Eye /> : <EyeOff />}
+                              {!showPassword ? <Eye size={18}/> : <EyeOff size={18}/>}
                         </button>
                   </div>
-                  <div className="min-h-[1rem] text-[1.2rem] text-red-400 font-bold" >{error && <p>{input_erros}</p>}</div>
+                  <div className="min-h-[1rem] text-[1.2rem] text-red-400 font-bold my-[.2rem]">{error && <p>{input_erros}</p>}</div>
             </div>
       );
 };
