@@ -14,7 +14,7 @@ const useDisableBodyScroll = () => {
   }, [])
 
   useEffect(() => {
-    const handleScroll = (e) => {
+    const handleScroll = (e: any) => {
       e.preventDefault();
     };
 
@@ -31,7 +31,7 @@ export const useDisableBodyScrollJS = () => {
 
 
   useEffect(() => {
-    const handleScroll = (e) => {
+    const handleScroll = (e: any) => {
       e.preventDefault();
     };
 

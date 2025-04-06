@@ -25,6 +25,17 @@ type TProps = {
 
 const FormAnswerProvider = (props: TProps) => {
       const { formCore, children, form_answer_id } = props;
+      const temp :  FormCore.FormAnswer.InputFormData = {
+            type: 'OPTION_MULTIPLE',
+            description: [],
+            value: '',
+            mode: 'Require',
+            title: '',
+            _id: '',
+            setting: {
+                  
+            }
+      }
       const [formAnswer, setFormAnswer] = useState<FormCore.FormAnswer.FormAnswerControl>(() => {
             return {
                   inputFormData: formCore.form_inputs.map((ip) => {
@@ -77,7 +88,7 @@ const FormAnswerProvider = (props: TProps) => {
                               value: "",
                               type: ip.type,
                         };
-                  }),
+                  }) as FormCore.FormAnswer.InputFormData[],
                   inputFormErrors: [],
                   form_answer_id,
                   inputFormRequire: formCore.form_inputs.reduce((newArray: FormCore.FormAnswer.InputFormRequire[], inputItem) => {

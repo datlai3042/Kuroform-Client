@@ -84,7 +84,9 @@ namespace InputCore {
                         | InputCore.Setting.InputSettingDate
                         | InputCore.Setting.InputSettingVoteCommon
                         | InputCore.Setting.InputSettingPhoneCommon
-                        | InputCore.Setting.InputSettingImage;
+                        | InputCore.Setting.InputSettingImage
+                        | InputCore.Setting.InputSettingOptionCommon | InputCore.Setting.InputSettingOptionsCommon
+                        ;
                   };
             };
 
@@ -172,7 +174,12 @@ namespace InputCore {
             type InputTypeOption = InputCore.Commom.InputCommon &
                   InputCore.Commom.InputCommonOption & {
                         type: "OPTION";
-                        core: { options: Options[] };
+                        core: {
+                              options: Options[]
+
+                              setting: InputCore.Setting.InputSettingOption;
+
+                        };
                   };
       }
 
@@ -181,7 +188,7 @@ namespace InputCore {
             type Options = { option_id: string; option_value: string };
 
             type InputTypeOptionMultiple = InputCore.Commom.InputCommon &
-                  InputCore.Commom.InputCommonOption & { type: "OPTION_MULTIPLE"; core: { options: Options[] } };
+                  InputCore.Commom.InputCommonOption & { type: "OPTION_MULTIPLE"; core: { options: Options[], setting: InputSettingOptionMultiple } };
       }
 
       namespace InputImage {
