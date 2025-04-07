@@ -44,7 +44,7 @@ const ViewGroupAnswer = (props: TProps) => {
 
       return (
             <>
-                  <div className="flex h-full gap-[6rem] flex-nowrap overflow-auto pb-[3rem] normal-scroll">
+                  <div className="flex h-full gap-[8rem] flex-nowrap overflow-auto pb-[3rem] normal-scroll">
                         {Object.keys(dataGroupFilter).map((dt, i) => {
                               const type = dt.split("_#_")[1] as InputCore.InputForm["type"];
                               return (
@@ -53,7 +53,7 @@ const ViewGroupAnswer = (props: TProps) => {
                                           {type === "OPTION" && <AnalysisAnswer data={dataGroupFilter[dt] as InputData[]} />}
                                           {type === "OPTION_MULTIPLE" && <AnalysisAnswer data={dataGroupFilter[dt] as InputData[]} />}
 
-                                          <div className=" flex flex-col gap-[1.6rem] normal-scroll overflow-auto  pb-[.8rem] pr-[1.4rem]">
+                                          <div className="w-full flex flex-col gap-[1.6rem] normal-scroll overflow-auto  pb-[.8rem] ">
                                                 {dataGroupFilter[dt].map((info, i) => {
                                                       return (
                                                             <div
@@ -71,7 +71,7 @@ const ViewGroupAnswer = (props: TProps) => {
                                                                   }}
                                                                   className={`${
                                                                         formAnswerId === info.form_answer_id ? "bg-color-main text-[#fff]" : ""
-                                                                  }  px-[1rem] min-h-[4rem] flex items-center justify-between gap-[6rem] border-b-[.1rem] border-[var(--border-color-input)] hover:cursor-pointer hover:bg-color-main hover:text-[#fff] `}
+                                                                  }  min-h-[4rem] flex items-center justify-between gap-[6rem] border-b-[.1rem] border-[var(--border-color-input)] hover:cursor-pointer hover:bg-color-main hover:text-[#fff] `}
                                                             >
                                                                   <p className="min-w-[30%] max-w-[30%] xl:min-w-[50%] xl:max-w-[50%] truncate xl:break-words flex gap-[1rem] leading-10">
                                                                         <span>{info.value ? info?.value : "Người dùng không nhập dữ liệu"}</span>
