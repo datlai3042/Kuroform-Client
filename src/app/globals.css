@@ -62,6 +62,19 @@ body.dark :where(.css-dev-only-do-not-override-98ntnt).ant-rate .ant-rate-star-f
       background-color: var(--color-main) !important;
 }
 
+
+/*
+      border tab active
+*/
+.ant-tabs-tab-active {
+      border-bottom: .1rem solid var(--color-main) !important; /* đổi #1890ff thành màu bạn muốn */
+    }
+    
+    /* Nếu bạn dùng dòng dưới tab như mặc định */
+    .ant-tabs-ink-bar {
+      background:  var(--color-main) !important; /* màu của thanh gạch dưới tab */
+    }
+
 :where(.css-dev-only-do-not-override-98ntnt).ant-select-dropdown {
       background-color: var(--color-section-theme) !important;
       color: var(--text-theme) !important;
@@ -151,7 +164,10 @@ body.dark .ant-rate-star-second {
             --bg-form-nav: #fff;
             --color-gap-empty: #eef1f9;
             --color-main: #3d52a2;
-
+            --bg-scrollbar-thumb-normal: #636363;
+            --bg-scrollbar-track-normal: #e9e2e2;
+            --bg-answer-option: rgb(180 183 189 / 42%);
+            
             --color-section-theme: #fefefe;
             --text-theme: #000;
             --border-color: hwb(0 10% 88% / 0.189);
@@ -171,6 +187,9 @@ body.dark .ant-rate-star-second {
             --bg-form-nav: #393c73;
             --color-gap-empty: #000;
             /* --color-main: #3b36db; */
+            --bg-answer-option:  rgb(222 224 228);
+
+           
             --color-main: #35336a;
             --color-section-theme: #08112b;
             --text-theme: #ccc;
@@ -183,6 +202,9 @@ body.dark .ant-rate-star-second {
             --bg-module-other: #17174bb0;
             --border-color-input: rgb(209 213 219 / 27%);
             --border-color-side: rgb(200 205 214 / 18%);
+            --bg-scrollbar-thumb-normal: rgba(203, 191, 191, 0.758);
+            --bg-scrollbar-track-normal: #2c2c2c;
+
       }
 
       body {
@@ -332,6 +354,23 @@ body.dark .ant-rate-star-second {
             background: rgba(203, 191, 191, 0.758);
             border-radius: 0.1rem;
       }
+
+
+      .normal-scroll::-webkit-scrollbar-thumb {
+            cursor: pointer;
+            /* background: var(--color-main); */
+            background: var(--bg-scrollbar-thumb-normal);
+            border-radius: 999px;
+            /* border-radius: 10px; */
+      }
+      .normal-scroll::-webkit-scrollbar-track {
+            cursor: pointer;
+            background: var(--bg-scrollbar-track-normal);
+
+            /* background: rgba(203, 191, 191, 0.758); */
+            border-radius: 0.1rem;
+      }
+
       .color-core:hover {
             background-color: var(--bg-input-core);
       }
@@ -348,7 +387,7 @@ body.dark .ant-rate-star-second {
       }
 
       .showProjectInfo {
-            animation: showProjectInfo 1s ease-in-out both;
+            animation: showProjectInfo .5s ease-in-out both;
             z-index: 99999;
             position: fixed;
             max-height: 75vh;
@@ -362,26 +401,12 @@ body.dark .ant-rate-star-second {
       }
       @keyframes showProjectInfo {
             0% {
-                  width: 0;
-                  height: 0;
-                  transform: scale(.1);
                   top: 95%;
                   left: 0rem;
-            }
-            30% {
-                  opacity: .2;
-                  width: 70rem;
-                  height: 46rem;
-            }
-           
-          
-            80% {
-                
-                  opacity: .8;
-                  width: 70rem;
+                  width: 75rem;
                   min-height: 46rem;
             }
-          
+         
            
           
             100% {

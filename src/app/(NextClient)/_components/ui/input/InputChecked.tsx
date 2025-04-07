@@ -19,7 +19,7 @@ const InputChecked = (props: TProps) => {
 
       return (
             <div
-                  className="group py-[1rem] flex items-center gap-[2rem] rounded-lg hover:cursor-pointer hover:bg-color-main hover:text-[#fff]"
+                  className="group py-[.6rem] flex items-center gap-[2rem] rounded-lg hover:cursor-pointer hover:bg-color-main hover:text-[#fff]"
                   onClick={onChangeInput}
             >
                   <div className="min-w-[2rem] w-max h-[2.6rem] relative rounded-full flex items-center ">

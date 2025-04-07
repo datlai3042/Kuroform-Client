@@ -13,10 +13,10 @@ const inter = Inter({ subsets: ["vietnamese"] });
 
 export const metadata: Metadata = {
       title: {
-            template: "%s - By Kuroform ",
-            default: "Form builder by Kuroform",
+            template: "%s - Kuroform ",
+            default: "Tạo form nhanh với Kuroform",
       },
-      description: "Create Form with Form build by Kuroform",
+      description: "Tạo Form nhanh với Kuroform",
       icons: {
             icon: "/icon_core.png",
       },

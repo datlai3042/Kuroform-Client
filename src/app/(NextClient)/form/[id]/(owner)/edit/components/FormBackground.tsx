@@ -37,7 +37,6 @@ const FormBackground = () => {
       const paddingY = formCore.form_background?.padding.y;
 
       const padding = `${paddingY}% ${paddingX}%`;
-
       return (
             <React.Fragment>
                   <DivNativeRef onClick={() => setOpenModel(true)} className="absolute inset-0 z-[2]  hover:cursor-pointer max-h-[40rem] overflow-hidden">
@@ -50,7 +49,7 @@ const FormBackground = () => {
                                     style={myBackgroundStyle.style_background}
                                     unoptimized={true}
                                     alt="form background"
-                                    className="absolute  w-full h-full max-h-[40rem]   rounded-lg"
+                                    className="bg absolute  w-full h-full max-h-[40rem]   rounded-lg"
                               />
                         </div>
                   </DivNativeRef>

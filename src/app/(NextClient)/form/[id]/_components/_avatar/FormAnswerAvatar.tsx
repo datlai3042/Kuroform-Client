@@ -26,7 +26,6 @@ const FormAnswerAvatar = (props: TProps) => {
                   return "bottom-0 translate-y-[50%] left-[20%]";
             },
       };
-
       return (
             <div
                   className={`${styleEffect.onCheckPositionAvatar(

@@ -19,6 +19,7 @@ const FormNotFound = () => {
                   <div className="min-h-full  flex flex-col items-center    gap-[2rem]">
                         <p className="text-[6rem] font-medium">Không tìm thấy Form</p>
                         <ButtonCreateForm
+                              isNotRedirect={true}
                               textContent="Tạo form mới"
                               urlNavigation="/"
                               className="flex  xl:[&]:p-[.8rem_1.2rem] !gap-[.5rem] !h-[3.6rem] !min-w-[10rem] !w-max !text-[1.3rem]"

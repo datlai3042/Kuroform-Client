@@ -6,6 +6,10 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { addOneToastWarning } from "@/app/_lib/redux/toast.slice";
 import { v4 } from "uuid";
+import { Metadata } from "next";
+
+
+
 
 const LoginPage = () => {
       const router = useRouter();

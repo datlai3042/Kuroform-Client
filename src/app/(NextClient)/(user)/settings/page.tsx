@@ -16,7 +16,6 @@ const SettingPage = () => {
       const { widthSidebar } = useContext(SidebarContext);
       const [tab, setTab] = useState<"account" | "create_password" | "update_password">("account");
       useEffect(() => {}, [user?.user_create_password]);
-
       return (
             <LayoutSidebar>
                   <div className={` w-full min-h-screen h-max   flex flex-col   text-[1.4rem] `}>
@@ -25,7 +24,7 @@ const SettingPage = () => {
                         >
                               <SettingHeader />
                         </div>
-                        <div className="flex-1 min-h-[60rem] flex flex-col h-full text-text-theme bg-[var(--bg-module-other)] p-[0rem_2.6rem_2rem_2.6rem] ">
+                        <div className="flex-1 min-h-[60rem] flex flex-col h-full text-text-theme bg-[#dcdcdc2e] p-[0rem_2.6rem_2rem_2.6rem] ">
                               <h3 className="my-[2rem] pl-[.8rem] !text-[2.3rem]">Cài đặt</h3>
                               <div className="w-full bg-[var(--color-section-theme)] flex-1 p-[2.8rem] ">
                                     <SettingSection tab={tab} setTab={setTab} />

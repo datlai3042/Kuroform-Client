@@ -26,8 +26,6 @@ const DownloadFormPage = () => {
       if (!formCache) return <FormEmptyResponse />;
 
       const { dataExcel } = formCache;
-
-      const color = formCore.form_title.form_title_color ? formCore.form_title.form_title_color : formCore.form_setting_default.form_title_color_default;
       const handleDownloadExcel = () => {
             const worksheet = XLSX.utils.json_to_sheet(dataExcel);
 

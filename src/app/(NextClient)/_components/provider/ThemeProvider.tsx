@@ -18,9 +18,12 @@ type TProps = {
 const ThemeProvider = (props: TProps) => {
       const { children } = props;
 
-      const [theme, setTheme] = useState<"dark" | "light">("dark");
+      const [theme, setTheme] = useState<"dark" | "light">(typeof window === "undefined" ? "dark" : (localStorage.getItem("theme") as "dark" | "light"));
 
       useEffect(() => {
+            if (typeof window === "undefined") return;
+            localStorage.setItem("theme", theme);
+
             if (theme === "dark") {
                   document.body.classList.remove("light");
                   document.body.classList.add("dark");

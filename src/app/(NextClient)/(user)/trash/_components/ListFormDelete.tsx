@@ -11,7 +11,7 @@ const ListFormDelete = () => {
       const allFormDelete = useGetListFormDelete();
 
       return (
-            <div className="flex h-full flex-wrap gap-[2.8rem] ">
+            <div className="flex h-full max-h-[50rem] normal-scroll overflow-auto flex-wrap gap-[2.8rem] ">
                   {allFormDelete.isSuccess && allFormDelete.data.metadata.forms.length > 0 && (
                         <Table className=" !border-[0rem] hidden-border-table text-[1.4rem]">
                               <TableHeader>

@@ -52,14 +52,14 @@ const DashBoardRight = () => {
                                     {/* <div className="w-[50%] xl:w-[75%] h-full order-3 xl:order-2">
                                           <DashboardTotalWrapper />
                                     </div> */}
-                                    <div className="w-full sm:w-[48%] xl:w-[24.5%] h-[28rem]">
+                                    <div className="w-full sm:w-[48%] xl:w-[24%] h-[28rem]">
                                           <div className=" min-h-[22rem] h-full order-1 w-full">
                                                 <DashboardTotalForm />
                                                 {/* <DashboardTotalForm /> */}
                                           </div>
                                     </div>
 
-                                    <div className="w-full  sm:w-[48%] xl:w-[24.5%] h-[28rem]">
+                                    <div className="w-full  sm:w-[48%] xl:w-[24%] h-[28rem]">
                                           <div className="  min-h-[22rem] h-full order-1 w-full">
                                                 <DashboardTotalView />
                                                 {/* <DashboardTotalForm /> */}
@@ -89,7 +89,7 @@ const DashBoardRight = () => {
                                                 icon={<Plus />}
                                           />
                                     </div> */}
-                                    <div className="mt-auto xl:mb-auto w-full sm:w-[48%]  xl:w-[24%] h-[28rem]  order-2 xl:order-4">
+                                    <div className="mt-auto xl:mb-auto flex-grow-1 w-full sm:w-[48%]  xl:w-[24%] h-[28rem]  order-2 xl:order-4">
                                           <DashboardFilterFormDate />
                                           {/* <DashboardFormAnalysis /> */}
                                     </div>

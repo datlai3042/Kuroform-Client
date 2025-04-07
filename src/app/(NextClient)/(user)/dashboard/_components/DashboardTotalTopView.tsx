@@ -57,52 +57,56 @@ const DashboardTotalTopView = () => {
                         <CardTitle>Các Form có lượt xem cao nhất</CardTitle>
                   </CardHeader>
                   <CardContent className="h-[60%] py-0">
-                        <ChartContainer config={chartConfig} className="h-full w-full ">
-                              <BarChart
-                                    accessibilityLayer
-                                    data={renderData}
-                                    layout="vertical"
-                                    margin={{
-                                          right: 16,
-                                    }}
-                              >
-                                    <CartesianGrid horizontal={false} />
-                                    <YAxis
-                                          dataKey="title"
-                                          type="category"
-                                          tickLine={false}
-                                          tickMargin={10}
-                                          axisLine={false}
-                                          tickFormatter={(value) => value.slice(0, 3)}
-                                          hide
-                                    />
-                                    <XAxis dataKey="view" type="number" hide />
-                                    <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" className="text-[1.6rem]" />} />
-                                    <Bar
-                                          dataKey="view"
+                        {forms.length > 0 ? (
+                              <ChartContainer config={chartConfig} className="h-full w-full ">
+                                    <BarChart
+                                          accessibilityLayer
+                                          data={renderData}
                                           layout="vertical"
-                                          fill="var(--color-view)"
-                                          className="cursor-pointer"
-                                          radius={4}
-                                          onClick={(info: { payload: { id: string; view: number; title: string } }) => {
-                                                const {
-                                                      payload: { id },
-                                                } = info;
-                                                navigateForm(id);
+                                          margin={{
+                                                right: 16,
                                           }}
                                     >
-                                          <LabelList
+                                          <CartesianGrid horizontal={false} />
+                                          <YAxis
                                                 dataKey="title"
-                                                position="insideLeft"
-                                                offset={8}
-                                                className="fill-[--color-label]"
-                                                fontSize={12}
-                                                content={({ x, y, value }) => <Link href={"/"}>{value}</Link>}
+                                                type="category"
+                                                tickLine={false}
+                                                tickMargin={10}
+                                                axisLine={false}
+                                                tickFormatter={(value) => value.slice(0, 3)}
+                                                hide
                                           />
-                                          <LabelList dataKey="view" position="right" offset={8} className="fill-foreground" fontSize={12} />
-                                    </Bar>
-                              </BarChart>
-                        </ChartContainer>
+                                          <XAxis dataKey="view" type="number" hide />
+                                          <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" className="text-[1.6rem]" />} />
+                                          <Bar
+                                                dataKey="view"
+                                                layout="vertical"
+                                                fill="var(--color-view)"
+                                                className="cursor-pointer"
+                                                radius={4}
+                                                onClick={(info: { payload: { id: string; view: number; title: string } }) => {
+                                                      const {
+                                                            payload: { id },
+                                                      } = info;
+                                                      navigateForm(id);
+                                                }}
+                                          >
+                                                <LabelList
+                                                      dataKey="title"
+                                                      position="insideLeft"
+                                                      offset={8}
+                                                      className="fill-[--color-label]"
+                                                      fontSize={12}
+                                                      content={({ x, y, value }) => <Link href={"/"}>{value}</Link>}
+                                                />
+                                                <LabelList dataKey="view" position="right" offset={8} className="fill-foreground" fontSize={12} />
+                                          </Bar>
+                                    </BarChart>
+                              </ChartContainer>
+                        ) : (
+                              <div className="flex-1 p-[2rem] flex justify-center items-center">Bạn chưa tạo form nào để thống kê</div>
+                        )}
                   </CardContent>
                   <CardFooter className="mt-[1rem] flex-col items-start gap-2 text-[1.2rem]">
                         <div className="flex gap-2 font-medium leading-[1.6rem]">Click vào Line để xem thông tin chi tiết của Form</div>

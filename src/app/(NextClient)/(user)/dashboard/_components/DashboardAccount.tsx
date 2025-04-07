@@ -29,7 +29,7 @@ const DashboardAccount = () => {
                                           />
                                     )}
                                     {!user?.user_avatar_current && (
-                                          <div className="min-w-[2rem] h-[2rem] bg-green-300 rounded-full flex items-center justify-center">
+                                          <div className="min-w-[2rem] h-[2rem] bg-color-main text-[#fff] rounded-full flex items-center justify-center">
                                                 {user?.user_first_name.slice(0, 1)}
                                           </div>
                                     )}

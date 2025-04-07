@@ -29,7 +29,7 @@ const ModelOneOption = (props: TProps) => {
                                     <div className="mt-[2rem] flex gap-[1rem] ml-auto text-[1.3rem]">
                                           <button
                                                 onClick={() => callbackCancel(false)}
-                                                className="p-[1rem] h-[3rem] flex items-center justify-center border-[.2rem] border-[var(--border-color-input)] hover:bg-color-main hover:opacity-40 text-[#fff] rounded-lg"
+                                                className="p-[1rem] h-[3rem] flex items-center justify-center border-[.2rem] border-[var(--border-color-input)] hover:bg-color-main  text-text-theme hover:text-[#fff] rounded-lg"
                                           >
                                                 Đóng
                                           </button>

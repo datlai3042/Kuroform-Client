@@ -47,8 +47,8 @@ export const generateInfoRequest = (url: string, options: CustomRequest) => {
             options?.body instanceof FormData
                   ? {}
                   : {
-                          "Content-Type": "application/json",
-                    };
+                        "Content-Type": "application/json",
+                  };
 
       let baseUrl;
       if (options?.baseUrl === undefined) {
@@ -135,15 +135,13 @@ export const addInputItem = async (inputItem: InputCore.InputForm, form: FormCor
 
 export const renderStyleTitleCore = (formCore: FormCore.Form) => {
       return {
-            fontSize: `${
-                  formCore.form_title.form_title_size
-                        ? formCore.form_title.form_title_size / 10 + "rem"
-                        : formCore.form_setting_default.form_title_size_default / 10 + "rem"
-            }`,
+            fontSize: `${formCore.form_title.form_title_size
+                  ? formCore.form_title.form_title_size / 10 + "rem"
+                  : formCore.form_setting_default.form_title_size_default / 10 + "rem"
+                  }`,
             color: `${formCore.form_title.form_title_color ? formCore.form_title.form_title_color : formCore.form_setting_default.form_title_color_default}`,
-            fontStyle: `${
-                  formCore.form_title.form_title_style ? formCore.form_title.form_title_style : formCore.form_setting_default.form_title_style_default
-            }`,
+            fontStyle: `${formCore.form_title.form_title_style ? formCore.form_title.form_title_style : formCore.form_setting_default.form_title_style_default
+                  }`,
       };
 };
 
@@ -199,7 +197,7 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
                   const titleExcel = ans.title || `[${ans.type}] - Không có tiêu đề`;
                   const titleHeaderTable = ans.title || `Không có tiêu đề`;
                   const input_value = generateValueInputAnswer(ans);
-
+                  console.log({ input_value, ans })
                   dataXlsx = {
                         ...dataXlsx,
                         "Thời gian gửi": moment(new Date(rp.createdAt)).format("hh:mm - Do MMMM YYYY"),
@@ -213,7 +211,8 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
                               _id: ans._id,
                               title: titleHeaderTable,
                               value: input_value,
-                              time: rp.createdAt,
+                              time:
+                                    rp.createdAt,
                               form_answer_id: rp._id,
                         };
 
@@ -223,7 +222,8 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
                               _id: ans._id,
                               title: titleHeaderTable,
                               value: input_value,
-                              time: rp.createdAt,
+                              time:
+                                    rp.createdAt,
                               form_answer_id: rp._id,
                         });
                   }
@@ -254,10 +254,12 @@ export const generateValueInputAnswer = (answer: FormCore.FormAnswer.Answer) => 
       //       value_answer = (answer.value as FormCore.FormAnswer.Data.Option["value"]).option_value;
       //       return value_answer;
       // }
-      // if (answer.type === "DATE") {
-      //       value_answer = moment(new Date(answer.value as string)).format(" Do MMMM YYYY");
-      //       return value_answer === "Invalid date" ? "" : value_answer;
-      // }
+      if (answer.type === "DATE") {
+            let value_answer = "";
+
+            value_answer = moment(new Date(answer.value as string)).format(" Do MMMM YYYY");
+            return value_answer === "Invalid date" ? "" : value_answer;
+      }
 
       // value_answer = answer.value as string;
       return answer.value;

@@ -112,7 +112,7 @@ const HeaderEditForm = (props: TProps) => {
                                     <ButtonDeleteForm
                                          
                                           form_id={formCore._id}
-                                          className=" min-w-[10rem] flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)]  hover:border-transparent hover:text-[#fff] text-text-theme rounded-lg"
+                                          className=" min-w-[10rem] flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)]  text-text-theme rounded-lg  "
                                     >
                                           <span>Xóa form</span>
                                     </ButtonDeleteForm>

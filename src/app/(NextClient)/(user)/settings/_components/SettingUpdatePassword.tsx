@@ -1,5 +1,6 @@
 import Input from "@/app/(NextClient)/_components/ui/input/Input";
-import { addOneToastSuccess } from "@/app/_lib/redux/toast.slice";
+import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpinner";
+import { addOneToastError, addOneToastSuccess } from "@/app/_lib/redux/toast.slice";
 import { CreatePasswordType, createPasswordSchema } from "@/app/_schema/user/createPassword.schema";
 import { UpdatePasswordSchema, updatePasswordSchema } from "@/app/_schema/user/updatePassword.schema";
 import useCreatePassword from "@/app/hooks/user/useCreatePassword";
@@ -44,9 +45,23 @@ const SettingUpdatePassword = (props: TProps) => {
                               },
                         }),
                   );
-                  setTab("account");
+                  
+            } else {
+                  if (updatePassword.error) {
+                        const { detail } = updatePassword.error!.payload;
+                        dispatch(
+                              addOneToastError({
+                                    toast_item: {
+                                          _id: uuid(),
+                                          toast_title: "Thông tin tài khoản",
+                                          type: "ERROR",
+                                          core: { message: detail },
+                                    },
+                              }),
+                        );
+                  }
             }
-      }, [updatePassword.isSuccess]);
+      }, [updatePassword.isSuccess, updatePassword.isPending]);
 
       return (
             <div className="min-h-full h-max">
@@ -74,6 +89,7 @@ const SettingUpdatePassword = (props: TProps) => {
                               className=" min-w-[15rem] w-max  p-[.8rem] h-[4.4rem] flex justify-center items-center gap-[.8rem] bg-color-main text-white rounded-lg"
                         >
                               Cập nhập mật khẩu
+                              {updatePassword.isPending && <LoadingSpinner color="#fff" width="min-w-[2rem]" height=" min-h-[2rem]" />}
                         </button>
                   </form>
             </div>

@@ -25,13 +25,11 @@ const SummaryFormPage = () => {
 
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
       const formAnswer = useSelector((state: RootState) => state.formAsnwer.formAnswerStore[form_id_current]);
-      const store = useSelector((state: RootState) => state.formAsnwer.formAnswerStore);
       const [openDetailAnswer, setOpenDetailAnswer] = useState<boolean>(false);
       const [formAnswerDetail, setFormAnswerDetail] = useState<FormCore.FormAnswer.OneReport | null>(null);
       const [typeView, setTypeView] = useState<"Group" | "Once">("Once");
 
     
-      if (!formCache) return <FormEmptyResponse />;
       const { dataGroupFilter, dataExcel } = formCache;
       return (
             <div className="h-full flex flex-col gap-[1.6rem]">
@@ -47,7 +45,7 @@ const SummaryFormPage = () => {
                         ]}
                   />
 
-                  <div className="mt-[1rem]  flex-1 flex flex-col gap-[2.6rem]  pb-[2rem] text-text-theme overflow-auto  ">
+                  <div className="mt-[1rem]  flex-1 flex flex-col gap-[2.6rem]   text-text-theme overflow-auto ">
                         {formAnswer && formAnswer.formAnswer && typeView === "Once" && (
                               <ViewOnceAnswer
                                     formAnswer={formAnswer.formAnswer}

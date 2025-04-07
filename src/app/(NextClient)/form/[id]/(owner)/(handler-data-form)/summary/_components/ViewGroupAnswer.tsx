@@ -9,7 +9,7 @@ import LabelNewAnswer from "./LabelNewAnswer";
 moment.locale("vi");
 
 type TProps = {
-      formAnswer: FormCore.FormAnswer.FormAnswerCore ;
+      formAnswer: FormCore.FormAnswer.FormAnswerCore;
 
       dataGroupFilter: FormDataFilter;
       setFormAnswerDetail: React.Dispatch<React.SetStateAction<FormCore.FormAnswer.OneReport | null>>;
@@ -44,54 +44,57 @@ const ViewGroupAnswer = (props: TProps) => {
 
       return (
             <>
-                  {Object.keys(dataGroupFilter).map((dt, i) => {
-                        const type = dt.split("_#_")[1] as InputCore.InputForm["type"];
-                        return (
-                              <div key={dt + i} className=" flex flex-col gap-[1.2rem]  ">
-                                    <h3 className="pl-[.4rem] text-[2.1rem] font-medium text-color-main">{dataGroupFilter[dt][0]?.title}</h3>
-                                    {type === "OPTION" && <AnalysisAnswer data={dataGroupFilter[dt] as InputData[]} />}
-                                    {type === "OPTION_MULTIPLE" && <AnalysisAnswer data={dataGroupFilter[dt] as InputData[]} />}
+                  <div className="flex h-full gap-[6rem] flex-nowrap overflow-auto pb-[3rem] normal-scroll">
+                        {Object.keys(dataGroupFilter).map((dt, i) => {
+                              const type = dt.split("_#_")[1] as InputCore.InputForm["type"];
+                              return (
+                                    <div key={dt + i} className="whitespace-pre  flex flex-col gap-[1.2rem]  ">
+                                          <h3 className="pl-[.4rem] text-[2.1rem] font-medium text-color-main">{dataGroupFilter[dt][0]?.title}</h3>
+                                          {type === "OPTION" && <AnalysisAnswer data={dataGroupFilter[dt] as InputData[]} />}
+                                          {type === "OPTION_MULTIPLE" && <AnalysisAnswer data={dataGroupFilter[dt] as InputData[]} />}
 
-                                    <div className=" flex flex-col gap-[.8rem]  overflow-auto  pb-[.8rem]">
-                                          {dataGroupFilter[dt].map((info, i) => {
-                                                return (
-                                                      <div
-                                                            title="Xem phiếu trả lời này"
-                                                            id={info.form_answer_id}
-                                                            key={info._id + i}
-                                                            onClick={() => {
-                                                                  setFormAnswerDetail(() => {
-                                                                        return (
-                                                                              formAnswer?.reports.filter((fans) => fans._id === info.form_answer_id)[0] || null
-                                                                        );
-                                                                  });
-                                                                  setOpenDetailAnswer(true);
-                                                            }}
-                                                            className={`${
-                                                                  formAnswerId === info.form_answer_id ? "bg-color-main text-[#fff]" : ""
-                                                            }  px-[1rem] min-h-[4rem] flex items-center justify-between border-b-[.1rem] border-gray-200 hover:cursor-pointer hover:bg-color-main hover:text-[#fff] hover:opacity-60`}
-                                                      >
-                                                            <p className="min-w-[30%] max-w-[30%] xl:min-w-[50%] xl:max-w-[50%] truncate xl:break-words flex gap-[1rem] leading-10">
-                                                                  <span>{info.value ? info?.value : "Người dùng không nhập dữ liệu"}</span>
+                                          <div className=" flex flex-col gap-[1.6rem] normal-scroll overflow-auto  pb-[.8rem] pr-[1.4rem]">
+                                                {dataGroupFilter[dt].map((info, i) => {
+                                                      return (
+                                                            <div
+                                                                  title="Xem phiếu trả lời này"
+                                                                  id={info.form_answer_id}
+                                                                  key={info._id + i}
+                                                                  onClick={() => {
+                                                                        setFormAnswerDetail(() => {
+                                                                              return (
+                                                                                    formAnswer?.reports.filter((fans) => fans._id === info.form_answer_id)[0] ||
+                                                                                    null
+                                                                              );
+                                                                        });
+                                                                        setOpenDetailAnswer(true);
+                                                                  }}
+                                                                  className={`${
+                                                                        formAnswerId === info.form_answer_id ? "bg-color-main text-[#fff]" : ""
+                                                                  }  px-[1rem] min-h-[4rem] flex items-center justify-between gap-[6rem] border-b-[.1rem] border-[var(--border-color-input)] hover:cursor-pointer hover:bg-color-main hover:text-[#fff] `}
+                                                            >
+                                                                  <p className="min-w-[30%] max-w-[30%] xl:min-w-[50%] xl:max-w-[50%] truncate xl:break-words flex gap-[1rem] leading-10">
+                                                                        <span>{info.value ? info?.value : "Người dùng không nhập dữ liệu"}</span>
 
-                                                                  {newData.includes(info.form_answer_id) && <LabelNewAnswer />}
-                                                            </p>
-                                                            <p className="flex items-center gap-[2rem] opacity-60">
-                                                                  <span>{moment(new Date(info.time)).format("h:mm")}</span>
-                                                                  <span className="hidden xl:inline">
-                                                                        {moment(new Date(info.time)).format(" Do MMMM YYYY")}{" "}
-                                                                  </span>
-                                                                  <span className="inline xl:hidden">
-                                                                        {moment(new Date(info.time)).format("DD / MM / YYYY")}{" "}
-                                                                  </span>
-                                                            </p>
-                                                      </div>
-                                                );
-                                          })}
+                                                                        {newData.includes(info.form_answer_id) && <LabelNewAnswer />}
+                                                                  </p>
+                                                                  <p className="flex items-center gap-[2rem] opacity-60">
+                                                                        <span>{moment(new Date(info.time)).format("h:mm")}</span>
+                                                                        <span className="hidden xl:inline">
+                                                                              {moment(new Date(info.time)).format(" Do MMMM YYYY")}{" "}
+                                                                        </span>
+                                                                        <span className="inline xl:hidden">
+                                                                              {moment(new Date(info.time)).format("DD / MM / YYYY")}{" "}
+                                                                        </span>
+                                                                  </p>
+                                                            </div>
+                                                      );
+                                                })}
+                                          </div>
                                     </div>
-                              </div>
-                        );
-                  })}
+                              );
+                        })}
+                  </div>
             </>
       );
 };

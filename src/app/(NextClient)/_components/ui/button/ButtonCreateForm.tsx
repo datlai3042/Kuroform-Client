@@ -11,10 +11,11 @@ import { useRouter } from "next/navigation";
 interface TProps extends ButtonCustomNavigation {
       icon?: React.ReactNode;
       position?: "LEFT" | "RIGHT";
+      isNotRedirect?:boolean
 }
 
 const ButtonCreateForm = (props: TProps) => {
-      const { textContent, urlNavigation, position = "LEFT", icon, ...AnchorProps } = props;
+      const { textContent, urlNavigation, position = "LEFT", isNotRedirect = false, icon, ...AnchorProps } = props;
 
       const router = useRouter();
       const queryClient = useQueryClient();
@@ -33,7 +34,7 @@ const ButtonCreateForm = (props: TProps) => {
             <Link
                   onClick={() => createNewForm.mutate()}
                   tabIndex={-1}
-                  href={urlNavigation}
+                  href={isNotRedirect ? '#' : urlNavigation}
                   {...AnchorProps}
                   className={`${AnchorProps.className} w-full xl:w-[17rem] h-[4rem]  p-[1rem_2rem] flex  justify-center items-center gap-[.8rem] text-[1.8rem] text-[#ffffff] bg-color-main opacity-[.95] hover:opacity-100 transition-colors duration-200 rounded-[.4rem]`}
             >

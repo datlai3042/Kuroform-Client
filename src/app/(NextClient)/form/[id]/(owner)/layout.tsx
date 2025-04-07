@@ -45,10 +45,10 @@ const FormModeLayout = ({ children, params }: { children: React.ReactNode; param
                               <DivNative className={`bg-color-gap-empty  min-h-screen  h-max  flex flex-col  text-[1.4rem]   max-w-full `}>
                                     <DivNative className={` w-full min-h-screen rounded-lg h-max  `}>
                                           {segment[0] !== "edit" && getFormQuery.data?.metadata.form && (
-                                                <div className=" h-screen flex flex-col gap-[1rem] ">
+                                                <div className=" h-screen flex flex-col gap-[.6rem] ">
                                                       <HeaderHandlerLayout showHeaderAction={segment[1] === "edit"} />
 
-                                                      <div className="flex-1  layout-down sm:mx-[1rem]">
+                                                      <div className="flex-1  layout-down sm:mx-[.6rem]">
                                                             <div className="h-[98.2%] ">
                                                                   <div id="content" className="h-full  bg-color-section-theme rounded-[.4rem] ">
                                                                         <FormChangeMode formPageMode={formPageMode} setFormPageMode={setFormPageMode}>

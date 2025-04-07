@@ -42,7 +42,6 @@ const ButtonBackgroundSize = () => {
             if (!isDesignForm) {
                   setIsDesginForm(true);
             }
-
             dispatch(onEditForm({ form: newForm }));
       };
 

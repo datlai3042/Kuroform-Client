@@ -32,8 +32,8 @@ const LoginForm = (props: TProps) => {
 
       const loginForm = useForm<LoginType>({
             defaultValues: {
-                  email: "",
-                  password: "",
+                  user_email: "",
+                  user_password: "",
             },
             resolver: zodResolver(loginSchema),
       });
@@ -90,7 +90,7 @@ const LoginForm = (props: TProps) => {
                         <SpaceLine content="Hoặc bằng email và mật khẩu"/>
                         <form className="w-full h-full flex flex-col justify-center  gap-[.6rem] rounded-[1.2rem]" onSubmit={loginForm.handleSubmit(onSubmit)}>
                               <Input<LoginType>
-                                    FieldKey="email"
+                                    FieldKey="user_email"
                                     placeholder="Email"
                                     type="email"
                                     register={loginForm.register}
@@ -98,7 +98,7 @@ const LoginForm = (props: TProps) => {
                                     watch={loginForm.watch}
                               />
                               <Input<LoginType>
-                                    FieldKey="password"
+                                    FieldKey="user_password"
                                     placeholder="Mật khẩu"
                                     type="password"
                                     register={loginForm.register}

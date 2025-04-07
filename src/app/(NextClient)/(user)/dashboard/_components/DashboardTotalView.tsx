@@ -26,6 +26,8 @@ const chartConfig = {
 const DashboardTotalView = () => {
       useGetFormTotalView();
       useGetTotalFormAnswer();
+      const { forms } = useGetAllFormUser();
+
       const total_views = useSelector((state: RootState) => state.formAsnwer.form_total_views);
       const total_answer = useSelector((state: RootState) => state.formAsnwer.form_total_answers);
       const chartDataV2 = [{ data: "FORM", View: total_views, Answer: total_answer }];
@@ -36,25 +38,29 @@ const DashboardTotalView = () => {
                         <CardTitle>Tương tác Form</CardTitle>
                   </CardHeader>
                   <CardContent className="h-[60%] py-0">
-                        <ChartContainer config={chartConfig} className="h-full w-full ">
-                              <BarChart
-                                    accessibilityLayer
-                                    data={chartDataV2}
-                                    margin={{
-                                          top: 20,
-                                    }}
-                              >
-                                    <CartesianGrid vertical={false} />
-                                    {/* <XAxis dataKey="data" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value.slice(0, 3)} /> */}
-                                    <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-                                    <Bar dataKey="View" fill="var(--color-View)" radius={8}>
-                                          <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
-                                    </Bar>
-                                    <Bar dataKey="Answer" fill="var(--color-Answer)" radius={8}>
-                                          <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
-                                    </Bar>
-                              </BarChart>
-                        </ChartContainer>
+                        {forms?.length > 0 ? (
+                              <ChartContainer config={chartConfig} className="h-full w-full ">
+                                    <BarChart
+                                          accessibilityLayer
+                                          data={chartDataV2}
+                                          margin={{
+                                                top: 20,
+                                          }}
+                                    >
+                                          <CartesianGrid vertical={false} />
+                                          {/* <XAxis dataKey="data" tickLine={false} tickMargin={10} axisLine={false} tickFormatter={(value) => value.slice(0, 3)} /> */}
+                                          <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+                                          <Bar dataKey="View" fill="var(--color-View)" radius={8}>
+                                                <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
+                                          </Bar>
+                                          <Bar dataKey="Answer" fill="var(--color-Answer)" radius={8}>
+                                                <LabelList position="top" offset={12} className="fill-foreground" fontSize={12} />
+                                          </Bar>
+                                    </BarChart>
+                              </ChartContainer>
+                        ) : (
+                              <div className="flex-1 p-[2rem] flex justify-center items-center">Bạn chưa tạo form nào để thống kê</div>
+                        )}
                   </CardContent>
                   <CardFooter className="mt-[1.2rem] ">
                         <div className="flex flex-wrap gap-[1rem_1.6rem] text-[1.2rem] pl-[2.2rem]">

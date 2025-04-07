@@ -13,11 +13,11 @@ const DashboardProjectInfo = () => {
 
       return (
             <div
-                  className="group relative w-full h-[3.8rem] flex items-center px-[2rem] gap-[.8rem] opacity-90 cursor-pointer hover:opacity-100 bg-color-main rounded-[.4rem]"
+                  className="group  relative w-full h-[3.6rem] flex items-center px-[2rem] gap-[.8rem] opacity-90 cursor-pointer hover:opacity-100 bg-color-main rounded-[.4rem]"
                   onClick={() => setShowInfo(true)}
             >
-                  <Image src={"/assets/images/home/avatar_author.png"} width={20} height={20} alt="avatar" className="w-[2.8rem] h-[2.8rem] rounded-full" />
-                  <span className="">Thông tin project</span>
+                  <Image src={"/assets/images/home/avatar_author.png"} width={20} height={20} alt="avatar" className="w-[2.4rem] h-[2.4rem] rounded-full" />
+                  <span className="text-[#fff]">Thông tin project</span>
                   {/* <div className="absolute w-0 h-0 bottom-0 transition-all duration-500 group-hover:w-[25rem] m-auto group-hover:h-[25rem] bg-red-800"></div> */}
                   {showInfo && <ProjectInfoOverlay onClose={() => setShowInfo(false)} />}
             </div>
@@ -134,12 +134,12 @@ const ProjectInfoModal = ({ onClose }: { onClose?: () => void }) => {
                         </div>
                   </div>
                   <div className="w-full md:flex-1 p-[1.6rem] mt-[2rem] md:overflow-x-auto ">
-                        <div className="flex flex-col gap-[4.8rem]">
+                        <div className="flex flex-col gap-[3.4rem]">
                               <div className="flex flex-col gap-[.8rem] border-b-[.1rem] border-[var(--border-color-input)]">
                                     <p className="flex items-center gap-[0rem] text-[1.6rem] font-extrabold">
-                                          <span className="text-[#232323]">Front End</span>
+                                          <span className="text-[#2662d9] text-[2.4rem]">Front End</span>
                                     </p>
-                                    <div className="pl-[1rem] flex flex-col gap-[1rem]">
+                                    <div className="pl-[2.4rem] flex flex-col gap-[1rem]">
                                           <div className="flex gap-[1.8rem]">
                                                 <Image
                                                       src={"/assets/images/social/react.png"}
@@ -202,7 +202,7 @@ const ProjectInfoModal = ({ onClose }: { onClose?: () => void }) => {
                                           </div>
                                     </div>
 
-                                    <div className="pl-[1.4rem]  mt-[1rem] flex flex-col gap-[1rem]">
+                                    <div className="pl-[2.8rem]  mt-[1.8rem] flex flex-col gap-[1rem] ">
                                           <div className="flex gap-[1.2rem]">
                                                 <Image
                                                       src={"/assets/images/social/antd.png"}
@@ -239,10 +239,10 @@ const ProjectInfoModal = ({ onClose }: { onClose?: () => void }) => {
 
                               <div className="flex flex-col ">
                                     <p className="flex items-center gap-[0rem] text-[1.6rem] font-extrabold">
-                                          <span className="text-[#232323]">Back End</span>
+                                          <span className="text-[#2662d9] text-[2.4rem]">Back End</span>
                                     </p>
 
-                                    <div className="pl-[1rem] flex flex-col gap-[1rem]">
+                                    <div className="pl-[2.4rem] flex flex-col gap-[1rem]">
                                           <div className="flex gap-[1.8rem]">
                                                 <Image
                                                       src={"/assets/images/social/nodejs.png"}

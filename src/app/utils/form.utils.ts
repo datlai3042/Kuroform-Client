@@ -21,10 +21,10 @@ export const generateStyleBackgroundImageForm = ({ formCore, mode }: { formCore:
       return {
             style_background: {
                   objectFit: formBackgroundSize,
-                  top: `${postion?.top}%`,
-                  left: `${postion?.left}%`,
+                  top: `${postion?.top ? postion?.top + '%' : '0%'}`,
+                  left: `${postion?.left ? postion?.left + '%' : '0%'}`,
                   transform: `translate(${postion?.left || 0 * -1}%, ${postion?.top || 0 * -1}%)`,
-                  width: `${size?.width}%` || "100%",
+                  width:  `${size?.width ? size?.width + "%" : "100%"}`,
                   height: `${size?.height ? size?.height + "%" : "100%"}`,
 
                   objectPosition: ` ${object?.x}% ${object?.y}%`,

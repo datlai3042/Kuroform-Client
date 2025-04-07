@@ -24,7 +24,7 @@ const FormImage = () => {
             <DivNative
                   className={` 
 
- group  relative w-full mx-auto  px-[4rem] xl:px-0 `}
+ group  relative w-full mx-auto  px-[4rem] xl:px-0 ${_checkBackground ? ' h-[40rem]': ''}`}
             >
                   {(formCore.form_background || formCore.form_background_state) && <FormBackground />}
 

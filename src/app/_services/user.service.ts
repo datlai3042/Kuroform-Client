@@ -20,6 +20,10 @@ class UserService {
 		const payload = { password, new_password };
 		return Http.post<ResponseApi<{ user: UserType }>>("/v1/api/account/update-password", payload);
 	}
+	static async updateAccount({user}: {user: UserType}) {
+		return Http.post<ResponseApi<{ user: UserType }>>("/v1/api/account/update-account", user);
+	}
+
 }
 
 export default UserService;

@@ -54,7 +54,7 @@ const FormChangeMode = (props: TProps) => {
       const styleEffect = {
             linkActive: (checkLink: boolean) => {
                   if (!checkLink) return "border-transparent";
-                  return "border-[var(--color-main)] font-bold";
+                  return "border-transparent hover:border-transparent font-bold";
             },
       };
 
@@ -149,7 +149,7 @@ const FormChangeMode = (props: TProps) => {
                                           href={`/form/${formCore._id}/summary`}
                                           className={`${styleEffect.linkActive(
                                                 formPageMode === "summary",
-                                          )} border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
+                                          )} hover:border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
                                     >
                                           Thông tin chung
                                     </Link>
@@ -164,7 +164,7 @@ const FormChangeMode = (props: TProps) => {
                                           href={`/form/${formCore._id}/download`}
                                           className={`${styleEffect.linkActive(
                                                 formPageMode === "download",
-                                          )} border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
+                                          )} hover:border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
                                     >
                                           Tải xuống
                                     </Link>
@@ -179,7 +179,7 @@ const FormChangeMode = (props: TProps) => {
                                           href={`/form/${formCore._id}/share`}
                                           className={`${styleEffect.linkActive(
                                                 formPageMode === "share",
-                                          )} border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
+                                          )} hover:border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
                                     >
                                           Chia sẻ
                                     </Link>

@@ -76,7 +76,9 @@ const DashboardFormAction = (props: TProps) => {
                               </div>
                         )}
                   </div>
-                  <ButtonDeleteForm form_id={form_id} />
+                  <div className="bg-color-main">
+                        <ButtonDeleteForm form_id={form_id} />
+                  </div>
             </div>
       );
 };

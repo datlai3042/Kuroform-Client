@@ -10,6 +10,7 @@ const useUpdatePassword = () => {
       const updatePassword = useMutation({
             mutationKey: ["create-password"],
             mutationFn: ({ password, new_password }: { password: string; new_password: string }) => UserService.updatePassword({ password, new_password }),
+            onError: (error: Error & {payload: {message: string, detail:string}}) => {return error}
       });
 
       useEffect(() => {

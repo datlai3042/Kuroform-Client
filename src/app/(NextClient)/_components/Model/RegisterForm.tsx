@@ -33,10 +33,10 @@ const RegisterForm = (props: TProps) => {
 
       const registerForm = useForm<RegisterType>({
             defaultValues: {
-                  email: "",
-                  password: "",
-                  first_name: "",
-                  last_name: "",
+                  user_email: "",
+                  user_password: "",
+                  user_first_name: "",
+                  user_last_name: "",
                   confirm_password: "",
             },
             resolver: zodResolver(registerSchema),
@@ -88,7 +88,7 @@ const RegisterForm = (props: TProps) => {
                         </div>
                         <form className="w-full flex flex-col justify-center  gap-[.6rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
                               <Input<RegisterType>
-                                    FieldKey="first_name"
+                                    FieldKey="user_first_name"
                                     placeholder="Nhập họ của bạn"
                                     type="text"
                                     register={registerForm.register}
@@ -97,7 +97,7 @@ const RegisterForm = (props: TProps) => {
                               />
 
                               <Input<RegisterType>
-                                    FieldKey="last_name"
+                                    FieldKey="user_last_name"
                                     placeholder="Nhập tên của bạn"
                                     type="text"
                                     register={registerForm.register}
@@ -105,7 +105,7 @@ const RegisterForm = (props: TProps) => {
                                     error={registerForm.formState.errors}
                               />
                               <Input<RegisterType>
-                                    FieldKey="email"
+                                    FieldKey="user_email"
                                     placeholder="email"
                                     type="email"
                                     register={registerForm.register}
@@ -113,7 +113,7 @@ const RegisterForm = (props: TProps) => {
                                     error={registerForm.formState.errors}
                               />
                               <Input<RegisterType>
-                                    FieldKey="password"
+                                    FieldKey="user_password"
                                     placeholder="mật khẩu"
                                     type="password"
                                     register={registerForm.register}

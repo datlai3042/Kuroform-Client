@@ -11,7 +11,6 @@ const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
             const contentTab = document.querySelector(".content-tab")?.getBoundingClientRect().height || 0;
 
             const calc = contentContainer - contentInfo - contentTab - 52;
-            console.log({ contentContainer, contentInfo, contentTab });
               const minHeight = calc / 100 * 10
               setMinHeightContent(minHeight)
             setHeightContent(calc);

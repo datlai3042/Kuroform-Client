@@ -83,7 +83,7 @@ const InputOptionMultipleAnswer = (props: TProps) => {
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>
                               <DivNative className="flex flex-col gap-[.3rem] text-[1.4rem]">
-                                    <DivNative className={` relative min-h-[5rem] h-max flex flex-col gap-[1.6rem]  `}>
+                                    <DivNative className={` relative min-h-[4rem] h-max flex flex-col gap-[1.6rem]  `}>
                                           {
                                                 inputItem.core.options.map((op) => {
                                                       if (!op.option_value) return null;
@@ -103,21 +103,25 @@ const InputOptionMultipleAnswer = (props: TProps) => {
                                           }
                                     </DivNative>
                               </DivNative>
-                              <p className="text-[1.4rem]">
-                                    Đã chọn:{" "}
-                                    {choose.value.map((op) => op.option_value).join(", ") ? (
-                                          <span className="ml-[.4rem] border-b-[.2rem] border-gray-400">
-                                                {choose.value.map((op) => op.option_value).join(", ")}
-                                          </span>
-                                    ) : (
-                                          <span className="ml-[.6rem] border-b-[.2rem] border-color-main uppercase text-color-main font-medium pb-[.4rem]">
-                                                Chưa chọn
-                                          </span>
-                                    )}
-                              </p>
-                              <div className="mt-[.8rem]">
-                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
-                              </div>
+                              {choose.value.map((op) => op.option_value).join(", ") && (
+                                    <p className="text-[1.4rem]">
+                                          Đã chọn:{" "}
+                                          {choose.value.map((op) => op.option_value).join(", ") ? (
+                                                <span className="ml-[.4rem] border-b-[.2rem] border-gray-400">
+                                                      {choose.value.map((op) => op.option_value).join(", ")}
+                                                </span>
+                                          ) : (
+                                                <span className="ml-[.6rem] border-b-[.2rem] border-color-main uppercase text-color-main font-medium pb-[.4rem]">
+                                                      Chưa chọn
+                                                </span>
+                                          )}
+                                    </p>
+                              )}
+                              {inputItemInArrayGlobal?.globalError?.state && (
+                                    <div className="mt-[.8rem]">
+                                          <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                                    </div>
+                              )}
                         </InputContent>
                   </BoxHandlerInputAnswerError>
             </InputAnswerWrapper>

@@ -34,7 +34,7 @@ const NotificationShow = (props: TProps) => {
 	const renderNotificationArray = useMemo(() => renderNotification(notification_data), [notification_data]);
 
 	return (
-		<div className="h-[80%] overflow-auto flex flex-col gap-[4rem] py-[2rem]">
+		<div className="h-[80%] overflow-auto normal-scroll flex flex-col gap-[4rem] py-[2rem]">
 			<div className="flex flex-col gap-[1rem]">{renderNotificationArray}</div>
 			{!isLoading && notification_data.length > 0 && (
 				<div className="flex sm:justify-center text-[1.4rem] ">
