@@ -117,7 +117,7 @@ const ButtonOptionValue = (props: TProps) => {
 			{...listeners}
 			style={style}
 			onClick={() => onSelectValue(option.option_id)}
-			className="reset-border-outline flex min-h-[5rem]  max-w-full h-max items-center gap-[2rem] text-[1.4rem]"
+			className="reset-border-outline flex min-h-[3rem]  max-w-full h-max items-center gap-[2rem] text-[1.4rem]"
 		>
 			<div className="min-w-[2rem] aspect-square rounded-full border-[.1rem] border-[var(--border-color-input)] flex items-center justify-center">
 				{selectValue === option.option_id && (

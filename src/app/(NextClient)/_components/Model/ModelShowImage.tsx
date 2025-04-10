@@ -27,7 +27,7 @@ const ModelShowImage = (props: TProps) => {
 
       return (
             <Portal>
-                  <div className="animate-modeScreen transition-[scale] duration-300 fixed inset-0 min-h-screen  flex items-center justify-center pt-[4rem] bg-[rgba(0,0,0,.87)] z-[1000] hover:cursor-pointer">
+                  <div className="animate-modeScreen transition-[scale] duration-300 fixed inset-0 min-h-screen  flex items-center justify-center pt-[4rem] bg-[rgba(0,0,0,.8)] z-[1000] hover:cursor-pointer">
                         <ClickOutSide setOpenModel={setOpenModel} width="w-max" height="h-[60rem]">
                               <div className="w-full  xl:h-[60rem]  flex flex-col items-center gap-[5rem] ">
                                     <div className="w-[35rem] h-[35rem] xl:w-[45rem] min-h-[70%] max-h-[70%]">
@@ -36,11 +36,11 @@ const ModelShowImage = (props: TProps) => {
                                                 width={400}
                                                 height={400}
                                                 alt="image form"
-                                                className="w-full h-full bg-[#ccc]  object-contain"
+                                                className="w-full h-full   object-contain"
                                                 unoptimized={false}
                                           />
                                     </div>
-                                    <div className="  flex gap-[4rem] max-w-[30rem] xl:max-w-[80rem] pb-[2rem] mx-auto overflow-x-scroll scroll-images">
+                                    <div className="  flex gap-[4rem] max-w-[30rem] xl:max-w-[80rem] pb-[2rem] mx-auto overflow-x-auto scroll-images">
                                           {imagesUrl.map((img) => (
                                                 <div key={img} className="group relative min-w-[8rem] min-h-[8rem] hover:cursor-pointer ">
                                                       <Image
@@ -56,7 +56,7 @@ const ModelShowImage = (props: TProps) => {
                                                             onClick={() => setImageShow(img)}
                                                       />
 
-                                                      <div className="absolute inset-0 bg-[rgba(0,0,0,.6)]"></div>
+                                                      <div className="absolute inset-0 bg-[rgba(0,0,0,.8)]"></div>
                                                 </div>
                                           ))}
                                     </div>

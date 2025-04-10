@@ -49,9 +49,10 @@ import {
 import ClickOutSide from "@/app/(NextClient)/_components/Model/ClickOutSide";
 import { Select } from "antd";
 import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import useChangeTypeInput from "@/app/hooks/useChangeTypeInput";
+import { clearFormAnswer } from "@/app/_lib/redux/formAnswer.slice";
 
 type TProps = {
       setOpenModel: React.Dispatch<SetStateAction<boolean>>;
@@ -159,7 +160,7 @@ const InputIntroduceWrapper = (props: TProps) => {
       const [inputIntroduce, setInputIntroduce] = useState<ButtonInputType["type"]>("Guide");
 
       const renderInputIntroduce = useMemo(() => chooseInputIntroduce(inputIntroduce, inputItem, setOpenModel), [inputIntroduce, inputItem, setOpenModel]);
-
+      const dispatch = useDispatch();
       useEffect(() => {
             onControlScroll(true);
 
@@ -175,6 +176,12 @@ const InputIntroduceWrapper = (props: TProps) => {
             if (inputIntroduce === "Guide") return;
             changeTypeInput.mutate({ form: formCore, inputItem, type: inputIntroduce });
       };
+
+      useEffect(() => {
+            if (changeTypeInput.isSuccess) {
+                  dispatch(clearFormAnswer({ form_id: formCore._id }));
+            }
+      }, [changeTypeInput.isSuccess, changeTypeInput.isPending, dispatch]);
 
       const onControlScroll = (active: boolean) => {
             if (active) {
@@ -218,10 +225,9 @@ const InputIntroduceWrapper = (props: TProps) => {
                                                             />
                                                             {inputIntroduce !== "Guide" && (
                                                                   <ButtonIcon
-                                                                  
                                                                         textContent="Thêm input này"
                                                                         className="h-[50%] flex items-center p-[.4rem_.8rem]  bg-color-main rounded-[.4rem] text-[1.2rem] xl:text-[1.3rem] text-[#ffffff]"
-                                                                        Icon={<Plus size={16} className="mt-[.2rem]"/>}
+                                                                        Icon={<Plus size={16} className="mt-[.2rem]" />}
                                                                         onClick={handleChooseInputType}
                                                                   />
                                                             )}

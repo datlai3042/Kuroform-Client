@@ -104,12 +104,12 @@ const FormTitleFullDescription = (props: TProps) => {
 
                   <div
                         className="border-none py-[.4rem] outline-none xl:max-w-[80rem] break-all leading-8 opacity-70"
-                        contentEditable={setTitleSubDescription.isPending ? false : true}
+                        contentEditable={true}
                         onKeyDown={onKeyEnter}
                         onBlur={(e) => onSetValue(e, "Value")}
                         data-text={content.value || "Nhập mô tả"}
                         spellCheck={false}
-                        tabIndex={1}
+                        tabIndex={0}
                         suppressContentEditableWarning={true}
                   >
                         {content.value}

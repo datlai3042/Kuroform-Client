@@ -387,7 +387,7 @@ body.dark .ant-rate-star-second {
       }
 
       .showProjectInfo {
-            animation: showProjectInfo .5s ease-in-out both;
+            animation: showProjectInfo .4s ease-in-out both;
             z-index: 99999;
             position: fixed;
             max-height: 75vh;

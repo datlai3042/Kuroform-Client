@@ -66,7 +66,7 @@ const SliderImage = (props: TProps) => {
       const centerListImageSub = formCore.form_title.form_title_sub.filter((sub) => (sub.type === "Image" ? true : false)).length > 4 ? true : false;
 
       return (
-            <div className="w-max min-w-full flex justify-center">
+            <div className="w-max min-w-full flex justify-center mt-[2.8rem]">
                   <div ref={divContainerRef} className={`${widthPage}  relative h-[48rem] xl:h-[47rem] pb-[6rem]  overflow-y-hidden overflow-x-hidden`}>
                         <div className={`w-full h-[30rem] relative`}>
                               <button
@@ -112,15 +112,23 @@ const SliderImage = (props: TProps) => {
                               {images.map((btn, i) => (
                                     <button
                                           key={i}
-                                          className="w-[1.6rem] h-[1.6rem] flex items-center justify-center rounded-full bg-slate-200 "
+                                          className="w-[1.6rem] h-[1.6rem] flex items-center justify-center rounded-full bg-slate-200 group hover:text-color-main"
                                           onClick={() => setIndexImage(i)}
                                     >
-                                          {i === indexImage && <div className="bg-color-main w-[60%] h-[60%] rounded-full "></div>}
+                                          {i !== indexImage && (
+                                                <div className="hidden group-hover:block bg-color-main w-[60%] h-[60%] rounded-full hover:text-color-main "></div>
+                                          )}
+
+                                          {i === indexImage && <div className="bg-color-main w-[60%] h-[60%] rounded-full hover:text-color-main "></div>}
                                     </button>
                               ))}
                         </div>
                         {type === "Components" && (
-                              <div className={`${centerListImageSub? '' : 'justify-center'} absolute bottom-[4rem] w-full left-[50%] translate-x-[-50%] flex justify-center gap-[1rem] pb-[2rem]  scroll-images overflow-x-auto hover:cursor-pointer`}>
+                              <div
+                                    className={`${
+                                          centerListImageSub ? "" : "justify-center"
+                                    } absolute bottom-[4rem] w-full left-[50%] translate-x-[-50%] flex justify-center gap-[1rem] pb-[2rem]  scroll-images overflow-x-auto hover:cursor-pointer`}
+                              >
                                     {images.map((img, i) => (
                                           <div
                                                 key={img._id}
@@ -138,7 +146,7 @@ const SliderImage = (props: TProps) => {
                                                       alt="image form"
                                                       className={`group-hover:z-[3] transition-all duration-500 absolute inset-0 w-full h-full  flex items-center justify-center  bg-[#000000] opacity-75 object-contain`}
                                                 />
-                                                <div className=" absolute inset-0 bg-[rgba(0,0,0,.6)] z-[2]"></div>
+                                                <div className=" absolute inset-0 bg-[rgba(0,0,0,.1)] z-[2]"></div>
                                           </div>
                                     ))}
                               </div>

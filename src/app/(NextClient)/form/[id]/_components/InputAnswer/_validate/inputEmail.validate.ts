@@ -19,7 +19,7 @@ export const superEmailValidate = ({
 
 	const regex = regexEmail;
 	const checkEmail = inputValue.match(regex);
-
+	console.log({inputValue, checkEmail})
 	let type: InputCore.Commom.ErrorText | null = null;
 
 	const valueLength = inputValue.length;

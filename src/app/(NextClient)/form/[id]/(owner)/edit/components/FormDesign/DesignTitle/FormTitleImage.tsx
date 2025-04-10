@@ -120,7 +120,7 @@ const FormTitleImage = (props: TProps) => {
                   </div>
             );
 
-      const checkModeImage = formCore.form_title.form_title_mode_image === "Normal" ? "!w-[30rem]" : "w-full";
+      const checkModeImage = formCore.form_title.form_title_mode_image === "Normal" ? "!w-[15rem]" : "w-full";
       const imageList = formCore.form_title.form_title_sub.reduce<string[]>((acc, total) => {
             if (total.type === "Image" && !!total?.core?.url) {
                   acc.push(total?.core?.url);
@@ -130,7 +130,7 @@ const FormTitleImage = (props: TProps) => {
       }, []);
       return (
             <div
-                  className={`${widthPage} ${checkModeImage}  flex flex-col   gap-[1rem]   outline-none rounded-lg `}
+                  className={`${widthPage} ${checkModeImage}  flex flex-col justify-center  gap-[1rem]   outline-none rounded-lg `}
                   ref={setNodeRef}
                   {...attributes}
                   {...listeners}
@@ -147,7 +147,7 @@ const FormTitleImage = (props: TProps) => {
                         </button>
                   )}
                   {subTitleItem?.core?.url && (
-                        <div className={`w-full h-[30rem] flex justify-center   `}>
+                        <div className={`w-full flex justify-center   `}>
                               <Image
                                     onClick={() => setShowImageModel(true)}
                                     // style={{ backgroundColor: colorMain }}

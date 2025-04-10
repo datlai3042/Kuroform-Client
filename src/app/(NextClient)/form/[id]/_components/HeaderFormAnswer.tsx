@@ -44,7 +44,7 @@ const HeaderFormAnswer = (props: TProps) => {
                   style={{ ...renderBorder,  }}
                   className={`${
                         formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state ? "mt-[10rem]" : ""
-                  } relative w-full  min-h-[14rem] m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	 !border-t-[1rem]   bg-color-section-theme rounded-2xl`}
+                  } relative w-full  min-h-[14rem] m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	 !border-t-[1.4rem]   bg-color-section-theme rounded-2xl`}
             >
                   {(formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state) && <FormAnswerAvatar formCore={formCore} />}
                   <div className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}>
@@ -53,18 +53,18 @@ const HeaderFormAnswer = (props: TProps) => {
                         </h1>
 
                         {formCore.form_title.form_title_sub.length > 0 && (
-                              <div className="pt-[2rem] border-t-[.1rem] border-[var(--border-color-input)] flex flex-col flex-wrap gap-[1rem]">
+                              <div className="pt-[2rem] text-text-theme  border-t-[.1rem] border-[var(--border-color-input)] flex  flex-wrap gap-[.6rem]">
                                     {formCore?.form_title?.form_title_sub.map((ft) => {
                                           if (ft.type === "Text" && ft?.core?.value)
                                                 return (
-                                                      <span key={ft._id} className="text-[1.4rem] text-justify leading-10">
+                                                      <span key={ft._id} className="text-[1.4rem] text-justify leading-10 w-full">
                                                             {ft?.core?.value}
                                                       </span>
                                                 );
                                           if (ft.type === "Image") {
                                                 if (formCore?.form_title?.form_title_mode_image !== checkMode) {
                                                       return (
-                                                            <div className="w-full  flex gap-[2rem] justify-center" key={ft?._id}>
+                                                            <div className="m-[2rem] flex gap-[2rem] justify-center" key={ft?._id}>
                                                                   <FormTitleImage mode="Normal" page={"Answer"} subTitleItem={ft} key={ft?._id} />
                                                             </div>
                                                       );
@@ -89,7 +89,7 @@ const HeaderFormAnswer = (props: TProps) => {
 
                                           if (ft.type === "FullDescription" && (ft?.core?.header_value || ft?.core?.value)) {
                                                 return (
-                                                      <div className="  text-[1.4rem]  flex flex-col gap-[1.6rem] " key={ft?._id}>
+                                                      <div className="  text-[1.4rem]  flex flex-col gap-[.1rem]  w-full" key={ft?._id}>
                                                             {ft?.core?.header_value && <span className="font-bold">{ft?.core?.header_value}</span>}
                                                             {ft?.core?.value && <span>{ft?.core?.value}</span>}
                                                       </div>
@@ -97,7 +97,7 @@ const HeaderFormAnswer = (props: TProps) => {
                                           }
                                     })}
 
-                                    {inputFormRequire.length > 0 && <span className="text-red-600 text-[1.4rem] mt-[2rem]">* Biểu thị câu hỏi bắt buộc</span>}
+                                    {inputFormRequire.length > 0 && <span className="text-red-600 text-[1.4rem] mt-[2rem] w-full">* Biểu thị câu hỏi bắt buộc</span>}
                               </div>
                         )}
                   </div>

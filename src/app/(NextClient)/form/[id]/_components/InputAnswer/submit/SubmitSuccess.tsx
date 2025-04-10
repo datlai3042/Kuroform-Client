@@ -6,7 +6,7 @@ type TProps = {
 };
 
 const SubmitSuccess = (props: TProps) => {
-	const { message = "Câu trả lời của bạn đã được gữi đi", color } = props;
+	const { message = "Câu trả lời của bạn đã được gửi đi", color } = props;
 
 	return (
 		<div

@@ -93,8 +93,6 @@ const ViewOnceAnswer = (props: TProps) => {
             <Table className=" text-[1.4rem] !border-none" classContainer="h-full">
                   <TableHeader>
                         <TableRow>
-                              <TableHead className="w-[100px] whitespace-pre">Chi tiết</TableHead>
-
                               <TableHead className="w-[100px] whitespace-pre">Trạng thái</TableHead>
                               {Object.keys(dataCol).map((dataColKey, index) => {
                                     return (
@@ -123,17 +121,6 @@ const ViewOnceAnswer = (props: TProps) => {
                         {formAnswer.reports?.map((rp, index) => {
                               return (
                                     <TableRow key={index}>
-                                          <TableCell
-                                                className="font-medium whitespace-pre cursor-pointer hover:bg-[var(--color-main)] text-text-theme hover:text-[#fff]"
-                                                onClick={() => {
-                                                      setFormAnswerDetail(() => {
-                                                            return formAnswer?.reports.filter((fans) => fans._id === rp._id)[0] || null;
-                                                      });
-                                                      setOpenDetailAnswer(true);
-                                                }}
-                                          >
-                                                Xem đầy đủ
-                                          </TableCell>
                                           <TableCell className="font-medium whitespace-pre flex items-center gap-[1rem]">
                                                 <span>Đã gửi</span>
                                                 {newData.includes(rp._id) && <LabelNewAnswer />}
@@ -191,8 +178,22 @@ const ViewOnceAnswer = (props: TProps) => {
                                           <TableCell className="font-medium whitespace-pre">
                                                 {moment(new Date(rp.createdAt)).format("HH:mm:ss  -  DD - MM - YYYY")}
                                           </TableCell>
-                                          <TableCell className="font-medium whitespace-pre sticky right-[-1rem] z-[10] bg-color-section-theme">
+                                          <TableCell className="font-medium whitespace-pre sticky right-[-1rem] z-[10] bg-color-section-theme flex gap-[1rem]">
+
+                                                <p
+                                                      className="font-medium whitespace-pre cursor-pointer hover:bg-[var(--color-main)] h-full text-text-theme hover:text-[#fff]"
+                                                      onClick={() => {
+                                                            setFormAnswerDetail(() => {
+                                                                  return formAnswer?.reports.filter((fans) => fans._id === rp._id)[0] || null;
+                                                            });
+                                                            setOpenDetailAnswer(true);
+                                                      }}
+                                                >
+                                                      Xem đầy đủ
+                                                </p>
+
                                                 <ButtonDeleteReport formId={formCore._id} reportId={rp._id} title="Xóa trả lời này" />
+
                                           </TableCell>
                                     </TableRow>
                               );

@@ -46,6 +46,7 @@ const InputEmailAnswer = (props: TProps) => {
             deleteErrorWhenFocus({ setFormAnswer, inputFormErrors, inputItem });
       };
 
+      console.log({write})
       const onBlur = () => {
             if (write) {
                   validateWhenFocus<InputCore.InputText.InputSettingText>({
@@ -73,7 +74,7 @@ const InputEmailAnswer = (props: TProps) => {
 							)}  ${RenderStyleInputAnswer.StyleTitle({
                                                 formCore,
                                                 inputItem,
-                                          })}  w-[92%] bg-color-section-theme text-text-theme border-b-[.1rem] border-[var(--border-color-input)] w-[90%] h-full pb-[1rem]   outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          })}  w-[55%] bg-color-section-theme text-text-theme border-b-[.1rem] border-[var(--border-color-input)] h-full pb-[1rem]   outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                                 onChange={(e) => setInputValue(e.target.value)}
                                                 onFocus={onFocus}
                                                 onBlur={onBlur}

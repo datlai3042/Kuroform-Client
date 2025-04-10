@@ -21,7 +21,7 @@ const FormTitleModeImage = () => {
             onSuccess: (res) => {
                   const { form } = res.metadata;
                   dispatch(onFetchForm({ form }));
-                  setOpenModel(false);
+                  // setOpenModel(false);
             },
       });
 
@@ -31,8 +31,8 @@ const FormTitleModeImage = () => {
 
       const styleEffect = {
             onActive: (check: boolean) => {
-                  if (check) return "bg-blue-500 text-white";
-                  return "hover:bg-blue-300 hover:text-white";
+                  if (check) return "bg-color-main text-white";
+                  return "hover:bg-blue-400  hover:text-white opacity-90";
             },
       };
 
@@ -41,7 +41,7 @@ const FormTitleModeImage = () => {
       return (
             <ClickOutSide setOpenModel={setOpenModel}>
                   <div
-                        className="cursor-pointer relative w-[22rem] h-[3.2rem]  px-[2rem] flex items-center btn-primarily rounded-lg text-[#fff]"
+                        className="cursor-pointer relative w-[22rem] h-[3.2rem]  px-[2rem] flex items-center btn-primarily bg-color-main rounded-lg text-[#fff]"
                         onClick={() => setOpenModel((prev) => !prev)}
                   >
                         <span>{FormText.title.optionImageMode.label}</span>

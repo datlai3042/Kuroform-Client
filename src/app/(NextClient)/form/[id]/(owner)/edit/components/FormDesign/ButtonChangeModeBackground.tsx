@@ -38,7 +38,7 @@ const ButtonChangeModeBackground = () => {
       const formBackground = !!formCore.form_background?.form_background_iamge_url || formCore.form_background_state;
 
       return (
-            <div className="w-full h-[3.2rem] flex items-center gap-[.8rem]">
+            <div className="w-full h-[3.2rem] flex items-center justify-end gap-[.8rem]">
                   <button
                         disabled={!formBackground}
                         onClick={() => onChangeModeBackground("contain")}

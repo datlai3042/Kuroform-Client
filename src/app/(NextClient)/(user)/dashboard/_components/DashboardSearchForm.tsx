@@ -43,7 +43,7 @@ const DashboardSearchForm = ({ widthInput }: { widthInput?: string }) => {
 
                   {(openFormSearch || focusSearch) && (
                         <ClickOutSide setOpenModel={setOpenFormSearch}>
-                              <div style={{bottom: '-0.8rem'}} className="absolute  translate-y-[100%] text-text-theme left-0 min-w-full w-max right-0 min-h-[2rem] xl:min-h-[4rem] max-h-[24rem] scroll-color-main  bg-color-section-theme border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] h-max">
+                              <div style={{bottom: '-0.8rem'}} className="absolute  translate-y-[100%] text-text-theme left-0 min-w-full w-max right-0 min-h-[2rem] xl:min-h-[4rem] max-h-[24rem] scroll-color-main  bg-color-section-theme rounded-[.4rem] h-max">
                                     <DashboardSearchResult search={debounced} />
                               </div>
                         </ClickOutSide>
