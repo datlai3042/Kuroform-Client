@@ -67,6 +67,7 @@ const InputEmailAnswer = (props: TProps) => {
                               <DivNative className="flex flex-col gap-[.3rem]">
                                     <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}>
                                           <input
+                                                style={{ borderBottom: ".1rem solid var(--border-color-input]" }}
                                                 disabled={submitState === "pending"}
                                                 defaultValue={inputValue}
                                                 className={`
@@ -80,7 +81,12 @@ const InputEmailAnswer = (props: TProps) => {
                                                 onFocus={onFocus}
                                                 onBlur={onBlur}
                                                 placeholder={inputItem.core.setting.placeholder}
-                                                style={{borderBottom:  formCore.form_styles === "GOOGLE_FORM" ? '.1rem solid var(--border-color-input)' : `.1rem solid ${formCore.form_input_styles.color}`}}
+                                                // style={{
+                                                //       borderBottom:
+                                                //             formCore.form_styles === "GOOGLE_FORM"
+                                                //                   ? ".1rem solid var(--border-color-input)"
+                                                //                   : `.1rem solid ${formCore.form_input_styles.color}`,
+                                                // }}
                                           />
                                           <DivNative className="absolute z-[2] right-[1rem]" title={""}>
                                                 <AtSign className=" text-text-theme opacity-50" size={18} />

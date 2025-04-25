@@ -53,16 +53,20 @@ const FormPageGuess = (props: TProps) => {
       };
 
       const formColor = theme === "light" ? FormCore.form_color || "#f2f2f2" : "var(--color-section-theme)";
-      console.log({ FormCore });
+      const isGoogleForm = FormCore.form_styles === "GOOGLE_FORM" ? true : false;
+
       return (
-            <div style={{ backgroundColor: formColor }} className="px-[2rem] xl:px-0 min-h-screen h-max flex justify-center  p-[2rem]   ">
-                  <DivNative className="w-full sm:w-[66.8rem] flex flex-col ">
+            <div
+                  style={{ backgroundColor: formColor }}
+                  className={`${isGoogleForm ? "px-[2rem] p-[2rem]" : ""}  xl:px-0 min-h-screen h-max flex justify-center     `}
+            >
+                  <DivNative className={`${isGoogleForm ? " w-full sm:w-[66.8rem]" : "w-full"} flex flex-col `}>
                         {(FormCore.form_background?.form_background_iamge_url || FormCore.form_background_state) && (
-                              <DivNative className="relative w-full aspect-[3.01/1]">
+                              <DivNative className={`${isGoogleForm ? "aspect-[3.01/1]" : ""} relative w-full `}>
                                     <FormAnswerHeader formCore={FormCore} />
                               </DivNative>
                         )}
-                        <DivNative className={`${styleEffect.formMarginTop(FormCore.form_avatar_state)} w-full flex flex-col gap-[3rem] rounded-lg`}>
+                        <DivNative className={`${styleEffect.formMarginTop(FormCore.form_avatar_state)} ${isGoogleForm ? 'w-full' : 'w-[80vw] mx-auto'}  flex flex-col gap-[3rem] rounded-lg`}>
                               <DivNative className="flex flex-col gap-[3rem]">
                                     <FormAnswerProvider formCore={FormCore} form_answer_id="">
                                           <RenderInputAnswers formCore={FormCore} />
