@@ -43,6 +43,16 @@ const formInitital: FormCore.Form = {
             input_style: "normal",
       },
       form_state: "isDraff" as FormCore.FormState,
+      form_button_background: '',
+      form_button_color: '',
+      form_input_styles: {
+            borderColor: '',
+            borderWidth: 1,
+            color: '',
+            radius: 4,
+      },
+      form_styles: 'GOOGLE_FORM',
+      form_themes: 'AUTO',
 };
 
 const initialState: InitialState = {

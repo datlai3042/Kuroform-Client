@@ -47,7 +47,6 @@ import ButtonDesignSubmit from "./FormDesign/DesignCommon/ButtonDesignSubmit";
 import ButtonSubmitDesign from "./FormDesign/ButtonSubmitDesign";
 import BoxChangeForm from "./FormDesign/BoxChangeForm";
 import { renderFormThemes } from "@/app/utils/form.utils";
-import e from "express";
 
 export const generateInputForms = (Inputs: InputCore.InputForm[]): React.ReactNode => {
       return Inputs.map((ele, index) => {
