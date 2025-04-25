@@ -79,7 +79,9 @@ const InputPhoneAnswer = (props: TProps) => {
                                           className={` ${RenderStyleInputAnswer.StyleTitle({
                                                 formCore,
                                                 inputItem,
-                                          })}  w-[92%] bg-color-section-theme text-text-theme border-b-[.1rem] border-[var(--border-color-input)] h-full pb-[2rem]        outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          })} ${
+                                                formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
+                                          }  border-b-[.1rem] border-[var(--border-color-input)] h-full pb-[2rem]        outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                           placeholder="Nhập số điện thoại của bạn"
                                           onChange={(e) => setPhone(e.target.value)}
                                     />

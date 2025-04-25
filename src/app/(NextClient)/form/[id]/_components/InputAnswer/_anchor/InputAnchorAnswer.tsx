@@ -96,7 +96,12 @@ const InputAnchorAnswer = (props: TProps) => {
                                                 onFocus={onFocus}
                                                 value={inputValue}
                                                 onChange={(e) => onChangeValue(e.target.value)}
-                                                className=" pr-[2rem] heading-answer group w-[92%] min-h-[3.8rem] px-[1rem] flex items-center  text-[1.4rem] break-words whitespace-pre-wrap bg-transparent  outline-none resize-none "
+                                                className={`${RenderStyleInputAnswer.StyleTitle({
+                                                      formCore,
+                                                      inputItem,
+                                                })} ${
+                                                      formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
+                                                } pr-[2rem] heading-answer group min-h-[3.8rem] px-[1rem] flex items-center  text-[1.4rem] break-words whitespace-pre-wrap  outline-none resize-none `}
                                                 placeholder="Nhập đường dẫn liên kết của bạn"
                                           />
                                           <div className="absolute z-[2] right-[1rem]  opacity-70">www</div>

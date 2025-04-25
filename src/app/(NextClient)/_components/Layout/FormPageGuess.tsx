@@ -66,7 +66,7 @@ const FormPageGuess = (props: TProps) => {
                                     <FormAnswerHeader formCore={FormCore} />
                               </DivNative>
                         )}
-                        <DivNative className={`${styleEffect.formMarginTop(FormCore.form_avatar_state)} ${isGoogleForm ? 'w-full gap-[3rem]' : 'w-[60vw] mx-auto gap-[8rem]'}  flex flex-col  rounded-lg`}>
+                        <DivNative className={`${styleEffect.formMarginTop(FormCore.form_avatar_state)} ${isGoogleForm ? 'w-full gap-[3rem]' : 'w-full lg:w-[60vw] mx-auto gap-[8rem]'} pb-[8rem]  flex flex-col  rounded-lg`}>
                               <DivNative className="flex flex-col gap-[3rem]">
                                     <FormAnswerProvider formCore={FormCore} form_answer_id="">
                                           <RenderInputAnswers formCore={FormCore} />
