@@ -29,7 +29,6 @@ type TProps = {
 
 const InputAddressAnswer = (props: TProps) => {
       const { inputItem, formCore } = props;
-      console.log({ inputItem, formCore });
       const {
             formAnswer: { inputFormErrors, inputFormData },
             setFormAnswer,
@@ -49,7 +48,6 @@ const InputAddressAnswer = (props: TProps) => {
             });
 
             const { _next, type, message } = _validate;
-            console.log({ _next, message, type, address });
 
             if (_next) {
                   if (inputFormErrors.some((ip) => ip._id === inputItem._id)) {

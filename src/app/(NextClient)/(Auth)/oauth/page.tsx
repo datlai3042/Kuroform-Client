@@ -25,9 +25,7 @@ const OauthGooglePage = () => {
       useEffect(() => {
             const params = { access_token, code_verify_token, refresh_token, client_id, expireToken, expireCookie };
 
-            console.log({ params });
             if (!client_id && !expireToken && !access_token && !refresh_token && !code_verify_token && !expireCookie) {
-                 console.log({scope: 'Lỗi oauth'})
                   dispatch(
                         addOneToastError({
                               toast_item: {
@@ -40,7 +38,6 @@ const OauthGooglePage = () => {
                   );
                   return;
             }
-            console.log({scope: 'Chuyển về dashboard'})
 
             AuthService.syncNextToken(params).then(() => router.push("/dashboard"));
       }, []);

@@ -50,7 +50,6 @@ export function DashboardTotalFormV2() {
   const form_delete = useSelector((state: RootState) => state.form.form_delete);
   const form_public = useSelector((state: RootState) => state.form.form_public);
   const form_private = useSelector((state: RootState) => state.form.form_private);
-console.log({form_delete, form_private, form_public})
   return (
     <Card className="h-full bg-color-section-theme overflow-auto">
       <CardHeader>

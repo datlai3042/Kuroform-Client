@@ -32,7 +32,6 @@ const FormBackground = ({ action }: { action?: "thumb" }) => {
       };
 
       const myBackgroundStyle = generateStyleBackgroundImageForm({ formCore, mode: "edit" });
-      console.log({myBackgroundStyle})
       return (
             <React.Fragment>
                   <DivNativeRef onClick={() => setOpenModel(true)} className="absolute inset-0 z-[2]  hover:cursor-pointer max-h-full overflow-hidden">

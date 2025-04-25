@@ -54,7 +54,6 @@ const HanderlDataFormLayout = ({ params, children }: { params: { id: string }; c
 
 
       useEffect(() => {
-            console.log({formAnswer, ready})
 
       }, [pathname])
 

@@ -68,7 +68,6 @@ export const setInputRequireGlobal = (cb: React.Dispatch<SetStateAction<FormCore
             newArray.inputFormRequire = prev.inputFormRequire.map((ip) => {
 
                   if (ip._id === input_id) {
-                        console.log({ ip })
                         ip.checkRequire = newRuleRequire;
                         return ip;
                   }

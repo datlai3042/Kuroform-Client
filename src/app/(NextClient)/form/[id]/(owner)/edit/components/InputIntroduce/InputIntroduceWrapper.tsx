@@ -206,7 +206,6 @@ const InputIntroduceWrapper = (props: TProps) => {
                                                                   defaultValue="Guide"
                                                                   style={{ width: 240 }}
                                                                   onChange={(value, ...rest) => {
-                                                                        console.log({ value, rest });
                                                                         setInputIntroduce(value as ButtonInputType["type"]);
                                                                   }}
                                                                   options={[

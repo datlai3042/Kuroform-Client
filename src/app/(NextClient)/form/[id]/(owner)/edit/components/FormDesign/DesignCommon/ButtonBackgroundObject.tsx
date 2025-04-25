@@ -51,7 +51,6 @@ const ButtonBackgroundObject = () => {
             if (!isDesignForm) {
                   setIsDesginForm(true);
             }
-            console.log({ newForm });
             dispatch(onEditForm({ form: newForm }));
       }, 20);
 

@@ -26,13 +26,11 @@ const formAnswerSlice = createSlice({
             addFormAnswer: (state, data: PayloadAction<{ form_id: string; reports: FormCore.FormAnswer.FormAnswerCore }>) => {
                   const { form_id, reports } = data.payload;
                   state.formAnswerStore = { ...state.formAnswerStore };
-                  console.log({form_id, reports})
                   state.formAnswerStore[form_id] = { ...state.formAnswerStore[form_id], formAnswer: reports, update: false };
             },
 
             clearFormAnswer: (state, data: PayloadAction<{ form_id: string }>) => {
                   const { form_id } = data.payload;
-                  console.log({form_id, isClear: true})
                   if (state.formAnswerStore[form_id]) {
                         state.formAnswerStore = { ...state.formAnswerStore };
                         delete state.formAnswerStore[form_id]

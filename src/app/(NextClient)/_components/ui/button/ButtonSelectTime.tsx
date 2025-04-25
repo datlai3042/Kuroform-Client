@@ -32,7 +32,6 @@ const ButtonSelectTime = (props: TProps) => {
                         <button
                               onClick={(e) => {
                                     setOpenDateModel(prev => !prev);
-                                    console.log({ openDateModel });
                               }}
                               className={` bg-[#fff] text-[#000] border-[var(--border-color-input)] border-[.1rem] h-[2.4rem] p-[.4rem] rounded-md relative flex items-center justify-center ${buttonProps.className}`}
                         >

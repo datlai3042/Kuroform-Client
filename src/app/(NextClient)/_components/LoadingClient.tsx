@@ -13,7 +13,6 @@ const LoadingClient = (props: TProps) => {
       const { height = "h-screen", width = "w-screen", message, style = {} } = props;
 
       const styleContainer = `${width} ${height}`;
-      console.log({ width, height });
       return (
             <div
                   style={style}

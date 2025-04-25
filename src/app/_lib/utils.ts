@@ -197,7 +197,6 @@ export const handleDataForm = (reports: FormCore.FormAnswer.FormAnswerCore["repo
                   const titleExcel = ans.title || `[${ans.type}] - Không có tiêu đề`;
                   const titleHeaderTable = ans.title || `Không có tiêu đề`;
                   const input_value = generateValueInputAnswer(ans);
-                  console.log({ input_value, ans })
                   dataXlsx = {
                         ...dataXlsx,
                         "Thời gian gửi": moment(new Date(rp.createdAt)).format("hh:mm - Do MMMM YYYY"),

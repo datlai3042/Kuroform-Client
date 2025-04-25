@@ -93,12 +93,17 @@ const InputDateAnswer = (props: TProps) => {
       const dateRender = pickDate ? generateFullDateStringV2({ day: pickDate.day, month: pickDate.month, year: pickDate.year }) : null;
 
       const isError = write || inputItemInArrayGlobal?.globalError?.state;
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true: false
       return (
             <InputAnswerWrapper formCore={formCore}>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
-                              <DivNative className="relative flex flex-col sm:flex-row sm:items-center justify-between gap-[1rem] ">
+                              <DivNative
+                                    className={`${
+                                          formCore.form_styles === "GOOGLE_FORM" ? "sm:items-center" : ""
+                                    } relative flex flex-col sm:flex-row  justify-between gap-[1rem] `}
+                              >
                                     <p className="text-[1.2rem] text-text-theme">
                                           Thời gian đang chọn là:
                                           {dateRender ? (
@@ -120,7 +125,7 @@ const InputDateAnswer = (props: TProps) => {
                                           <CalendarDays size={20} className="aspect-square w-[2rem] sm:w-[3rem]" />
 
                                           {openModel && (
-                                                <div className="absolute z-[3] top-[4.2rem] xl:top-[110%] left-0 " onFocus={onFocus}>
+                                                <div className={`${isGoogleForm ? 'left-0' : 'right-0'} absolute z-[3] top-[4.2rem] xl:top-[110%] `} onFocus={onFocus}>
                                                       <ClickOutSide setOpenModel={setOpenModel}>
                                                             <Calendar onChange={handleOnChange} callbackCancel={actionCancle} initialDate={date} />
                                                       </ClickOutSide>

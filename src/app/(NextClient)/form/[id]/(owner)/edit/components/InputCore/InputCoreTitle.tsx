@@ -35,7 +35,6 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
                   const title = divContentRef.current?.textContent || "";
                   const formClone = { ...formCore };
                   useAddInputSetValueTitle.mutate({ form: formClone, title });
-                  console.log("Thêm Input, type mặc định Text");
             }
       };
 

@@ -9,7 +9,6 @@ const generatePercentOption = (data: InputData[]) => {
 	console.log({ "Tổng số trang": total, data });
 	data.map((dt) => {
 		const inputValue = dt.value
-		console.log({ inputValue })
 		if (!dataAnalysis[inputValue]) {
 			dataAnalysis[inputValue] = { count: 1, percent: Number(((1 / total) * 100).toFixed(2)) };
 		} else {
@@ -19,7 +18,6 @@ const generatePercentOption = (data: InputData[]) => {
 			};
 		}
 	});
-	console.log({ dataAnalysis, })
 	console.log({ "Phần trăm xuất hiện của các option": dataAnalysis });
 
 	return dataAnalysis;

@@ -86,7 +86,6 @@ const ViewOnceAnswer = (props: TProps) => {
                   });
                   return prev;
             });
-            console.log({ newAnswer });
             setNewData(newAnswer);
       }, [formAnswer]);
 
