@@ -63,7 +63,7 @@ const FormPageGuess = (props: TProps) => {
       return (
             <div
                   style={{ backgroundColor: !formThemes ? renderBgColor : "" }}
-                  className={`${isGoogleForm ? "px-[2rem] p-[2rem]" : ""}  xl:px-0 min-h-screen h-max flex justify-center     `}
+                  className={`${formThemes} ${isGoogleForm ? "px-[2rem] p-[2rem]" : ""}  xl:px-0 min-h-screen h-max flex justify-center     `}
             >
                   <DivNative className={`${isGoogleForm ? " w-full sm:w-[66.8rem]" : "w-full"} flex flex-col `}>
                         {(FormCore.form_background?.form_background_iamge_url || FormCore.form_background_state) && (

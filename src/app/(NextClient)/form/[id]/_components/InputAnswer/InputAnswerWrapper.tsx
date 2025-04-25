@@ -15,10 +15,12 @@ const InputAnswerWrapper = (props: TProps) => {
       const { theme } = useContext(ThemeContext);
       const styleWrapper =
             formCore.form_styles === "GOOGLE_FORM" ? renderInputStyles(formCore?.form_input_styles) : { border: "none", backgroundColor: "transparent" };
+
+      const color = formCore.form_themes === "AUTO" ? "var(--text-text-theme)" : formCore.form_themes === "DARK" ? "text-[#fff]" : "text-[#000]";
       return (
             <DivNative
                   style={{ ...styleWrapper }}
-                  className=" w-full min-h-[12rem] h-max  bg-color-section-theme  rounded-[.4rem] border-[.1rem] border-[var(--border-color-side)]"
+                  className={`${color} w-full min-h-[12rem] h-max  bg-color-section-theme  rounded-[.4rem] border-[.1rem] border-[var(--border-color-side)]`}
             >
                   {children}
             </DivNative>

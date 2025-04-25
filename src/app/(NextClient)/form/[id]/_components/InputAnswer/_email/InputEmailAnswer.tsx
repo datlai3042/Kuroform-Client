@@ -76,7 +76,7 @@ const InputEmailAnswer = (props: TProps) => {
                                                 inputItem,
                                           })} ${
                                                 formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                          }  text-text-theme border-b-[.1rem] border-[var(--border-color-input)] h-full pb-[1rem]   outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          }   border-b-[.1rem] border-[var(--border-color-input)] h-full pb-[1rem]   outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                                 onChange={(e) => setInputValue(e.target.value)}
                                                 onFocus={onFocus}
                                                 onBlur={onBlur}
@@ -89,7 +89,7 @@ const InputEmailAnswer = (props: TProps) => {
                                                 // }}
                                           />
                                           <DivNative className="absolute z-[2] right-[1rem]" title={""}>
-                                                <AtSign className=" text-text-theme opacity-50" size={18} />
+                                                <AtSign className=" text-inherit opacity-50" size={18} />
                                           </DivNative>
                                     </DivNative>
                               </DivNative>

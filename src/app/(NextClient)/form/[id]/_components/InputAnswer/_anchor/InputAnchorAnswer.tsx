@@ -89,7 +89,7 @@ const InputAnchorAnswer = (props: TProps) => {
                         <InputContent>
                               <DivNative className="w-full flex flex-col gap-[4rem]">
                                     <DivNative
-                                          className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] bg-[var(--color-section-theme)] `}
+                                          className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] bg-inherit `}
                                     >
                                           <input
                                                 onBlur={onBlur}

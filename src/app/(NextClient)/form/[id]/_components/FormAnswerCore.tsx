@@ -69,8 +69,10 @@ const FormAnswerCore = (props: TProps) => {
                               </DivNative>
                         )}
                         <DivNative
+                  style={{ backgroundColor: !formThemes ? renderBgColor : "" }}
+
                               className={`${formCore.form_avatar?.form_avatar_url && isGoogleForm ? "mt-[4rem]" : ""} ${
-                                    isGoogleForm ? "w-full" : `w-[60vw]  mx-auto ${renderFormThemeAnswer(formCore)}`
+                                    isGoogleForm ? "w-full" : `w-[60vw]  mx-auto ${formThemes}`
                               } rounded-lg`}
                         >
                               <DivNative className={`${isGoogleForm ? 'gap-[5rem]': 'gap-[8rem]'} flex flex-col  pb-[20rem]`}>

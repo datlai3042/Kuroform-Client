@@ -80,7 +80,7 @@ const InputTextAnswer = (props: TProps) => {
                                                 className={`${RenderStyleInputAnswer.StyleTitle({
                                                       formCore,
                                                       inputItem,
-                                                })} w-[92%] text-text-theme heading-answer group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
+                                                })} w-[92%]  heading-answer group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
                                                 onClick={() => divContentRef.current?.focus()}
                                                 onBlur={(e) => onBlur(e)}
                                                 onFocus={onFocus}

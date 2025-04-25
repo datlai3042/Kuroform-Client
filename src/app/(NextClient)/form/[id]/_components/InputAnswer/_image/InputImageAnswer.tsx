@@ -87,10 +87,10 @@ const InputImageAnswer = (props: TProps) => {
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
-                              <DivNative className={`$ relative flex flex-col  items-center justify-between gap-[1rem] text-text-theme `}>
+                              <DivNative className={`$ text-inherit relative flex flex-col  items-center justify-between gap-[1rem]  `}>
                                     <DivNative className={`${formCore.form_styles === 'GOOGLE_FORM' ? ' gap-[2rem]' : ' gap-[1rem]'} w-full     flex flex-col   justify-start   `}>
                                           <div className=" flex justify-between gap-[2rem] flex-wrap">
-                                                <p className="w-max text-[1.3rem] text-text-theme">Vui lòng chọn các file JPG, JPEG,PNG</p>
+                                                <p className="w-max text-[1.3rem] ">Vui lòng chọn các file JPG, JPEG,PNG</p>
                                                 <button
                                                       onClick={handleClick}
                                                       className="p-[.3rem_.6rem]  bg-color-main text-[#fff] text-[1.4rem] rounded-[.4rem]"

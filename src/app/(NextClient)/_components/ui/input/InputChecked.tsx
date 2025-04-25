@@ -32,7 +32,7 @@ const InputChecked = (props: TProps) => {
                                     <span className=" px-[2rem] text-[1.2rem] w-max">[{value}]</span>
                               </div>
                         ) : (
-                              <span className="ml-[4rem] text-text-theme group-hover:text-[#fff]">{value}</span>
+                              <span className="ml-[4rem] text-inherit group-hover:text-[#fff]">{value}</span>
                         )}
                   </div>
             </div>

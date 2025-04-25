@@ -21,7 +21,7 @@ class RenderStyleInputAnswer {
       static StyleTitle({ inputItem, formCore }: { inputItem: InputCore.InputForm; formCore: FormCore.Form }) {
             return {
                   fontSize: inputItem.core.setting.input_size || formCore.form_setting_default.input_size,
-                  color: inputItem.core.setting.input_color || formCore.form_setting_default.input_color,
+                  color: formCore.form_themes === 'AUTO' ? formCore.form_input_styles.color : 'inherit',
                   fontStyle: inputItem.core.setting.input_style || formCore.form_setting_default.input_style,
             };
       }
