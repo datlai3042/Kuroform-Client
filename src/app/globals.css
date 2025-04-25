@@ -84,6 +84,10 @@ body.dark :where(.css-dev-only-do-not-override-98ntnt).ant-rate .ant-rate-star-f
       color: var(--text-theme) !important;
 }
 
+/**Rate*/
+:where(.css-98ntnt).ant-rate .ant-rate-star-first, :where(.css-98ntnt).ant-rate .ant-rate-star-second {
+      color: var(--color-main);
+}
 /* body.dark .ant-rate-star-first {
       color: blue !important;
 }
