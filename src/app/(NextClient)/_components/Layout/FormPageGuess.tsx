@@ -52,7 +52,8 @@ const FormPageGuess = (props: TProps) => {
             },
       };
 
-      const formColor = theme === "light" ? FormCore.form_color || "#f2f2f2" : "var(--color-section-theme)";
+      const formColor = FormCore.form_color || "#f2f2f2";
+
       const isGoogleForm = FormCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
