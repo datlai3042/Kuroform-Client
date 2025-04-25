@@ -2,6 +2,10 @@ import { extend } from "dayjs";
 import React, { memo, SetStateAction, useEffect, useMemo, useRef, useState } from "react";
 import ClickOutSide from "./ClickOutSide";
 import useGetAllProvinces from "@/app/hooks/common/address/useGetAllProvinces";
+import { renderInputStyles } from "@/app/utils/form.utils";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/_lib/redux/store";
+import { FormCore } from "@/type";
 
 export type ScorllDataItem = {
       label: string;
@@ -25,6 +29,8 @@ const ModelScrollList = (props: TProps) => {
       const [itemSelect, setItemSelect] = useState<ScorllDataItem | undefined>(defaultValue || undefined);
       const ulListRef = useRef<HTMLUListElement | null>(null);
       const liItemSelect = useRef<HTMLLIElement | null>(null);
+      const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
+
       useEffect(() => {
             if (ulListRef.current && liItemSelect.current && openModel) {
                   ulListRef.current.scrollTop = liItemSelect.current.offsetTop;
@@ -50,6 +56,7 @@ const ModelScrollList = (props: TProps) => {
                         e.stopPropagation();
                         setOpenModel((prev) => !prev);
                   }}
+                  style={{ ...renderInputStyles(formCore.form_input_styles) }}
                   className="relative min-w-[16rem] px-[.8rem] text-[1.4rem] border-[.1rem] border-[var(--border-color-input)] w-max  max-h-[8rem] xl:h-[3rem] py-[.3rem] flex items-center justify-center gap-[1rem] rounded-lg disabled:cursor-not-allowed "
             >
                   <span>{itemSelect?.label || label}</span>

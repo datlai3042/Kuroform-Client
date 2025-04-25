@@ -3,6 +3,7 @@ import { RootState } from "@/app/_lib/redux/store";
 import FormService from "@/app/_services/form.service";
 import useDeleteTitleSubItem from "@/app/hooks/title_form/useDeleteTitleSubItem";
 import useUpdateForm from "@/app/hooks/useUpdateForm";
+import { renderColorFromFormThemes } from "@/app/utils/form.utils";
 import { FormCore } from "@/type";
 import { UniqueIdentifier } from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
@@ -84,7 +85,7 @@ const FormTitleText = (props: TProps) => {
       return (
             <div className="flex flex-col gap-[.5rem]  " ref={setNodeRef} {...attributes} {...listeners} style={style}>
                   <button
-                        className="flex items-center gap-[.5rem] text-[1.4rem] font-bold text-textHeader hover:text-slate-800"
+                        className={`${renderColorFromFormThemes(formCore.form_themes)} flex items-center gap-[.5rem] text-[1.4rem] font-bold  hover:text-slate-800`}
                         onClick={handleDelete}
                         disabled={deleteTitleSubItem.isPending}
                   >

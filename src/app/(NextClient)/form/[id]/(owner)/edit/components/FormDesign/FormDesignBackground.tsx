@@ -1,19 +1,12 @@
-import React, { useState } from "react";
-import ButtonColor from "./DesignCommon/ButtonColor";
-import ButtonEditTextSize from "./DesignCommon/ButtonEditTextSize";
-import ButtonEditTextStyle from "./DesignCommon/ButtonEditTextStyle";
-import ButtonPositionBackground from "./DesignCommon/ButtonBackgroundPosition";
-import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import FormBackground from "../FormBackground";
 import ButtonChangeModeBackground from "./ButtonChangeModeBackground";
+import ButtonUploadFile from "./ButtonUploadFile";
 import ButtonBackgroundColor from "./DesignCommon/ButtonBackgroundColor";
-import ButtonBackgroundPostition from "./DesignCommon/ButtonBackgroundPosition";
-import ButtonBackgroundPadding from "./DesignCommon/ButtonBackgroundPadding";
-import ButtonBackgroundSize from "./DesignCommon/ButtonBackgroundSize";
 import ButtonBackgroundObject from "./DesignCommon/ButtonBackgroundObject";
-import { Select } from "antd";
-import UploadNone from "@/app/(NextClient)/_components/ui/loading/UploadNone";
-import { Circle } from "lucide-react";
+import ButtonBackgroundSize from "./DesignCommon/ButtonBackgroundSize";
 type TypeDesignBackground = "type" | "size" | "color";
 const FormDesignBackground = () => {
       const formCore = useSelector((state: RootState) => state.form.formCoreBackUp);
@@ -21,14 +14,13 @@ const FormDesignBackground = () => {
 
       const formBackground = !!formCore.form_background?.form_background_iamge_url || false;
 
-      const checkBackground =
-            formCore.form_background?.form_background_iamge_url || formCore.form_background_state ? "bg-transparent" : " cursor-not-allowed";
-
-      const isBgDefault = formCore.form_background_state && !formCore.form_background?.form_background_iamge_url;
+      const checkBackground = formCore.form_background?.form_background_iamge_url || formCore.form_background_state ? "bg-transparent" : " cursor-not-allowed";
 
       return (
-            <div className={`${checkBackground}  flex flex-col items-end gap-[2rem] p-[1.6rem_2rem] border-t-[.1rem] border-[var(--border-color-side)] `}>
-                  <Select<TypeDesignBackground>
+            <>
+                  {formCore.form_background || formCore.form_background_state ? (
+                        <div className={`${checkBackground}  flex flex-col  gap-[2rem] `}>
+                              {/* <Select<TypeDesignBackground>
                         placeholder="Chọn loại chỉnh sửa"
                         className="customSelect"
                         defaultValue="type"
@@ -39,11 +31,18 @@ const FormDesignBackground = () => {
                               { value: "size", label: "Chỉnh kích thước ảnh bìa" },
                               { value: "color", label: "Chỉnh màu nền ảnh bìa" },
                         ]}
-                  />
+                  /> */}
 
-                  {type === "type" && (
-                        <div className="flex flex-col gap-[1.6rem] w-full">
-                              <div style={{ lineHeight: 1.6 }} className="font-medium flex flex-col gap-[.6rem] ">
+                              <div className="w-full flex flex-col gap-[2rem] ">
+                                    <div className="flex gap-[1rem]">
+                                          <div className="basis-[12rem]  relative">{<FormBackground action={"thumb"} />}</div>
+                                          <div className="flex-1 flex flex-col gap-[1.4rem]">
+                                                <ButtonBackgroundSize />
+                                                <ButtonBackgroundObject />
+                                          </div>
+                                    </div>
+                                    <div className="flex flex-col gap-[1.6rem] w-full">
+                                          {/* <div style={{ lineHeight: 1.6 }} className="font-medium flex flex-col gap-[.6rem] ">
                                     <span>Tùy chỉnh ảnh bìa</span>
                                     {!formBackground ? (
                                           <p className="flex gap-[.4rem]">
@@ -53,24 +52,20 @@ const FormDesignBackground = () => {
                                     ) : (
                                           ""
                                     )}
+                              </div> */}
+                                          <div className="flex items-center justify-between">
+                                                <div className="w-max">
+                                                      <ButtonChangeModeBackground />
+                                                </div>
+                                                <ButtonBackgroundColor direction="col" />
+                                          </div>
+                                    </div>
                               </div>
-                              <ButtonChangeModeBackground />
                         </div>
+                  ) : (
+                        <ButtonUploadFile code="BACKGROUND" />
                   )}
-                  {type === "size" && (
-                        <div className="flex flex-col gap-[1.6rem]">
-                              <p style={{ lineHeight: 1.6 }} className="flex gap-[1rem] text-[1.2rem] opacity-55">
-                                    <Circle className="text-color-main min-w-max" />
-                                    <span className="text-justify">Để các cấu hình dưới đây chính xác hơn thì bạn chọn mode: Cover nhé</span>
-                              </p>
-                              <ButtonBackgroundSize />
-                              <ButtonBackgroundObject />
-                              {/* <ButtonBackgroundPostition /> */}
-                              {/* <ButtonBackgroundPadding /> */}
-                        </div>
-                  )}
-                  {type === "color" && <ButtonBackgroundColor />}
-            </div>
+            </>
       );
 };
 

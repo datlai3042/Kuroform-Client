@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import InputCore from "../InputCore";
+import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: TInputCore.InputText.InputTypeText;
@@ -48,14 +49,19 @@ const InputCoreText = (props: TProps) => {
 
       const InputText = (
             <DivNative
-                  className={`${modeScreen === "FULL" ? "w-full sm:w-[75%]" : "w-full"} bg-color-section-theme min-h-[5rem] h-max flex flex-col  gap-[.5rem] `}
+                  className={`${modeScreen === "FULL" ? "w-full sm:w-[75%]" : "w-full"}  min-h-[5rem] h-max flex flex-col  gap-[1rem]  bg-transparent`}
                   onClick={() => divContentRef.current?.focus()}
             >
-                  <SpanNative textContent="Nhập thông tin của bạn vào ô dưới" className={` text-[1.6rem] font-medium`} />
+                  <SpanNative
+                        style={{ color: formCore.form_input_styles.color || "var(--text-text-theme)" }}
+                        textContent="Nhập thông tin của bạn vào ô dưới"
+                        className={` text-[1.6rem] font-medium`}
+                  />
 
                   <DivNativeRef
+                        style={{ ...renderInputStyles(formCore.form_input_styles) }}
                         ref={divContentRef}
-                        className={` relative group   w-full min-h-[8rem] p-[1.6rem] break-words whitespace-pre-wrap h-max border-[.1rem] bg-[var(--color-section-theme)] border-[var(--border-color-input)] rounded-lg outline-none resize-none `}
+                        className={` relative group   w-full min-h-[8rem] p-[1.6rem] break-words whitespace-pre-wrap h-max border-[.1rem]  border-[var(--border-color-input)] rounded-lg outline-none resize-none `}
                         // onClick={() => divContentRef.current?.focus()}
                         spellCheck={false}
                         onKeyDown={onPressEnter}

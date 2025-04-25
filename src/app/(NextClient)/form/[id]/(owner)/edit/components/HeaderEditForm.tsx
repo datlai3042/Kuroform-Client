@@ -45,8 +45,6 @@ const HeaderEditForm = (props: TProps) => {
       const { modeScreen, setModeScreen } = useContext(FormModeScreenContext);
       const { openFormDesign } = useContext(FormDesignContext);
 
-      
-
       const [openModelFormState, setOpenModelFormState] = useState<boolean>(false);
 
       const pathName = usePathname();
@@ -80,7 +78,7 @@ const HeaderEditForm = (props: TProps) => {
 
       return (
             <DivNative
-                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101] flex-wrap   w-auto  flex  justify-between  gap-[.6rem]  p-[1.2rem_1.8rem] text-[1.3rem]`}
+                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[200] flex-wrap   w-auto  flex  justify-between  gap-[.6rem]  p-[.6rem_1.8rem] text-[1.3rem]`}
             >
                   {!matches && (
                         <div className="w-[60%] hidden sm:flex  h-full items-center">
@@ -110,12 +108,10 @@ const HeaderEditForm = (props: TProps) => {
                                     className="w-full  xl:ml-auto flex flex-wrap justify-end items-center gap-[1rem]"
                               >
                                     <ButtonDeleteForm
-                                         
+                                          title="Xóa Form"
                                           form_id={formCore._id}
-                                          className=" min-w-[10rem] flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)]  text-text-theme rounded-lg  "
-                                    >
-                                          <span>Xóa form</span>
-                                    </ButtonDeleteForm>
+                                          className="  flex items-center gap-[1rem] p-[.5rem_.7rem]  text-text-theme rounded-lg  "
+                                    ></ButtonDeleteForm>
                                     <DivNative className=" flex items-center justify-center " title="Review">
                                           <ButtonNative
                                                 textContent={`Xem trước  `}

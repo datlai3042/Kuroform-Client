@@ -14,7 +14,8 @@ type TProps = {
 
 const ButtonSubmitForm = (props: TProps) => {
       const { formCore } = props;
-
+      const buttonBg = formCore.form_button_background;
+      const buttonColor = formCore.form_button_color;
       const segment = usePathname();
       const tempMode = segment.startsWith("/form") && segment.endsWith("/edit");
 
@@ -22,7 +23,6 @@ const ButtonSubmitForm = (props: TProps) => {
             formAnswer: { inputFormRequire, inputFormErrors, inputFormData, submitState, form_answer_id },
             setFormAnswer,
       } = useContext(FormAnswerContext);
-
 
       const submitFormMutation = useMutation({
             mutationKey: ["add new report form"],
@@ -41,7 +41,7 @@ const ButtonSubmitForm = (props: TProps) => {
             if (checkRequire && inputFormErrors.length === 0) {
                   const answers = inputFormData.map((ip) => {
                         if (ip.setting) delete ip.setting;
-                        
+
                         return ip;
                   });
 
@@ -72,10 +72,15 @@ const ButtonSubmitForm = (props: TProps) => {
       return (
             <div
                   onClick={handleSubmit}
-                  className="min-w-[10rem] w-max h-[3.2rem]  ml-auto flex items-center justify-center gap-[.5rem] rounded-[.4rem] hover:cursor-pointer bg-color-main"
+                  style={{ backgroundColor: buttonBg || "" }}
+                  className="min-w-[10rem] w-max h-[3.2rem] bg-color-main  ml-auto flex items-center justify-center gap-[.5rem] rounded-[.4rem] hover:cursor-pointer"
             >
-                  <ButtonNative textContent={formCore.form_button_text} className=" text-white text-[1.6rem] text-center px-[1rem]  w-max" />
-                  {submitState === "pending" && <LoadingSpinner color="#ffffff" width="min-w-[2.4rem]" height="min-h-[2.4rem]"/>}
+                  <ButtonNative
+                        style={{ color: buttonColor || "" }}
+                        textContent={formCore.form_button_text}
+                        className=" text-white text-[1.6rem] text-center px-[1rem]  w-max"
+                  />
+                  {submitState === "pending" && <LoadingSpinner color="#ffffff" width="min-w-[2.4rem]" height="min-h-[2.4rem]" />}
             </div>
       );
 };

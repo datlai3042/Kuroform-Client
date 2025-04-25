@@ -15,7 +15,7 @@ import { generateStyleBackgroundImageForm } from "@/app/utils/form.utils";
 import Image from "next/image";
 import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkMode";
 
-const FormBackground = () => {
+const FormBackground = ({ action }: { action?: "thumb" }) => {
       const { modeScreen, setModeScreen } = useContext(FormModeScreenContext);
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
       const [openModel, setOpenModel] = useState<boolean>(false);
@@ -32,24 +32,20 @@ const FormBackground = () => {
       };
 
       const myBackgroundStyle = generateStyleBackgroundImageForm({ formCore, mode: "edit" });
-
-      const paddingX = formCore.form_background?.padding.x;
-      const paddingY = formCore.form_background?.padding.y;
-
-      const padding = `${paddingY}% ${paddingX}%`;
+      console.log({myBackgroundStyle})
       return (
             <React.Fragment>
-                  <DivNativeRef onClick={() => setOpenModel(true)} className="absolute inset-0 z-[2]  hover:cursor-pointer max-h-[40rem] overflow-hidden">
-                        <div style={{ backgroundColor: formBackgroundColor, padding }} className="relative inset-0 min-h-full  w-full overflow-hidden ">
+                  <DivNativeRef onClick={() => setOpenModel(true)} className="absolute inset-0 z-[2]  hover:cursor-pointer max-h-full overflow-hidden">
+                        <div style={{ backgroundColor: formBackgroundColor,}} className="relative inset-0 min-h-full  w-full overflow-hidden ">
                               <Image
                                     src={formCore.form_background?.form_background_iamge_url || formCore.form_setting_default.form_background_default_url}
                                     width={800}
                                     height={160}
                                     quality={100}
-                                    style={myBackgroundStyle.style_background}
+                                    style={action !== "thumb" ? myBackgroundStyle.style_background : { objectFit: action === "thumb" ? "cover" : "unset" }}
                                     unoptimized={true}
                                     alt="form background"
-                                    className="bg absolute  w-full h-full max-h-[40rem]   rounded-lg"
+                                    className="bg absolute  w-full h-full   rounded-lg"
                               />
                         </div>
                   </DivNativeRef>
@@ -71,7 +67,7 @@ const FormBackground = () => {
                                     </DivNative>
                               </DivNative> */}
                               <DivNative
-                                    className={`${myBackgroundStyle.position_buttn} hidden group-hover:flex absolute gap-[1rem]  flex-col justify-center items-end   top-[2rem] xl:top-[80%]   z-[3]`}
+                                    className={`${myBackgroundStyle.position_buttn} hidden group-hover:flex absolute gap-[1rem]  flex-col justify-center items-end  bottom-[10%]   z-[3]`}
                               >
                                     {/* <div className="block xl:hidden">
                                           <ButtonDarkMode />

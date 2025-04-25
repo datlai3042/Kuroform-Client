@@ -6,6 +6,7 @@ import moment from "moment";
 import Link from "next/link";
 import LabelNewAnswer from "./LabelNewAnswer";
 import ButtonDeleteReport from "./ButtonDeleteReport";
+import { Maximize } from "lucide-react";
 moment.locale("vi");
 
 type TProps = {
@@ -93,7 +94,7 @@ const ViewOnceAnswer = (props: TProps) => {
             <Table className=" text-[1.4rem] !border-none" classContainer="h-full">
                   <TableHeader>
                         <TableRow>
-                              <TableHead className="w-[100px] whitespace-pre">Trạng thái</TableHead>
+                              <TableHead className="w-[100px] whitespace-pre">Phản hồi</TableHead>
                               {Object.keys(dataCol).map((dataColKey, index) => {
                                     return (
                                           <TableHead className="whitespace-pre" key={index}>
@@ -101,8 +102,6 @@ const ViewOnceAnswer = (props: TProps) => {
                                           </TableHead>
                                     );
                               })}
-                              <TableHead className=" whitespace-pre">Thời gian gửi</TableHead>
-                              <TableHead className=" whitespace-pre sticky right-[-1rem] z-[10] bg-color-section-theme">Thao tác</TableHead>
                         </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -120,9 +119,26 @@ const ViewOnceAnswer = (props: TProps) => {
                         })} */}
                         {formAnswer.reports?.map((rp, index) => {
                               return (
-                                    <TableRow key={index}>
-                                          <TableCell className="font-medium whitespace-pre flex items-center gap-[1rem]">
-                                                <span>Đã gửi</span>
+                                    <TableRow key={index} className="group">
+                                          <TableCell className="font-medium whitespace-pre flex items-center gap-[1rem] ">
+                                                <div className="font-medium flex justify-center" style={{width: 200}}>
+                                                      {moment(new Date(rp.createdAt)).format("HH:mm:ss  -  DD - MM - YYYY")}
+                                                </div>
+                                                <div className="invisible  group-hover:visible flex font-medium whitespace-pre sticky right-[-1rem] z-[10]  gap-[1rem]">
+                                                      <p
+                                                            className="font-medium whitespace-pre cursor-pointer h-full text-color-main "
+                                                            onClick={() => {
+                                                                  setFormAnswerDetail(() => {
+                                                                        return formAnswer?.reports.filter((fans) => fans._id === rp._id)[0] || null;
+                                                                  });
+                                                                  setOpenDetailAnswer(true);
+                                                            }}
+                                                      >
+                                                            <Maximize />
+                                                      </p>
+
+                                                      <ButtonDeleteReport formId={formCore._id} reportId={rp._id} title="Xóa trả lời này" />
+                                                </div>
                                                 {newData.includes(rp._id) && <LabelNewAnswer />}
                                           </TableCell>
 
@@ -175,26 +191,6 @@ const ViewOnceAnswer = (props: TProps) => {
                                                       </>
                                                 );
                                           })}
-                                          <TableCell className="font-medium whitespace-pre">
-                                                {moment(new Date(rp.createdAt)).format("HH:mm:ss  -  DD - MM - YYYY")}
-                                          </TableCell>
-                                          <TableCell className="font-medium whitespace-pre sticky right-[-1rem] z-[10] bg-color-section-theme flex gap-[1rem]">
-
-                                                <p
-                                                      className="font-medium whitespace-pre cursor-pointer hover:bg-[var(--color-main)] h-full text-text-theme hover:text-[#fff]"
-                                                      onClick={() => {
-                                                            setFormAnswerDetail(() => {
-                                                                  return formAnswer?.reports.filter((fans) => fans._id === rp._id)[0] || null;
-                                                            });
-                                                            setOpenDetailAnswer(true);
-                                                      }}
-                                                >
-                                                      Xem đầy đủ
-                                                </p>
-
-                                                <ButtonDeleteReport formId={formCore._id} reportId={rp._id} title="Xóa trả lời này" />
-
-                                          </TableCell>
                                     </TableRow>
                               );
                         })}

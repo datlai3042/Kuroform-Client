@@ -28,9 +28,9 @@ const FormAnswerAvatar = (props: TProps) => {
       };
       return (
             <div
-                  className={`${styleEffect.onCheckPositionAvatar(
-                        formCore?.form_avatar?.position,
-                  )} absolute top-0 translate-y-[-50%] w-[16rem]  aspect-square  flex justify-center`}
+                  className={`${styleEffect.onCheckPositionAvatar(formCore?.form_avatar?.position)} absolute ${
+                        formCore.form_styles === "GOOGLE_FORM" ? "top-0 translate-y-[-50%]" : "bottom-[-8rem]"
+                  } w-[16rem]  aspect-square  flex justify-center`}
             >
                   <Image
                         src={formCore.form_avatar?.form_avatar_url || formCore.form_setting_default.form_avatar_default_url}

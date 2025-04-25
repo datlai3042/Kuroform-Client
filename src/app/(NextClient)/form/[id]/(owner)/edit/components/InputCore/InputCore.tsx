@@ -14,6 +14,7 @@ import { useAddInputToEnter } from "@/app/hooks/useAddInputToEnter";
 import FormModeCustomSetting from "../FormModeCustomSetting";
 import useRemoveInputItem from "@/app/hooks/form/useRemoveInputItem";
 import { clearFormAnswer } from "@/app/_lib/redux/formAnswer.slice";
+import { renderColorFromFormThemes } from "@/app/utils/form.utils";
 
 type TProps = {
       InputComponent: React.ReactNode;
@@ -50,8 +51,6 @@ const InputCore = (props: TProps) => {
             removeInputItemAPI.mutate({ form_id: formCore._id, input_id: inputItem._id! });
       };
 
-      
-
       const onPressEnter = async (e: React.KeyboardEvent<HTMLDivElement>) => {
             if (e.key === "Enter") {
                   if (modeScreen === "FULL") {
@@ -78,10 +77,11 @@ const InputCore = (props: TProps) => {
                           position: "relative",
                     }
                   : "";
-
       return (
             <div
-                  className={`text-text-theme bg-color-section-theme  group flex flex-col justify-center gap-[.2rem] outline-none focus:cursor-move     rounded-[1.6rem]  `}
+                  className={`${renderColorFromFormThemes(
+                        formCore.form_themes,
+                  )}  bg-transparent  group flex flex-col justify-center gap-[.2rem] outline-none focus:cursor-move     rounded-[1.6rem]  `}
                   ref={setNodeRef}
                   {...attributes}
                   {...listeners}
@@ -89,15 +89,15 @@ const InputCore = (props: TProps) => {
                         {
                               ...style,
                               ...checkModeDisplay,
-                              opacity: isDragging ? .4: ''
+                              opacity: isDragging ? 0.4 : "",
                         } as React.CSSProperties
                   }
             >
-                  {title && <InputTitle inputItem={inputItem} dataTextTitle={dataTextTitle} />}
+                  {title && <InputTitle setChangeTitle={setTitle} inputItem={inputItem} dataTextTitle={dataTextTitle} />}
 
                   <DivWrapper className={` group relative min-h-[8rem] h-max flex   flex-col gap-[.8rem] `}>
                         {modeScreen === "NORMAL" && (
-                              <DivWrapper className="  text-[1.4rem] ">
+                              <DivWrapper className=" text-[1.4rem] ">
                                     <SectionOption
                                           openSetting={openSetting}
                                           setOpenSetting={setSetting}

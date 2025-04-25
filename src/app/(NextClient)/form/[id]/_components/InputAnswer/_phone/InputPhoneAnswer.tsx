@@ -66,7 +66,7 @@ const InputPhoneAnswer = (props: TProps) => {
       const isError = inputItemInArrayGlobal?.globalError?.state;
 
       return (
-            <InputAnswerWrapper>
+            <InputAnswerWrapper formCore={formCore}>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>

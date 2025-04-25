@@ -1,28 +1,29 @@
 "use client";
 import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
+import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
+import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNative";
 import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 import { RootState } from "@/app/_lib/redux/store";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import FormDesignTitle from "./FormDesignText";
-import FormDesignBackground from "./FormDesignBackground";
-import FormDesignText from "./FormDesignText";
-import FormDesignAvatar from "./FormDesignAvatar";
-import FormDesignFormMode from "./FormDesignFormMode";
 import useUpdateForm from "@/app/hooks/useUpdateForm";
-import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
-import ButtonNative from "@/app/(NextClient)/_components/ui/NativeHtml/ButtonNative";
+import { useDebouncedCallback, useMediaQuery } from "@mantine/hooks";
+import { ChevronsRight, X } from "lucide-react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import FormDesignAvatar from "./FormDesignAvatar";
+import FormDesignBackground from "./FormDesignBackground";
 import FormDesignColorAndSubmit from "./FormDesignColorAndSubmit";
-import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
-import { ChevronsLeft, ChevronsRight } from "lucide-react";
+import FormDesignText from "./FormDesignText";
 import SelectModeDesign from "./SelectModeDesign";
-import { useMediaQuery } from "@mantine/hooks";
-import { clearFormAnswer } from "@/app/_lib/redux/formAnswer.slice";
+import ButtonBackgroundColor from "./DesignCommon/ButtonBackgroundColor";
+import BoxChangeForm from "./BoxChangeForm";
+import FormDesignTheme from "./FormDesignTheme";
+import FormDesignStyle from "./FormDesignStyle";
+import FormDesignInput from "./FormDesignInput";
 
 export type ModeDesignForm = "TITLE" | "BACKGROUND" | "AVATAR" | "SUBMIT" | "SUB_TITLE";
 
 const FormDesignCustom = () => {
-      const { isDesignForm, setOpenModelNotSave, setIsDesginForm, setOpenFormDesign } = useContext(FormDesignContext);
+      const { isDesignForm, setOpenModelNotSave, setIsDesginForm, setOpenFormDesign, openButtonBottomSave } = useContext(FormDesignContext);
 
       const FormBackUp = useSelector((state: RootState) => state.form.formCoreBackUp);
       const formOriginal = useSelector((state: RootState) => state.form.formCoreOriginal);
@@ -31,6 +32,7 @@ const FormDesignCustom = () => {
       const dispatch = useDispatch();
       const [heightContent, setHeightContent] = useState(0);
       const contentRef = useRef<HTMLDivElement | null>(null);
+      const refDesignCommon = useRef<HTMLDivElement | null>(null);
       const onCloseFormDesign = () => {
             if (isDesignForm) {
                   return setOpenModelNotSave(true);
@@ -61,7 +63,6 @@ const FormDesignCustom = () => {
             let heightHeader = 0;
             let heightBottom = 0;
             let bottomBottom = 0;
-            console.log("run");
             const headerElement = document.getElementById("design-header");
             if (headerElement) {
                   heightHeader = headerElement.clientHeight || 0;
@@ -80,48 +81,128 @@ const FormDesignCustom = () => {
 
             setHeightContent(resultCalc);
       }, [matches]);
+      const isBgDefault = formOriginal.form_background_state && !formOriginal.form_background?.form_background_iamge_url;
+      const isAvatarDefault = formOriginal.form_avatar_state && !formOriginal.form_avatar?.form_avatar_url;
+      const handleBrowseResize = useDebouncedCallback(() => {
+            if (refDesignCommon.current) {
+                  const spaceTop = refDesignCommon.current.getBoundingClientRect().top;
+                  let heightBottomUI = 0;
+                  const bottomSave = document.getElementById("design-bottom");
+                  if (bottomSave) {
+                        heightBottomUI = bottomSave.getBoundingClientRect().height;
+                  }
+                  const viewHeight = window.innerHeight;
+                  const fullHeightDesignCommon = viewHeight - spaceTop - heightBottomUI - 20;
+                  refDesignCommon.current.style.height = `${fullHeightDesignCommon}px`;
+                  // setFullHeightDesignCommon(fullHeightDesignCommon);
+            }
+      }, 100);
+      useEffect(() => {
+            handleBrowseResize();
+            window.addEventListener("resize", handleBrowseResize);
 
+            return () => {
+                  window.removeEventListener("resize", handleBrowseResize);
+            };
+      }, []);
       return (
             <div
                   style={{ borderLeft: ".1rem solid var(--border-color-side)" }}
                   id={"section-design"}
-                  className="scroll-desgin-custom fixed z-[104] bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen  w-[28rem]  "
+                  className="scroll-desgin-custom  flex-1 fixed z-[104] bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen  w-[32rem]  "
             >
-                  <div className=" relative min-h-full h-max pb-[4rem] pr-[.8rem]  border-b-[.2rem] ">
+                  <div className=" relative min-h-full h-max pb-[4rem] px-[.8rem]  border-b-[.2rem] flex flex-col">
                         <div className="sticky top-0 right-0   bg-color-section-theme z-[2] " id="design-header">
                               <div className="flex flex-col items-center ">
-                                    <div className="w-full flex items-center py-[1rem] px-[1.6rem]  bg-color-section-theme z-[2]">
+                                    <div className="w-full flex items-center justify-between py-[1rem]   bg-color-section-theme z-[2]">
+                                          <p className="  text-[1.6rem]  font-medium text-center">Thiết kế giao diện</p>
+
                                           <ButtonIcon
                                                 className=" p-[.2rem] text-[1.3rem]  hover:bg-color-main text-text-theme hover:text-[#fff] rounded-lg"
-                                                Icon={<ChevronsRight className="w-[1.4rem]" />}
+                                                Icon={<X className="w-[1.4rem]" />}
                                                 onClick={onCloseFormDesign}
                                           />
-                                          <p className=" mx-auto text-[1.6rem]  font-medium text-center">Tùy biến giao diện</p>
                                     </div>
-                                    <SelectModeDesign modeDesign={modeDesign} setModeDesign={setModeDesign} />
+                                    {/* <SelectModeDesign modeDesign={modeDesign} setModeDesign={setModeDesign} /> */}
                               </div>
                         </div>
-                        <div ref={contentRef} className="relative w-full min-h-full h-max overflow-auto  ">
+                        <div ref={refDesignCommon} className="relative w-full min-h-full h-max overflow-auto pb-[8rem] md:pb-[2rem] pr-[1rem]">
                               {/* <FormDesignFormMode /> */}
 
-                              <div className="flex flex-col  gap-[2rem]  pt-[1rem]  overflow-auto  ">
-                                    {modeDesign === "SUBMIT" && <FormDesignColorAndSubmit />}
+                              <div className="flex flex-col  gap-[.8rem] px-[.4rem] text-[1.3rem]    ">
+                                    <div className="flex flex-col gap-[1.4rem]">
+                                          <div className="flex justify-between">
+                                                <p className="flex gap-[.4rem]">
+                                                      <h4>Themes</h4>
+                                                </p>
+                                          </div>
+                                          <FormDesignTheme />
+                                    </div>
+                                    <div className="flex flex-col gap-[1.4rem]">
+                                          <div className="flex justify-between">
+                                                <p className="flex gap-[.4rem]">
+                                                      <h4>Kiểu Form</h4>
+                                                </p>
+                                          </div>
+                                          <FormDesignStyle />
+                                    </div>
+                                    <div className="flex flex-col gap-[1.4rem]">
+                                          <div className="flex justify-between">
+                                                <p className="flex gap-[.4rem]">
+                                                      <h4>Background</h4>
+
+                                                      {isBgDefault && <span className="text-color-main font-bold"> - Mặc định</span>}
+                                                </p>
+                                          </div>
+                                          <FormDesignBackground />
+                                    </div>
+
+                                    <div className="flex flex-col gap-[0rem]">
+                                          <div className="flex justify-between">
+                                                <p className="flex gap-[.4rem]">
+                                                      <h4>Avatar</h4>
+                                                      {isAvatarDefault && <span className="text-color-main font-bold"> - Mặc định</span>}
+                                                </p>
+                                          </div>
+                                          <FormDesignAvatar />
+                                    </div>
+                                    <div className="flex flex-col gap-[1rem]">
+                                          <div className="flex justify-between">
+                                                <p className="flex gap-[.4rem]">
+                                                      <h4>Title</h4>
+                                                </p>
+                                          </div>
+                                          <FormDesignText title={"Tùy chỉnh tiêu đề chính"} type="Form" />
+                                    </div>
+
+                                    <div className="flex flex-col gap-[1.4rem]">
+                                          <div className="flex justify-between">
+                                                <p className="flex gap-[.4rem]">
+                                                      <h4>Input</h4>
+                                                </p>
+                                          </div>
+                                          <FormDesignInput />
+                                    </div>
+
+                                    {/* {modeDesign === "SUBMIT" && <FormDesignColorAndSubmit />}
                                     {modeDesign === "TITLE" && <FormDesignText title={"Tùy chỉnh tiêu đề chính"} type="Form" />}
                                     {modeDesign === "BACKGROUND" && <FormDesignBackground />}
                                     {modeDesign === "AVATAR" && <FormDesignAvatar />}
-                                    {modeDesign === "SUB_TITLE" && <FormDesignText title={"Tùy chỉnh tiêu đề phụ"} type="Common" />}
+                                    {modeDesign === "SUB_TITLE" && <FormDesignText title={"Tùy chỉnh tiêu đề phụ"} type="Common" />} */}
                               </div>
                         </div>
                         <div
                               id="design-bottom"
-                              className="fixed  sm:sticky bottom-[6rem] sm:bottom-0 right-0 px-[2rem] flex items-center h-[6rem] w-[25rem]   "
+                              className="w-[32rem] flex-shrink-1 ml-auto px-[.1rem]  fixed bottom-[6rem] md:bottom-[1rem] right-0 md:px-[2rem] flex items-center    "
                         >
-                              <ButtonNative
-                                    // style={{ backgroundColor: theme === "light" ? colorMain : "#fff" }}
-                                    textContent="Lưu"
-                                    onClick={onSaveDesign}
-                                    className="bg-color-main p-[.6rem_1rem] w-[10rem] ml-auto rounded-[.4rem] text-[#fff]"
-                              />
+                              <div className="p-[1rem] w-full bg-color-section-theme flex justify-end">
+                                    <ButtonNative
+                                          // style={{ backgroundColor: theme === "light" ? colorMain : "#fff" }}
+                                          textContent="Lưu"
+                                          onClick={onSaveDesign}
+                                          className="bg-color-main p-[.6rem_1rem] w-[10rem] ml-auto rounded-[.4rem] text-[#fff]"
+                                    />
+                              </div>
                         </div>
                   </div>
             </div>

@@ -2,11 +2,14 @@ import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormD
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import { onEditForm } from "@/app/_lib/redux/formEdit.slice";
 import { RootState } from "@/app/_lib/redux/store";
+import { checkRenderUnitValue, renderFormUnit } from "@/app/utils/form.utils";
 import { FormCore } from "@/type";
 import { useDebouncedCallback } from "@mantine/hooks";
 import { theme } from "antd";
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ButtonSelectUnit from "../ButtonSelectUnit";
+import { Settings } from "lucide-react";
 
 const ButtonBackgroundObject = () => {
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
@@ -27,32 +30,59 @@ const ButtonBackgroundObject = () => {
             },
       };
 
-      const objectX = formCore.form_background?.object.x;
-      const objectY = formCore.form_background?.object.y;
-
-      const onChangePosition = (object: number, type: "x" | "y") => {
+      const objectX = checkRenderUnitValue(formCore.form_background?.object.x, 100);
+      const objectY = checkRenderUnitValue(formCore.form_background?.object.y, 100);
+      const onChangePosition = useDebouncedCallback((object: number, type: "x" | "y") => {
             const formClone = structuredClone(formCore);
             const newForm: FormCore.Form = {
                   ...formClone,
                   form_background: {
                         ...formClone.form_background,
-                        object: { ...formClone.form_background?.object, [type]: object },
+                        object: {
+                              ...formClone.form_background?.object,
+                              [type]: {
+                                    value: object,
+                                    unit: formClone.form_background?.object[type]?.unit || "AUTO",
+                              },
+                        },
                   } as FormCore.Form["form_background"],
             };
 
             if (!isDesignForm) {
                   setIsDesginForm(true);
             }
+            console.log({ newForm });
+            dispatch(onEditForm({ form: newForm }));
+      }, 20);
+
+      const onChangeUnit = useDebouncedCallback((type: "x" | "y", value: FormCore.FormImageUnit) => {
+            const formClone = structuredClone(formCore);
+            const newForm: FormCore.Form = {
+                  ...formClone,
+                  form_background: {
+                        ...formClone.form_background,
+                        object: {
+                              ...formClone.form_background?.object,
+                              [type]: {
+                                    value: formClone.form_background?.object[type]?.value || 100,
+                                    unit: value,
+                              },
+                        },
+                  } as FormCore.Form["form_background"],
+            };
+            if (!isDesignForm) {
+                  setIsDesginForm(true);
+            }
 
             dispatch(onEditForm({ form: newForm }));
-      };
+      }, 20);
 
       return (
-            <div className=" flex  gap-[2rem]">
+            <div className=" flex  gap-[1rem]">
                   <div className="flex flex-col  gap-[.6rem] ">
-                        <span className="text-[1.3rem]">Cách lề X</span>
+                        <span className="text-[1.3rem]">Vị trí X</span>
                         <div
-                              className={`${styleEffect.onCheckHasBackground(formBackground)} w-[7rem] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
+                              className={`${styleEffect.onCheckHasBackground(formBackground)} w-[7rem] flex items-center gap-[.4rem] h-[3rem] p-[.2rem_1rem]
 border-[.1rem]   rounded-lg bg-design-size`}
                         >
                               <input
@@ -62,15 +92,20 @@ border-[.1rem]   rounded-lg bg-design-size`}
                                     className={` w-[80%] disabled:cursor-not-allowed  bg-design-size `}
                                     onChange={(e) => debounced(+e.target.value, "x")}
                               />
-
-                              <span className="opacity-75 text-text-theme">%</span>
+                              <ButtonSelectUnit
+                                    placeholder="Đơn vị trục X"
+                                    defaultValue={renderFormUnit(formCore.form_background?.object.x)}
+                                    onChangeUnit={(value) => {
+                                          onChangeUnit("x", value);
+                                    }}
+                              />
                         </div>
                   </div>
                   <div className="flex flex-col  gap-[.6rem] ">
-                        <span className="text-[1.3rem]">Cách lề Y</span>
+                        <span className="text-[1.3rem]">Vị trí Y</span>
 
                         <div
-                              className={`${styleEffect.onCheckHasBackground(formBackground)} w-[7rem] flex items-center gap-[1rem] h-[3rem] p-[.2rem_1rem]
+                              className={`${styleEffect.onCheckHasBackground(formBackground)} w-[7rem] flex items-center gap-[.4rem] h-[3rem] p-[.2rem_1rem]
 border-[.1rem] rounded-lg bg-design-size`}
                         >
                               <input
@@ -80,7 +115,14 @@ border-[.1rem] rounded-lg bg-design-size`}
                                     className={` w-[80%] disabled:cursor-not-allowed  bg-design-size`}
                                     onChange={(e) => debounced(+e.target.value, "y")}
                               />
-                              <span className="opacity-75 text-text-theme">%</span>
+
+                              <ButtonSelectUnit
+                                    placeholder="Đơn vị trục Y"
+                                    defaultValue={renderFormUnit(formCore.form_background?.object.y)}
+                                    onChangeUnit={(value) => {
+                                          onChangeUnit("y", value);
+                                    }}
+                              />
                         </div>
                   </div>
             </div>

@@ -59,7 +59,7 @@ const ButtonDeleteForm = (props: TProps) => {
                         onDeleteForm();
                   }}
                   {...rest}
-                  className={`${rest.className || ''} flex items-center gap-[1rem] p-[.5rem_.7rem] bg-transparent border-[.1rem] border-[var(--border-color-input)] hover:bg-red-600 text-[#fff] hover:text-[#fff] rounded-lg`}
+                  className={`${rest.className || ''} flex items-center gap-[1rem] p-[.5rem_.7rem] bg-transparent hover:bg-red-600 text-[#fff] hover:text-[#fff] rounded-lg`}
             >
                   {" "}
                   <Trash2 size={16} />

@@ -11,23 +11,22 @@ type FormResultBaseOnDate = {
 export const generateStyleBackgroundImageForm = ({ formCore, mode }: { formCore: FormCore.Form; mode: "edit" | "answer" }) => {
       const object = formCore.form_background?.object;
 
-      const postion = formCore.form_background?.position;
 
       const size = formCore.form_background?.size;
       const formBackgroundSize = formCore.form_background?.mode_show;
 
       const positionAvatar = formCore.form_avatar?.position;
+      const dicX = !object?.x?.unit || object.x.unit === 'AUTO' ? 'center' : `${object.x.value}${object.x.unit}`
+      const dicY = !object?.y?.unit || object.y.unit === 'AUTO' ? 'center' : `${object.y.value}${object.y.unit}`
 
       return {
             style_background: {
                   objectFit: formBackgroundSize,
-                  top: `${postion?.top ? postion?.top + '%' : '0%'}`,
-                  left: `${postion?.left ? postion?.left + '%' : '0%'}`,
-                  transform: `translate(${postion?.left || 0 * -1}%, ${postion?.top || 0 * -1}%)`,
-                  width:  `${size?.width ? size?.width + "%" : "100%"}`,
-                  height: `${size?.height ? size?.height + "%" : "100%"}`,
 
-                  objectPosition: ` ${object?.x}% ${object?.y}%`,
+                  width: `${size?.width ? size?.width + "px" : "100%"}`,
+                  height: `${size?.height ? size?.height + "px" : "100%"}`,
+
+                  objectPosition: ` ${dicX} ${dicY}`,
             },
 
             position_buttn: positionAvatar === "left" ? "right-[2rem] xl:right-[6rem]" : "left-[2rem] xl:left-[6rem]",
@@ -98,3 +97,103 @@ export const calcPercentForm = ({ formAnswer, formView }: { formAnswer: number; 
       let percent: number = (formAnswer / formView) * 100;
       return isNaN(percent) ? 0 : percent.toFixed(2);
 };
+
+export const checkRenderUnitValue = (formImage: FormCore.FormImageCustom | undefined, df: number) => {
+      return formImage ? formImage.value : df
+}
+
+export const renderFormUnit = (formImage: FormCore.FormImageCustom | undefined): FormCore.FormImageUnit => {
+      if (!formImage) {
+            return 'AUTO'
+      }
+      return formImage.unit
+}
+
+export const renderFormThemes = (form_themes: FormCore.Form['form_themes']) => {
+      if (form_themes === 'AUTO') {
+            return 'bg-color-section-theme'
+      }
+      if (form_themes === 'DARK') {
+            return 'bg-[var(--form-theme-dark)]'
+      }
+      return 'bg-[var(--form-theme-light)]'
+}
+
+export const renderColorFromFormThemes = (form_themes: FormCore.Form['form_themes']) => {
+      if (form_themes === 'AUTO') {
+            return 'text-text-theme'
+      }
+      if (form_themes === 'DARK') {
+            return 'text-[var(--form-theme-dark-color)]'
+      }
+      return 'text-[var(--form-theme-light-color)]'
+}
+
+
+export const renderInputStyles = (inputStyle: FormCore.Form['form_input_styles']) => {
+      let styles = {}
+      if (!inputStyle) {
+            styles = {
+                  ...styles,
+                  borderColor: 'var(--border-color-input)'
+            }
+      } else {
+            styles = {
+                  ...styles,
+                  borderColor: inputStyle?.borderColor
+            }
+      }
+
+      if (inputStyle?.borderWidth) {
+            styles = {
+                  ...styles,
+                  borderWidth: inputStyle?.borderWidth
+            }
+      }
+
+      if (inputStyle?.radius) {
+            styles = {
+                  ...styles,
+                  borderRadius: inputStyle?.radius
+            }
+      }
+      if (inputStyle?.color) {
+            styles = {
+                  ...styles,
+                  color: inputStyle?.color
+            }
+      }
+
+      return styles
+}
+
+export const renderUnitHeightValueBg = (formBG: FormCore.Form['form_background']) => {
+      if (!formBG?.size.height?.unit || formBG.size.height.unit === 'AUTO')
+            return { height: 200 }
+      else {
+            return { height: `${formBG.size.height.value}${formBG.size.height.unit}` }
+      }
+}
+
+export const renderUnitWidthValueBg = (formBG: FormCore.Form['form_background']) => {
+      if (!formBG?.size.width?.unit || formBG.size.width.unit === 'AUTO')
+            return { width: '100%' }
+      else {
+            return { width: `${formBG.size.width.value}${formBG.size.width.unit}` }
+      }
+}
+
+export const renderFormThemeAnswer = (formCore: FormCore.Form) => {
+      if (formCore.form_themes === 'AUTO') {
+            return 'bg-color-section-theme'
+      }
+      if (formCore.form_themes === 'DARK') {
+            return 'bg-[var(--form-theme-dark)]'
+      }
+      return 'bg-[var(--form-theme-light)]'
+}
+
+
+export const renderValueUnit = (value: number, unit: string) => {
+      return `${value}${unit}`
+}

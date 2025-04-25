@@ -22,9 +22,9 @@ const BoxHandlerInputAnswerError = (props: TProps) => {
                   // style={{borderColor: !!error?.error ? '':  colorMain,}}
                   className={`${
                         (error && error.error && write) || inputItemInArrayGlobal?.globalError?.state
-                              ? "input-answer-invalid  !text-[#e20f0f]"
-                              : " border-[.1rem] border-transparent"
-                  }  relative w-full min-h-[12rem]  text-text-theme h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[1rem]  rounded-lg`}
+                              ? "input-answer-invalid border-none  !text-[#e20f0f]"
+                              : "  border-transparent"
+                  }  relative w-full min-h-[12rem]  text-text-theme h-max p-[2rem_3rem] duration-300 transition-all flex flex-col justify-center gap-[1rem]  `}
             >
                   {children}
             </div>

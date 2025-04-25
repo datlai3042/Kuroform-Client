@@ -4,7 +4,7 @@ import { RootState } from "@/app/_lib/redux/store";
 import { UserType } from "@/app/_schema/user/user.type";
 import { Plus, Circle } from "lucide-react";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import { SidebarContext } from "../../SidebarContext";
 import DashBoardRightHeader from "../DashBoardRightHeader";
@@ -16,11 +16,13 @@ import { DashboardTotalFormV2 } from "../DashboardTotalFormV2";
 import DashboardTotalForm from "../DashboardTotalForm";
 import DashboardTotalView from "../DashboardTotalView";
 import DashboardTotalTopView from "../DashboardTotalTopView";
+import ButtonExpand from "../ButtonExpand";
 
 const DashBoardRight = () => {
       const { openSidebar, setOpenSidebar } = useContext(SidebarContext);
 
       const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
+      const [expand, setExpand] = useState(false);
 
       return (
             <div className={`  min-h-screen bg-color-gap-empty    h-max   flex flex-col  gap-[.4rem] text-[1.4rem] pb-[1rem] px-0`}>
@@ -32,23 +34,20 @@ const DashBoardRight = () => {
                   {/* <DashBoardRightHeader /> */}
                   {/* <DashBoardRightHeader /> */}
 
-                  <div className={`  w-full xl:w-full    flex flex-col gap-[.4rem] `}>
-                        <div className="w-full flex flex-col gap-[2rem] xl:gap-[3.2rem]  bg-color-section-theme p-[2rem_1.4rem] xl:p-[2rem]">
+                  <div className={` flex-1 w-full xl:w-full    flex flex-col gap-[.4rem] `}>
+                        <div  className={`${!expand ? ' gap-[2rem] xl:gap-[3.2rem]' : ''} w-full flex flex-col  bg-color-section-theme p-[2rem_1.4rem] xl:p-[2rem]`}>
                               <div className="flex justify-between">
                                     <p className="text-color-main font-bold text-[2rem] flex items-center gap-[1rem]">
                                           <Circle />
 
                                           <span>Phân tích chung</span>
                                     </p>
-                                    <ButtonCreateForm
-                                          textContent="Tạo Form"
-                                          urlNavigation="/"
-                                          className="flex  xl:[&]:p-[2px] !gap-[.5rem] !h-[3rem] !min-w-[10rem] !w-max !text-[1.3rem]"
-                                          position="LEFT"
-                                          icon={<Plus size={16} />}
-                                    />
+                                    <ButtonExpand active={expand} onClick={() => setExpand((prev) => !prev)} />
                               </div>
-                              <div className="flex flex-wrap items-center justify-between xl:justify-normal gap-[1.6rem] xl:gap-[2rem_1rem]">
+                              <div
+                                    style={expand ? {height: '.1rem', overflow: 'hidden', opacity: 0} : {opacity: 1}}
+                                    className="transition-all duration-300 flex flex-wrap items-center justify-between xl:justify-normal gap-[1.6rem] xl:gap-[2rem_1rem]"
+                              >
                                     {/* <div className="w-[50%] xl:w-[75%] h-full order-3 xl:order-2">
                                           <DashboardTotalWrapper />
                                     </div> */}
@@ -95,7 +94,7 @@ const DashBoardRight = () => {
                                     </div>
                               </div>
                         </div>
-                        <div className="min-h-[40rem] max-w-full w-full  xl:px-0">
+                        <div className="flex-1 flex min-h-[40rem] max-w-full w-full  xl:px-0">
                               <DashboardForms />
                         </div>
                   </div>

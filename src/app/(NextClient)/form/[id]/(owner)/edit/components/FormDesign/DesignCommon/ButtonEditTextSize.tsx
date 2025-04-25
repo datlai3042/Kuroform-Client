@@ -123,13 +123,13 @@ const ButtonEditTextSize = (props: TProps) => {
             <div ref={divColorRef} className="relative w-max  max-h-[8rem] xl:h-[4rem] py-[.3rem] flex items-center justify-between gap-[1rem] bg-transparent ">
                   <button
                         disabled={titleCoreSize <= 1}
-                        className="w-[3rem] h-[3rem] hover:text-[#fff] flex items-center justify-center rounded-[.4rem] disabled:cursor-not-allowed text-[3rem]  border-[.1rem] border-[var(--border-color-input)] bg-color-section-theme hover:border-none hover:bg-color-main"
+                        className="w-[2.6rem] h-[2.6rem] hover:text-[#fff] flex items-center justify-center rounded-[.4rem] disabled:cursor-not-allowed text-[3rem]  border-[.1rem] border-[var(--border-color-input)] bg-color-section-theme hover:border-none hover:bg-color-main"
                         onClick={() => debounced(titleCoreSize, "Decrease")}
                   >
                         -
                   </button>
 
-                  <div className="w-[6rem] flex items-center justify-center">
+                  <div className="w-[4rem] flex items-center justify-center">
                         <input
                               onClick={(e) => {
                                     e.stopPropagation();
@@ -140,12 +140,12 @@ const ButtonEditTextSize = (props: TProps) => {
                               max={typeEdit === "Form" ? 40 : 20}
                               onChange={(e) => debounced(+e.target.value, "Input")}
                               value={titleCoreSize}
-                              className="w-[5rem] h-[3.6rem] text-center  bg-color-section-theme  border-[.1rem] border-[var(--border-color-input)] text-text-theme rounded-lg outline-none"
+                              className="w-[5rem] h-[2.6rem] text-center  bg-color-section-theme  border-[.1rem] border-[var(--border-color-input)] text-text-theme rounded-lg outline-none"
                         />
                   </div>
                   <button
                         disabled={titleCoreSize >= 40}
-                        className="w-[3rem] h-[3rem]  hover:text-[#fff] flex items-center justify-center rounded-[.4rem] text-[2.6rem]  border-[.1rem] border-[var(--border-color-input)] bg-color-section-theme hover:border-none hover:bg-color-main disabled:cursor-not-allowed"
+                        className="w-[2.6rem] h-[2.6rem]  hover:text-[#fff] flex items-center justify-center rounded-[.4rem] text-[2.6rem]  border-[.1rem] border-[var(--border-color-input)] bg-color-section-theme hover:border-none hover:bg-color-main disabled:cursor-not-allowed"
                         onClick={() => debounced(titleCoreSize, "Increase")}
                   >
                         +

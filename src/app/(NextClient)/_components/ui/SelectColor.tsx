@@ -1,5 +1,5 @@
 import { FormCore, InputCore, ReactCustom } from "@/type";
-import React, { useCallback, useContext, useEffect, useRef } from "react";
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import DivNativeRef from "./NativeHtml/DivNativeRef";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,7 +24,7 @@ const SelectColor = (props: TProps) => {
 
       const divColorRef = useRef<HTMLDivElement | null>(null);
 
-      const formOriginal = useSelector((state: RootState) => state.form.formCoreOriginal);
+      const [defaultColor, setDefaultColor] = useState("");
       const dispatch = useDispatch();
 
       const globalClick = useCallback(
@@ -65,6 +65,13 @@ const SelectColor = (props: TProps) => {
                         return ip;
                   });
             }
+
+            if (typeEdit === "ButtonSubmitBackground") {
+                  newFormEdit.form_button_background = color;
+            }
+            if (typeEdit === "ButtonSubmitColor") {
+                  newFormEdit.form_button_color = color;
+            }
             dispatch(onEditForm({ form: newFormEdit }));
       };
 
@@ -76,6 +83,29 @@ const SelectColor = (props: TProps) => {
             };
       }, [globalClick]);
 
+      useEffect(() => {
+            let defaultColor = formCore.form_title.form_title_color;
+            switch (typeEdit) {
+                  case "Form":
+                        defaultColor = formCore.form_title.form_title_color
+                              ? formCore.form_title.form_title_color
+                              : (formCore.form_setting_default.form_title_color_default as string);
+
+                  case "Common":
+                        defaultColor = formCore.form_setting_default.input_color;
+
+                  case "Input":
+                        defaultColor = formCore.form_setting_default.input_color;
+                  case "ButtonSubmitBackground":
+                        defaultColor = formCore.form_button_background;
+
+                  case "ButtonSubmitColor":
+                        defaultColor = formCore.form_button_color;
+                  default:
+                        break;
+            }
+            setDefaultColor(defaultColor as string);
+      }, [formCore]);
       return (
             <DivNativeRef
                   ref={divColorRef}
@@ -83,8 +113,8 @@ const SelectColor = (props: TProps) => {
                   onBlur={() => setOpenColorModel(false)}
                   onClick={(e) => e.stopPropagation()}
             >
-                  <span>Màu chữ: </span>
-                  <ButtonPickerColor defaultColor={formCore.form_title.form_title_color || ""} onChange={onChangeColor} />
+                  {/* <span>Màu chữ: </span> */}
+                  <ButtonPickerColor defaultColor={defaultColor as string} onChange={onChangeColor} />
             </DivNativeRef>
       );
 };

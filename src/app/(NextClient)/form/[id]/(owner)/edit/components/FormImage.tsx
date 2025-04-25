@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import { FormCore } from "@/type";
 import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
+import { renderUnitHeightValueBg, renderUnitWidthValueBg } from "@/app/utils/form.utils";
 
 const FormImage = () => {
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
@@ -19,12 +20,13 @@ const FormImage = () => {
       // };
 
       const _checkBackground = formCore.form_background_state || formCore.form_background?.form_background_iamge_url;
-
+    
       return (
             <DivNative
+                  style={{ ...renderUnitHeightValueBg(formCore.form_background), ...renderUnitWidthValueBg(formCore.form_background) }}
                   className={` 
 
- group  relative w-full mx-auto  px-[4rem] xl:px-0 ${_checkBackground ? ' h-[40rem]': ''}`}
+ group  relative w-full mx-auto  px-[4rem] xl:px-0 ${_checkBackground ? " " : ""}`}
             >
                   {(formCore.form_background || formCore.form_background_state) && <FormBackground />}
 

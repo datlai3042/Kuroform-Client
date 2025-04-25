@@ -277,7 +277,11 @@ namespace FormCore {
 
       type FormAvatarPosition = "left" | "center" | "right";
       type FormAvatarMode = "circle" | "square";
-
+      type FormImageUnit = 'AUTO' | 'PX' | '%'
+      type FormImageCustom = {
+            value: number,
+            unit: FormImageUnit
+      } | null
       export interface uploadFile extends FormData {
             append(name: "file" | "form_id", value: string | Blob, fileName?: string): void;
       }
@@ -293,12 +297,12 @@ namespace FormCore {
                   left: number;
             };
             object: {
-                  x: number;
-                  y: number;
+                  x: FormImageCustom;
+                  y: FormImageCustom;
             };
             size: {
-                  width: number;
-                  height: number;
+                  width: FormImageCustom;
+                  height: FormImageCustom;
             };
             padding: {
                   x: number;
@@ -348,7 +352,14 @@ namespace FormCore {
             form_title: FormCore.FormTitle;
             form_views: number;
             form_response: number;
-
+            form_themes: 'LIGHT' | 'DARK' | 'AUTO'
+            form_styles: 'GOOGLE_FORM' | 'FULL_WIDTH'
+            form_input_styles: {
+                  borderColor?: string,
+                  borderWidth?: number,
+                  color?: string,
+                  radius?: number,
+            },
             form_background_state: boolean;
             form_avatar_state: boolean;
             createdAt?: string;
@@ -361,6 +372,8 @@ namespace FormCore {
             form_inputs: InputCore.InputForm[];
             form_color?: string,
             form_button_text: string,
+            form_button_color: string
+            form_button_background: string
       };
 
       namespace FormAnswer {

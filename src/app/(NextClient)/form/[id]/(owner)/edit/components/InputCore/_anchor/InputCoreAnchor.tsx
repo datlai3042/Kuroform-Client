@@ -8,6 +8,7 @@ import InputCore from "../InputCore";
 import superAnchorValidate from "@/app/(NextClient)/form/[id]/_components/InputAnswer/_validate/inputAnchor.validate";
 import InputValidateSuccess from "@/app/(NextClient)/form/[id]/_components/_common/InputValidateSuccess";
 import InputValidateError from "@/app/(NextClient)/form/[id]/_components/_common/InputValidateError";
+import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: TInputCore.InputAnchor.InputTypeAnchor;
@@ -42,18 +43,20 @@ const InputCoreAnchor = (props: TProps) => {
       };
 
       const InputPhone = (
-            <DivNative className="flex flex-col gap-[1rem] text-text-theme bg-color-section-theme">
+            <DivNative className="flex flex-col gap-[1rem] text-text-theme  bg-transparent">
                   <SpanNative
+                        style={{ color: formCore.form_input_styles.color || "var(--text-text-theme)" }}
                         textContent="Nhập liên kết của bạn"
                         className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"} text-[1.6rem] font-bold`}
                   />
                   <DivNative
-                        className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] bg-[var(--color-section-theme)] border-[.1rem] rounded-[.4rem] border-[var(--border-color-input)] focus:border-transparent `}
+                        style={{ ...renderInputStyles(formCore.form_input_styles) }}
+                        className={` relative min-h-[5rem] h-max flex items-center gap-[.5rem] p-[1rem]  border-[.1rem] rounded-[.4rem] border-[var(--border-color-input)] focus:border-transparent `}
                   >
                         <input
                               value={controlerInput.value.href}
                               onChange={(e) => onChangeValue(e.target.value)}
-                              className="w-[80%] h-full p-[1rem] rounded-lg text-[1.6rem]     outline-none  bg-[var(--color-section-theme)] "
+                              className="w-[80%] h-full  rounded-lg text-[1.6rem]  bg-inherit   outline-none  "
                               placeholder="Nhập đường dẫn liên kết của bạn"
                         />
                         <div className="absolute z-[2] right-[1rem]  opacity-70">www</div>

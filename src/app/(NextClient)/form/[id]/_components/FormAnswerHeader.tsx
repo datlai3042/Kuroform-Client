@@ -1,7 +1,8 @@
-import { generateStyleBackgroundImageForm } from "@/app/utils/form.utils";
+import { generateStyleBackgroundImageForm, renderValueUnit } from "@/app/utils/form.utils";
 import { FormCore } from "@/type";
 import Image from "next/image";
 import React, { useEffect } from "react";
+import FormAnswerAvatar from "./_avatar/FormAnswerAvatar";
 
 type TProps = {
       formCore: FormCore.Form;
@@ -17,19 +18,26 @@ const FormAnswerHeader = (props: TProps) => {
 
       const formBackgroundSize = formCore.form_background?.mode_show;
 
-      const paddingX = formCore.form_background?.padding.x || 0;
-      const paddingY = formCore.form_background?.padding.y || 0;
-      const padding = `${paddingY}% ${paddingX}%`;
-
       const myBackgroundStyle = generateStyleBackgroundImageForm({ formCore, mode: "answer" });
-
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
+      const heightBg = formCore.form_background?.size.height?.value ? true : false;
       return (
-            <div className="relative w-full h-[32.5rem] rounded-2xl max-h-[32.5rem] ">
+            <div
+                  style={{
+                        height: heightBg
+                              ? renderValueUnit(
+                                      formCore.form_background?.size.height?.value as number,
+                                      formCore.form_background?.size.height?.unit as FormCore.FormImageUnit,
+                                )
+                              : 200,
+                  }}
+                  className={`${isGoogleForm ? " h-[32.5rem] rounded-2xl max-h-[32.5rem]" : "w-full"} relative w-full `}
+            >
                   {(formCore.form_background?.form_background_iamge_url || formCore.form_background_state) && (
                         // <div className="absolute top-[50%] translate-x-[-50%] mx-auto">
                         <div
-                              style={{ backgroundColor: formCore.form_background?.backgroundColor || "#fff", padding }}
-                              className="w-full h-full rounded-2xl relative overflow-hidden"
+                              style={{ backgroundColor: formCore.form_background?.backgroundColor || "#fff" }}
+                              className={`${isGoogleForm ? "rounded-2xl overflow-hidden" : ""} w-full h-full  relative `}
                         >
                               <Image
                                     style={myBackgroundStyle.style_background}
@@ -42,6 +50,10 @@ const FormAnswerHeader = (props: TProps) => {
                               />
                         </div>
                         // </div>
+                  )}
+
+                  {(formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state) && formCore.form_styles !== "GOOGLE_FORM" && (
+                        <FormAnswerAvatar formCore={formCore} />
                   )}
 
                   {!formCore.form_background?.form_background_iamge_url && !formCore.form_background_state && (

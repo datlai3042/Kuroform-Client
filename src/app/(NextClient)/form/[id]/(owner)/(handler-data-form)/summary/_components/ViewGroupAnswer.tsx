@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import moment from "moment";
 import LabelNewAnswer from "./LabelNewAnswer";
+import { Circle } from "lucide-react";
 moment.locale("vi");
 
 type TProps = {
@@ -44,16 +45,22 @@ const ViewGroupAnswer = (props: TProps) => {
 
       return (
             <>
-                  <div className="flex h-full gap-[8rem] flex-nowrap overflow-auto pb-[3rem] normal-scroll">
+                  <div className="flex flex-col h-full gap-[4rem] flex-nowrap overflow-auto pb-[3rem] normal-scroll">
                         {Object.keys(dataGroupFilter).map((dt, i) => {
                               const type = dt.split("_#_")[1] as InputCore.InputForm["type"];
                               return (
                                     <div key={dt + i} className="whitespace-pre  flex flex-col gap-[1.2rem]  ">
-                                          <h3 className="pl-[.4rem] text-[2.1rem] font-medium text-color-main">{dataGroupFilter[dt][0]?.title}</h3>
+                                          <h3 className="pl-[.4rem] text-[2.1rem] flex items-center justify-between gap-[.8rem] font-medium text-color-main">
+                                                <p className="flex items-center gap-[.6rem]">
+                                                      <Circle size={16}/>
+                                                      <span>{dataGroupFilter[dt][0]?.title}</span>
+                                                </p>
+                                                <span className="text-[1.4rem]">{dataGroupFilter[dt].length} phản hồi</span>
+                                          </h3>
                                           {type === "OPTION" && <AnalysisAnswer data={dataGroupFilter[dt] as InputData[]} />}
                                           {type === "OPTION_MULTIPLE" && <AnalysisAnswer data={dataGroupFilter[dt] as InputData[]} />}
 
-                                          <div className="w-full flex flex-col gap-[1.6rem] normal-scroll overflow-auto  pb-[.8rem] ">
+                                          <div className="w-full flex flex-col gap-[1.6rem]   pb-[.8rem] ">
                                                 {dataGroupFilter[dt].map((info, i) => {
                                                       return (
                                                             <div

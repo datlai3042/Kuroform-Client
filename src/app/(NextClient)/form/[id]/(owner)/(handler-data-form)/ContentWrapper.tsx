@@ -31,7 +31,7 @@ const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
       }, []);
 
       return (
-            <div className="control-wrapper" style={{ maxHeight: heightContent, minHeight: minHeightContent, height: heightContent }}>
+            <div className="control-wrapper" style={{  minHeight: '100%', }}>
                   {children}
             </div>
       );

@@ -39,7 +39,7 @@ const AnalysisAnswer = (props: TProps) => {
                                                 }}
                                                 className="min-w-[16%] truncate rounded-[.4rem_0rem_0rem_.4rem]  min-h-[3rem] p-[.8rem_1rem] bg-gray-200  text-gray-400 hover:cus "
                                           >
-                                                <span>Người dùng không nhập thông tin</span>
+                                                <span>-</span>
                                           </div>
                                     </div>
                                     <p style={{ direction: "ltr" }} className=" min-w-[10rem] flex justify-between ">

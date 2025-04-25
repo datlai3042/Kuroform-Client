@@ -12,6 +12,7 @@ import FormAnswerHeader from "./FormAnswerHeader";
 import RenderInputAnswers from "./RenderInputAnswers";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkMode";
+import { renderFormThemeAnswer } from "@/app/utils/form.utils";
 type TProps = {
       formCore: FormCore.Form;
       form_answer_id: string;
@@ -51,19 +52,28 @@ const FormAnswerCore = (props: TProps) => {
 
       const renderBgColor = theme === "light" ? "transparent" : "var(--bg-dark-readOnly)";
       const bgButtonDarkMode = theme === "light" ? {} : { background: "var(--color-main)" };
+
+      const formThemes = renderFormThemeAnswer(formCore);
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
       return (
             <DivNative
-                  style={{ backgroundColor: renderBgColor }}
-                  className="px-[2rem] min-h-screen xl:px-0 flex justify-center   p-[2rem_2rem_4rem_2rem] w-full h-full"
+                  style={{ backgroundColor: !formThemes ? renderBgColor : "" }}
+                  className={`${formThemes} ${
+                        isGoogleForm ? "px-[2rem]  p-[2rem_2rem_4rem_2rem] xl:px-0" : ""
+                  }  min-h-screen  flex justify-center   w-full h-full`}
             >
-                  <DivNative className="w-full sm:w-[72rem] flex flex-col gap-[1rem] ">
+                  <DivNative className={`${isGoogleForm ? "w-full sm:w-[75rem]" : "w-full"} flex flex-col gap-[1rem] `}>
                         {(formCore.form_background?.form_background_iamge_url || formCore.form_background_state) && (
                               <DivNative className="relative w-full ">
                                     <FormAnswerHeader formCore={formCore} />
                               </DivNative>
                         )}
-                        <DivNative className={`${formCore.form_avatar?.form_avatar_url ? "mt-[4rem]" : ""} w-full rounded-lg`}>
-                              <DivNative className="flex flex-col gap-[3rem] pb-[20rem]">
+                        <DivNative
+                              className={`${formCore.form_avatar?.form_avatar_url && isGoogleForm ? "mt-[4rem]" : ""} ${
+                                    isGoogleForm ? "w-full" : `w-[80vw]  mx-auto ${renderFormThemeAnswer(formCore)}`
+                              } rounded-lg`}
+                        >
+                              <DivNative className="flex flex-col gap-[5rem] pb-[20rem]">
                                     <FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
                                           <RenderInputAnswers formCore={formCore} />
                                     </FormAnswerProvider>

@@ -12,20 +12,29 @@ type TProps = {
 
 const InputAnswerTitle = (props: TProps) => {
       const { formCore, inputItem, error, isError } = props;
-      const {theme} = useContext(ThemeContext)
+      const { theme } = useContext(ThemeContext);
       const styleEffect = {
             styleTitle: () => {
                   return {
                         fontSize: inputItem.core.setting.input_size || formCore.form_setting_default.input_size,
-                        color: isError ? "inherit" : theme === 'dark' ? 'var(--text-theme)' : inputItem.core.setting.input_color || formCore.form_setting_default.input_color,
+                        color: isError
+                              ? "inherit"
+                              : formCore.form_input_styles.color
+                              ? formCore.form_input_styles.color
+                              : theme === "dark"
+                              ? "var(--text-theme)"
+                              : inputItem.core.setting.input_color || formCore.form_setting_default.input_color,
                         fontStyle: inputItem.core.setting.input_style || formCore.form_setting_default.input_style,
                   };
             },
       };
-      console.log({formCore})
       return (
             <div className="flex items-center gap-[1.4rem]">
-                  <Circle style={{color: isError ? 'inherit'  : theme === 'dark' ? 'var(--text-theme)' : 'var(--color-main)'}} className=" font-semibold" width={17} />
+                  <Circle
+                        style={{ color: isError ? "inherit" : theme === "dark" ? "var(--text-theme)" : "var(--color-main)" }}
+                        className=" font-semibold"
+                        width={17}
+                  />
 
                   <p style={styleEffect.styleTitle()} className="flex items-center gap-[.6rem] text-[2rem] font-medium">
                         {inputItem.input_title || "Không có tiêu đề"}

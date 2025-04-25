@@ -51,7 +51,7 @@ const InputCoreAddress = (props: TProps) => {
       };
 
       const InputAddress = (
-            <div className="flex flex-col gap-[1rem] bg-color-section-theme">
+            <div className="flex flex-col gap-[1rem]  bg-transparent">
                   <ModelAddress detail={true} onChange={onChangeAddress} />
                   <div className="flex flex-col  gap-[1rem]   justify-center">
                         {(controlerInput.validate || controlerInput.value.addressString) && (

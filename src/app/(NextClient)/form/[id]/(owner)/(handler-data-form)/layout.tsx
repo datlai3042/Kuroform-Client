@@ -27,7 +27,6 @@ const HanderlDataFormLayout = ({ params, children }: { params: { id: string }; c
       });
       useEffect(() => {
             if (!formAnswer && getFormAnswer.isSuccess ) {
-                  console.log('map')
                   if( getFormAnswer.data.metadata.formAnswer) {
                         getFormAnswer.refetch().then((payload) => {
                               const { formAnswer } = payload!.data!.metadata;

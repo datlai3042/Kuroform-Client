@@ -4,6 +4,7 @@ import { RootState } from "@/app/_lib/redux/store";
 import FormService from "@/app/_services/form.service";
 import useDeleteTitleSubItem from "@/app/hooks/title_form/useDeleteTitleSubItem";
 import useSetTitleSubDescription from "@/app/hooks/title_form/useSetTitleSubDescription";
+import { renderColorFromFormThemes } from "@/app/utils/form.utils";
 import { FormCore } from "@/type";
 import { UniqueIdentifier } from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
@@ -73,7 +74,6 @@ const FormTitleFullDescription = (props: TProps) => {
             deleteTitleSubItem.mutate({ form_id: formCore._id, title_sub_id: subTitleItem._id });
       };
 
-
       const style = {
             transition,
             transform: CSS.Transform.toString(transform),
@@ -83,7 +83,9 @@ const FormTitleFullDescription = (props: TProps) => {
             <div className="flex flex-col gap-[.4rem] outline-none " ref={setNodeRef} {...attributes} {...listeners} style={style}>
                   <button
                         tabIndex={-1}
-                        className="flex items-center gap-[.5rem] text-[1.4rem] font-bold text-textHeader hover:text-slate-800"
+                        className={`${renderColorFromFormThemes(
+                              formCore.form_themes,
+                        )} flex items-center gap-[.5rem] text-[1.4rem] font-bold  hover:text-slate-800`}
                         onClick={handleDelete}
                         disabled={deleteTitleSubItem.isPending}
                   >
@@ -91,7 +93,9 @@ const FormTitleFullDescription = (props: TProps) => {
                         Xóa
                   </button>
                   <div
-                        className="border-none py-[.4rem] outline-none xl:max-w-[80rem] break-all leading-8  font-semibold"
+                        className={`${renderColorFromFormThemes(
+                              formCore.form_themes,
+                        )} border-none py-[.4rem] outline-none xl:max-w-[80rem] break-all leading-8  font-semibold`}
                         contentEditable={setTitleSubDescription.isPending ? false : true}
                         onKeyDown={onKeyEnter}
                         onBlur={(e) => onSetValue(e, "Header")}
@@ -103,11 +107,13 @@ const FormTitleFullDescription = (props: TProps) => {
                   </div>
 
                   <div
-                        className="border-none py-[.4rem] outline-none xl:max-w-[80rem] break-all leading-8 opacity-70"
+                        className={`${renderColorFromFormThemes(
+                              formCore.form_themes,
+                        )} border-none py-[.4rem] outline-none xl:max-w-[80rem] break-all leading-8 opacity-70`}
                         contentEditable={true}
                         onKeyDown={onKeyEnter}
                         onBlur={(e) => onSetValue(e, "Value")}
-                        data-text={content.value || "Nhập mô tả"}
+                        data-text={content.value || "Nhập nội dung"}
                         spellCheck={false}
                         tabIndex={0}
                         suppressContentEditableWarning={true}

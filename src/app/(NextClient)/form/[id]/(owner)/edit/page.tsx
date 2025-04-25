@@ -13,33 +13,57 @@ import { CSS } from "styled-components/dist/types";
 import { useSelectedLayoutSegment, useSelectedLayoutSegments } from "next/navigation";
 import { SidebarContext } from "@/app/(NextClient)/(user)/dashboard/SidebarContext";
 import { Link } from "lucide-react";
+import { useDebouncedCallback } from "@mantine/hooks";
 
 const EditFormPage = ({ params }: { params: { id: string } }) => {
       const { modeScreen } = useContext(FormModeScreenContext);
       const { openFormDesign } = useContext(FormDesignContext);
-      const { openSidebar, widthSidebar } = useContext(SidebarContext);
+      const { openSidebar } = useContext(SidebarContext);
 
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
       const colorMain = useSelector((state: RootState) => state.form.colorCore);
       const [widthSectionDesign, setWidthSectionDesin] = useState(0);
+      const [widthSidebar, setWidthSidebar] = useState(0);
+
 
       const formColor = formCore.form_color || "bg-color-section-theme";
-
-      useEffect(() => {
+      const handlerBrowserResize = useDebouncedCallback(() => {
             const sectionDesign = document.getElementById("section-design");
+            const sectionSidebar = document.getElementById("section-sidebar");
+
             if (sectionDesign) {
                   const widthSectionDesign = sectionDesign.clientWidth || 0;
                   setWidthSectionDesin(widthSectionDesign);
             } else {
                   setWidthSectionDesin(0);
             }
-      }, [openFormDesign]);
+
+
+            if (sectionSidebar) {
+                  const widthSectionbar = sectionSidebar.clientWidth || 0;
+                  setWidthSidebar(widthSectionbar);
+            } else {
+                  setWidthSidebar(0);
+            }
+      }, 60);
+      useEffect(() => {
+            handlerBrowserResize();
+      }, [openFormDesign, handlerBrowserResize, openSidebar]);
+
+      useEffect(() => {
+            window.addEventListener('resize', handlerBrowserResize)
+
+            return () => {
+            window.removeEventListener('resize', handlerBrowserResize)
+
+            }
+      }, [])
       return (
             <div
                   className={` flex flex-col min-h-screen h-max  `}
                   style={
                         {
-                              width: modeScreen === "NORMAL" ? `calc(100vw - ${widthSectionDesign}px - ${widthSidebar}px - ${10}px)` : "100vw",
+                              width: modeScreen === "NORMAL" ? `calc(100vw - ${widthSectionDesign+10}px - ${widthSidebar}px ` : "100vw",
                               "--bg-input-core": colorMain,
                         } as CSS.Properties
                   }

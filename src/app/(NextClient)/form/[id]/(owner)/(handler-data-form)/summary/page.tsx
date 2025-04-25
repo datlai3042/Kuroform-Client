@@ -45,7 +45,7 @@ const SummaryFormPage = () => {
                         ]}
                   />
 
-                  <div className="mt-[1rem]  flex-1 flex flex-col gap-[2.6rem]   text-text-theme overflow-auto ">
+                  <div className="mt-[1rem]  flex-1 flex flex-col gap-[2.6rem]   text-text-theme ">
                         {formAnswer && formAnswer.formAnswer && typeView === "Once" && (
                               <ViewOnceAnswer
                                     formAnswer={formAnswer.formAnswer}

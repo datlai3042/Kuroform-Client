@@ -10,7 +10,13 @@ import { useDispatch, useSelector } from "react-redux";
 import ButtonPickerColor from "./ButtonPickerColor";
 import { Circle } from "lucide-react";
 
-const ButtonBackgroundColor = () => {
+type TProps = {
+      direction?: "row" | "col";
+};
+
+const ButtonBackgroundColor = (props: TProps) => {
+      const { direction = "row" } = props;
+
       const dispatch = useDispatch();
 
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
@@ -31,21 +37,22 @@ const ButtonBackgroundColor = () => {
       const formBackground = !!formCore.form_background?.form_background_iamge_url || formCore.form_background_state;
 
       return (
-            <div className="flex flex-col gap-[1rem] mt-[1rem]">
+            <div className="flex flex-col gap-[1rem] ">
                   <button
                         disabled={!formBackground}
                         onClick={() => setOpenModelColor((prev) => !prev)}
-                        className="relative flex items-center gap-[.8rem] h-[3rem]"
+                        style={{ flexDirection: direction === "row" ? "row" : "column" }}
+                        className="w-full relative flex items-center gap-[.8rem] h-[3rem]"
                   >
-                        <p>Màu nền: </p>
+                        {/* <p>Màu nền: </p> */}
                         <div className="flex items-center justify-center ">
                               <ButtonPickerColor onChange={onChangeColor} defaultColor={formCore.form_background?.backgroundColor || ""} />
                         </div>
                   </button>
-                  <p className="flex gap-[1rem] text-[1.2rem] opacity-55 mt-[1rem]">
+                  {/* <p className="flex gap-[1rem] text-[1.2rem] opacity-55 mt-[1rem]">
                         <Circle className="text-color-main min-w-max"/>
                         <span className="text-justify">Khi hình ảnh quá nhỏ thì màu nền sẽ phủ tiếp cho bức ảnh, còn bức ảnh vừa thì màu nền sẽ không hiển thị</span>
-                  </p>
+                  </p> */}
             </div>
       );
 };

@@ -62,18 +62,17 @@ body.dark :where(.css-dev-only-do-not-override-98ntnt).ant-rate .ant-rate-star-f
       background-color: var(--color-main) !important;
 }
 
-
 /*
       border tab active
 */
 .ant-tabs-tab-active {
-      border-bottom: .1rem solid var(--color-main) !important; /* đổi #1890ff thành màu bạn muốn */
-    }
-    
-    /* Nếu bạn dùng dòng dưới tab như mặc định */
-    .ant-tabs-ink-bar {
-      background:  var(--color-main) !important; /* màu của thanh gạch dưới tab */
-    }
+      border-bottom: 0.1rem solid var(--color-main) !important; /* đổi #1890ff thành màu bạn muốn */
+}
+
+/* Nếu bạn dùng dòng dưới tab như mặc định */
+.ant-tabs-ink-bar {
+      background: var(--color-main) !important; /* màu của thanh gạch dưới tab */
+}
 
 :where(.css-dev-only-do-not-override-98ntnt).ant-select-dropdown {
       background-color: var(--color-section-theme) !important;
@@ -154,6 +153,11 @@ body.dark .ant-rate-star-second {
             --chart-danger: 343.94deg 68.97% 49.95%;
             --chart-normal: 242.18deg 35.03% 30.78%;
             --chart-custom-v1: 160, 60%, 45%;
+            --form-theme-light: #fff;
+            --form-theme-dark: #08080b;
+            --form-theme-light-color: #000;
+            --form-theme-dark-color: #fff;
+
       }
 
       html {
@@ -167,7 +171,6 @@ body.dark .ant-rate-star-second {
             --bg-scrollbar-thumb-normal: #636363;
             --bg-scrollbar-track-normal: #e9e2e2;
             --bg-answer-option: rgb(180 183 189 / 42%);
-            
             --color-section-theme: #fefefe;
             --text-theme: #000;
             --border-color: hwb(0 10% 88% / 0.189);
@@ -178,8 +181,12 @@ body.dark .ant-rate-star-second {
             /* --bg-module-other: #17174b; */
 
             --bg-module-other: #e1e1e1ca;
-            --border-color-input: rgb(200 205 214 / 42%);
-            --border-color-side: rgb(200 205 214 / 42%);
+            /* --border-color-input: rgb(200 205 214 / 42%); */
+            --border-color-input: rgb(169 169 204 / 74%);
+
+            /* --border-color-side: rgb(200 205 214 / 42%); */
+            --border-color-side: rgb(200 205 214 / 74%);
+
             /* --color-btn-primarily: #2d68ff;ư */
       }
 
@@ -187,10 +194,11 @@ body.dark .ant-rate-star-second {
             --bg-form-nav: #393c73;
             --color-gap-empty: #000;
             /* --color-main: #3b36db; */
-            --bg-answer-option:  rgb(222 224 228);
+            --bg-answer-option: rgb(222 224 228);
 
-           
             --color-main: #35336a;
+            /* --color-section-theme: #0d1117; */
+
             --color-section-theme: #08112b;
             --text-theme: #ccc;
             --color-main-hover: rgb(229 231 235);
@@ -204,7 +212,6 @@ body.dark .ant-rate-star-second {
             --border-color-side: rgb(200 205 214 / 18%);
             --bg-scrollbar-thumb-normal: rgba(203, 191, 191, 0.758);
             --bg-scrollbar-track-normal: #2c2c2c;
-
       }
 
       body {
@@ -355,7 +362,6 @@ body.dark .ant-rate-star-second {
             border-radius: 0.1rem;
       }
 
-
       .normal-scroll::-webkit-scrollbar-thumb {
             cursor: pointer;
             /* background: var(--color-main); */
@@ -387,7 +393,7 @@ body.dark .ant-rate-star-second {
       }
 
       .showProjectInfo {
-            animation: showProjectInfo .4s ease-in-out both;
+            animation: showProjectInfo 0.4s ease-in-out both;
             z-index: 99999;
             position: fixed;
             max-height: 75vh;
@@ -399,6 +405,21 @@ body.dark .ant-rate-star-second {
             margin: 0 0.2rem;
             border-radius: 0.4rem;
       }
+
+      .show-bottom-not-save {
+            animation: btnNotSaveAnimate 0.3s ease-in-out both;
+      }
+
+      @keyframes btnNotSaveAnimate {
+            0% {
+                  top: -10%;
+            }
+
+            100% {
+                  top: 3rem;
+            }
+      }
+
       @keyframes showProjectInfo {
             0% {
                   top: 95%;
@@ -406,9 +427,7 @@ body.dark .ant-rate-star-second {
                   width: 75rem;
                   min-height: 46rem;
             }
-         
-           
-          
+
             100% {
                   width: 75rem;
                   min-height: 46rem;
@@ -416,7 +435,6 @@ body.dark .ant-rate-star-second {
                   left: 50%;
                   transform: translate3d(-50%, -50%, 0) scale(1);
                   opacity: 1;
-
             }
       }
 

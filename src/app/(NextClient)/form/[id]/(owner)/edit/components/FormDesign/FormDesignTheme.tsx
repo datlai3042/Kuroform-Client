@@ -3,15 +3,14 @@ import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvi
 import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import { FormCore } from "@/type";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const ButtonChangeModeBackground = () => {
-      const dispatch = useDispatch();
-
+const FormDesignTheme = () => {
+      const { theme } = useContext(ThemeContext);
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
       const { isDesignForm, setIsDesginForm } = useContext(FormDesignContext);
-      const { theme } = useContext(ThemeContext);
+      const dispatch = useDispatch();
 
       const styleEffect = {
             onCheckModeSelect: (check: boolean) => {
@@ -24,41 +23,44 @@ const ButtonChangeModeBackground = () => {
                   }
             },
       };
-
-      const onChangeModeBackground = (mode: "cover" | "contain") => {
+      const onChangeFormThemes = (mode: FormCore.Form["form_themes"]) => {
             if (!isDesignForm) {
                   setIsDesginForm(true);
             }
 
             const newFormEdit = structuredClone(formCore);
-            newFormEdit.form_background!.mode_show = mode;
+            newFormEdit.form_themes = mode;
 
             dispatch(onFetchForm({ form: newFormEdit }));
       };
-      const formBackground = !!formCore.form_background?.form_background_iamge_url || formCore.form_background_state;
-
       return (
-            <div className="w-full h-[3.2rem] flex items-center gap-[.8rem]">
+            <div className="w-full h-[3.2rem] flex justify-end items-center gap-[.8rem]">
                   <button
-                        disabled={!formBackground}
-                        onClick={() => onChangeModeBackground("contain")}
+                        onClick={() => onChangeFormThemes("AUTO")}
                         className={`${styleEffect.onCheckModeSelect(
-                              formCore.form_background?.mode_show === "contain",
+                              formCore.form_themes === "AUTO",
                         )} min-w-[8rem]  h-full rounded-lg disabled:cursor-not-allowed `}
                   >
-                        contain
+                        Auto
                   </button>
                   <button
-                        disabled={!formBackground}
-                        onClick={() => onChangeModeBackground("cover")}
+                        onClick={() => onChangeFormThemes("LIGHT")}
                         className={`${styleEffect.onCheckModeSelect(
-                              formCore.form_background?.mode_show === "cover",
+                              formCore.form_themes === "LIGHT",
+                        )} min-w-[8rem]  h-full rounded-lg disabled:cursor-not-allowed `}
+                  >
+                        Light
+                  </button>
+                  <button
+                        onClick={() => onChangeFormThemes("DARK")}
+                        className={`${styleEffect.onCheckModeSelect(
+                              formCore.form_themes === "DARK",
                         )} min-w-[8rem] h-full rounded-lg disabled:cursor-not-allowed `}
                   >
-                        cover
+                        Dark
                   </button>
             </div>
       );
 };
 
-export default ButtonChangeModeBackground;
+export default FormDesignTheme;

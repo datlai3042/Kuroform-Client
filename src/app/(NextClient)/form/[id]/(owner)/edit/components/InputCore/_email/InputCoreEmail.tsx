@@ -9,6 +9,7 @@ import { inputSettingText } from "@/app/_constant/input.constant";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import InputCore from "../InputCore";
+import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: TInputCore.InputEmail.InputTypeEmail;
@@ -50,16 +51,18 @@ const InputCoreEmail = (props: TProps) => {
       }, [modeScreen]);
 
       const InputEmail = (
-            <DivNative className="flex flex-col gap-[.3rem]  bg-color-section-theme">
+            <DivNative className="flex flex-col gap-[.8rem] bg-transparent">
                   <SpanNative
+                        style={{ color: formCore.form_input_styles.color || "var(--text-text-theme)" }}
                         textContent="Nhập email của bạn"
                         className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme "} text-[1.6rem] font-medium`}
                   />
                   <DivNative
-                        className={`text-text-theme relative min-h-[5rem] h-max flex items-center gap-[.5rem] border-[.1rem] bg-[var(--color-section-theme)] border-[var(--border-color-input)] focus:border-transparent  rounded-lg`}
+                        style={{ ...renderInputStyles(formCore.form_input_styles) }}
+                        className={`text-text-theme relative min-h-[5rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] focus:border-transparent  rounded-lg`}
                   >
                         <input
-                              className="w-[80%]  h-full p-[1rem] rounded-lg text-[1.6rem]   bg-[var(--color-section-theme)]   outline-none   "
+                              className="w-[80%]  h-full p-[1rem] rounded-lg text-[1.6rem]   bg-transparent   outline-none   "
                               ref={inputRef}
                               onKeyDown={onPressEnter}
                               onChange={(e) => setInputValue(e.target.value)}

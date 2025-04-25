@@ -67,7 +67,7 @@ const InputOptionAnswer = (props: TProps) => {
       const isError = inputItemInArrayGlobal?.globalError?.state;
 
       return (
-            <InputAnswerWrapper>
+            <InputAnswerWrapper formCore={formCore}>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>

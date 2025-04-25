@@ -6,7 +6,8 @@ import useGetWardWithPattern from "@/app/hooks/common/address/useGetWardWithPatt
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import { onFetchProvinces } from "@/app/_lib/redux/address.slice";
-import { UI } from "@/type";
+import { FormCore, UI } from "@/type";
+import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       onCheckFullField?: (check: boolean) => void;
@@ -68,6 +69,7 @@ const ModelAddress = (props: TProps) => {
 
       const provincesStore = useSelector((state: RootState) => state.address.provinces);
       const dispatch = useDispatch();
+      const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
 
       const provincesAPI = useGetAllProvinces();
       const districtAPI = useGetDistrictWithPattern({ province_code: province.code });
@@ -176,7 +178,7 @@ const ModelAddress = (props: TProps) => {
             }
       }, [province, district, ward, detailAddress]);
       return (
-            <div className=" flex flex-col gap-[1rem]">
+            <div className=" flex flex-col gap-[1rem] ">
                   <div className="flex flex-row flex-wrap gap-[2rem]">
                         <ModelScrollList
                               defaultValue={defaultValue?.province}
@@ -230,12 +232,14 @@ const ModelAddress = (props: TProps) => {
                   </div>
 
                   {detail && (
-                        <input
-                              value={detailAddress}
-                              onChange={(e) => setDetalAddress(e.target.value)}
-                              placeholder="Nhập địa chỉ chi tiết"
-                              className="heading-answer group w-full min-h-[3.8rem] px-[1rem] flex items-center  text-[1.4rem] break-words whitespace-pre-wrap bg-[var(--color-section-theme)] border-[.1rem] rounded-[.4rem] border-[var(--border-color-input)]  outline-none resize-none "
-                        />
+                        <div style={{ ...renderInputStyles(formCore.form_input_styles) }} className=" px-[1rem]">
+                              <input
+                                    value={detailAddress}
+                                    onChange={(e) => setDetalAddress(e.target.value)}
+                                    placeholder="Nhập địa chỉ chi tiết"
+                                    className="heading-answer group w-full min-h-[3.8rem] bg-inherit flex items-center  text-[1.4rem] break-words whitespace-pre-wrap   rounded-[.4rem]   outline-none resize-none "
+                              />
+                        </div>
                   )}
             </div>
       );

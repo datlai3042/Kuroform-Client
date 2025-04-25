@@ -59,7 +59,7 @@ const DashboardFormItem = (props: TProps) => {
                                           height={20}
                                           alt="avatar"
                                           unoptimized={true}
-                                          className="w-full h-full rounded-full"
+                                          className="w-full h-full rounded-full object-cover"
                                     />
                               )}
                         </div>

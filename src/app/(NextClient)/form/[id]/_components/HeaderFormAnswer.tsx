@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { FormCore } from "@/type";
 import React, { useContext } from "react";
@@ -14,7 +14,7 @@ type TProps = {
 
 const HeaderFormAnswer = (props: TProps) => {
       const { formCore } = props;
-      const {theme} = useContext(ThemeContext)
+      const { theme } = useContext(ThemeContext);
       const {
             formAnswer: { inputFormRequire },
       } = useContext(FormAnswerContext);
@@ -36,17 +36,35 @@ const HeaderFormAnswer = (props: TProps) => {
             }`,
       };
 
-      const marginTopWhenImageAppear = formCore.form_avatar_state || formCore.form_avatar?.form_avatar_url ? "mt-[8rem]" : "mt-0";
+      const marginTopWhenImageAppear = formCore.form_avatar_state || formCore.form_avatar?.form_avatar_url ? formCore.form_styles === 'GOOGLE_FORM' ?  "mt-[8rem]" : 'mt-[6rem]' : "mt-0";
 
-      const renderBorder = theme === 'dark' ? {  borderTop: `.1rem solid ${colorMain}` ,borderBottom: '.1rem solid var(--border-color-input)', borderLeft: '.1rem solid var(--border-color-input)', borderRight: '.1rem solid var(--border-color-input)'}: {borderTop: `.1rem solid ${colorMain}`}
+      const renderBorder =
+            formCore.form_styles !== "GOOGLE_FORM"
+                  ? {}
+                  : theme === "dark"
+                  ? {
+                          borderTop: `.1rem solid ${colorMain}`,
+                          borderBottom: ".1rem solid var(--border-color-input)",
+                          borderLeft: ".1rem solid var(--border-color-input)",
+                          borderRight: ".1rem solid var(--border-color-input)",
+                    }
+                  : { borderTop: `.1rem solid ${colorMain}` };
       return (
             <header
-                  style={{ ...renderBorder,  }}
+                  style={{ ...renderBorder }}
                   className={`${
-                        formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state ? "mt-[10rem]" : ""
-                  } relative w-full  min-h-[14rem] m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	 !border-t-[1.4rem]   bg-color-section-theme rounded-2xl`}
+                        formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state
+                              ? formCore.form_styles === "GOOGLE_FORM"
+                                    ? "mt-[10rem]"
+                                    : "mt-[3rem]"
+                              : ""
+                  } ${
+                        formCore.form_styles === "GOOGLE_FORM" ? "!border-t-[1.4rem]  bg-color-section-theme rounded-2xl" : ""
+                  } relative w-full  min-h-[14rem] m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	   `}
             >
-                  {(formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state) && <FormAnswerAvatar formCore={formCore} />}
+                  {(formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state) && formCore.form_styles === "GOOGLE_FORM" && (
+                        <FormAnswerAvatar formCore={formCore} />
+                  )}
                   <div className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}>
                         <h1 style={styleTitle} className=" font-light ">
                               {formCore?.form_title?.form_title_value}
@@ -97,7 +115,9 @@ const HeaderFormAnswer = (props: TProps) => {
                                           }
                                     })}
 
-                                    {inputFormRequire.length > 0 && <span className="text-red-600 text-[1.4rem] mt-[2rem] w-full">* Biểu thị câu hỏi bắt buộc</span>}
+                                    {inputFormRequire.length > 0 && (
+                                          <span className="text-red-600 text-[1.4rem] mt-[2rem] w-full">* Biểu thị câu hỏi bắt buộc</span>
+                                    )}
                               </div>
                         )}
                   </div>

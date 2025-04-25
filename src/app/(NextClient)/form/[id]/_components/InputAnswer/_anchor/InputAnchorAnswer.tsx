@@ -69,7 +69,6 @@ const InputAnchorAnswer = (props: TProps) => {
                   validateCallback: superAnchorValidate,
                   description: inputValue,
             });
-            console.log({ _next, message, type });
             setValidate(_next);
             if (_next) {
                   if (inputFormErrors.some((ip) => ip._id === inputItem._id)) {
@@ -84,7 +83,7 @@ const InputAnchorAnswer = (props: TProps) => {
       const isError = inputItemInArrayGlobal?.globalError?.state;
 
       return (
-            <InputAnswerWrapper>
+            <InputAnswerWrapper formCore={formCore}>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>

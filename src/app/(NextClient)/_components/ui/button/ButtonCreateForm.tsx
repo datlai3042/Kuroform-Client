@@ -7,11 +7,12 @@ import Link from "next/link";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import FormService from "@/app/_services/form.service";
 import { useRouter } from "next/navigation";
+import BoxLoading from "../BoxLoading";
 
 interface TProps extends ButtonCustomNavigation {
       icon?: React.ReactNode;
       position?: "LEFT" | "RIGHT";
-      isNotRedirect?:boolean
+      isNotRedirect?: boolean;
 }
 
 const ButtonCreateForm = (props: TProps) => {
@@ -34,13 +35,14 @@ const ButtonCreateForm = (props: TProps) => {
             <Link
                   onClick={() => createNewForm.mutate()}
                   tabIndex={-1}
-                  href={isNotRedirect ? '#' : urlNavigation}
+                  href={isNotRedirect ? "#" : urlNavigation}
                   {...AnchorProps}
                   className={`${AnchorProps.className} w-full xl:w-[17rem] h-[4rem]  p-[1rem_2rem] flex  justify-center items-center gap-[.8rem] text-[1.8rem] text-[#ffffff] bg-color-main opacity-[.95] hover:opacity-100 transition-colors duration-200 rounded-[.4rem]`}
             >
                   {position === "LEFT" && icon && icon}
                   {textContent}
                   {position === "RIGHT" && icon && icon}
+                  {createNewForm.isPending && <BoxLoading />}
             </Link>
       );
 };

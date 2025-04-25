@@ -7,16 +7,17 @@ import { clearFormAnswer } from "@/app/_lib/redux/formAnswer.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import { useUpdateTitleInput } from "@/app/hooks/useUpdateTitleInput";
 import { FormCore, InputCore } from "@/type";
-import React, { memo, useContext, useEffect, useRef, useState } from "react";
+import React, { memo, SetStateAction, useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 type TProps = {
       inputItem: InputCore.InputForm;
       dataTextTitle?: string;
+      setChangeTitle: React.Dispatch<SetStateAction<boolean>>;
 };
 
 const InputTitle = (props: TProps) => {
-      const { inputItem, dataTextTitle } = props;
+      const { inputItem, dataTextTitle, setChangeTitle } = props;
       const { modeScreen } = useContext(FormModeScreenContext);
       const { theme } = useContext(ThemeContext);
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
@@ -39,6 +40,9 @@ const InputTitle = (props: TProps) => {
       }, [updateTitleInput.isSuccess, updateTitleInput.isPending]);
 
       const onSetTitle = async (e: React.ChangeEvent<HTMLDivElement>) => {
+            if (!titleRef.current?.textContent) {
+                  setChangeTitle(false);
+            }
             if (titleRef.current && titleRef.current.textContent !== inputItem.input_title) {
                   titleRef!.current!.textContent = e.target.textContent;
                   const titleCurrent = titleRef.current.textContent || "";
@@ -80,14 +84,19 @@ const InputTitle = (props: TProps) => {
 
       return (
             <DivNative
-                  className={`$ min-h-[2rem] h-max mb-[1rem] flex items-center gap-[1rem] hover:cursor-pointer text-text-theme`}
+                  className={`$ min-h-[2rem] h-max mb-[1rem] flex items-center gap-[1rem] hover:cursor-pointer `}
                   onClick={() => {
                         focusCaretToEnd(titleRef.current);
                   }}
             >
                   {modeScreen === "NORMAL" && (
                         <DivNativeRef
-                              style={{ fontSize, fontStyle, color }}
+                              style={{
+                                    fontSize,
+                                    fontStyle,
+
+                                    color: formCore.form_input_styles.color || "var(--text-text-theme)",
+                              }}
                               className={`${
                                     formCore.form_mode_display === "custom" ? "title-input input-core-children" : ""
                               }  group max-w-full gap-[.5rem] break-all whitespace-pre-wrap h-max border-none outline-none resize-none text-[2rem] font-medium sm:text-[2.4rem] `}

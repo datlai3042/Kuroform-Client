@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import { onEditForm } from "@/app/_lib/redux/formEdit.slice";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import { Select } from "antd";
 
 type TProps = {};
 
@@ -67,73 +68,47 @@ const ButtonDesignAvatar = (props: TProps) => {
       };
 
       return (
-            <div className="px-[2rem] flex flex-col  gap-[2rem]">
-                  <div className="flex gap-[4rem] border-b-[.1rem] border-[var(--border-color-input)] pb-[2rem] ">
-                        <button
+            <div className=" flex flex-col  gap-[1rem]">
+                  <div className="flex flex-col gap-[.4rem]">
+                        <span className="text-end">Vị trí</span>
+                        <Select
                               disabled={!formAvatar}
-                              onClick={() => {
-                                    onChangeAvatarPosition("left");
-                                    setPositionAvatar("left");
-                              }}
-                              className={`${styleEffect.onCheckStyleActive(
-                                    positionAvatar === "left",
-                              )} w-[3.6rem] h-[3.6rem] disabled:cursor-not-allowed flex items-center justify-center     rounded-full  `}
-                        >
-                              <AlignLeft size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
-                        </button>
 
-                        <button
-                              disabled={!formAvatar}
-                              onClick={() => {
-                                    onChangeAvatarPosition("center");
-                                    setPositionAvatar("center");
+                              placeholder="Vị trí"
+                              className="customSelect"
+                              defaultValue="left"
+                              style={{ width: 180 }}
+                              onChange={(value: FormCore.FormAvatarPosition) => {
+                                    onChangeAvatarPosition(value);
+                                    setPositionAvatar(value);
                               }}
-                              className={`${styleEffect.onCheckStyleActive(
-                                    positionAvatar === "center",
-                              )} w-[3.6rem] h-[3.6rem] disabled:cursor-not-allowed flex items-center justify-center      rounded-full  `}
-                        >
-                              <AlignCenter size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
-                        </button>
-                        <button
-                              disabled={!formAvatar}
-                              onClick={() => {
-                                    onChangeAvatarPosition("right");
-                                    setPositionAvatar("right");
-                              }}
-                              className={`${styleEffect.onCheckStyleActive(
-                                    positionAvatar === "right",
-                              )} w-[3.6rem] h-[3.6rem] disabled:cursor-not-allowed flex items-center justify-center    rounded-full  `}
-                        >
-                              <AlignRight size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
-                        </button>
+                              options={[
+                                    { value: "left", label: "Bên trái" },
+                                    { value: "center", label: "Chánh giữa" },
+                                    { value: "right", label: "Bên phải" },
+                              ]}
+                        />
                   </div>
+                  <div className="flex flex-col gap-[.4rem]">
+                        <span className="text-end">Hình dáng</span>
+                        <Select
+                              disabled={!formAvatar}
 
-                  <div className="flex  gap-[4rem] justify-center ">
-                        <button
-                              disabled={!formAvatar}
-                              onClick={() => {
-                                    onChangeAvatarMode("circle");
-                                    setModeCurrent("circle");
+                              placeholder="Hình dáng"
+                              className="customSelect"
+                              defaultValue="circle"
+                              style={{ width: 180 }}
+                              onChange={(value: FormCore.FormAvatarMode) => {
+                                    onChangeAvatarMode(value);
+                                    setModeCurrent(value);
                               }}
-                              className={`${styleEffect.onCheckStyleActive(
-                                    modeCurrent === "circle",
-                              )} w-[3.6rem] h-[3.6rem] disabled:cursor-not-allowed flex items-center justify-center     rounded-full  `}
-                        >
-                              <Circle size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
-                        </button>
-                        <button
-                              disabled={!formAvatar}
-                              onClick={() => {
-                                    onChangeAvatarMode("square");
-                                    setModeCurrent("square");
-                              }}
-                              className={`${styleEffect.onCheckStyleActive(
-                                    modeCurrent === "square",
-                              )} w-[3.6rem] h-[3.6rem] disabled:cursor-not-allowed flex items-center justify-center     rounded-full  `}
-                        >
-                              <Square size={18} style={{ color: theme === "light" ? colorMain : "#fff" }} />
-                        </button>
+                              options={[
+                                    { value: "circle", label: "Hình tròn" },
+                                    { value: "square", label: "Hình vuông" },
+                              ]}
+                        />
                   </div>
+             
             </div>
       );
 };

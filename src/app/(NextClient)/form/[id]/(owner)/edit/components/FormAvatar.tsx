@@ -2,14 +2,20 @@ import ModelFormImage from "@/app/(NextClient)/_components/Model/ModelFormImage"
 import { FormCore } from "@/type";
 import { RootState } from "@/app/_lib/redux/store";
 
-import { generateStyleAvatarForm } from "@/app/utils/form.utils";
+import { generateStyleAvatarForm, renderUnitHeightValueBg, renderUnitWidthValueBg } from "@/app/utils/form.utils";
 
 import Image from "next/image";
 import React, { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormDesignProvider";
 
-const FormAvatar = () => {
+type TProps = {
+      action?: "thumb";
+};
+
+const FormAvatar = (props: TProps) => {
+      const { action } = props;
+
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
       const { openFormDesign } = useContext(FormDesignContext);
 
@@ -24,14 +30,18 @@ const FormAvatar = () => {
       });
 
       const _checkAvatar = formCore.form_background_state || formCore.form_background?.form_background_iamge_url;
+      const _checkBackground = formCore.form_background_state || formCore.form_background?.form_background_iamge_url;
+
+      const _backgroundHeight = formCore.form_background?.size?.height ? (_checkBackground ? formCore.form_background?.size?.height : "100%") : 200;
 
       return (
             <React.Fragment>
                   <div
                         className={`
-   ${openFormDesign ? "!max-h-[33rem] " : ""}
- ${_checkAvatar ? "min-h-[40rem] max-h-[40rem]" : ""}
+   ${openFormDesign ? " " : ""}
+ ${_checkAvatar ? " " : ""}
   w-full xl:max-w-[70rem] mx-auto  relative flex items-end h-[14rem]`}
+                        style={{ ...renderUnitHeightValueBg(formCore.form_background), ...renderUnitWidthValueBg(formCore.form_background) }}
                   >
                         <div className="absolute h-max w-full bottom-0 flex justify-center">
                               <div className="relative w-full ">
@@ -42,7 +52,9 @@ const FormAvatar = () => {
                                           quality={100}
                                           onClick={onControllModel}
                                           alt="avatar"
-                                          className={`${position} ${shape} object-cover absolute top-[0] translate-y-[-50%] z-[3] object-center w-[14rem] h-[14rem] xl:w-[16rem] xl:h-[16rem] hover:cursor-pointer `}
+                                          className={`${action !== "thumb" ? position : ""} ${
+                                                action !== "thumb" ? shape : ""
+                                          } object-cover absolute top-[0] translate-y-[-50%] z-[3] object-center w-[14rem] h-[14rem] hover:cursor-pointer `}
                                     />
 
                                     {/* {(!formCore.form_background?.form_background_iamge_url || !formCore.form_background_state) && (

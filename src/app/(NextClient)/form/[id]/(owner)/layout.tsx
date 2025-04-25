@@ -49,7 +49,7 @@ const FormModeLayout = ({ children, params }: { children: React.ReactNode; param
                                                       <HeaderHandlerLayout showHeaderAction={segment[1] === "edit"} />
 
                                                       <div className="flex-1  layout-down sm:mx-[.6rem]">
-                                                            <div className="h-[98.2%] ">
+                                                            <div className="min-h-[98.2%]  bg-color-section-theme ">
                                                                   <div id="content" className="h-full  bg-color-section-theme rounded-[.4rem] ">
                                                                         <FormChangeMode formPageMode={formPageMode} setFormPageMode={setFormPageMode}>
                                                                               {children}
