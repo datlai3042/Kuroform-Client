@@ -72,14 +72,18 @@ const InputPhoneAnswer = (props: TProps) => {
                         <InputContent>
                               <DivNative className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}>
                                     <input
+                                          style={{
+
+                                                ...RenderStyleInputAnswer.StyleTitle({
+                                                      formCore,
+                                                      inputItem,
+                                                }),
+                                          }}
                                           onFocus={onFocus}
                                           onBlur={onBlur}
                                           value={phone ? +phone : ""}
                                           type="number"
-                                          className={` ${RenderStyleInputAnswer.StyleTitle({
-                                                formCore,
-                                                inputItem,
-                                          })} ${
+                                          className={` ${
                                                 formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
                                           }  border-b-[.1rem] border-[var(--border-color-input)] h-full pb-[2rem]        outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                           placeholder="Nhập số điện thoại của bạn"

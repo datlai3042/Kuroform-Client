@@ -45,7 +45,7 @@ const InputCoreDate = (props: TProps) => {
       const dateRender = generateFullDateStringV2({ day: pickDate.day, month: pickDate.month, year: pickDate.year });
 
       const InputDate = (
-            <DivNative className="relative  bg-transparent flex flex-col items-start gap-[1rem] text-text-theme ">
+            <DivNative className="relative  bg-transparent flex flex-col items-start gap-[1rem] text-inherit ">
                   <button
                         onClick={() => setOpenModel((prev) => !prev)}
                         className="bg-color-main text-[#fff] p-[.6rem] rounded-[.4rem] flex items-center gap-[1rem] text-[1.3rem]"
@@ -61,7 +61,7 @@ const InputCoreDate = (props: TProps) => {
                         </div>
                   )}
 
-                  <p style={{ color: formCore.form_input_styles.color || "var(--text-text-theme)" }} className="text-[1.3rem]">
+                  <p style={{ color: formCore.form_input_styles.color || "inherit" }} className="text-[1.3rem]">
                         Thời gian đang chọn là:
                         <span className="text-color-main font-semibold"> {dateRender}</span>
                   </p>

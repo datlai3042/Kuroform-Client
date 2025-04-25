@@ -67,14 +67,18 @@ const InputEmailAnswer = (props: TProps) => {
                               <DivNative className="flex flex-col gap-[.3rem]">
                                     <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}>
                                           <input
-                                                style={{ borderBottom: ".1rem solid var(--border-color-input]" }}
+                                                style={{
+                                                      borderBottom: ".1rem solid var(--border-color-input]",
+
+                                                      ...RenderStyleInputAnswer.StyleTitle({
+                                                            formCore,
+                                                            inputItem,
+                                                      }),
+                                                }}
                                                 disabled={submitState === "pending"}
                                                 defaultValue={inputValue}
                                                 className={`
-							)}  ${RenderStyleInputAnswer.StyleTitle({
-                                                formCore,
-                                                inputItem,
-                                          })} ${
+							)}   ${
                                                 formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
                                           }   border-b-[.1rem] border-[var(--border-color-input)] h-full pb-[1rem]   outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                                 onChange={(e) => setInputValue(e.target.value)}

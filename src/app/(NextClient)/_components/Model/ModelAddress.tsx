@@ -232,7 +232,7 @@ const ModelAddress = (props: TProps) => {
                   </div>
 
                   {detail && (
-                        <div style={{ ...renderInputStyles(formCore.form_input_styles) }} className=" px-[1rem]">
+                        <div style={{ ...renderInputStyles(formCore.form_input_styles) }} className=" px-[1rem]  border-[var(--border-color-input)] ">
                               <input
                                     value={detailAddress}
                                     onChange={(e) => setDetalAddress(e.target.value)}

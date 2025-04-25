@@ -76,11 +76,14 @@ const InputTextAnswer = (props: TProps) => {
                               <DivNative className="flex flex-col gap-[.3rem]">
                                     <DivNative className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}>
                                           <DivNativeRef
+                                                style={{
+                                                      ...RenderStyleInputAnswer.StyleTitle({
+                                                            formCore,
+                                                            inputItem,
+                                                      }),
+                                                }}
                                                 ref={divContentRef}
-                                                className={`${RenderStyleInputAnswer.StyleTitle({
-                                                      formCore,
-                                                      inputItem,
-                                                })} w-[92%]  heading-answer group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
+                                                className={` w-[92%]  heading-answer group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
                                                 onClick={() => divContentRef.current?.focus()}
                                                 onBlur={(e) => onBlur(e)}
                                                 onFocus={onFocus}

@@ -92,14 +92,17 @@ const InputAnchorAnswer = (props: TProps) => {
                                           className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] bg-inherit `}
                                     >
                                           <input
+                                                style={{
+                                                      ...RenderStyleInputAnswer.StyleTitle({
+                                                            formCore,
+                                                            inputItem,
+                                                      }),
+                                                }}
                                                 onBlur={onBlur}
                                                 onFocus={onFocus}
                                                 value={inputValue}
                                                 onChange={(e) => onChangeValue(e.target.value)}
-                                                className={`${RenderStyleInputAnswer.StyleTitle({
-                                                      formCore,
-                                                      inputItem,
-                                                })} ${
+                                                className={` ${
                                                       formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
                                                 } pr-[2rem] heading-answer group min-h-[3.8rem] px-[1rem] flex items-center  text-[1.4rem] break-words whitespace-pre-wrap  outline-none resize-none `}
                                                 placeholder="Nhập đường dẫn liên kết của bạn"

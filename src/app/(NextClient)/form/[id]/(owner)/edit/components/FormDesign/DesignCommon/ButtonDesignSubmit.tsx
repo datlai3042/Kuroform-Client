@@ -32,7 +32,9 @@ const ButtonDesignSubmit = () => {
       const contentRef = useRef<HTMLDivElement | null>(null);
       const [openColorSubmitBg, setOpenColorSubmitBg] = useState(false);
       const [openColorSubmitColor, setOpenColorSubmitColor] = useState(false);
-
+      const buttonBg = formCore.form_button_background;
+      const color =
+            formCore.form_input_styles.color || formCore.form_themes === "AUTO" ? "var(--text-theme)" : formCore.form_themes === "DARK" ? "#fff" : "#000";
       const labelClick = () => {
             if (contentRef.current) {
                   contentRef.current.focus();
@@ -87,14 +89,17 @@ const ButtonDesignSubmit = () => {
       useEffect(() => {
             setLabelTextSubmit(formCore.form_button_text);
       }, [formCore]);
-
       return (
             <>
                   <button className="relative group flex-1">
-                        <Settings />
+                        <Settings color={color} />
 
                         <div className="absolute group-hover:flex hidden bottom-[100%]  pt-[1.4rem]">
-                              <div className={`${renderFormThemes(formCore.form_themes)} ${renderColorFromFormThemes(formCore.form_themes)} flex-col gap-[1.4rem] flex  rounded-[.6rem]  text-left w-[30rem] border-[.1rem] border-[var(--border-color-input)] p-[1.2rem_1rem] `}>
+                              <div
+                                    className={`${renderFormThemes(formCore.form_themes)} ${renderColorFromFormThemes(
+                                          formCore.form_themes,
+                                    )} flex-col gap-[1.4rem] flex  rounded-[.6rem]  text-left w-[30rem] border-[.1rem] border-[var(--border-color-input)] p-[1.2rem_1rem] `}
+                              >
                                     <div className="flex justify-between">
                                           <div className="flex items-center gap-[1rem]">
                                                 <span>Background: </span>

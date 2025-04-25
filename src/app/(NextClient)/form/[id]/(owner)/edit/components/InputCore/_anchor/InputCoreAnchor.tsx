@@ -43,11 +43,11 @@ const InputCoreAnchor = (props: TProps) => {
       };
 
       const InputPhone = (
-            <DivNative className="flex flex-col gap-[1rem] text-text-theme  bg-transparent">
+            <DivNative className="flex flex-col gap-[1rem] text-inherit  bg-transparent">
                   <SpanNative
-                        style={{ color: formCore.form_input_styles.color || "var(--text-text-theme)" }}
+                        style={{ color: formCore.form_input_styles.color || "inherit" }}
                         textContent="Nhập liên kết của bạn"
-                        className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"} text-[1.6rem] font-bold`}
+                        className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-inherit"} text-[1.6rem] font-bold`}
                   />
                   <DivNative
                         style={{ ...renderInputStyles(formCore.form_input_styles) }}

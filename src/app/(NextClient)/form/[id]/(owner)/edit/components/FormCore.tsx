@@ -192,7 +192,7 @@ const FormCore = () => {
 						min-h-screen h-max`}
                               >
                                     <DivNative
-                                          className={`flex-1 px-[1rem] xl:px-[4rem] min-h-full h-max  w-full lg:max-w-[67rem] xl:max-w-[70rem] mx-auto   xl:pl-0  flex flex-col  xl:py-[2rem] gap-[2rem]  `}
+                                          className={`flex-1 px-[1rem] pb-[5rem] md:pb-0 xl:px-[4rem] min-h-full h-max  w-full lg:max-w-[67rem] xl:max-w-[70rem] mx-auto   xl:pl-0  flex flex-col  xl:py-[2rem] gap-[2rem]  `}
                                     >
                                           <DivNative className={`${gapWhenAppearImage}`}>
                                                 <DivNative className={`${heightWhenAppearImage} group max-h-[18rem] sm:max-h-[8rem] xl:min-h-max `}>
