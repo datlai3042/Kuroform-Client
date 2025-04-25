@@ -14,6 +14,7 @@ import { checkErrorFinal } from "../../form/[id]/_components/InputAnswer/_utils/
 import RenderInputAnswers from "../../form/[id]/_components/RenderInputAnswers";
 import FormAnswerHeader from "../../form/[id]/_components/FormAnswerHeader";
 import { ThemeContext } from "../provider/ThemeProvider";
+import { renderFormThemeAnswer } from "@/app/utils/form.utils";
 
 type TProps = {
       FormCore: FormCore.Form;
@@ -55,10 +56,13 @@ const FormPageGuess = (props: TProps) => {
       const formColor = FormCore.form_color || "#f2f2f2";
 
       const isGoogleForm = FormCore.form_styles === "GOOGLE_FORM" ? true : false;
+      const renderBgColor = theme === "light" ? "transparent" : "var(--bg-dark-readOnly)";
+
+      const formThemes = renderFormThemeAnswer(FormCore);
 
       return (
             <div
-                  style={{ backgroundColor: formColor }}
+                  style={{ backgroundColor: !formThemes ? renderBgColor : "" }}
                   className={`${isGoogleForm ? "px-[2rem] p-[2rem]" : ""}  xl:px-0 min-h-screen h-max flex justify-center     `}
             >
                   <DivNative className={`${isGoogleForm ? " w-full sm:w-[66.8rem]" : "w-full"} flex flex-col `}>
@@ -67,7 +71,11 @@ const FormPageGuess = (props: TProps) => {
                                     <FormAnswerHeader formCore={FormCore} />
                               </DivNative>
                         )}
-                        <DivNative className={`${styleEffect.formMarginTop(FormCore.form_avatar_state)} ${isGoogleForm ? 'w-full gap-[3rem]' : 'w-full lg:w-[60vw] mx-auto gap-[8rem]'} pb-[8rem]  flex flex-col  rounded-lg`}>
+                        <DivNative
+                              className={`${styleEffect.formMarginTop(FormCore.form_avatar_state)} ${
+                                    isGoogleForm ? "w-full gap-[3rem]" : "w-full lg:w-[60vw] mx-auto gap-[8rem]"
+                              } pb-[8rem]  flex flex-col  rounded-lg`}
+                        >
                               <DivNative className="flex flex-col gap-[3rem]">
                                     <FormAnswerProvider formCore={FormCore} form_answer_id="">
                                           <RenderInputAnswers formCore={FormCore} />
