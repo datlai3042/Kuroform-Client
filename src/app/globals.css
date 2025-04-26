@@ -124,6 +124,7 @@ body.dark .ant-rate-star-second {
 
             --destructive: 0 84.2% 60.2%;
             --destructive-foreground: 210 40% 98%;
+            --form-theme-dark: #08112b;
 
             --border: 214.3 31.8% 91.4%;
             --input: 214.3 31.8% 91.4%;
@@ -158,7 +159,7 @@ body.dark .ant-rate-star-second {
             --chart-normal: 242.18deg 35.03% 30.78%;
             --chart-custom-v1: 160, 60%, 45%;
             --form-theme-light: #fff;
-            --form-theme-dark: #08080b42;
+            --form-theme-dark: #08112b;
             --form-theme-light-color: #000;
             --form-theme-dark-color: #fff;
 
