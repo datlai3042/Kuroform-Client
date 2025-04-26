@@ -69,9 +69,9 @@ const DashBoardLeft = () => {
                               </div>
                         </div>
 
-                        <div className="sticky w-max mx-auto bottom-0 mb-[1rem] mt-auto">
+                        {/* <div className="sticky w-max mx-auto bottom-0 mb-[1rem] mt-auto">
                               <DashboardProjectInfo />
-                        </div>
+                        </div> */}
                   </div>
             </>
       );

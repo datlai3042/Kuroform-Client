@@ -16,7 +16,16 @@ const InputAnswerWrapper = (props: TProps) => {
       const styleWrapper =
             formCore.form_styles === "GOOGLE_FORM" ? renderInputStyles(formCore?.form_input_styles) : { border: "none", backgroundColor: "transparent" };
 
-      const color = formCore.form_themes === "AUTO" ? "var(--text-text-theme)" : formCore.form_themes === "DARK" ? "text-[#fff]" : "text-[#000]";
+      const color =
+            formCore.form_themes === "AUTO"
+                  ? "text-text-theme"
+                  : formCore.form_styles === "GOOGLE_FORM"
+                  ? formCore?.form_input_styles?.color
+                        ? formCore?.form_input_styles?.color
+                        : "text-text-theme"
+                  : formCore.form_themes === "DARK"
+                  ? "text-[#fff]"
+                  : "text-[#000]";
       return (
             <DivNative
                   style={{ ...styleWrapper }}

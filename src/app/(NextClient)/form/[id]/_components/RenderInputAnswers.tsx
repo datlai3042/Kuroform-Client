@@ -111,7 +111,7 @@ const RenderInputAnswers = (props: TProps) => {
                                           {page === totalPage && totalPage > 1 && (
                                                 <button
                                                       tabIndex={0}
-                                                      className="opacity-60 hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-inherit"
+                                                      className="opacity-90 text-[1.3rem] hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-inherit"
                                                       onClick={() => setPage((prev) => (prev -= 1))}
                                                 >
                                                       Xem trang trước
@@ -120,7 +120,7 @@ const RenderInputAnswers = (props: TProps) => {
                                           {page > 1 && page !== totalPage && (
                                                 <button
                                                       tabIndex={0}
-                                                      className="opacity-60 hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-inherit"
+                                                      className="opacity-90 text-[1.3rem] hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-inherit"
                                                       onClick={() => setPage((prev) => (prev -= 1))}
                                                 >
                                                       Xem trang trước
@@ -128,14 +128,14 @@ const RenderInputAnswers = (props: TProps) => {
                                           )}
 
                                           {formCore.form_inputs.length > 0 && (
-                                                <p className="p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-inherit">
+                                                <p className="p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-inherit uppercase font-bold">
                                                       Số trang:{page} / {totalPage}
                                                 </p>
                                           )}
                                           {page < totalPage && page !== 1 && (
                                                 <button
                                                       tabIndex={0}
-                                                      className="opacity-60 hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-inherit"
+                                                      className="opacity-90 text-[1.3rem] hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-inherit"
                                                       onClick={() => setPage((prev) => (prev += 1))}
                                                 >
                                                       Xem trang tiếp theo
@@ -145,7 +145,7 @@ const RenderInputAnswers = (props: TProps) => {
                                           {page === 1 && totalPage > 1 && (
                                                 <button
                                                       tabIndex={0}
-                                                      className="opacity-60 hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-inherit"
+                                                      className="opacity-90 text-[1.3rem] hover:opacity-100 p-[.4rem_.8rem]  border-b-[.18rem] border-color-main text-inherit"
                                                       onClick={() => setPage((prev) => (prev += 1))}
                                                 >
                                                       Xem trang tiếp theo

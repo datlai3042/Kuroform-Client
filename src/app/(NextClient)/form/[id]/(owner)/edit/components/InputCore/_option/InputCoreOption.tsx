@@ -36,7 +36,7 @@ const InputCoreOption = (props: TProps) => {
       const { inputItem } = props;
 
       const btnAddOptionRef = useRef<HTMLButtonElement | null>(null);
-
+      const [active,setActive] = useState(false)
       const [syncData, setSyncData] = useState<SyncDataOption>({
             option_id_focus: "",
             option_process_pending: false,

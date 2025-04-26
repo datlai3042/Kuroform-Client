@@ -75,7 +75,7 @@ const ButtonBackgroundSize = () => {
       return (
             <div className=" flex  gap-[1rem]">
                   <div className="flex w-[50%] flex-col gap-[.5rem] ">
-                        <span className="">Chiều rộng</span>
+                        <span className="">Chiều dài</span>
                         <div
                               className={`${styleEffect.onCheckHasBackground(formBackground)} w-[90%] flex items-center gap-[.4rem] h-[3rem] p-[.2rem_1rem]
 border-[.1rem] border-[var(--border-color-input)]  rounded-lg bg-design-size`}
@@ -98,7 +98,7 @@ border-[.1rem] border-[var(--border-color-input)]  rounded-lg bg-design-size`}
                         </div>
                   </div>
                   <div className="flex w-[50%] flex-col gap-[.5rem] ">
-                        <span className="">Chiều dài</span>
+                        <span className="">Chiều rộng</span>
                         <div
                               className={`${styleEffect.onCheckHasBackground(formBackground)} w-[90%] flex items-center gap-[.4rem] h-[3rem] p-[.2rem_1rem]
 border-[.1rem] border-[var(--border-color-input)]  rounded-lg bg-design-size`}

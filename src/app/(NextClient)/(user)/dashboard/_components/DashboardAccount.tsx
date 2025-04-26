@@ -9,6 +9,7 @@ import { RootState } from "@/app/_lib/redux/store";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
+import ButtonLogOut from "@/app/(NextClient)/_components/ui/button/ButtonLogOut";
 
 const DashboardAccount = () => {
       const [openModel, setOpenModel] = useState<boolean>(false);

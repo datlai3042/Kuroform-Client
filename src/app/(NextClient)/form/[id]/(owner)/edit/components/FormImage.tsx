@@ -23,10 +23,9 @@ const FormImage = () => {
     
       return (
             <DivNative
-                  style={{ ...renderUnitHeightValueBg(formCore.form_background), ...renderUnitWidthValueBg(formCore.form_background) }}
                   className={` 
 
- group  relative w-full mx-auto  px-[4rem] xl:px-0 ${_checkBackground ? " " : ""}`}
+ group  relative w-full mx-auto  px-[4rem] xl:px-0 ${_checkBackground ? "min-h-[20rem]" : ""}`}
             >
                   {(formCore.form_background || formCore.form_background_state) && <FormBackground />}
 

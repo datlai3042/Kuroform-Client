@@ -71,7 +71,7 @@ const ListErrorInput = (props: TProps) => {
                                                                         onClick={() => onTargerError(pageError)}
                                                                   >
                                                                         <TableCell className="whitespace-pre">
-                                                                              <span className="font-bold text-color-main group-hover:text-[#fff]">
+                                                                              <span className="font-bold text-red-600 group-hover:text-[#fff]">
                                                                                     {title || "Trống"}
                                                                               </span>
                                                                         </TableCell>

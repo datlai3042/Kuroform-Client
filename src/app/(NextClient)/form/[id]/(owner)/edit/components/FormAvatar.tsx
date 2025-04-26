@@ -37,11 +37,19 @@ const FormAvatar = (props: TProps) => {
       return (
             <React.Fragment>
                   <div
+                        style={
+                              formCore.form_background_state || formCore.form_background?.form_background_iamge_url
+                                    ? {
+                                            ...renderUnitHeightValueBg(formCore.form_background),
+                                            ...renderUnitWidthValueBg(formCore.form_background),
+                                      }
+                                    : {}
+                        }
                         className={`
    ${openFormDesign ? " " : ""}
  ${_checkAvatar ? " " : ""}
+  ${_checkBackground ? "min-h-[20rem]" : ""}
   w-full xl:max-w-[70rem] mx-auto  relative flex items-end h-[14rem]`}
-                        style={{ ...renderUnitHeightValueBg(formCore.form_background), ...renderUnitWidthValueBg(formCore.form_background) }}
                   >
                         <div className="absolute h-max w-full bottom-0 flex justify-center">
                               <div className="relative w-full ">
@@ -54,7 +62,7 @@ const FormAvatar = (props: TProps) => {
                                           alt="avatar"
                                           className={`${action !== "thumb" ? position : ""} ${
                                                 action !== "thumb" ? shape : ""
-                                          } object-cover absolute top-[0] translate-y-[-50%] z-[3] object-center w-[14rem] h-[14rem] hover:cursor-pointer `}
+                                          } object-cover absolute top-[0] translate-y-[-50%] z-[3] object-center w-[12rem] h-[12rem] hover:cursor-pointer `}
                                     />
 
                                     {/* {(!formCore.form_background?.form_background_iamge_url || !formCore.form_background_state) && (

@@ -27,6 +27,7 @@ const InputCoreEmail = (props: TProps) => {
       const [inputValue, setInputValue] = useState<string>("");
       const [error, setError] = useState<boolean>(false);
       const { modeScreen } = useContext(FormModeScreenContext);
+      const [active,setActive] = useState(false)
 
       const onPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
             if (e.key === "Enter") {

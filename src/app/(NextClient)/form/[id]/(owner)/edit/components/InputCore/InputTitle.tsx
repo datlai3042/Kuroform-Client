@@ -14,10 +14,11 @@ type TProps = {
       inputItem: InputCore.InputForm;
       dataTextTitle?: string;
       setChangeTitle: React.Dispatch<SetStateAction<boolean>>;
+      active?: boolean
 };
 
 const InputTitle = (props: TProps) => {
-      const { inputItem, dataTextTitle, setChangeTitle } = props;
+      const { inputItem, dataTextTitle, setChangeTitle, active } = props;
       const { modeScreen } = useContext(FormModeScreenContext);
       const { theme } = useContext(ThemeContext);
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
@@ -30,8 +31,10 @@ const InputTitle = (props: TProps) => {
       const dispatch = useDispatch();
 
       useEffect(() => {
+          if(active) {
             titleRef.current?.focus();
-      }, []);
+          }
+      }, [active]);
 
       useEffect(() => {
             if (!updateTitleInput.isPending && updateTitleInput.isSuccess) {

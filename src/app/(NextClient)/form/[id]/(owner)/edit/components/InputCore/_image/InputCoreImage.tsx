@@ -19,6 +19,7 @@ const InputCoreImage = (props: TProps) => {
       const inputRef = useRef<HTMLInputElement | null>(null);
 
       const [filePreview, setFilePreview] = useState<string>("");
+      const [active, setActive] = useState(false);
 
       const handleClick = () => {
             if (inputRef.current) {
@@ -59,6 +60,7 @@ const InputCoreImage = (props: TProps) => {
 
       return (
             <InputCore
+               
                   InputComponent={InputImage}
                   inputItem={inputItem}
                   inputTitle={inputItem.input_title || ""}

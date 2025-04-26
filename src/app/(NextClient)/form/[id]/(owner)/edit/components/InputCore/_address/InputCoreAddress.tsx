@@ -17,6 +17,7 @@ type TProps = {
 
 const InputCoreAddress = (props: TProps) => {
       const { inputItem } = props;
+      const [active, setActive] = useState(false);
 
       const [controlerInput, setControllerInput] = useState<TInputCore.Commom.ControlerInput<UI.Address.AddressEnity>>({
             value: {
@@ -32,13 +33,11 @@ const InputCoreAddress = (props: TProps) => {
       });
 
       const onChangeAddress = (address: UI.Address.AddressEnity) => {
-
             const { _next, message, type } = superAddressValidate({
                   inputValue: address.addressString,
                   inputSetting: inputItem.core.setting,
                   description: address,
             });
-
 
             setControllerInput((prev) => ({
                   ...prev,
@@ -71,6 +70,7 @@ const InputCoreAddress = (props: TProps) => {
 
       return (
             <InputCore
+              
                   InputComponent={InputAddress}
                   inputItem={inputItem}
                   inputTitle={inputItem.input_title || ""}

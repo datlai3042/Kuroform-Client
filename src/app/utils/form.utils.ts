@@ -178,6 +178,7 @@ export const renderUnitHeightValueBg = (formBG: FormCore.Form['form_background']
 export const renderUnitWidthValueBg = (formBG: FormCore.Form['form_background']) => {
       if (!formBG?.size.width?.unit || formBG.size.width.unit === 'AUTO')
             return { width: '100%' }
+      
       else {
             return { width: `${formBG.size.width.value}${formBG.size.width.unit}` }
       }

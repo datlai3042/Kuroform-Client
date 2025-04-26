@@ -19,6 +19,7 @@ const InputCoreDate = (props: TProps) => {
       const form_mode_display = formCore.form_mode_display === "custom";
 
       const [openModel, setOpenModel] = useState<boolean>(false);
+      const [active,setActive] = useState(false)
 
       const date = new Date();
       const month = date.getMonth() + 1;
@@ -69,7 +70,7 @@ const InputCoreDate = (props: TProps) => {
       );
 
       return (
-            <InputCore InputComponent={InputDate} inputItem={inputItem} inputTitle={inputItem.input_title || ""} dataTextTitle="Thêm mô tả về ngày được chọn" />
+            <InputCore  InputComponent={InputDate} inputItem={inputItem} inputTitle={inputItem.input_title || ""} dataTextTitle="Thêm mô tả về ngày được chọn" />
       );
 };
 

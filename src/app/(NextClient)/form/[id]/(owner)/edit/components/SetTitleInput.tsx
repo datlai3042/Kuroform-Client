@@ -8,10 +8,11 @@ import { RootState } from "@/app/_lib/redux/store";
 type TProps = {
 	setTitle: ReactCustom.SetStateBoolean;
 	focus: boolean;
+	setActive: ReactCustom.SetStateBoolean
 };
 
 const SetTitleInput = (props: TProps) => {
-	const { focus, setTitle } = props;
+	const { focus, setTitle, setActive } = props;
 
 	const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
 
@@ -37,7 +38,10 @@ const SetTitleInput = (props: TProps) => {
 			>
 				<ButtonNative
 					className={`${styleEffect.onCheckModeDisplay()}`}
-					onClick={() => setTitle(true)}
+					onClick={() =>  {
+						setTitle(true)
+						setActive(true)
+					}}
 					tabIndex={-1}
 					textContent="Thêm tiêu đề"
 				/>

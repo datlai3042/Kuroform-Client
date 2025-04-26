@@ -6,7 +6,7 @@ import { timerIncreaseViews } from "@/app/_constant/form.answers.contranst";
 import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 import useIncreaseFormViews from "@/app/hooks/form-answer/useIncreaseFormAnswer";
 import { FormCore } from "@/type";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import FormAnswerHeader from "./FormAnswerHeader";
 import RenderInputAnswers from "./RenderInputAnswers";
@@ -23,6 +23,7 @@ const FormAnswerCore = (props: TProps) => {
 
       const timer = useRef<NodeJS.Timeout | null>(null);
       const increaseViews = useIncreaseFormViews();
+      const [colorBorderCurrent, setBorderCurruent] = useState("");
 
       const dispatch = useDispatch();
 
@@ -47,8 +48,28 @@ const FormAnswerCore = (props: TProps) => {
       }, [formCore]);
 
       useEffect(() => {
-            setTheme("light");
-      }, []);
+            setBorderCurruent(formCore.form_themes);
+            if (formCore.form_themes === "AUTO") {
+                  if (theme === "light") {
+                        document.body.style.setProperty("--border-color-input", "rgb(169 169 204 / 74%)");
+                  } else {
+                        document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
+                  }
+            }
+            if (formCore.form_themes === "LIGHT") {
+                  document.body.style.setProperty("--border-color-input", "rgb(169 169 204 / 74%)");
+                  document.documentElement.style.backgroundColor = "var(--form-theme-light)";
+            }
+
+            if (formCore.form_themes === "DARK") {
+                  document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
+                  document.documentElement.style.backgroundColor = "var(--form-theme-dark)";
+            }
+
+            return () => {
+                  document.documentElement.style.backgroundColor = "var(--color-section-theme)";
+            };
+      }, [formCore.form_themes, theme]);
 
       const renderBgColor = theme === "light" ? "transparent" : "var(--bg-dark-readOnly)";
       const bgButtonDarkMode = theme === "light" ? {} : { background: "var(--color-main)" };
@@ -63,7 +84,10 @@ const FormAnswerCore = (props: TProps) => {
                   }  min-h-screen  flex justify-center   w-full h-full`}
             >
                   <DivNative className={`${isGoogleForm ? "w-full sm:w-[75rem]" : "w-full"} flex flex-col gap-[1rem] `}>
-                        {(formCore.form_background?.form_background_iamge_url || formCore.form_background_state) && (
+                        {(formCore.form_background?.form_background_iamge_url ||
+                              formCore.form_background_state ||
+                              formCore.form_avatar?.form_avatar_url ||
+                              formCore.form_avatar_state) && (
                               <DivNative className="relative w-full ">
                                     <FormAnswerHeader formCore={formCore} />
                               </DivNative>
@@ -71,18 +95,20 @@ const FormAnswerCore = (props: TProps) => {
                         <DivNative
                               style={{ backgroundColor: "inherit" }}
                               className={`${formCore.form_avatar?.form_avatar_url && isGoogleForm ? "mt-[4rem]" : ""} ${
-                                    isGoogleForm ? "w-full" : `w-[60vw]  mx-auto ${formThemes}`
+                                    isGoogleForm ? "w-full" : `w-[94vw] md:w-[60vw]  mx-auto ${formThemes}`
                               } rounded-lg`}
                         >
-                              <DivNative className={`${isGoogleForm ? "gap-[5rem]" : "gap-[8rem]"} flex flex-col  pb-[20rem]`}>
+                              <DivNative className={`${isGoogleForm ? "gap-[5rem]" : "gap-[4rem]"} flex flex-col  pb-[20rem]`}>
                                     <FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
                                           <RenderInputAnswers formCore={formCore} />
                                     </FormAnswerProvider>
                               </DivNative>
                         </DivNative>
-                        <div style={{ ...bgButtonDarkMode }} className="fixed top-[2rem] right-[2rem] rounded-[.4rem]">
-                              <ButtonDarkMode />
-                        </div>
+                        {formCore.form_themes === "AUTO" && (
+                              <div style={{ ...bgButtonDarkMode }} className="fixed top-[2rem] right-[2rem] rounded-[.4rem]">
+                                    <ButtonDarkMode />
+                              </div>
+                        )}
                         {/* <AuthorDat color={"text-[#000]"} backgroundColor={"bg-[#fff]"} /> */}
                   </DivNative>
             </DivNative>

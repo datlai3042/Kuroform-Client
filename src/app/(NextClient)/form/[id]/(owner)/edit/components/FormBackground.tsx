@@ -11,7 +11,7 @@ import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 
 import { useSelector } from "react-redux";
-import { generateStyleBackgroundImageForm } from "@/app/utils/form.utils";
+import { generateStyleBackgroundImageForm, renderUnitHeightValueBg, renderUnitWidthValueBg } from "@/app/utils/form.utils";
 import Image from "next/image";
 import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkMode";
 
@@ -35,7 +35,20 @@ const FormBackground = ({ action }: { action?: "thumb" }) => {
       return (
             <React.Fragment>
                   <DivNativeRef onClick={() => setOpenModel(true)} className="absolute inset-0 z-[2]  hover:cursor-pointer max-h-full overflow-hidden">
-                        <div style={{ backgroundColor: formBackgroundColor,}} className="relative inset-0 min-h-full  w-full overflow-hidden ">
+                        <div
+                              style={
+                                    formCore.form_background_state || formCore.form_background?.form_background_iamge_url
+                                          ? {
+                                                  backgroundColor: formBackgroundColor,
+
+                                                  ...renderUnitHeightValueBg(formCore.form_background),
+                                                  ...renderUnitWidthValueBg(formCore.form_background),
+                                                  minHeight: action === "thumb" ? "100%" : "",
+                                            }
+                                          : {}
+                              }
+                              className="relative inset-0   w-full overflow-hidden "
+                        >
                               <Image
                                     src={formCore.form_background?.form_background_iamge_url || formCore.form_setting_default.form_background_default_url}
                                     width={800}

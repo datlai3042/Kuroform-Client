@@ -19,7 +19,7 @@ const LoadingClient = (props: TProps) => {
                   className={`${styleContainer} relative flex flex-col  justify-center items-center gap-[0rem] !bg-[var(--bg-client-loading)]`}
             >
                   <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[2]">
-                        <div className="flex justify-center items-center gap-[1rem]">
+                        <div className="flex justify-center flex-wrap items-center gap-[1rem]">
                               <LoadingSpinner color="#fff" />
                               <p className="ml-[2rem] ">
                                     <span className="text-[#fff] text-[6rem]">Kuro</span>

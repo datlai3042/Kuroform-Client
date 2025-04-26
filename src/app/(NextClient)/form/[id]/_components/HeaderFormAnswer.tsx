@@ -59,8 +59,8 @@ const HeaderFormAnswer = (props: TProps) => {
                                     : "mt-[3rem]"
                               : ""
                   } ${
-                        formCore.form_styles === "GOOGLE_FORM" ? "!border-t-[1.4rem]  bg-color-section-theme rounded-2xl" : ""
-                  } relative w-full  min-h-[14rem] m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	   `}
+                        formCore.form_styles === "GOOGLE_FORM" ? "border-[.1rem] !border-t-[1.4rem]   border-[var(--border-color-input)] bg-color-section-theme rounded-2xl" : ""
+                  } relative w-full  m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	   `}
             >
                   {(formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state) && formCore.form_styles === "GOOGLE_FORM" && (
                         <FormAnswerAvatar formCore={formCore} />

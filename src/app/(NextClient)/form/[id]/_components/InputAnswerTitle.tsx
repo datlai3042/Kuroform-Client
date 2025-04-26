@@ -17,17 +17,7 @@ const InputAnswerTitle = (props: TProps) => {
             styleTitle: () => {
                   return {
                         fontSize: inputItem.core.setting.input_size || formCore.form_setting_default.input_size,
-                        color: isError
-                              ? "inherit"
-                              : formCore.form_themes === "AUTO"
-                              ? formCore.form_input_styles.color
-                                    ? formCore.form_input_styles.color
-                                    : theme === "dark"
-                                    ? "var(--text-theme)"
-                                    : inputItem.core.setting.input_color || formCore.form_setting_default.input_color
-                              : formCore.form_themes === "DARK"
-                              ? "#fff"
-                              : "#000",
+                        color:'inherit',
 
                         fontStyle: inputItem.core.setting.input_style || formCore.form_setting_default.input_style,
                   };

@@ -18,6 +18,7 @@ const InputCoreAnchor = (props: TProps) => {
       const { inputItem } = props;
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
       const form_mode_display = formCore.form_mode_display === "custom";
+      const [active,setActive] = useState(false)
 
       const [controlerInput, setControllerInput] = useState<TInputCore.Commom.ControlerInput<{ href: string }>>({
             value: {
@@ -74,7 +75,7 @@ const InputCoreAnchor = (props: TProps) => {
             </DivNative>
       );
 
-      return <InputCore InputComponent={InputPhone} inputItem={inputItem} inputTitle={inputItem.input_title || ""} dataTextTitle="Thêm tiêu đề cho liên kết" />;
+      return <InputCore  InputComponent={InputPhone} inputItem={inputItem} inputTitle={inputItem.input_title || ""} dataTextTitle="Thêm tiêu đề cho liên kết" />;
 };
 
 export default InputCoreAnchor;

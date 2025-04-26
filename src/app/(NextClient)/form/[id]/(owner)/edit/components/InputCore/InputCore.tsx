@@ -1,6 +1,6 @@
 import React, { memo, useContext, useEffect, useState } from "react";
 import InputTitle from "./InputTitle";
-import { FormCore, InputCore as TInputCore } from "@/type";
+import { FormCore, ReactCustom, InputCore as TInputCore } from "@/type";
 import SectionOption from "../SectionOption";
 import DivWrapper from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import { FormModeScreenContext } from "@/app/(NextClient)/_components/provider/FormModeScreen";
@@ -24,9 +24,9 @@ type TProps = {
 };
 
 const InputCore = (props: TProps) => {
-      const { inputItem, dataTextTitle, InputComponent, inputTitle } = props;
-
+      const { inputItem, dataTextTitle, InputComponent, inputTitle,  } = props;
       const dispatch = useDispatch();
+      const [active,setActive] = useState(false)
 
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
       const colorMain = useSelector((state: RootState) => state.form.colorCore);
@@ -93,7 +93,7 @@ const InputCore = (props: TProps) => {
                         } as React.CSSProperties
                   }
             >
-                  {title && <InputTitle setChangeTitle={setTitle} inputItem={inputItem} dataTextTitle={dataTextTitle} />}
+                  {title && <InputTitle active={active} setChangeTitle={setTitle} inputItem={inputItem} dataTextTitle={dataTextTitle} />}
 
                   <DivWrapper className={` group relative min-h-[8rem] h-max flex   flex-col gap-[.8rem] `}>
                         {modeScreen === "NORMAL" && (
@@ -110,7 +110,7 @@ const InputCore = (props: TProps) => {
                         <DivWrapper className={`w-full h-max flex flex-col gap-[2rem] `} onKeyDown={onPressEnter}>
                               {InputComponent}
                         </DivWrapper>
-                        {!title && modeScreen === "NORMAL" && <SetTitleInput setTitle={setTitle} focus={focus} />}
+                        {!title && modeScreen === "NORMAL" && <SetTitleInput setTitle={setTitle} focus={focus} setActive={setActive}/>}
                   </DivWrapper>
 
                   {/* {formCore.form_mode_display === "custom" && (
