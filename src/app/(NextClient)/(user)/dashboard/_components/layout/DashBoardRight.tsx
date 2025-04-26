@@ -28,7 +28,7 @@ const DashBoardRight = () => {
       const { forms, pending } = useGetAllFormUser();
 
       return (
-            <div className={`  min-h-screen bg-color-gap-empty    h-max   flex flex-col  gap-[.4rem] text-[1.4rem] pb-[1rem] px-0`}>
+            <div className={`  min-h-screen bg-color-gap-empty    h-max   flex flex-col  gap-[1rem] text-[1.4rem] pb-[1rem] px-0`}>
                   <DashBoardRightHeader />
                   <div className="flex xl:hidden justify-end w-full bg-color-section-theme p-[1rem]">
                         <DashboardAccount />
@@ -37,7 +37,7 @@ const DashBoardRight = () => {
                   {/* <DashBoardRightHeader /> */}
                   {/* <DashBoardRightHeader /> */}
 
-                  <div className={` flex-1 w-full xl:w-full    flex flex-col gap-[.4rem] `}>
+                  <div className={` flex-1 w-full xl:w-full    flex flex-col gap-[1rem] `}>
                         {pending ? (
                               <LoadingClient width="100%" />
                         ) : (

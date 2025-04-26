@@ -65,7 +65,7 @@ const HeaderFormAnswer = (props: TProps) => {
                   {(formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state) && formCore.form_styles === "GOOGLE_FORM" && (
                         <FormAnswerAvatar formCore={formCore} />
                   )}
-                  <div className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}>
+                  <div style={{marginTop: !formCore?.form_title?.form_title_value ? '0px': ''}} className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}>
                         <h1 style={styleTitle} className=" font-light ">
                               {formCore?.form_title?.form_title_value}
                         </h1>

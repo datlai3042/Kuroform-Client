@@ -7,6 +7,7 @@ import ButtonUploadFile from "./ButtonUploadFile";
 import FormAvatar from "../FormAvatar";
 import ModelFormImage from "@/app/(NextClient)/_components/Model/ModelFormImage";
 import Image from "next/image";
+import { Camera } from "lucide-react";
 
 const FormDesignAvatar = () => {
       const formCore = useSelector((state: RootState) => state.form.formCoreBackUp);
@@ -28,7 +29,7 @@ const FormDesignAvatar = () => {
                   {formAvatar ? (
                         <div className="w-full flex flex-col gap-[1.6rem] ">
                               <div className="flex gap-[1.2rem] mt-[1.6rem]">
-                                    <div className=" relative">
+                                    <div className=" relative group cursor-pointer">
                                           <Image
                                                 width={150}
                                                 height={150}
@@ -38,6 +39,9 @@ const FormDesignAvatar = () => {
                                                 alt="avatar"
                                                 className={`min-w-[7rem] w-[7rem] h-[12rem] cursor-pointer object-cover`}
                                           />
+                                          <div className="hidden absolute inset-0 bg-[rgba(0,0,0,.6)] group-hover:flex  justify-center items-center">
+                                                <Camera />
+                                          </div>
                                     </div>
                                     <div className=" flex flex-col gap-[.8rem]">
                                           <div className={`${styleEffect.onCheckHasBackground(formAvatar)} flex flex-col gap-[0.6rem]  `}>

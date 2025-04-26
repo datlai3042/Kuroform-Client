@@ -29,7 +29,7 @@ const FormAnswerHeader = (props: TProps) => {
                                       formCore.form_background?.size.height?.value as number,
                                       formCore.form_background?.size.height?.unit as FormCore.FormImageUnit,
                                 )
-                              : 200,
+                              : 250,
                   }}
                   className={`${isGoogleForm ? " h-[32.5rem] rounded-2xl max-h-[32.5rem]" : "w-full"} relative w-full `}
             >

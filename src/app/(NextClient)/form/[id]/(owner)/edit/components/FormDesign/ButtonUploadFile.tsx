@@ -14,9 +14,9 @@ const ButtonUploadFile = (props: TProps) => {
             <>
                   {openModel && <ModelFormImage setOpenModel={setOpenModel} MODE={code} />}
                   <button
-                        style={{ backgroundColor: "rgb(26 116 223 / 27%)" }}
+                        style={{ backgroundColor: "rgb(20 67 122)" }}
                         onClick={() => setOpenModel(true)}
-                        className="border-[.1rem] border-dashed border-[var(--color-main)] w-full h-[10rem] flex justify-center items-center text-blue-600 font-semibold"
+                        className="border-[.1rem] border-dashed border-white w-full h-[10rem] flex justify-center items-center text-[#fff] font-semibold"
                   >
                         Tải ảnh lên
                   </button>

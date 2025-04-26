@@ -94,7 +94,7 @@ const ButtonDesignSubmit = () => {
                   <button className="relative group flex-1">
                         <Settings color={color} />
 
-                        <div className="absolute group-hover:flex hidden bottom-[100%]  pt-[1.4rem]">
+                        <div className="absolute group-hover:flex hidden left-[-50%] md:left-0 bottom-[100%]  pb-[1.4rem]">
                               <div
                                     className={`${renderFormThemes(formCore.form_themes)} ${renderColorFromFormThemes(
                                           formCore.form_themes,

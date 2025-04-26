@@ -14,7 +14,7 @@ const ButtonDarkMode = () => {
       };
 
       const changeCirclePosition = theme === "light" ? "animate-rtl bg-[#fff]" : " animate-ltr bg-[#fff]";
-      const borderRadius = theme === "light" ? "border-[.1rem] border-[var(--border-color-input)]" : "border-[.1rem] border-transparent";
+      const borderRadius = theme === "light" ? "" : "";
 
       return (
             <div

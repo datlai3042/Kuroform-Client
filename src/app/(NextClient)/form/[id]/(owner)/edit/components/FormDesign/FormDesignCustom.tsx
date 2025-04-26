@@ -109,7 +109,7 @@ const FormDesignCustom = () => {
             <div
                   style={{ borderLeft: ".1rem solid var(--border-color-side)" }}
                   id={"section-design"}
-                  className="scroll-desgin-custom  flex-1 fixed z-[104] bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen  w-[32rem]  "
+                  className="scroll-desgin-custom  flex-1 fixed  bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen w-full z-[999]  md:w-[32rem]  "
             >
                   <div className=" relative min-h-full h-max pb-[4rem] px-[.8rem]  border-b-[.2rem] flex flex-col">
                         <div className="sticky top-0 right-0   bg-color-section-theme z-[2] " id="design-header">

@@ -79,7 +79,7 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
                                     wordBreak: "break-word",
                               }}
                               ref={divContentRef}
-                              className={`${styleEffect.onCheckTitle()}   text-text-theme py-[1rem] w-full   title-core group min-h-[8rem]  max-w-full xl:max-w-full  break-all flex items-center  h-max border-none outline-none     font-light sm:text-justify hover:cursor-pointer`}
+                              className={`${styleEffect.onCheckTitle()}   text-text-theme py-[1rem] w-full   title-core group   max-w-full xl:max-w-full  break-all flex items-center  h-max border-none outline-none     font-light sm:text-justify hover:cursor-pointer`}
                               onClick={() => divContentRef.current?.focus()}
                               onKeyDown={onPressEnter}
                               contentEditable={true}

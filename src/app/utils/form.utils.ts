@@ -130,8 +130,26 @@ export const renderColorFromFormThemes = (form_themes: FormCore.Form['form_theme
 }
 
 
-export const renderInputStyles = (inputStyle: FormCore.Form['form_input_styles']) => {
+export const renderInputStyles = (inputStyle: FormCore.Form['form_input_styles'], formCore?: FormCore.Form) => {
       let styles = {}
+      if (!inputStyle.borderColor && !inputStyle.borderWidth && formCore && formCore.form_styles === 'FULL_WIDTH') {
+            if (inputStyle?.color) {
+                  return {
+                        color: inputStyle?.color
+                  }
+            }
+      }
+      if (formCore?.form_styles === 'FULL_WIDTH') {
+            if (inputStyle.borderWidth === 1) {
+                  if (inputStyle?.color) {
+                        return {
+                              color: inputStyle?.color,
+                              border: 'none'
+                        }
+                  }
+            }
+            return {border: 'none'}
+      }
       if (!inputStyle) {
             styles = {
                   ...styles,
@@ -169,7 +187,7 @@ export const renderInputStyles = (inputStyle: FormCore.Form['form_input_styles']
 
 export const renderUnitHeightValueBg = (formBG: FormCore.Form['form_background']) => {
       if (!formBG?.size.height?.unit || formBG.size.height.unit === 'AUTO')
-            return { height: 200 }
+            return { height: 250 }
       else {
             return { height: `${formBG.size.height.value}${formBG.size.height.unit}` }
       }
@@ -178,7 +196,7 @@ export const renderUnitHeightValueBg = (formBG: FormCore.Form['form_background']
 export const renderUnitWidthValueBg = (formBG: FormCore.Form['form_background']) => {
       if (!formBG?.size.width?.unit || formBG.size.width.unit === 'AUTO')
             return { width: '100%' }
-      
+
       else {
             return { width: `${formBG.size.width.value}${formBG.size.width.unit}` }
       }

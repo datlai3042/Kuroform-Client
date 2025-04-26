@@ -13,8 +13,7 @@ type TProps = {
 const InputAnswerWrapper = (props: TProps) => {
       const { children, formCore } = props;
       const { theme } = useContext(ThemeContext);
-      const styleWrapper =
-            formCore.form_styles === "GOOGLE_FORM" ? renderInputStyles(formCore?.form_input_styles) : { border: "none", backgroundColor: "transparent" };
+      const styleWrapper = renderInputStyles(formCore?.form_input_styles, formCore);
 
       const color =
             formCore.form_themes === "AUTO"

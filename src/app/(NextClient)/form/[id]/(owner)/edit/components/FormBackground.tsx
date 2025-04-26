@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { generateStyleBackgroundImageForm, renderUnitHeightValueBg, renderUnitWidthValueBg } from "@/app/utils/form.utils";
 import Image from "next/image";
 import ButtonDarkMode from "@/app/(NextClient)/_components/ui/button/ButtonDarkMode";
+import { Camera } from "lucide-react";
 
 const FormBackground = ({ action }: { action?: "thumb" }) => {
       const { modeScreen, setModeScreen } = useContext(FormModeScreenContext);
@@ -32,6 +33,7 @@ const FormBackground = ({ action }: { action?: "thumb" }) => {
       };
 
       const myBackgroundStyle = generateStyleBackgroundImageForm({ formCore, mode: "edit" });
+      const renderHeight = action !== "thumb" ? renderUnitHeightValueBg(formCore.form_background) : {};
       return (
             <React.Fragment>
                   <DivNativeRef onClick={() => setOpenModel(true)} className="absolute inset-0 z-[2]  hover:cursor-pointer max-h-full overflow-hidden">
@@ -40,14 +42,13 @@ const FormBackground = ({ action }: { action?: "thumb" }) => {
                                     formCore.form_background_state || formCore.form_background?.form_background_iamge_url
                                           ? {
                                                   backgroundColor: formBackgroundColor,
-
-                                                  ...renderUnitHeightValueBg(formCore.form_background),
+                                                  ...renderHeight,
                                                   ...renderUnitWidthValueBg(formCore.form_background),
                                                   minHeight: action === "thumb" ? "100%" : "",
                                             }
                                           : {}
                               }
-                              className="relative inset-0   w-full overflow-hidden "
+                              className="relative group inset-0   w-full overflow-hidden "
                         >
                               <Image
                                     src={formCore.form_background?.form_background_iamge_url || formCore.form_setting_default.form_background_default_url}
@@ -59,6 +60,11 @@ const FormBackground = ({ action }: { action?: "thumb" }) => {
                                     alt="form background"
                                     className="bg absolute  w-full h-full   rounded-lg"
                               />
+                              {action === "thumb" && (
+                                    <div className="hidden absolute inset-0 bg-[rgba(0,0,0,.6)] group-hover:flex  justify-center items-center">
+                                          <Camera />
+                                    </div>
+                              )}
                         </div>
                   </DivNativeRef>
                   {modeScreen === "NORMAL" && (
