@@ -63,7 +63,7 @@ const InputAddressAnswer = (props: TProps) => {
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
                               <DivNative className="relative flex flex-col items-start gap-[1rem]  ">
-                                    <div className="w-full flex flex-col gap-[4rem] text-text-theme">
+                                    <div className="w-full flex flex-col gap-[4rem] ">
                                           <ModelAddress
                                                 detail={true}
                                                 onChange={onChangeAddress}
