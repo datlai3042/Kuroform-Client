@@ -86,7 +86,7 @@ const DashBoardRight = () => {
                                                                         {/* <DashboardTotalForm /> */}
                                                                   </div>
                                                             </div>
-                                                            <div className="mt-auto xl:mb-auto flex-grow-1 w-full sm:w-[48%]  xl:w-[24%] h-[28rem]  order-2 xl:order-4">
+                                                            <div className="mt-auto xl:mb-auto flex-grow-1 w-full sm:w-[48%]  xl:w-[24%]   order-2 xl:order-4">
                                                                   <DashboardFilterFormDate />
                                                                   {/* <DashboardFormAnalysis /> */}
                                                             </div>

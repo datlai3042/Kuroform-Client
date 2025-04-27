@@ -252,7 +252,7 @@ const FormCore = () => {
                                                 className="p-[.8rem] rounded-lg bg-color-main  text-[#ffffff] "
                                                 onClick={() => {
                                                       setModeScreen("NORMAL");
-                                                      setOpenSidebar(true);
+                                                      // setOpenSidebar(true);
                                                 }}
                                           />
                                     </DivNative>

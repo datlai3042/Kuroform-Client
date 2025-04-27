@@ -88,6 +88,37 @@ body.dark :where(.css-dev-only-do-not-override-98ntnt).ant-rate .ant-rate-star-f
 :where(.css-98ntnt).ant-rate .ant-rate-star-first, :where(.css-98ntnt).ant-rate .ant-rate-star-second {
       color: var(--color-main);
 }
+
+/*Fix color picker size*/
+@media (max-width: 768px) {
+      .custom-picker-color {
+            max-width: 90vw !important;   
+      }
+
+
+      .custom-picker-color .ant-popover-inner {
+            width: 90vw !important;
+      }
+
+      .ant-color-picker-inner {
+            width: 90vw !important;
+      }
+      .ant-color-picker-inner >div:first-of-type {
+            width: 85vw !important;
+      }
+      .ant-color-picker-presets {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+    
+      .ant-color-picker-presets .ant-color-picker-presets-item {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+    }
+    
 /* body.dark .ant-rate-star-first {
       color: blue !important;
 }

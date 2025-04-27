@@ -42,6 +42,9 @@ const ButtonPickerColor = ({
 
       return (
             <ColorPicker
+            rootClassName="custom-picker-color"
+            className="custom-picker-color-wrapper"
+                  size="small"
                   disabled={disabled || false}
                   onChange={(info, color) => onChange(color)}
                   defaultValue={defaultColor || token.colorPrimary}

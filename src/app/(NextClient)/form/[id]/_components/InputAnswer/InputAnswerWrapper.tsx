@@ -28,7 +28,7 @@ const InputAnswerWrapper = (props: TProps) => {
       return (
             <DivNative
                   style={{ ...styleWrapper }}
-                  className={`${color} w-full min-h-[12rem] h-max  bg-color-section-theme  rounded-[.4rem] border-[.1rem] border-[var(--border-color-side)]`}
+                  className={`${color} w-full min-h-[12rem] h-max  bg-transparent  rounded-[.4rem] border-[.1rem] border-[var(--border-color-side)]`}
             >
                   {children}
             </DivNative>
