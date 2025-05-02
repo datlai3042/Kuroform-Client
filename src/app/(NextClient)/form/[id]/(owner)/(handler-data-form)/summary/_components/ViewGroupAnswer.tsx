@@ -78,7 +78,7 @@ const ViewGroupAnswer = (props: TProps) => {
                                                                   }}
                                                                   className={`${
                                                                         formAnswerId === info.form_answer_id ? "bg-color-main text-[#fff]" : ""
-                                                                  }  min-h-[4rem] flex items-center justify-between gap-[6rem] border-b-[.1rem] border-[var(--border-color-input)] hover:cursor-pointer hover:bg-color-main hover:text-[#fff] `}
+                                                                  }  min-h-[4rem] px-[1rem] flex items-center justify-between gap-[6rem] border-b-[.1rem] border-[var(--border-color-input)] hover:cursor-pointer hover:bg-color-main hover:text-[#fff] `}
                                                             >
                                                                   <p className="min-w-[30%] max-w-[30%] xl:min-w-[50%] xl:max-w-[50%] truncate xl:break-words flex gap-[1rem] leading-10">
                                                                         <span>{info.value ? info?.value : "Người dùng không nhập dữ liệu"}</span>
