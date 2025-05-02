@@ -26,13 +26,16 @@ const RefreshTokenPage = () => {
             console.log("mount");
             const abort = new AbortController();
             const signal = abort.signal;
+            if (!localStorage.getItem("code_verify_token") || "") {
+                  AuthService.logoutNextClient();
 
-            const codeLocal = JSON.parse(localStorage.getItem("code_verify_token") || '');
+                  return;
+            }
+            const codeLocal = JSON.parse(localStorage.getItem("code_verify_token") || "");
             const code_verify_token_cl = codeLocal ? codeLocal : "";
             console.log({ codeLocal, code_verify_token_cl, code_verify_token_sv });
             if (!code_verify_token_cl) {
-                  setError(true);
-                  return;
+                  AuthService.logoutNextClient();
             }
             if (code_verify_token_cl === code_verify_token_sv) {
                   AuthService.refreshTokenServer(signal)

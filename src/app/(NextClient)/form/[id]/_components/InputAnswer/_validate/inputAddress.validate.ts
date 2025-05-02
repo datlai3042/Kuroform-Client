@@ -39,12 +39,12 @@ const superAddressValidate = ({
 }: {
       inputValue: FormCore.FormAnswer.Data.Address["value"];
       inputSetting: InputCore.InputAddress.InputTypeAddress["core"]["setting"];
-      description:FormCore.FormAnswer.Data.Address["description"];
+      description: FormCore.FormAnswer.Data.Address["description"];
 
 }) => {
       let _next = true;
       let message = "";
-    
+
       const { addressValidate, addressString } = description;
       let type: InputCore.Commom.ErrorText | null = null;
       const { require } = inputSetting;
@@ -55,8 +55,7 @@ const superAddressValidate = ({
             addressValidate[2]?.path_with_type &&
             addressValidate[3]?.path_with_type;
 
-
-            if (require) {
+      if (require) {
             if (addressString && full_field) {
                   return { _next, message, type };
             }
@@ -70,6 +69,7 @@ const superAddressValidate = ({
                         }
                         errors.push(renderVietnameseLabelAddress(address_item.type));
                   });
+                  console.log({ errors })
                   _next = false;
 
                   message = errors.join(", ");
@@ -94,11 +94,28 @@ const superAddressValidate = ({
             ) {
                   (_next = false), (message = "Địa chỉ bạn cung cấp không đầy đủ");
                   type = "INVAILD";
-                
+
                   return { _next, message, type };
             }
 
             if (!full_field) {
+                  let errors: string[] = [];
+                  addressValidate.forEach((address_item) => {
+                        if (address_item.path_with_type) return;
+                        if (address_item.type == "street") {
+                              errors.push(renderVietnameseLabelAddress("street"));
+                              return;
+                        }
+                        errors.push(renderVietnameseLabelAddress(address_item.type));
+                  });
+                  console.log({ errors })
+                  _next = false;
+
+                  message = errors.join(", ");
+
+                  message += "  bắt buộc nhập";
+                  type = "INVAILD";
+
                   return { _next, message, type };
             }
       }

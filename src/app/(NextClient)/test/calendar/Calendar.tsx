@@ -50,7 +50,7 @@ const Calendar = (props: TProps) => {
       const styleEffect = {
             renderStyleDateItem: (dateInfo: UI.Calender.DateInfo) => {
                   const { day, month, year, state } = dateInfo;
-                  let active = "bg-color-main text-[#fff]";
+                  let active = "bg-color-main text-[#fff] !opacity-100";
                   let active_middle = "bg-blue-300 text-[#fff]";
                   let day_current = "bg-blue-400 text-[#fff]";
                   let first_day = "bg-red-500  text-[#fff] ";
@@ -143,7 +143,7 @@ const Calendar = (props: TProps) => {
                                                       className="w-[3.4rem] h-[2.8rem] xl:w-[5.8rem] xl:h-[3rem] flex items-center justify-center"
                                                 >
                                                       <button
-                                                            style={{ opacity: detail.state !== "current" ? ".4" : "1" }}
+                                                            style={{ opacity: detail.state !== "current" ? ".4" : ".5" }}
                                                             onClick={(e) => {
                                                                   e.stopPropagation();
                                                                   setMonth(detail.month);
@@ -152,7 +152,7 @@ const Calendar = (props: TProps) => {
                                                             }}
                                                             className={`${styleEffect.renderStyleDateItem(
                                                                   detail,
-                                                            )} w-[2.2rem] h-[2.2rem] xl:w-[3rem] xl:h-[3rem] rounded-full `}
+                                                            )} opacity-70 w-[2.2rem] h-[2.2rem] xl:w-[3rem] xl:h-[3rem] rounded-[.4rem] bg-color-main text-[#fff] `}
                                                       >
                                                             <span>{detail.day}</span>
                                                       </button>

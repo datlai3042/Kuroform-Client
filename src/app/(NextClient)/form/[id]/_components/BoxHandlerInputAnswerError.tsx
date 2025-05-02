@@ -9,15 +9,17 @@ type TProps = {
       error?: FormCore.FormAnswer.InputError;
       write: boolean;
       inputItemInArrayGlobal: FormCore.FormAnswer.ControlerInputAnswer<FormCore.FormAnswer.Data.InputData>;
+      styles?: React.CSSProperties;
 };
 
 const BoxHandlerInputAnswerError = (props: TProps) => {
-      const { children, error, inputItemInArrayGlobal, input_id, write } = props;
+      const { children, error, inputItemInArrayGlobal, input_id, write, styles = {} } = props;
 
-      const colorMain = useSelector((state: RootState) => state.form.colorCore)
+      const colorMain = useSelector((state: RootState) => state.form.colorCore);
 
       return (
             <div
+                  style={styles}
                   id={`_inputid_${input_id}`}
                   // style={{borderColor: !!error?.error ? '':  colorMain,}}
                   className={`${

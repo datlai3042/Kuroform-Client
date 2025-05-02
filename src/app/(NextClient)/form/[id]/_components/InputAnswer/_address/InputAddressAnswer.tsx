@@ -46,7 +46,7 @@ const InputAddressAnswer = (props: TProps) => {
                   validateCallback: superAddressValidate,
                   description: address,
             });
-
+            console.log(_validate);
             const { _next, type, message } = _validate;
 
             if (_next) {
@@ -55,6 +55,7 @@ const InputAddressAnswer = (props: TProps) => {
                   }
             }
       };
+      console.log({ global: inputItemInArrayGlobal.globalError.state, ip: inputItemInArrayGlobal.input?.description?.address_full });
       const isError = inputItemInArrayGlobal?.globalError?.state;
 
       return (

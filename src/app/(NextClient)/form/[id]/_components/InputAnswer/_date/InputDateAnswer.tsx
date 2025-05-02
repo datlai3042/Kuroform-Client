@@ -97,7 +97,7 @@ const InputDateAnswer = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
       return (
             <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <BoxHandlerInputAnswerError styles={{borderBottom: '.2rem dashed var(--color-main)'}} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
                               <DivNative
@@ -126,7 +126,7 @@ const InputDateAnswer = (props: TProps) => {
                                           onClick={() => setOpenModel((prev) => !prev)}
                                           className="relative w-max bg-color-main text-[#fff] p-[.2rem_.6rem] sm:p-[.5rem_1rem] rounded-[.4rem] flex items-center gap-[.3rem] text-[1.3rem]"
                                     >
-                                          {dateRender ? <span>{dateRender}</span> : <span>Click vào để chọn thời gian</span>}
+                                          {dateRender ? <span>{dateRender}</span> : <span className="whitespace-pre">Click vào để chọn thời gian</span>}
                                           <CalendarDays size={20} className="aspect-square w-[2rem] sm:w-[3rem]" />
 
                                           {openModel && (

@@ -60,7 +60,7 @@ const HeaderHandlerLayout = (props: TProps) => {
 
       return (
             <DivNative
-                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101] flex-wrap   w-auto  flex  justify-between  gap-[2rem]  p-[0rem_6.8rem] text-[1.3rem]`}
+                  className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101] flex-wrap   w-auto  flex  justify-between  gap-[2rem]  p-[0rem_2rem] text-[1.3rem]`}
             >
                   <div className="w-full flex h-full items-center gap-[1rem]">
                  

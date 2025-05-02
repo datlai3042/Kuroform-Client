@@ -84,7 +84,12 @@ const InputAnchorAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <BoxHandlerInputAnswerError
+                        styles={{ borderBottom: ".2rem dashed var(--color-main)" }}
+                        inputItemInArrayGlobal={inputItemInArrayGlobal}
+                        input_id={inputItem._id!}
+                        write={write}
+                  >
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>
                               <DivNative className="w-full flex flex-col gap-[4rem]">

@@ -5,7 +5,7 @@ import React from 'react'
 
 const FormEditLoading = () => {
   return (
-   <LoadingClient width='min-w-full' height='h-[60vh]' />
+   <LoadingClient width='min-w-full' height='h-[60vh]' style={{backgroundColor: 'red'}}/>
   )
 }
 

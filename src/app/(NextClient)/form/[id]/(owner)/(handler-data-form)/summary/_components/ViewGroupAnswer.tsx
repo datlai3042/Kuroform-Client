@@ -50,10 +50,10 @@ const ViewGroupAnswer = (props: TProps) => {
                               const type = dt.split("_#_")[1] as InputCore.InputForm["type"];
                               return (
                                     <div key={dt + i} className="whitespace-pre  flex flex-col gap-[1.2rem]  ">
-                                          <h3 className="pl-[.4rem] text-[2.1rem] flex items-center justify-between gap-[.8rem] font-medium text-color-main">
-                                                <p className="flex items-center gap-[.6rem]">
+                                          <h3 className="pl-[.4rem] text-[2.1rem] flex-wrap flex items-center justify-between gap-[.8rem] font-medium text-color-main">
+                                                <p className="flex items-baseline gap-[.6rem]">
                                                       <Circle size={16}/>
-                                                      <span>{dataGroupFilter[dt][0]?.title}</span>
+                                                      <span className="whitespace-pre-wrap">{dataGroupFilter[dt][0]?.title}</span>
                                                 </p>
                                                 <span className="text-[1.4rem]">{dataGroupFilter[dt].length} phản hồi</span>
                                           </h3>

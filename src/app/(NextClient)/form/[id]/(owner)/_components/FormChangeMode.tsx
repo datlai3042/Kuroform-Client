@@ -74,7 +74,7 @@ const FormChangeMode = (props: TProps) => {
       }, [copySuccess]);
 
       return (
-            <div className=" w-full p-[2rem_6rem]  mx-auto h-full flex  flex-col gap-[1rem] text-text-theme">
+            <div className=" w-full p-[2rem_2rem]  mx-auto h-full flex  flex-col gap-[1rem] text-text-theme">
                   <div id="content-info" className="w-full flex flex-col gap-[2rem] xl:flex-row justify-between">
                         <h1
                               title={formCore.form_title.form_title_value}

@@ -84,11 +84,20 @@ const InputImageAnswer = (props: TProps) => {
       const isError = write || inputItemInArrayGlobal?.globalError?.state;
       return (
             <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <BoxHandlerInputAnswerError
+                        styles={{ borderBottom: ".2rem dashed var(--color-main)" }}
+                        inputItemInArrayGlobal={inputItemInArrayGlobal}
+                        input_id={inputItem._id!}
+                        write={write}
+                  >
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
                               <DivNative className={`$ text-inherit relative flex flex-col  items-center justify-between gap-[1rem]  `}>
-                                    <DivNative className={`${formCore.form_styles === 'GOOGLE_FORM' ? ' gap-[2rem]' : ' gap-[1rem]'} w-full     flex flex-col   justify-start   `}>
+                                    <DivNative
+                                          className={`${
+                                                formCore.form_styles === "GOOGLE_FORM" ? " gap-[2rem]" : " gap-[1rem]"
+                                          } w-full     flex flex-col   justify-start   `}
+                                    >
                                           <div className=" flex justify-between gap-[2rem] flex-wrap">
                                                 <p className="w-max text-[1.3rem] ">Vui lòng chọn các file JPG, JPEG,PNG</p>
                                                 <button
