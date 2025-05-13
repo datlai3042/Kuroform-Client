@@ -123,7 +123,7 @@ const ButtonOptionsValue = (props: TProps) => {
                   {...attributes}
                   {...listeners}
                   style={style}
-                  className="reset-border-outline flex min-h-[5rem] max-w-full h-max items-center gap-[2rem] text-[1.4rem]"
+                  className="reset-border-outline flex min-h-[4rem] max-w-full h-max items-center gap-[2rem] text-[1.4rem]"
                   onClick={() => onSelectValue(option.option_id)}
             >
                   <div className="w-[2rem] aspect-square rounded-full border-[.1rem] border-slate-400 flex items-center justify-center">
@@ -146,6 +146,7 @@ const ButtonOptionsValue = (props: TProps) => {
                   </div>
 
                   <button
+                        style={{ color: formCore?.screen === "profile" ? "#fff" : "" }}
                         disabled={deleteOptionIdMutation.isPending}
                         onClick={(e) => {
                               e.preventDefault();

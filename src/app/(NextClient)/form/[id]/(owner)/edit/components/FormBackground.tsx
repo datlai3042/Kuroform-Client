@@ -33,10 +33,14 @@ const FormBackground = ({ action }: { action?: "thumb" }) => {
       };
 
       const myBackgroundStyle = generateStyleBackgroundImageForm({ formCore, mode: "edit" });
-      const renderHeight = action !== "thumb" ? renderUnitHeightValueBg(formCore.form_background) : {};
+      const renderHeight = formCore?.screen === 'profile' ? {height: '100%'} : action !== "thumb" ? renderUnitHeightValueBg(formCore.form_background) : {};
       return (
             <React.Fragment>
-                  <DivNativeRef onClick={() => setOpenModel(true)} className="absolute inset-0 z-[2]  hover:cursor-pointer max-h-full overflow-hidden">
+                  <DivNativeRef
+                        // style={{ top: formCore?.screen === "profile" && action !== "thumb" ? 250 : 0 }}
+                        onClick={() => setOpenModel(true)}
+                        className="absolute inset-0 z-[2]  hover:cursor-pointer max-h-full overflow-hidden"
+                  >
                         <div
                               style={
                                     formCore.form_background_state || formCore.form_background?.form_background_iamge_url

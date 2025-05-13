@@ -90,7 +90,7 @@ const FormCore = () => {
       const { setOpenSidebar } = useContext(SidebarContext);
       const [activeId, setActiveId] = useState<string | null>(null);
       const { theme } = useContext(ThemeContext);
-      const [colorBorderCurrent, setBorderCurruent] = useState('')
+      const [colorBorderCurrent, setBorderCurruent] = useState("");
       const updateFormAPI = useUpdateForm();
 
       const dispatch = useDispatch();
@@ -120,7 +120,9 @@ const FormCore = () => {
             const newForm = structuredClone(formCore);
             newForm.form_inputs = newArray;
             dispatch(onFetchForm({ form: newForm }));
-            updateFormAPI.mutate(newForm);
+            if (formCore?.screen !== "profile") {
+                  updateFormAPI.mutate(newForm);
+            }
             setActiveId(null);
             return newArray;
       };
@@ -150,32 +152,27 @@ const FormCore = () => {
       }, [modeScreen]);
 
       useEffect(() => {
-            setBorderCurruent(formCore.form_themes)
+            setBorderCurruent(formCore.form_themes);
             if (formCore.form_themes === "AUTO") {
                   if (theme === "light") {
                         document.body.style.setProperty("--border-color-input", "rgb(169 169 204 / 74%)");
-                     
                   } else {
                         document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
-
                   }
             }
             if (formCore.form_themes === "LIGHT") {
                   document.body.style.setProperty("--border-color-input", "rgb(169 169 204 / 74%)");
-                  document.documentElement.style.backgroundColor = 'var(--form-theme-light)'
-
+                  document.documentElement.style.backgroundColor = "var(--form-theme-light)";
             }
 
             if (formCore.form_themes === "DARK") {
                   document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
-                  document.documentElement.style.backgroundColor = 'var(--form-theme-dark)'
-
+                  document.documentElement.style.backgroundColor = "var(--form-theme-dark)";
             }
 
             return () => {
-                  document.documentElement.style.backgroundColor = 'var(--color-section-theme)'
-
-            }
+                  document.documentElement.style.backgroundColor = "var(--color-section-theme)";
+            };
       }, [formCore.form_themes, theme]);
 
       return (
@@ -200,8 +197,12 @@ const FormCore = () => {
                                                             <ButtonDesgin className={`${openFormDesign ? "" : "ml-0"}`} />
 
                                                             <DivNative className="flex flex-col sm:flex-row w-max     gap-[2rem]">
-                                                                  {!formCore.form_avatar_state && !formCore.form_avatar && <ButtonAddAvatarForm />}
-                                                                  {!formCore.form_background_state && !formCore.form_background && <ButtonAddBackgroundForm />}
+                                                                  {formCore?.screen !== "profile" && !formCore.form_avatar_state && !formCore.form_avatar && (
+                                                                        <ButtonAddAvatarForm />
+                                                                  )}
+                                                                  {formCore?.screen !== "profile" &&
+                                                                        !formCore.form_background_state &&
+                                                                        !formCore.form_background && <ButtonAddBackgroundForm />}
                                                             </DivNative>
                                                       </DivNative>
                                                 </DivNative>
@@ -210,7 +211,7 @@ const FormCore = () => {
                                           <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[1rem] min-h-full`}>
                                                 <InputCoreTitle />
                                                 {formCore.form_inputs.length > 0 && (
-                                                      <DivNative className="mt-[2rem] h-max w-full flex flex-col gap-[4.8rem] ">
+                                                      <DivNative className="mt-[2rem] h-max w-full flex flex-col gap-[5.8rem] ">
                                                             <DndContext
                                                                   onDragStart={(event) => {
                                                                         setActiveId(event.active.id as string);

@@ -191,19 +191,21 @@ const FormDesignCustom = () => {
                                     {modeDesign === "SUB_TITLE" && <FormDesignText title={"Tùy chỉnh tiêu đề phụ"} type="Common" />} */}
                               </div>
                         </div>
-                        <div
-                              id="design-bottom"
-                              className="w-[32rem] flex-shrink-1 ml-auto px-[.1rem]  fixed bottom-[1rem] right-0 md:px-[2rem] flex items-center    "
-                        >
-                              <div className="p-[1rem] w-full bg-color-section-theme flex justify-end">
-                                    <ButtonNative
-                                          // style={{ backgroundColor: theme === "light" ? colorMain : "#fff" }}
-                                          textContent="Lưu"
-                                          onClick={onSaveDesign}
-                                          className="bg-color-main p-[.6rem_1rem] w-[10rem] ml-auto rounded-[.4rem] text-[#fff]"
-                                    />
+                        {formOriginal?.screen !== "profile" && (
+                              <div
+                                    id="design-bottom"
+                                    className="w-[32rem] flex-shrink-1 ml-auto px-[.1rem]  fixed bottom-[1rem] right-0 md:px-[2rem] flex items-center    "
+                              >
+                                    <div className="p-[1rem] w-full bg-color-section-theme flex justify-end">
+                                          <ButtonNative
+                                                // style={{ backgroundColor: theme === "light" ? colorMain : "#fff" }}
+                                                textContent="Lưu"
+                                                onClick={onSaveDesign}
+                                                className="bg-color-main p-[.6rem_1rem] w-[10rem] ml-auto rounded-[.4rem] text-[#fff]"
+                                          />
+                                    </div>
                               </div>
-                        </div>
+                        )}
                   </div>
             </div>
       );

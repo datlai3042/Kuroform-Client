@@ -348,6 +348,7 @@ namespace FormCore {
 
       export type Form = {
             _id: string;
+            screen?: 'profile',
             form_owner: string;
             form_title: FormCore.FormTitle;
             form_views: number;

@@ -20,12 +20,12 @@ const FormImage = () => {
       // };
 
       const _checkBackground = formCore.form_background_state || formCore.form_background?.form_background_iamge_url;
-    
+
       return (
             <DivNative
                   className={` 
 
- group  relative w-full mx-auto  px-[4rem] xl:px-0 ${_checkBackground ? "min-h-[20rem]" : ""}`}
+ group  relative w-full mx-auto  px-[4rem] xl:px-0 ${_checkBackground ? (formCore?.screen === "profile" ? "min-h-[35rem]" : "min-h-[20rem]") : ""}`}
             >
                   {(formCore.form_background || formCore.form_background_state) && <FormBackground />}
 

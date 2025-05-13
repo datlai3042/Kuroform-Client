@@ -1,3 +1,4 @@
+'use client'
 import React, { SetStateAction, createContext, useEffect, useState } from "react";
 import ModelNotSave from "../../form/[id]/(owner)/edit/components/FormDesign/ModelNotSave";
 

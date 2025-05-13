@@ -8,6 +8,7 @@ import SidebarContextProvider from "./(NextClient)/(user)/dashboard/SidebarConte
 import ToastProvider from "./(NextClient)/_components/provider/ToastProvider";
 import ThemeProvider from "./(NextClient)/_components/provider/ThemeProvider";
 import Footer from "./(NextClient)/_components/Layout/Footer";
+import FormDesignProvider from "./(NextClient)/_components/provider/FormDesignProvider";
 
 const inter = Inter({ subsets: ["vietnamese"] });
 
@@ -35,8 +36,10 @@ export default function RootLayout(props: TProps) {
                               <ReactQueryProvider>
                                     <ThemeProvider>
                                           <SidebarContextProvider>
-                                                <AppProvider>{props.children}</AppProvider>
-                                                <ToastProvider />
+                                                <FormDesignProvider>
+                                                      <AppProvider>{props.children}</AppProvider>
+                                                      <ToastProvider />
+                                                </FormDesignProvider>
                                           </SidebarContextProvider>
                                     </ThemeProvider>
                               </ReactQueryProvider>

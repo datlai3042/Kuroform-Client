@@ -48,7 +48,7 @@ const FormAvatar = (props: TProps) => {
                         className={`
    ${openFormDesign ? " " : ""}
  ${_checkAvatar ? " " : ""}
-  ${_checkBackground ? "min-h-[20rem]" : ""}
+  ${_checkBackground ? (formCore?.screen === "profile" ? "min-h-[35rem]" : "min-h-[20rem]") : ""}
   w-full xl:max-w-[70rem] mx-auto  relative flex items-end h-[14rem]`}
                   >
                         <div className="absolute h-max w-full bottom-0 flex justify-center">

@@ -10,7 +10,7 @@ import { FormDesignContext } from "@/app/(NextClient)/_components/provider/FormD
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/_lib/redux/store";
 import { CSS } from "styled-components/dist/types";
-import { useSelectedLayoutSegment, useSelectedLayoutSegments } from "next/navigation";
+import { usePathname, useSelectedLayoutSegment, useSelectedLayoutSegments } from "next/navigation";
 import { SidebarContext } from "@/app/(NextClient)/(user)/dashboard/SidebarContext";
 import { Link } from "lucide-react";
 import { useDebouncedCallback } from "@mantine/hooks";
@@ -25,7 +25,6 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
       const [widthSectionDesign, setWidthSectionDesin] = useState(0);
       const [widthSidebar, setWidthSidebar] = useState(0);
 
-
       const formColor = formCore.form_color || "bg-color-section-theme";
       const handlerBrowserResize = useDebouncedCallback(() => {
             const sectionDesign = document.getElementById("section-design");
@@ -37,7 +36,6 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
             } else {
                   setWidthSectionDesin(0);
             }
-
 
             if (sectionSidebar) {
                   const widthSectionbar = sectionSidebar.clientWidth || 0;
@@ -51,24 +49,26 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
       }, [openFormDesign, handlerBrowserResize, openSidebar]);
 
       useEffect(() => {
-            window.addEventListener('resize', handlerBrowserResize)
+            window.addEventListener("resize", handlerBrowserResize);
 
             return () => {
-            window.removeEventListener('resize', handlerBrowserResize)
+                  window.removeEventListener("resize", handlerBrowserResize);
+            };
+      }, []);
+      const pathname = usePathname();
+      const widthParent = pathname?.includes("/form") ? "100vw" : "100%";
 
-            }
-      }, [])
       return (
             <div
                   className={` flex flex-col min-h-screen h-max  `}
                   style={
                         {
-                              width: modeScreen === "NORMAL" ? `calc(100vw - ${widthSectionDesign+10}px - ${widthSidebar}px ` : "100vw",
+                              width: `calc(${widthParent} - ${widthSectionDesign + (widthParent === "100%" ? 0 : 0)}px - ${widthSidebar}px `,
                               "--bg-input-core": colorMain,
                         } as CSS.Properties
                   }
             >
-                  <HeaderEditForm showHeaderAction={true} />
+                  {formCore?.screen !== "profile" && <HeaderEditForm showHeaderAction={true} />}
                   {formCore && (
                         <div
                               style={{ backgroundColor: (modeScreen === "FULL" && formCore.form_color) || "" }}

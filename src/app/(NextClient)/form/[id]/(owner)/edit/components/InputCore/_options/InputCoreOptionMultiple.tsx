@@ -1,23 +1,17 @@
-import React, { memo, useContext, useEffect, useRef, useState } from "react";
-import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative";
+import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
-import { FormModeScreenContext } from "@/app/(NextClient)/_components/provider/FormModeScreen";
-import { InputCore as TInputCore } from "@/type";
-import InputCore from "../InputCore";
-import DivNativeRef from "@/app/(NextClient)/_components/ui/NativeHtml/DivNativeRef";
-import ButtonAddOption from "@/app/(NextClient)/_components/ui/button/ButtonOptionValue";
-import { Plus } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
+import SpanNative from "@/app/(NextClient)/_components/ui/NativeHtml/SpanNative";
+import ButtonOptionsValue from "@/app/(NextClient)/_components/ui/button/ButtonOptionsValue";
 import { RootState } from "@/app/_lib/redux/store";
-import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
-import ButtonOptionValue from "@/app/(NextClient)/_components/ui/button/ButtonOptionValue";
-import useAddOptionClient from "@/app/hooks/useAddOptionClient";
 import useAddOptionServer from "@/app/hooks/useAddOptionServer";
+import usePositionOption from "@/app/hooks/usePositionOption";
+import { InputCore as TInputCore } from "@/type";
 import { DndContext, DragEndEvent, MouseSensor, UniqueIdentifier, closestCorners, useSensor, useSensors } from "@dnd-kit/core";
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import usePositionOption from "@/app/hooks/usePositionOption";
-import ButtonOptionsValue from "@/app/(NextClient)/_components/ui/button/ButtonOptionsValue";
-import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import { Plus } from "lucide-react";
+import { memo, useContext, useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import InputCore from "../InputCore";
 import { SyncDataOption } from "../_option/InputCoreOption";
 
 type TProps = {

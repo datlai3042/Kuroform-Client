@@ -21,6 +21,7 @@ import { useRouter } from "next/navigation";
 import AuthService from "@/app/_services/auth.service";
 import ButtonLoginGoogle from "../ui/button/ButtonLoginGoogle";
 import ButtonLoginGithub from "../ui/button/ButtonLoginGithub";
+import SpaceLine from "./SpaceLine";
 type TProps = {
       onClose?: (state: boolean) => void;
 };
@@ -64,28 +65,10 @@ const RegisterForm = (props: TProps) => {
       return (
             <div className="relative w-full mb-[1.6rem] h-max flex justify-start xl:justify-center items-center flex-col  gap-[1.6rem] rounded-[1.2rem] p-[.4rem_2rem] ">
                   <div className="w-full flex flex-col gap-[.2rem] ">
-                        <p className="text-[2.4rem] xl:text-[2.8rem] font-semibold ">Tạo tài khoản</p>
-                        <p className="text-[1.6rem] xl:text-[1.8rem] ">Đăng kí tài khoản để tạo cho bạn.</p>
+                        <p className="text-[2.4rem] xl:text-[2.8rem] font-semibold text-[#3d52a2] text-center">Tạo tài khoản</p>
                   </div>
-                  <div className="w-full flex flex-col gap-[.2rem] text-[1.4rem] my-[1.5rem]">
-                        <p className="text-[#6262e5] font-medium text-[1.6rem]">Đăng nhập tài khoản của bạn</p>
-                        <p className="text-[1.4rem]">
-                              Bạn đã có tài khoản?{" "}
-                              <Link href={"/login"} className="text-[#6262e5] underline">
-                                    đăng nhập
-                              </Link>
-                        </p>
-                  </div>
-                  <div className=" w-full flex flex-col gap-[3rem] ">
-                        <div className="w-full flex flex-col gap-[1rem]">
-                              <div className="w-full h-[4.6rem]">
-                                    <ButtonLoginGoogle />
-                              </div>
 
-                              <div className="w-full h-[4.6rem]">
-                                    <ButtonLoginGithub />
-                              </div>
-                        </div>
+                  <div className=" w-full flex flex-col gap-[2rem] ">
                         <form className="w-full flex flex-col justify-center  gap-[.6rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
                               <Input<RegisterType>
                                     FieldKey="user_first_name"
@@ -135,9 +118,28 @@ const RegisterForm = (props: TProps) => {
                                     textContent="Đăng kí"
                                     disabled={registerMutation.isPending}
                                     loading={registerMutation.isPending}
-                                    className="!w-full !h-[4rem] !bg-blue-600 "
+                                    className="!w-full !h-[4rem] !bg-[#3d52a2] "
                               />
                         </form>
+                        <SpaceLine content="Hoặc đăng nhập luôn bằng phương thức khác" />
+
+                        <div className="w-full flex flex-col gap-[1rem]">
+                              <div className="w-full h-[4.6rem]">
+                                    <ButtonLoginGoogle />
+                              </div>
+
+                              <div className="w-full h-[4.6rem]">
+                                    <ButtonLoginGithub />
+                              </div>
+                        </div>
+                        <div className="w-full flex flex-col items-center gap-[.2rem] text-[1.4rem]">
+                              <p className="text-[1.4rem]">
+                                    Bạn đã có tài khoản?{" "}
+                                    <Link href={"/login"} className="text-[#3d52a2] underline font-semibold">
+                                          đăng nhập
+                                    </Link>
+                              </p>
+                        </div>
                   </div>
 
                   {onClose && (
