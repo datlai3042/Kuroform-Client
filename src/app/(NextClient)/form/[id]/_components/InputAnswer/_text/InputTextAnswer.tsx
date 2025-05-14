@@ -83,7 +83,7 @@ const InputTextAnswer = (props: TProps) => {
                                                       }),
                                                 }}
                                                 ref={divContentRef}
-                                                className={` w-[92%]  heading-answer group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
+                                                className={` w-[92%]  heading-answer group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem]   outline-none resize-none `}
                                                 onClick={() => divContentRef.current?.focus()}
                                                 onBlur={(e) => onBlur(e)}
                                                 onFocus={onFocus}

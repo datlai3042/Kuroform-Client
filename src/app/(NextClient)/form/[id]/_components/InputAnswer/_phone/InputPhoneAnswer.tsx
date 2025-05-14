@@ -85,7 +85,7 @@ const InputPhoneAnswer = (props: TProps) => {
                                           type="number"
                                           className={` ${
                                                 formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                          }  border-b-[.1rem] border-[var(--border-color-input)] h-full pb-[2rem]        outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          }  border-b-[.1rem] h-full pb-[2rem]        outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                           placeholder="Nhập số điện thoại của bạn"
                                           onChange={(e) => setPhone(e.target.value)}
                                     />
