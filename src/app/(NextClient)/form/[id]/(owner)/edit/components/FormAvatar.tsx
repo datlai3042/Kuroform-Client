@@ -62,7 +62,7 @@ const FormAvatar = (props: TProps) => {
                                           alt="avatar"
                                           className={`${action !== "thumb" ? position : ""} ${
                                                 action !== "thumb" ? shape : ""
-                                          } object-cover absolute top-[0] translate-y-[-50%] z-[3] object-center w-[12rem] h-[12rem] hover:cursor-pointer `}
+                                          }  absolute top-[0] translate-y-[-50%] z-[3] object-center w-[12rem] h-[12rem] hover:cursor-pointer `}
                                     />
 
                                     {/* {(!formCore.form_background?.form_background_iamge_url || !formCore.form_background_state) && (

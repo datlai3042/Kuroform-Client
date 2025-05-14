@@ -46,7 +46,7 @@ const FormAnswerHeader = (props: TProps) => {
                                     height={160}
                                     quality={100}
                                     alt="form background"
-                                    className={`${isGoogleForm ? 'rounded-lg' : ''} w-full h-full   absolute`}
+                                    className={`${isGoogleForm ? 'rounded-lg' : ''} w-full h-full   absolute `}
                               />
                         </div>
                         // </div>

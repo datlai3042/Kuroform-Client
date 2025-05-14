@@ -40,7 +40,7 @@ const FormDesignAvatar = () => {
                                                 className={`min-w-[7rem] w-[7rem] h-[12rem] cursor-pointer object-cover`}
                                           />
                                           <div className="hidden absolute inset-0 bg-[rgba(0,0,0,.6)] group-hover:flex  justify-center items-center">
-                                                <Camera />
+                                                <Camera color="#fff"/>
                                           </div>
                                     </div>
                                     <div className=" flex flex-col gap-[.8rem]">

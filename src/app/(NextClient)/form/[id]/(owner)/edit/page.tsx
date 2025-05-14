@@ -57,13 +57,13 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
       }, []);
       const pathname = usePathname();
       const widthParent = pathname?.includes("/form") ? "100vw" : "100%";
-
+    
       return (
             <div
                   className={` flex flex-col min-h-screen h-max  `}
                   style={
                         {
-                              width: `calc(${widthParent} - ${widthSectionDesign + (widthParent === "100%" ? 0 : 0)}px - ${widthSidebar}px `,
+                              width: `calc(${widthParent} - ${widthSectionDesign + (widthParent === "100%" ? 0 : 10 )}px - ${widthSidebar}px `,
                               "--bg-input-core": colorMain,
                         } as CSS.Properties
                   }

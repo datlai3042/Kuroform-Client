@@ -59,14 +59,14 @@ const FormBackground = ({ action }: { action?: "thumb" }) => {
                                     width={800}
                                     height={160}
                                     quality={100}
-                                    style={action !== "thumb" ? myBackgroundStyle.style_background : { objectFit: action === "thumb" ? "cover" : "unset" }}
+                                    style={action !== "thumb" ? myBackgroundStyle.style_background : { objectFit: action === "thumb" ? "cover" : "unset", borderRadius: 4 }}
                                     unoptimized={true}
                                     alt="form background"
-                                    className="bg absolute  w-full h-full   rounded-lg"
+                                    className="bg absolute  w-full h-full  "
                               />
                               {action === "thumb" && (
                                     <div className="hidden absolute inset-0 bg-[rgba(0,0,0,.6)] group-hover:flex  justify-center items-center">
-                                          <Camera />
+                                          <Camera color="#fff"/>
                                     </div>
                               )}
                         </div>
