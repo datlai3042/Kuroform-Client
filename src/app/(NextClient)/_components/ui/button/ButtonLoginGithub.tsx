@@ -11,7 +11,7 @@ const ButtonLoginGithub = () => {
       return (
             <button
                   onClick={onLoginGithub}
-                  className="w-full h-full flex items-center justify-center gap-[1.4rem] border-[.1rem] border-[var(--border-color-input)] rounded-xl p-[.8rem_1rem] bg-[#fff] text-[#000]"
+                  className="w-full !h-full flex items-center justify-center gap-[1.4rem] border-[.1rem] border-[var(--border-color-input)] rounded-xl p-[.8rem_1rem] bg-[#fff] text-[#000]"
             >
                   <Image src={"/assets/images/social/github.png"} width={50} height={50} alt="toast success" className="w-[3rem] h-[3rem]" />
                   <span className="text-[1.5rem]">Github</span>

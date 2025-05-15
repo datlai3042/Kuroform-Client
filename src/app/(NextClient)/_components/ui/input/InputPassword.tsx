@@ -22,7 +22,7 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
       const [focus, setFocus] = useState(false);
 
       return (
-            <div className="flex flex-col w-full h-max gap-[.6rem]  ">
+            <div className="flex flex-col w-full min-h-[8rem] h-max gap-[.6rem]  ">
                   <label
                         style={{ color: focus ? "var(--color-main)" : "", fontWeight: focus ? 700 : "" }}
                         htmlFor={`${FieldKey}-${id}`}
