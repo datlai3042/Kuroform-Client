@@ -86,7 +86,7 @@ const SettingUpdatePassword = (props: TProps) => {
 
                         <button
                               type="submit"
-                              className=" min-w-[15rem] w-max  p-[.8rem] h-[4.4rem] flex justify-center items-center gap-[.8rem] bg-color-main text-white rounded-lg"
+                              className=" min-w-[15rem] my-[1.2rem] w-max  p-[.8rem] !h-[3.4rem] flex justify-center items-center gap-[.8rem] bg-color-main text-white rounded-lg"
                         >
                               Cập nhập mật khẩu
                               {updatePassword.isPending && <LoadingSpinner color="#fff" width="min-w-[2rem]" height=" min-h-[2rem]" />}

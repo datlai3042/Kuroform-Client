@@ -62,7 +62,7 @@ const HanderlDataFormLayout = ({ params, children }: { params: { id: string }; c
                   {ready ? (
                         formAnswer ? children: <FormEmptyResponse />
                   ) : (
-                        <div className="h-full min-h-[20rem]">
+                        <div className="h-[50vh]">
                               <LoadingClient width="w-full" height="!h-full" style={{ borderRadius: ".6rem" }} />
                         </div>
                   )}

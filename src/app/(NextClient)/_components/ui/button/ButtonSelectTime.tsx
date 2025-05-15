@@ -40,7 +40,7 @@ const ButtonSelectTime = (props: TProps) => {
                                     <ClickOutSide setOpenModel={setOpenDateModel}>
                                           <button
                                                 onClick={(e) => e.stopPropagation()}
-                                                className="absolute z-[2] min-w-[9rem]  max-h-[30rem] overflow-auto bottom-[-1rem] translate-y-[100%] bg-[#fff] border-[.1rem] border-[var(--border-color-input)] left-[0] right-0 min-h-[4rem] h-max flex flex-col items-center text-[#000] rounded-lg text-[1.2rem]"
+                                                className="absolute z-[2] min-w-[9rem] !h-max  !max-h-[30rem] overflow-auto bottom-[-1rem] translate-y-[100%] bg-[#fff] border-[.1rem] border-[var(--border-color-input)] left-[0] right-0 min-h-[4rem]  flex flex-col items-center text-[#000] rounded-lg text-[1.2rem]"
                                           >
                                                 {months.map((monthItem) => (
                                                       <span

@@ -120,7 +120,7 @@ const ViewOnceAnswer = (props: TProps) => {
                               return (
                                     <TableRow key={index} className="group">
                                           <TableCell className="font-medium whitespace-pre flex items-center gap-[1rem] ">
-                                                <div className="font-medium flex justify-center" style={{width: 200}}>
+                                                <div className="font-medium flex justify-center" style={{ width: 200 }}>
                                                       {moment(new Date(rp.createdAt)).format("HH:mm:ss  -  DD - MM - YYYY")}
                                                 </div>
                                                 <div className="invisible  group-hover:visible flex font-medium whitespace-pre sticky right-[-1rem] z-[10]  gap-[1rem]">
@@ -167,9 +167,13 @@ const ViewOnceAnswer = (props: TProps) => {
                                                                                                 href={ans.value}
                                                                                                 target="_blank"
                                                                                                 rel="noopener noreferrer"
-                                                                                                className="whitespace-pre"
+                                                                                                className="whitespace-pre font-semibold"
                                                                                           >
-                                                                                                {ans.value || "Không có nội dung"}
+                                                                                                {ans.value ? (
+                                                                                                      <span className="text-color-main">{ans.value}</span>
+                                                                                                ) : (
+                                                                                                      "Không có nội dung"
+                                                                                                )}
                                                                                           </a>
                                                                                     </TableCell>
                                                                               );

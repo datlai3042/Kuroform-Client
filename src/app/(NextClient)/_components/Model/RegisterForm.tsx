@@ -118,7 +118,7 @@ const RegisterForm = (props: TProps) => {
                                     textContent="Đăng kí"
                                     disabled={registerMutation.isPending}
                                     loading={registerMutation.isPending}
-                                    className="!w-full !h-[4rem] !bg-[#3d52a2] "
+                                    className="!w-full !h-[4rem] !bg-[#3d52a2] my-[1.6rem]"
                               />
                         </form>
                         <SpaceLine content="Hoặc đăng nhập luôn bằng phương thức khác" />

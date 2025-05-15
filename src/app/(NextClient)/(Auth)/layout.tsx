@@ -346,25 +346,18 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                         style={{ lineHeight: 1.6 }}
                         className="relative flex z-[500] w-full top-0 xl:top-0 left-0 min-h-screen  xl:pt-0    bg-color-section-theme  "
                   >
-                        <div className="basis-[38rem] h-screen  overflow-auto flex-grow-[1] md:flex-grow-0 flex flex-col   px-[20px] py-[1rem]">
+                        <div className="basis-[42rem] m-auto  overflow-auto flex-grow-[1] md:flex-grow-0 flex flex-col   px-[20px] py-[1rem]">
                               {/* <header className="w-full flex   justify-end items-center ">
                                     <ButtonDarkMode />
                               </header> */}
                               <div className="flex-1 flex   w-full text-text-theme   auth-scroll">{children}</div>
                               {/* <AuthorDat /> */}
                         </div>
-                        <div className="wrapper hidden bg-[var(--color-main)]  flex-1 relative  overflow-auto min-h-full h-screen  gap-[1rem]  md:flex justify-end ">
+                        {/* <div className="wrapper hidden bg-[var(--color-main)]  flex-1 relative  overflow-auto min-h-full h-screen  gap-[1rem]  md:flex justify-end ">
                               <div className="min-h-full w-full">
                                     <EditFormPage params={{ id: "profile" }} />
-                                    {/* <Image src={url} width={20} height={20} unoptimized={true} alt="avatar" className="w-[57vw] mr-[16vw] h-[70vh] rounded-md z-[2] fixed bottom-4" /> */}
-                                    {/* <Image src={urlMobi} width={20} height={20} unoptimized={true} alt="avatar" className="w-[16vw] right-[1rem] h-[70vh] rounded-md z-[2] fixed bottom-4" /> */}
-                                    {/* <Image src={urlRec} width={20} height={20} unoptimized={true} alt="avatar" className="absolute inset-0 w-full h-full z-[1]" /> */}
-
-                                    {/* <div className="absolute inset-0  p-[1rem]">
-                                    <div className="w-full h-full  border-[.1rem] border-[var(--border-color-input)] p-[1rem]"></div>
-                                    </div> */}
                               </div>
-                        </div>
+                        </div> */}
                   </div>
             </Portal>
       );

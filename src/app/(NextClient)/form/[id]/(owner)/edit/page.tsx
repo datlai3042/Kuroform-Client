@@ -29,8 +29,7 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
       const handlerBrowserResize = useDebouncedCallback(() => {
             const sectionDesign = document.getElementById("section-design");
             const sectionSidebar = document.getElementById("section-sidebar");
-
-            if (sectionDesign) {
+            if (sectionDesign && modeScreen !== 'FULL') {
                   const widthSectionDesign = sectionDesign.clientWidth || 0;
                   setWidthSectionDesin(widthSectionDesign);
             } else {
@@ -46,7 +45,7 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
       }, 60);
       useEffect(() => {
             handlerBrowserResize();
-      }, [openFormDesign, handlerBrowserResize, openSidebar]);
+      }, [openFormDesign, handlerBrowserResize, openSidebar, modeScreen]);
 
       useEffect(() => {
             window.addEventListener("resize", handlerBrowserResize);
@@ -57,13 +56,12 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
       }, []);
       const pathname = usePathname();
       const widthParent = pathname?.includes("/form") ? "100vw" : "100%";
-    
       return (
             <div
                   className={` flex flex-col min-h-screen h-max  `}
                   style={
                         {
-                              width: `calc(${widthParent} - ${widthSectionDesign + (widthParent === "100%" ? 0 : 10 )}px - ${widthSidebar}px `,
+                              width: `calc(${widthParent} - ${widthSectionDesign + (widthParent === "100%" ? -20 : -20 )}px - ${widthSidebar}px `,
                               "--bg-input-core": colorMain,
                         } as CSS.Properties
                   }
