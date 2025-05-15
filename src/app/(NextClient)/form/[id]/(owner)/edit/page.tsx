@@ -61,7 +61,7 @@ const EditFormPage = ({ params }: { params: { id: string } }) => {
                   className={` flex flex-col min-h-screen h-max  `}
                   style={
                         {
-                              width: `calc(${widthParent} - ${widthSectionDesign + (widthParent === "100%" ? -20 : -20 )}px - ${widthSidebar}px `,
+                              width: `calc(${widthParent} - ${widthSectionDesign + (widthParent === "100%" ? 10 : 10 )}px - ${widthSidebar}px `,
                               "--bg-input-core": colorMain,
                         } as CSS.Properties
                   }
