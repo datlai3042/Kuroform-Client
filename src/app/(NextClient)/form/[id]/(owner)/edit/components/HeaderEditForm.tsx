@@ -107,11 +107,6 @@ const HeaderEditForm = (props: TProps) => {
                                     style={{ justifyContent: matches ? "start" : "" }}
                                     className="w-full  xl:ml-auto flex flex-wrap justify-end items-center gap-[1rem]"
                               >
-                                    <ButtonDeleteForm
-                                          title="Xóa Form"
-                                          form_id={formCore._id}
-                                          className="  flex items-center gap-[1rem] p-[.5rem_.7rem]  text-text-theme rounded-lg  "
-                                    ></ButtonDeleteForm>
                                     <DivNative className=" flex items-center justify-center " title="Review">
                                           <ButtonNative
                                                 textContent={`Xem trước  `}
@@ -139,6 +134,11 @@ const HeaderEditForm = (props: TProps) => {
                                           <ButtonDarkMode />
                                           {matches && <ButtonSidebar />}
                                     </div>
+                                    <ButtonDeleteForm
+                                          title="Xóa Form"
+                                          form_id={formCore._id}
+                                          className="  flex items-center gap-[1rem] p-[.5rem_.7rem]  text-text-theme rounded-lg  "
+                                    ></ButtonDeleteForm>
                               </DivNative>
                         )}
                   </div>

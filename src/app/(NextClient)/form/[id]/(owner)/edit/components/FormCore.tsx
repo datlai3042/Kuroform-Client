@@ -152,6 +152,7 @@ const FormCore = () => {
       }, [modeScreen]);
 
       useEffect(() => {
+            console.log({formCore, theme})
             setBorderCurruent(formCore.form_themes);
             if (formCore.form_themes === "AUTO") {
                   if (theme === "light") {

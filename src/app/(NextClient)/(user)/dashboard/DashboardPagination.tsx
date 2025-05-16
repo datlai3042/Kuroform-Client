@@ -1,4 +1,5 @@
 import { renderPageArrayLast, renderPageArrayMiddle, renderPageArrayNormal } from "@/app/utils/pagination.utit";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { SetStateAction, useEffect, useRef, useState } from "react";
 
 type TProps = {
@@ -31,9 +32,9 @@ const DashboardPagination = (props: TProps) => {
             // const middle = MAX_PAGE_SHOW - ()
 
             const limit_render = total_page - page <= 6;
-
-            if (page === 1) return;
-            if (page === total_page) return;
+            console.log({ page, total_page });
+            // if (page === 1) return;
+            // if (page === total_page) return;
             if (page <= 5) {
                   return renderPageArrayNormal({ max_show_page, page, cb: setPageRender });
             }
@@ -48,10 +49,24 @@ const DashboardPagination = (props: TProps) => {
       useEffect(() => {
             return renderPageArrayNormal({ max_show_page, page, cb: setPageRender });
       }, [total_page]);
-
+      console.log({ page });
       return (
-            <div className=" text-text-theme truncate flex flex-col xl:flex-row items-center justify-center gap-[1rem] xl:gap-0 h-[4rem] w-full">
-                  <div className=" flex w-max max-w-full mx-auto  gap-[.8rem] relative">
+            <div className=" relative text-text-theme truncate flex flex-col xl:flex-row items-center justify-center gap-[1rem] xl:gap-0 h-[4rem] w-full">
+                  <div className=" flex w-max max-w-full mx-auto  gap-[.8rem]">
+                        <button disabled={page === 1} className="disabled:cursor-not-allowed" onClick={() => onChangePage(page - 1)}>
+                              <ChevronLeft className="text-color-main" />
+                        </button>
+                        {page !== 1 && page > 5 && (
+                              <div className="flex gap-[.4rem]">
+                                    <button
+                                          onClick={() => onChangePage(1)}
+                                          className={`${onStylePageCurrent(1)} !h-[2.6rem] min-w-[2.8rem] rounded-[.4rem] flex justify-center items-center`}
+                                    >
+                                          <span>{1}</span>
+                                    </button>
+                                    <span>...</span>
+                              </div>
+                        )}
                         {pageRender.map((pageItem) => (
                               <button
                                     key={pageItem}
@@ -61,11 +76,29 @@ const DashboardPagination = (props: TProps) => {
                                     <span>{pageItem}</span>
                               </button>
                         ))}
-                        <div className="pr-[2rem] xl:pr-0 absolute right-0 bottom-[-4rem] min-w-[12rem] flex  gap-[1rem]">
-                              Tổng trang:{" "}
-                              <div className="w-[2.4rem] aspect-square rounded-full bg-color-main  flex justify-center items-center text-[1.2rem] text-[#fff]">
-                                    {total_page}
+
+                        {page !== total_page && page < total_page - 5 && (
+                              <div className="flex gap-[.4rem]">
+                                    <span>...</span>
+                                    <button
+                                          onClick={() => onChangePage(total_page)}
+                                          className={`${onStylePageCurrent(
+                                                total_page,
+                                          )} !h-[2.6rem] min-w-[2.8rem] rounded-[.4rem] flex justify-center items-center`}
+                                    >
+                                          <span>{total_page}</span>
+                                    </button>
                               </div>
+                        )}
+
+                        <button disabled={page === total_page} className="disabled:cursor-not-allowed" onClick={() => onChangePage(page + 1)}>
+                              <ChevronRight className="text-color-main" />
+                        </button>
+                  </div>
+                  <div className="pr-[2rem] xl:pr-0 absolute right-0 min-w-[12rem] flex  gap-[1rem]">
+                        Tổng trang:{" "}
+                        <div className="w-[2.4rem] aspect-square rounded-full bg-color-main  flex justify-center items-center text-[1.2rem] text-[#fff]">
+                              {total_page}
                         </div>
                   </div>
             </div>

@@ -28,7 +28,7 @@ const DashboardSearchForm = ({ widthInput }: { widthInput?: string }) => {
       return (
             <div
                   style={{ width: widthInput || "" }}
-                  className="hidden z-[200] sm:flex relative p-[.2rem_1rem] w-[13rem] xl:w-[20rem] h-[3.2rem]  rounded-lg focus-within:border-[.1rem] focus-within:border-color-main border-[.1rem] border-[var(--border-color-input)]  items-center gap-[.8rem]
+                  className="hidden z-[200] sm:flex relative p-[.2rem_1rem] w-[13rem] xl:w-[20rem] h-[3.2rem]  rounded-lg focus-within:border-[.1rem] focus-within:border-color-main border-[.1rem] border-color-main  items-center gap-[.8rem]
 "
             >
                   <Search className="w-[1.6rem] text-text-theme" />

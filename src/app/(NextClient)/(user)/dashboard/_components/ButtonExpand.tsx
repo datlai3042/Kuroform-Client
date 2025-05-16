@@ -15,7 +15,7 @@ const ButtonExpand = (props: TProps) => {
                   style={{ color: "var(--color-main)" }}
                   onClick={onClick}
                   content={"Mở thống kê"}
-                  Icon={active ? <Minimize2 /> : <Maximize />}
+                  Icon={!active ? <Minimize2 /> : <Maximize />}
             ></ButtonIcon>
       );
 };

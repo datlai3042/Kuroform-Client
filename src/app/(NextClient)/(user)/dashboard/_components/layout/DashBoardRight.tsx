@@ -43,9 +43,10 @@ const DashBoardRight = () => {
                         ) : (
                               forms.length > 0 && (
                                     <div
+                                          style={{ padding: !expand ? "2rem" : "1rem" }}
                                           className={`${
                                                 !expand ? " gap-[2rem] xl:gap-[3.2rem]" : ""
-                                          } w-full flex flex-col  bg-color-section-theme p-[2rem_1.4rem] xl:p-[2rem]`}
+                                          } w-full flex flex-col  bg-color-section-theme p-[2rem_1.4rem] xl:p-[1rem]`}
                                     >
                                           <div className="flex justify-between">
                                                 <p className="text-color-main font-bold text-[2rem] flex items-center gap-[1rem]">
