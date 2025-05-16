@@ -48,7 +48,7 @@ const DashboardFormAction = (props: TProps) => {
       return (
             <div className="flex  gap-[1rem]">
                   <button
-                        className="flex items-center gap-[1rem] p-[.5rem_.7rem]  bg-color-main text-[#fff] rounded-lg"
+                        className="flex w-max items-center gap-[1rem] p-[.5rem_.7rem]  bg-color-main text-[#fff] rounded-lg"
                         onClick={(e) => {
                               e.preventDefault();
                               router.push(`/form/${form_id}/edit`);

@@ -14,7 +14,7 @@ import ButtonLogOut from "@/app/(NextClient)/_components/ui/button/ButtonLogOut"
 const DashboardAccount = () => {
       const [openModel, setOpenModel] = useState<boolean>(false);
       const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
-
+      
       return (
             <div className="group min-w-[10rem] max-w-[26rem] xl:min-w-[20.2rem]  h-full flex items-center justify-between text-text-theme">
                   {user && (

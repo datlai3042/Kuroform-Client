@@ -12,7 +12,7 @@ const FormStateProvider = (props: TProps) => {
       const { form_state } = props;
 
       return (
-            <div className="form-state">
+            <div className="form-state w-max">
                   {form_state === "isPrivate" && <FormStatePrivate />}
                   {form_state === "isPublic" && <FormStatePublic />}
 
