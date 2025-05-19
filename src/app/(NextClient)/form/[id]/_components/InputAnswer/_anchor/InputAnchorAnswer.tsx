@@ -81,20 +81,16 @@ const InputAnchorAnswer = (props: TProps) => {
             setInputValue(valueInput);
       };
       const isError = inputItemInArrayGlobal?.globalError?.state;
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
             <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError
-                        styles={{ borderBottom: ".2rem dashed var(--color-main)", borderTop: ".2rem dashed var(--color-main)" }}
-                        inputItemInArrayGlobal={inputItemInArrayGlobal}
-                        input_id={inputItem._id!}
-                        write={write}
-                  >
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>
-                              <DivNative className="w-full flex flex-col gap-[1rem]">
+                              <DivNative className={`${isGoogleForm ? "" : "p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"} w-full flex flex-col gap-[1rem]  `}>
                                     <DivNative
-                                          className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] bg-inherit `}
+                                          className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] bg-transparent `}
                                     >
                                           <input
                                                 style={{
@@ -108,7 +104,7 @@ const InputAnchorAnswer = (props: TProps) => {
                                                 value={inputValue}
                                                 onChange={(e) => onChangeValue(e.target.value)}
                                                 className={` ${
-                                                      formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
+                                                      formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-transparent w-[90%]"
                                                 } pr-[2rem] heading-answer group min-h-[3.8rem] px-[1rem] flex items-center  text-[1.4rem] break-words whitespace-pre-wrap  outline-none resize-none `}
                                                 placeholder="Nhập đường dẫn liên kết của bạn"
                                           />

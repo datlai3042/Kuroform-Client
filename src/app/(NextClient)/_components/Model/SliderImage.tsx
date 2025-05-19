@@ -138,7 +138,7 @@ const SliderImage = (props: TProps) => {
                                           <div
                                                 key={img._id}
                                                 onClick={() => iamgeChange(i)}
-                                                style={{borderColor: colorMain}}
+                                                style={{borderColor:  i === indexImage ? colorMain: ''}}
                                                 className={`${
                                                       i === indexImage
                                                             ? "z-[3] border-[.4rem] border-color-main "

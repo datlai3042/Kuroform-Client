@@ -80,7 +80,7 @@ const FormTitleFullDescription = (props: TProps) => {
       };
 
       return (
-            <div className="flex flex-col gap-[.4rem] outline-none " ref={setNodeRef} {...attributes} {...listeners} style={style}>
+            <div className="flex flex-col gap-[.4rem] outline-none  text-inherit" ref={setNodeRef} {...attributes} {...listeners} style={style}>
                   <button
                         tabIndex={-1}
                         className={`${renderColorFromFormThemes(
@@ -93,9 +93,7 @@ const FormTitleFullDescription = (props: TProps) => {
                         Xóa
                   </button>
                   <div
-                        className={`${renderColorFromFormThemes(
-                              formCore.form_themes,
-                        )} border-none py-[.4rem] outline-none xl:max-w-[80rem] break-all leading-8  font-semibold`}
+                        className={` border-none py-[.4rem] outline-none xl:max-w-[80rem]  text-inherit break-all leading-8  font-semibold`}
                         contentEditable={setTitleSubDescription.isPending ? false : true}
                         onKeyDown={onKeyEnter}
                         onBlur={(e) => onSetValue(e, "Header")}

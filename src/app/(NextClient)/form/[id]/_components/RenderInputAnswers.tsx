@@ -94,6 +94,7 @@ const RenderInputAnswers = (props: TProps) => {
       useEffect(() => {
             window.scrollTo(0, 0);
       }, [page]);
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
             <>
@@ -101,10 +102,11 @@ const RenderInputAnswers = (props: TProps) => {
                         <>
                               {<HeaderFormAnswer formCore={formCore} />}
                               {!client && allInputAnswer}
-                              {client && allInputAnswer.slice(generateInputWithPage.start, generateInputWithPage.end)}
+                              {/* {client && allInputAnswer.slice(generateInputWithPage.start, generateInputWithPage.end)} */}
+                              {client && <div className={`${isGoogleForm ? 'mt-[2rem]' : ''} flex flex-col gap-[2.6rem]`}>{allInputAnswer}</div>}
 
-                              <div className="flex flex-col gap-[1.2rem] px-[2rem]">
-                                    <div
+                              <div className="flex flex-col gap-[1.2rem] px-[2rem] mt-[2rem]">
+                                    {/* <div
                                           // style={{color: formCore.form_title.form_title_color}}
                                           className={`${color} flex flex-wrap gap-[2rem] justify-end text-[1.5rem] text-color-main font-normal`}
                                     >
@@ -151,7 +153,7 @@ const RenderInputAnswers = (props: TProps) => {
                                                       Xem trang tiếp theo
                                                 </button>
                                           )}
-                                    </div>
+                                    </div> */}
 
                                     {formCore.form_inputs.length > 0 && <ButtonSubmitForm formCore={formCore} />}
                               </div>

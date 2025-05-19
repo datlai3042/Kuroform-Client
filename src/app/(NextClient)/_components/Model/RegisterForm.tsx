@@ -63,12 +63,13 @@ const RegisterForm = (props: TProps) => {
       };
 
       return (
-            <div className="relative w-full mb-[1.6rem] h-max flex justify-start xl:justify-center items-center flex-col  gap-[1.6rem] rounded-[1.2rem] p-[.4rem_2rem] ">
-                  <div className="w-full flex flex-col gap-[.2rem] ">
-                        <p className="text-[2.4rem] xl:text-[2.8rem] font-semibold text-[#3d52a2] text-center">Tạo tài khoản</p>
+            <div className="relative w-full mb-[1.6rem] h-max flex justify-start xl:justify-center items-center flex-col  gap-[2.8rem] rounded-[1.2rem] p-[.4rem_2rem] ">
+                  <div className="w-full flex flex-col items-center  ">
+                        <p className="text-[#1d2225] font-semibold text-[2.8rem]">Tạo tài khoản</p>
+                        <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Giúp tạo form nhanh chóng</span>
                   </div>
 
-                  <div className=" w-full flex flex-col gap-[2rem] ">
+                  <div className=" w-full flex flex-col gap-[2.8rem] ">
                         <form className="w-full flex flex-col justify-center  gap-[.6rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
                               <Input<RegisterType>
                                     FieldKey="user_first_name"
@@ -123,12 +124,12 @@ const RegisterForm = (props: TProps) => {
                         </form>
                         <SpaceLine content="Hoặc đăng nhập luôn bằng phương thức khác" />
 
-                        <div className="w-full flex flex-col gap-[1rem]">
-                              <div className="w-full h-[4.6rem]">
+                        <div className="w-full flex  gap-[1rem]">
+                              <div className="w-[48%] h-[4.6rem]">
                                     <ButtonLoginGoogle />
                               </div>
 
-                              <div className="w-full h-[4.6rem]">
+                              <div className="w-[48%] h-[4.6rem]">
                                     <ButtonLoginGithub />
                               </div>
                         </div>

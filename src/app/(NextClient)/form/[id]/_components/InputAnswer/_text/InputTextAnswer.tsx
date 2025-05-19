@@ -67,13 +67,14 @@ const InputTextAnswer = (props: TProps) => {
             }
       }, []);
       const isError = inputItemInArrayGlobal?.globalError?.state;
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
             <InputAnswerWrapper formCore={formCore}>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
-                              <DivNative className="flex flex-col gap-[.3rem]">
+                              <DivNative className={`${isGoogleForm ? "" : "p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"} flex flex-col gap-[.3rem] `}>
                                     <DivNative className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}>
                                           <DivNativeRef
                                                 style={{
@@ -83,7 +84,9 @@ const InputTextAnswer = (props: TProps) => {
                                                       }),
                                                 }}
                                                 ref={divContentRef}
-                                                className={` w-[92%]  heading-answer group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem]   outline-none resize-none `}
+                                                className={`${
+                                                      formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
+                                                }  heading-answer group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
                                                 onClick={() => divContentRef.current?.focus()}
                                                 onBlur={(e) => onBlur(e)}
                                                 onFocus={onFocus}
@@ -93,10 +96,10 @@ const InputTextAnswer = (props: TProps) => {
                                                 suppressContentEditableWarning={true}
                                                 tabIndex={0}
                                           />
+                                          <p className="absolute top-[50%] right-[1rem] text-[1.2rem]">
+                                                <MinMaxInput value={inputItemInArrayGlobal.input?.value as string} inputItem={inputItem} />
+                                          </p>
                                     </DivNative>
-                                    <p className="absolute bottom-[2.5rem] right-[2.5rem] text-[1.2rem]">
-                                          <MinMaxInput value={inputItemInArrayGlobal.input?.value as string} inputItem={inputItem} />
-                                    </p>
                               </DivNative>
 
                               {inputItemInArrayGlobal?.globalError?.state && (

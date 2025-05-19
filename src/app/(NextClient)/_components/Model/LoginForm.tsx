@@ -62,14 +62,15 @@ const LoginForm = (props: TProps) => {
       }, [loginForm.formState.errors]);
 
       return (
-            <div className="relative   min-h-[40rem] w-full h-max mx-auto mt-[4rem]  flex justify-center items-center flex-col  gap-[1.6rem] rounded-[1.2rem] p-[.4rem_2rem]">
-                  <p style={{ letterSpacing: ".4rem" }} className=" w-full flex  justify-center">
+            <div className="relative   min-h-[40rem] w-full h-max mx-auto mt-[4rem]  flex justify-center items-center flex-col  gap-[3.4rem] rounded-[1.2rem] p-[.4rem_2rem]">
+                  <p  className=" w-full flex flex-col gap-[0rem]  items-center">
                         {/* <span className="text-text-theme text-[4.2rem]">Kuro</span>
                         <span className="text-[#6262e5] text-[4.2rem]">form</span> */}
-                        <span className="text-[#3d52a2] font-semibold text-[3.2rem]">Đăng nhập</span>
+                        <span className="text-[#1d2225] font-semibold text-[2.8rem]">Đăng nhập</span>
+                        <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Giúp tạo form nhanh chóng</span>
                   </p>
 
-                  <div className=" w-full flex flex-col gap-[2rem] ">
+                  <div className=" w-full flex flex-col gap-[3.4rem] ">
                         <form className="w-full h-full flex flex-col justify-center  gap-[.6rem] rounded-[1.2rem]" onSubmit={loginForm.handleSubmit(onSubmit)}>
                               <Input<LoginType>
                                     FieldKey="user_email"
@@ -96,12 +97,12 @@ const LoginForm = (props: TProps) => {
                               />
                         </form>
                         <SpaceLine content="Hoặc đăng nhập luôn bằng phương thức khác" />
-                        <div className="w-full flex flex-col gap-[1rem]">
-                              <div className="w-full h-[4.6rem]">
+                        <div className="w-full flex  gap-[1rem]">
+                              <div className="w-[48%] h-[4.6rem]">
                                     <ButtonLoginGoogle />
                               </div>
 
-                              <div className="w-full h-[4.6rem]">
+                              <div className="w-[48%] h-[4.6rem]">
                                     <ButtonLoginGithub />
                               </div>
                         </div>

@@ -63,6 +63,8 @@ const FormAnswerCore = (props: TProps) => {
 
             if (formCore.form_themes === "DARK") {
                   document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
+                  document.body.style.setProperty("--color-section-theme", "transparent");
+
                   document.documentElement.style.backgroundColor = "var(--form-theme-dark)";
             }
 
@@ -95,10 +97,10 @@ const FormAnswerCore = (props: TProps) => {
                         <DivNative
                               style={{ backgroundColor: "inherit" }}
                               className={`${formCore.form_avatar?.form_avatar_url && isGoogleForm ? "mt-[4rem]" : ""} ${
-                                    isGoogleForm ? "w-full" : `w-[94vw] md:w-[60vw]  mx-auto ${formThemes}`
+                                    isGoogleForm ? "w-full" : `w-[94vw] md:w-[50vw]  mx-auto ${formThemes}`
                               } rounded-lg`}
                         >
-                              <DivNative className={`${isGoogleForm ? "gap-[5rem]" : "gap-[4rem]"} flex flex-col  pb-[20rem]`}>
+                              <DivNative className={`${isGoogleForm ? "gap-[0rem]" : "gap-[0rem]"} flex flex-col  pb-[20rem] `}>
                                     <FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
                                           <RenderInputAnswers formCore={formCore} />
                                     </FormAnswerProvider>

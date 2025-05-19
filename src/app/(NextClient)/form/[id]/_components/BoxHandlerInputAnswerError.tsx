@@ -25,8 +25,8 @@ const BoxHandlerInputAnswerError = (props: TProps) => {
                   className={`${
                         (error && error.error && write) || inputItemInArrayGlobal?.globalError?.state
                               ? "input-answer-invalid border-none  !text-[#e20f0f]"
-                              : "  border-transparent"
-                  }  relative w-full min-h-[12rem]   h-max p-[3.8rem_1.8rem] duration-300 transition-all flex flex-col justify-center gap-[1rem]  `}
+                              : "  border-b-[.1rem] border-[var(--border-color-input)]"
+                  }  relative w-full min-h-[12rem]   h-max p-[3.8rem_1.8rem]  duration-300 transition-all flex flex-col justify-center gap-[1rem]  `}
             >
                   {children}
             </div>

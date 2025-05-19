@@ -65,6 +65,7 @@ const InputOptionAnswer = (props: TProps) => {
             setDataInputGlobal({ callback: setFormAnswer, input_id: inputItem._id!, input_value: "", description: op });
       };
       const isError = inputItemInArrayGlobal?.globalError?.state;
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
             <InputAnswerWrapper formCore={formCore}>
@@ -72,7 +73,11 @@ const InputOptionAnswer = (props: TProps) => {
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>
                               <DivNative className="flex flex-col gap-[.3rem] text-[1.4rem]">
-                                    <DivNative className={` relative min-h-[5rem] h-max flex flex-col gap-[1.6rem]  `}>
+                                    <DivNative
+                                          className={`${
+                                                isGoogleForm ? "" : " p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
+                                          } relative min-h-[5rem] h-max flex flex-col gap-[1.6rem]  `}
+                                    >
                                           {
                                                 inputItem.core.options.map((op) => {
                                                       if (!op.option_value) return null;

@@ -64,16 +64,20 @@ const InputPhoneAnswer = (props: TProps) => {
             }
       };
       const isError = inputItemInArrayGlobal?.globalError?.state;
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
             <InputAnswerWrapper formCore={formCore}>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
-                              <DivNative className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}>
+                              <DivNative
+                                    className={`${
+                                          isGoogleForm ? "" : " p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
+                                    } relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}
+                              >
                                     <input
                                           style={{
-
                                                 ...RenderStyleInputAnswer.StyleTitle({
                                                       formCore,
                                                       inputItem,
@@ -84,12 +88,12 @@ const InputPhoneAnswer = (props: TProps) => {
                                           value={phone ? +phone : ""}
                                           type="number"
                                           className={` ${
-                                                formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                          }  border-b-[.1rem] h-full pb-[2rem]        outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                                formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-transparent w-[90%]"
+                                          }  border-b-[.1rem] h-full pb-[2rem]  border-[var(--border-color-input)]      outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                           placeholder="Nhập số điện thoại của bạn"
                                           onChange={(e) => setPhone(e.target.value)}
                                     />
-                                    <DivNative className="absolute z-[2] right-[1rem]" title={""}>
+                                    <DivNative className="absolute z-[2] top-[50%] right-[1rem]" title={""}>
                                           <Phone className="  opacity-50" size={18} />
                                     </DivNative>
                               </DivNative>

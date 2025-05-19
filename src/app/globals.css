@@ -227,11 +227,13 @@ body.dark .ant-rate-star-second {
 
             /* --border-color-side: rgb(200 205 214 / 42%); */
             --border-color-side: rgb(200 205 214 / 74%);
+            --bg-input-ans: #c5c1da3b;
 
             /* --color-btn-primarily: #2d68ff;ư */
       }
 
       body.dark {
+            --bg-input-ans: #07031826;
             --color-main: #151274;
             --bg-form-nav: #393c73;
             --color-gap-empty: #040429;

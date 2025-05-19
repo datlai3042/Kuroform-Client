@@ -21,14 +21,17 @@ const InputAnswerWrapper = (props: TProps) => {
                   : formCore.form_styles === "GOOGLE_FORM"
                   ? formCore?.form_input_styles?.color
                         ? formCore?.form_input_styles?.color
-                        : "text-text-theme"
+                        : formCore.form_themes === "DARK"
+                        ? "text-[#fff]"
+                        : "text-[#000]"
                   : formCore.form_themes === "DARK"
                   ? "text-[#fff]"
                   : "text-[#000]";
+
       return (
             <DivNative
                   style={{ ...styleWrapper }}
-                  className={`${color} w-full min-h-[12rem] h-max  bg-transparent   border-[.1rem] border-[var(--border-color-side)]`}
+                  className={`${color} w-full min-h-[12rem] h-max  bg-transparent   border-[.1rem] border-[var(--border-color-input)]`}
             >
                   {children}
             </DivNative>

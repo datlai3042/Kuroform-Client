@@ -52,12 +52,18 @@ const InputVoteAnswer = (props: TProps) => {
             }
       };
       const isError = inputItemInArrayGlobal?.globalError?.state;
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
+
       return (
             <InputAnswerWrapper formCore={formCore}>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
-                              <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}>
+                              <DivNative
+                                    className={`${
+                                          isGoogleForm ? "" : "p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
+                                    } relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}
+                              >
                                     <DivNative className="flex flex-col gap-[1rem] ">
                                           <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem]  p-[.4rem_0rem] rounded-[.4rem]`}>
                                                 <Rate onFocus={onFocus} onBlur={onBlur} allowHalf value={+start} onChange={(e) => setStart(e.toString())} />

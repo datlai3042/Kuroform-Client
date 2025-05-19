@@ -93,7 +93,7 @@ const FormTitleText = (props: TProps) => {
                         Xóa
                   </button>
                   <div
-                        className="border-none py-[1rem] outline-none xl:max-w-[80rem] break-all leading-10"
+                        className="border-none py-[1rem] outline-none xl:max-w-[80rem] break-all leading-10  text-inherit"
                         contentEditable={true}
                         onKeyDown={onKeyEnter}
                         onBlur={onSetValue}

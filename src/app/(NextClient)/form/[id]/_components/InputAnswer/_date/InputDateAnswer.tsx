@@ -97,23 +97,18 @@ const InputDateAnswer = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
       return (
             <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError
-                        styles={{ borderBottom: ".2rem dashed var(--color-main)", borderTop: ".2rem dashed var(--color-main)" }}
-                        inputItemInArrayGlobal={inputItemInArrayGlobal}
-                        input_id={inputItem._id!}
-                        write={write}
-                  >
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
                               <DivNative
                                     className={`${
-                                          formCore.form_styles === "GOOGLE_FORM" ? "sm:items-center" : ""
+                                          formCore.form_styles === "GOOGLE_FORM" ? "sm:items-center" : " p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
                                     } relative flex flex-col sm:flex-row  justify-between gap-[1rem] `}
                               >
                                     <p
                                           className={`
                                          
-                                          text-[1.2rem] text-inherit`}
+                                          text-[1.3rem] text-inherit`}
                                     >
                                           Thời gian đang chọn là:
                                           {dateRender ? (

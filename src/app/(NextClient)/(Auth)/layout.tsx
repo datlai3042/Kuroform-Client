@@ -346,7 +346,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                         style={{ lineHeight: 1.6 }}
                         className="relative flex z-[500] w-full top-0 xl:top-0 left-0 min-h-screen  xl:pt-0    bg-color-section-theme  "
                   >
-                        <div className="basis-[42rem] m-auto  overflow-auto flex-grow-[1] md:flex-grow-0 flex flex-col   px-[20px] py-[1rem]">
+                        <div className="basis-[48rem] m-auto  overflow-auto flex-grow-[1] md:flex-grow-0 flex flex-col   px-[20px] py-[1rem]">
                               {/* <header className="w-full flex   justify-end items-center ">
                                     <ButtonDarkMode />
                               </header> */}

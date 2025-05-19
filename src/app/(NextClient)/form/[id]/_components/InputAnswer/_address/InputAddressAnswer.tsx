@@ -46,7 +46,7 @@ const InputAddressAnswer = (props: TProps) => {
                   validateCallback: superAddressValidate,
                   description: address,
             });
-            console.log(_validate);
+
             const { _next, type, message } = _validate;
 
             if (_next) {
@@ -55,15 +55,17 @@ const InputAddressAnswer = (props: TProps) => {
                   }
             }
       };
-      console.log({ global: inputItemInArrayGlobal.globalError.state, ip: inputItemInArrayGlobal.input?.description?.address_full });
       const isError = inputItemInArrayGlobal?.globalError?.state;
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
             <InputAnswerWrapper formCore={formCore}>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
-                              <DivNative className="relative flex flex-col items-start gap-[1rem]  ">
+                              <DivNative
+                                    className={`${isGoogleForm ? "" : " p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"} relative flex flex-col items-start gap-[1rem]  `}
+                              >
                                     <div className="w-full flex flex-col gap-[1rem] ">
                                           <ModelAddress
                                                 detail={true}

@@ -58,17 +58,18 @@ const InputEmailAnswer = (props: TProps) => {
             }
       };
       const isError = inputItemInArrayGlobal?.globalError?.state;
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
             <InputAnswerWrapper formCore={formCore}>
                   <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>
-                              <DivNative className="flex flex-col gap-[.3rem]">
+                              <DivNative className={`${isGoogleForm ? '' : 'p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]'} flex flex-col gap-[.3rem]  `}>
                                     <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}>
                                           <input
                                                 style={{
-                                                      borderBottom: ".1rem solid var(--border-color-input]",
+                                                      borderBottom: ".1rem solid var(--border-color-input)",
 
                                                       ...RenderStyleInputAnswer.StyleTitle({
                                                             formCore,

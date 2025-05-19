@@ -7,6 +7,7 @@ import SliderImage from "@/app/(NextClient)/_components/Model/SliderImage";
 import { FormAnswerContext } from "@/app/(NextClient)/_components/provider/FormAnswerProvider";
 import FormAnswerAvatar from "./_avatar/FormAnswerAvatar";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
+import { cp } from "fs";
 
 type TProps = {
       formCore: FormCore.Form;
@@ -36,7 +37,8 @@ const HeaderFormAnswer = (props: TProps) => {
             }`,
       };
 
-      const marginTopWhenImageAppear = formCore.form_avatar_state || formCore.form_avatar?.form_avatar_url ? formCore.form_styles === 'GOOGLE_FORM' ?  "mt-[5rem]" : 'mt-[3rem]' : "mt-0";
+      const marginTopWhenImageAppear =
+            formCore.form_avatar_state || formCore.form_avatar?.form_avatar_url ? (formCore.form_styles === "GOOGLE_FORM" ? "mt-[5rem]" : "mt-[3rem]") : "mt-0";
 
       const renderBorder =
             formCore.form_styles !== "GOOGLE_FORM"
@@ -49,6 +51,19 @@ const HeaderFormAnswer = (props: TProps) => {
                           borderRight: ".1rem solid var(--border-color-input)",
                     }
                   : { borderTop: `.1rem solid ${colorMain}` };
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
+      const color =
+            formCore.form_themes === "AUTO"
+                  ? "text-text-theme"
+                  : formCore.form_styles === "GOOGLE_FORM"
+                  ? formCore?.form_input_styles?.color
+                        ? formCore?.form_input_styles?.color
+                        : formCore.form_themes === "DARK"
+                        ? "text-[#fff]"
+                        : "text-[#000]"
+                  : formCore.form_themes === "DARK"
+                  ? "text-[#fff]"
+                  : "text-[#000]";
       return (
             <header
                   style={{ ...renderBorder }}
@@ -59,13 +74,18 @@ const HeaderFormAnswer = (props: TProps) => {
                                     : "mt-[3rem]"
                               : ""
                   } ${
-                        formCore.form_styles === "GOOGLE_FORM" ? "border-[.1rem] !border-t-[1.4rem]   border-[var(--border-color-input)] bg-color-section-theme rounded-2xl" : ""
+                        formCore.form_styles === "GOOGLE_FORM"
+                              ? "border-[.1rem] !border-t-[1.4rem]   border-[var(--border-color-input)] bg-color-section-theme rounded-2xl"
+                              : ""
                   } relative w-full  m h-max p-[1.8rem_3rem] flex flex-col gap-[2rem]   break-words	   `}
             >
                   {(formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state) && formCore.form_styles === "GOOGLE_FORM" && (
                         <FormAnswerAvatar formCore={formCore} />
                   )}
-                  <div style={{marginTop: !formCore?.form_title?.form_title_value ? '0px': ''}} className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}>
+                  <div
+                        style={{ marginTop: !formCore?.form_title?.form_title_value ? "0px" : "" }}
+                        className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}
+                  >
                         <h1 style={styleTitle} className=" font-light ">
                               {formCore?.form_title?.form_title_value}
                         </h1>
@@ -75,7 +95,7 @@ const HeaderFormAnswer = (props: TProps) => {
                                     {formCore?.form_title?.form_title_sub.map((ft) => {
                                           if (ft.type === "Text" && ft?.core?.value)
                                                 return (
-                                                      <span key={ft._id} className="text-[1.4rem] text-justify leading-10 w-full">
+                                                      <span key={ft._id} className={`${color} text-[1.4rem] text-justify leading-10 w-full`}>
                                                             {ft?.core?.value}
                                                       </span>
                                                 );
@@ -107,7 +127,7 @@ const HeaderFormAnswer = (props: TProps) => {
 
                                           if (ft.type === "FullDescription" && (ft?.core?.header_value || ft?.core?.value)) {
                                                 return (
-                                                      <div className="  text-[1.4rem]  flex flex-col gap-[.1rem]  w-full" key={ft?._id}>
+                                                      <div className={`${color}  text-[1.4rem]  flex flex-col gap-[.1rem]  w-full`} key={ft?._id}>
                                                             {ft?.core?.header_value && <span className="font-bold">{ft?.core?.header_value}</span>}
                                                             {ft?.core?.value && <span>{ft?.core?.value}</span>}
                                                       </div>
@@ -116,7 +136,13 @@ const HeaderFormAnswer = (props: TProps) => {
                                     })}
 
                                     {inputFormRequire.length > 0 && (
-                                          <span className="text-red-600 text-[1.4rem] mt-[2rem] w-full">* Biểu thị câu hỏi bắt buộc</span>
+                                          <span
+                                                className={`text-red-600 text-[1.4rem] w-full pb-[2rem] ${
+                                                      isGoogleForm ? "" : "border-b-[.1rem] border-b-[var(--border-color-input)]"
+                                                }`}
+                                          >
+                                                * Biểu thị câu hỏi bắt buộc
+                                          </span>
                                     )}
                               </div>
                         )}

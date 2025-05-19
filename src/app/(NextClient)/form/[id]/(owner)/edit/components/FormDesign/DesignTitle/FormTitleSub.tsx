@@ -87,9 +87,20 @@ const FormTitleSub = () => {
                   },
             }),
       );
-
+      const color =
+            formCore.form_themes === "AUTO"
+                  ? "text-text-theme"
+                  : formCore.form_styles === "GOOGLE_FORM"
+                  ? formCore?.form_input_styles?.color
+                        ? formCore?.form_input_styles?.color
+                        : formCore.form_themes === "DARK"
+                        ? "text-[#fff]"
+                        : "text-[#000]"
+                  : formCore.form_themes === "DARK"
+                  ? "text-[#fff]"
+                  : "text-[#000]";
       return (
-            <div className="w-full  h-max  flex flex-col   gap-[2rem] outline-none" tabIndex={0}>
+            <div className={`w-full  h-max  flex flex-col   gap-[2rem] outline-none ${color}`} tabIndex={0}>
                   <DndContext sensors={sensors} collisionDetection={closestCorners} onDragEnd={onDrapEnd}>
                         <SortableContext
                               items={formCore.form_title.form_title_sub.map((ip) => ip._id) as unknown as UniqueIdentifier[]}

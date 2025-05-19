@@ -82,17 +82,18 @@ const InputImageAnswer = (props: TProps) => {
             };
       }, [filePreview]);
       const isError = write || inputItemInArrayGlobal?.globalError?.state;
+      const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
+
       return (
             <InputAnswerWrapper formCore={formCore}>
                   <BoxHandlerInputAnswerError
-                        styles={{ borderBottom: ".2rem dashed var(--color-main)",  borderTop: ".2rem dashed var(--color-main)" }}
                         inputItemInArrayGlobal={inputItemInArrayGlobal}
                         input_id={inputItem._id!}
                         write={write}
                   >
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
-                              <DivNative className={`$ text-inherit relative flex flex-col  items-center justify-between gap-[1rem]  `}>
+                              <DivNative className={`${isGoogleForm ? '' : ' p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]'} text-inherit relative flex flex-col  items-center justify-between gap-[1rem]  `}>
                                     <DivNative
                                           className={`${
                                                 formCore.form_styles === "GOOGLE_FORM" ? " gap-[2rem]" : " gap-[1rem]"
