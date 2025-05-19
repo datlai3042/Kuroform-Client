@@ -29,15 +29,15 @@ const FormAnswerHeader = (props: TProps) => {
                                       formCore.form_background?.size.height?.value as number,
                                       formCore.form_background?.size.height?.unit as FormCore.FormImageUnit,
                                 )
-                              : 250,
+                              : 150,
                   }}
-                  className={`${isGoogleForm ? " h-[32.5rem] rounded-2xl max-h-[32.5rem]" : "w-full"} relative w-full `}
+                  className={`${isGoogleForm ? " h-[32.5rem] rounded-[.8rem] max-h-[32.5rem]" : "w-full"} relative w-full `}
             >
                   {(formCore.form_background?.form_background_iamge_url || formCore.form_background_state) && (
                         // <div className="absolute top-[50%] translate-x-[-50%] mx-auto">
                         <div
                               style={{ backgroundColor: formCore.form_background?.backgroundColor || "#fff" }}
-                              className={`${isGoogleForm ? "rounded-2xl overflow-hidden" : ""} w-full h-full  relative `}
+                              className={`${isGoogleForm ? "rounded-[.8rem] overflow-hidden" : ""} w-full h-full  relative `}
                         >
                               <Image
                                     style={myBackgroundStyle.style_background}

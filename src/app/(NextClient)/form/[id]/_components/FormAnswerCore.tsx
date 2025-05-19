@@ -83,7 +83,7 @@ const FormAnswerCore = (props: TProps) => {
                         isGoogleForm ? "px-[2rem]  p-[2rem_2rem_4rem_2rem] xl:px-0" : ""
                   }  min-h-screen  flex justify-center   w-full h-full`}
             >
-                  <DivNative className={`${isGoogleForm ? "w-full sm:w-[75rem]" : "w-full"} flex flex-col gap-[1rem] `}>
+                  <DivNative className={`${isGoogleForm ? "w-full sm:w-[62rem]" : "w-full"} flex flex-col gap-[1rem] `}>
                         {(formCore.form_background?.form_background_iamge_url ||
                               formCore.form_background_state ||
                               formCore.form_avatar?.form_avatar_url ||

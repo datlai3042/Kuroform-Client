@@ -97,7 +97,12 @@ const InputDateAnswer = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
       return (
             <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError styles={{borderBottom: '.2rem dashed var(--color-main)'}} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <BoxHandlerInputAnswerError
+                        styles={{ borderBottom: ".2rem dashed var(--color-main)", borderTop: ".2rem dashed var(--color-main)" }}
+                        inputItemInArrayGlobal={inputItemInArrayGlobal}
+                        input_id={inputItem._id!}
+                        write={write}
+                  >
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
                               <DivNative

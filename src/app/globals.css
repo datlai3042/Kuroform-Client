@@ -177,7 +177,9 @@ body.dark .ant-rate-star-second {
             --toast-success: #4299de;
             --toast-error: #f4454c;
             --toast-warning: #ea580c;
-            --border-color-input: rgb(209 213 219 / 27%);
+            --border-color-input: rgb(218, 220, 224);
+
+            /* --border-color-input: rgb(209 213 219 / 27%); */
             --background: 0 0% 100%;
             /* --chart-1: 12 76% 61%; */
             --chart-1: 227.52deg 45.29% 43.73%;
@@ -218,7 +220,8 @@ body.dark .ant-rate-star-second {
 
             --bg-module-other: #e1e1e1ca;
             /* --border-color-input: rgb(200 205 214 / 42%); */
-            --border-color-input: rgb(169 169 204 / 74%);
+            /* --border-color-input: rgb(169 169 204 / 74%); */
+            --border-color-input: rgb(218, 220, 224);
 
             /* --border-color-side: rgb(200 205 214 / 42%); */
             --border-color-side: rgb(200 205 214 / 74%);

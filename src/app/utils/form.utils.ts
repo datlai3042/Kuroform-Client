@@ -172,7 +172,7 @@ export const renderInputStyles = (inputStyle: FormCore.Form['form_input_styles']
       if (inputStyle?.radius) {
             styles = {
                   ...styles,
-                  borderRadius: inputStyle?.radius
+                  borderRadius: inputStyle?.radius || 8
             }
       }
       if (inputStyle?.color) {

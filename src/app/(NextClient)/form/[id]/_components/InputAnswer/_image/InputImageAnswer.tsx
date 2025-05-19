@@ -85,7 +85,7 @@ const InputImageAnswer = (props: TProps) => {
       return (
             <InputAnswerWrapper formCore={formCore}>
                   <BoxHandlerInputAnswerError
-                        styles={{ borderBottom: ".2rem dashed var(--color-main)" }}
+                        styles={{ borderBottom: ".2rem dashed var(--color-main)",  borderTop: ".2rem dashed var(--color-main)" }}
                         inputItemInArrayGlobal={inputItemInArrayGlobal}
                         input_id={inputItem._id!}
                         write={write}
