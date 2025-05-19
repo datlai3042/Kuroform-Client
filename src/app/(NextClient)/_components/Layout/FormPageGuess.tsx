@@ -38,7 +38,7 @@ const FormPageGuess = (props: TProps) => {
 
       const styleEffect = {
             formMarginTop: (check: boolean) => {
-                  if (check) return "mt-[3rem]";
+                  if (check) return "mt-[7rem]";
                   return "mt-0";
             },
             onCheckModeAvatar: (mode: FormCore.FormAvatarMode) => {
@@ -65,12 +65,12 @@ const FormPageGuess = (props: TProps) => {
                   style={{ backgroundColor: !formThemes ? renderBgColor : "" }}
                   className={`${formThemes} ${isGoogleForm ? "px-[2rem] p-[2rem]" : ""}  xl:px-0 min-h-screen h-max flex justify-center     `}
             >
-                  <DivNative className={`${isGoogleForm ? " w-full sm:w-[66.8rem]" : "w-full"} flex flex-col `}>
+                  <DivNative className={`${isGoogleForm ? "w-full sm:w-[62rem]" : "w-full"} flex flex-col gap-[1rem] `}>
                         {(FormCore.form_background?.form_background_iamge_url ||
                               FormCore.form_background_state ||
                               FormCore.form_avatar?.form_avatar_url ||
                               FormCore.form_avatar_state) && (
-                              <DivNative className={`${isGoogleForm ? "aspect-[3.01/1]" : ""} relative w-full `}>
+                              <DivNative className="relative w-full ">
                                     <FormAnswerHeader formCore={FormCore} />
                               </DivNative>
                         )}
