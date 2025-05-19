@@ -38,7 +38,7 @@ const FormPageGuess = (props: TProps) => {
 
       const styleEffect = {
             formMarginTop: (check: boolean) => {
-                  if (check) return "mt-[7rem]";
+                  if (check) return "mt-[5rem]";
                   return "mt-0";
             },
             onCheckModeAvatar: (mode: FormCore.FormAvatarMode) => {
