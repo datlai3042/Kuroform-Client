@@ -36,7 +36,7 @@ const HeaderFormAnswer = (props: TProps) => {
             }`,
       };
 
-      const marginTopWhenImageAppear = formCore.form_avatar_state || formCore.form_avatar?.form_avatar_url ? formCore.form_styles === 'GOOGLE_FORM' ?  "mt-[5rem]" : 'mt-[6rem]' : "mt-0";
+      const marginTopWhenImageAppear = formCore.form_avatar_state || formCore.form_avatar?.form_avatar_url ? formCore.form_styles === 'GOOGLE_FORM' ?  "mt-[5rem]" : 'mt-[3rem]' : "mt-0";
 
       const renderBorder =
             formCore.form_styles !== "GOOGLE_FORM"
