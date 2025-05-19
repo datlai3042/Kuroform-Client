@@ -112,14 +112,19 @@ const SliderImage = (props: TProps) => {
                               {images.map((btn, i) => (
                                     <button
                                           key={i}
-                                          className="w-[1.6rem] h-[1.6rem] flex items-center justify-center rounded-full bg-slate-200 group hover:text-color-main"
+                                          className="w-[1.6rem] !h-[1.6rem] flex items-center justify-center rounded-full bg-slate-200 group hover:text-color-main"
                                           onClick={() => setIndexImage(i)}
                                     >
                                           {i !== indexImage && (
                                                 <div className="hidden group-hover:block bg-color-main w-[60%] h-[60%] rounded-full hover:text-color-main "></div>
                                           )}
 
-                                          {i === indexImage && <div className="bg-color-main w-[60%] h-[60%] rounded-full hover:text-color-main "></div>}
+                                          {i === indexImage && (
+                                                <div
+                                                      style={{ backgroundColor: colorMain }}
+                                                      className="bg-color-main w-[60%] h-[60%] rounded-full hover:text-color-main "
+                                                ></div>
+                                          )}
                                     </button>
                               ))}
                         </div>
@@ -133,6 +138,7 @@ const SliderImage = (props: TProps) => {
                                           <div
                                                 key={img._id}
                                                 onClick={() => iamgeChange(i)}
+                                                style={{borderColor: colorMain}}
                                                 className={`${
                                                       i === indexImage
                                                             ? "z-[3] border-[.4rem] border-color-main "
