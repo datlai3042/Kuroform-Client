@@ -36,7 +36,7 @@ const HeaderFormAnswer = (props: TProps) => {
             }`,
       };
 
-      const marginTopWhenImageAppear = formCore.form_avatar_state || formCore.form_avatar?.form_avatar_url ? formCore.form_styles === 'GOOGLE_FORM' ?  "mt-[8rem]" : 'mt-[6rem]' : "mt-0";
+      const marginTopWhenImageAppear = formCore.form_avatar_state || formCore.form_avatar?.form_avatar_url ? formCore.form_styles === 'GOOGLE_FORM' ?  "mt-[5rem]" : 'mt-[6rem]' : "mt-0";
 
       const renderBorder =
             formCore.form_styles !== "GOOGLE_FORM"
@@ -71,7 +71,7 @@ const HeaderFormAnswer = (props: TProps) => {
                         </h1>
 
                         {formCore.form_title.form_title_sub.length > 0 && (
-                              <div className="pt-[2rem] text-text-theme  border-t-[.1rem] border-[var(--border-color-input)] flex  flex-wrap gap-[.6rem]">
+                              <div className="pt-[2rem] text-text-theme  border-t-[.1rem] border-[var(--border-color-input)] flex  flex-wrap gap-[4.6rem]">
                                     {formCore?.form_title?.form_title_sub.map((ft) => {
                                           if (ft.type === "Text" && ft?.core?.value)
                                                 return (

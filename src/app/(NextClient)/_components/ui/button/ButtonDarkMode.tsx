@@ -25,7 +25,7 @@ const ButtonDarkMode = () => {
                               return setTheme("light");
                         }
                   }}
-                  className={`${borderRadius} flex items-center opacity-85 hover:opacity-100 cursor-pointer text-[#fff] bg-color-main p-[.6rem] hover:border-transparent hover:text-[#fff] rounded-[.4rem]`}
+                  className={`${borderRadius} h-[2.8rem] flex items-center opacity-85 hover:opacity-100 cursor-pointer text-[#fff] bg-color-main p-[.6rem] hover:border-transparent hover:text-[#fff] rounded-[.4rem]`}
             >
                   {theme === "light" ? (
                         <Moon className="h-[2rem] w-[2rem] " />

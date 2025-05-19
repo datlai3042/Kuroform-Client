@@ -177,7 +177,9 @@ body.dark .ant-rate-star-second {
             --toast-success: #4299de;
             --toast-error: #f4454c;
             --toast-warning: #ea580c;
-            --border-color-input: rgb(218, 220, 224);
+           
+            /* --border-color-input: rgb(218, 220, 224); */
+            --border-color-input:  rgb(209 213 219 / 12%);
 
             /* --border-color-input: rgb(209 213 219 / 27%); */
             --background: 0 0% 100%;
