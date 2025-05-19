@@ -55,7 +55,7 @@ const HeaderFormAnswer = (props: TProps) => {
                   className={`${
                         formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state
                               ? formCore.form_styles === "GOOGLE_FORM"
-                                    ? "mt-[10rem]"
+                                    ? "mt-[7rem]"
                                     : "mt-[3rem]"
                               : ""
                   } ${
