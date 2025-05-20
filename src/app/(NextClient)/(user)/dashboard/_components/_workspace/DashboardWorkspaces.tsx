@@ -14,11 +14,13 @@ import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import Portal from "@/app/(NextClient)/_components/Portal";
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import useDisableBodyScroll from "@/app/hooks/useDisalbeBodyScroll";
+import { SidebarContext } from "../../SidebarContext";
 
 const DashboardWorkspaces = () => {
       const [openWorkspace, setOpenWorkspace] = useState<boolean>(false);
       const { forms, pending, success } = useGetAllFormUser();
       const { theme } = useContext(ThemeContext);
+      const { setOpenSidebar } = useContext(SidebarContext);
 
       const [openModalWorkSpace, setOpenModalWorkSpace] = useState(false);
 
@@ -49,7 +51,18 @@ const DashboardWorkspaces = () => {
       }, [pathName, openWorkspace]);
 
       return (
-            <div className="pl-[.6rem]  flex flex-col gap-[.6rem] hover:cursor-pointer" onClick={() => setOpenModalWorkSpace((prev) => !prev)}>
+            <div
+                  className="pl-[.6rem]  flex flex-col gap-[.6rem] hover:cursor-pointer"
+                  onClick={() => {
+                        setOpenModalWorkSpace((prev) => {
+                              // if (!prev) {
+                              //       setOpenSidebar(false);
+                              // }
+
+                              return !prev;
+                        });
+                  }}
+            >
                   {success && (
                         <>
                               <p className="text-[1.3rem] text-[rgb(137_136_132)]">Các form đã tạo</p>
@@ -95,7 +108,7 @@ const ModalWorkSpace = ({
             <Portal>
                   <DivNative className="fixed inset-0 bg-[rgba(0,0,0,0.8)] z-[999] px-[1rem] flex justify-center items-center">
                         <div
-                              className="relative w-[80rem]  xl:w-[80rem] h-[50rem]    flex flex-col bg-color-section-theme text-text-theme rounded-lg  p-[1.6rem_1rem] "
+                              className="relative w-[80rem] max-w-[90vw]  xl:w-[80rem] h-[50rem]    flex flex-col bg-color-section-theme text-text-theme rounded-lg  p-[1.6rem_1rem] "
                               onClick={(e) => e.stopPropagation()}
                         >
                               <button

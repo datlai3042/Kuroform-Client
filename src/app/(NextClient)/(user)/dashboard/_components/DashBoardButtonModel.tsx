@@ -19,7 +19,7 @@ const DashBoardButtonModel = (props: TProps) => {
       };
 
       return (
-            <div className="relative ml-auto z-[999] text-[#fff] h-full">
+            <div className="relative ml-auto z-[996] text-[#fff] h-full">
                   <ButtonIcon
                         Icon={<ChevronDown className="w-[1.4rem]  " />}
                         className={`flex  bg-color-main  rounded-lg !w-[1.6rem] !h-[1.6rem]`}

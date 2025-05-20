@@ -99,7 +99,7 @@ const InputImageAnswer = (props: TProps) => {
                                                 formCore.form_styles === "GOOGLE_FORM" ? " gap-[2rem]" : " gap-[1rem]"
                                           } w-full     flex flex-col   justify-start   `}
                                     >
-                                          <div className=" flex justify-between gap-[2rem] flex-wrap">
+                                          <div className=" flex justify-between gap-[1rem] flex-wrap">
                                                 <p className="w-max text-[1.3rem] ">Vui lòng chọn các file JPG, JPEG,PNG</p>
                                                 <button
                                                       onClick={handleClick}

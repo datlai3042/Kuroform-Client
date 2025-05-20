@@ -65,7 +65,7 @@ const ShareFormPage = () => {
                         </button>
                         {copySuccess && (
                               <ClickOutSide setOpenModel={setCopySuccess}>
-                                    <div className="absolute bottom-[0rem] left-[120%] ">
+                                    <div className="absolute bottom-[0rem] left-[120%] z-[997]">
                                           <BoxCopySuccess message="Copy link chia sẽ thành công" />
                                     </div>
                               </ClickOutSide>

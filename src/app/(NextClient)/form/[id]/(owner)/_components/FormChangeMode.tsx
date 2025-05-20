@@ -87,7 +87,7 @@ const FormChangeMode = (props: TProps) => {
                         >
                               {formCore?.form_title?.form_title_value}
                         </h1>
-                        <div className="flex justify-end items-center gap-[1rem]">
+                        <div className="flex  items-center gap-[1rem]">
                               <div className="relative ">
                                     <button
                                           onClick={(e) => {

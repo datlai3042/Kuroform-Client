@@ -34,7 +34,7 @@ const SidebarMoblie = () => {
       return (
             <Portal>
                   <div
-                        className="fixed top-[0] right-[0rem] z-[9999] bg-[rgba(0,0,0,.9)] w-full h-screen "
+                        className="fixed top-[0] right-[0rem] z-[998] bg-[rgba(0,0,0,.9)] w-full h-screen "
                         onClick={() => {
                               if (openSidebar) {
                                     hiddenSidebar();

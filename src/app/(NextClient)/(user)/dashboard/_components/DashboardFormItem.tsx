@@ -24,7 +24,7 @@ const DashboardFormItem = (props: TProps) => {
                   prefetch={false}
                   href={`/form/${form._id}/summary`}
                   key={form._id}
-                  className="rounded-lg min-h-[20rem]  w-full p-[1rem_2rem] max-w-full flex    justify-center gap-[1rem] text-[1.2rem]  text-text-theme bg-bg-form-nav  border-[.1rem] border-[var(--border-form-item)]"            >
+                  className="rounded-lg min-h-[16rem]  w-full p-[1rem_2rem] max-w-full flex    justify-center gap-[1rem] text-[1.2rem]  text-text-theme bg-bg-form-nav  border-[.1rem] border-[var(--border-form-item)]"            >
                   <div className="w-[70%]  flex flex-col justify-center gap-[2rem] ">
                         <div className="max-w-[70%] flex flex-col justify-center gap-[1rem] ">
                               <FormStateProvider form_state={form.form_state} />
@@ -34,9 +34,9 @@ const DashboardFormItem = (props: TProps) => {
                               <span>Chỉnh sửa {moment(new Date(form.updatedAt!)).fromNow()}</span>
                         </div>
                         <DivNative className="flex flex-col xl:flex-row flex-wrap  xl:items-center text-[1.2rem] gap-[2rem]">
-                              <div className="order-2 xl:order-1">
+                              {/* <div className="order-2 xl:order-1">
                                     <DashboardFormAction form_id={form._id} />
-                              </div>
+                              </div> */}
                               <div className="flex gap-[2rem]  ">
                                     <p className="flex gap-[1rem] items-center">
                                           <Eye size={16} />
