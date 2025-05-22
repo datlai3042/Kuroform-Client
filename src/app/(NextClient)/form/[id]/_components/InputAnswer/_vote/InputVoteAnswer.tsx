@@ -56,7 +56,6 @@ const InputVoteAnswer = (props: TProps) => {
 
       return (
                   <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
->
                   <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>

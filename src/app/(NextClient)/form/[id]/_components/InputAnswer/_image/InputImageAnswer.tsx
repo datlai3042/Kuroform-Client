@@ -86,7 +86,6 @@ const InputImageAnswer = (props: TProps) => {
 
       return (
                   <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
->
                   <BoxHandlerInputAnswerError
                         inputItemInArrayGlobal={inputItemInArrayGlobal}
                         input_id={inputItem._id!}

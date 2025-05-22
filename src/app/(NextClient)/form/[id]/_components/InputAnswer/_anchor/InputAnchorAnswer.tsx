@@ -85,7 +85,6 @@ const InputAnchorAnswer = (props: TProps) => {
 
       return (
                   <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
->
                   <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>

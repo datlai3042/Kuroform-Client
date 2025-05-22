@@ -91,7 +91,6 @@ const InputOptionMultipleAnswer = (props: TProps) => {
                   : "text-[#000]"
       return (
                   <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
->
                   <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>
