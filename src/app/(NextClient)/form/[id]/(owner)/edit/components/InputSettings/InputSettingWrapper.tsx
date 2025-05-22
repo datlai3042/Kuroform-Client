@@ -73,7 +73,7 @@ const InputSettingWrapper = (props: TProps) => {
                         }}
                         className="absolute top-[140%]  z-[300] flex justify-center items-center text-text-theme bg-color-section-theme"
                   >
-                        <DivNativeRef className="min-w-[21rem] w-max xl:min-h-[16rem]  h-max p-[1.6rem] shadow-xl border-[.1rem] border-[var(--border-color-input)] flex flex-col  rounded-[.4rem] ">
+                        <DivNativeRef className="min-w-[21rem] w-max xl:min-h-[16rem]  h-max p-[1.2rem] shadow-xl border-[.1rem] border-[var(--border-color-input)] flex flex-col  rounded-[.4rem] ">
                               {children}
                         </DivNativeRef>
                   </DivNative>

@@ -53,6 +53,8 @@ namespace InputCore {
                   input_size: number;
                   input_style: FormCore.FormTextStyle;
                   _id: string;
+                  width: number
+
             };
 
             type InputSettingTextCommon = {

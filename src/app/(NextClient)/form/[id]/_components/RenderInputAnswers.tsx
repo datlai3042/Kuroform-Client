@@ -103,7 +103,11 @@ const RenderInputAnswers = (props: TProps) => {
                               {<HeaderFormAnswer formCore={formCore} />}
                               {!client && allInputAnswer}
                               {/* {client && allInputAnswer.slice(generateInputWithPage.start, generateInputWithPage.end)} */}
-                              {client && <div className={`${isGoogleForm ? 'mt-[2rem]' : ''} flex flex-col gap-[2.6rem]`}>{allInputAnswer}</div>}
+                              {client && (
+                                    <div className={`${isGoogleForm ? "mt-[6rem] gap-[6rem]" : "gap-[2.6rem]"} flex flex-wrap gap-[3rem_1rem] `}>
+                                          {allInputAnswer}
+                                    </div>
+                              )}
 
                               <div className="flex flex-col gap-[1.2rem] px-[2rem] mt-[2rem]">
                                     {/* <div
@@ -173,7 +177,7 @@ const RenderInputAnswers = (props: TProps) => {
                   )}
 
                   {submitState === "success" && (
-                        <div className="mt-[2rem]">
+                        <div className="">
                               <SubmitSuccess color={colorMain} />
                         </div>
                   )}

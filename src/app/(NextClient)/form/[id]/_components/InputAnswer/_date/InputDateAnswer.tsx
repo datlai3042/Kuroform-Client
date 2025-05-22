@@ -96,14 +96,15 @@ const InputDateAnswer = (props: TProps) => {
       const isError = write || inputItemInArrayGlobal?.globalError?.state;
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
       return (
-            <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
+>
+                  <BoxHandlerInputAnswerError formCore={formCore}  inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
                               <DivNative
                                     className={`${
-                                          formCore.form_styles === "GOOGLE_FORM" ? "sm:items-center" : " p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
-                                    } relative flex flex-col sm:flex-row  justify-between gap-[1rem] `}
+                                          formCore.form_styles === "GOOGLE_FORM" ? "" : " p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
+                                    } relative flex flex-col   justify-between gap-[1rem] `}
                               >
                                     <p
                                           className={`

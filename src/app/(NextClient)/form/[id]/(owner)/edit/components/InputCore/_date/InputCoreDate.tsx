@@ -11,10 +11,12 @@ import ClickOutSide from "@/app/(NextClient)/_components/Model/ClickOutSide";
 
 type TProps = {
       inputItem: TInputCore.InputDate.InputTypeDate;
+      isDrap?: boolean;
+
 };
 
 const InputCoreDate = (props: TProps) => {
-      const { inputItem } = props;
+      const { inputItem , isDrap} = props;
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
       const form_mode_display = formCore.form_mode_display === "custom";
 
@@ -70,7 +72,7 @@ const InputCoreDate = (props: TProps) => {
       );
 
       return (
-            <InputCore  InputComponent={InputDate} inputItem={inputItem} inputTitle={inputItem.input_title || ""} dataTextTitle="Thêm mô tả về ngày được chọn" />
+            <InputCore isDrap={isDrap}  InputComponent={InputDate} inputItem={inputItem} inputTitle={inputItem.input_title || ""} dataTextTitle="Thêm mô tả về ngày được chọn" />
       );
 };
 

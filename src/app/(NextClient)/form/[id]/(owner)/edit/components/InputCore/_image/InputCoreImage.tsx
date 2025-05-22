@@ -11,10 +11,11 @@ import UploadNone from "@/app/(NextClient)/_components/ui/loading/UploadNone";
 
 type TProps = {
       inputItem: TInputCore.InputImage.InputTypeImage;
+      isDrap?: boolean;
 };
 
 const InputCoreImage = (props: TProps) => {
-      const { inputItem } = props;
+      const { inputItem, isDrap } = props;
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
       const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -60,7 +61,7 @@ const InputCoreImage = (props: TProps) => {
 
       return (
             <InputCore
-               
+                  isDrap={isDrap}
                   InputComponent={InputImage}
                   inputItem={inputItem}
                   inputTitle={inputItem.input_title || ""}

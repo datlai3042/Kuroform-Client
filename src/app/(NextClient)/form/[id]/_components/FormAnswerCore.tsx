@@ -97,7 +97,7 @@ const FormAnswerCore = (props: TProps) => {
                         <DivNative
                               style={{ backgroundColor: "inherit" }}
                               className={`${formCore.form_avatar?.form_avatar_url && isGoogleForm ? "mt-[4rem]" : ""} ${
-                                    isGoogleForm ? "w-full" : `w-[94vw] md:w-[50vw]  mx-auto ${formThemes}`
+                                    isGoogleForm ? "w-full" : `w-[94vw] md:w-[60vw]  mx-auto ${formThemes}`
                               } rounded-lg`}
                         >
                               <DivNative className={`${isGoogleForm ? "gap-[0rem]" : "gap-[0rem]"} flex flex-col  pb-[20rem] `}>

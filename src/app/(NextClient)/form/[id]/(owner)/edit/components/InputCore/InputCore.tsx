@@ -21,12 +21,13 @@ type TProps = {
       inputItem: TInputCore.InputForm;
       inputTitle: string;
       dataTextTitle?: string;
+      isDrap?:boolean
 };
 
 const InputCore = (props: TProps) => {
-      const { inputItem, dataTextTitle, InputComponent, inputTitle,  } = props;
+      const { inputItem, dataTextTitle, InputComponent, inputTitle, isDrap = false } = props;
       const dispatch = useDispatch();
-      const [active,setActive] = useState(false)
+      const [active, setActive] = useState(false);
 
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
       const colorMain = useSelector((state: RootState) => state.form.colorCore);
@@ -90,12 +91,13 @@ const InputCore = (props: TProps) => {
                               ...style,
                               ...checkModeDisplay,
                               opacity: isDragging ? 0.4 : "",
+                              width: isDrap ? '100%' : `${inputItem?.core.setting.width}%`,
                         } as React.CSSProperties
                   }
             >
                   {title && <InputTitle active={active} setChangeTitle={setTitle} inputItem={inputItem} dataTextTitle={dataTextTitle} />}
 
-                  <DivWrapper className={` group relative min-h-[8rem] h-max flex   flex-col gap-[.8rem] `}>
+                  <DivWrapper className={` group relative min-h-[8rem] h-max flex  flex-col gap-[.8rem] `}>
                         {modeScreen === "NORMAL" && (
                               <DivWrapper className=" text-[1.4rem] ">
                                     <SectionOption
@@ -110,7 +112,7 @@ const InputCore = (props: TProps) => {
                         <DivWrapper className={`w-full h-max flex flex-col gap-[2rem] `} onKeyDown={onPressEnter}>
                               {InputComponent}
                         </DivWrapper>
-                        {!title && modeScreen === "NORMAL" && <SetTitleInput setTitle={setTitle} focus={focus} setActive={setActive}/>}
+                        {!title && modeScreen === "NORMAL" && <SetTitleInput setTitle={setTitle} focus={focus} setActive={setActive} />}
                   </DivWrapper>
 
                   {/* {formCore.form_mode_display === "custom" && (

@@ -11,7 +11,7 @@ const SubmitSuccess = (props: TProps) => {
 	return (
 		<div
 			style={{ color: color }}
-			className="w-full min-h-[14rem] mt-[6rem]  p-[0rem_1rem] md:mt-[8rem] h-max flex items-center justify-center text-[2rem] font-bold bg-[#ffffff] rounded-lg"
+			className="w-full min-h-[14rem] bg-[var(--bg-dark-readOnly)]  p-[0rem_1rem] md:mt-[8rem] h-max flex items-center justify-center text-[2rem] font-bold rounded-lg"
 		>
 			{message}
 		</div>

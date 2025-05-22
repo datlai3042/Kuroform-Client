@@ -1,19 +1,15 @@
 import { useDebouncedCallback } from "@mantine/hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
       const [heightContent, setHeightContent] = useState<string | number>("auto");
-      const [minHeightContent, setMinHeightContent] = useState<string | number>("auto");
-
+      const containerRef = useRef<HTMLDivElement>(null);
       const handleBrowserResize = () => {
-            const contentContainer = document.getElementById("content")?.getBoundingClientRect().height || 0;
-            const contentInfo = document.getElementById("content-info")?.getBoundingClientRect().height || 0;
-            const contentTab = document.querySelector(".content-tab")?.getBoundingClientRect().height || 0;
-
-            const calc = contentContainer - contentInfo - contentTab - 52;
-              const minHeight = calc / 100 * 10
-              setMinHeightContent(minHeight)
-            setHeightContent(calc);
+            if (containerRef.current) {
+                  const viewHeight = window.innerHeight;
+                  const heightContainer = viewHeight - containerRef.current.offsetTop - 50;
+                  setHeightContent(heightContainer);
+            }
       };
 
       const onHandleResizeDelay = useDebouncedCallback(handleBrowserResize, 100);
@@ -29,9 +25,8 @@ const ContentWrapper = ({ children }: { children: React.ReactNode }) => {
                   window.removeEventListener("resize", onHandleResizeDelay);
             };
       }, []);
-
       return (
-            <div className="control-wrapper" style={{  minHeight: '100%', }}>
+            <div ref={containerRef} className="control-wrapper" style={{ height: heightContent, overflowY: "auto", overflowX: 'hidden', marginTop: '-1rem' }}>
                   {children}
             </div>
       );

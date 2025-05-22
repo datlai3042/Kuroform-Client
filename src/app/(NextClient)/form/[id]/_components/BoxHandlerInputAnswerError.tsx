@@ -10,12 +10,14 @@ type TProps = {
       write: boolean;
       inputItemInArrayGlobal: FormCore.FormAnswer.ControlerInputAnswer<FormCore.FormAnswer.Data.InputData>;
       styles?: React.CSSProperties;
+      formCore: FormCore.Form;
 };
 
 const BoxHandlerInputAnswerError = (props: TProps) => {
-      const { children, error, inputItemInArrayGlobal, input_id, write, styles = {} } = props;
+      const { children, error, inputItemInArrayGlobal, input_id, write, styles = {}, formCore } = props;
 
       const colorMain = useSelector((state: RootState) => state.form.colorCore);
+      const isGoogleForm = formCore?.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
             <div
@@ -25,8 +27,10 @@ const BoxHandlerInputAnswerError = (props: TProps) => {
                   className={`${
                         (error && error.error && write) || inputItemInArrayGlobal?.globalError?.state
                               ? "input-answer-invalid border-none  !text-[#e20f0f]"
-                              : "  border-b-[.1rem] border-[var(--border-color-input)]"
-                  }  relative w-full min-h-[12rem]   h-max p-[3.8rem_1.8rem]  duration-300 transition-all flex flex-col justify-center gap-[1rem]  `}
+                              : " "
+                  } ${
+                        isGoogleForm ? "p-[1.8rem]" : " p-[1.8rem_1.8rem]"
+                  }  relative w-full min-h-[12rem]   h-max  duration-300 transition-all flex flex-col justify-center gap-[1rem]  `}
             >
                   {children}
             </div>

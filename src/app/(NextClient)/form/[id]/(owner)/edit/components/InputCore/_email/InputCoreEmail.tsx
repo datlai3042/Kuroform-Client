@@ -13,13 +13,15 @@ import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: TInputCore.InputEmail.InputTypeEmail;
+      isDrap?: boolean;
+
 };
 
 const InputCoreEmail = (props: TProps) => {
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
       const form_mode_display = formCore.form_mode_display === "custom";
 
-      const { inputItem } = props;
+      const { inputItem, isDrap } = props;
       const inputRef = useRef<HTMLInputElement | null>(null);
 
       const title = inputItem.input_title ? inputItem.input_title : "";
@@ -83,7 +85,7 @@ const InputCoreEmail = (props: TProps) => {
             </DivNative>
       );
 
-      return <InputCore inputItem={inputItem} InputComponent={InputEmail} inputTitle={title} />;
+      return <InputCore isDrap={isDrap} inputItem={inputItem} InputComponent={InputEmail} inputTitle={title} />;
 };
 
 export default InputCoreEmail;

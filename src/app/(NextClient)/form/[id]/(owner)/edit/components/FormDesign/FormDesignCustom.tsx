@@ -111,7 +111,7 @@ const FormDesignCustom = () => {
                   id={"section-design"}
                   className="scroll-desgin-custom px-[1rem] md:px-0  flex-1 fixed  bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen w-full z-[999]  md:w-[32rem]  "
             >
-                  <div className=" relative min-h-full h-max pb-[4rem] px-[.8rem]  border-b-[.2rem] flex flex-col">
+                  <div className=" relative min-h-full h-max pb-[4rem] px-[1.8rem]  border-b-[.2rem] flex flex-col">
                         <div className="sticky top-0 right-0   bg-color-section-theme z-[2] " id="design-header">
                               <div className="flex flex-col items-center ">
                                     <div className="w-full flex items-center justify-between py-[1rem]   bg-color-section-theme z-[2]">

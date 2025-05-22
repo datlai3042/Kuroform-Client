@@ -7,10 +7,12 @@ import InputCore from "../InputCore";
 
 type TProps = {
 	inputItem: TInputCore.InputVote.InputTypeVote;
+      isDrap?: boolean;
+
 };
 
 const InputCoreVote = (props: TProps) => {
-	const { inputItem } = props;
+	const { inputItem, isDrap } = props;
 
 	const [start, setStart] = useState<number>(2.5);
 
@@ -31,6 +33,7 @@ const InputCoreVote = (props: TProps) => {
 			inputItem={inputItem}
 			inputTitle={inputItem.input_title || ""}
 			dataTextTitle="Thêm tiêu đề cho đánh giá"
+			isDrap={isDrap}
 		/>
 	);
 };

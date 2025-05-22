@@ -22,6 +22,7 @@ type TProps = {
 
 const InputTextAnswer = (props: TProps) => {
       const { inputItem, formCore } = props;
+      console.log({ inputItem });
 
       const {
             formAnswer: { inputFormErrors, inputFormData, submitState },
@@ -70,11 +71,11 @@ const InputTextAnswer = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
-            <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+            <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
+                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
-                              <DivNative className={`${isGoogleForm ? "" : "p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"} flex flex-col gap-[.3rem] `}>
+                              <DivNative className={`${isGoogleForm ? "" : "p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"} flex flex-col gap-[.3rem] `}>
                                     <DivNative className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}>
                                           <DivNativeRef
                                                 style={{
@@ -86,7 +87,7 @@ const InputTextAnswer = (props: TProps) => {
                                                 ref={divContentRef}
                                                 className={`${
                                                       formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                                }  heading-answer group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
+                                                }  heading-answer "" placeholder:opacity-65 group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
                                                 onClick={() => divContentRef.current?.focus()}
                                                 onBlur={(e) => onBlur(e)}
                                                 onFocus={onFocus}

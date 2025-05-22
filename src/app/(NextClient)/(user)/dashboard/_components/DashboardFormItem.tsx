@@ -24,12 +24,12 @@ const DashboardFormItem = (props: TProps) => {
                   prefetch={false}
                   href={`/form/${form._id}/summary`}
                   key={form._id}
-                  className="rounded-lg min-h-[16rem]  w-full p-[1rem_2rem] max-w-full flex    justify-center gap-[1rem] text-[1.2rem]  text-text-theme bg-bg-form-nav  border-[.1rem] border-[var(--border-form-item)]"            >
+                  className="rounded-lg min-h-[16rem] text-[1.3rem]  w-full p-[1rem_2rem] max-w-full flex    justify-center gap-[1rem]   text-text-theme bg-bg-form-nav  border-[.1rem] border-[var(--border-form-item)]"            >
                   <div className="w-[70%]  flex flex-col justify-center gap-[1rem] ">
-                        <div className="max-w-[70%] flex flex-col justify-center gap-[.8rem] ">
+                        <div className="max-w-[70%] flex flex-col justify-center gap-[1.2rem] ">
                               <FormStateProvider form_state={form.form_state} />
-                              <span className="max-w-[90%] truncate text-[1.4rem] text-color-main font-bold">
-                                    Tiêu đề Form: {form?.form_title?.form_title_value || "Trống"}
+                              <span className="max-w-[90%] truncate text-[1.6rem] text-color-main font-bold">
+                                   {form?.form_title?.form_title_value || "Trống"}
                               </span>
                               <span>Chỉnh sửa {moment(new Date(form.updatedAt!)).fromNow()}</span>
                         </div>
@@ -51,7 +51,7 @@ const DashboardFormItem = (props: TProps) => {
                         </DivNative>
                   </div>
                   <div className="w-[30%] flex flex-col items-center justify-center gap-[3rem]">
-                        <div className="w-[10rem] h-[10rem]">
+                        <div className="w-[8rem] h-[8rem]">
                               {form.form_avatar?.form_avatar_url && (
                                     <Image
                                           src={form.form_avatar.form_avatar_url}

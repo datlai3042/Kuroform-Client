@@ -66,16 +66,28 @@ const InputOptionAnswer = (props: TProps) => {
       };
       const isError = inputItemInArrayGlobal?.globalError?.state;
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
-
+      const color =
+            formCore.form_themes === "AUTO"
+                  ? "text-text-theme"
+                  : formCore.form_styles === "GOOGLE_FORM"
+                  ? formCore?.form_input_styles?.color
+                        ? formCore?.form_input_styles?.color
+                        : formCore.form_themes === "DARK"
+                        ? "text-[#fff]"
+                        : "text-[#000]"
+                  : formCore.form_themes === "DARK"
+                  ? "text-[#fff]"
+                  : "text-[#000]";
       return (
-            <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
+                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
+>
+                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>
                               <DivNative className="flex flex-col gap-[.3rem] text-[1.4rem]">
                                     <DivNative
                                           className={`${
-                                                isGoogleForm ? "" : " p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
+                                                isGoogleForm ? "" : " p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
                                           } relative min-h-[5rem] h-max flex flex-col gap-[1.6rem]  `}
                                     >
                                           {
@@ -96,7 +108,7 @@ const InputOptionAnswer = (props: TProps) => {
                                     </DivNative>
                               </DivNative>
                               {choose?.option_value && (
-                                    <p className="text-[1.4rem]">
+                                    <p className={`${color} text-[1.4rem]`}>
                                           Đã chọn:
                                           {choose?.option_value ? (
                                                 <span className="ml-[.4rem] border-b-[.2rem] border-gray-400">{choose.option_value}</span>

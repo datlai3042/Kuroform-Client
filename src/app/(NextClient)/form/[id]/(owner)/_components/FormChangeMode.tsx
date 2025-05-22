@@ -81,8 +81,10 @@ const FormChangeMode = (props: TProps) => {
                               className="line-clamp-2 w-[80%] text-text-theme"
                               style={{
                                     // fontSize,
-                                    fontStyle,
+                                    // fontStyle,
                                     fontSize: "2.4rem",
+                                    color: 'var(--color-main)',
+                                    fontWeight: 500
                               }}
                         >
                               {formCore?.form_title?.form_title_value}
@@ -149,7 +151,7 @@ const FormChangeMode = (props: TProps) => {
                                           href={`/form/${formCore._id}/summary`}
                                           className={`${styleEffect.linkActive(
                                                 formPageMode === "summary",
-                                          )} hover:border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
+                                          )} hover:border-b-[.4rem] text-[1.5rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
                                     >
                                           Thông tin chung
                                     </Link>
@@ -164,7 +166,7 @@ const FormChangeMode = (props: TProps) => {
                                           href={`/form/${formCore._id}/download`}
                                           className={`${styleEffect.linkActive(
                                                 formPageMode === "download",
-                                          )} hover:border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
+                                          )} hover:border-b-[.4rem] text-[1.5rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
                                     >
                                           Tải xuống
                                     </Link>
@@ -179,7 +181,7 @@ const FormChangeMode = (props: TProps) => {
                                           href={`/form/${formCore._id}/share`}
                                           className={`${styleEffect.linkActive(
                                                 formPageMode === "share",
-                                          )} hover:border-b-[.4rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
+                                          )} hover:border-b-[.4rem] text-[1.5rem] pb-[.9rem] font-semibold  hover:border-[var(--color-main)] text-text-theme`}
                                     >
                                           Chia sẻ
                                     </Link>

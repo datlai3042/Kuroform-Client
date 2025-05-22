@@ -27,7 +27,6 @@ export type InputErrorType = "REQUIRE" | "INVAILD" | null;
 
 const InputEmailAnswer = (props: TProps) => {
       const { inputItem, formCore } = props;
-
       const {
             formAnswer: { inputFormErrors, inputFormData, submitState },
             setFormAnswer,
@@ -61,11 +60,12 @@ const InputEmailAnswer = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
-            <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
+>
+                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>
-                              <DivNative className={`${isGoogleForm ? '' : 'p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]'} flex flex-col gap-[.3rem]  `}>
+                              <DivNative className={`${isGoogleForm ? '' : 'p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]'} flex flex-col gap-[.3rem]  `}>
                                     <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}>
                                           <input
                                                 style={{
@@ -81,7 +81,7 @@ const InputEmailAnswer = (props: TProps) => {
                                                 className={`
 							)}   ${
                                                 formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                          }   border-b-[.1rem] h-full pb-[1rem]   outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          }   border-b-[.1rem] h-full pb-[1rem] "" placeholder:opacity-65  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                                 onChange={(e) => setInputValue(e.target.value)}
                                                 onFocus={onFocus}
                                                 onBlur={onBlur}

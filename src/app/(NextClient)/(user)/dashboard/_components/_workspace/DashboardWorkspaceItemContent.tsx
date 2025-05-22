@@ -49,10 +49,10 @@ const DashboardWorkspaceItemContent = (props: TProps) => {
                               </div>
                         </Link>
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right text-color-main font-bold">
                         <span>{formCore.form_views || 0}</span>
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right text-color-main font-bold">
                         <span>{formCore.form_response || 0}</span>
                   </TableCell>
             </>

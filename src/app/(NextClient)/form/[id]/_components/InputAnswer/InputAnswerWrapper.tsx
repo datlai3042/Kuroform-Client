@@ -2,16 +2,17 @@
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import { renderInputStyles } from "@/app/utils/form.utils";
-import { FormCore } from "@/type";
+import { FormCore, InputCore } from "@/type";
 import React, { useContext } from "react";
 
 type TProps = {
       children: React.ReactNode;
       formCore: FormCore.Form;
+      inputItem: InputCore.InputForm;
 };
 
 const InputAnswerWrapper = (props: TProps) => {
-      const { children, formCore } = props;
+      const { children, formCore, inputItem } = props;
       const { theme } = useContext(ThemeContext);
       const styleWrapper = renderInputStyles(formCore?.form_input_styles, formCore);
 
@@ -26,12 +27,13 @@ const InputAnswerWrapper = (props: TProps) => {
                         : "text-[#000]"
                   : formCore.form_themes === "DARK"
                   ? "text-[#fff]"
-                  : "text-[#000]";
+                  : "text-[#fff]";
 
+      const width = inputItem?.core?.setting?.width || 100;
       return (
             <DivNative
-                  style={{ ...styleWrapper }}
-                  className={`${color} w-full min-h-[12rem] h-max  bg-transparent   border-[.1rem] border-[var(--border-color-input)]`}
+                  style={{ ...styleWrapper, width: `${width}%` }}
+                  className={`${color} control-w-input w-full min-h-[12rem] h-max  bg-transparent   border-[.1rem] border-[var(--border-color-input)]`}
             >
                   {children}
             </DivNative>

@@ -32,7 +32,7 @@ const SummaryFormPage = () => {
     
       const { dataGroupFilter, dataExcel } = formCache;
       return (
-            <div className="h-full flex flex-col gap-[1.6rem]">
+            <div className="h-full flex flex-col ">
                   <Select<"Group" | "Once">
                         className="customSelect"
                         placeholder="Chọn loại hiển thị"

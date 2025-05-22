@@ -71,7 +71,7 @@ const HeaderFormAnswer = (props: TProps) => {
                         formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state
                               ? formCore.form_styles === "GOOGLE_FORM"
                                     ? "mt-[7rem]"
-                                    : "mt-[3rem]"
+                                    : "mt-[4rem]"
                               : ""
                   } ${
                         formCore.form_styles === "GOOGLE_FORM"
@@ -86,7 +86,7 @@ const HeaderFormAnswer = (props: TProps) => {
                         style={{ marginTop: !formCore?.form_title?.form_title_value ? "0px" : "" }}
                         className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}
                   >
-                        <h1 style={styleTitle} className=" font-light ">
+                        <h1 style={styleTitle} className=" font-semibold ">
                               {formCore?.form_title?.form_title_value}
                         </h1>
 

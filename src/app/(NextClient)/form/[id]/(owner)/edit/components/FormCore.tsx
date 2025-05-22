@@ -48,37 +48,37 @@ import ButtonSubmitDesign from "./FormDesign/ButtonSubmitDesign";
 import BoxChangeForm from "./FormDesign/BoxChangeForm";
 import { renderFormThemes } from "@/app/utils/form.utils";
 
-export const generateInputForms = (Inputs: InputCore.InputForm[]): React.ReactNode => {
+export const generateInputForms = (Inputs: InputCore.InputForm[], isDrap: boolean = false): React.ReactNode => {
       return Inputs.map((ele, index) => {
             switch (ele.type) {
                   case "TEXT":
-                        return <InputCoreText inputItem={ele} key={ele._id} />;
+                        return <InputCoreText inputItem={ele} key={ele._id} isDrap={isDrap} />;
 
                   case "EMAIL":
-                        return <InputCoreEmail inputItem={ele} key={ele._id} />;
+                        return <InputCoreEmail inputItem={ele} key={ele._id} isDrap={isDrap} />;
 
                   case "VOTE":
-                        return <InputCoreVote inputItem={ele} key={ele._id} />;
+                        return <InputCoreVote inputItem={ele} key={ele._id} isDrap={isDrap} />;
 
                   case "PHONE":
-                        return <InputCorePhone inputItem={ele} key={ele._id} />;
+                        return <InputCorePhone inputItem={ele} key={ele._id} isDrap={isDrap} />;
                   case "OPTION":
-                        return <InputCoreOption inputItem={ele} key={ele._id} />;
+                        return <InputCoreOption inputItem={ele} key={ele._id} isDrap={isDrap} />;
 
                   case "OPTION_MULTIPLE":
-                        return <InputCoreOptionMultiple inputItem={ele} key={ele._id} />;
+                        return <InputCoreOptionMultiple inputItem={ele} key={ele._id} isDrap={isDrap} />;
                   case "DATE":
-                        return <InputCoreDate inputItem={ele} key={ele._id} />;
+                        return <InputCoreDate inputItem={ele} key={ele._id} isDrap={isDrap} />;
 
                   case "FILE_IMAGE":
-                        return <InputCoreImage inputItem={ele} key={ele._id} />;
+                        return <InputCoreImage inputItem={ele} key={ele._id} isDrap={isDrap} />;
 
                   case "ADDRESS":
-                        return <InputCoreAddress inputItem={ele} key={ele._id} />;
+                        return <InputCoreAddress inputItem={ele} key={ele._id} isDrap={isDrap} />;
                   case "ANCHOR":
-                        return <InputCoreAnchor inputItem={ele} key={ele._id} />;
+                        return <InputCoreAnchor inputItem={ele} key={ele._id} isDrap={isDrap} />;
                   default:
-                        return <InputCoreText inputItem={ele} key={index} />;
+                        return <InputCoreText inputItem={ele} key={index} isDrap={isDrap} />;
             }
       });
 };
@@ -152,7 +152,7 @@ const FormCore = () => {
       }, [modeScreen]);
 
       useEffect(() => {
-            console.log({formCore, theme})
+            console.log({ formCore, theme });
             setBorderCurruent(formCore.form_themes);
             if (formCore.form_themes === "AUTO") {
                   if (theme === "light") {
@@ -190,7 +190,7 @@ const FormCore = () => {
 						min-h-screen h-max`}
                               >
                                     <DivNative
-                                          className={`flex-1 px-[1rem] pb-[5rem] md:pb-0 xl:px-[4rem] min-h-full h-max  w-full lg:max-w-[67rem] xl:max-w-[70rem] mx-auto   xl:pl-0  flex flex-col  xl:py-[2rem] gap-[2rem]  `}
+                                          className={`flex-1 px-[1rem] pb-[5rem] md:pb-0 xl:px-[4rem] min-h-full h-max  w-full lg:max-w-[67rem] xl:max-w-[90rem] mx-auto   xl:pl-0  flex flex-col  xl:py-[2rem] gap-[2rem]  `}
                                     >
                                           <DivNative className={`${gapWhenAppearImage}`}>
                                                 <DivNative className={`${heightWhenAppearImage} group max-h-[18rem] sm:max-h-[8rem] xl:min-h-max `}>
@@ -212,7 +212,7 @@ const FormCore = () => {
                                           <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[1rem] min-h-full`}>
                                                 <InputCoreTitle />
                                                 {formCore.form_inputs.length > 0 && (
-                                                      <DivNative className="mt-[2rem] h-max w-full flex flex-col gap-[5.8rem] ">
+                                                      <DivNative className="mt-[4rem] h-max w-full flex flex-row flex-wrap items-end justify-between gap-[7rem_1rem] ">
                                                             <DndContext
                                                                   onDragStart={(event) => {
                                                                         setActiveId(event.active.id as string);

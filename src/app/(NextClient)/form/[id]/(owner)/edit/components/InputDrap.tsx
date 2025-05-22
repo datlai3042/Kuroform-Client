@@ -24,13 +24,13 @@ const InputDrap = (props: TProps) => {
                   return;
             });
             if (isInputDrap) {
-                  return generateInputForms([isInputDrap]);
+                  return generateInputForms([isInputDrap], true);
             }
       }, [inputId, listInput]);
 
       return (
             <div
-                  className={`relative p-[2.4rem_3rem]   rounded-[.4rem] border-color-main bg-inherit`}
+                  className={`relative p-[2.4rem_3rem]   rounded-[.4rem] border-color-main `}
             >
                   {RenderInput}
                   {<DrapArea />}
@@ -40,8 +40,8 @@ const InputDrap = (props: TProps) => {
 
 export const DrapArea = () => {
       return (
-            <div className=" w-[24rem] h-[15%] absolute right-[4%] top-[8%] z-[10] rounded-[.4rem] flex  gap-[1.2rem] items-center justify-center ">
-                  <span className="text-[#fff]">Đang được kéo để thay đổi</span>
+            <div className=" w-[24rem] h-[15%] bg-blue-700 p-[1rem] absolute right-[4%] top-[8%] z-[10] rounded-[.4rem] flex  gap-[1.2rem] items-center justify-center ">
+                  <span className="text-[#fff] ">Đang được kéo để thay đổi</span>
                   <LoadingSpinner color="#fff" width="min-w-[2.4rem]" height="min-h-[2.4rem]" />
             </div>
       );

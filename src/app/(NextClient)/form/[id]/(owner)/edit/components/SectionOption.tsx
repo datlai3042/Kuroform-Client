@@ -1,6 +1,6 @@
 import DivWrapper from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import { FormCore, InputCore, ReactCustom } from "@/type";
-import { GripVertical, Plus, Trash2 } from "lucide-react";
+import { GripVertical, Plus, Settings, Trash2 } from "lucide-react";
 import React, { SetStateAction, memo, useState } from "react";
 import ModelInputType from "./InputIntroduce/InputIntroduceWrapper";
 import InputSettingWrapper from "./InputSettings/InputSettingWrapper";
@@ -52,7 +52,7 @@ const SectionOption = (props: TProps) => {
 
                         <div className=" rounded-[.4rem] relative">
                               <DivWrapper style={{ backgroundColor: openSetting ? "var(--color-main)" : "" }} className=" rounded-lg">
-                                    <GripVertical
+                                    <Settings
                                           size={28}
                                           style={{ color: openSetting ? "#fff" : "", border: openSetting ? ".1rem solid transparent" : "" }}
                                           onClick={() => setOpenSetting(true)}

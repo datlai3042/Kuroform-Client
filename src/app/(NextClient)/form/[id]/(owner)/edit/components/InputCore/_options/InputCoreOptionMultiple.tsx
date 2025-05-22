@@ -16,6 +16,8 @@ import { SyncDataOption } from "../_option/InputCoreOption";
 
 type TProps = {
       inputItem: TInputCore.InputOptionMultiple.InputTypeOptionMultiple;
+      isDrap?: boolean;
+
 };
 
 const InputCoreOptionMultiple = (props: TProps) => {
@@ -30,7 +32,7 @@ const InputCoreOptionMultiple = (props: TProps) => {
 
       const btnAddOptionRef = useRef<HTMLButtonElement | null>(null);
 
-      const { inputItem } = props;
+      const { inputItem, isDrap } = props;
 
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
       const colorMain = formCore.form_title.form_title_color || formCore.form_setting_default.form_title_color_default;
@@ -149,7 +151,7 @@ const InputCoreOptionMultiple = (props: TProps) => {
             </DivNative>
       );
 
-      return <InputCore InputComponent={InputOption} inputTitle={title} dataTextTitle="Nhập tiêu đề chính cho các tùy chọn" inputItem={inputItem} />;
+      return <InputCore isDrap={isDrap} InputComponent={InputOption} inputTitle={title} dataTextTitle="Nhập tiêu đề chính cho các tùy chọn" inputItem={inputItem} />;
 };
 
 export default memo(InputCoreOptionMultiple);

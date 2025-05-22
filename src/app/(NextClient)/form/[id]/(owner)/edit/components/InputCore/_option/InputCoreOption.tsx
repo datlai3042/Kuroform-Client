@@ -20,6 +20,7 @@ import InputCore from "../InputCore";
 
 type TProps = {
       inputItem: TInputCore.InputOption.InputTypeOption;
+      isDrap?: boolean;
 };
 
 export type SyncDataOption = {
@@ -33,10 +34,10 @@ const InputCoreOption = (props: TProps) => {
 
       const [selectValue, setSelectValue] = useState<string>("");
 
-      const { inputItem } = props;
+      const { inputItem, isDrap } = props;
 
       const btnAddOptionRef = useRef<HTMLButtonElement | null>(null);
-      const [active,setActive] = useState(false)
+      const [active, setActive] = useState(false);
       const [syncData, setSyncData] = useState<SyncDataOption>({
             option_id_focus: "",
             option_process_pending: false,
@@ -114,7 +115,7 @@ const InputCoreOption = (props: TProps) => {
       const InputOption = (
             <DivNative className={`mt-[.4rem]  bg-transparent min-h-[5rem] max-w-full flex flex-col gap-[1rem] h-max  text-[1.4rem]`}>
                   <SpanNative
-                        style={{ color: formCore.form_input_styles.color || 'var(--text-text-theme)'}}
+                        style={{ color: formCore.form_input_styles.color || "var(--text-text-theme)" }}
                         textContent="Chọn một lựa chọn"
                         className={`${form_mode_display ? "group-hover:!text-[#ffffff]" : "text-text-theme"} text-[1.6rem] font-semibold`}
                   />
@@ -157,7 +158,15 @@ const InputCoreOption = (props: TProps) => {
             </DivNative>
       );
 
-      return <InputCore InputComponent={InputOption} inputTitle={title} dataTextTitle="Nhập tiêu đề chính cho các tùy chọn" inputItem={inputItem} />;
+      return (
+            <InputCore
+                  isDrap={isDrap}
+                  InputComponent={InputOption}
+                  inputTitle={title}
+                  dataTextTitle="Nhập tiêu đề chính cho các tùy chọn"
+                  inputItem={inputItem}
+            />
+      );
 };
 
 export default memo(InputCoreOption);

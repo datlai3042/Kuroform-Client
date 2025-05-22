@@ -67,13 +67,14 @@ const InputPhoneAnswer = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
-            <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
+>
+                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
                               <DivNative
                                     className={`${
-                                          isGoogleForm ? "" : " p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
+                                          isGoogleForm ? "" : " p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
                                     } relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}
                               >
                                     <input
@@ -89,7 +90,7 @@ const InputPhoneAnswer = (props: TProps) => {
                                           type="number"
                                           className={` ${
                                                 formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-transparent w-[90%]"
-                                          }  border-b-[.1rem] h-full pb-[2rem]  border-[var(--border-color-input)]      outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          }  border-b-[.1rem] h-full pb-[2rem]  border-[var(--border-color-input)] "" placeholder:opacity-65    outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                           placeholder="Nhập số điện thoại của bạn"
                                           onChange={(e) => setPhone(e.target.value)}
                                     />

@@ -85,18 +85,20 @@ const InputImageAnswer = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
-            <InputAnswerWrapper formCore={formCore}>
+                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
+>
                   <BoxHandlerInputAnswerError
                         inputItemInArrayGlobal={inputItemInArrayGlobal}
                         input_id={inputItem._id!}
                         write={write}
+                        formCore={formCore}
                   >
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
-                              <DivNative className={`${isGoogleForm ? '' : ' p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]'} text-inherit relative flex flex-col  items-center justify-between gap-[1rem]  `}>
+                              <DivNative className={`${isGoogleForm ? '' : ' p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]'} text-inherit relative flex flex-col  items-center justify-between gap-[1rem]  `}>
                                     <DivNative
                                           className={`${
-                                                formCore.form_styles === "GOOGLE_FORM" ? " gap-[2rem]" : " gap-[1rem]"
+                                                formCore.form_styles === "GOOGLE_FORM" ? " gap-[2rem]" : " gap-0"
                                           } w-full     flex flex-col   justify-start   `}
                                     >
                                           <div className=" flex justify-between gap-[1rem] flex-wrap">

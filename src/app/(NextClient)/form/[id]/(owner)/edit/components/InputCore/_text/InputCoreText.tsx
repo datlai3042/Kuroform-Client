@@ -12,13 +12,14 @@ import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: TInputCore.InputText.InputTypeText;
+      isDrap?: boolean;
 };
 
 const InputCoreText = (props: TProps) => {
       const { modeScreen } = useContext(FormModeScreenContext);
       const { theme } = useContext(ThemeContext);
 
-      const { inputItem } = props;
+      const { inputItem, isDrap } = props;
 
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
 
@@ -74,7 +75,7 @@ const InputCoreText = (props: TProps) => {
             </DivNative>
       );
 
-      return <InputCore InputComponent={InputText} inputTitle={title} inputItem={inputItem} />;
+      return <InputCore isDrap={isDrap} InputComponent={InputText} inputTitle={title} inputItem={inputItem} />;
 };
 
 export default memo(InputCoreText);

@@ -84,11 +84,12 @@ const InputAnchorAnswer = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
-            <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
+>
+                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent>
-                              <DivNative className={`${isGoogleForm ? "" : "p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"} w-full flex flex-col gap-[1rem]  `}>
+                              <DivNative className={`${isGoogleForm ? "" : "p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"} w-full flex flex-col gap-[1rem]  `}>
                                     <DivNative
                                           className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] bg-transparent `}
                                     >
@@ -105,7 +106,7 @@ const InputAnchorAnswer = (props: TProps) => {
                                                 onChange={(e) => onChangeValue(e.target.value)}
                                                 className={` ${
                                                       formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-transparent w-[90%]"
-                                                } pr-[2rem] heading-answer group min-h-[3.8rem] px-[1rem] flex items-center  text-[1.4rem] break-words whitespace-pre-wrap  outline-none resize-none `}
+                                                } pr-[2rem] placeholder:text-[1.4rem] "" placeholder:opacity-65 heading-answer group min-h-[3.8rem] px-[1rem] flex items-center   break-words whitespace-pre-wrap  outline-none resize-none `}
                                                 placeholder="Nhập đường dẫn liên kết của bạn"
                                           />
                                           <div className="absolute z-[2] right-[1rem]  opacity-70">www</div>

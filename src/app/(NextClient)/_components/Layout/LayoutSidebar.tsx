@@ -22,7 +22,7 @@ const LayoutSidebar = ({ children }: { children: React.ReactNode }) => {
                   } relative max-w-screen min-h-screen h-max w-full   flex   bg-color-gap-empty`}
             >
                   {openSidebar && <LeftSide />}
-                  <div style={{ width: `calc(${widthParent} - ${widthSidebar}px - 10px) ` }} className={` flex-1  `}>
+                  <div style={{ width: `calc(${widthParent} - ${widthSidebar}px - 20px) ` }} className={` flex-1  `}>
                         {children}
                   </div>
             </div>

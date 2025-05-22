@@ -13,10 +13,12 @@ import InputValidateSuccess from "@/app/(NextClient)/form/[id]/_components/_comm
 
 type TProps = {
       inputItem: TInputCore.InputAddress.InputTypeAddress;
+      isDrap?: boolean;
+
 };
 
 const InputCoreAddress = (props: TProps) => {
-      const { inputItem } = props;
+      const { inputItem , isDrap} = props;
       const [active, setActive] = useState(false);
 
       const [controlerInput, setControllerInput] = useState<TInputCore.Commom.ControlerInput<UI.Address.AddressEnity>>({
@@ -70,7 +72,7 @@ const InputCoreAddress = (props: TProps) => {
 
       return (
             <InputCore
-              
+                  isDrap={isDrap}
                   InputComponent={InputAddress}
                   inputItem={inputItem}
                   inputTitle={inputItem.input_title || ""}

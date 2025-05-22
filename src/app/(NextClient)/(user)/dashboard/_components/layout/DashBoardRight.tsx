@@ -50,7 +50,7 @@ const DashBoardRight = () => {
                                     >
                                           <div className="flex justify-between">
                                                 <p className="text-color-main font-bold text-[2rem] flex items-center gap-[1rem]">
-                                                      <Circle />
+                                                      <Circle width={16}/>
 
                                                       <span>Phân tích chung</span>
                                                 </p>

@@ -177,9 +177,9 @@ body.dark .ant-rate-star-second {
             --toast-success: #4299de;
             --toast-error: #f4454c;
             --toast-warning: #ea580c;
-           
+
             /* --border-color-input: rgb(218, 220, 224); */
-            --border-color-input:  rgb(209 213 219 / 12%);
+            --border-color-input: rgb(209 213 219 / 12%);
 
             /* --border-color-input: rgb(209 213 219 / 27%); */
             --background: 0 0% 100%;
@@ -197,6 +197,9 @@ body.dark .ant-rate-star-second {
             --form-theme-dark: #08112b;
             --form-theme-light-color: #000;
             --form-theme-dark-color: #fff;
+            --scrol-global-track:rgb(208 204 210 / 76%);
+            --scrol-global-thumb: #abb1bae8;
+
       }
 
       html {
@@ -204,6 +207,8 @@ body.dark .ant-rate-star-second {
       }
 
       body.light {
+             --scrol-global-track:rgb(208 204 210 / 76%);
+            --scrol-global-thumb: #abb1bae8;
             --bg-form-nav: #fff;
             --color-gap-empty: #eef1f9;
             --color-main: #3d52a2;
@@ -227,20 +232,22 @@ body.dark .ant-rate-star-second {
 
             /* --border-color-side: rgb(200 205 214 / 42%); */
             --border-color-side: rgb(200 205 214 / 74%);
-            --bg-input-ans: #6b6a6b1a;
+            /* --bg-input-ans: #2647fc30; */
+            --bg-input-ans: #060913d1;
+
 
             /* --color-btn-primarily: #2d68ff;ư */
       }
 
       body.dark {
-            --bg-input-ans: #07031826;
-            --color-main: #151274;
+            --bg-input-ans: #04091969;
+            --color-main: #2f844a;
             --bg-form-nav: #393c73;
             --color-gap-empty: #040429;
             /* --color-main: #3b36db; */
             --bg-answer-option: rgb(222 224 228);
 
-            --color-main: #35336a;
+            /* --color-main: #35336a; */
             /* --color-section-theme: #0d1117; */
 
             --color-section-theme: #08112b;
@@ -256,6 +263,8 @@ body.dark .ant-rate-star-second {
             --border-color-side: rgb(200 205 214 / 18%);
             --bg-scrollbar-thumb-normal: rgba(203, 191, 191, 0.758);
             --bg-scrollbar-track-normal: #2c2c2c;
+             --scrol-global-track:rgb(59 35 71 / 76%);
+            --scrol-global-thumb: #304c76e8;
       }
 
       body {
@@ -393,10 +402,10 @@ body.dark .ant-rate-star-second {
             width: 0.8rem;
             height: 1rem;
       }
-
+    
       *::-webkit-scrollbar-thumb {
             cursor: pointer;
-            background: #abb1bae8;
+            background: var(--scrol-global-thumb);
 
             /* background: var(--color-main); */
             border-radius: 0.4rem;
@@ -404,10 +413,11 @@ body.dark .ant-rate-star-second {
       }
       *::-webkit-scrollbar-track {
             cursor: pointer;
-            background-color: rgb(208 204 210 / 76%);
+            background-color: var(--scrol-global-track);
             /* background: rgba(203, 191, 191, 0.758); */
             border-radius: 0.4rem;
       }
+       
       .auth-scroll::-webkit-scrollbar-thumb {
             cursor: pointer;
             background: #120565;
@@ -444,11 +454,14 @@ body.dark .ant-rate-star-second {
       }
 
       button {
-            height: 2.8rem !important;
+            height: 3.4rem !important;
             padding-top: 0rem !important;
             padding-bottom: 0rem !important;
       }
 
+      .control-w-input {
+
+      }
       .wrapper * {
             pointer-events: none;
       }
@@ -803,5 +816,12 @@ body.dark .ant-rate-star-second {
       }
       body {
             /* @apply bg-background text-foreground; */
+      }
+}
+
+
+@media screen and (max-width: 767px) {
+      .control-w-input {
+            width: 100% !important;
       }
 }

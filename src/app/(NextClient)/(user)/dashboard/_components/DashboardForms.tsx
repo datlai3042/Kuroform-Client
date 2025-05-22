@@ -31,7 +31,7 @@ const DashboardForms = () => {
                               /> */}
 
                               <p className="text-color-main font-bold text-[2rem] flex items-center gap-[1rem]">
-                                    <Circle />
+                                    <Circle width={16}/>
 
                                     <span>Danh sách Form</span>
                               </p>

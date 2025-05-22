@@ -55,13 +55,14 @@ const InputVoteAnswer = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
-            <InputAnswerWrapper formCore={formCore}>
-                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
+>
+                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent>
                               <DivNative
                                     className={`${
-                                          isGoogleForm ? "" : "p-[3rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
+                                          isGoogleForm ? "" : "p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
                                     } relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}
                               >
                                     <DivNative className="flex flex-col gap-[1rem] ">

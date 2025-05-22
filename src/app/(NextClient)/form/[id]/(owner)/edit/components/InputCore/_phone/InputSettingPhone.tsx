@@ -10,6 +10,7 @@ import InputSettingError from "../../InputSettings/SettingCommon/InputSettingErr
 import InputSettingErrorState from "../../InputSettings/SettingCommon/InputSettingErrorState";
 import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpinner";
 import ButtonSaveSetting from "../../InputSettings/ButtonSaveSetting";
+import InputSettingWidth from "../../InputSettings/SettingCommon/InputSettingWidth";
 
 type TProps = {
       inputItem: InputCore.InputForm;
@@ -48,10 +49,11 @@ const InputSettingPhone = (props: TProps) => {
       }, [updateTypeInputMutation.isSuccess, setOpenModel]);
 
       return (
-            <DivNative className="h-max flex flex-col gap-[1.8rem]">
+            <DivNative className="h-max flex flex-col gap-[1rem]">
                   <InputSettingRequire inputItem={inputItemString} setInputItemString={setInputItemString} />
 
                   <InputSettingErrorState inputItem={inputItemString} setInputItemString={setInputItemString} />
+                  <InputSettingWidth inputItem={inputItemString} setInputItemString={setInputItemString} />
 
                   {inputItemString.core.setting.input_error_state && (
                         <InputSettingError<InputCore.Commom.InputCommonPhone, InputCore.Setting.InputSettingPhoneCommon>

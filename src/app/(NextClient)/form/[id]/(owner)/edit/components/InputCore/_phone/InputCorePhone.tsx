@@ -10,10 +10,12 @@ import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: TInputCore.InputPhone.InputTypePhone;
+      isDrap?: boolean;
+      
 };
 
 const InputCorePhone = (props: TProps) => {
-      const { inputItem } = props;
+      const { inputItem, isDrap } = props;
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
       const form_mode_display = formCore.form_mode_display === "custom";
 
@@ -62,6 +64,7 @@ const InputCorePhone = (props: TProps) => {
                   inputItem={inputItem}
                   inputTitle={inputItem.input_title || ""}
                   dataTextTitle="Thêm tiêu đề cho số điện thoại"
+                  isDrap={isDrap}
             />
       );
 };
