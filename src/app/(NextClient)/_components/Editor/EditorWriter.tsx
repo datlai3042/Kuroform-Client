@@ -116,6 +116,12 @@ const EditorWriter = (props: TProps) => {
                   })
                   .join("; ");
       };
+
+      useEffect(() => {
+            if (!defaultValue) {
+                  editorRef.current?.focus();
+            }
+      }, []);
       return (
             <div style={styleObj}>
                   <Editor
@@ -124,11 +130,13 @@ const EditorWriter = (props: TProps) => {
                         onBlur={() => {
                               const content = editorState.getCurrentContent();
                               const plainText = content.getPlainText();
-                              onUpdate(html, plainText?.replaceAll('\\n', ''));
+                              onUpdate(html, plainText?.replaceAll("\\n", ""));
                         }}
                         onChange={(state) => {
                               setEditorState(state);
                               const content = state.getCurrentContent();
+                              const plainText = content.getPlainText()?.replaceAll("\\n", "");
+                              if (!plainText) return;
                               let html = "";
 
                               if (namespace === "title") {

@@ -23,7 +23,6 @@ type TProps = {
 
 const InputTextAnswer = (props: TProps) => {
       const { inputItem, formCore } = props;
-      console.log({ inputItem });
 
       const {
             formAnswer: { inputFormErrors, inputFormData, submitState },
@@ -92,7 +91,7 @@ const InputTextAnswer = (props: TProps) => {
                                                 ref={divContentRef}
                                                 className={`${
                                                       formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                                }  heading-answer "" placeholder:opacity-65 group min-h-[2rem] pb-[1rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
+                                                }  heading-answer "" placeholder:opacity-65 group min-h-[2rem] py-[1.4rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
                                                 onClick={() => divContentRef.current?.focus()}
                                                 onBlur={(e) => onBlur(e)}
                                                 onFocus={onFocus}

@@ -77,16 +77,17 @@ const FormChangeMode = (props: TProps) => {
             <div className=" w-full p-[2rem_2rem]  mx-auto h-full flex  flex-col gap-[1rem] text-text-theme">
                   <div id="content-info" className="w-full flex flex-col gap-[2rem] xl:flex-row justify-between">
                         <div
-                              dangerouslySetInnerHTML={{ __html: formCore.form_title.form_title_value || "Không có tiêu đề" }}
-                              title={formCore.form_title.form_title_value}
-                              className="line-clamp-2 w-[80%] text-text-theme"
-                              style={{
-                                    // fontSize,
-                                    // fontStyle,
-                                    fontSize: "2.4rem",
-                                    color: "var(--color-main)",
-                                    fontWeight: 500,
+                              dangerouslySetInnerHTML={{
+                                    __html: formCore.form_title.form_title_plain_text || formCore.form_title.form_title_value || "Không có tiêu đề",
                               }}
+                              title={formCore.form_title.form_title_plain_text}
+                              className="reset-editor text-[2.4rem] not-italic line-clamp-2 w-[80%] text-text-theme"
+                              style={
+                                    {
+                                          // fontSize,
+                                          // fontStyle,
+                                    }
+                              }
                         ></div>
                         <div className="flex  items-center gap-[1rem]">
                               <div className="relative ">

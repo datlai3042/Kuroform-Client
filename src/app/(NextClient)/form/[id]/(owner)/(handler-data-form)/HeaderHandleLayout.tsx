@@ -69,8 +69,13 @@ const HeaderHandlerLayout = (props: TProps) => {
                                           <span>[FORM]:</span>
 
                                           <div
-                                                className={`${styleEffect.onCheckLengthTitle()} h-[3.6rem] reset-editor truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
-                                                dangerouslySetInnerHTML={{ __html: formCore?.form_title.form_title_value || "Không tiêu đề" }}
+                                                className={`${styleEffect.onCheckLengthTitle()}   reset-editor truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
+                                                dangerouslySetInnerHTML={{
+                                                      __html:
+                                                            formCore?.form_title.form_title_plain_text ||
+                                                            formCore?.form_title.form_title_value ||
+                                                            "Không tiêu đề",
+                                                }}
                                           ></div>
                                     </DivNative>
                               </div>

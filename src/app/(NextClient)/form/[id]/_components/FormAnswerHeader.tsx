@@ -21,14 +21,7 @@ const FormAnswerHeader = (props: TProps) => {
       const myBackgroundStyle = generateStyleBackgroundImageForm({ formCore, mode: "answer" });
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
       const heightBg = formCore.form_background?.size.height?.value ? true : false;
-      console.log({
-            heightBg: heightBg
-                  ? renderValueUnit(
-                          formCore.form_background?.size.height?.value as number,
-                          formCore.form_background?.size.height?.unit as FormCore.FormImageUnit,
-                    )
-                  : 150,
-      });
+    
       return (
             <div
                   style={{
@@ -37,8 +30,8 @@ const FormAnswerHeader = (props: TProps) => {
                                       formCore.form_background?.size.height?.value as number,
                                       formCore.form_background?.size.height?.unit as FormCore.FormImageUnit,
                                 )
-                              : 150,
-                        minHeight: 150,
+                              : 200,
+                        minHeight: 200,
                   }}
                   className={`${isGoogleForm ? " h-[32.5rem] rounded-[.8rem] max-h-[32.5rem]" : "w-full"} relative w-full `}
             >

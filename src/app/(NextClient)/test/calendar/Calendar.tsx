@@ -122,7 +122,7 @@ const Calendar = (props: TProps) => {
                   </div>
                   <div
                         onClick={(e) => e.stopPropagation()}
-                        className="bg-[#fff] flex w-[23rem] xl:w-[44rem] flex-col p-[.8rem] xl:p-[1rem_1.4rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] "
+                        className="bg-[#002bff87] flex w-[23rem] xl:w-[44rem] flex-col p-[.8rem] xl:p-[1rem_1.4rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] "
                   >
                         <div className="w-full flex xl:justify-center">
                               {name_in_week.map((day_name, i) => (
@@ -140,7 +140,7 @@ const Calendar = (props: TProps) => {
                                           {week.week_menber.map((detail) => (
                                                 <div
                                                       key={detail.date_full}
-                                                      className="w-[3.4rem] h-[2.8rem] xl:w-[5.8rem] xl:h-[3rem] flex items-center justify-center"
+                                                      className="w-[3.4rem] !h-[2.8rem] xl:w-[5.8rem] xl:!h-[3rem] flex items-center justify-center"
                                                 >
                                                       <button
                                                             style={{ opacity: detail.state !== "current" ? ".4" : ".5" }}
@@ -152,7 +152,7 @@ const Calendar = (props: TProps) => {
                                                             }}
                                                             className={`${styleEffect.renderStyleDateItem(
                                                                   detail,
-                                                            )} opacity-70 w-[2.2rem] h-[2.2rem] xl:w-[3rem] xl:h-[3rem] rounded-full bg-[#fff]  text-[#000] `}
+                                                            )} opacity-70 w-[2.2rem] !h-[2.2rem] xl:w-[3rem] xl:!h-[3rem] rounded-full bg-[#fff]  text-[#000] `}
                                                       >
                                                             <span>{detail.day}</span>
                                                       </button>

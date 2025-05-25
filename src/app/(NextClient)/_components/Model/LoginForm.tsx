@@ -67,7 +67,7 @@ const LoginForm = (props: TProps) => {
                         {/* <span className="text-text-theme text-[4.2rem]">Kuro</span>
                         <span className="text-[#6262e5] text-[4.2rem]">form</span> */}
                         <span className="text-[#3d52a2] font-semibold text-[2.8rem]">Đăng nhập</span>
-                        <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Giúp tạo form nhanh chóng</span>
+                        <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Tạo form nhanh chóng</span>
                   </p>
 
                   <div className=" w-full flex flex-col gap-[3.4rem] ">

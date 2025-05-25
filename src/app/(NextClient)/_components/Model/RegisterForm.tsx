@@ -66,7 +66,7 @@ const RegisterForm = (props: TProps) => {
             <div className="relative w-full mb-[1.6rem] h-max flex justify-start xl:justify-center items-center flex-col  gap-[2.8rem] rounded-[1.2rem] p-[.4rem_2rem] ">
                   <div className="w-full flex flex-col items-center  ">
                         <p className="text-[#3d52a2] font-semibold text-[2.8rem]">Tạo tài khoản</p>
-                        <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Giúp tạo form nhanh chóng</span>
+                        <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Tạo form nhanh chóng</span>
                   </div>
 
                   <div className=" w-full flex flex-col gap-[2.8rem] ">

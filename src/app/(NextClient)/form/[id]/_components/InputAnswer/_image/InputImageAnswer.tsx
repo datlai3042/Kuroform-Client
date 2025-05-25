@@ -97,14 +97,14 @@ const InputImageAnswer = (props: TProps) => {
                                     <DivNative
                                           className={`${
                                                 formCore.form_styles === "GOOGLE_FORM" ? " gap-[2rem]" : " gap-0"
-                                          } w-full     flex flex-col   justify-start   `}
+                                          } w-full     flex flex-col gap-[1rem]  justify-start   `}
                                     >
-                                          <div className=" flex justify-between gap-[1rem] flex-wrap">
+                                          <div className=" flex justify-between items-center gap-[1rem] flex-wrap">
                                                 <p className="w-max text-[1.3rem] ">Vui lòng chọn các file JPG, JPEG,PNG</p>
                                                 <button
                                                       onClick={handleClick}
                                                       style={{ backgroundColor: formCore.form_input_styles.color, color: "#fff" }}
-                                                      className="p-[.3rem_.6rem]  text-[#fff] text-[1.4rem] rounded-[.4rem]"
+                                                      className="p-[.3rem_.6rem] bg-color-main text-[#fff] text-[1.4rem] rounded-[.4rem]"
                                                 >
                                                       {(inputItemInArrayGlobal.input?.value as string) ? "Tải ảnh khác" : "Tải ảnh lên"}
                                                       <input type="file" hidden={true} ref={inputRef} onChange={handleUpload} accept=".jpg, .jpeg, .png" />
