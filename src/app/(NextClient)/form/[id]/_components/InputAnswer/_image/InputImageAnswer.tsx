@@ -85,16 +85,15 @@ const InputImageAnswer = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
-                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
-                  <BoxHandlerInputAnswerError
-                        inputItemInArrayGlobal={inputItemInArrayGlobal}
-                        input_id={inputItem._id!}
-                        write={write}
-                        formCore={formCore}
-                  >
+            <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
+                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write} formCore={formCore}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
-                        <InputContent>
-                              <DivNative className={`${isGoogleForm ? '' : ' p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]'} text-inherit relative flex flex-col  items-center justify-between gap-[1rem]  `}>
+                        <InputContent formCore={formCore}>
+                              <DivNative
+                                    className={`${
+                                          isGoogleForm ? "" : " p-[.8rem_2.6rem]  rounded-inherit-[.8rem]"
+                                    } text-inherit relative flex flex-col  items-center justify-between gap-[1rem]  `}
+                              >
                                     <DivNative
                                           className={`${
                                                 formCore.form_styles === "GOOGLE_FORM" ? " gap-[2rem]" : " gap-0"
@@ -104,7 +103,8 @@ const InputImageAnswer = (props: TProps) => {
                                                 <p className="w-max text-[1.3rem] ">Vui lòng chọn các file JPG, JPEG,PNG</p>
                                                 <button
                                                       onClick={handleClick}
-                                                      className="p-[.3rem_.6rem]  bg-color-main text-[#fff] text-[1.4rem] rounded-[.4rem]"
+                                                      style={{ backgroundColor: formCore.form_input_styles.color, color: "#fff" }}
+                                                      className="p-[.3rem_.6rem]  text-[#fff] text-[1.4rem] rounded-[.4rem]"
                                                 >
                                                       {(inputItemInArrayGlobal.input?.value as string) ? "Tải ảnh khác" : "Tải ảnh lên"}
                                                       <input type="file" hidden={true} ref={inputRef} onChange={handleUpload} accept=".jpg, .jpeg, .png" />

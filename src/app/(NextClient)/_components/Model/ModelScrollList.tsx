@@ -56,7 +56,7 @@ const ModelScrollList = (props: TProps) => {
                         e.stopPropagation();
                         setOpenModel((prev) => !prev);
                   }}
-                  style={{ ...renderInputStyles(formCore.form_input_styles) }}
+                  style={{ ...renderInputStyles(formCore.form_input_styles), }}
                   className="relative min-w-[16rem] px-[.8rem] text-[1.4rem] border-[.1rem] border-[var(--border-color-input)] w-max  max-h-[8rem] xl:h-[3rem] py-[.3rem] flex items-center justify-center gap-[1rem] rounded-lg disabled:cursor-not-allowed "
             >
                   <span>{itemSelect?.label || label}</span>

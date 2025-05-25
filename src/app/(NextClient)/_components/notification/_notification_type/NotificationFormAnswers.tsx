@@ -34,7 +34,7 @@ const NotificationFormAnswers = (props: TProps) => {
       let image_src =
             infoFormNotification.data?.metadata.form?.form_avatar?.form_avatar_url ||
             infoFormNotification.data?.metadata.form?.form_setting_default.form_avatar_default_url;
-      let titleForm = infoFormNotification.data?.metadata.form?.form_title.form_title_value;
+      let titleForm = infoFormNotification.data?.metadata.form?.form_title.form_title_plain_text || infoFormNotification.data?.metadata.form?.form_title.form_title_value;
 
       return (
             <div className=" my-[.4rem] h-max  flex  gap-[2rem] pb-[2rem] border-b-[.1rem] border-[var(--border-color-input)] text-text-theme" ref={ref}>

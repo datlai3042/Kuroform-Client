@@ -11,7 +11,7 @@ const useSetTitleForm = () => {
 
       const updateFormMutation = useMutation({
             mutationKey: ["set-title-form"],
-            mutationFn: ({ form_id, value }: { form_id: string; value: string }) => FormService.setTitleForm({ form_id, value }),
+            mutationFn: ({ form_id, value, plainText }: { form_id: string; value: string, plainText: string }) => FormService.setTitleForm({ form_id, value, plaint_text: plainText }),
             onSuccess: (res) => {
                   const { form } = res.metadata;
                   dispatch(onFetchForm({ form }));

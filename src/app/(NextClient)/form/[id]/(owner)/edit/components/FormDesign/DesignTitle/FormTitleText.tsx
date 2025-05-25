@@ -1,3 +1,4 @@
+import EditorWriter from "@/app/(NextClient)/_components/Editor/EditorWriter";
 import { onFetchForm } from "@/app/_lib/redux/formEdit.slice";
 import { RootState } from "@/app/_lib/redux/store";
 import FormService from "@/app/_services/form.service";
@@ -42,18 +43,30 @@ const FormTitleText = (props: TProps) => {
             }
       };
 
-      const onSetValue = (e: React.ChangeEvent<HTMLDivElement>) => {
-            const content = e.currentTarget.textContent;
+      // const onSetValue = (e: React.ChangeEvent<HTMLDivElement>) => {
+      //       const content = e.currentTarget.textContent;
 
-            const newForm = structuredClone(formCore);
-            const findIndex = newForm.form_title.form_title_sub.findIndex((ft) => ft._id === subTitleItem._id);
-            if (content) {
-                  setValue(content);
+      //       const newForm = structuredClone(formCore);
+      //       const findIndex = newForm.form_title.form_title_sub.findIndex((ft) => ft._id === subTitleItem._id);
+      //       if (content) {
+      //             setValue(content);
+
+      //             updateTitleSub.mutate({
+      //                   form_title_sub_id: subTitleItem._id,
+      //                   form_id: formCore._id,
+      //                   form_title_sub_content: content,
+      //             });
+      //       }
+      // };
+
+      const onSetValue = (value: string) => {
+            if (value) {
+                  setValue(value);
 
                   updateTitleSub.mutate({
                         form_title_sub_id: subTitleItem._id,
                         form_id: formCore._id,
-                        form_title_sub_content: content,
+                        form_title_sub_content: value,
                   });
             }
       };
@@ -83,27 +96,18 @@ const FormTitleText = (props: TProps) => {
       };
 
       return (
-            <div className="flex flex-col gap-[.5rem]  " ref={setNodeRef} {...attributes} {...listeners} style={style}>
+            <div onKeyDown={onKeyEnter} className="flex flex-col gap-[.5rem]  " ref={setNodeRef} {...attributes} {...listeners} style={style}>
                   <button
-                        className={`${renderColorFromFormThemes(formCore.form_themes)} flex items-center gap-[.5rem] text-[1.4rem] font-bold  hover:text-slate-800`}
+                        className={`${renderColorFromFormThemes(
+                              formCore.form_themes,
+                        )} flex items-center gap-[.5rem] text-[1.4rem] font-bold  hover:text-slate-800`}
                         onClick={handleDelete}
                         disabled={deleteTitleSubItem.isPending}
                   >
                         <Trash2 size={16} />
                         Xóa
                   </button>
-                  <div
-                        className="border-none py-[1rem] outline-none xl:max-w-[80rem] break-all leading-10  text-inherit"
-                        contentEditable={true}
-                        onKeyDown={onKeyEnter}
-                        onBlur={onSetValue}
-                        data-text={value || "Mô tả tiêu đề"}
-                        tabIndex={0}
-                        spellCheck={false}
-                        suppressContentEditableWarning={true}
-                  >
-                        {value}
-                  </div>
+                  <EditorWriter key={subTitleItem._id} defaultValue={value} namespace="input" onUpdate={(rest) => onSetValue(rest)} config={formCore} styleObj={{}} />
             </div>
       );
 };

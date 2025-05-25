@@ -30,9 +30,10 @@ const InputAnswerWrapper = (props: TProps) => {
                   : "text-[#fff]";
 
       const width = inputItem?.core?.setting?.width || 100;
+
       return (
             <DivNative
-                  style={{ ...styleWrapper, width: `${width}%` }}
+                  style={{ ...styleWrapper, width: formCore?.form_styles === 'GOOGLE_FORM'  ?'100%'  : `${width}%`, border: formCore?.form_styles === "GOOGLE_FORM" ? "" : "none" }}
                   className={`${color} control-w-input w-full min-h-[12rem] h-max  bg-transparent   border-[.1rem] border-[var(--border-color-input)]`}
             >
                   {children}

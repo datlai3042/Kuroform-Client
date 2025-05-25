@@ -93,11 +93,12 @@ const InputOptionMultipleAnswer = (props: TProps) => {
                   <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
                   <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
-                        <InputContent>
+                                             <InputContent formCore={formCore}>
+
                               <DivNative className="flex flex-col gap-[.3rem] text-[1.4rem]">
                                     <DivNative
                                           className={` ${
-                                                isGoogleForm ? "" : "p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
+                                                isGoogleForm ? "" : "p-[.8rem_2.6rem]  rounded-inherit-[.8rem]"
                                           } relative min-h-[4rem] h-max flex flex-col gap-[1.6rem]  `}
                                     >
                                           {

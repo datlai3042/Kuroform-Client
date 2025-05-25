@@ -15,6 +15,7 @@ import InputAnswerWrapper from "../InputAnswerWrapper";
 import Calendar from "@/app/(NextClient)/test/calendar/Calendar";
 import InputContent from "../InputContent";
 import RenderStyleInputAnswer from "../constant/RenderStyleInputAnswer";
+import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: InputCore.InputDate.InputTypeDate;
@@ -95,19 +96,21 @@ const InputDateAnswer = (props: TProps) => {
 
       const isError = write || inputItemInArrayGlobal?.globalError?.state;
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
+      const styleWrapper = renderInputStyles(formCore?.form_input_styles, formCore);
+
       return (
-                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
-                  <BoxHandlerInputAnswerError formCore={formCore}  inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+            <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
+                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
-                        <InputContent>
+                        <InputContent formCore={formCore}>
                               <DivNative
                                     className={`${
-                                          formCore.form_styles === "GOOGLE_FORM" ? "" : " p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
-                                    } relative flex flex-col   justify-between gap-[1rem] `}
+                                          formCore.form_styles === "GOOGLE_FORM" ? "" : " p-[.8rem_2.6rem]  rounded-inherit-[.8rem]"
+                                    } relative flex flex-col   justify-between gap-[.8rem] `}
                               >
                                     <p
                                           className={`
-                                         
+                                        
                                           text-[1.3rem] text-inherit`}
                                     >
                                           Thời gian đang chọn là:
@@ -116,15 +119,19 @@ const InputDateAnswer = (props: TProps) => {
                                                       <span className=" font-semibold"> {dateRender}</span>
                                                 </>
                                           ) : (
-                                                <span className="ml-[.6rem] border-b-[.2rem] border-color-main uppercase  font-semibold pb-[.4rem]">
+                                                <span
+                                                      style={{ borderColor: formCore?.form_input_styles.color }}
+                                                      className="ml-[.6rem] border-b-[.2rem] uppercase  font-semibold pb-[.4rem]"
+                                                >
                                                       Chưa chọn
                                                 </span>
                                           )}
                                     </p>
 
                                     <button
+                                          style={{ backgroundColor: formCore.form_input_styles.color, color: "#fff" }}
                                           onClick={() => setOpenModel((prev) => !prev)}
-                                          className="relative w-max bg-color-main text-[#fff] p-[.2rem_.6rem] sm:p-[.5rem_1rem] rounded-[.4rem] flex items-center gap-[.3rem] text-[1.3rem]"
+                                          className="relative w-max bg-color-main  my-[.8rem] text-[#fff] p-[.2rem_.6rem] sm:p-[.5rem_1rem] rounded-[.4rem] flex items-center gap-[.3rem] text-[1.3rem]"
                                     >
                                           {dateRender ? <span>{dateRender}</span> : <span className="whitespace-pre">Click vào để chọn thời gian</span>}
                                           <CalendarDays size={20} className="aspect-square w-[2rem] sm:w-[3rem]" />

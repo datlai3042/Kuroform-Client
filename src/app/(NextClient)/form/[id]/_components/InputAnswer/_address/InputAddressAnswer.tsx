@@ -21,6 +21,7 @@ import superAddressValidate from "../_validate/inputAddress.validate";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 import InputContent from "../InputContent";
+import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: InputCore.InputAddress.InputTypeAddress;
@@ -62,9 +63,10 @@ const InputAddressAnswer = (props: TProps) => {
                   <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
                   <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
-                        <InputContent>
+                                             <InputContent formCore={formCore}>
+
                               <DivNative
-                                    className={`${isGoogleForm ? "" : " p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"} relative flex flex-col items-start gap-[1rem]  `}
+                                    className={`${isGoogleForm ? "" : " p-[.8rem_2.6rem]  rounded-inherit-[.8rem]"} relative flex flex-col items-start gap-[1rem]  `}
                               >
                                     <div className="w-full flex flex-col gap-[1rem] ">
                                           <ModelAddress
@@ -120,12 +122,12 @@ const InputAddressAnswer = (props: TProps) => {
                                                 {!inputItemInArrayGlobal.globalError.state && inputItemInArrayGlobal.input?.description?.address_full && (
                                                       <span className="text-[1.4rem]">{inputItemInArrayGlobal.input?.description?.address_full}</span>
                                                 )}
-                                                <button
+                                                {/* <button
                                                       onClick={() => onChangeAddress(inputItemInArrayGlobal.input?.description!)}
                                                       className="ml-auto w-max flex items-center justify-center p-[.5rem_.8rem] bg-color-main rounded-[.4rem] text-[1.4rem] text-[#ffffff]"
                                                 >
                                                       Kiểm tra
-                                                </button>
+                                                </button> */}
                                           </div>
                                     </div>
                               </DivNative>

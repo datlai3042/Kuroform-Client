@@ -47,6 +47,7 @@ import ButtonDesignSubmit from "./FormDesign/DesignCommon/ButtonDesignSubmit";
 import ButtonSubmitDesign from "./FormDesign/ButtonSubmitDesign";
 import BoxChangeForm from "./FormDesign/BoxChangeForm";
 import { renderFormThemes } from "@/app/utils/form.utils";
+import EditorWriter from "@/app/(NextClient)/_components/Editor/EditorWriter";
 
 export const generateInputForms = (Inputs: InputCore.InputForm[], isDrap: boolean = false): React.ReactNode => {
       return Inputs.map((ele, index) => {
@@ -152,7 +153,6 @@ const FormCore = () => {
       }, [modeScreen]);
 
       useEffect(() => {
-            console.log({ formCore, theme });
             setBorderCurruent(formCore.form_themes);
             if (formCore.form_themes === "AUTO") {
                   if (theme === "light") {
@@ -212,7 +212,7 @@ const FormCore = () => {
                                           <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[1rem] min-h-full`}>
                                                 <InputCoreTitle />
                                                 {formCore.form_inputs.length > 0 && (
-                                                      <DivNative className="mt-[4rem] h-max w-full flex flex-row flex-wrap items-end justify-between gap-[7rem_1rem] ">
+                                                      <DivNative className="mt-[4rem] h-max w-full flex flex-row flex-wrap items-end  gap-[7rem_3rem] ">
                                                             <DndContext
                                                                   onDragStart={(event) => {
                                                                         setActiveId(event.active.id as string);
@@ -259,14 +259,14 @@ const FormCore = () => {
                                           />
                                     </DivNative>
                               </Portal>
-                              <Portal>
+                              {/* <Portal>
                                     <DivNative
                                           className="fixed right-[4rem] text-[1.3rem] top-[6.4rem] flex items-center justify-center z-[51]"
                                           title="Publish"
                                     >
                                           <ButtonDarkMode />
                                     </DivNative>
-                              </Portal>
+                              </Portal> */}
                               <FormPageGuess FormCore={formCore} />
                         </div>
                   )}

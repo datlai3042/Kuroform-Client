@@ -33,7 +33,7 @@ const FormDesignStyle = () => {
             dispatch(onFetchForm({ form: newFormEdit }));
       };
       return (
-            <div className="w-full h-[3.2rem] flex items-center justify-end gap-[.8rem]">
+            <div className="w-full h-[3.2rem] flex items-center gap-[.8rem]">
                   <button
                         onClick={() => onChangeFormStyles("GOOGLE_FORM")}
                         className={`${styleEffect.onCheckModeSelect(

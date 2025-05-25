@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DesignTitleForm from "../FormDesign/DesignCommon/DesignTitleForm";
 import ButtonDesignTitle from "../FormDesign/DesignTitle/ButtonDesignTitle";
 import FormTitleSub from "../FormDesign/DesignTitle/FormTitleSub";
+import EditorWriter from "@/app/(NextClient)/_components/Editor/EditorWriter";
 
 export interface InputCoreTitleProps extends React.ComponentProps<"div"> {}
 
@@ -38,12 +39,17 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
             }
       };
 
-      const onChangeTitle = (e: React.ChangeEvent<HTMLDivElement>) => {
-            if (divContentRef.current && divContentRef.current.textContent !== formCore.form_title.form_title_value) {
-                  const titleCurrent = divContentRef.current.textContent;
-                  setValue(divContentRef.current.textContent as string);
-                  setTilteForm.mutate({ form_id: formCore._id, value: titleCurrent as string });
-            }
+      // const onChangeTitle = (e: React.ChangeEvent<HTMLDivElement>) => {
+      //       if (divContentRef.current && divContentRef.current.textContent !== formCore.form_title.form_title_value) {
+      //             const titleCurrent = divContentRef.current.textContent;
+      //             setValue(divContentRef.current.textContent as string);
+      //             setTilteForm.mutate({ form_id: formCore._id, value: titleCurrent as string });
+      //       }
+      // };
+
+      const onChangeTitle = (value: string, plainText : string) => {
+            setValue(value);
+            setTilteForm.mutate({ form_id: formCore._id, value, plainText });
       };
 
       useEffect(() => {
@@ -59,40 +65,35 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
       return (
             <div className="flex flex-col gap-[1rem]">
                   {modeScreen === "NORMAL" && (
-                        <DivNativeRef
-                              style={{
-                                    fontSize: `${
-                                          formCore.form_title.form_title_size
-                                                ? formCore.form_title.form_title_size / 10 + "rem"
-                                                : formCore.form_setting_default.form_title_size_default / 10 + "rem"
-                                    }`,
-                                    color: `${
-                                          formCore.form_title.form_title_color
-                                                ? formCore.form_title.form_title_color
-                                                : formCore.form_setting_default.form_title_color_default
-                                    }`,
-                                    fontStyle: `${
-                                          formCore.form_title.form_title_style
-                                                ? formCore.form_title.form_title_style
-                                                : formCore.form_setting_default.form_title_style_default
-                                    }`,
-                                    wordBreak: "break-word",
-                              }}
-                              ref={divContentRef}
-                              className={`${styleEffect.onCheckTitle()}   text-text-theme py-[1rem] w-full   title-core group   max-w-full xl:max-w-full  break-all flex items-center  h-max border-none outline-none     font-light sm:text-justify hover:cursor-pointer`}
-                              onClick={() => divContentRef.current?.focus()}
-                              onKeyDown={onPressEnter}
-                              contentEditable={true}
-                              onBlur={onChangeTitle}
-                              defaultValue={value || ""}
-                              autoFocus={true}
-                              suppressContentEditableWarning={true}
-                              data-text={`${formCore.form_title.form_title_value || FormText.title.message}`}
-                              tabIndex={0}
-                              spellCheck={false}
-                        >
-                              {formCore.form_title.form_title_value || ""}
-                        </DivNativeRef>
+                        <>
+                              <EditorWriter
+                                    key={value}
+                                    defaultValue={value}
+                                    namespace="title"
+                                    onUpdate={(rest, plainText ) => {
+                                          onChangeTitle(rest, plainText );
+                                    }}
+                                    config={formCore}
+                                    styleObj={{
+                                          fontSize: `${
+                                                formCore.form_title.form_title_size
+                                                      ? formCore.form_title.form_title_size / 10 + "rem"
+                                                      : formCore.form_setting_default.form_title_size_default / 10 + "rem"
+                                          }`,
+                                          color: `${
+                                                formCore.form_title.form_title_color
+                                                      ? formCore.form_title.form_title_color
+                                                      : formCore.form_setting_default.form_title_color_default
+                                          }`,
+                                          fontStyle: `${
+                                                formCore.form_title.form_title_style
+                                                      ? formCore.form_title.form_title_style
+                                                      : formCore.form_setting_default.form_title_style_default
+                                          }`,
+                                          wordBreak: "break-word",
+                                    }}
+                              />
+                        </>
                   )}
                   {formCore.form_title.form_title_sub.length > 0 && <FormTitleSub />}
                   <ButtonDesignTitle className="" onClick={() => setOpenDesignTitle((prev) => !prev)} />

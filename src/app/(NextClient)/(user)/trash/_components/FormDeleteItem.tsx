@@ -85,7 +85,7 @@ const FormDeleteItem = (props: TProps) => {
                                     </div>
                               )}
                               <div className="w-[70%]">
-                                    <p className="max-w-[100%] truncate ">{form.form_title.form_title_value || "Chưa tạo tiêu đề"}</p>
+                                    <p className="max-w-[100%] truncate ">{form?.form_title?.form_title_plain_text || form.form_title.form_title_value || "Chưa tạo tiêu đề"}</p>
                               </div>
                         </div>
                   </TableCell>

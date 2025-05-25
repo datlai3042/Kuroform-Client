@@ -86,18 +86,38 @@ const HeaderFormAnswer = (props: TProps) => {
                         style={{ marginTop: !formCore?.form_title?.form_title_value ? "0px" : "" }}
                         className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}
                   >
-                        <h1 style={styleTitle} className=" font-semibold ">
-                              {formCore?.form_title?.form_title_value}
-                        </h1>
+                        <div
+                              style={{
+                                    fontSize: `${
+                                          formCore.form_title.form_title_size
+                                                ? formCore.form_title.form_title_size / 10 + "rem"
+                                                : formCore.form_setting_default.form_title_size_default / 10 + "rem"
+                                    }`,
+                                    color: `${
+                                          formCore.form_title.form_title_color
+                                                ? formCore.form_title.form_title_color
+                                                : formCore.form_setting_default.form_title_color_default
+                                    }`,
+                                    fontStyle: `${
+                                          formCore.form_title.form_title_style
+                                                ? formCore.form_title.form_title_style
+                                                : formCore.form_setting_default.form_title_style_default
+                                    }`,
+                                    wordBreak: "break-word",
+                              }}
+                              dangerouslySetInnerHTML={{ __html: formCore?.form_title?.form_title_value }}
+                        ></div>
 
                         {formCore.form_title.form_title_sub.length > 0 && (
                               <div className="pt-[2rem] text-text-theme  border-t-[.1rem] border-[var(--border-color-input)] flex  flex-wrap gap-[4.6rem]">
                                     {formCore?.form_title?.form_title_sub.map((ft) => {
                                           if (ft.type === "Text" && ft?.core?.value)
                                                 return (
-                                                      <span key={ft._id} className={`${color} text-[1.4rem] text-justify leading-10 w-full`}>
-                                                            {ft?.core?.value}
-                                                      </span>
+                                                      <div
+                                                            dangerouslySetInnerHTML={{ __html: ft?.core?.value }}
+                                                            key={ft._id}
+                                                            className={`${color} text-[1.4rem] text-justify leading-10 w-full`}
+                                                      ></div>
                                                 );
                                           if (ft.type === "Image") {
                                                 if (formCore?.form_title?.form_title_mode_image !== checkMode) {

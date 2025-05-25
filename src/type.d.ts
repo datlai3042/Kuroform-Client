@@ -344,6 +344,8 @@ namespace FormCore {
             form_title_size?: number;
             form_title_sub: FormCore.FormTitleSub.FormTitleBase[];
             form_title_mode_image: FormTitleImageMode;
+            form_title_plain_text?: string
+
       };
       export type FormLabel = string;
       type FormTextStyle = "normal" | "italic";

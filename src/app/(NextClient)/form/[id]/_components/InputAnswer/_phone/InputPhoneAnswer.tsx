@@ -25,6 +25,7 @@ import InputAnswerTitle from "../../InputAnswerTitle";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 import InputContent from "../InputContent";
+import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: InputCore.InputPhone.InputTypePhone;
@@ -65,15 +66,17 @@ const InputPhoneAnswer = (props: TProps) => {
       };
       const isError = inputItemInArrayGlobal?.globalError?.state;
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
+      const styleWrapper = renderInputStyles(formCore?.form_input_styles, formCore);
 
       return (
-                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
+            <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
                   <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
-                        <InputContent>
+                        <InputContent formCore={formCore}>
                               <DivNative
+                                    style={{ ...styleWrapper }}
                                     className={`${
-                                          isGoogleForm ? "" : " p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
+                                          isGoogleForm ? "" : " p-[.8rem_2.6rem]  rounded-inherit-[.8rem]"
                                     } relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}
                               >
                                     <input
@@ -89,7 +92,7 @@ const InputPhoneAnswer = (props: TProps) => {
                                           type="number"
                                           className={` ${
                                                 formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-transparent w-[90%]"
-                                          }  border-b-[.1rem] h-full pb-[2rem]  border-[var(--border-color-input)] "" placeholder:opacity-65    outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          }  border-b-[.1rem] h-full pb-[1rem]  border-[var(--border-color-input)] "" placeholder:opacity-65    outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                           placeholder="Nhập số điện thoại của bạn"
                                           onChange={(e) => setPhone(e.target.value)}
                                     />

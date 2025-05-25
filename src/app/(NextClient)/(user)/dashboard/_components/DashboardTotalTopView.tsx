@@ -37,7 +37,7 @@ const DashboardTotalTopView = () => {
 
             const renderData = topView.map((form) => {
                   return {
-                        title: form.form_title?.form_title_value,
+                        title: form.form_title?.form_title_plain_text?.slice(0,20) || form.form_title?.form_title_value?.slice(0,20),
                         view: form.form_views,
                         id: form._id,
                   };

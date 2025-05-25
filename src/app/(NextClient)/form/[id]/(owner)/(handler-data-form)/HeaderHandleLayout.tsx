@@ -10,7 +10,7 @@ import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import ParagraphNative from "@/app/(NextClient)/_components/ui/NativeHtml/ParagraphNative";
 import { RootState } from "@/app/_lib/redux/store";
 import { FormCore } from "@/type";
-import { Home, } from "lucide-react";
+import { Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext, useState } from "react";
@@ -63,28 +63,28 @@ const HeaderHandlerLayout = (props: TProps) => {
                   className={`${top}    bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[101] flex-wrap   w-auto  flex  justify-between  gap-[2rem]  p-[0rem_2rem] text-[1.3rem]`}
             >
                   <div className="w-full flex h-full items-center gap-[1rem]">
-                 
                         <DivNative className="flex h-[3.6rem]  items-center gap-[2rem]   text-textHeader ">
-
                               <div className="mr-[2rem]">
                                     <DivNative className="h-full flex gap-[.2rem] items-center  min-w-max">
                                           <span>[FORM]:</span>
-                                          <ParagraphNative
-                                                className={`${styleEffect.onCheckLengthTitle()} truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
-                                                textContent={formCore?.form_title.form_title_value || "Không tiêu đề"}
-                                          />
+
+                                          <div
+                                                className={`${styleEffect.onCheckLengthTitle()} h-[3.6rem] reset-editor truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
+                                                dangerouslySetInnerHTML={{ __html: formCore?.form_title.form_title_value || "Không tiêu đề" }}
+                                          ></div>
                                     </DivNative>
                               </div>
                         </DivNative>
 
                         <div className="ml-auto flex items-center gap-[1rem] ">
-                              <DashboardSearchForm widthInput="18rem"/>
+                              <div className="hidden md:block">
+                                    <DashboardSearchForm widthInput="18rem" />
+                              </div>
                               <div className="   flex justify-end my-[1rem]">
                                     <ButtonDarkMode />
                               </div>
                         </div>
                         <ButtonSidebar />
-
                   </div>
             </DivNative>
       );

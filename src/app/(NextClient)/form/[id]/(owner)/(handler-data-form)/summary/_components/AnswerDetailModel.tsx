@@ -27,9 +27,9 @@ const AnswerDetailModel = (props: TProps) => {
             <Portal>
                   <div className="fixed z-[200] inset-0 max-w-full overflow-hidden  flex items-center justify-center bg-[rgba(0,0,0,.6)] hover:cursor-pointer">
                         <ClickOutSide setOpenModel={setOpenModel}>
-                              <div className="relative w-[80vw] sm:w-[50rem] min-h-[20rem] h-max mx-auto px-[2rem] pt-[5rem] pb-[2rem] bg-color-section-theme text-text-theme rounded-lg">
+                              <div className="relative w-[80vw] overflow-auto h-[80vh] sm:w-[50rem] min-h-[20rem]  mx-auto px-[2rem] pt-[5rem] pb-[2rem] bg-color-section-theme text-text-theme rounded-lg">
                                     <h3 style={{ color }} className=" text-center font-medium text-[2.4rem]">
-                                          {formCore.form_title.form_title_value}
+                                          {formCore.form_title.form_title_plain_text || formCore.form_title.form_title_value}
                                     </h3>
                                     <div
                                           style={{ "--scorll-form-answer-detail": color } as React.CSSProperties}

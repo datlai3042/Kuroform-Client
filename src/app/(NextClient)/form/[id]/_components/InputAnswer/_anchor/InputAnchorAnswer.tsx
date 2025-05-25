@@ -19,6 +19,7 @@ import superAnchorValidate from "../_validate/inputAnchor.validate";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 import InputContent from "../InputContent";
+import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: InputCore.InputAnchor.InputTypeAnchor;
@@ -82,15 +83,17 @@ const InputAnchorAnswer = (props: TProps) => {
       };
       const isError = inputItemInArrayGlobal?.globalError?.state;
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
+      const styleWrapper = renderInputStyles(formCore?.form_input_styles, formCore);
 
       return (
-                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
+            <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
                   <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
-                        <InputContent>
-                              <DivNative className={`${isGoogleForm ? "" : "p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"} w-full flex flex-col gap-[1rem]  `}>
+                        <InputContent formCore={formCore}>
+                              <DivNative className={`${isGoogleForm ? "" : "  rounded-inherit-[.8rem]"} w-full flex flex-col gap-[1rem]  `}>
                                     <DivNative
-                                          className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] bg-transparent `}
+                                          style={{ ...styleWrapper }}
+                                          className={` relative min-h-[3.8rem] p-[.6rem_.4rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] bg-transparent `}
                                     >
                                           <input
                                                 style={{
@@ -114,12 +117,12 @@ const InputAnchorAnswer = (props: TProps) => {
                                           {write && _validate && !inputItemInArrayGlobal.globalError.state && (
                                                 <InputValidateSuccess message={"Đường dẫn hợp lệ"} />
                                           )}
-                                          <button
+                                          {/* <button
                                                 onClick={onValidate}
                                                 className="ml-auto w-max flex items-center justify-center p-[.5rem_.8rem] bg-color-main rounded-[.4rem] text-[1.4rem] text-[#ffffff]"
                                           >
                                                 Kiểm tra
-                                          </button>
+                                          </button> */}
                                     </div>
                               </DivNative>
                               {inputItemInArrayGlobal?.globalError?.state && (

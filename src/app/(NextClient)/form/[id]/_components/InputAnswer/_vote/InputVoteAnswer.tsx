@@ -55,20 +55,23 @@ const InputVoteAnswer = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
 
       return (
-                  <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
+            <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
                   <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
-                        <InputContent>
+                        <InputContent formCore={formCore}>
                               <DivNative
                                     className={`${
-                                          isGoogleForm ? "" : "p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"
+                                          isGoogleForm ? "" : "p-[.8rem_2.6rem]  rounded-inherit-[.8rem]"
                                     } relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}
                               >
                                     <DivNative className="flex flex-col gap-[1rem] ">
                                           <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem]  p-[.4rem_0rem] rounded-[.4rem]`}>
                                                 <Rate onFocus={onFocus} onBlur={onBlur} allowHalf value={+start} onChange={(e) => setStart(e.toString())} />
                                           </DivNative>
-                                          <span className="text-[1.4rem]">Số đánh giá bạn chọn là: {start}</span>
+                                          <p className="text-[1.4rem]">
+                                                Số đánh giá bạn chọn là:
+                                                <span className="text-[1.5rem] mx-[.6rem]" style={{ color: formCore.form_input_styles.color }}>{start}</span>
+                                          </p>
                                     </DivNative>
                               </DivNative>
 

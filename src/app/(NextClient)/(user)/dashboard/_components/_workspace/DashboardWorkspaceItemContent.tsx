@@ -45,7 +45,12 @@ const DashboardWorkspaceItemContent = (props: TProps) => {
                                     </div>
                               )}
                               <div className="w-[70%]">
-                                    <p className="max-w-[100%] truncate ">{formCore.form_title.form_title_value || "Chưa tạo tiêu đề"}</p>
+                                    <p
+                                          className="max-w-[100%] truncate h-[2.6rem] reset-editor"
+                                          dangerouslySetInnerHTML={{ __html: formCore.form_title.form_title_value || "Chưa tạo tiêu đề" }}
+                                    >
+                                          {}
+                                    </p>
                               </div>
                         </Link>
                   </TableCell>

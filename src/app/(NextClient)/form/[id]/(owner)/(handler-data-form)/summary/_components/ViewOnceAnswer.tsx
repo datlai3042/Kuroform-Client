@@ -123,7 +123,7 @@ const ViewOnceAnswer = (props: TProps) => {
                                                 <div className="font-bold text-color-main flex justify-center" style={{ width: 200 }}>
                                                       {moment(new Date(rp.createdAt)).format("HH:mm:ss  -  DD - MM - YYYY")}
                                                 </div>
-                                                <div className="invisible  group-hover:visible flex font-medium whitespace-pre sticky right-[-1rem] z-[10]  gap-[1rem]">
+                                                <div className="invisible  group-hover:visible flex items-center font-medium whitespace-pre sticky right-[-1rem] z-[10]  gap-[1rem]">
                                                       <p
                                                             className="font-medium whitespace-pre cursor-pointer h-full text-color-main "
                                                             onClick={() => {

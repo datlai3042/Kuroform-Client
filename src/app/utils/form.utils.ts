@@ -132,6 +132,7 @@ export const renderColorFromFormThemes = (form_themes: FormCore.Form['form_theme
 
 export const renderInputStyles = (inputStyle: FormCore.Form['form_input_styles'], formCore?: FormCore.Form) => {
       let styles = {}
+      
       if (!inputStyle.borderColor && !inputStyle.borderWidth && formCore && formCore.form_styles === 'FULL_WIDTH') {
             if (inputStyle?.color) {
                   return {
@@ -139,7 +140,7 @@ export const renderInputStyles = (inputStyle: FormCore.Form['form_input_styles']
                   }
             }
       }
-      if (formCore?.form_styles === 'FULL_WIDTH') {
+      if (formCore?.form_styles === 'GOOGLE_FORM') {
             if (inputStyle.borderWidth === 1) {
                   if (inputStyle?.color) {
                         return {
@@ -181,7 +182,13 @@ export const renderInputStyles = (inputStyle: FormCore.Form['form_input_styles']
                   color: inputStyle?.color
             }
       }
-
+         if (!inputStyle?.borderColor) {
+            styles = {
+                  ...styles,
+                  borderColor: 'var(--border-color-input)'
+            }
+      }
+      
       return styles
 }
 

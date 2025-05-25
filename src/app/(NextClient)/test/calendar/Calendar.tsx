@@ -152,7 +152,7 @@ const Calendar = (props: TProps) => {
                                                             }}
                                                             className={`${styleEffect.renderStyleDateItem(
                                                                   detail,
-                                                            )} opacity-70 w-[2.2rem] h-[2.2rem] xl:w-[3rem] xl:h-[3rem] rounded-[.4rem] bg-color-main text-[#fff] `}
+                                                            )} opacity-70 w-[2.2rem] h-[2.2rem] xl:w-[3rem] xl:h-[3rem] rounded-full bg-[#fff]  text-[#000] `}
                                                       >
                                                             <span>{detail.day}</span>
                                                       </button>

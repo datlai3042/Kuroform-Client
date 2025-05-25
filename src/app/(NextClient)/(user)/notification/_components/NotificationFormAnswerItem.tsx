@@ -29,7 +29,7 @@ const NotificationFormAnswerItem = (props: TProps) => {
       let image_src =
             infoFormNotification.data?.metadata.form?.form_avatar?.form_avatar_url ||
             infoFormNotification.data?.metadata.form?.form_setting_default.form_avatar_default_url;
-      let titleForm = infoFormNotification.data?.metadata.form?.form_title.form_title_value;
+      let titleForm =infoFormNotification.data?.metadata.form?.form_title.form_title_plain_text || infoFormNotification.data?.metadata.form?.form_title.form_title_value;
 
       const deleteNotificationItem = useDeleteNotificationItem();
       const onDeleteNotificationItem = () => {

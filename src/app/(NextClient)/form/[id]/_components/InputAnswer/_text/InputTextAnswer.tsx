@@ -14,6 +14,7 @@ import InputAnswerTitle from "../../InputAnswerTitle";
 import BoxHandlerInputAnswerError from "../../BoxHandlerInputAnswerError";
 import BoxHandlerInputAnswerErrorMsg from "../../BoxHandlerInputAnswerErrorMsg";
 import InputContent from "../InputContent";
+import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: InputCore.InputText.InputTypeText;
@@ -69,13 +70,17 @@ const InputTextAnswer = (props: TProps) => {
       }, []);
       const isError = inputItemInArrayGlobal?.globalError?.state;
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
+      const styleWrapper = renderInputStyles(formCore?.form_input_styles, formCore);
 
       return (
             <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
                   <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
-                        <InputContent>
-                              <DivNative className={`${isGoogleForm ? "" : "p-[2.6rem] bg-[var(--bg-input-ans)] rounded-[.8rem]"} flex flex-col gap-[.3rem] `}>
+                        <InputContent formCore={formCore}>
+                              <DivNative
+                                    style={{ ...styleWrapper }}
+                                    className={`${isGoogleForm ? "" : "p-[.8rem_2.6rem]  rounded-inherit-[.8rem]"} flex flex-col gap-[.3rem] `}
+                              >
                                     <DivNative className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}>
                                           <DivNativeRef
                                                 style={{

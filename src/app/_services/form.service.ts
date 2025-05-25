@@ -47,10 +47,11 @@ class FormService {
             return Http.delete<ResponseApi<{ message: string }>>(`/v1/api/form/delete-form-forever?form_id=${form_id}`);
       }
 
-      static async setTitleForm({ form_id, value }: { form_id: string; value: string }) {
+      static async setTitleForm({ form_id, value, plaint_text }: { form_id: string; value: string, plaint_text: string }) {
             return await Http.post<ResponseApi<{ form: FormCore.Form }>>("/v1/api/form/set-title-form", {
                   form_id,
                   value,
+                  plaint_text
             });
       }
 

@@ -87,11 +87,10 @@ const HeaderEditForm = (props: TProps) => {
                                     <div className="mr-[2rem]">
                                           <DivNative className="h-full hidden xl:flex gap-[.2rem] items-center  min-w-max">
                                                 <ButtonIcon Icon={<Pencil size={18} />} className="hidden xl:inline" style={{ minWidth: "2rem" }} />
-
-                                                <ParagraphNative
-                                                      className={`${styleEffect.onCheckLengthTitle()} truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
-                                                      textContent={formCore?.form_title.form_title_value || "Không tiêu đề"}
-                                                />
+                                                <div
+                                                      className={`${styleEffect.onCheckLengthTitle()} h-[3.6rem] reset-editor truncate text-[1.5rem] font-bold p-[.6rem] rounded-lg text-text-theme `}
+                                                      dangerouslySetInnerHTML={{ __html: formCore?.form_title.form_title_value || "Không tiêu đề" }}
+                                                ></div>
                                           </DivNative>
                                     </div>
                               </DivNative>

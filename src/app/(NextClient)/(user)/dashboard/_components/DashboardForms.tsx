@@ -19,7 +19,7 @@ const DashboardForms = () => {
 
       return (
             <DivNative className="flex-1 w-full flex bg-color-section-theme   min-h-[40rem]   flex-col gap-[0rem] p-[2rem_2rem_4rem_2rem] ">
-                  <div className="flex flex-col gap-[2rem] xl:gap-[3rem] ">
+                  <div className="flex flex-col gap-[2rem] xl:gap-[3rem] h-full">
                         <div className="flex flex-wrap justify-between items-center gap-[1rem]">
                               {/* <Image
                                     src={"/assets/images/home/form_controller.png"}

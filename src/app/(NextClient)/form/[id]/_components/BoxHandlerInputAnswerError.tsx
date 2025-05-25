@@ -18,7 +18,18 @@ const BoxHandlerInputAnswerError = (props: TProps) => {
 
       const colorMain = useSelector((state: RootState) => state.form.colorCore);
       const isGoogleForm = formCore?.form_styles === "GOOGLE_FORM" ? true : false;
-
+     const color =
+            formCore.form_themes === "AUTO"
+                  ? "text-text-theme"
+                  : formCore.form_styles === "GOOGLE_FORM"
+                  ? formCore?.form_input_styles?.color
+                        ? formCore?.form_input_styles?.color
+                        : formCore.form_themes === "DARK"
+                        ? "text-[#fff]"
+                        : "text-[#000]"
+                  : formCore.form_themes === "DARK"
+                  ? "text-[#fff]"
+                  : "text-[#000]";
       return (
             <div
                   style={styles}
@@ -29,8 +40,8 @@ const BoxHandlerInputAnswerError = (props: TProps) => {
                               ? "input-answer-invalid border-none  !text-[#e20f0f]"
                               : " "
                   } ${
-                        isGoogleForm ? "p-[1.8rem]" : " p-[1.8rem_1.8rem]"
-                  }  relative w-full min-h-[12rem]   h-max  duration-300 transition-all flex flex-col justify-center gap-[1rem]  `}
+                        isGoogleForm ? "p-[2.8rem_1.4rem]" : " p-[.8rem_1.8rem]"
+                  } ${color}  relative w-full min-h-[12rem]   h-max  duration-300 transition-all flex flex-col justify-center gap-[.8rem]  `}
             >
                   {children}
             </div>

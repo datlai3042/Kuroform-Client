@@ -12,7 +12,7 @@ const DashboardFormSearchItem = (props: TProps) => {
 
       return (
             <Link
-            title={form?.form_title?.form_title_value}
+            title={form?.form_title?.form_title_plain_text || form?.form_title?.form_title_value}
                   href={`/form/${form._id}/summary`}
                   className=" hover:bg-color-main text-[#0bceb2] hover:text-[#fff]  p-[.8rem_1rem]  w-full min-h-[2.6rem]  max-h-[5.6rem] flex items-center gap-[1rem]"
             >
@@ -25,7 +25,7 @@ const DashboardFormSearchItem = (props: TProps) => {
                         className="w-[3rem] h-full object-contain"
                         unoptimized={true}
                   />
-                  <p className="w-[90%] truncate font-bold text-[1.4rem]">{form?.form_title?.form_title_value}</p>
+                  <p className="w-[90%] truncate font-bold text-[1.4rem]">{form.form_title.form_title_plain_text || form?.form_title?.form_title_value}</p>
             </Link>
       );
 };

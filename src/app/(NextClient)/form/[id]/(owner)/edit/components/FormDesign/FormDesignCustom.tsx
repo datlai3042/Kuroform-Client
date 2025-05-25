@@ -129,27 +129,27 @@ const FormDesignCustom = () => {
                         <div ref={refDesignCommon} className="relative w-full min-h-full h-max overflow-auto pb-[8rem] md:pb-[2rem] pr-[1rem]">
                               {/* <FormDesignFormMode /> */}
 
-                              <div className="flex flex-col  gap-[.8rem] px-[.4rem] text-[1.3rem]    ">
-                                    <div className="flex flex-col gap-[1.4rem]">
+                              <div className="flex flex-col  gap-[1.8rem] px-[.4rem] text-[1.3rem]    ">
+                                    <div className="flex flex-col gap-[.8rem]">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">
-                                                      <h4>Themes</h4>
+                                                      <h4 className="font-semibold">Themes</h4>
                                                 </p>
                                           </div>
                                           <FormDesignTheme />
                                     </div>
-                                    <div className="flex flex-col gap-[1.4rem]">
+                                    <div className="flex flex-col gap-[.8rem] my-[1rem]">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">
-                                                      <h4>Kiểu Form</h4>
+                                                      <h4 className="font-semibold">Kiểu Form</h4>
                                                 </p>
                                           </div>
                                           <FormDesignStyle />
                                     </div>
-                                    <div className="flex flex-col gap-[1.4rem]">
+                                    <div className="flex flex-col gap-[.8rem]">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">
-                                                      <h4>Background</h4>
+                                                      <h4 className="font-semibold">Background</h4>
 
                                                       {isBgDefault && <span className="text-color-main font-bold"> - Mặc định</span>}
                                                 </p>
@@ -160,25 +160,25 @@ const FormDesignCustom = () => {
                                     <div className="flex flex-col gap-[0rem]">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">
-                                                      <h4>Avatar</h4>
+                                                      <h4 className="font-semibold">Avatar</h4>
                                                       {isAvatarDefault && <span className="text-color-main font-bold"> - Mặc định</span>}
                                                 </p>
                                           </div>
                                           <FormDesignAvatar />
                                     </div>
-                                    <div className="flex flex-col gap-[1rem]">
+                                    <div className="flex flex-col gap-[.8rem]">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">
-                                                      <h4>Title</h4>
+                                                      <h4 className="font-semibold">Title</h4>
                                                 </p>
                                           </div>
                                           <FormDesignText title={"Tùy chỉnh tiêu đề chính"} type="Form" />
                                     </div>
 
-                                    <div className="flex flex-col gap-[1.4rem]">
+                                    <div className="flex flex-col gap-[.8rem]">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">
-                                                      <h4>Input</h4>
+                                                      <h4 className="font-semibold">Input</h4>
                                                 </p>
                                           </div>
                                           <FormDesignInput />

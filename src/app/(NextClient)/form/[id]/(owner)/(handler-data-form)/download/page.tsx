@@ -41,7 +41,7 @@ const DownloadFormPage = () => {
             worksheet["!cols"] = new_workSheet_col;
             const workbook = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
-            const namefile = stringToSlug(formCore.form_title.form_title_value);
+            const namefile = stringToSlug(formCore.form_title.form_title_plain_text || formCore.form_title.form_title_value);
 
             XLSX.writeFile(workbook, `${namefile}.xlsx`);
       };

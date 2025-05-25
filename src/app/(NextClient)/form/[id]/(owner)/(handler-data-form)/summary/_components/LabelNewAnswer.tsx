@@ -11,7 +11,7 @@ const LabelNewAnswer = () => {
       if (!mount) {
             return;
       }
-      return <div className="bg-blue-600 p-[.1rem_.4rem] rounded-[.4rem]">Mới</div>;
+      return <div className="bg-blue-600 p-[.1rem_.4rem] rounded-[.4rem] text-[#fff]">Mới</div>;
 };
 
 export default LabelNewAnswer;
