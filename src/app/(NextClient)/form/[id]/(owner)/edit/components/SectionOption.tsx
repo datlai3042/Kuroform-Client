@@ -58,7 +58,7 @@ const SectionOption = (props: TProps) => {
                                           onClick={() => setOpenSetting(true)}
                                           className={`${styleEffect.onCheckModeDisplay()} hover:cursor-pointer p-[.6rem] bg:transparent  border-[.1rem] border-[var(--border-color-input)] hover:border-transparent hover:bg-color-main hover:text-[#fff] rounded-[.4rem]`}
                                     />
-                                    {openSetting && <InputSettingWrapper setOpenModel={setOpenSetting} inputItem={inputItem} />}
+                                    {openSetting && <InputSettingWrapper openModal={openSetting} setOpenModel={setOpenSetting} inputItem={inputItem} />}
                               </DivWrapper>
                         </div>
 

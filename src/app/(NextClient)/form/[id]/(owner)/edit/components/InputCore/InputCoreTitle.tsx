@@ -13,6 +13,8 @@ import DesignTitleForm from "../FormDesign/DesignCommon/DesignTitleForm";
 import ButtonDesignTitle from "../FormDesign/DesignTitle/ButtonDesignTitle";
 import FormTitleSub from "../FormDesign/DesignTitle/FormTitleSub";
 import EditorWriter from "@/app/(NextClient)/_components/Editor/EditorWriter";
+import { addOneToastError } from "@/app/_lib/redux/toast.slice";
+import { v4 as uuid } from "uuid";
 
 export interface InputCoreTitleProps extends React.ComponentProps<"div"> {}
 
@@ -47,7 +49,7 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
       //       }
       // };
 
-      const onChangeTitle = (value: string, plainText : string) => {
+      const onChangeTitle = (value: string, plainText: string) => {
             setValue(value);
             setTilteForm.mutate({ form_id: formCore._id, value, plainText });
       };
@@ -70,8 +72,21 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
                                     key={value}
                                     defaultValue={value}
                                     namespace="title"
-                                    onUpdate={(rest, plainText ) => {
-                                          onChangeTitle(rest, plainText );
+                                    onUpdate={(rest, plainText) => {
+                                          if (plainText?.length > 200) {
+                                                dispatch(
+                                                      addOneToastError({
+                                                            toast_item: {
+                                                                  _id: uuid(),
+                                                                  type: "ERROR",
+                                                                  toast_title: "Title qúa dài",
+                                                                  core: { message: "Title không vượt quá 200 kí tự" },
+                                                            },
+                                                      }),
+                                                );
+                                                return;
+                                          }
+                                          onChangeTitle(rest, plainText);
                                     }}
                                     config={formCore}
                                     styleObj={{

@@ -38,7 +38,6 @@ const InputSettingText = (props: TProps) => {
       const { inputItem, setOpenModel } = props;
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
 
-      const color = formCore.form_title.form_title_color ? formCore.form_title.form_title_color : formCore.form_setting_default.form_title_color_default;
       const dispatch = useDispatch();
       const [inputItemString, setInputItemString] = useState<InputCore.Commom.InputCommonText>(() => {
             return {
@@ -78,9 +77,8 @@ const InputSettingText = (props: TProps) => {
                   setOpenModel(false);
             }
       }, [updateTypeInputMutation.isSuccess, setOpenModel]);
-
       return (
-            <DivNative className="h-max flex flex-col gap-[1rem]">
+            <DivNative  className={` h-max flex flex-col gap-[1rem]`}>
                   <InputSettingRequire<InputCore.Commom.InputCommonText, InputCore.Setting.InputSettingTextCommon>
                         inputItem={inputItemString}
                         setInputItemString={setInputItemString}
