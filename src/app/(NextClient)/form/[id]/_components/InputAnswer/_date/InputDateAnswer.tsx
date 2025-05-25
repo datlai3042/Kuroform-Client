@@ -105,13 +105,13 @@ const InputDateAnswer = (props: TProps) => {
                         <InputContent formCore={formCore}>
                               <DivNative
                                     className={`${
-                                          formCore.form_styles === "GOOGLE_FORM" ? "" : " p-[.8rem_2.6rem]  rounded-inherit-[.8rem]"
-                                    } relative flex flex-col   justify-between gap-[.8rem] `}
+                                          formCore.form_styles === "GOOGLE_FORM" ? "" : " p-[0rem_2.6rem]  rounded-inherit-[.8rem]"
+                                    } relative flex flex-col mt-[1.4rem]   justify-between gap-[.8rem] `}
                               >
                                     <p
                                           className={`
                                         
-                                          text-[1.3rem] text-inherit`}
+                                          text-[1.4rem] text-inherit`}
                                     >
                                           Thời gian đang chọn là:
                                           {dateRender ? (

@@ -68,7 +68,7 @@ const InputEmailAnswer = (props: TProps) => {
                         <InputContent formCore={formCore}>
                               <DivNative
                                     style={{...styleWrapper}}
-                                    className={`${isGoogleForm ? "rounded-[.8rem]" : "p-[.8rem_2.6rem]  rounded-inherit py-[1rem]"} flex flex-col gap-[.3rem]  `}
+                                    className={`${isGoogleForm ? "rounded-[.8rem]" : "p-[.8rem_2.6rem]  rounded-inherit "} flex flex-col gap-[.3rem]  `}
                               >
                                     <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}>
                                           <input
@@ -85,7 +85,7 @@ const InputEmailAnswer = (props: TProps) => {
                                                 className={`
 							)}   ${
                                                 formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                          }   border-b-[.1rem] h-full py-[1.4rem] "" placeholder:opacity-65  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          }   border-b-[.1rem] h-full py-[1.2rem] "" placeholder:opacity-65  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                                 onChange={(e) => setInputValue(e.target.value)}
                                                 onFocus={onFocus}
                                                 onBlur={onBlur}

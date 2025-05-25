@@ -87,7 +87,7 @@ const InputOptionAnswer = (props: TProps) => {
                               <DivNative className="flex flex-col gap-[.3rem] text-[1.4rem]">
                                     <DivNative
                                           className={`${
-                                                isGoogleForm ? "" : " p-[.8rem_2.6rem]  rounded-inherit-[.8rem]"
+                                                isGoogleForm ? "" : " p-[0rem_2.6rem]  rounded-inherit-[.8rem]"
                                           } relative min-h-[5rem] h-max flex flex-col gap-[1.6rem]  `}
                                     >
                                           {

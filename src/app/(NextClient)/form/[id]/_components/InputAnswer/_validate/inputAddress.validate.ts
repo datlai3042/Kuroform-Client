@@ -69,7 +69,6 @@ const superAddressValidate = ({
                         }
                         errors.push(renderVietnameseLabelAddress(address_item.type));
                   });
-                  console.log({ errors })
                   _next = false;
 
                   message = errors.join(", ");
@@ -108,7 +107,6 @@ const superAddressValidate = ({
                         }
                         errors.push(renderVietnameseLabelAddress(address_item.type));
                   });
-                  console.log({ errors })
                   _next = false;
 
                   message = errors.join(", ");

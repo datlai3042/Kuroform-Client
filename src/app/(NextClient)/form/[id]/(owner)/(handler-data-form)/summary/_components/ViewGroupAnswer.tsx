@@ -45,14 +45,14 @@ const ViewGroupAnswer = (props: TProps) => {
 
       return (
             <>
-                  <div className="flex flex-col h-full gap-[4rem] flex-nowrap overflow-auto pb-[3rem] normal-scroll">
+                  <div className="flex flex-col h-full gap-[2.6rem] flex-nowrap overflow-auto pb-[3rem] normal-scroll">
                         {Object.keys(dataGroupFilter).map((dt, i) => {
                               const type = dt.split("_#_")[1] as InputCore.InputForm["type"];
                               return (
                                     <div key={dt + i} className="whitespace-pre  flex flex-col gap-[1.2rem]  ">
-                                          <h3 className="pl-[.4rem] text-[2.1rem] flex-wrap flex items-center justify-between gap-[.8rem] font-medium text-color-main">
+                                          <h3 className="px-[.8rem] text-[2.1rem] flex-wrap flex items-center justify-between gap-[.8rem] font-medium text-color-main">
                                                 <p className="flex items-baseline gap-[.6rem]">
-                                                      <Circle size={16}/>
+                                                      <Circle size={16} />
                                                       <span className="whitespace-pre-wrap">{dataGroupFilter[dt][0]?.title}</span>
                                                 </p>
                                                 <span className="text-[1.4rem]">{dataGroupFilter[dt].length} phản hồi</span>
@@ -78,10 +78,18 @@ const ViewGroupAnswer = (props: TProps) => {
                                                                   }}
                                                                   className={`${
                                                                         formAnswerId === info.form_answer_id ? "bg-color-main text-[#fff]" : ""
-                                                                  }  min-h-[4rem] px-[1rem] flex items-center justify-between gap-[6rem] border-b-[.1rem] border-[var(--border-color-input)] hover:cursor-pointer hover:bg-color-main hover:text-[#fff] `}
+                                                                  }  min-h-[3.6rem] px-[1rem] flex items-center justify-between gap-[6rem] border-b-[.1rem] border-[var(--border-color-input)] hover:cursor-pointer hover:bg-color-main hover:text-[#fff] `}
                                                             >
-                                                                  <p className="min-w-[30%] max-w-[30%] xl:min-w-[50%] xl:max-w-[50%] truncate xl:break-words flex gap-[1rem] leading-10">
-                                                                        <span>{info.value ? info?.value : "Người dùng không nhập dữ liệu"}</span>
+                                                                  <p className="min-w-[30%] max-w-[30%] md:min-w-[50%] md:max-w-[50%] truncate md:break-words flex gap-[1rem] leading-10">
+                                                                        <span>
+                                                                              {info.value
+                                                                                    ? Array.isArray(info.value)
+                                                                                          ? info.value.length > 0
+                                                                                                ? info.value.join(", ")
+                                                                                                : "Người dùng không nhập dữ liệu"
+                                                                                          : info?.value
+                                                                                    : "Người dùng không nhập dữ liệu"}
+                                                                        </span>
 
                                                                         {newData.includes(info.form_answer_id) && <LabelNewAnswer />}
                                                                   </p>

@@ -91,12 +91,12 @@ const InputImageAnswer = (props: TProps) => {
                         <InputContent formCore={formCore}>
                               <DivNative
                                     className={`${
-                                          isGoogleForm ? "" : " p-[.8rem_2.6rem]  rounded-inherit-[.8rem]"
+                                          isGoogleForm ? "" : " p-[0rem_2.6rem]  rounded-inherit-[.8rem]"
                                     } text-inherit relative flex flex-col  items-center justify-between gap-[1rem]  `}
                               >
                                     <DivNative
                                           className={`${
-                                                formCore.form_styles === "GOOGLE_FORM" ? " gap-[2rem]" : " gap-0"
+                                                formCore.form_styles === "GOOGLE_FORM" ? " gap-[1.4rem]" : " gap-0"
                                           } w-full     flex flex-col gap-[1rem]  justify-start   `}
                                     >
                                           <div className=" flex justify-between items-center gap-[1rem] flex-wrap">

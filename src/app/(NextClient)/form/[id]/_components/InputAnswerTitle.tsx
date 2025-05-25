@@ -22,20 +22,20 @@ const InputAnswerTitle = (props: TProps) => {
                   };
             },
       };
-      const color =
-            formCore.form_themes === "AUTO"
-                  ? "text-text-theme"
-                  : formCore.form_styles === "GOOGLE_FORM"
-                  ? formCore?.form_input_styles?.color
-                        ? formCore?.form_input_styles?.color
-                        : formCore.form_themes === "DARK"
-                        ? "text-[#fff]"
-                        : "text-[#000]"
-                  : formCore.form_themes === "DARK"
-                  ? "text-[#fff]"
-                  : "text-[#000]";
+      // const color =
+      //       formCore.form_themes === "AUTO"
+      //             ? "text-text-theme"
+      //             : formCore.form_styles === "GOOGLE_FORM"
+      //             ? formCore?.form_input_styles?.color
+      //                   ? formCore?.form_input_styles?.color
+      //                   : formCore.form_themes === "DARK"
+      //                   ? "text-[#fff]"
+      //                   : "text-[#000]"
+      //             : formCore.form_themes === "DARK"
+      //             ? "text-[#fff]"
+      //             : "text-[#000]";
       return (
-            <div className={`${color} flex items-center gap-[1.4rem]`}>
+            <div className={`text-inherit flex items-center gap-[1.4rem]`}>
                   <Circle
                         style={{ color: isError ? 'inherit' : theme === "dark" ? "var(--text-theme)" : "var(--color-main)" }}
                         className=" font-semibold"

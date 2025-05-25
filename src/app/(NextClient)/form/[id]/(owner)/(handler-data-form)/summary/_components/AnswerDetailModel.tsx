@@ -27,13 +27,13 @@ const AnswerDetailModel = (props: TProps) => {
             <Portal>
                   <div className="fixed z-[200] inset-0 max-w-full overflow-hidden  flex items-center justify-center bg-[rgba(0,0,0,.6)] hover:cursor-pointer">
                         <ClickOutSide setOpenModel={setOpenModel}>
-                              <div className="relative w-[80vw] overflow-auto h-[80vh] sm:w-[50rem] min-h-[20rem]  mx-auto px-[2rem] pt-[5rem] pb-[2rem] bg-color-section-theme text-text-theme rounded-lg">
-                                    <h3 style={{ color }} className=" text-center font-medium text-[2.4rem]">
+                              <div className="relative w-[80vw] overflow-auto h-[80vh] sm:w-[60vw] min-h-[20rem]  mx-auto px-[2rem] pt-[5rem] pb-[2rem] bg-color-section-theme text-text-theme rounded-lg">
+                                    <h3 style={{ color }} className=" text-center font-medium text-[2.4rem] py-[1.8rem]">
                                           {formCore.form_title.form_title_plain_text || formCore.form_title.form_title_value}
                                     </h3>
                                     <div
                                           style={{ "--scorll-form-answer-detail": color } as React.CSSProperties}
-                                          className="scroll-form-answer-detail w-full max-h-[50rem] pb-[1rem]  overflow-y-scroll p-[1rem_3rem] flex flex-col gap-[3rem]   rounded-lg"
+                                          className="scroll-form-answer-detail w-full max-h-[80%] h-[80%] pb-[1rem]  overflow-y-scroll p-[1rem_3rem] flex flex-col gap-[3rem]   rounded-lg"
                                     >
                                           {formAnswer.answers.map((fans) => {
                                                 const input_value = generateValueInputAnswer(fans) || "Không có nội dung";
@@ -41,7 +41,7 @@ const AnswerDetailModel = (props: TProps) => {
                                                 const checkHttps = typeof input_value === "string" ? checkValueHref(input_value) : false;
                                                 return (
                                                       <div key={fans._id} className="flex flex-col gap-[2.4rem] pb-[1rem] border-b-[.1rem] border-gray-200">
-                                                            <h4 className="text-[1.5rem] font-medium flex flex-col gap-[.2rem]">
+                                                            <h4 className="text-[1.5rem] font-medium flex flex-col gap-[.2rem] ">
                                                                   <span className="max-w-full break-words">{input_title}</span>
 
                                                                   {fans.title.length === 0 && (
@@ -55,7 +55,7 @@ const AnswerDetailModel = (props: TProps) => {
                                                             )}
                                                             {!checkHttps && fans.type === "DATE" && (
                                                                   <p className="max-w-[90%] break-words text-[1.4rem] opacity-75">
-                                                                        {moment(input_value).format("DD/MM/YYYY")}
+                                                                        {moment(fans.value).format("DD/MM/YYYY")}
                                                                   </p>
                                                             )}
 
@@ -71,7 +71,7 @@ const AnswerDetailModel = (props: TProps) => {
                                                       </div>
                                                 );
                                           })}
-                                          <div className="bg-color-main w-[16.5rem] min-h-[2.8rem] ml-auto flex items-center justify-center gap-[.6rem]  rounded-[.4rem]  text-[1.2rem] text-[#fff] ">
+                                          <div className="bg-color-main min-w-[16.5rem] p-[1rem] min-h-[2.8rem] ml-auto flex items-center justify-center gap-[.6rem]  rounded-[.4rem]  text-[1.2rem] text-[#fff] ">
                                                 <Clock size={"1.5rem"} />
                                                 <span>{moment(new Date(time)).format("hh:mm - Do MMMM YYYY")}</span>
                                           </div>

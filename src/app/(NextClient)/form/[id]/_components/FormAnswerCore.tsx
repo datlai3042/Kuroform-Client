@@ -63,7 +63,11 @@ const FormAnswerCore = (props: TProps) => {
 
             if (formCore.form_themes === "DARK") {
                   document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
-                  document.body.style.setProperty("--color-section-theme", "transparent");
+                  if (formCore.form_styles === "GOOGLE_FORM") {
+                        document.body.style.setProperty("--color-section-theme", "#11183d");
+                  } else {
+                        document.body.style.setProperty("--color-section-theme", "transparent");
+                  }
 
                   document.documentElement.style.backgroundColor = "var(--form-theme-dark)";
             }
@@ -80,7 +84,7 @@ const FormAnswerCore = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
       return (
             <DivNative
-                  style={{ backgroundColor: !formThemes ? renderBgColor : "" }}
+                  style={{ backgroundColor: isGoogleForm ? "#2e5cbf2b" : !formThemes ? renderBgColor : "" }}
                   className={`${formThemes} ${
                         isGoogleForm ? "px-[2rem]  p-[2rem_2rem_4rem_2rem] xl:px-0" : ""
                   }  min-h-screen  flex justify-center   w-full h-full`}
@@ -106,11 +110,11 @@ const FormAnswerCore = (props: TProps) => {
                                     </FormAnswerProvider>
                               </DivNative>
                         </DivNative>
-                        {formCore.form_themes === "AUTO" && (
+                        {/* {formCore.form_themes === "AUTO" && (
                               <div style={{ ...bgButtonDarkMode }} className="fixed top-[2rem] right-[2rem] rounded-[.4rem]">
                                     <ButtonDarkMode />
                               </div>
-                        )}
+                        )} */}
                         {/* <AuthorDat color={"text-[#000]"} backgroundColor={"bg-[#fff]"} /> */}
                   </DivNative>
             </DivNative>

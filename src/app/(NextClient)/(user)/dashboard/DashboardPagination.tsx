@@ -32,7 +32,6 @@ const DashboardPagination = (props: TProps) => {
             // const middle = MAX_PAGE_SHOW - ()
 
             const limit_render = total_page - page <= 6;
-            console.log({ page, total_page });
             // if (page === 1) return;
             // if (page === total_page) return;
             if (page <= 5) {
@@ -49,7 +48,6 @@ const DashboardPagination = (props: TProps) => {
       useEffect(() => {
             return renderPageArrayNormal({ max_show_page, page, cb: setPageRender });
       }, [total_page]);
-      console.log({ page });
       return (
             <div className=" relative text-text-theme truncate flex flex-col xl:flex-row items-center justify-center gap-[1rem] xl:gap-0 h-[4rem] w-full">
                   <div className=" flex w-max max-w-full mx-auto  gap-[.8rem]">

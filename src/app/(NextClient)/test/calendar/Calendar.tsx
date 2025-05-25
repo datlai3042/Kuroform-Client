@@ -122,11 +122,11 @@ const Calendar = (props: TProps) => {
                   </div>
                   <div
                         onClick={(e) => e.stopPropagation()}
-                        className="bg-[#002bff87] flex w-[23rem] xl:w-[44rem] flex-col p-[.8rem] xl:p-[1rem_1.4rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] "
+                        className="bg-[#1a2a78] flex w-[23rem] xl:w-[44rem] flex-col p-[.8rem] xl:p-[2rem_2.4rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] "
                   >
                         <div className="w-full flex xl:justify-center">
                               {name_in_week.map((day_name, i) => (
-                                    <p className="w-[3.4rem] xl:w-[6rem] h-[3rem]  flex justify-center items-center" key={day_name + i}>
+                                    <p className="w-[3.4rem] xl:w-[6rem] text-[#fff] h-[3rem]  flex justify-center items-center" key={day_name + i}>
                                           <span className="hidden xl:inline">{day_name}</span>
                                           <span className="inline xl:hidden">
                                                 {day_name !== "Chủ nhật" ? day_name.replace("Thứ", "T") : day_name.replace("Chủ nhật", "CN")}
@@ -163,7 +163,7 @@ const Calendar = (props: TProps) => {
                         </div>
                   </div>
 
-                  <div className="flex  text-[1.2rem]  flex-col xl:flex-row xl:items-center justify-end gap-[2rem] xl:gap-0 p-[.8rem] xl:px-[1.4rem]">
+                  <div className="flex bg-[#1a2a78] rounded-lg  text-[1.2rem]  flex-col xl:flex-row xl:items-center justify-end gap-[2rem] xl:gap-0 p-[.8rem] xl:px-[1.4rem]">
                         <div className="flex justify-end gap-[.6rem]">
                               <button
                                     onClick={(e) => {

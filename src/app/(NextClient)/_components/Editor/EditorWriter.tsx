@@ -27,7 +27,7 @@ const EditorWriter = (props: TProps) => {
 
             const convertHtml = convertFromHTML({
                   htmlToBlock: (nodeName, node) => {
-                        if (nodeName === "h1") {
+                        if (nodeName === "p") {
                               return "header-one";
                         }
                         return undefined;
@@ -52,7 +52,7 @@ const EditorWriter = (props: TProps) => {
             // Chuyển HTML thành ContentState
             const convertHtml = convertFromHTML({
                   htmlToBlock: (nodeName, node) => {
-                        if (nodeName === "h1") {
+                        if (nodeName === "p") {
                               return "header-one";
                         }
                         return undefined;
@@ -101,7 +101,7 @@ const EditorWriter = (props: TProps) => {
                   const htmlWithStyle = stateToHTML(newContentWithHeader, {
                         blockRenderers: {
                               "header-one": (block) =>
-                                    `<h1 data-html-editor="true" class='headingOne' style='${styleToString(styleObj ?? {})}'>${block.getText()}</h1>`,
+                                    `<p data-html-editor="true" class='headingOne' style='${styleToString(styleObj ?? {})}'>${block.getText()}</p>`,
                         },
                   });
                   setHtml(htmlWithStyle);
@@ -150,9 +150,9 @@ const EditorWriter = (props: TProps) => {
                                     html = stateToHTML(newContent, {
                                           blockRenderers: {
                                                 "header-one": (block) =>
-                                                      `<h1 data-html-editor="true" class='headingOne'  style='${styleToString(
+                                                      `<p data-html-editor="true" class='headingOne'  style='${styleToString(
                                                             styleObj ?? {},
-                                                      )}'>${block.getText()}</h1>`,
+                                                      )}'>${block.getText()}</p>`,
                                           },
                                     });
                               } else {

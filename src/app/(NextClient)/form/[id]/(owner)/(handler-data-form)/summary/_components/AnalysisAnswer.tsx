@@ -23,10 +23,10 @@ const AnalysisAnswer = (props: TProps) => {
 
       const temp: { [key: string]: { count: number; percent: number } } = generatePercentOption(data);
       return (
-            <div className="w-full overflow-auto pb-[2rem] flex flex-col gap-[1rem] mb-[1rem]">
+            <div className="w-[70vw] overflow-auto pb-[2rem] flex flex-col gap-[1rem] mb-[1rem]">
                   {Object.keys(temp).map((ipdt, i) =>
                         !ipdt ? (
-                              <div className="flex items-center gap-[1rem]" key={temp[ipdt].percent + i}>
+                              <div className="flex w-[80vw] items-center gap-[1rem]" key={temp[ipdt].percent + i}>
                                     <div className="relative w-full bg-[var(--bg-answer-option)]  rounded-[.4rem_0rem_0rem_.4rem]">
                                           <div
                                                 title="Người dùng không nhập thông tin"
@@ -37,7 +37,7 @@ const AnalysisAnswer = (props: TProps) => {
 
                                                       background: "rgb(32 74 172 / 94%)",
                                                 }}
-                                                className="min-w-[16%] truncate rounded-[.4rem_0rem_0rem_.4rem]  min-h-[3rem] p-[.8rem_1rem] bg-gray-200  text-gray-400 hover:cus "
+                                                className="min-w-[16%] truncate rounded-[.4rem_0rem_0rem_.4rem]  min-h-[3rem] p-[.8rem_1rem] bg-gray-200  text-[#ccd8ed] hover:cus "
                                           >
                                                 <span>Người dùng không nhập thông tin</span>
                                           </div>

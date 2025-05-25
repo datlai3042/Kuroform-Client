@@ -84,7 +84,7 @@ const HeaderFormAnswer = (props: TProps) => {
                   )}
                   <div
                         style={{ marginTop: !formCore?.form_title?.form_title_value ? "0px" : "" }}
-                        className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem]`}
+                        className={`${marginTopWhenImageAppear} flex flex-col gap-[3rem] `}
                   >
                         <div
                               style={{
@@ -105,6 +105,7 @@ const HeaderFormAnswer = (props: TProps) => {
                                     }`,
                                     wordBreak: "break-word",
                               }}
+                              className="p-[.8rem_0rem]"
                               dangerouslySetInnerHTML={{ __html: formCore?.form_title?.form_title_value }}
                         ></div>
 
