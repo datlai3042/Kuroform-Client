@@ -828,6 +828,30 @@ body.dark .ant-rate-star-second {
       }
 }
 
+.animate-form-design--open {
+      animation: showOpenFormDesign 0.2s ease both;
+}
+.animate-form-design--close {
+      animation: closeFormDesign  0.2s ease both;
+}
+
+@keyframes showOpenFormDesign {
+      0% {
+            right: -150%;
+      }
+      100% {
+            right: 0;
+      }
+}
+@keyframes closeFormDesign {
+      0% {
+            right: 0;
+      }
+      100% {
+            right: -150%;
+      }
+}
+
 @media screen and (max-width: 767px) {
       .control-w-input {
             width: 100% !important;

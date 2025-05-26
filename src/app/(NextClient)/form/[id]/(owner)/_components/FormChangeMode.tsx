@@ -99,7 +99,7 @@ const FormChangeMode = (props: TProps) => {
                                                       .writeText(`${window.location.origin}/form/${formCore._id}`)
                                                       .then(() => setCopySuccess(true));
                                           }}
-                                          className="text-text-theme flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)] hover:bg-color-main hover:border-transparent hover:text-[#fff] rounded-lg"
+                                          className="text-text-theme flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)] hover:bg-color-main hover:border-transparent hover:text-[#fff] rounded-[.8rem]"
                                     >
                                           <LinkIcon size={iconSize} />
                                     </button>
@@ -111,27 +111,27 @@ const FormChangeMode = (props: TProps) => {
                               </div>
 
                               {avatarSrc ? (
-                                    <Image src={avatarSrc} width={30} height={30} alt="avatar" className="min-w-[3rem] w-[3rem] h-[3rem] rounded-full" />
+                                    <Image src={avatarSrc} width={30} height={30} alt="avatar" className="min-w-[3rem] w-[3rem] h-[3rem] object-cover rounded-full" />
                               ) : (
                                     <div className="animate-pulse min-w-[3rem] w-[3rem] h-[3rem] rounded-full bg-slate-200 "></div>
                               )}
 
                               <button
-                                    className=" min-w-[12rem] flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)] hover:bg-color-main hover:border-transparent hover:text-[#fff] text-text-theme rounded-lg"
+                                    className=" min-w-[3.2rem] flex items-center justify-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)] hover:bg-color-main hover:border-transparent hover:text-[#fff] text-text-theme rounded-[.8rem]"
                                     onClick={(e) => {
                                           e.preventDefault();
                                           router.push(`/form/${formCore._id}/edit`);
                                     }}
                               >
                                     <Pencil size={iconSize} />
-                                    <span>Chỉnh sửa</span>
+                                    {/* <span>Chỉnh sửa</span> */}
                               </button>
 
                               <ButtonDeleteForm
                                     form_id={formCore._id}
-                                    className=" min-w-[11rem] flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)]  hover:border-transparent hover:text-[#fff] text-text-theme rounded-lg"
+                                    className=" min-w-[3.2rem] flex items-center justify-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)]  hover:border-transparent hover:text-[#fff] text-text-theme rounded-[.8rem]"
                               >
-                                    <span>Xóa form</span>
+                                    {/* <span>Xóa form</span> */}
                               </ButtonDeleteForm>
                         </div>
                   </div>

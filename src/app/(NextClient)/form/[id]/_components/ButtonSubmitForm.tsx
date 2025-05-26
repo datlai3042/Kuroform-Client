@@ -65,7 +65,18 @@ const ButtonSubmitForm = (props: TProps) => {
             inputErrorArray = checkErrorFinal(inputErrorArray, inputFormErrors, inputFormData);
             console.log({ "Các input lỗi": inputErrorArray });
             if (inputErrorArray.length > 0 || inputFormRequire.length > 0) {
-                  setFormAnswer((prev) => ({ ...prev, inputFormErrors: inputErrorArray, openModelError: true }));
+                  console.log({ inputErrorArray });
+                  let findError = null;
+                  for (let index = 0; index < inputErrorArray.length; index++) {
+                        const errorElement = document.getElementById(`_inputid_${inputErrorArray[index]._id}`);
+                        if(errorElement) {
+                              findError = errorElement
+                              break;
+                        }
+                  }
+                  if(!findError) return 
+                  findError.scrollIntoView()
+                  setFormAnswer((prev) => ({ ...prev, inputFormErrors: inputErrorArray,  }));
             }
       };
 

@@ -28,7 +28,7 @@ const FormDesignCustom = () => {
       const FormBackUp = useSelector((state: RootState) => state.form.formCoreBackUp);
       const formOriginal = useSelector((state: RootState) => state.form.formCoreOriginal);
 
-      const [modeDesign, setModeDesign] = useState<ModeDesignForm>("BACKGROUND");
+      const [animate, setAnimate] = useState("OPEN");
       const dispatch = useDispatch();
       const [heightContent, setHeightContent] = useState(0);
       const contentRef = useRef<HTMLDivElement | null>(null);
@@ -107,11 +107,20 @@ const FormDesignCustom = () => {
       }, []);
       return (
             <div
+                  onClick={() => {
+                        if (!matches) return;
+                        setAnimate("CLOSE");
+                        setTimeout(() => {
+                              setOpenFormDesign(false);
+                        }, 100);
+                  }}
                   style={{ borderLeft: ".1rem solid var(--border-color-side)" }}
                   id={"section-design"}
-                  className="scroll-desgin-custom px-[1rem] md:px-0  flex-1 fixed  bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen w-full z-[999]  md:w-[32rem]  "
+                  className={`${
+                        animate === "OPEN" ? "animate-form-design--open" : "animate-form-design--close"
+                  } scroll-desgin-custom  bg-[rgba(0,0,0,.5)]  flex-1 fixed  md:bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen w-full z-[999]  md:w-[32rem]  `}
             >
-                  <div className=" relative min-h-full h-max pb-[4rem] px-[1.8rem]  border-b-[.2rem] flex flex-col">
+                  <div className=" relative w-[90%] ml-auto md:w-full bg-color-section-theme md:bg-transparent min-h-full h-max pb-[4rem] px-[1.8rem]  border-b-[.2rem] flex flex-col">
                         <div className="sticky top-0 right-0   bg-color-section-theme z-[2] " id="design-header">
                               <div className="flex flex-col items-center ">
                                     <div className="w-full flex items-center justify-between py-[1rem]   bg-color-section-theme z-[2]">
@@ -126,7 +135,7 @@ const FormDesignCustom = () => {
                                     {/* <SelectModeDesign modeDesign={modeDesign} setModeDesign={setModeDesign} /> */}
                               </div>
                         </div>
-                        <div ref={refDesignCommon} className="relative w-full min-h-full h-max overflow-auto pb-[8rem] md:pb-[2rem] pr-[1rem]">
+                        <div ref={refDesignCommon} className="relative w-full min-h-full h-max overflow-auto md:pb-[2rem] pr-[1rem]">
                               {/* <FormDesignFormMode /> */}
 
                               <div className="flex flex-col  gap-[1.8rem] px-[.4rem] text-[1.3rem]    ">

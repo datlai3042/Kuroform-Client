@@ -80,7 +80,7 @@ const InputOptionAnswer = (props: TProps) => {
                   : "text-[#000]";
       return (
                   <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
-                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
+                  <BoxHandlerInputAnswerError inputItem={inputItem} formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                                              <InputContent formCore={formCore}>
 
@@ -122,7 +122,7 @@ const InputOptionAnswer = (props: TProps) => {
 
                               {inputItemInArrayGlobal?.globalError?.state && (
                                     <div className="mt-[.8rem]">
-                                          <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                                           <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                                     </div>
                               )}
                         </InputContent>

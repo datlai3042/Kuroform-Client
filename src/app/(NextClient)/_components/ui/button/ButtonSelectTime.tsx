@@ -17,7 +17,14 @@ const ButtonSelectTime = (props: TProps) => {
 
       const date = new Date();
       const yearCurrent = date.getFullYear();
+      // useEffect(() => {
+      //       setOpenYearModel(false)
+      // }, [year])
 
+
+      // useEffect(() => {
+      //       setOpenDateModel(false)
+      // }, [month])
       const genderYearArray = () => {
             let newArray = [];
             for (let year = yearCurrent; year >= 2000; year--) {

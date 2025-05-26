@@ -73,7 +73,7 @@ const InputTextAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
-                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <BoxHandlerInputAnswerError inputItem={inputItem} formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent formCore={formCore}>
                               <DivNative
@@ -91,7 +91,7 @@ const InputTextAnswer = (props: TProps) => {
                                                 ref={divContentRef}
                                                 className={`${
                                                       formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                                }  heading-answer "" placeholder:opacity-65 group min-h-[2rem] py-[1.2rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
+                                                }  heading-answer "" placeholder:opacity-65 group min-h-[2rem] pt-[1.2rem] pb-[1.4rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
                                                 onClick={() => divContentRef.current?.focus()}
                                                 onBlur={(e) => onBlur(e)}
                                                 onFocus={onFocus}
@@ -108,7 +108,7 @@ const InputTextAnswer = (props: TProps) => {
                               </DivNative>
 
                               {inputItemInArrayGlobal?.globalError?.state && (
-                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                                     <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                               )}
                         </InputContent>
                   </BoxHandlerInputAnswerError>

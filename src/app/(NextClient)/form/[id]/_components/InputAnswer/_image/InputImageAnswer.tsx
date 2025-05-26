@@ -86,7 +86,7 @@ const InputImageAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
-                  <BoxHandlerInputAnswerError inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write} formCore={formCore}>
+                  <BoxHandlerInputAnswerError inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write} formCore={formCore}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                         <InputContent formCore={formCore}>
                               <DivNative
@@ -196,7 +196,7 @@ const InputImageAnswer = (props: TProps) => {
                                     )}
                               </DivNative>
                               {inputItemInArrayGlobal?.globalError?.state && (
-                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                                   <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                               )}
                         </InputContent>
                   </BoxHandlerInputAnswerError>

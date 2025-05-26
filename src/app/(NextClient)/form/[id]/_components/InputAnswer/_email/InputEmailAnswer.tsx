@@ -63,7 +63,7 @@ const InputEmailAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
-                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <BoxHandlerInputAnswerError inputItem={inputItem} formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent formCore={formCore}>
                               <DivNative
@@ -85,7 +85,7 @@ const InputEmailAnswer = (props: TProps) => {
                                                 className={`
 							)}   ${
                                                 formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                          }   border-b-[.1rem] h-full py-[1.2rem] "" placeholder:opacity-65  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          }   border-b-[.1rem] h-full pt-[1.2rem] pb-[1.4rem]  "" placeholder:opacity-65  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                                 onChange={(e) => setInputValue(e.target.value)}
                                                 onFocus={onFocus}
                                                 onBlur={onBlur}
@@ -103,7 +103,7 @@ const InputEmailAnswer = (props: TProps) => {
                                     </DivNative>
                               </DivNative>
                               {inputItemInArrayGlobal?.globalError?.state && (
-                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                                    <BoxHandlerInputAnswerErrorMsg  inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                               )}
                         </InputContent>
                   </BoxHandlerInputAnswerError>

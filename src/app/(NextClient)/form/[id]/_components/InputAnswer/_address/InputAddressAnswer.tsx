@@ -61,7 +61,7 @@ const InputAddressAnswer = (props: TProps) => {
 
       return (
                   <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
-                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
+                  <BoxHandlerInputAnswerError inputItem={inputItem} formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
                         <InputAnswerTitle inputItem={inputItem} formCore={formCore} isError={isError} />
                                              <InputContent formCore={formCore}>
 

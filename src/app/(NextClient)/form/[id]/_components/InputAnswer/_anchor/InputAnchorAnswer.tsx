@@ -87,7 +87,7 @@ const InputAnchorAnswer = (props: TProps) => {
 
       return (
             <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
-                  <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
+                  <BoxHandlerInputAnswerError inputItem={inputItem} formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent formCore={formCore}>
                               <DivNative className={`${isGoogleForm ? "" : "  rounded-inherit-[.8rem]"} w-full flex flex-col gap-[1rem]  `}>
@@ -126,7 +126,7 @@ const InputAnchorAnswer = (props: TProps) => {
                                     </div>
                               </DivNative>
                               {inputItemInArrayGlobal?.globalError?.state && (
-                                    <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
+                                   <BoxHandlerInputAnswerErrorMsg inputItem={inputItem} inputItemInArrayGlobal={inputItemInArrayGlobal} />
                               )}
                         </InputContent>
                   </BoxHandlerInputAnswerError>
