@@ -34,8 +34,8 @@ const BoxHandlerInputAnswerError = (props: TProps) => {
             <div
                   style={{
                         ...styles,
-                        boxShadow: ["EMAIL", "PHONE", "TEXT", "ANCHOR"].includes(inputItem.type) ? "" : "3px 2px 3px 3px rgb(47 69 115 / 16%)",
-                        marginTop: ["EMAIL", "PHONE", "TEXT", "ANCHOR"].includes(inputItem.type) || formCore.form_styles === "GOOGLE_FORM" ? "0" : "1rem",
+                        // boxShadow: ["EMAIL", "PHONE", "TEXT", "ANCHOR"].includes(inputItem.type) ? "" : "3px 2px 3px 3px rgb(47 69 115 / 16%)",
+                        // marginTop: ["EMAIL", "PHONE", "TEXT", "ANCHOR"].includes(inputItem.type) || formCore.form_styles === "GOOGLE_FORM" ? "0" : "1rem",
                   }}
                   id={`_inputid_${input_id}`}
                   // style={{borderColor: !!error?.error ? '':  colorMain,}}
@@ -44,7 +44,7 @@ const BoxHandlerInputAnswerError = (props: TProps) => {
                               ? "input-answer-invalid border-none  !text-[#e20f0f]"
                               : " "
                   } ${
-                        isGoogleForm ? "p-[1.4rem]" : " p-[1.4rem_1.8rem]"
+                        isGoogleForm ? "p-[3rem]" : " p-[1.4rem_1.8rem]"
                   } text-inherit  relative w-full min-h-[12rem]   h-max  duration-300 transition-all flex flex-col justify-center gap-[.8rem]  `}
             >
                   {children}

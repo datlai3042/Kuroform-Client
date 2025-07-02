@@ -108,7 +108,7 @@ const InputAnchorAnswer = (props: TProps) => {
                                                 onChange={(e) => onChangeValue(e.target.value)}
                                                 className={` ${
                                                       formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-transparent w-[90%]"
-                                                } pr-[2rem] placeholder:text-[1.4rem] "" placeholder:opacity-65 heading-answer group min-h-[3.8rem] px-[1rem] flex items-center   break-words whitespace-pre-wrap  outline-none resize-none `}
+                                                } pr-[2rem] placeholder:text-[1.4rem] "" placeholder:opacity-90 heading-answer group min-h-[3.8rem] px-[1rem] flex items-center   break-words whitespace-pre-wrap  outline-none resize-none `}
                                                 placeholder="Nhập đường dẫn liên kết của bạn"
                                           />
                                           <div className="absolute z-[2] right-[1rem]  opacity-70">www</div>

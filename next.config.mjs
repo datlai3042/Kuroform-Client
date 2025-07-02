@@ -23,11 +23,15 @@ const nextConfig = {
                         hostname: "avatars.githubusercontent.com",
                         port: "",
                   },
+                  {
+                        protocol: "https",
+                        hostname: "**",
+                  },
             ],
       },
       experimental: {
             missingSuspenseWithCSRBailout: false,
-          },
+      },
       // reactStrictMode: false,
 };
 

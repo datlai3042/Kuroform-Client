@@ -62,16 +62,16 @@ const LoginForm = (props: TProps) => {
       }, [loginForm.formState.errors]);
 
       return (
-            <div className="relative   min-h-[40rem] w-full h-max mx-auto mt-[4rem]  flex justify-center items-center flex-col  gap-[3.4rem] rounded-[1.2rem] p-[.4rem_2rem]">
-                  <p  className=" w-full flex flex-col gap-[0rem]  items-center">
+            <div className="relative   min-h-[40rem] w-full h-max mx-auto  flex justify-center items-center flex-col  gap-[3rem] rounded-[1.2rem] p-[.4rem_0rem]">
+                  <p className=" w-full flex flex-col gap-[0rem]  ">
                         {/* <span className="text-text-theme text-[4.2rem]">Kuro</span>
                         <span className="text-[#6262e5] text-[4.2rem]">form</span> */}
-                        <span className="text-[#3d52a2] font-semibold text-[2.8rem]">Đăng nhập</span>
-                        <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Tạo form nhanh chóng</span>
+                        <span className="text-[#71665c] font-semibold text-[2.8rem]">Đăng nhập 👋</span>
+                        <span className="text-[#858d8f] text-[1.2rem] mt-[.8rem]">Hãy thiết lập các cấu hình form của bạn ngay bây giờ</span>
                   </p>
 
-                  <div className=" w-full flex flex-col gap-[3.4rem] ">
-                        <form className="w-full h-full flex flex-col justify-center  gap-[.6rem] rounded-[1.2rem]" onSubmit={loginForm.handleSubmit(onSubmit)}>
+                  <div className=" w-full flex flex-col gap-[3rem] ">
+                        <form className="w-full h-full flex flex-col justify-center  gap-[1.6rem] rounded-[1.2rem]" onSubmit={loginForm.handleSubmit(onSubmit)}>
                               <Input<LoginType>
                                     FieldKey="user_email"
                                     placeholder="Email"
@@ -93,7 +93,7 @@ const LoginForm = (props: TProps) => {
                                     loading={loginMutation.isPending}
                                     type="submit"
                                     textContent="Đăng nhập"
-                                    className="!w-full !h-[4rem] !bg-[#3d52a2] mt-[.8rem]"
+                                    className="!w-full !h-[4rem] !bg-[#71665c] mt-[.8rem]"
                               />
                         </form>
                         <SpaceLine content="Hoặc đăng nhập luôn bằng phương thức khác" />
@@ -111,7 +111,7 @@ const LoginForm = (props: TProps) => {
                               {/* <p className="text-[#6262e5] font-medium text-[1.6rem]">Đăng nhập tài khoản của bạn</p> */}
                               <p className="text-[1.4rem]">
                                     Bạn chưa có tài khoản?{" "}
-                                    <Link href={"/register"} className="text-[#3d52a2] underline font-semibold">
+                                    <Link href={"/register"} className="text-[#71665c] underline font-semibold">
                                           đăng kí nhé
                                     </Link>
                               </p>

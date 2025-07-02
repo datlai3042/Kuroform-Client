@@ -1,5 +1,5 @@
-const fileAllow = ["image/png", "image/jpg", "image/jpeg"];
-const sizeAllowKB = 2;
+const fileAllow = ["image/png", "image/jpg", "image/jpeg", 'image/gif'];
+const sizeAllowKB = 3;
 
 export const superValidateImage = ({ file, sizeAllowOptions }: { file: File; sizeAllowOptions?: number }) => {
       let _check = false;
@@ -25,6 +25,5 @@ export const superValidateImage = ({ file, sizeAllowOptions }: { file: File; siz
       if (_checkFileAllow && !_checkSizeAllow) {
             message = `File phải nhỏ hơn ${sizeAllow}mb`;
       }
-
       return { _check, message };
 };

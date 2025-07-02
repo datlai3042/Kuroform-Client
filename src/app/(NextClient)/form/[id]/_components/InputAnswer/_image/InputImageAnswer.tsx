@@ -91,7 +91,7 @@ const InputImageAnswer = (props: TProps) => {
                         <InputContent formCore={formCore}>
                               <DivNative
                                     className={`${
-                                          isGoogleForm ? "" : " p-[0rem_2.6rem]  rounded-inherit-[.8rem]"
+                                          isGoogleForm ? "" : "   rounded-inherit-[.8rem]"
                                     } text-inherit relative flex flex-col  items-center justify-between gap-[1rem]  `}
                               >
                                     <DivNative
@@ -107,7 +107,7 @@ const InputImageAnswer = (props: TProps) => {
                                                       className="p-[.3rem_.6rem] bg-color-main text-[#fff] text-[1.4rem] rounded-[.4rem]"
                                                 >
                                                       {(inputItemInArrayGlobal.input?.value as string) ? "Tải ảnh khác" : "Tải ảnh lên"}
-                                                      <input type="file" hidden={true} ref={inputRef} onChange={handleUpload} accept=".jpg, .jpeg, .png" />
+                                                      <input type="file" hidden={true} ref={inputRef} onChange={handleUpload} accept=".jpg, .jpeg, .png, .gif" />
                                                 </button>
                                           </div>
 
@@ -122,7 +122,7 @@ const InputImageAnswer = (props: TProps) => {
                                     {uploadFileFormAnswerAPI.isPending ||
                                           (!tempMode && !!inputItemInArrayGlobal.input?.value && (
                                                 <div className="w-full flex justify-between gap-[2rem]">
-                                                      <div className="max-w-[25rem] max-h-[25rem] flex items-center ">
+                                                      <div className="max-w-[12rem] max-h-[12rem] flex items-center ">
                                                             {/* {!inputItemInArrayGlobal.input?.value && !uploadFileFormAnswerAPI.isPending && (
                                                 <Image
                                                       width={32}
@@ -168,7 +168,7 @@ const InputImageAnswer = (props: TProps) => {
 
                                     {tempMode && filePreview && (
                                           <div className="w-full flex justify-between gap-[2rem]">
-                                                <div className="max-w-[25rem] max-h-[25rem] flex items-center">
+                                                <div className="max-w-[12rem] max-h-[12rem] flex items-center">
                                                       <Image
                                                             src={filePreview}
                                                             width={70}

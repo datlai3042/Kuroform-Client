@@ -40,7 +40,7 @@ const InputAnswerWrapper = (props: TProps) => {
                   }}
                   className={`${color} ${formCore.form_styles !== "GOOGLE_FORM" ? " border-[.1rem] border-[var(--border-color-input)]" : ""}
                   ${formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-transparent w-[90%]"} 
-                  control-w-input w-full min-h-[12rem] h-max   `}
+                  control-w-input w-full min-h-[12rem] h-max rounded-[1rem]  `}
             >
                   {children}
             </DivNative>

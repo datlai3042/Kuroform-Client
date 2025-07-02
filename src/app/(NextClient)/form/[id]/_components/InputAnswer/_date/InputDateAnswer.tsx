@@ -105,7 +105,7 @@ const InputDateAnswer = (props: TProps) => {
                         <InputContent formCore={formCore}>
                               <DivNative
                                     className={`${
-                                          formCore.form_styles === "GOOGLE_FORM" ? "" : " p-[0rem_2.6rem]  rounded-inherit-[.8rem]"
+                                          formCore.form_styles === "GOOGLE_FORM" ? "" : "   rounded-inherit-[.8rem]"
                                     } relative flex flex-col mt-[1.4rem]   justify-between gap-[.8rem] `}
                               >
                                     <p

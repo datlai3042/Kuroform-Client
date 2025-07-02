@@ -7,6 +7,7 @@ import Portal from "../_components/Portal";
 import { FormDesignContext } from "../_components/provider/FormDesignProvider";
 import { ThemeContext } from "../_components/provider/ThemeProvider";
 import EditFormPage from "../form/[id]/(owner)/edit/page";
+import Image from "next/image";
 
 const FORM_INSTANCE = {
       form: {
@@ -16,7 +17,7 @@ const FORM_INSTANCE = {
                   color: "",
                   radius: 4,
             },
-            screen: 'profile',
+            screen: "profile",
             _id: "6822a77456334e128987a4b2",
             form_owner: "66a0a5ca4ed899bf08b8f628",
             form_views: 0,
@@ -343,21 +344,44 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       return (
             <Portal>
                   <div
-                        style={{ lineHeight: 1.6 }}
-                        className="relative flex z-[500] w-full top-0 xl:top-0 left-0 min-h-screen  xl:pt-0    bg-color-section-theme  "
+                        style={{ lineHeight: 1.6, background: "linear-gradient(to right, #fff, #2c18051f)" }}
+                        className="relative flex z-[500] p-[1rem] md:p-[4.2rem] w-full top-0 xl:top-0 left-0 min-h-screen     "
                   >
-                        <div className="basis-[46rem] m-auto  overflow-auto flex-grow-[1] md:flex-grow-0 flex flex-col   px-[20px] py-[1rem]">
+                        <div className="w-full lg:w-[50%]  m-auto  overflow-auto flex-grow-[1] md:flex-grow-0 flex flex-col  ">
                               {/* <header className="w-full flex   justify-end items-center ">
                                     <ButtonDarkMode />
                               </header> */}
-                              <div className="flex-1 flex   w-full text-text-theme   auth-scroll">{children}</div>
+
+                              <div className="flex-1 flex flex-col px-[10%] gap-[3rem] md:px-[20%] lg:px-[10vw] overflow-auto h-full   w-full text-text-theme   auth-scroll">
+                                    <div className="w-full h-[20rem]  md:hidden">
+                                          <div className="h-full w-full">
+                                                <Image
+                                                      src="https://media.easy-peasy.ai/4baadea2-0f28-4e7c-84eb-d80e151923ad/ba50fd28-4363-44bf-9f96-4e18ef121e2a.png"
+                                                      alt=""
+                                                      width={100}
+                                                      height={100}
+                                                      className="w-full h-full object-cover rounded-[.6rem]"
+                                                      unoptimized={true}
+                                                />
+                                          </div>
+                                    </div>
+
+                                    {children}
+                              </div>
                               {/* <AuthorDat /> */}
                         </div>
-                        {/* <div className="wrapper hidden bg-[var(--color-main)]  flex-1 relative  overflow-auto min-h-full h-screen  gap-[1rem]  md:flex justify-end ">
+                        <div className="wrapper hidden flex-1 relative   gap-[1rem]   lg:flex justify-end ">
                               <div className="min-h-full w-full">
-                                    <EditFormPage params={{ id: "profile" }} />
+                                    <Image
+                                          src="https://media.easy-peasy.ai/4baadea2-0f28-4e7c-84eb-d80e151923ad/ba50fd28-4363-44bf-9f96-4e18ef121e2a.png"
+                                          alt=""
+                                          width={100}
+                                          height={100}
+                                          className="w-full h-full object-cover rounded-[1.2rem]"
+                                          unoptimized={true}
+                                    />
                               </div>
-                        </div> */}
+                        </div>
                   </div>
             </Portal>
       );

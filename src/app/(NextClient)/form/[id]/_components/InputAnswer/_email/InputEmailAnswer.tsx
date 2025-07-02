@@ -85,7 +85,7 @@ const InputEmailAnswer = (props: TProps) => {
                                                 className={`
 							)}   ${
                                                 formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                          }   border-b-[.1rem] h-full pt-[1.2rem] pb-[1.4rem]  "" placeholder:opacity-65  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          }   border-b-[.1rem] h-full pt-[1.2rem] pb-[1.4rem]  "" placeholder:opacity-90  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                                 onChange={(e) => setInputValue(e.target.value)}
                                                 onFocus={onFocus}
                                                 onBlur={onBlur}

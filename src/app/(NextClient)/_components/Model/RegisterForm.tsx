@@ -36,8 +36,7 @@ const RegisterForm = (props: TProps) => {
             defaultValues: {
                   user_email: "",
                   user_password: "",
-                  user_first_name: "",
-                  user_last_name: "",
+               
                   confirm_password: "",
             },
             resolver: zodResolver(registerSchema),
@@ -63,31 +62,16 @@ const RegisterForm = (props: TProps) => {
       };
 
       return (
-            <div className="relative w-full mb-[1.6rem] h-max flex justify-start xl:justify-center items-center flex-col  gap-[2.8rem] rounded-[1.2rem] p-[.4rem_2rem] ">
-                  <div className="w-full flex flex-col items-center  ">
-                        <p className="text-[#3d52a2] font-semibold text-[2.8rem]">Tạo tài khoản</p>
-                        <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Tạo form nhanh chóng</span>
-                  </div>
-
+            <div className="relative w-full mb-[1.6rem] h-max flex justify-start xl:justify-center items-center flex-col  gap-[2.8rem] rounded-[1.2rem] p-[.4rem_0rem] ">
+                  <p className=" w-full flex flex-col gap-[0rem]  ">
+                        {/* <span className="text-text-theme text-[4.2rem]">Kuro</span>
+                        <span className="text-[#6262e5] text-[4.2rem]">form</span> */}
+                        <span className="text-[#71665c] font-semibold text-[2.8rem]">Tạo tài khoản 👋</span>
+                        <span className="text-[#858d8f] text-[1.2rem] mt-[.8rem]">Hãy thiết lập các cấu hình form của bạn ngay bây giờ</span>
+                  </p>
                   <div className=" w-full flex flex-col gap-[2.8rem] ">
-                        <form className="w-full flex flex-col justify-center  gap-[.6rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
-                              <Input<RegisterType>
-                                    FieldKey="user_first_name"
-                                    placeholder="Nhập họ của bạn"
-                                    type="text"
-                                    register={registerForm.register}
-                                    watch={registerForm.watch}
-                                    error={registerForm.formState.errors}
-                              />
-
-                              <Input<RegisterType>
-                                    FieldKey="user_last_name"
-                                    placeholder="Nhập tên của bạn"
-                                    type="text"
-                                    register={registerForm.register}
-                                    watch={registerForm.watch}
-                                    error={registerForm.formState.errors}
-                              />
+                        <form className="w-full flex flex-col justify-center  gap-[1.8rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
+                           
                               <Input<RegisterType>
                                     FieldKey="user_email"
                                     placeholder="email"
@@ -119,7 +103,7 @@ const RegisterForm = (props: TProps) => {
                                     textContent="Đăng kí"
                                     disabled={registerMutation.isPending}
                                     loading={registerMutation.isPending}
-                                    className="!w-full !h-[4rem] !bg-[#3d52a2] my-[1.6rem]"
+                                    className="!w-full !h-[4rem] !bg-[#71665c] my-[1.6rem]"
                               />
                         </form>
                         <SpaceLine content="Hoặc đăng nhập luôn bằng phương thức khác" />
@@ -136,7 +120,7 @@ const RegisterForm = (props: TProps) => {
                         <div className="w-full flex flex-col items-center gap-[.2rem] text-[1.4rem]">
                               <p className="text-[1.4rem]">
                                     Bạn đã có tài khoản?{" "}
-                                    <Link href={"/login"} className="text-[#3d52a2] underline font-semibold">
+                                    <Link href={"/login"} className="text-[#71665c] underline font-semibold">
                                           đăng nhập
                                     </Link>
                               </p>
