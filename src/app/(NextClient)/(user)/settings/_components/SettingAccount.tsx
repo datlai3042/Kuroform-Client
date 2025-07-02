@@ -13,13 +13,16 @@ import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpi
 import { addOneToastError, addOneToastSuccess } from "@/app/_lib/redux/toast.slice";
 import { v4 as uuid } from "uuid";
 
-const userUpdateSchema = registerSchema.pick({ user_first_name: true, user_last_name: true, user_email: true });
-type UserUpdateInfo = z.infer<typeof userUpdateSchema>;
+const userUpdateSchema = registerSchema.pick({ user_email: true });
+type UserUpdateInfo = z.infer<typeof userUpdateSchema> & {
+      user_first_name: string;
+      user_last_name: string;
+};
 
 const SettingAccount = () => {
       const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
       const updateAccountHook = useUpdateAccount();
-      const dispatch = useDispatch()
+      const dispatch = useDispatch();
       const formUpdate = useForm<UserUpdateInfo>({
             defaultValues: {
                   user_first_name: user?.user_first_name || "",
@@ -45,7 +48,6 @@ const SettingAccount = () => {
                               },
                         }),
                   );
-                  
             } else {
                   if (updateAccountHook.error) {
                         const { detail } = updateAccountHook.error!.payload;
@@ -105,8 +107,7 @@ const SettingAccount = () => {
                                     className="min-w-[10%] mt-[1rem] w-max p-[.8rem] h-[3.6rem] flex justify-center items-center gap-[.8rem] bg-color-main text-white rounded-lg"
                               >
                                     Cập nhập
-
-                                    {updateAccountHook.isPending && <LoadingSpinner color="#fff" width="min-w-[2rem]" height=" min-h-[2rem]"/>}
+                                    {updateAccountHook.isPending && <LoadingSpinner color="#fff" width="min-w-[2rem]" height=" min-h-[2rem]" />}
                               </button>
                         </>
                   )}
