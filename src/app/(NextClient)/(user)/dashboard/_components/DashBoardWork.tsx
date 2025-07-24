@@ -1,18 +1,14 @@
 "use client";
-import { Home, HomeIcon, LogOutIcon, Search, Settings } from "lucide-react";
-import Link from "next/link";
-import React, { useContext, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import AuthService from "@/app/_services/auth.service";
-import { usePathname, useRouter } from "next/navigation";
-import Image from "next/image";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/app/_lib/redux/store";
-import path from "path";
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
-import { onFocusSearch } from "@/app/_lib/redux/formEdit.slice";
 import ButtonLogOut from "@/app/(NextClient)/_components/ui/button/ButtonLogOut";
-
+import { onFocusSearch } from "@/app/_lib/redux/formEdit.slice";
+import { RootState } from "@/app/_lib/redux/store";
+import {  BarChartHorizontalBig ,Home, HomeIcon, Settings } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 const WorkItem = [
       {
             Title: "Trang chủ",
@@ -31,7 +27,6 @@ const WorkItem = [
             Href: "/settings",
       },
 ];
-
 const DashBoardWork = () => {
       const { theme } = useContext(ThemeContext);
 
@@ -44,12 +39,11 @@ const DashBoardWork = () => {
 
       const dispatch = useDispatch();
 
-
       const handleSearch = () => {
             dispatch(onFocusSearch({ focus: true }));
       };
 
-      const matchPathName = (link: string) => link === pathName 
+      const matchPathName = (link: string) => link === pathName;
 
       const urlProlife = `/profile/${user?.user_atlas}`;
 
@@ -57,7 +51,10 @@ const DashBoardWork = () => {
 
       return (
             <div className={`flex flex-col gap-[.8rem] text-[1.4rem] `}>
-                  <Link href={"/"} className={`nav ${colorTheme} ${matchPathName("/dashboard") ? "nav__isActive" : "nav__normal hover:bg-color-main "} group  `}>
+                  <Link
+                        href={"/"}
+                        className={`nav ${colorTheme} ${matchPathName("/dashboard") ? "nav__isActive" : "nav__normal hover:bg-color-main "} group  `}
+                  >
                         <HomeIcon size={18} />
                         <span className="font-medium">Trang chủ</span>
                   </Link>
@@ -69,16 +66,27 @@ const DashBoardWork = () => {
                         <Search size={18} />
                         <span className="font-medium">Tìm kiếm</span>
                   </button> */}
-
+                  <Link
+                        href={"/analysis"}
+                        className={`nav ${colorTheme} ${
+                              matchPathName("/analysis") ? "nav__isActive" : "nav__normal text-text-theme hover:bg-color-main"
+                        } group hover:text-[#fff]`}
+                  >
+                        <BarChartHorizontalBig  size={18}/>
+                     
+                        <span className="font-medium">Phân tích</span>
+                  </Link>
                   <Link
                         href={"/settings"}
-                        className={`nav ${colorTheme} ${matchPathName("/settings") ? "nav__isActive" : "nav__normal text-text-theme hover:bg-color-main"} group hover:text-[#fff]`}
+                        className={`nav ${colorTheme} ${
+                              matchPathName("/settings") ? "nav__isActive" : "nav__normal text-text-theme hover:bg-color-main"
+                        } group hover:text-[#fff]`}
                   >
                         <Settings size={18} />
                         <span className="font-medium">Cài đặt</span>
                   </Link>
 
-                <ButtonLogOut  className={`${colorTheme} nav nav__normal hover:bg-color-main`}/>
+                  <ButtonLogOut className={`${colorTheme} nav nav__normal hover:bg-color-main`} />
             </div>
       );
 };

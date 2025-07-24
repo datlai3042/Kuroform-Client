@@ -43,9 +43,9 @@ const FormModeLayout = ({ children, params }: { children: React.ReactNode; param
                   <LayoutSidebar>
                         {getFormQuery.data?.metadata.form !== null && (
                               <DivNative className={`bg-color-gap-empty  min-h-screen  h-max  flex flex-col  text-[1.4rem]   max-w-full `}>
-                                    <DivNative className={` w-full min-h-screen rounded-lg h-max  `}>
+                                    <DivNative className={` w-full min-h-screen rounded-lg  ${segment[0] === "edit" ? "h-max" : " h-screen"}`}>
                                           {segment[0] !== "edit" && getFormQuery.data?.metadata.form && (
-                                                <div className="  flex flex-col gap-[.6rem] ">
+                                                <div className={` ${segment[0] === "edit" ? "" : " h-full"}  flex flex-col gap-[.6rem] `}>
                                                       <HeaderHandlerLayout showHeaderAction={segment[1] === "edit"} />
 
                                                       <div className="flex-1  layout-down sm:mx-[.6rem]">

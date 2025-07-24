@@ -18,7 +18,7 @@ const LayoutSidebar = ({ children }: { children: React.ReactNode }) => {
       return (
             <div
                   className={`${gapSpace ? "" : ""} ${
-                        pathname === "/dashboard" ? "gap-[1rem]" : ""
+                        pathname === "/dashboard" ? "" : ""
                   } relative max-w-screen min-h-screen h-max w-full   flex   bg-color-gap-empty`}
             >
                   {openSidebar && <LeftSide />}

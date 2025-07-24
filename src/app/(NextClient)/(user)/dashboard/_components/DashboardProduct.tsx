@@ -14,7 +14,7 @@ const DashboardProduct = () => {
       const colorTheme = theme === "light" ? "text-text-theme hover:text-[#fff]" : "!text-text-theme ";
 
       return (
-            <div className={` flex flex-col gap-[.6rem] text-text-theme `}>
+            <div className={` flex flex-col gap-[1.2rem] text-text-theme `}>
                   <p className="pl-[.6rem] text-[1.2rem] ">Các đường dẫn khác</p>
 
                   <Link href={"/notification"} className={`nav ${colorTheme} ${pathName === "/notification" ? "nav__isActive" : "nav__normal hover:bg-color-main"}  `}>

@@ -72,16 +72,9 @@ const FormDeleteItem = (props: TProps) => {
                                     <div
                                           className={`${
                                                 theme === "light" ? "bg-transparent" : "bg-[#fff]"
-                                          }  min-w-[3rem] h-[3rem] rounded-full flex items-center justify-center`}
+                                          }  min-w-[3rem] h-[3rem]  flex items-center justify-center`}
                                     >
-                                          <Image
-                                                src={"/icon_core.png"}
-                                                width={20}
-                                                height={20}
-                                                alt="avatar"
-                                                unoptimized={true}
-                                                className="w-[3rem] h-[3rem] bg-[#fff] p-[.2rem] rounded-[.6rem]"
-                                          />
+                                         
                                     </div>
                               )}
                               <div className="w-[70%]">

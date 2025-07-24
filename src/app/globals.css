@@ -234,7 +234,7 @@ body.dark .ant-rate-star-second {
             --bg-space: #f4f6ff;
             /* --bg-module-other: #17174b; */
             --color-main: #3d52a2;
-
+            --form-empty-image: #444;
             --bg-module-other: #e1e1e1ca;
             /* --border-color-input: rgb(200 205 214 / 42%); */
             /* --border-color-input: rgb(169 169 204 / 74%); */
@@ -251,16 +251,17 @@ body.dark .ant-rate-star-second {
 
       body.dark {
             --bg-input-ans: #04091969;
-            --color-main: #2f844a;
-            --bg-form-nav: #393c73;
-            --color-gap-empty: #040429;
+            --color-main: #0c8ce9;
+            --bg-form-nav: #383838;
+            --color-gap-empty: #383838;
             /* --color-main: #3b36db; */
             --bg-answer-option: rgb(222 224 228);
+            --form-empty-image: #fff;
 
             /* --color-main: #35336a; */
             /* --color-section-theme: #0d1117; */
 
-            --color-section-theme: #08112b;
+            --color-section-theme: #2c2c2c;
             --text-theme: #ccc;
             --color-main-hover: rgb(229 231 235);
             --border-color: #14113c;
@@ -270,7 +271,7 @@ body.dark .ant-rate-star-second {
             --bg-space: #252525;
             --bg-module-other: #17174bb0;
             --border-color-input: rgb(209 213 219 / 27%);
-            --border-color-side: rgb(200 205 214 / 18%);
+            --border-color-side: #444;
             --bg-scrollbar-thumb-normal: rgba(203, 191, 191, 0.758);
             --bg-scrollbar-track-normal: #2c2c2c;
             --scrol-global-track: rgb(59 35 71 / 76%);
@@ -758,17 +759,27 @@ body.dark .ant-rate-star-second {
             @apply w-[1rem] aspect-square rounded-full bg-[#fff];
       }
 
-      .form-state__message--public {
+      /* .form-state__message--public {
             @apply bg-blue-600;
-      }
+      } */
 
-      .form-state__message--private {
+      /* .form-state__message--private {
             @apply bg-color-main;
+      } */
+      .form-state__message--private .text {
+            @apply text-color-main font-bold text-[1.4rem];
       }
 
-      .form-state__message--delete {
-            @apply bg-red-600;
+      .form-state__message--delete .text {
+            @apply text-red-600 font-bold text-[1.4rem];
       }
+
+      .form-state__message--public .text {
+            @apply text-blue-600 font-bold text-[1.4rem];
+      }
+      /* .form-state__message--delete {
+            @apply bg-red-600;
+      } */
 
       #custom-tabs .ant-tabs-tab {
             color: var(--text-theme) !important;

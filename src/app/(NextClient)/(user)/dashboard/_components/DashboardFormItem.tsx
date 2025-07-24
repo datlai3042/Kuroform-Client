@@ -24,11 +24,27 @@ const DashboardFormItem = (props: TProps) => {
                   prefetch={false}
                   href={`/form/${form._id}/summary`}
                   key={form._id}
-                  className="rounded-lg min-h-[16rem] text-[1.3rem]  w-full p-[1rem_2rem] max-w-full flex    justify-center gap-[1rem]   text-text-theme bg-bg-form-nav  border-[.1rem] border-[var(--border-form-item)]"
+                  className=" h-[30rem] text-[1.3rem]  w-full  max-w-full flex flex-col rounded-[1.6rem]    gap-[1.4rem]   text-text-theme bg-[var(--bg-form-nav)]  border-[.1rem] border-[var(--border-form-item)]"
             >
-                  <div className="w-[70%]  flex flex-col justify-center gap-[1rem] ">
-                        <div className="max-w-[70%] flex flex-col justify-center gap-[1.2rem] ">
-                              <FormStateProvider form_state={form.form_state} />
+                  {/* <FormStateProvider form_state={form.form_state} /> */}
+                  <div className="w-full flex flex-col items-center justify-center gap-[3rem]">
+                        <div className="w-full h-[18rem]">
+                              {form.form_avatar?.form_avatar_url ? (
+                                    <Image
+                                          src={form.form_avatar.form_avatar_url}
+                                          width={20}
+                                          height={20}
+                                          alt="avatar"
+                                          unoptimized={true}
+                                          className="w-full h-full  object-cover rounded-tl-[1.6rem] rounded-tr-[1.6rem]"
+                                    />
+                              ) : (
+                                    <div className="w-full h-full  bg-[var(--form-empty-image)] rounded-tl-[1.6rem] rounded-tr-[1.6rem]"> </div>
+                              )}
+                        </div>
+                  </div>
+                  <div className="w-full  flex flex-col justify-center gap-[1rem] p-[0rem_1rem]">
+                        <div className=" flex flex-col justify-center gap-[1.2rem] ">
                               <div
                                     dangerouslySetInnerHTML={{ __html: form?.form_title?.form_title_value || "Trống" }}
                                     className="max-w-[90%] h-[2.4rem] reset-editor truncate text-[1.6rem] text-color-main font-bold"
@@ -51,20 +67,6 @@ const DashboardFormItem = (props: TProps) => {
                                     Tỉ lệ: {calcPercentForm({ formAnswer: form.form_response, formView: form.form_views })}%
                               </div>
                         </DivNative>
-                  </div>
-                  <div className="w-[30%] flex flex-col items-center justify-center gap-[3rem]">
-                        <div className="w-[8rem] h-[8rem]">
-                              {form.form_avatar?.form_avatar_url && (
-                                    <Image
-                                          src={form.form_avatar.form_avatar_url}
-                                          width={20}
-                                          height={20}
-                                          alt="avatar"
-                                          unoptimized={true}
-                                          className="w-full h-full rounded-full object-cover"
-                                    />
-                              )}
-                        </div>
                   </div>
             </Link>
       );

@@ -25,26 +25,19 @@ const DashboardWorkspaceItemContent = (props: TProps) => {
                                           width={18}
                                           height={18}
                                           alt="icon"
-                                          className="w-[3rem] h-[3rem] bg-sec p-[.3rem] rounded-[.6rem]"
+                                          className="w-[3.4rem] h-[3.4rem] bg-color-section-theme p-[.3rem] rounded-[.6rem]"
                                           unoptimized={true}
                                     />
                               ) : (
                                     <div
                                           className={`${
                                                 theme === "light" ? "bg-transparent" : "bg-[#fff]"
-                                          }  min-w-[3rem] h-[3rem] rounded-full flex items-center justify-center`}
+                                          }  min-w-[3.4rem] h-[3.4rem]  flex items-center justify-center`}
                                     >
-                                          <Image
-                                                src={"/icon_core.png"}
-                                                width={20}
-                                                height={20}
-                                                alt="avatar"
-                                                unoptimized={true}
-                                                className="w-[3rem] h-[3rem] bg-[#fff] p-[.2rem] rounded-[.6rem]"
-                                          />
+                                          
                                     </div>
                               )}
-                              <div className="w-[70%]">
+                              <div className="w-[70%] text-[1.5rem]">
                                     <p
                                           className="max-w-[100%] truncate h-[2.6rem] reset-editor"
                                           dangerouslySetInnerHTML={{ __html: formCore.form_title.form_title_value || "Chưa tạo tiêu đề" }}

@@ -26,7 +26,7 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                   <label
                         style={{ color: focus ? "var(--color-main)" : "", fontWeight: focus ? 700 : "" }}
                         htmlFor={`${FieldKey}-${id}`}
-                        className="first-letter:uppercase text-[#3d4f58] font-semibold text-[1.4rem]"
+                        className="first-letter:uppercase text-color-main font-semibold text-[1.4rem]"
                   >
                         {placeholder}
                   </label>
@@ -41,7 +41,7 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                                     },
                               })}
                               onFocus={() => setFocus(true)}
-                              className="inline-block w-full min-h-[4.4rem] p-[.6rem_1.2rem] border-[.1rem] border-[rgb(136, 147, 151)] bg-color-section-theme opacity-100 rounded-[.3rem] text-text-theme  placeholder:text-[1.3rem] text-[1.4rem] outline outline-[.2rem]  focus:font-semibold outline-transparent focus:outline-color-main focus:outline-3 focus:border-transparent placeholder:opacity-100 "
+                              className="inline-block w-full min-h-[4.4rem] p-[.6rem_1.2rem] border-[.1rem] border-[rgb(136, 147, 151)] bg-color-section-theme opacity-100 rounded-[.3rem] text-text-theme  placeholder:text-[1.3rem] text-[1.4rem] outline outline-[.2rem]  focus:font-semibold outline-transparent focus:outline-color-main focus:outline-3 focus:border-transparent placeholder:opacity-100  border-[var(--border-color-side)]"
                               placeholder={input_placeholder}
                         />
 

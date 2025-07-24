@@ -14,7 +14,7 @@ const DashboardFormSearchItem = (props: TProps) => {
             <Link
             title={form?.form_title?.form_title_plain_text || form?.form_title?.form_title_value}
                   href={`/form/${form._id}/summary`}
-                  className=" hover:bg-color-main text-[#0bceb2] hover:text-[#fff]  p-[.8rem_1rem]  w-full min-h-[2.6rem]  max-h-[5.6rem] flex items-center gap-[1rem]"
+                  className=" hover:bg-color-main text-color-main hover:text-[#fff]  p-[.8rem_1rem]  w-full min-h-[2.6rem]  max-h-[5.6rem] flex items-center gap-[1rem]"
             >
                   <Image
                         src={"/assets/images/icon/logo/logo_home.png"}

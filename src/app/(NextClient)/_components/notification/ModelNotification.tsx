@@ -17,12 +17,12 @@ const ModelNotification = () => {
 	}, []);
 
 	return (
-		<div className="bg-color-section-theme text-text-theme rounded-3xl w-[52rem]  text-[1.4rem] max-h-[50rem] flex flex-col gap-[1.4rem] min-h-[4rem] h-max p-[3rem]  shadow-xl">
+		<div className="bg-color-section-theme text-text-theme rounded-3xl w-[54rem]  text-[1.4rem] max-h-[88vh] flex flex-col gap-[1.4rem] min-h-[4rem] h-max p-[3rem]  shadow-xl">
 			<p className="text-left text-[1.6rem]">Thông báo</p>
 
 			<div
 				onClick={(e) => e.stopPropagation()}
-				className=" overflow-y-scroll pb-[1rem] flex flex-col gap-[.5rem] "
+				className=" overflow-y-scroll pb-[1rem] pr-[2rem] flex flex-col gap-[.5rem] "
 			>
 				{notifications &&
 					notifications.map((notification) => {

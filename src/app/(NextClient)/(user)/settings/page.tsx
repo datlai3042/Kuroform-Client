@@ -24,7 +24,7 @@ const SettingPage = () => {
                         >
                               <SettingHeader />
                         </div>
-                        <div className="flex-1 min-h-[60rem] flex flex-col h-full text-text-theme bg-[#dcdcdc2e] p-[0rem_2.6rem_2rem_2.6rem] ">
+                        <div className="flex-1 min-h-[60rem] flex flex-col h-full text-text-theme bg-color-gap-empty p-[0rem_2rem_2rem_2rem] ">
                               <h3 className="my-[2rem] pl-[.8rem] !text-[2.3rem]">Cài đặt</h3>
                               <div className="w-full bg-[var(--color-section-theme)] flex-1 p-[2.8rem] ">
                                     <SettingSection tab={tab} setTab={setTab} />

@@ -12,7 +12,7 @@ const DashboardSearchResult = (props: TProps) => {
 
       const formSearchResult = useSearchFormName({ enabled: !!search, text: search });
       return (
-            <div className=" w-full max-w-[30rem] bg-color-section-theme min-h-full h-full max-h-max border-[.1rem] border-[var(--border-color-input)]">
+            <div className=" w-full  bg-color-section-theme min-h-full h-full max-h-max border-[.1rem] border-[var(--border-color-input)]">
                   {formSearchResult?.data?.metadata?.forms?.map((form) => <DashboardFormSearchItem form={form} key={form._id} />)}
 
                   {formSearchResult?.data?.metadata?.forms?.length === 0 && (

@@ -108,7 +108,7 @@ const ModalWorkSpace = ({
             <Portal>
                   <DivNative className="fixed inset-0 bg-[rgba(0,0,0,0.8)] z-[999] px-[1rem] flex justify-center items-center">
                         <div
-                              className="relative w-[80rem] max-w-[90vw]  xl:w-[80rem] h-[50rem]    flex flex-col bg-color-section-theme text-text-theme rounded-lg  p-[1.6rem_1rem] "
+                              className="relative  max-w-[90vw]  h-[50rem]    flex flex-col bg-color-section-theme text-text-theme rounded-lg  p-[1.6rem_1rem] "
                               onClick={(e) => e.stopPropagation()}
                         >
                               <button
