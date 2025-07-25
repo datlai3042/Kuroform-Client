@@ -68,12 +68,11 @@ const InputEmailAnswer = (props: TProps) => {
                         <InputContent formCore={formCore}>
                               <DivNative
                                     style={{...styleWrapper}}
-                                    className={`${isGoogleForm ? "rounded-[.8rem]" : "p-[.8rem_2.6rem]  rounded-inherit "} flex flex-col gap-[.3rem]  `}
+                                    className={`${isGoogleForm ? "rounded-[.8rem]" : "p-[1rem]  rounded-inherit "} flex flex-col gap-[.3rem]  `}
                               >
                                     <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}>
                                           <input
                                                 style={{
-                                                      borderBottom: ".1rem solid var(--border-color-input)",
 
                                                       ...RenderStyleInputAnswer.StyleTitle({
                                                             formCore,
@@ -85,7 +84,7 @@ const InputEmailAnswer = (props: TProps) => {
                                                 className={`
 							)}   ${
                                                 formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                          }   border-b-[.1rem] h-full py-[1.2rem] "" placeholder:opacity-65  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
+                                          }    h-full py-[1.2rem] "" placeholder:opacity-65  outline-none text-[1.7rem] placeholder:text-[1.3rem]`}
                                                 onChange={(e) => setInputValue(e.target.value)}
                                                 onFocus={onFocus}
                                                 onBlur={onBlur}
@@ -97,7 +96,7 @@ const InputEmailAnswer = (props: TProps) => {
                                                 //                   : `.1rem solid ${formCore.form_input_styles.color}`,
                                                 // }}
                                           />
-                                          <DivNative className="absolute z-[2] right-[1rem]" title={""}>
+                                          <DivNative className="absolute  top-[50%] translate-y-[-50%] z-[2] right-[1rem]" title={""}>
                                                 <AtSign className=" text-inherit opacity-50" size={18} />
                                           </DivNative>
                                     </DivNative>

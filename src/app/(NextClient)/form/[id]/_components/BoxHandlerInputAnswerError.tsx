@@ -39,8 +39,8 @@ const BoxHandlerInputAnswerError = (props: TProps) => {
                               ? "input-answer-invalid border-none  !text-[#e20f0f]"
                               : " "
                   } ${
-                        isGoogleForm ? "p-[1.4rem]" : " p-[.8rem_1.8rem]"
-                  } text-inherit  relative w-full min-h-[12rem]   h-max  duration-300 transition-all flex flex-col justify-center gap-[.8rem]  `}
+                        isGoogleForm ? "p-[2.4rem]" : " p-[.8rem_1.8rem]"
+                  } text-inherit  relative w-full min-h-[12rem]   h-max  duration-300 transition-all flex flex-col justify-center gap-[1.8rem]  `}
             >
                   {children}
             </div>

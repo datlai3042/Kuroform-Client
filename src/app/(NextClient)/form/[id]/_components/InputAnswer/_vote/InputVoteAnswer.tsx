@@ -61,7 +61,7 @@ const InputVoteAnswer = (props: TProps) => {
                         <InputContent formCore={formCore}>
                               <DivNative
                                     className={`${
-                                          isGoogleForm ? "" : "p-[0rem_2.6rem]  rounded-inherit-[.8rem]"
+                                          isGoogleForm ? "" : " rounded-inherit-[.8rem]"
                                     } relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}
                               >
                                     <DivNative className="flex flex-col gap-[1rem] ">

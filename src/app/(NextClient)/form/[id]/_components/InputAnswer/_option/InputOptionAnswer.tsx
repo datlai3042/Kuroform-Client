@@ -87,7 +87,7 @@ const InputOptionAnswer = (props: TProps) => {
                               <DivNative className="flex flex-col gap-[.3rem] text-[1.4rem]">
                                     <DivNative
                                           className={`${
-                                                isGoogleForm ? "" : " p-[0rem_2.6rem]  rounded-inherit-[.8rem]"
+                                                isGoogleForm ? "" : "   rounded-inherit-[.8rem]"
                                           } relative min-h-[5rem] h-max flex flex-col gap-[1.6rem]  `}
                                     >
                                           {
@@ -108,10 +108,10 @@ const InputOptionAnswer = (props: TProps) => {
                                     </DivNative>
                               </DivNative>
                               {choose?.option_value && (
-                                    <p className={`${color} text-[1.4rem]`}>
-                                          Đã chọn:
+                                    <p className={`${color} text-[1.4rem] mt-[1.4rem]`}>
+                                         {'==>'} Đã chọn:
                                           {choose?.option_value ? (
-                                                <span className="ml-[.4rem] border-b-[.2rem] border-gray-400">{choose.option_value}</span>
+                                                <span className="ml-[.4rem] border-b-[.2rem] border-gray-400 text-color-main font-bold">{choose.option_value}</span>
                                           ) : (
                                                 <span className="ml-[.6rem] border-b-[.2rem] border-color-main uppercase text-color-main font-medium pb-[.4rem]">
                                                       Chưa chọn

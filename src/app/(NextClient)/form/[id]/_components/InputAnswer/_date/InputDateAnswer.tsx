@@ -105,48 +105,42 @@ const InputDateAnswer = (props: TProps) => {
                         <InputContent formCore={formCore}>
                               <DivNative
                                     className={`${
-                                          formCore.form_styles === "GOOGLE_FORM" ? "" : " p-[0rem_2.6rem]  rounded-inherit-[.8rem]"
+                                          formCore.form_styles === "GOOGLE_FORM" ? "" : "  rounded-inherit-[.8rem]"
                                     } relative flex flex-col mt-[1.4rem]   justify-between gap-[.8rem] `}
                               >
-                                    <p
-                                          className={`
-                                        
-                                          text-[1.4rem] text-inherit`}
+                                    <div
+                                          style={{ ...styleWrapper }}
+                                          className={`${
+                                                isGoogleForm ? "" : " p-[1rem]  rounded-inherit-[.8rem]"
+                                          } relative min-h-[4.8rem] h-max flex justify-between items-center gap-[.5rem] py-[1.2rem]`}
                                     >
-                                          Thời gian đang chọn là:
-                                          {dateRender ? (
+                                          {dateRender && (
                                                 <>
-                                                      <span className=" font-semibold"> {dateRender}</span>
+                                                      <span className=" font-semibold text-[1.4rem]"> {dateRender}</span>
                                                 </>
-                                          ) : (
-                                                <span
-                                                      style={{ borderColor: formCore?.form_input_styles.color }}
-                                                      className="ml-[.6rem] border-b-[.2rem] uppercase  font-semibold pb-[.4rem]"
-                                                >
-                                                      Chưa chọn
-                                                </span>
-                                          )}
-                                    </p>
+                                          ) }
 
-                                    <button
-                                          style={{ backgroundColor: formCore.form_input_styles.color, color: "#fff" }}
-                                          onClick={() => setOpenModel((prev) => !prev)}
-                                          className="relative w-max bg-color-main  my-[.8rem] text-[#fff] p-[.2rem_.6rem] sm:p-[.5rem_1rem] rounded-[.4rem] flex items-center gap-[.3rem] text-[1.3rem]"
-                                    >
-                                          {dateRender ? <span>{dateRender}</span> : <span className="whitespace-pre">Click vào để chọn thời gian</span>}
-                                          <CalendarDays size={20} className="aspect-square w-[2rem] sm:w-[3rem]" />
+                                          <button
+                                                style={{ backgroundColor: formCore.form_input_styles.color, color: "#fff" }}
+                                                onClick={() => setOpenModel((prev) => !prev)}
+                                                className="relative ml-auto w-max bg-color-main  my-[.8rem] text-[#fff] p-[.2rem_.6rem] sm:p-[.5rem_1rem] rounded-[.4rem] flex items-center gap-[.3rem] text-[1.3rem]"
+                                          >
+                                                {dateRender ? <span>{dateRender}</span> : <span className="whitespace-pre">Click vào để chọn thời gian</span>}
+                                                <CalendarDays size={20} className="aspect-square w-[2rem] sm:w-[3rem]" />
 
-                                          {openModel && (
-                                                <div
-                                                      className={`${isGoogleForm ? "left-0" : "right-0"} absolute z-[3] top-[4.2rem] xl:top-[110%] `}
-                                                      onFocus={onFocus}
-                                                >
-                                                      <ClickOutSide setOpenModel={setOpenModel}>
-                                                            <Calendar onChange={handleOnChange} callbackCancel={actionCancle} initialDate={date} />
-                                                      </ClickOutSide>
-                                                </div>
-                                          )}
-                                    </button>
+                                                {openModel && (
+                                                      <div
+                                                            className={`${isGoogleForm ? "left-0" : "right-0"} absolute z-[3] top-[4.2rem] xl:top-[110%] `}
+                                                            onFocus={onFocus}
+                                                      >
+                                                            <ClickOutSide setOpenModel={setOpenModel}>
+                                                                  <Calendar onChange={handleOnChange} callbackCancel={actionCancle} initialDate={date} />
+                                                            </ClickOutSide>
+                                                      </div>
+                                                )}
+                                          </button>
+                                    </div>
+                                 
                               </DivNative>
 
                               {inputItemInArrayGlobal?.globalError?.state && (

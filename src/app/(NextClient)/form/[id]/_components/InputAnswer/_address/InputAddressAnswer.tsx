@@ -66,7 +66,7 @@ const InputAddressAnswer = (props: TProps) => {
                                              <InputContent formCore={formCore}>
 
                               <DivNative
-                                    className={`${isGoogleForm ? "" : " p-[0rem_2.6rem]  rounded-inherit-[.8rem]"} relative flex flex-col items-start gap-[1rem]  `}
+                                    className={`${isGoogleForm ? "" : "   rounded-inherit-[.8rem]"} relative flex flex-col items-start gap-[1rem]  `}
                               >
                                     <div className="w-full flex flex-col gap-[1rem] ">
                                           <ModelAddress

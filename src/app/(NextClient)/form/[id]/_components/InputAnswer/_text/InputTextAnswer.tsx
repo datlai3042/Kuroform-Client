@@ -78,7 +78,7 @@ const InputTextAnswer = (props: TProps) => {
                         <InputContent formCore={formCore}>
                               <DivNative
                                     style={{ ...styleWrapper }}
-                                    className={`${isGoogleForm ? "" : "p-[.8rem_2.6rem]  rounded-inherit-[.8rem]"} flex flex-col gap-[.3rem] `}
+                                    className={`${isGoogleForm ? "" : "p-[1rem]  rounded-inherit-[.8rem]"} flex flex-col gap-[.3rem] `}
                               >
                                     <DivNative className={` relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}>
                                           <DivNativeRef
@@ -91,7 +91,7 @@ const InputTextAnswer = (props: TProps) => {
                                                 ref={divContentRef}
                                                 className={`${
                                                       formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-inherit w-[90%]"
-                                                }  heading-answer "" placeholder:opacity-65 group min-h-[2rem] py-[1.2rem] text-[1.7rem] break-words whitespace-pre-wrap h-max border-b-[.1rem] border-[var(--border-color-input)]  outline-none resize-none `}
+                                                }  heading-answer "" placeholder:opacity-65 group min-h-[2rem]  text-[1.7rem] break-words whitespace-pre-wrap h-max  outline-none resize-none `}
                                                 onClick={() => divContentRef.current?.focus()}
                                                 onBlur={(e) => onBlur(e)}
                                                 onFocus={onFocus}
@@ -101,7 +101,7 @@ const InputTextAnswer = (props: TProps) => {
                                                 suppressContentEditableWarning={true}
                                                 tabIndex={0}
                                           />
-                                          <p className="absolute top-[50%] right-[1rem] text-[1.2rem]">
+                                          <p className="absolute top-[50%] translate-y-[-50%] right-[1rem] text-[1.2rem]">
                                                 <MinMaxInput value={inputItemInArrayGlobal.input?.value as string} inputItem={inputItem} />
                                           </p>
                                     </DivNative>

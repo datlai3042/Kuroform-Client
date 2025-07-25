@@ -70,12 +70,12 @@ const HeaderFormAnswer = (props: TProps) => {
                   className={`${
                         formCore?.form_avatar?.form_avatar_url || formCore?.form_avatar_state
                               ? formCore.form_styles === "GOOGLE_FORM"
-                                    ? "mt-[7rem]"
+                                    ? "mt-[7rem] "
                                     : "mt-[5rem]"
                               : ""
                   } ${
                         formCore.form_styles === "GOOGLE_FORM"
-                              ? "border-[.1rem] !border-t-[1.4rem]   border-[var(--border-color-input)] bg-color-section-theme rounded-2xl"
+                              ? "border-[.1rem] !border-t-[1.4rem] min-h-[15rem]  border-[var(--border-color-input)] bg-color-section-theme rounded-2xl"
                               : ""
                   } relative w-full  m h-max p-[0rem_3rem] flex flex-col gap-[2rem]   break-words	   `}
             >

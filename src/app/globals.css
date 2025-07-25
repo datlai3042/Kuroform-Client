@@ -166,7 +166,6 @@ body.dark .ant-rate-star-second {
 
             --destructive: 0 84.2% 60.2%;
             --destructive-foreground: 210 40% 98%;
-            --form-theme-dark: #08112b;
 
             --border: 214.3 31.8% 91.4%;
             --input: 214.3 31.8% 91.4%;
@@ -205,7 +204,6 @@ body.dark .ant-rate-star-second {
             --chart-normal: 242.18deg 35.03% 30.78%;
             --chart-custom-v1: 160, 60%, 45%;
             --form-theme-light: #fff;
-            --form-theme-dark: #08112b;
             --form-theme-light-color: #000;
             --form-theme-dark-color: #fff;
             --scrol-global-track: rgb(208 204 210 / 76%);
@@ -217,6 +215,7 @@ body.dark .ant-rate-star-second {
       }
 
       body.light {
+            --bg-btn-func: #3d52a2;
             --scrol-global-track: rgb(208 204 210 / 76%);
             --scrol-global-thumb: #abb1bae8;
             --bg-form-nav: #fff;
@@ -226,6 +225,8 @@ body.dark .ant-rate-star-second {
             --bg-scrollbar-track-normal: #e9e2e2;
             --bg-answer-option: rgb(180 183 189 / 42%);
             --color-section-theme: #fefefe;
+            --form-theme-dark: #fefefe;
+
             --text-theme: #000;
             --border-color: hwb(0 10% 88% / 0.189);
             --bg-model: #eef1f9;
@@ -250,6 +251,7 @@ body.dark .ant-rate-star-second {
       }
 
       body.dark {
+            --bg-btn-func: #3f3e41bd;
             --bg-input-ans: #04091969;
             --color-main: #0c8ce9;
             --bg-form-nav: #383838;
@@ -257,6 +259,7 @@ body.dark .ant-rate-star-second {
             /* --color-main: #3b36db; */
             --bg-answer-option: rgb(222 224 228);
             --form-empty-image: #fff;
+            --form-theme-dark: #2c2c2c;
 
             /* --color-main: #35336a; */
             /* --color-section-theme: #0d1117; */
@@ -822,6 +825,13 @@ body.dark .ant-rate-star-second {
       }
       #custom-tabs .ant-tabs-nav::before {
             border-bottom: 0.1rem solid var(--border-color-input) !important;
+      }
+
+      .btn-func {
+            background-color: var(--bg-btn-func) !important;
+            font-size: 1.2rem !important;
+            gap: .8rem  !important;
+            height: 3rem !important;
       }
       .hidden-border-table table,
       th,

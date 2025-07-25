@@ -18,7 +18,7 @@ const ButtonSubmitDesign = (props: ButtonNativeProps) => {
                   <button
                         {...props}
                         style={{ backgroundColor: buttonBg || "" }}
-                        className="bg-color-main text-center px-[1rem]  min-w-[7rem] w-max  h-[3rem]  text-white rounded-[.4rem]  text-[1.5rem]"
+                        className="bg-color-main text-center px-[1rem]  min-w-[7rem] w-max  h-[3rem]  text-white rounded-[.4rem]  text-[1.5rem] btn-func"
                   >
                         <span style={{ color: buttonColor }}>{formCore.form_button_text}</span>
                   </button>

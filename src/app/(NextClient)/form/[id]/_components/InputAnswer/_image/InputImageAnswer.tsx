@@ -19,6 +19,8 @@ import InputAnswerWrapper from "../InputAnswerWrapper";
 import InputImageTitle from "./InputImageTitle";
 import InputAnswerTitle from "../../InputAnswerTitle";
 import InputContent from "../InputContent";
+import RenderStyleInputAnswer from "../constant/RenderStyleInputAnswer";
+import { renderInputStyles } from "@/app/utils/form.utils";
 
 type TProps = {
       inputItem: InputCore.InputImage.InputTypeImage;
@@ -83,6 +85,7 @@ const InputImageAnswer = (props: TProps) => {
       }, [filePreview]);
       const isError = write || inputItemInArrayGlobal?.globalError?.state;
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
+      const styleWrapper = renderInputStyles(formCore?.form_input_styles, formCore);
 
       return (
             <InputAnswerWrapper formCore={formCore} inputItem={inputItem}>
@@ -91,33 +94,33 @@ const InputImageAnswer = (props: TProps) => {
                         <InputContent formCore={formCore}>
                               <DivNative
                                     className={`${
-                                          isGoogleForm ? "" : " p-[0rem_2.6rem]  rounded-inherit-[.8rem]"
+                                          isGoogleForm ? "" : "   rounded-inherit-[.8rem]"
                                     } text-inherit relative flex flex-col  items-center justify-between gap-[1rem]  `}
                               >
                                     <DivNative
                                           className={`${
-                                                formCore.form_styles === "GOOGLE_FORM" ? " gap-[1.4rem]" : " gap-0"
-                                          } w-full     flex flex-col gap-[1rem]  justify-start   `}
+                                                formCore.form_styles === "GOOGLE_FORM" ? " gap-[1.4rem]" : " gap-[1.4rem]"
+                                          } w-full     flex flex-col   justify-start   `}
                                     >
-                                          <div className=" flex justify-between items-center gap-[1rem] flex-wrap">
-                                                <p className="w-max text-[1.3rem] ">Vui lòng chọn các file JPG, JPEG,PNG</p>
-                                                <button
-                                                      onClick={handleClick}
-                                                      style={{ backgroundColor: formCore.form_input_styles.color, color: "#fff" }}
-                                                      className="p-[.3rem_.6rem] bg-color-main text-[#fff] text-[1.4rem] rounded-[.4rem]"
-                                                >
-                                                      {(inputItemInArrayGlobal.input?.value as string) ? "Tải ảnh khác" : "Tải ảnh lên"}
-                                                      <input type="file" hidden={true} ref={inputRef} onChange={handleUpload} accept=".jpg, .jpeg, .png" />
-                                                </button>
+                                          <div
+                                                onClick={handleClick}
+                                                className="bg-color-main min-h-[14rem] text-[1.4rem] cursor-pointer rounded-lg flex justify-center items-center text-[#fff]"
+                                          >
+                                                {(inputItemInArrayGlobal.input?.value as string) ? "Tải ảnh khác" : "Tải ảnh lên"}
+                                                <input type="file" hidden={true} ref={inputRef} onChange={handleUpload} accept=".jpg, .jpeg, .png" />
                                           </div>
-
-                                          {(inputItemInArrayGlobal.input?.value as string) && !uploadFileFormAnswerAPI.isPending ? (
-                                                <UploadSuccess />
-                                          ) : uploadFileFormAnswerAPI.isPending ? (
-                                                <UploadPending />
-                                          ) : (
-                                                <UploadNone />
-                                          )}
+                                          <div className="flex justify-between">
+                                                {(inputItemInArrayGlobal.input?.value as string) && !uploadFileFormAnswerAPI.isPending ? (
+                                                      <UploadSuccess />
+                                                ) : uploadFileFormAnswerAPI.isPending ? (
+                                                      <UploadPending />
+                                                ) : (
+                                                      <UploadNone />
+                                                )}
+                                                <div className=" flex justify-between items-center gap-[1rem] flex-wrap">
+                                                      <p className="w-max text-[1.3rem] ">Vui lòng chọn các file JPG, JPEG,PNG</p>
+                                                </div>
+                                          </div>
                                     </DivNative>
                                     {uploadFileFormAnswerAPI.isPending ||
                                           (!tempMode && !!inputItemInArrayGlobal.input?.value && (

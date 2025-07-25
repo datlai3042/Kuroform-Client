@@ -101,9 +101,6 @@ const ModalWorkSpace = ({
       forms: FormCore.Form[];
       setOpenWorkspace: React.Dispatch<SetStateAction<boolean>>;
 }) => {
-      const pathName = usePathname();
-      useDisableBodyScroll();
-      const formIsFocusing = pathName.startsWith("/form") && pathName?.split("/form")[1].split("/edit")[0].slice(1);
       return (
             <Portal>
                   <DivNative className="fixed inset-0 bg-[rgba(0,0,0,0.8)] z-[999] px-[1rem] flex justify-center items-center">

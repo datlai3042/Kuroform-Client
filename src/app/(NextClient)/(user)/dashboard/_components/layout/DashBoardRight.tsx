@@ -21,10 +21,7 @@ import useGetAllFormUser from "@/app/hooks/useGetAllFormUser";
 import LoadingClient from "@/app/(NextClient)/_components/LoadingClient";
 
 const DashBoardRight = () => {
-      const { openSidebar, setOpenSidebar } = useContext(SidebarContext);
-
-      const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
-      const [expand, setExpand] = useState(false);
+     
 
       return (
             <div className={`  min-h-screen bg-color-gap-empty    h-max   flex flex-col   text-[1.4rem] pb-[1rem] px-0`}>

@@ -15,6 +15,7 @@ type TProps = {
       config: FormCore.Form;
       defaultValue: string;
       styleObj: Record<string, string | number>;
+      placeholder?: string
 };
 
 const EditorWriter = (props: TProps) => {
@@ -125,11 +126,14 @@ const EditorWriter = (props: TProps) => {
       return (
             <div style={styleObj}>
                   <Editor
+
+                  placeholder={props?.placeholder || ''}
                         key={namespace}
                         editorState={editorState}
                         onBlur={() => {
                               const content = editorState.getCurrentContent();
                               const plainText = content.getPlainText();
+                              console.log({content, plainText})
                               onUpdate(html, plainText?.replaceAll("\\n", ""));
                         }}
                         onChange={(state) => {

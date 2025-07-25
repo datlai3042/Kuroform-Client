@@ -38,8 +38,8 @@ const InputAnswerWrapper = (props: TProps) => {
                         width: formCore?.form_styles === "GOOGLE_FORM" ? "100%" : `${width}%`,
                         border: formCore?.form_styles === "GOOGLE_FORM" ? "" : "none",
                   }}
-                  className={`${color} ${formCore.form_styles !== "GOOGLE_FORM" ? " border-[.1rem] border-[var(--border-color-input)]" : ""}
-                  ${formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme  w-[55%]" : "bg-transparent w-[90%]"} 
+                  className={`${color} ${formCore.form_styles !== "GOOGLE_FORM" ? " border-[.1rem]  border-[var(--border-color-input)]" : ""}
+                  ${formCore.form_styles === "GOOGLE_FORM" ? "bg-color-section-theme rounded-[1.2rem] w-[55%]" : "bg-transparent w-[90%]"} 
                   control-w-input w-full min-h-[12rem] h-max   `}
             >
                   {children}

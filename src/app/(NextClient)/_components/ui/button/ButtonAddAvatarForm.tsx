@@ -38,7 +38,7 @@ const ButtonAddAvatarForm = (props: ButtonAddAvatarFormProps) => {
                   {...buttonProps}
                   className={` ${
                         buttonProps.className ? buttonProps.className : ""
-                  } btn-primarily bg-color-main min-w-[14rem]  w-max  h-[3.6rem] flex items-center sm:justify-center gap-[.5rem]   rounded-[.4rem]  font-bold text-[#fff] `}
+                  } btn-primarily bg-color-main min-w-[14rem]  w-max  h-[3.6rem] flex items-center sm:justify-center gap-[.5rem]   rounded-[.4rem]  font-bold text-[#fff] btn-func `}
                   onClick={onAddAvatar}
             >
                   <Hexagon />

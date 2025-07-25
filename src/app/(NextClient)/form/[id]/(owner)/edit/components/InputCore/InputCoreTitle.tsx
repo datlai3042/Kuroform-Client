@@ -69,10 +69,12 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
                   {modeScreen === "NORMAL" && (
                         <>
                               <EditorWriter
+                                    placeholder="Nhập title Form"
                                     key={value}
                                     defaultValue={value}
                                     namespace="title"
                                     onUpdate={(rest, plainText) => {
+                                          console.log({ rest, plainText });
                                           if (plainText?.length > 200) {
                                                 dispatch(
                                                       addOneToastError({
@@ -86,6 +88,12 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
                                                 );
                                                 return;
                                           }
+                                          if (!plainText) {
+                                                onChangeTitle("", plainText);
+
+                                                return;
+                                          }
+
                                           onChangeTitle(rest, plainText);
                                     }}
                                     config={formCore}

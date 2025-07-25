@@ -94,11 +94,11 @@ const Calendar = (props: TProps) => {
                         ev.stopPropagation();
                         ev.nativeEvent.stopImmediatePropagation();
                   }}
-                  className=" max-w-full  w-[23rem] xl:w-[44rem] h-max min-h-[33rem] xl:min-h-[31rem] text-[1rem] flex flex-col gap-[.2rem] xl:gap-[1rem]  rounded-2xl  text-[#000]"
+                  className=" max-w-full   w-[23rem] xl:w-[36rem] h-max min-h-[33rem] xl:min-h-[31rem] text-[1rem] flex flex-col gap-[.2rem] xl:gap-[.6rem]  rounded-2xl  text-[#000]"
             >
                   <div className="w-full flex flex-col xl:flex-row xl:items-center gap-[1rem] justify-between bg-color-main text-[#fff] p-[1.4rem] xl:p-[1.6rem_1.4rem] rounded-[.6rem_.6rem_0rem_0rem]">
                         <span className=" text-[1.3rem]">
-                              Ngày đang chọn là: {generateFullDateStringV2({ day: pickDate.day, month: pickDate.month, year: pickDate.year })}{" "}
+                            {generateFullDateStringV2({ day: pickDate.day, month: pickDate.month, year: pickDate.year })}{" "}
                         </span>
 
                         <div className="flex items-center gap-[1rem]  flex-1">
@@ -122,11 +122,11 @@ const Calendar = (props: TProps) => {
                   </div>
                   <div
                         onClick={(e) => e.stopPropagation()}
-                        className="bg-[#1a2a78] flex w-[23rem] xl:w-[44rem] flex-col p-[.8rem] xl:p-[2rem_2.4rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] "
+                        className="flex bg-[#fff] w-[23rem] xl:w-[36rem] flex-col p-[.8rem] xl:p-[1rem] border-[.1rem] border-[var(--border-color-side)] rounded-[.4rem] "
                   >
                         <div className="w-full flex xl:justify-center">
                               {name_in_week.map((day_name, i) => (
-                                    <p className="w-[3.4rem] xl:w-[6rem] text-[#fff] h-[3rem]  flex justify-center items-center" key={day_name + i}>
+                                    <p className="w-[3.4rem] xl:w-[4.5rem]  h-[3rem]  flex justify-center items-center" key={day_name + i}>
                                           <span className="hidden xl:inline">{day_name}</span>
                                           <span className="inline xl:hidden">
                                                 {day_name !== "Chủ nhật" ? day_name.replace("Thứ", "T") : day_name.replace("Chủ nhật", "CN")}
@@ -140,10 +140,10 @@ const Calendar = (props: TProps) => {
                                           {week.week_menber.map((detail) => (
                                                 <div
                                                       key={detail.date_full}
-                                                      className="w-[3.4rem] !h-[2.8rem] xl:w-[5.8rem] xl:!h-[3rem] flex items-center justify-center"
+                                                      className="w-[3.4rem] !h-[2.8rem] xl:w-[4.5rem] xl:!h-[3rem] flex items-center justify-center"
                                                 >
                                                       <button
-                                                            style={{ opacity: detail.state !== "current" ? ".4" : ".5" }}
+                                                            style={{ opacity: detail.state !== "current" ? "" : "" }}
                                                             onClick={(e) => {
                                                                   e.stopPropagation();
                                                                   setMonth(detail.month);
@@ -152,7 +152,7 @@ const Calendar = (props: TProps) => {
                                                             }}
                                                             className={`${styleEffect.renderStyleDateItem(
                                                                   detail,
-                                                            )} opacity-70 w-[2.2rem] !h-[2.2rem] xl:w-[3rem] xl:!h-[3rem] rounded-full bg-[#fff]  text-[#000] `}
+                                                            )} opacity-70 w-[2.2rem] !h-[2.2rem] xl:w-[2rem] xl:!h-[2rem] rounded-full bg-[#fff]  text-[#000] `}
                                                       >
                                                             <span>{detail.day}</span>
                                                       </button>
@@ -163,20 +163,20 @@ const Calendar = (props: TProps) => {
                         </div>
                   </div>
 
-                  <div className="flex bg-[#1a2a78] rounded-lg  text-[1.2rem]  flex-col xl:flex-row xl:items-center justify-end gap-[2rem] xl:gap-0 p-[.8rem] xl:px-[1.4rem]">
+                  <div className="flex  rounded-lg  text-[1.2rem]  flex-col xl:flex-row xl:items-center justify-end gap-[2rem] xl:gap-0 p-[.8rem] xl:px-[1.4rem]">
                         <div className="flex justify-end gap-[.6rem]">
                               <button
                                     onClick={(e) => {
                                           e.stopPropagation();
                                           callbackCancel && callbackCancel();
                                     }}
-                                    className="p-[.5rem] text-[1.3rem] xl:p-[.5rem] rounded-[.4rem] bg-red-600 text-[#fff]  min-w-[6rem] opacity-85 hover:opacity-100 "
+                                    className="p-[.5rem] !h-[2.8rem] text-[1.2rem] xl:p-[.5rem] rounded-[.4rem] bg-red-600 text-[#fff]  min-w-[6rem] opacity-85 hover:opacity-100 "
                               >
                                     Hủy
                               </button>
                               <button
                                     onClick={onChangeReturn}
-                                    className="p-[.5rem] text-[1.3rem] xl:p-[.5rem] rounded-[.4rem] bg-color-main text-[#fff]  min-w-[6rem] opacity-85 hover:opacity-100 "
+                                    className="p-[.5rem] !h-[2.8rem] text-[1.2rem] xl:p-[.5rem] rounded-[.4rem] bg-color-main text-[#fff]  min-w-[6rem] opacity-85 hover:opacity-100 "
                               >
                                     Xác nhận
                               </button>

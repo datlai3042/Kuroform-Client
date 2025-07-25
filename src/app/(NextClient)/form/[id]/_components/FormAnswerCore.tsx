@@ -64,7 +64,7 @@ const FormAnswerCore = (props: TProps) => {
             if (formCore.form_themes === "DARK") {
                   document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
                   if (formCore.form_styles === "GOOGLE_FORM") {
-                        document.body.style.setProperty("--color-section-theme", "#11183d");
+                        document.body.style.setProperty("--color-section-theme", "#2c2c2c");
                   } else {
                         document.body.style.setProperty("--color-section-theme", "transparent");
                   }
@@ -78,7 +78,6 @@ const FormAnswerCore = (props: TProps) => {
       }, [formCore.form_themes, theme]);
 
       const renderBgColor = theme === "light" ? "transparent" : "var(--bg-dark-readOnly)";
-      const bgButtonDarkMode = theme === "light" ? {} : { background: "var(--color-main)" };
 
       const formThemes = renderFormThemeAnswer(formCore);
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
@@ -104,7 +103,7 @@ const FormAnswerCore = (props: TProps) => {
                                     isGoogleForm ? "w-full" : `w-[94vw] md:w-[60vw]  mx-auto ${formThemes}`
                               } rounded-lg`}
                         >
-                              <DivNative className={`${isGoogleForm ? "gap-[0rem]" : "gap-[0rem]"} flex flex-col  pb-[20rem] `}>
+                              <DivNative className={`${isGoogleForm ? "gap-[4rem]" : "gap-[0rem]"} flex flex-col  pb-[20rem] `}>
                                     <FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
                                           <RenderInputAnswers formCore={formCore} />
                                     </FormAnswerProvider>
