@@ -24,7 +24,7 @@ const InputCorePhone = (props: TProps) => {
       const InputPhone = (
             <DivNative
                   style={{ color: formCore.form_input_styles.color || "var(--text-text-theme)" }}
-                  className="flex flex-col gap-[1rem] text-text-theme  bg-transparent"
+                  className="flex flex-col gap-[1.6rem] text-text-theme  bg-transparent"
             >
                   <SpanNative
                         textContent="Số điện thoại"

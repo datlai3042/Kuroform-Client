@@ -4,7 +4,7 @@ import React from "react";
 import BoxLoading from "../BoxLoading";
 
 export interface ButtonCustomProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	textContent: string;
+	textContent: string | React.ReactNode;
 	loading?: boolean;
 }
 

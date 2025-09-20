@@ -50,10 +50,17 @@ const Notification = () => {
                   {openModelNotification && (
                         <Portal>
                               <div className="fixed top-[0] right-[0rem] z-[999] bg-[rgba(0,0,0,.8)] w-screen h-screen">
-                                    <div className="absolute z-[999] top-[4.7rem] right-[1rem] xl:right-[5rem]">
-                                          <ClickOutSide setOpenModel={setOpenNotification}>
-                                                <ModelNotification />
-                                          </ClickOutSide>
+                                    <div
+                                          className={`${openModelNotification ? 'animate-showLeft': 'animate-hideLeft'}  fixed top-0 left-0 h-screen  z-[999] `}
+                                          onClick={() => {
+                                                setOpenNotification(false);
+                                          }}
+                                    >
+                                          <ModelNotification
+                                                onClose={() => {
+                                                      setOpenNotification(false);
+                                                }}
+                                          />
                                     </div>
                               </div>
                         </Portal>

@@ -1,7 +1,7 @@
 import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvider";
 import { TableCell } from "@/components/ui/table";
 import { FormCore } from "@/type";
-import { Eye, Pencil } from "lucide-react";
+import { Eye, Pen, Pencil } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useContext } from "react";
@@ -17,8 +17,8 @@ const DashboardWorkspaceItemContent = (props: TProps) => {
 
       return (
             <>
-                  <TableCell className="w-[54rem] group-hover:text-color-main">
-                        <Link href={`/form/${formCore._id}/summary`} className="w-[54rem] flex items-center gap-[1.6rem] ">
+                  <TableCell className=" group-hover:text-color-main ">
+                        <Link href={`/form/${formCore._id}/summary`} className=" flex items-center gap-[1.6rem] ">
                               {formCore.form_avatar?.form_avatar_url ? (
                                     <Image
                                           src={formCore.form_avatar?.form_avatar_url || ""}
@@ -30,14 +30,12 @@ const DashboardWorkspaceItemContent = (props: TProps) => {
                                     />
                               ) : (
                                     <div
-                                          className={`${
-                                                theme === "light" ? "bg-transparent" : "bg-[#fff]"
-                                          }  min-w-[3.4rem] h-[3.4rem]  flex items-center justify-center`}
+                                          className={`bg-color-main min-w-[3.4rem] h-[3.4rem] rounded-[.6rem]  flex items-center justify-center`}
                                     >
-                                          
+                                          <Pen size={14} className="text-[#fff]"/>
                                     </div>
                               )}
-                              <div className="w-[70%] text-[1.5rem]">
+                              <div className="w-[30rem] text-[1.5rem]">
                                     <p
                                           className="max-w-[100%] truncate h-[2.6rem] reset-editor"
                                           dangerouslySetInnerHTML={{ __html: formCore.form_title.form_title_value || "Chưa tạo tiêu đề" }}

@@ -111,8 +111,8 @@ const InputDateAnswer = (props: TProps) => {
                                     <div
                                           style={{ ...styleWrapper }}
                                           className={`${
-                                                isGoogleForm ? "" : " p-[1rem]  rounded-inherit-[.8rem]"
-                                          } relative min-h-[4.8rem] h-max flex justify-between items-center gap-[.5rem] py-[1.2rem]`}
+                                                isGoogleForm ? "" : " p-[0rem_1rem]  rounded-inherit-[.8rem]"
+                                          } relative min-h-[4.8rem] h-max flex justify-between items-center gap-[.5rem] `}
                                     >
                                           {dateRender && (
                                                 <>

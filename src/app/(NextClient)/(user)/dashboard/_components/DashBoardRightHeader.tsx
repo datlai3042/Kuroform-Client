@@ -20,7 +20,7 @@ const DashBoardRightHeader = () => {
       const pathname = usePathname();
       return (
             <div
-                  className={`w-full px-[.5rem] xl:px-[1.6rem] py-[1rem] xl:p-[2rem] border-b-[.1rem] border-[var(--border-color-side)]  sticky  top-[0rem] z-[2]  h-[5rem]  flex flex-col gap-[1.6rem]  text-[1.3rem] bg-color-section-theme  `}
+                  className={`w-full px-[.5rem] xl:px-[1.6rem] py-[1rem] xl:p-[2rem] border-b-[.1rem] border-[var(--border-color-side)]  sticky  top-[0rem] z-[2]  h-[6rem]  flex flex-col gap-[1.6rem]  text-[1.3rem] bg-color-section-theme  `}
             >
                   <div className="h-full w-full flex items-center justify-between gap-[2rem] px-[1rem] xl:p-0">
                         <div className="hidden xl:flex gap-[1rem]">

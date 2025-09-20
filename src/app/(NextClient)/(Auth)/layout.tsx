@@ -7,6 +7,9 @@ import Portal from "../_components/Portal";
 import { FormDesignContext } from "../_components/provider/FormDesignProvider";
 import { ThemeContext } from "../_components/provider/ThemeProvider";
 import EditFormPage from "../form/[id]/(owner)/edit/page";
+import ButtonDarkMode from "../_components/ui/button/ButtonDarkMode";
+import LoginRecents from "./_components/LoginRecents";
+import AuthRecents from "./_components/AuthRecents";
 
 const FORM_INSTANCE = {
       form: {
@@ -16,7 +19,7 @@ const FORM_INSTANCE = {
                   color: "",
                   radius: 4,
             },
-            screen: 'profile',
+            screen: "profile",
             _id: "6822a77456334e128987a4b2",
             form_owner: "66a0a5ca4ed899bf08b8f628",
             form_views: 0,
@@ -343,13 +346,13 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       return (
             <Portal>
                   <div
-                        style={{ lineHeight: 1.6 }}
-                        className="relative flex z-[500] w-full top-0 xl:top-0 left-0 min-h-screen  xl:pt-0    bg-color-section-theme  "
+                        style={{ lineHeight: 1.6, backgroundColor: theme === "dark" ? "#232323" : "#f2f4f7" }}
+                        className="relative flex items-center z-[500] w-full justify-between top-0 xl:top-0 left-0 min-h-screen  xl:pt-0 px-[2rem] md:px-[18rem] gap-[6rem]   bg-color-section-theme  "
                   >
-                        <div className="basis-[46rem] m-auto  overflow-auto flex-grow-[1] md:flex-grow-0 flex flex-col   px-[20px] py-[1rem]">
-                              {/* <header className="w-full flex   justify-end items-center ">
-                                    <ButtonDarkMode />
-                              </header> */}
+                        <div className="hidden xl:block h-[80vh] mt-[8rem]">
+                              <AuthRecents />
+                        </div>
+                        <div className="basis-[46rem]    overflow-auto flex-grow-[1] flex-shrink-0 md:flex-grow-0 flex flex-col   px-[20px] py-[1rem]">
                               <div className="flex-1 flex   w-full text-text-theme   auth-scroll">{children}</div>
                               {/* <AuthorDat /> */}
                         </div>

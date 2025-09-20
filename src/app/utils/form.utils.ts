@@ -120,6 +120,8 @@ export const renderFormThemes = (form_themes: FormCore.Form['form_themes']) => {
 }
 
 export const renderColorFromFormThemes = (form_themes: FormCore.Form['form_themes']) => {
+      return 'text-text-theme'
+
       if (form_themes === 'AUTO') {
             return 'text-text-theme'
       }
@@ -132,7 +134,7 @@ export const renderColorFromFormThemes = (form_themes: FormCore.Form['form_theme
 
 export const renderInputStyles = (inputStyle: FormCore.Form['form_input_styles'], formCore?: FormCore.Form) => {
       let styles = {}
-      
+
       if (!inputStyle.borderColor && !inputStyle.borderWidth && formCore && formCore.form_styles === 'FULL_WIDTH') {
             if (inputStyle?.color) {
                   return {
@@ -149,7 +151,7 @@ export const renderInputStyles = (inputStyle: FormCore.Form['form_input_styles']
                         }
                   }
             }
-            return {border: 'none'}
+            return { border: 'none' }
       }
       if (!inputStyle) {
             styles = {
@@ -182,13 +184,13 @@ export const renderInputStyles = (inputStyle: FormCore.Form['form_input_styles']
                   color: inputStyle?.color
             }
       }
-         if (!inputStyle?.borderColor) {
+      if (!inputStyle?.borderColor) {
             styles = {
                   ...styles,
                   borderColor: 'var(--border-color-input)'
             }
       }
-      
+
       return styles
 }
 

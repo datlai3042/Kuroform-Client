@@ -215,12 +215,12 @@ body.dark .ant-rate-star-second {
       }
 
       body.light {
-            --bg-btn-func: #3d52a2;
+            --bg-btn-func: #2c52e3;
             --scrol-global-track: rgb(208 204 210 / 76%);
             --scrol-global-thumb: #abb1bae8;
             --bg-form-nav: #fff;
             --color-gap-empty: #eef1f9;
-            --color-main: #3d52a2;
+            --color-main: #2c52e3;
             --bg-scrollbar-thumb-normal: #636363;
             --bg-scrollbar-track-normal: #e9e2e2;
             --bg-answer-option: rgb(180 183 189 / 42%);
@@ -234,7 +234,7 @@ body.dark .ant-rate-star-second {
             --border-form-item: #e8e8e8;
             --bg-space: #f4f6ff;
             /* --bg-module-other: #17174b; */
-            --color-main: #3d52a2;
+           
             --form-empty-image: #444;
             --bg-module-other: #e1e1e1ca;
             /* --border-color-input: rgb(200 205 214 / 42%); */
@@ -253,7 +253,7 @@ body.dark .ant-rate-star-second {
       body.dark {
             --bg-btn-func: #3f3e41bd;
             --bg-input-ans: #04091969;
-            --color-main: #0c8ce9;
+            --color-main: #3e5fe2;
             --bg-form-nav: #383838;
             --color-gap-empty: #383838;
             /* --color-main: #3b36db; */

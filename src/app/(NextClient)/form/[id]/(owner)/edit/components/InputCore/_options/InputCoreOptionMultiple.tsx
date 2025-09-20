@@ -99,7 +99,7 @@ const InputCoreOptionMultiple = (props: TProps) => {
       }, [inputItem.core.options, selectValue]);
 
       const InputOption = (
-            <DivNative className={`mt-[.4rem]  bg-transparent min-h-[5rem] max-w-full flex flex-col gap-[1rem] h-max  text-[1.4rem]`}>
+            <DivNative className={`mt-[.4rem]  bg-transparent min-h-[5rem] max-w-full flex flex-col gap-[1.6rem] h-max  text-[1.4rem]`}>
                   <SpanNative
                         style={{ color: formCore.form_input_styles.color || "var(--text-text-theme)" }}
                         textContent="Chọn các lựa chọn bên dưới"

@@ -12,24 +12,27 @@ type TProps<FormType extends FieldValues> = {
       register: UseFormRegister<FormType>;
       watch: UseFormWatch<FormType>;
       style?: React.CSSProperties;
+      unActiveLabel?: boolean
 };
 
 const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
-      const { FieldKey, error, placeholder, type, register, watch, style = {} } = props;
+      const { FieldKey, error, placeholder, type, register, watch, style = {}, unActiveLabel = false} = props;
       const id = useId();
       const [focus, setFocus] = useState(false);
       if (type === "password") {
             return <InputPassword {...props} />;
       }
       return (
-            <div style={style} className="flex flex-col w-full  min-h-[8rem] h-max gap-[.6rem]  ">
+            <div style={style} className="flex flex-col w-full   h-max gap-[.6rem]  ">
+                 {!unActiveLabel && 
+                 
                   <label
                         style={{ color: focus ? "var(--color-main)" : "", fontWeight: focus ? 700 : "" }}
                         htmlFor={`${FieldKey}-${id}`}
-                        className="first-letter:uppercase text-color-main font-semibold text-[1.4rem]"
+                        className="first-letter:uppercase text-color-main font-bold text-[1.4rem]"
                   >
                         {placeholder}
-                  </label>
+                  </label>}
                   <input
                         value={watch(FieldKey)}
                         id={`${FieldKey}-${id}`}
@@ -39,12 +42,12 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
                               },
                         })}
                         onFocus={() => setFocus(true)}
-                        className="inline-block input-form w-full min-h-[4.4rem] p-[.6rem_1.2rem] text-[1.4rem] border-[.1rem] border-[rgb(136, 147, 151)] bg-color-section-theme opacity-100 rounded-[.3rem] text-text-theme  placeholder:text-[1.3rem] outline outline-[.2rem] focus:font-semibold outline-transparent focus:outline-color-main focus:border-transparent placeholder:opacity-100 focus:outline-3 border-[var(--border-color-side)]"
+                        className="inline-block input-form w-full min-h-[4.4rem] p-[1.2rem] text-[1.4rem] border-[.1rem] border-[rgb(136, 147, 151)] bg-color-section-theme opacity-100 rounded-[.3rem] text-text-theme  placeholder:text-[1.3rem] outline outline-[.2rem] focus:font-semibold outline-transparent focus:outline-color-main focus:border-transparent placeholder:opacity-100 focus:outline-3 border-[var(--border-color-side)]"
                         placeholder={`Nhập ${placeholder} của bạn`}
                   />
 
                   {error && error[FieldKey]?.message && (
-                        <div className="md:pl-[.1rem] mb-[1rem] min-h-[1rem] text-[1.2rem] text-red-400 font-bold my-[.1rem]">
+                        <div className="md:pl-[.1rem] mb-[1rem] min-h-[1rem] text-[1.4rem] text-red-400 font-bold my-[.1rem]">
                               {<p>{error[FieldKey]?.message as ReactNode}</p>}
                         </div>
                   )}

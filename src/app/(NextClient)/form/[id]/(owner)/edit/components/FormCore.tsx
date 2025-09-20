@@ -180,9 +180,7 @@ const FormCore = () => {
             <>
                   {modeScreen === "NORMAL" && (
                         <DivNative
-                              className={`${renderFormThemes(
-                                    formCore.form_themes,
-                              )} relative z-[105]  w-full  !px-[2.6rem] pb-[4rem] transition-all duration-700  sm:px-0    xl:ml-0 flex flex-col gap-[3rem] text-text-theme min-h-screen h-max  `}
+                              className={` relative z-[105]  w-full  !px-[2.6rem] pb-[4rem] transition-all duration-700  sm:px-0    xl:ml-0 flex flex-col gap-[3rem] text-text-theme min-h-screen h-max  `}
                         >
                               {showComponentImage && <FormImage />}
                               <div
@@ -212,7 +210,7 @@ const FormCore = () => {
                                           <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[1rem] min-h-full`}>
                                                 <InputCoreTitle />
                                                 {formCore.form_inputs.length > 0 && (
-                                                      <DivNative className="mt-[4rem] h-max w-full flex flex-row flex-wrap items-end  gap-[7rem_3rem] ">
+                                                      <DivNative className="mt-[4rem] h-max w-full flex flex-row flex-wrap items-end  gap-[6rem_3rem] ">
                                                             <DndContext
                                                                   onDragStart={(event) => {
                                                                         setActiveId(event.active.id as string);

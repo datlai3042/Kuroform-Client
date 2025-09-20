@@ -68,7 +68,7 @@ const InputEmailAnswer = (props: TProps) => {
                         <InputContent formCore={formCore}>
                               <DivNative
                                     style={{...styleWrapper}}
-                                    className={`${isGoogleForm ? "rounded-[.8rem]" : "p-[1rem]  rounded-inherit "} flex flex-col gap-[.3rem]  `}
+                                    className={`${isGoogleForm ? "rounded-[.8rem]" : "p-[0rem_1rem]  rounded-inherit "} flex flex-col gap-[.3rem]  `}
                               >
                                     <DivNative className={` relative min-h-[3.6rem] h-max flex items-center gap-[.5rem] `}>
                                           <input

@@ -65,7 +65,7 @@ const SettingUpdatePassword = (props: TProps) => {
 
       return (
             <div className="min-h-full h-max">
-                  <form className="flex gap-[.5rem] flex-wrap items-center" onSubmit={updatePasswordForm.handleSubmit(onSubmit)}>
+                  <form className="flex gap-[1.5rem] flex-wrap items-center" onSubmit={updatePasswordForm.handleSubmit(onSubmit)}>
                         <Input<UpdatePasswordSchema>
                               FieldKey="password"
                               placeholder="Nhập mật khẩu"

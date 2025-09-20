@@ -66,17 +66,17 @@ const InputOptionAnswer = (props: TProps) => {
       };
       const isError = inputItemInArrayGlobal?.globalError?.state;
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
-      const color =
+        const color =
             formCore.form_themes === "AUTO"
                   ? "text-text-theme"
                   : formCore.form_styles === "GOOGLE_FORM"
                   ? formCore?.form_input_styles?.color
                         ? formCore?.form_input_styles?.color
                         : formCore.form_themes === "DARK"
-                        ? "text-[#fff]"
+                        ? "text-[#000]"
                         : "text-[#000]"
                   : formCore.form_themes === "DARK"
-                  ? "text-[#fff]"
+                  ? "text-[#000]"
                   : "text-[#000]";
       return (
                   <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >

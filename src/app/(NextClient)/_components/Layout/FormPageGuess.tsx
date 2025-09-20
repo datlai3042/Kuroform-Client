@@ -38,7 +38,7 @@ const FormPageGuess = (props: TProps) => {
 
       const styleEffect = {
             formMarginTop: (check: boolean) => {
-                  if (check) return "mt-[4rem]";
+                  if (check) return "mt-[7rem]";
                   return "mt-0";
             },
             onCheckModeAvatar: (mode: FormCore.FormAvatarMode) => {
@@ -65,7 +65,7 @@ const FormPageGuess = (props: TProps) => {
                   style={{ backgroundColor: isGoogleForm ? "#2e5cbf2b" : !formThemes ? renderBgColor : "" }}
                   className={`${formThemes} ${isGoogleForm ? "px-[2rem] p-[2rem]" : ""}  xl:px-0 min-h-screen h-max flex justify-center     `}
             >
-                  <DivNative className={`${isGoogleForm ? "w-full sm:w-[62rem]" : "w-full"} flex flex-col gap-[1rem] `}>
+                  <DivNative className={`${isGoogleForm ? "w-full sm:w-[62rem]" : "w-full"} bg-[#c9ccd2] flex flex-col gap-[1rem] `}>
                         {(FormCore.form_background?.form_background_iamge_url ||
                               FormCore.form_background_state ||
                               FormCore.form_avatar?.form_avatar_url ||
@@ -76,10 +76,13 @@ const FormPageGuess = (props: TProps) => {
                         )}
                         <DivNative
                               className={`${styleEffect.formMarginTop(FormCore.form_avatar_state)} ${
-                                    isGoogleForm ? "w-full gap-[3rem]" : "w-full lg:w-[60vw] mx-auto gap-[8rem]"
+                                    isGoogleForm ? "w-full gap-[3rem]" : "w-full lg:w-[54vw] mx-auto gap-[8rem]"
                               } pb-[8rem]  flex flex-col  rounded-lg`}
                         >
-                              <DivNative className="flex flex-col gap-[3rem]">
+                              <DivNative
+                              
+                              
+                             className={`${formThemes} flex flex-col gap-[3rem]`}>
                                     <FormAnswerProvider formCore={FormCore} form_answer_id="">
                                           <RenderInputAnswers formCore={FormCore} />
                                     </FormAnswerProvider>

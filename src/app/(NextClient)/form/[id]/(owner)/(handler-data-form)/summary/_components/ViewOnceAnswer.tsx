@@ -120,12 +120,12 @@ const ViewOnceAnswer = (props: TProps) => {
                               return (
                                     <TableRow key={index} className="group">
                                           <TableCell className="font-medium whitespace-pre flex items-center gap-[1rem] ">
-                                                <div className="font-bold text-color-main flex justify-center" style={{ width: 200 }}>
+                                                <div className="  flex justify-center" style={{ width: 200 }}>
                                                       {moment(new Date(rp.createdAt)).format("HH:mm:ss  -  DD - MM - YYYY")}
                                                 </div>
                                                 <div className="invisible  group-hover:visible flex items-center font-medium whitespace-pre sticky right-[-1rem] z-[10]  gap-[1rem]">
                                                       <p
-                                                            className="font-medium whitespace-pre cursor-pointer h-full text-color-main "
+                                                            className="font-medium whitespace-pre cursor-pointer h-full  "
                                                             onClick={() => {
                                                                   setFormAnswerDetail(() => {
                                                                         return formAnswer?.reports.filter((fans) => fans._id === rp._id)[0] || null;

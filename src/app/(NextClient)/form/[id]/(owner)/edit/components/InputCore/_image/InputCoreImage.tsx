@@ -45,7 +45,7 @@ const InputCoreImage = (props: TProps) => {
 
       const InputImage = (
             <DivNative className="relative  bg-transparent flex flex-col items-start gap-[1rem] text-inherit ">
-                  <DivNative className={`h-[90%]  flex flex-col items-start  gap-[1rem] `}>
+                  <DivNative className={`h-[90%]  flex flex-col items-start   gap-[1.6rem]`}>
                         <button onClick={handleClick} className="btn-primarily bg-color-main min-w-[12rem]   rounded-[.4rem]">
                               {filePreview ? "Tải lên lại" : "Tải ảnh lên"}
                         </button>

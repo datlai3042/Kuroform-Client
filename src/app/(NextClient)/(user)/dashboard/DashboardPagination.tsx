@@ -11,7 +11,7 @@ type TProps = {
 const DashboardPagination = (props: TProps) => {
       const { page, setPage, total_page } = props;
 
-      const max_show_page = total_page < 10 ? total_page : 10;
+      const max_show_page = total_page < 5 ? total_page : 5;
 
       const [pageRender, setPageRender] = useState<number[]>(() => {
             let pageArrayInitial: number[] = [];
@@ -50,7 +50,7 @@ const DashboardPagination = (props: TProps) => {
       }, [total_page]);
       return (
             <div className=" relative text-text-theme truncate flex flex-col xl:flex-row items-center justify-center gap-[1rem] xl:gap-0 h-[4rem] w-full">
-                  <div className=" flex w-max max-w-full mx-auto  gap-[.8rem]">
+                  <div className=" flex w-max max-w-full mx-auto items-center  gap-[.8rem]">
                         <button disabled={page === 1} className="disabled:cursor-not-allowed" onClick={() => onChangePage(page - 1)}>
                               <ChevronLeft className="text-color-main" />
                         </button>
@@ -93,9 +93,9 @@ const DashboardPagination = (props: TProps) => {
                               <ChevronRight className="text-color-main" />
                         </button>
                   </div>
-                  <div className="pr-[2rem] hidden xl:pr-0 absolute right-0 min-w-[12rem] md:flex  gap-[1rem]">
+                  <div className="hidden  absolute right-0 bg-color-main text-[#fff] rounded-[.4rem] p-[.2rem_.8rem] md:flex items-center  gap-[1rem]">
                         Tổng trang:{" "}
-                        <div className="w-[2.4rem] aspect-square rounded-full bg-color-main  flex justify-center items-center text-[1.2rem] text-[#fff]">
+                        <div className="w-[2.4rem] aspect-square rounded-full   flex justify-center items-center text-[1.2rem] text-[#fff]">
                               {total_page}
                         </div>
                   </div>

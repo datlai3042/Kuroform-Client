@@ -134,6 +134,10 @@ class AuthService {
             };
             throw new PermissionError(payloadError);
       }
+
+      static async getUserRecentsInfo({userRecents}: {userRecents: string[]}) {
+            return Http.get(`/v1/api/auth/user-recents?user-recents=${userRecents}`)
+      }
 }
 
 export default AuthService;

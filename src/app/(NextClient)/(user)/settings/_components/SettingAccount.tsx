@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { registerSchema } from "@/app/_schema/auth/register.schema";
+import { registerSchema, settingSchema } from "@/app/_schema/auth/register.schema";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,8 +13,7 @@ import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpi
 import { addOneToastError, addOneToastSuccess } from "@/app/_lib/redux/toast.slice";
 import { v4 as uuid } from "uuid";
 
-const userUpdateSchema = registerSchema.pick({ user_first_name: true, user_last_name: true, user_email: true });
-type UserUpdateInfo = z.infer<typeof userUpdateSchema>;
+type UserUpdateInfo = z.infer<typeof settingSchema>;
 
 const SettingAccount = () => {
       const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
@@ -26,7 +25,7 @@ const SettingAccount = () => {
                   user_last_name: user?.user_last_name || "",
                   user_email: user?.user_email || "",
             },
-            resolver: zodResolver(userUpdateSchema),
+            resolver: zodResolver(settingSchema),
       });
 
       const onSubmit = (dataForm: UserUpdateInfo) => {

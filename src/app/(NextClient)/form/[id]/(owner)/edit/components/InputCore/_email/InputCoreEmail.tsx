@@ -62,7 +62,7 @@ const InputCoreEmail = (props: TProps) => {
                   />
                   <DivNative
                         style={{ ...renderInputStyles(formCore.form_input_styles) }}
-                        className={`text-text-theme relative min-h-[5rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] focus:border-transparent  rounded-lg`}
+                        className={`text-text-theme relative min-h-[5rem] h-max flex items-center gap-[1.6rem] border-[.1rem] border-[var(--border-color-input)] focus:border-transparent  rounded-lg`}
                   >
                         <input
                               className="w-[80%]  h-full p-[1rem] rounded-lg text-[1.6rem]   bg-transparent   outline-none   "

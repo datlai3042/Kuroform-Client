@@ -14,7 +14,7 @@ import ButtonLogOut from "@/app/(NextClient)/_components/ui/button/ButtonLogOut"
 const DashboardAccount = () => {
       const [openModel, setOpenModel] = useState<boolean>(false);
       const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
-      
+
       return (
             <div className="group min-w-[10rem] max-w-[26rem] xl:min-w-[20.2rem]  h-full flex items-center justify-between text-text-theme">
                   {user && (
@@ -31,12 +31,14 @@ const DashboardAccount = () => {
                                     )}
                                     {!user?.user_avatar_current && (
                                           <div className="min-w-[2rem] h-[2rem] bg-color-main text-[#fff] rounded-full flex items-center justify-center">
-                                                {user?.user_first_name.slice(0, 1)}
+                                                {user?.user_first_name.slice(0, 1) || user?.user_email?.slice(0,1)}
                                           </div>
                                     )}
 
                                     <span className="font-semibold w-fullbreak-words line-clamp-2 " title={"Nickname"}>
-                                          {user?.user_first_name + " " + user?.user_last_name}
+                                          {user?.user_first_name || user?.user_last_name
+                                                ? user?.user_first_name + " " + user?.user_last_name
+                                                : user?.user_email}
                                     </span>
                                     <DashBoardButtonModel openModel={openModel} setOpenModel={setOpenModel} />
                               </div>

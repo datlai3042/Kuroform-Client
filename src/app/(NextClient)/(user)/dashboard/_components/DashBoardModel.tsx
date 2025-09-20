@@ -11,7 +11,7 @@ const WorkItem = [
       { Title: "Trang chủ", Icon: <Home className="w-[1.8rem]" />, Href: "/" },
       { Title: "Tìm kiếm", Icon: <Search className="w-[1.8rem]" />, Model: "search" },
       { Title: "Cài đặt", Icon: <Settings className="w-[1.8rem]" />, Href: "/settings" },
-      { Title: "Đăng xuất", type: "component", component: <ButtonLogOut className="w-full flex items-center gap-[1.6rem]"/> },
+      { Title: "Đăng xuất", type: "component", component: <ButtonLogOut className="w-full flex items-center gap-[1.6rem] !py-[.6rem]" /> },
 ];
 
 type TProps = {
@@ -27,11 +27,19 @@ const DashBoardModel = (props: TProps) => {
 
       return (
             <ClickOutSide setOpenModel={setOpenModel}>
-                  <div className=" absolute z-[3] right-0 w-[20rem] min-h-[10rem] h-max bg-color-section-theme text-text-theme rounded-lg border-[.1rem]  border-[var(--border-color-input)] shadow-lg flex flex-col gap-[.5rem] text-[1.4rem] ">
+                  <div
+                        style={{
+                              boxShadow: "rgb(48 87 214 / 90%) 0px 2px 4px, rgb(24 55 159 / 90%) 0px 8px 16px",
+                        }}
+                        className=" absolute z-[3] top-[130%] right-0 w-[24rem] min-h-[10rem] h-max bg-color-section-theme text-text-theme rounded-lg border-[.1rem]  border-[var(--border-color-input)] shadow-lg flex flex-col gap-[.5rem] text-[1.4rem] "
+                  >
                         {WorkItem.map((work) => {
                               if (work?.type && work.type === "component") {
                                     return (
-                                          <div key={work.Title} className="p-[.6rem_.8rem] flex items-center gap-[1.6rem] hover:bg-color-main hover:text-[#fff] rounded-md">
+                                          <div
+                                                key={work.Title}
+                                                className="p-[.6rem_1.4rem] flex items-center gap-[1.6rem] hover:bg-color-main hover:text-[#fff] rounded-md"
+                                          >
                                                 {work?.component}
                                           </div>
                                     );
@@ -41,7 +49,7 @@ const DashBoardModel = (props: TProps) => {
                                           <Link
                                                 key={work.Title}
                                                 href={work.Href}
-                                                className="p-[.6rem_.8rem] flex items-center gap-[1.6rem] hover:bg-color-main hover:text-[#fff] rounded-md"
+                                                className="p-[.6rem_1.4rem] flex items-center gap-[1.6rem] hover:bg-color-main hover:text-[#fff] rounded-md"
                                           >
                                                 <span className="min-w-[2.2rem]">{work.Icon}</span>
                                                 <span className="font-medium">{work.Title}</span>
@@ -52,7 +60,7 @@ const DashBoardModel = (props: TProps) => {
                                     return (
                                           <button
                                                 key={work.Title}
-                                                className="p-[.6rem_.8rem] flex items-center gap-[1.6rem] hover:bg-color-main hover:text-[#fff] rounded-md"
+                                                className="p-[.6rem_1.4rem] flex items-center gap-[1.6rem] hover:bg-color-main hover:text-[#fff] rounded-md"
                                                 onClick={() => setopenModelSearch()}
                                           >
                                                 <span className="min-w-[2.2rem]">{work.Icon}</span>

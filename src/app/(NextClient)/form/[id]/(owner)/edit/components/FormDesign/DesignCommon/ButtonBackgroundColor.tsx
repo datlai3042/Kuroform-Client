@@ -37,12 +37,12 @@ const ButtonBackgroundColor = (props: TProps) => {
       const formBackground = !!formCore.form_background?.form_background_iamge_url || formCore.form_background_state;
 
       return (
-            <div className="flex flex-col gap-[1rem] ">
+            <div className="flex flex-col justify-center gap-[1rem] ">
                   <button
                         disabled={!formBackground}
                         onClick={() => setOpenModelColor((prev) => !prev)}
                         style={{ flexDirection: direction === "row" ? "row" : "column" }}
-                        className="w-full relative flex items-center gap-[.8rem] h-[3rem]"
+                        className="w-full relative flex items-center justify-center gap-[.8rem] h-[3rem]"
                   >
                         {/* <p>Màu nền: </p> */}
                         <div className="flex items-center justify-center ">

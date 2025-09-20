@@ -48,7 +48,7 @@ const InputCoreDate = (props: TProps) => {
       const dateRender = generateFullDateStringV2({ day: pickDate.day, month: pickDate.month, year: pickDate.year });
 
       const InputDate = (
-            <DivNative className="relative  bg-transparent flex flex-col items-start gap-[1rem] text-inherit ">
+            <DivNative className="relative  bg-transparent flex flex-col items-start gap-[1.6rem]  text-inherit ">
                   <button
                         onClick={() => setOpenModel((prev) => !prev)}
                         className="bg-color-main text-[#fff] p-[.6rem] rounded-[.4rem] flex items-center gap-[1rem] text-[1.3rem]"

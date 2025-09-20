@@ -75,7 +75,13 @@ const FormChangeMode = (props: TProps) => {
 
       return (
             <div className=" w-full p-[2rem_2rem]  mx-auto h-full flex  flex-col gap-[1rem] text-text-theme">
-                  <div id="content-info" className="w-full flex flex-col gap-[2rem] xl:flex-row justify-between">
+                  <div id="content-info" className="w-full flex flex-col gap-[2rem] xl:flex-row xl:items-center justify-between">
+                      
+                        {avatarSrc ? (
+                                    <Image src={avatarSrc} width={30} height={30} alt="avatar" className="min-w-[3rem] w-[3rem] h-[3rem] rounded-full" />
+                              ) : (
+                                    <div className="animate-pulse min-w-[3rem] w-[3rem] h-[3rem] rounded-full bg-slate-200 "></div>
+                              )}
                         <div
                               dangerouslySetInnerHTML={{
                                     __html: formCore.form_title.form_title_plain_text || formCore.form_title.form_title_value || "Không có tiêu đề",
@@ -110,11 +116,7 @@ const FormChangeMode = (props: TProps) => {
                                     )}
                               </div>
 
-                              {avatarSrc ? (
-                                    <Image src={avatarSrc} width={30} height={30} alt="avatar" className="min-w-[3rem] w-[3rem] h-[3rem] rounded-full" />
-                              ) : (
-                                    <div className="animate-pulse min-w-[3rem] w-[3rem] h-[3rem] rounded-full bg-slate-200 "></div>
-                              )}
+                            
 
                               <button
                                     className=" min-w-[12rem] flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)] hover:bg-color-main hover:border-transparent hover:text-[#fff] text-text-theme rounded-lg"

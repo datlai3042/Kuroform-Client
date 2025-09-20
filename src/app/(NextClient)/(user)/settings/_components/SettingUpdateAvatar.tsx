@@ -57,13 +57,15 @@ const SettingUpdateAvatar = () => {
                               />
                         )}
                         {!user?.user_avatar_current && (
-                              <div className="w-[10rem] aspect-square bg-green-400 flex items-center justify-center rounded-full text-[#ffffff]">L</div>
+                              <div 
+                              onClick={onClickButton}
+                              className="w-[10rem] cursor-pointer aspect-square bg-green-400 flex items-center justify-center rounded-full text-[#ffffff]">L</div>
                         )}
 
                         <div className="flex">
                               <button onClick={onClickButton} className="p-[.8rem] h-[30%] flex items-center gap-[1rem] bg-color-main rounded-lg text-[#fff]">
                                     Tải ảnh lên
-                                    {uploadAvatar.isPending && <LoadingSpinner color="#fff" />}
+                                    {uploadAvatar.isPending && <LoadingSpinner color="#fff"  width="min-w-[2.4rem]" height="min-h-[2.4rem]"/>}
                               </button>
                               <input type="file" hidden ref={inputAvatar} onChange={onChangeFile} />
                         </div>

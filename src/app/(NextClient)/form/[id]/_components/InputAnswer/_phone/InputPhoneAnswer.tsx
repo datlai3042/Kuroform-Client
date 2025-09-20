@@ -76,7 +76,7 @@ const InputPhoneAnswer = (props: TProps) => {
                               <DivNative
                                     style={{ ...styleWrapper }}
                                     className={`${
-                                          isGoogleForm ? "" : " p-[1rem]  rounded-inherit-[.8rem]"
+                                          isGoogleForm ? "" : "p-[0rem_1rem]  rounded-inherit-[.8rem]"
                                     } relative min-h-[3.8rem] h-max flex items-center gap-[.5rem] `}
                               >
                                     <input

@@ -1,5 +1,6 @@
 import { FormCore } from "@/type";
 import { Button, QRCode } from "antd";
+import { QrCode } from "lucide-react";
 import React from "react";
 
 type TProps = {
@@ -41,7 +42,7 @@ const QRDownload = (props: TProps) => {
       };
 
       return (
-            <div className="flex gap-[2.8rem]">
+            <div className="flex gap-[1.8rem]">
                   <div className="w-[10rem] h-[10rem] bg-[#fff]" id="myqrcode">
                         <QRCode
                               type="canvas"
@@ -50,7 +51,9 @@ const QRDownload = (props: TProps) => {
                               value={`${window.location.origin}/form/${formCore._id}`}
                         />
                   </div>
-                  <Button type="primary" onClick={downloadCanvasQRCode} className=" text-[1.3rem] p-[.4rem_.8rem] h-[2.8rem] rounded-[.4rem] bg-color-main">
+                  <Button type="primary" onClick={downloadCanvasQRCode} className=" text-[1.4rem] p-[.4rem_.8rem] h-[2.8rem] rounded-[.4rem] bg-color-main">
+                     <QrCode />
+                     
                         Tải mã QR của Form
                   </Button>
             </div>

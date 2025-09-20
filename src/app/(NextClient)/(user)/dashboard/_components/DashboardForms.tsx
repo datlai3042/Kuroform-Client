@@ -18,7 +18,9 @@ const DashboardForms = () => {
       const getFormPagination = useGetFormPagination({ page, limit: LIMIT_PAGINATION_FORM });
 
       return (
-            <DivNative className="flex-1 w-full flex bg-color-section-theme   min-h-[40rem]   flex-col gap-[0rem] p-[1.8rem_2rem_4rem_2rem] ">
+            <DivNative className="flex-1 w-full flex bg-color-section-theme   min-h-[40rem]   flex-col gap-[0rem] p-[1.8rem_2rem_1rem_2rem] ">
+                        {!getFormPagination.isPending && getFormPagination.isSuccess && getFormPagination.data.metadata.forms.length > 0 && (
+                
                   <div className="flex flex-col gap-[1.8rem] h-full">
                         <div className="flex flex-wrap justify-end items-center gap-[1rem]">
                               {/* <Image
@@ -44,19 +46,18 @@ const DashboardForms = () => {
                                     icon={<Plus size={16} />}
                               />
                         </div>
-                        {!getFormPagination.isPending && getFormPagination.isSuccess && getFormPagination.data.metadata.forms.length > 0 && (
                               <DivNative className={`max-w-full flex flex-wrap  gap-[2.4rem] pb-[2rem] text-[1.3rem] `}>
                                     {getFormPagination.data.metadata.forms.map((form, index) => (
-                                          <div className="w-full lg:w-[48%] xl:w-[23%]" key={form._id}>
+                                          <div className="w-full lg:w-[48%] xl:w-[18%]" key={form._id}>
                                                 <DashboardFormItem form={form} />
                                           </div>
                                     ))}
                               </DivNative>
-                        )}
                   </div>
+                        )}
                   {getFormPagination.isPending && (
                         <div className="w-full min-h-[6rem] mt-[2rem] ">
-                              <LoadingClient width="w-full" height="h-[36rem]" style={{ height: "36rem" }} message="Đang lấy thông tin các form" />
+                              <LoadingClient width="w-full" height="h-[83vh]" style={{ height: "83vh" }} message="Đang lấy thông tin các form" />
                         </div>
                   )}
 

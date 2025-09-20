@@ -90,7 +90,7 @@ const InputAnchorAnswer = (props: TProps) => {
                   <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={write}>
                         <InputAnswerTitle formCore={formCore} inputItem={inputItem} isError={isError} />
                         <InputContent formCore={formCore}>
-                              <DivNative className={`${isGoogleForm ? "" : "  rounded-inherit-[.8rem]"} w-full flex flex-col gap-[1rem]  `}>
+                              <DivNative className={`${isGoogleForm ? "p-[0rem_1rem]" : "  rounded-inherit-[.8rem]"} w-full flex flex-col gap-[1rem]  `}>
                                     <DivNative
                                           style={{ ...styleWrapper }}
                                           className={` relative min-h-[3.8rem] p-[.6rem_.4rem] h-max flex items-center gap-[.5rem] border-[.1rem] border-[var(--border-color-input)] rounded-[.4rem] bg-transparent `}

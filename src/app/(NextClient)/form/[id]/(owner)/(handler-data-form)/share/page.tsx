@@ -53,7 +53,7 @@ const ShareFormPage = () => {
 
                   <QRDownload formCore={formCore} />
 
-                  <div className="relative w-max h-[3rem] mt-[1.4rem]">
+                  {/* <div className="relative w-max h-[3rem] mt-[1.4rem]">
                         <button
                               onClick={async () =>
                                     await navigator.clipboard.writeText(`${window.location.origin}/form/${formCore._id}`).then(() => setCopySuccess(true))
@@ -61,7 +61,7 @@ const ShareFormPage = () => {
                               className="w-full h-full px-[1rem] flex items-center gap-[1rem] rounded-[.4rem] bg-color-main text-[#ffffff]  "
                         >
                               <Copy size={16} />
-                              <span>Sao chép</span>
+                              <span>Sao chép Link</span>
                         </button>
                         {copySuccess && (
                               <ClickOutSide setOpenModel={setCopySuccess}>
@@ -70,7 +70,7 @@ const ShareFormPage = () => {
                                     </div>
                               </ClickOutSide>
                         )}
-                  </div>
+                  </div> */}
             </div>
       );
 };

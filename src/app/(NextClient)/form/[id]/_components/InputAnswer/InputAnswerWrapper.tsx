@@ -23,12 +23,11 @@ const InputAnswerWrapper = (props: TProps) => {
                   ? formCore?.form_input_styles?.color
                         ? formCore?.form_input_styles?.color
                         : formCore.form_themes === "DARK"
-                        ? "text-[#fff]"
+                        ? "text-[#000]"
                         : "text-[#000]"
                   : formCore.form_themes === "DARK"
-                  ? "text-[#fff]"
+                  ? "text-[#000]"
                   : "text-[#000]";
-
       const width = inputItem?.core?.setting?.width || 100;
 
       return (

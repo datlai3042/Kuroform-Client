@@ -27,3 +27,12 @@ export type UserType = {
 	user_avater_used: UserAvatar[];
 	user_create_password: boolean;
 };
+
+export type TUserRecent = {
+	_id: string,
+	name: string,
+	avatar: string,
+	email: string
+	user_last_name: string,
+	user_first_name: string
+}

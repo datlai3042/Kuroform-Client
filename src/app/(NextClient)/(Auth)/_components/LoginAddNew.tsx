@@ -1,38 +1,78 @@
-/* eslint-disable react/no-unescaped-entities */
-"use client";
-import React, { useContext, useEffect } from "react";
-
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginType, loginSchema } from "@/app/_schema/auth/login.schema";
-
-import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
-import { useDispatch } from "react-redux";
-import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
-
-import IconClose from "../ui/input/IconClose";
-import Input from "../ui/input/Input";
-import Button from "../ui/button/Button";
-import Link from "next/link";
 import { onFetchUser } from "@/app/_lib/redux/authentication.slice";
-import AuthService from "@/app/_services/auth.service";
-import ButtonLoginGoogle from "../ui/button/ButtonLoginGoogle";
-import ButtonLoginGithub from "../ui/button/ButtonLoginGithub";
-import SpaceLine from "./SpaceLine";
-import { ThemeContext } from "../provider/ThemeProvider";
 import { checkValueHref } from "@/app/_lib/utils";
+import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
+import { loginSchema, LoginType } from "@/app/_schema/auth/login.schema";
 import { TUserRecent } from "@/app/_schema/user/user.type";
+import AuthService from "@/app/_services/auth.service";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { PlusIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import React, { SetStateAction, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import Input from "../../_components/ui/input/Input";
+import Button from "../../_components/ui/button/Button";
+import Link from "next/link";
+import IconClose from "../../_components/ui/input/IconClose";
+import Portal from "../../_components/Portal";
 
+const LoginAddNew = () => {
+      const [showFormLogin, setShowFormLogin] = useState(false);
+
+      return (
+            <>
+                  <div
+                        onClick={() => setShowFormLogin(true)}
+                        className="border-[.1rem] hover:shadow-2xl cursor-pointer flex flex-col relative border-[#ccc] rounded-lg w-[18rem] h-max"
+                  >
+                        <div className="w-[18rem] h-[18rem] flex items-center justify-center">
+                              <div className="bg-color-main w-[4rem] h-[4rem] rounded-full flex items-center justify-center">
+                                    <PlusIcon className="text-[#fff] font-black" size={30} />
+                              </div>
+                        </div>
+                        <div className="p-[1.4rem_.4rem] text-[1.4rem] border-t-[.1rem] border-[#ccc]">
+                              <span className="text-center w-full block font-bold text-color-main">Thêm tài khoản</span>
+                        </div>
+                  </div>
+
+                  <ModalLoginAddNew openModel={showFormLogin} setOpenModel={setShowFormLogin} />
+            </>
+      );
+};
 type TProps = {
-      onClose?: (state: boolean) => void;
+      setOpenModel: React.Dispatch<SetStateAction<boolean>>;
+      openModel: boolean;
 };
 
-const LoginForm = (props: TProps) => {
+const ModalLoginAddNew = (props: TProps) => {
+      const { setOpenModel, openModel } = props;
+      return (
+            <>
+                  {openModel ? (
+                        <Portal>
+                              <div
+                                    onClick={() => setOpenModel(false)}
+                                    className="fixed z-[999] inset-0 max-w-full overflow-hidden  flex items-center justify-center bg-[rgba(0,0,0,.3)] hover:cursor-pointer"
+                              >
+                                    <div className="w-[42rem] bg-[#fff] rounded-lg">
+                                          <FormLoginAddNew onClose={() => setOpenModel(false)} />
+                                    </div>{" "}
+                              </div>
+                        </Portal>
+                  ) : (
+                        <></>
+                  )}
+            </>
+      );
+};
+type TPropsForm = {
+      onClose?: () => void;
+};
+const FormLoginAddNew = (props: TPropsForm) => {
       const { onClose } = props;
       const dispatch = useDispatch();
       const router = useRouter();
-      const { theme } = useContext(ThemeContext);
 
       const loginForm = useForm<LoginType>({
             defaultValues: {
@@ -70,8 +110,6 @@ const LoginForm = (props: TProps) => {
                                     user_last_name: user?.user_last_name,
                                     email: user?.user_email,
                               });
-
-                              
                         }
 
                         localStorage.setItem("userRecents", JSON.stringify(data));
@@ -98,24 +136,33 @@ const LoginForm = (props: TProps) => {
             if (Object.keys(loginForm.formState.errors).length > 0) {
             }
       }, [loginForm.formState.errors]);
-
       return (
             <div
+                  onClick={(e) => e.stopPropagation()}
                   style={{
-                        backgroundColor: theme === "dark" ? "rgb(27 26 26)" : "#fff",
-
                         boxShadow: "0 2px 4px #0000001a,0 8px 16px #0000001a",
                   }}
-                  className="relative   min-h-[40rem] w-full h-max mx-auto    flex justify-center items-center flex-col  gap-[3.4rem] rounded-[1.2rem] p-[2rem_2rem]"
+                  className="relative   min-h-[30rem] w-full h-max mx-auto    flex  items-center flex-col  gap-[3.4rem] rounded-[1.2rem] p-[3rem_2rem]"
             >
                   {/* <p className=" w-full flex flex-col gap-[0rem]  items-center">
-                       <span className="text-text-theme text-[4.2rem]">Kuro</span> 
-                        <span className="text-[#6262e5] text-[4.2rem]">form</span> 
-                        <span className="text-[#3d52a2] font-semibold text-[2.8rem]">Đăng nhập 👋</span>
-                        <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Đăng nhập để tiếp tục dịch vụ</span>
-                  </p> */}
+                           <span className="text-text-theme text-[4.2rem]">Kuro</span> 
+                            <span className="text-[#6262e5] text-[4.2rem]">form</span> 
+                            <span className="text-[#3d52a2] font-semibold text-[2.8rem]">Đăng nhập 👋</span>
+                            <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Đăng nhập để tiếp tục dịch vụ</span>
+                      </p> */}
 
-                  <div className=" w-full flex flex-col gap-[1.6rem] ">
+                  <div className=" w-full flex flex-col gap-[1.6rem]">
+                        <div className="flex gap-[1rem] text-[2rem] my-[2rem] justify-center">
+                              <p className="whitespace-pre">Đăng nhập vào Kuroform</p>
+                        </div>
+                        {onClose && (
+                              <div
+                                    onClick={onClose}
+                                    className="absolute  top-[40px] right-[10px] xl:right-[20px] text-[2rem] bg-[#cccccca1] font-bold hover:bg-[#ccc] w-[4rem] h-[4rem] flex items-center justify-center rounded-full"
+                              >
+                                    X
+                              </div>
+                        )}
                         <form className="w-full h-full flex flex-col justify-center  gap-[1.6rem] rounded-[1.2rem]" onSubmit={loginForm.handleSubmit(onSubmit)}>
                               <Input<LoginType>
                                     FieldKey="user_email"
@@ -124,6 +171,7 @@ const LoginForm = (props: TProps) => {
                                     register={loginForm.register}
                                     error={loginForm.formState.errors}
                                     watch={loginForm.watch}
+                                    unActiveLabel={true}
                               />
                               <Input<LoginType>
                                     FieldKey="user_password"
@@ -132,6 +180,7 @@ const LoginForm = (props: TProps) => {
                                     register={loginForm.register}
                                     error={loginForm.formState.errors}
                                     watch={loginForm.watch}
+                                    unActiveLabel={true}
                               />
                               <Button
                                     disabled={loginMutation.isPending}
@@ -142,43 +191,8 @@ const LoginForm = (props: TProps) => {
                               />
                         </form>
                         {/* <SpaceLine content="Hoặc đăng nhập luôn bằng phương thức khác" /> */}
-                        <div className="w-full flex  gap-[1rem]">
-                              <div className="w-[48%] h-[4.6rem]">
-                                    <ButtonLoginGoogle />
-                              </div>
-
-                              <div className="w-[48%] h-[4.6rem]">
-                                    <ButtonLoginGithub />
-                              </div>
-                        </div>
-
-                        <div className="w-full flex flex-col items-center gap-[.2rem] text-[1.4rem] my-[1.5rem]">
-                              {/* <p className="text-[#6262e5] font-medium text-[1.6rem]">Đăng nhập tài khoản của bạn</p> */}
-
-                              <Button
-                                    textContent={
-                                          <Link href={"/register"} className="!text-[#fff] text-[1.6rem]   font-bold  w-full">
-                                                <span>Tạo tài khoản</span>
-                                          </Link>
-                                    }
-                                    className="!bg-[#42b72a] hover:!bg-[#36a420] !p-[2.4rem_2rem] !rounded-md  !w-[60%] mt-[1rem]"
-                              ></Button>
-                              {/* <p className="text-[1.4rem]">
-                                    Bạn chưa có tài khoản?{" "}
-                                    <Link href={"/register"} className="text-[var(--color-main)] underline font-semibold">
-                                          đăng kí nhé
-                                    </Link>
-                              </p> */}
-                        </div>
                   </div>
-
-                  {onClose && (
-                        <div className="absolute  top-[-20px] right-[-10px] xl:right-[-20px]">
-                              <IconClose onClose={onClose} />
-                        </div>
-                  )}
             </div>
       );
 };
-
-export default LoginForm;
+export default LoginAddNew;

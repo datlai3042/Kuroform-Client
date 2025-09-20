@@ -105,13 +105,13 @@ const ModalWorkSpace = ({
             <Portal>
                   <DivNative className="fixed inset-0 bg-[rgba(0,0,0,0.8)] z-[999] px-[1rem] flex justify-center items-center">
                         <div
-                              className="relative  max-w-[90vw]  h-[50rem]    flex flex-col bg-color-section-theme text-text-theme rounded-lg  p-[1.6rem_1rem] "
+                              className="relative  max-w-[90vw] w-[60vw]  h-[50rem]    flex flex-col bg-color-section-theme text-text-theme rounded-lg  p-[1.6rem_1rem] "
                               onClick={(e) => e.stopPropagation()}
                         >
                               <button
                                     onClick={() => setOpenWorkspace(false)}
                                     type="button"
-                                    className="ml-auto  w-[12rem] h-[3.6rem] text-[1.4rem] text-white bg-color-main opacity-70 hover:opacity-100 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 focus:outline-none dark:focus:ring-blue-800"
+                                    className="ml-auto  w-[12rem] h-[3.6rem] text-[1.4rem] text-white bg-color-main  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg  px-5 py-2.5 me-2 mb-2 focus:outline-none dark:focus:ring-blue-800"
                               >
                                     Đóng Modal
                               </button>

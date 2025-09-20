@@ -24,11 +24,11 @@ const DashboardFormItem = (props: TProps) => {
                   prefetch={false}
                   href={`/form/${form._id}/summary`}
                   key={form._id}
-                  className=" h-[30rem] text-[1.3rem]  w-full  max-w-full flex flex-col rounded-[1.6rem]    gap-[1.4rem]   text-text-theme bg-[var(--bg-form-nav)]  border-[.1rem] border-[var(--border-form-item)]"
+                  className=" h-[24rem] hover:shadow-2xl text-[1.3rem]  w-full  max-w-full flex flex-col rounded-[1.6rem]    gap-[1.4rem]   text-text-theme bg-[var(--bg-form-nav)]  border-[.1rem] border-[var(--border-form-item)]"
             >
                   {/* <FormStateProvider form_state={form.form_state} /> */}
                   <div className="w-full flex flex-col items-center justify-center gap-[3rem]">
-                        <div className="w-full h-[18rem]">
+                        <div className="w-full h-[12rem]">
                               {form.form_avatar?.form_avatar_url ? (
                                     <Image
                                           src={form.form_avatar.form_avatar_url}
@@ -39,7 +39,7 @@ const DashboardFormItem = (props: TProps) => {
                                           className="w-full h-full  object-cover rounded-tl-[1.6rem] rounded-tr-[1.6rem]"
                                     />
                               ) : (
-                                    <div className="w-full h-full  bg-[var(--form-empty-image)] rounded-tl-[1.6rem] rounded-tr-[1.6rem]"> </div>
+                                    <div className="w-full h-full  bg-[#000] rounded-tl-[1.6rem] rounded-tr-[1.6rem]"> </div>
                               )}
                         </div>
                   </div>
