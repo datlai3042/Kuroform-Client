@@ -324,7 +324,10 @@ const config = {
 				rtlColor: 'rtlColor 0s linear forwards ',
 				changeColorWithTime: 'changeColorWithTime 2.4s linear forwards ',
 				changeBgColorWithTime: 'changeBgColorWithTime 2.4s linear forwards '
-			}
+			},
+			fontFamily: {
+				inter: ["Inter", "sans-serif"],
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
