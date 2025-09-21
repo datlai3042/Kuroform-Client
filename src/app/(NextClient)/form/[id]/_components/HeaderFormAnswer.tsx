@@ -64,6 +64,10 @@ const HeaderFormAnswer = (props: TProps) => {
                   : formCore.form_themes === "DARK"
                   ? "text-[#fff]"
                   : "text-[#000]";
+
+      // console.log({
+      //       match: formCore.form_title.form_title_color ? formCore.form_title.form_title_color : formCore.form_setting_default.form_title_color_default,
+      // });
       return (
             <header
                   style={{ ...renderBorder }}

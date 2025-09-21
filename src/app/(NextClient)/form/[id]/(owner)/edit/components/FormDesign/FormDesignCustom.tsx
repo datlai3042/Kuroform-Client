@@ -129,7 +129,7 @@ const FormDesignCustom = () => {
                         <div ref={refDesignCommon} className="relative w-full min-h-full h-max overflow-auto pb-[8rem] md:pb-[2rem] pr-[1rem]">
                               {/* <FormDesignFormMode /> */}
 
-                              <div className="flex flex-col  gap-[1.8rem] px-[.4rem] text-[1.3rem]    ">
+                              <div className="flex flex-col  gap-[.8rem] px-[.4rem] text-[1.3rem]    ">
                                     <div className="flex flex-col gap-[.8rem]">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">

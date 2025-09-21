@@ -50,7 +50,7 @@ const DashboardPagination = (props: TProps) => {
       }, [total_page]);
       return (
             <div className=" relative text-text-theme truncate flex flex-col xl:flex-row items-center justify-center gap-[1rem] xl:gap-0 h-[4rem] w-full">
-                  <div className=" flex w-max max-w-full mx-auto items-center  gap-[.8rem]">
+                  <div className=" flex w-max max-w-full mr-auto lg:mx-auto items-center  gap-[.8rem]">
                         <button disabled={page === 1} className="disabled:cursor-not-allowed" onClick={() => onChangePage(page - 1)}>
                               <ChevronLeft className="text-color-main" />
                         </button>

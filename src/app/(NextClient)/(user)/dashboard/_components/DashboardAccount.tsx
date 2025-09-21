@@ -20,7 +20,7 @@ const DashboardAccount = () => {
                   {user && (
                         <>
                               <div className="max-w-full h-full w-full flex gap-[1rem] items-center hover:cursor-pointer " onClick={() => setOpenModel(true)}>
-                                    {user?.user_avatar_current && (
+                                    {/* {user?.user_avatar_current && (
                                           <Image
                                                 src={user.user_avatar_current}
                                                 width={20}
@@ -33,8 +33,10 @@ const DashboardAccount = () => {
                                           <div className="min-w-[2rem] h-[2rem] bg-color-main text-[#fff] rounded-full flex items-center justify-center">
                                                 {user?.user_first_name.slice(0, 1) || user?.user_email?.slice(0,1)}
                                           </div>
-                                    )}
-
+                                    )} */}
+                                    <div className="min-w-[2rem] h-[2rem] bg-color-main text-[#fff] rounded-full flex items-center justify-center">
+                                          {user?.user_first_name.slice(0, 1) || user?.user_email?.slice(0, 1) || user?.user_email?.slice(0, 1)}
+                                    </div>
                                     <span className="font-semibold w-fullbreak-words line-clamp-2 " title={"Nickname"}>
                                           {user?.user_first_name || user?.user_last_name
                                                 ? user?.user_first_name + " " + user?.user_last_name

@@ -46,18 +46,17 @@ const FormAnswerCore = (props: TProps) => {
       useEffect(() => {
             dispatch(onFetchForm({ form: formCore }));
       }, [formCore]);
-
       useEffect(() => {
             setBorderCurruent(formCore.form_themes);
             if (formCore.form_themes === "AUTO") {
                   if (theme === "light") {
-                        document.body.style.setProperty("--border-color-input", "rgb(169 169 204 / 74%)");
+                        document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
                   } else {
                         document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
                   }
             }
             if (formCore.form_themes === "LIGHT") {
-                  document.body.style.setProperty("--border-color-input", "rgb(169 169 204 / 74%)");
+                  document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
                   document.documentElement.style.backgroundColor = "var(--form-theme-light)";
             }
 
@@ -80,7 +79,7 @@ const FormAnswerCore = (props: TProps) => {
       const renderBgColor = theme === "light" ? "transparent" : "var(--bg-dark-readOnly)";
       const styleEffect = {
             formMarginTop: (check: boolean) => {
-                  if (check) return "mt-[7rem]";
+                  if (check) return "mt-[8rem]";
                   return "mt-0";
             },
             onCheckModeAvatar: (mode: FormCore.FormAvatarMode) => {
@@ -97,8 +96,8 @@ const FormAnswerCore = (props: TProps) => {
       const formThemes = renderFormThemeAnswer(formCore);
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
       return (
-            <DivNative className={` ${isGoogleForm ? "px-[2rem]  p-[2rem_2rem_4rem_2rem] xl:px-0" : ""}  min-h-screen  flex justify-center   w-full h-full`}>
-                  <DivNative className={`${isGoogleForm ? "w-full sm:w-[62rem]" : "w-full"} flex flex-col gap-[1rem] bg-[#c9ccd2]`}>
+            <DivNative className={` ${isGoogleForm ? "px-[2rem]  p-[2rem_2rem_4rem_2rem] xl:px-0" : ""}   min-h-screen  flex justify-center   w-full h-full`}>
+                  <DivNative className={`${isGoogleForm ? "w-full sm:w-[62rem]" : "w-full"} flex flex-col gap-[1rem] bg-[#c9ccd2]  `}>
                         {(formCore.form_background?.form_background_iamge_url ||
                               formCore.form_background_state ||
                               formCore.form_avatar?.form_avatar_url ||
@@ -113,9 +112,9 @@ const FormAnswerCore = (props: TProps) => {
                                     ${styleEffect.formMarginTop(formCore.form_avatar_state)}
                                    ${
                                           isGoogleForm ? "w-full" : `w-[94vw] md:w-[54vw]  mx-auto ${formThemes}`
-                                    } rounded-lg`}
+                                    } rounded-lg pb-[2rem]`}
                         >
-                              <DivNative className={`${isGoogleForm ? "gap-[4rem]" : "gap-[0rem]"} ${formThemes} flex flex-col  pb-[20rem] `}>
+                              <DivNative className={`${isGoogleForm ? "gap-[4rem]" : "gap-[0rem]"} ${formThemes} rounded-lg flex flex-col  `}>
                                     <FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
                                           <RenderInputAnswers formCore={formCore} />
                                     </FormAnswerProvider>

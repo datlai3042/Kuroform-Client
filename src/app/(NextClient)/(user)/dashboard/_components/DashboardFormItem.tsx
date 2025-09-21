@@ -1,14 +1,23 @@
+"use client";
 import DivNative from "@/app/(NextClient)/_components/ui/NativeHtml/DivNative";
 import { generateContentToFormState } from "@/app/_lib/utils";
-import { FormCore } from "@/type";
+import { FormCore, Toast } from "@/type";
 import moment from "moment";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DashboardFormAction from "./DashboardFormAction";
 import Image from "next/image";
-import { Eye, Pencil, View } from "lucide-react";
+import { EllipsisVertical, Eye, LinkIcon, Pencil, Trash2, View } from "lucide-react";
 import { calcPercentForm } from "@/app/utils/form.utils";
 import FormStateProvider from "@/app/(NextClient)/_components/ui/form/form-state/FormStateProvider";
+import BoxCopySuccess from "@/app/(NextClient)/form/[id]/(owner)/_components/BoxCopySuccess";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import FormService from "@/app/_services/form.service";
+import { onFetchFormState } from "@/app/_lib/redux/formEdit.slice";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { addOneToastSuccess } from "@/app/_lib/redux/toast.slice";
+import { v4 } from "uuid";
 
 type TProps = {
       form: FormCore.Form;
@@ -49,7 +58,20 @@ const DashboardFormItem = (props: TProps) => {
                                     dangerouslySetInnerHTML={{ __html: form?.form_title?.form_title_value || "Trống" }}
                                     className="max-w-[90%] h-[2.4rem] reset-editor truncate text-[1.6rem] text-color-main font-bold"
                               ></div>
-                              <span>Chỉnh sửa {moment(new Date(form.updatedAt!)).fromNow()}</span>
+                              <div className="flex justify-between">
+                                    <span>Chỉnh sửa {moment(new Date(form.updatedAt!)).fromNow()}</span>
+                                    <div className="relative group">
+                                          <EllipsisVertical size={18} />
+                                          <div
+                                                style={{
+                                                      boxShadow: "rgb(236 236 236 / 90%) 0px 2px 4px, rgb(155 162 186 / 90%) 0px 8px 16px",
+                                                }}
+                                                className="absolute hidden group-hover:flex z-[3] top-[130%] left-0"
+                                          >
+                                                <ModalSettingFormItem formItem={form} />
+                                          </div>
+                                    </div>
+                              </div>
                         </div>
                         <DivNative className="flex flex-col xl:flex-row flex-wrap  xl:items-center text-[1.2rem] gap-[2rem]">
                               {/* <div className="order-2 xl:order-1">
@@ -64,11 +86,91 @@ const DashboardFormItem = (props: TProps) => {
                                           <Pencil size={16} />
                                           <span>{form.form_response || 0}</span>
                                     </p>
-                                    Tỉ lệ: {calcPercentForm({ formAnswer: form.form_response, formView: form.form_views })}%
+                                    <span>Tỉ lệ: {calcPercentForm({ formAnswer: form.form_response, formView: form.form_views })}%</span>
                               </div>
                         </DivNative>
                   </div>
             </Link>
+      );
+};
+
+const ModalSettingFormItem = ({ formItem }: { formItem: FormCore.Form }) => {
+      const [copySuccess, setCopySuccess] = useState<boolean>(false);
+
+      const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+      useEffect(() => {
+            if (copySuccess) {
+                  const time = 3000;
+                  timeoutRef.current = setTimeout(() => setCopySuccess(false), time);
+            }
+
+            return () => {
+                  clearTimeout(timeoutRef.current as NodeJS.Timeout);
+            };
+      }, [copySuccess]);
+      const queryClient = useQueryClient();
+      const dispatch = useDispatch();
+      const router = useRouter();
+
+      const deleteFormId = useMutation({
+            mutationKey: ["delete-form", formItem._id],
+            mutationFn: (formId: string) => FormService.deleteFormId({ form_id: formId }),
+            onSuccess: (res) => {
+                  queryClient.invalidateQueries({
+                        queryKey: ["get-form-pagination"],
+                  });
+
+                  const { formDelete, formPrivate, formPublic } = res.metadata;
+                  dispatch(onFetchFormState({ form_delete: formDelete, form_public: formPublic, form_private: formPrivate }));
+                  queryClient.invalidateQueries({ queryKey: ["get-list-form-delete"] });
+
+                  const toastInstance: Toast.ToastSuccess.ToastSuccessCore = {
+                        type: "SUCCESS",
+                        _id: v4(),
+                        core: {
+                              message: "Xóa form thành công",
+                        },
+                        toast_title: "DELETE FORM",
+                  };
+                  dispatch(addOneToastSuccess({ toast_item: toastInstance }));
+                  router.refresh();
+            },
+      });
+      const onDeleteForm = () => {
+            deleteFormId.mutate(formItem._id);
+      };
+      return (
+            <div className=" text-[1.2rem]  w-[16rem]  h-max bg-color-section-theme text-text-theme rounded-lg border-[.1rem]  border-[var(--border-color-input)] shadow-lg flex flex-col gap-[.5rem]  ">
+                  <button
+                        onClick={(e) => {
+                              e.stopPropagation();
+                              e.preventDefault();
+                              navigator.clipboard.writeText(`${window.location.origin}/form/${formItem._id}`).then(() => setCopySuccess(true));
+                        }}
+                        className="p-[.6rem_1.4rem] relative flex items-center gap-[1.6rem] hover:bg-color-main hover:text-[#fff] rounded-md"
+                  >
+                        <LinkIcon size={16} />
+                        Link chia sẽ
+                        {copySuccess && (
+                              <div className="absolute left-[104%] text-text-theme">
+                                    <BoxCopySuccess message="Copy link chia sẽ thành công" />
+                              </div>
+                        )}
+                  </button>
+                  <button
+                        onClick={(e) => {
+                              // e.stopPropagation();
+                              e.preventDefault();
+
+                              onDeleteForm();
+                        }}
+                        className="p-[.6rem_1.4rem] flex items-center gap-[1.6rem] hover:bg-color-main hover:text-[#fff] hover:bg-red-600 rounded-md"
+                  >
+                        <Trash2 size={16} />
+                        Xóa form
+                  </button>
+            </div>
       );
 };
 

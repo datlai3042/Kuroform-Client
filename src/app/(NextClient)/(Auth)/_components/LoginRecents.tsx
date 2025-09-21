@@ -37,7 +37,7 @@ const LoginRecents = (props: TProps) => {
                               height={80}
                               src={userItem?.avatar}
                               alt="user_recents"
-                              className="w-full h-[18rem] object-contain rounded-tl-lg rounded-tr-lg"
+                              className="w-full h-[18rem] object-cover rounded-tl-lg rounded-tr-lg"
                         />
                         <div className="p-[1.4rem_.4rem] flex items-center text-[1.4rem] border-t-[.1rem] border-[#ccc]">
                               <span
@@ -47,7 +47,7 @@ const LoginRecents = (props: TProps) => {
                               {mode === "more" && (
                                     <button
                                           onClick={() => onDeleteUserRecent({ user_id: userItem?._id })}
-                                          className=" bg-none flex items-center justify-center hover:bg-red-600 rounded-md w-[3.2rem] !h-[3.2rem] text-[1.4rem] text-[#ccc]  hover:text-[#fff] "
+                                          className=" bg-none flex items-center justify-center hover:bg-red-600 rounded-md w-[3.2rem] !h-[3.2rem] text-[1.4rem] text-red-600  hover:text-[#fff] "
                                     >
                                           <Trash2 />
                                     </button>

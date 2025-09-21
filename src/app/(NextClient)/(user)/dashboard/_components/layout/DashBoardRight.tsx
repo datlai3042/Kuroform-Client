@@ -21,12 +21,17 @@ import useGetAllFormUser from "@/app/hooks/useGetAllFormUser";
 import LoadingClient from "@/app/(NextClient)/_components/LoadingClient";
 
 const DashBoardRight = () => {
-     
-
       return (
             <div className={`  min-h-screen bg-color-gap-empty    h-max   flex flex-col   text-[1.4rem] pb-[1rem] px-0`}>
                   <DashBoardRightHeader />
-                  <div className="flex xl:hidden justify-end w-full bg-color-section-theme p-[1rem]">
+                  <div className="flex xl:hidden justify-between items-center w-full bg-color-section-theme p-[2rem_1rem]">
+                        <ButtonCreateForm
+                              textContent="Tạo Form"
+                              urlNavigation="/"
+                              className="flex xl:hidden  xl:[&]:p-[2px] !gap-[.5rem] !h-[3rem] !min-w-[10rem] !w-max !text-[1.3rem]"
+                              position="LEFT"
+                              icon={<Plus size={16} />}
+                        />
                         <DashboardAccount />
                   </div>
 
@@ -34,7 +39,6 @@ const DashBoardRight = () => {
                   {/* <DashBoardRightHeader /> */}
 
                   <div className={` flex-1 w-full xl:w-full    flex flex-col gap-[1rem] `}>
-                    
                         <div className="flex-1 flex min-h-[40rem] max-w-full w-full  xl:px-0">
                               <DashboardForms />
                         </div>
@@ -42,7 +46,5 @@ const DashBoardRight = () => {
             </div>
       );
 };
-
-
 
 export default DashBoardRight;

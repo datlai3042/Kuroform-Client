@@ -25,8 +25,21 @@ export async function generateMetadata(): Promise<Metadata> {
       });
 
       const { user } = res.metadata;
+      const renderUserName = () => {
+            if (user?.user_last_name && user?.user_first_name) {
+                  return user?.user_first_name + " " + user?.user_last_name;
+            }
+            if (!user?.user_last_name && user?.user_first_name) {
+                  return user?.user_first_name;
+            }
 
-      const fullName = user?.user_first_name + " " + user?.user_last_name;
+            if (user?.user_last_name && !user?.user_first_name) {
+                  return user?.user_last_name;
+            }
+
+            return user?.user_email;
+      };
+      const fullName = renderUserName();
       const imageAvatar = user?.user_avatar_current || "/icon_core.png";
       // console.clear();
       return {
@@ -57,7 +70,7 @@ const UserAuthenticationPage = ({ children }: { children: React.ReactNode }) => 
                               <div className="w-full absolute z-[2] pb-[6rem] sm:pb-0 xl:pb-0">{children}</div>
                         </div>
                         <CheckExprireToken />
-                              <Footer />
+                        <Footer />
                   </SocketProvider>
             </>
       );

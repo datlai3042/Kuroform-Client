@@ -42,7 +42,7 @@ const QRDownload = (props: TProps) => {
       };
 
       return (
-            <div className="flex gap-[1.8rem]">
+            <div className="flex flex-col gap-[1.8rem]">
                   <div className="w-[10rem] h-[10rem] bg-[#fff]" id="myqrcode">
                         <QRCode
                               type="canvas"

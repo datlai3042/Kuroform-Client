@@ -125,7 +125,7 @@ const LoginFormRecents = (props: TProps) => {
                                           height={80}
                                           src={userRecentItem?.avatar}
                                           alt="user_recents"
-                                          className="w-full object-cover rounded-full"
+                                          className="w-full h-full object-cover rounded-full"
                                     />
                               </div>
                         </div>

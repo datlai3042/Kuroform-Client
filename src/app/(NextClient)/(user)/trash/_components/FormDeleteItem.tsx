@@ -70,9 +70,7 @@ const FormDeleteItem = (props: TProps) => {
                                     />
                               ) : (
                                     <div
-                                          className={`${
-                                                theme === "light" ? "bg-transparent" : "bg-[#fff]"
-                                          }  min-w-[3rem] h-[3rem]  flex items-center justify-center`}
+                                          className={`bg-color-main rounded-lg min-w-[3rem] h-[3rem]  flex items-center justify-center`}
                                     >
                                          
                                     </div>

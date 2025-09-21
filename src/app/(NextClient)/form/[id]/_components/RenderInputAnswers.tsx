@@ -104,12 +104,12 @@ const RenderInputAnswers = (props: TProps) => {
                               {!client && allInputAnswer}
                               {/* {client && allInputAnswer.slice(generateInputWithPage.start, generateInputWithPage.end)} */}
                               {client && (
-                                    <div className={`${isGoogleForm ? "mt-[0rem] gap-[6rem]" : "gap-[2.6rem] mt-[0rem]"} flex flex-wrap gap-[2rem] `}>
+                                    <div className={`${isGoogleForm ? "mt-[0rem] gap-[6rem]" : "gap-[2.6rem] mt-[0rem]"} flex flex-wrap gap-[1rem] `}>
                                           {allInputAnswer}
                                     </div>
                               )}
 
-                              <div className="flex flex-col gap-[1.2rem] px-[2rem] mt-[2rem]">
+                              <div className="flex flex-col gap-[1.2rem] px-[2rem] mt-[2rem] pb-[2rem]">
                                     {/* <div
                                           // style={{color: formCore.form_title.form_title_color}}
                                           className={`${color} flex flex-wrap gap-[2rem] justify-end text-[1.5rem] text-color-main font-normal`}

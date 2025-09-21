@@ -22,7 +22,7 @@ const ModelNotification = (props: TProps) => {
       }, []);
 
       return (
-            <div onClick={(e) => e.stopPropagation()} className="bg-color-section-theme text-text-theme w-[55rem]  text-[1.4rem] max-h-screen flex flex-col gap-[3rem] min-h-[4rem] h-max p-[3rem]  shadow-xl">
+            <div onClick={(e) => e.stopPropagation()} className="bg-color-section-theme text-text-theme w-[55rem]  text-[1.4rem] max-h-screen flex flex-col gap-[3rem] min-h-screen h-max p-[3rem]  shadow-xl">
                   <div className="flex justify-between">
                         <p className="text-left text-[1.6rem] text-color-main font-extrabold">Thông báo</p>
                         <button
@@ -33,7 +33,7 @@ const ModelNotification = (props: TProps) => {
                         </button>
                   </div>
 
-                  <div onClick={(e) => e.stopPropagation()} className=" overflow-y-scroll overflow-x-hidden pb-[1rem] pr-[2rem] flex flex-col gap-[.5rem] ">
+                  <div onClick={(e) => e.stopPropagation()} className=" overflow-y-auto overflow-x-hidden pb-[1rem] pr-[2rem] flex flex-col gap-[.5rem] ">
                         {notifications &&
                               notifications.map((notification) => {
                                     if (notification.type === "System") return <NotificationSystem key={notification._id} notification_item={notification} />;

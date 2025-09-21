@@ -192,10 +192,11 @@ body.dark .ant-rate-star-second {
             --toast-success: #4299de;
             --toast-error: #f4454c;
             --toast-warning: #ea580c;
+            --form-theme-dark: #0e0e19;
 
-            /* --border-color-input: rgb(218, 220, 224); */
-            --border-color-input: rgb(209 213 219 / 12%);
-
+            --border-color-input: rgb(218, 220, 224);
+            /* --border-color-input: rgb(209 213 219 / 12%); */
+            /* --border-color-input: rgb(150 152 155 / 27%); */
             /* --border-color-input: rgb(209 213 219 / 27%); */
             --background: 0 0% 100%;
             /* --chart-1: 12 76% 61%; */
@@ -230,13 +231,13 @@ body.dark .ant-rate-star-second {
             --bg-scrollbar-track-normal: #e9e2e2;
             --bg-answer-option: rgb(180 183 189 / 42%);
             --color-section-theme: #fefefe;
-            --form-theme-dark: #fefefe;
+            /* --form-theme-dark: #fefefe; */
 
             --text-theme: #000;
             --border-color: hwb(0 10% 88% / 0.189);
             --bg-model: #eef1f9;
             --color-main-hover: rgb(229 231 235);
-            --border-form-item: #e8e8e8;
+            --border-form-item: #d9d8e2;
             --bg-space: #f4f6ff;
             /* --bg-module-other: #17174b; */
            
@@ -245,7 +246,8 @@ body.dark .ant-rate-star-second {
             /* --border-color-input: rgb(200 205 214 / 42%); */
             /* --border-color-input: rgb(169 169 204 / 74%); */
             /* --border-color-input: rgb(218, 220, 224); */
-            --border-color-input: rgb(209 213 219 / 70%);
+            /* --border-color-input: rgb(209 213 219 / 70%); */
+            --border-color-input: rgb(46 76 120 / 27%);
 
             /* --border-color-side: rgb(200 205 214 / 42%); */
             --border-color-side: rgb(200 205 214 / 74%);
@@ -264,7 +266,7 @@ body.dark .ant-rate-star-second {
             /* --color-main: #3b36db; */
             --bg-answer-option: rgb(222 224 228);
             --form-empty-image: #fff;
-            --form-theme-dark: #2c2c2c;
+            /* --form-theme-dark: #0e0e19; */
 
             /* --color-main: #35336a; */
             /* --color-section-theme: #0d1117; */
@@ -278,7 +280,7 @@ body.dark .ant-rate-star-second {
             --border-form-item: transparent;
             --bg-space: #252525;
             --bg-module-other: #17174bb0;
-            --border-color-input: rgb(209 213 219 / 27%);
+            --border-color-input: rgb(141 145 151 / 27%);
             --border-color-side: #444;
             --bg-scrollbar-thumb-normal: rgba(203, 191, 191, 0.758);
             --bg-scrollbar-track-normal: #2c2c2c;

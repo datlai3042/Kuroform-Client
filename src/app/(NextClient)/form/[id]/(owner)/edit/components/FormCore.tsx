@@ -154,22 +154,27 @@ const FormCore = () => {
 
       useEffect(() => {
             setBorderCurruent(formCore.form_themes);
-            if (formCore.form_themes === "AUTO") {
-                  if (theme === "light") {
-                        document.body.style.setProperty("--border-color-input", "rgb(169 169 204 / 74%)");
+             if (theme === "light") {
+                        document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
                   } else {
                         document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
                   }
-            }
-            if (formCore.form_themes === "LIGHT") {
-                  document.body.style.setProperty("--border-color-input", "rgb(169 169 204 / 74%)");
-                  document.documentElement.style.backgroundColor = "var(--form-theme-light)";
-            }
+            // if (formCore.form_themes === "AUTO") {
+            //       if (theme === "light") {
+            //             document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
+            //       } else {
+            //             document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
+            //       }
+            // }
+            // if (formCore.form_themes === "LIGHT") {
+            //       document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
+            //       document.documentElement.style.backgroundColor = "var(--form-theme-light)";
+            // }
 
-            if (formCore.form_themes === "DARK") {
-                  document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
-                  document.documentElement.style.backgroundColor = "var(--form-theme-dark)";
-            }
+            // if (formCore.form_themes === "DARK") {
+            //       document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
+            //       document.documentElement.style.backgroundColor = "var(--form-theme-dark)";
+            // }
 
             return () => {
                   document.documentElement.style.backgroundColor = "var(--color-section-theme)";
@@ -207,7 +212,7 @@ const FormCore = () => {
                                                 </DivNative>
                                           </DivNative>
 
-                                          <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[1rem] min-h-full`}>
+                                          <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col  min-h-full`}>
                                                 <InputCoreTitle />
                                                 {formCore.form_inputs.length > 0 && (
                                                       <DivNative className="mt-[4rem] h-max w-full flex flex-row flex-wrap items-end  gap-[6rem_3rem] ">

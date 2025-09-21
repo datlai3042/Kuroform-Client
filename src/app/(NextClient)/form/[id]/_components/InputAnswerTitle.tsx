@@ -36,11 +36,11 @@ const InputAnswerTitle = (props: TProps) => {
       //             : "text-[#000]";
       return (
             <div className={`text-inherit flex items-center gap-[1.4rem]`}>
-                  <Circle
+                  {/* <Circle
                         style={{ color: isError ? 'inherit' : theme === "dark" ? "var(--text-theme)" : "var(--color-main)" }}
                         className=" font-semibold"
                         width={17}
-                  />
+                  /> */}
 
                   <p style={styleEffect.styleTitle()} className="flex items-center gap-[.6rem] text-[2rem] font-medium">
                         {inputItem.input_title || "Không có tiêu đề"}
