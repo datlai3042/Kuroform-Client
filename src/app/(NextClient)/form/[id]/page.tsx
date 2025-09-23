@@ -51,7 +51,7 @@ const FormPage = async ({ params }: { params: { id: string } }) => {
       const formColor = formCore.form_color || "#f2f2f2";
 
       return (
-            <div  className=" w-full  min-h-screen h-max  bg-color-section-theme  ">
+            <div  className=" w-full  min-h-screen h-max    ">
                   {/* {formCore.form_inputs.length === 0 && !formCore.form_title.form_title_value && <FormAnswerEmpty />} */}
                   {/* {(formCore.form_inputs.length > 0 || formCore.form_title.form_title_value) && ( */}
                   <FormAnswerCore formCore={formCore} form_answer_id={form_answer_id} />
