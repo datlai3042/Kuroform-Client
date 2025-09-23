@@ -62,7 +62,6 @@ const FormPageGuess = (props: TProps) => {
 
       return (
             <div
-                  style={{ backgroundColor: isGoogleForm ? "#2e5cbf2b" : !formThemes ? renderBgColor : "" }}
                   className={`${formThemes} ${isGoogleForm ? "px-[2rem] p-[2rem]" : ""}  xl:px-0 min-h-screen h-max flex justify-center     `}
             >
                   <DivNative
@@ -82,7 +81,20 @@ const FormPageGuess = (props: TProps) => {
                         <DivNative
                               className={`${styleEffect.formMarginTop(FormCore.form_avatar_state)} ${
                                     isGoogleForm ? "w-full gap-[3rem]" : "w-full lg:w-[54vw] mx-auto gap-[8rem]"
-                              } pb-[8rem]  flex flex-col  rounded-lg`}
+                              }
+                              ${
+                                    isGoogleForm
+                                          ? "w-full"
+                                          : `w-[94vw] md:w-[54vw]  mx-auto ${
+                                                  FormCore.form_styles === "FULL_WIDTH"
+                                                        ? FormCore?.form_themes === "LIGHT"
+                                                              ? "bg-color-section-theme"
+                                                              : "bg-[#1e1f22]"
+                                                        : ""
+                                            }`
+                              }
+                              
+                              pb-[8rem]  flex flex-col  rounded-lg`}
                         >
                               <DivNative className={`${formThemes} flex flex-col gap-[3rem]`}>
                                     <FormAnswerProvider formCore={FormCore} form_answer_id="">
