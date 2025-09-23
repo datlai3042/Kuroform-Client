@@ -66,9 +66,9 @@ const FormAnswerCore = (props: TProps) => {
                         document.body.style.setProperty("--color-section-theme", "#2c2c2c");
                   } else {
                         document.body.style.setProperty("--color-section-theme", "transparent");
+                        document.documentElement.style.backgroundColor = "var(--form-theme-dark)";
                   }
 
-                  document.documentElement.style.backgroundColor = "var(--form-theme-dark)";
             }
 
             return () => {
