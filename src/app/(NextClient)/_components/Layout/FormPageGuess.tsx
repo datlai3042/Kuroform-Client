@@ -1,7 +1,7 @@
 "use client";
 import { FormCore, InputCore } from "@/type";
 import Image from "next/image";
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import DivNative from "../ui/NativeHtml/DivNative";
 import ButtonNative from "../ui/NativeHtml/ButtonNative";
 import { renderStyleTitleCore } from "@/app/_lib/utils";
@@ -59,17 +59,40 @@ const FormPageGuess = (props: TProps) => {
       const renderBgColor = theme === "light" ? "transparent" : "var(--bg-dark-readOnly)";
 
       const formThemes = renderFormThemeAnswer(FormCore);
+      useEffect(() => {
+            if (FormCore.form_themes === "AUTO") {
+                  if (theme === "light") {
+                        document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
+                  } else {
+                        document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
+                  }
+            }
+            if (FormCore.form_themes === "LIGHT") {
+                  document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
+                  document.documentElement.style.backgroundColor = "var(--form-theme-light)";
+                  document.body.style.setProperty("--color-section-theme", "#fefefe");
+            }
+
+            if (FormCore.form_themes === "DARK") {
+                  document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
+                  if (FormCore.form_styles === "GOOGLE_FORM") {
+                        document.body.style.setProperty("--color-section-theme", "#2c2c2c");
+                  } else {
+                        document.body.style.setProperty("--color-section-theme", "transparent");
+                  }
+
+                  document.documentElement.style.backgroundColor = "var(--form-theme-dark)";
+            }
+
+            return () => {};
+      }, [FormCore.form_themes]);
 
       return (
             <div
+                  style={{ backgroundColor: isGoogleForm ? "#2e5cbf2b" : !formThemes ? renderBgColor : "" }}
                   className={`${formThemes} ${isGoogleForm ? "px-[2rem] p-[2rem]" : ""}  xl:px-0 min-h-screen h-max flex justify-center     `}
             >
-                  <DivNative
-                        className={`${isGoogleForm ? "w-full sm:w-[62rem]" : "w-full "}
-                  
-                  ${FormCore.form_styles === "FULL_WIDTH" ? (FormCore?.form_themes === "LIGHT" ? "bg-color-section-theme" : "bg-[#1e1f22]") : ""}
-                  flex flex-col gap-[1rem] `}
-                  >
+                  <DivNative className={`${isGoogleForm ? "w-full sm:w-[62rem]" : "w-full bg-[#535157ba]"}  flex flex-col gap-[1rem] `}>
                         {(FormCore.form_background?.form_background_iamge_url ||
                               FormCore.form_background_state ||
                               FormCore.form_avatar?.form_avatar_url ||
@@ -81,22 +104,24 @@ const FormPageGuess = (props: TProps) => {
                         <DivNative
                               className={`${styleEffect.formMarginTop(FormCore.form_avatar_state)} ${
                                     isGoogleForm ? "w-full gap-[3rem]" : "w-full lg:w-[54vw] mx-auto gap-[8rem]"
-                              }
-                              ${
-                                    isGoogleForm
-                                          ? "w-full"
-                                          : `w-[94vw] md:w-[54vw]  mx-auto ${
-                                                  FormCore.form_styles === "FULL_WIDTH"
-                                                        ? FormCore?.form_themes === "LIGHT"
-                                                              ? "bg-color-section-theme"
-                                                              : "bg-[#1e1f22]"
-                                                        : ""
-                                            }`
-                              }
-                              
-                              pb-[8rem]  flex flex-col  rounded-lg`}
+                              } pb-[8rem]  flex flex-col  rounded-lg`}
                         >
-                              <DivNative className={`${formThemes} flex flex-col gap-[3rem]`}>
+                              <DivNative
+                                    className={` flex flex-col gap-[3rem]
+                                        ${
+                                              isGoogleForm
+                                                    ? "w-full"
+                                                    : `w-[94vw] md:w-[54vw]  mx-auto ${
+                                                            FormCore.form_styles === "FULL_WIDTH"
+                                                                  ? FormCore?.form_themes === "LIGHT"
+                                                                        ? "bg-color-section-theme"
+                                                                        : "bg-[#1e1f22]"
+                                                                  : ""
+                                                      }`
+                                        }
+                                    
+                                    `}
+                              >
                                     <FormAnswerProvider formCore={FormCore} form_answer_id="">
                                           <RenderInputAnswers formCore={FormCore} />
                                     </FormAnswerProvider>

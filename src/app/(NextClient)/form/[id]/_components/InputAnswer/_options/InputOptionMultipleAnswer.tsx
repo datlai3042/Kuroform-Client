@@ -121,7 +121,7 @@ const InputOptionMultipleAnswer = (props: TProps) => {
                                     </DivNative>
                               </DivNative>
                               {choose.value.map((op) => op.option_value).join(", ") && (
-                                    <p className={`text-text-theme text-[1.4rem] mt-[1.4rem]`}>
+                                    <p className={` text-[1.4rem] mt-[1.4rem]`}>
                                          {'==>'} Đã chọn:
 
                                           {choose.value.map((op) => op.option_value).join(", ") ? (

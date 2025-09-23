@@ -24,10 +24,10 @@ const DesignTitleForm = () => {
       };
 
       return (
-            <div className=" w-full min-h-[4rem] h-max p-[1rem_0rem] flex flex-wrap gap-[2rem]">
+            <div className=" w-full min-h-[4rem] h-max p-[1rem_0rem] flex flex-wrap gap-[1rem]">
                   <button
                         onClick={() => onAddTitleSub("Text")}
-                        className="btn-primarily bg-color-main min-w-[9rem] h-[3.2rem] flex items-center justify-center gap-[.4rem] p-[.6rem] text-[#fff] rounded-[.4rem]"
+                        className="btn-primarily bg-[var(--bg-btn-func)] min-w-[9rem] h-[3.2rem] flex items-center justify-center gap-[.4rem] p-[.6rem] text-[#fff] rounded-[.4rem]"
                   >
                         <Type size={iconSize} />
                         <span>{FormText.title.optionText.message}</span>
@@ -35,7 +35,7 @@ const DesignTitleForm = () => {
 
                   <button
                         onClick={() => onAddTitleSub("FullDescription")}
-                        className="btn-primarily bg-color-main min-w-[9rem] h-[3.2rem] flex items-center justify-center gap-[.4rem] text-[#fff]  rounded-[.4rem]"
+                        className="btn-primarily bg-[var(--bg-btn-func)] min-w-[9rem] h-[3.2rem] flex items-center justify-center gap-[.4rem] text-[#fff]  rounded-[.4rem]"
                   >
                         <Type size={iconSize} />
 
@@ -45,7 +45,7 @@ const DesignTitleForm = () => {
 
                   <button
                         onClick={() => onAddTitleSub("Image")}
-                        className="btn-primarily bg-color-main min-w-[9rem] h-[3.2rem] flex items-center justify-center gap-[.4rem] text-[#fff]  rounded-[.4rem]"
+                        className="btn-primarily bg-[var(--bg-btn-func)] min-w-[9rem] h-[3.2rem] flex items-center justify-center gap-[.4rem] text-[#fff]  rounded-[.4rem]"
                   >
                         {/* // eslint-disable-next-line jsx-a11y/alt-text */}
                         <Image size={iconSize} />

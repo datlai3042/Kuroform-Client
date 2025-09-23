@@ -6,7 +6,7 @@ import { LightbulbIcon, Moon, Sun } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import Button from "./Button";
 
-const ButtonDarkMode = () => {
+const ButtonDarkMode = ({disable}: {disable?: boolean}) => {
       const { theme, setTheme } = useContext(ThemeContext);
 
       const onChangeTheme = () => {
@@ -19,6 +19,7 @@ const ButtonDarkMode = () => {
       return (
             <div
                   onClick={() => {
+                        if(disable) return
                         if (theme === "light") {
                               return setTheme("dark");
                         } else {

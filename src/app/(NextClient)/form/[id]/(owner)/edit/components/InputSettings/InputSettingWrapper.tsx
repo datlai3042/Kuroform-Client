@@ -114,10 +114,10 @@ const InputSettingWrapper = (props: TProps) => {
                         }}
                         ref={modelRef}
                         className={`
-                              ${renderFormThemes(formCore.form_themes)}
-                            ${color}  absolute  top-[140%] bg  z-[300] flex justify-center items-center text-text-theme`}
+                              bg-color-section-theme shadow-2xl
+                            ${color}  absolute  top-[140%] bg  z-[300] flex justify-center items-center text-text-theme rounded-[.8rem]`}
                   >
-                        <DivNativeRef className="min-w-[21rem] bg-inherit w-max xl:min-h-[16rem]  h-max p-[1.2rem] shadow-xl border-[.1rem] border-[var(--border-color-input)] flex flex-col  rounded-[.4rem] ">
+                        <DivNativeRef className="min-w-[21rem] bg-inherit w-max xl:min-h-[16rem]  h-max p-[1.2rem] shadow-xl border-[.1rem] border-[var(--border-color-input)] flex flex-col  rounded-[.8rem] ">
                               {children}
                         </DivNativeRef>
                   </DivNativeRef>

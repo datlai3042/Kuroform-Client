@@ -11,7 +11,7 @@ const InputSettingLabel = (props: TProps) => {
 
       return (
             <>
-                  <label style={{ color: theme === "dark" ? "#7291e6" : "var(--color-main)" }} {...rest} className=" font-bold">
+                  <label style={{ color: theme === "dark" ? "#7291e6" : "" }} {...rest} className=" font-normal">
                         {children}
                   </label>
             </>

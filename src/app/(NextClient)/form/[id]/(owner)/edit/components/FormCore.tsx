@@ -154,11 +154,11 @@ const FormCore = () => {
 
       useEffect(() => {
             setBorderCurruent(formCore.form_themes);
-             if (theme === "light") {
-                        document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
-                  } else {
-                        document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
-                  }
+            if (theme === "light") {
+                  document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
+            } else {
+                  document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
+            }
             // if (formCore.form_themes === "AUTO") {
             //       if (theme === "light") {
             //             document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
@@ -180,6 +180,23 @@ const FormCore = () => {
                   document.documentElement.style.backgroundColor = "var(--color-section-theme)";
             };
       }, [formCore.form_themes, theme]);
+
+      useEffect(() => {
+            const onReset = () => {
+                  if (theme === "light") {
+                        document.body.style.setProperty("--border-color-input", "rgb(141 145 151 / 27%)");
+                        document.documentElement.style.backgroundColor = "";
+                        document.body.style.setProperty("--color-section-theme", "#fefefe");
+                  } else {
+                        document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
+                        document.documentElement.style.backgroundColor = "";
+                        document.body.style.setProperty("--color-section-theme", "#2c2c2c");
+                  }
+            };
+            if (modeScreen === "NORMAL") {
+                  onReset();
+            }
+      }, [modeScreen, theme]);
 
       return (
             <>

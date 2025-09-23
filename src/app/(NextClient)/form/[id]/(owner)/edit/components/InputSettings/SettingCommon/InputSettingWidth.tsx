@@ -31,7 +31,7 @@ const InputSettingWidth = <InputType extends InputCore.Commom.InputCommon, Type 
       return (
             <DivNative className="flex flex-col  justify-between  ">
                   <InputSettingLabel>Chiều dài Input {value}%</InputSettingLabel>
-                  <Slider defaultValue={value} onChange={onChange} min={25} max={100}/>
+                  <Slider defaultValue={value} onChange={onChange} min={25} max={100} trackStyle={{background: 'var(--color-main)'}}/>
             </DivNative>
       );
 };

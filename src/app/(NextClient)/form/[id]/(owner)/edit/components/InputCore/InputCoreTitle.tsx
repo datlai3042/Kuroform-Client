@@ -65,7 +65,7 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
       };
 
       return (
-            <div className="flex flex-col gap-[1rem]">
+            <div className="flex flex-col gap-[.4rem]">
                   {modeScreen === "NORMAL" && (
                         <>
                               <EditorWriter

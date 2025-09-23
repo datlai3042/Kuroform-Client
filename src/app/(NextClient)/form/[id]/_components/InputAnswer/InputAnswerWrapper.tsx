@@ -18,7 +18,7 @@ const InputAnswerWrapper = (props: TProps) => {
 
       const color =
             formCore.form_themes === "AUTO"
-                  ? "text-text-theme"
+                  ? 'text-[#fff]'
                   : formCore.form_styles === "GOOGLE_FORM"
                   ? formCore?.form_input_styles?.color
                         ? formCore?.form_input_styles?.color
