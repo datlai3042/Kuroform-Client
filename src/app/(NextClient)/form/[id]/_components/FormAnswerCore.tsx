@@ -94,6 +94,7 @@ const FormAnswerCore = (props: TProps) => {
             },
       };
       const formThemes = renderFormThemeAnswer(formCore);
+      console.log({formThemes})
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
       return (
             <DivNative className={` ${isGoogleForm ? "px-[2rem]  p-[2rem_2rem_4rem_2rem] xl:px-0" : ""}   min-h-screen  flex justify-center   w-full h-full`}>
@@ -114,7 +115,6 @@ const FormAnswerCore = (props: TProps) => {
                         >
                               <DivNative
                                     className={`${isGoogleForm ? "gap-[4rem]" : `gap-[0rem] ${formThemes}`} 
-                               ${formCore.form_themes === "DARK" ? "" : "bg-[#c9ccd2] "}
                               rounded-lg flex flex-col  `}
                               >
                                     <FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
