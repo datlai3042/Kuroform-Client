@@ -66,9 +66,9 @@ const FormAnswerCore = (props: TProps) => {
                         document.body.style.setProperty("--color-section-theme", "#2c2c2c");
                   } else {
                         document.body.style.setProperty("--color-section-theme", "transparent");
-                        document.documentElement.style.backgroundColor = "var(--form-theme-dark)";
                   }
 
+                  document.documentElement.style.backgroundColor = "var(--form-theme-dark)";
             }
 
             return () => {
@@ -97,7 +97,11 @@ const FormAnswerCore = (props: TProps) => {
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
       return (
             <DivNative className={` ${isGoogleForm ? "px-[2rem]  p-[2rem_2rem_4rem_2rem] xl:px-0" : ""}   min-h-screen  flex justify-center   w-full h-full`}>
-                  <DivNative className={`${isGoogleForm ? "w-full sm:w-[62rem]" : "w-full"} flex flex-col gap-[1rem] bg-[#c9ccd2]  `}>
+                  <DivNative
+                        className={`${isGoogleForm ? "w-full sm:w-[62rem]" : "w-full"} ${
+                              formCore.form_themes === "DARK" ? "" : "bg-[#c9ccd2] "
+                        } flex flex-col gap-[1rem]  `}
+                  >
                         {(formCore.form_background?.form_background_iamge_url ||
                               formCore.form_background_state ||
                               formCore.form_avatar?.form_avatar_url ||
@@ -110,11 +114,9 @@ const FormAnswerCore = (props: TProps) => {
                               style={{ backgroundColor: "inherit" }}
                               className={`
                                     ${styleEffect.formMarginTop(formCore.form_avatar_state)}
-                                   ${
-                                          isGoogleForm ? "w-full" : `w-[94vw] md:w-[54vw]  mx-auto ${formThemes}`
-                                    } rounded-lg pb-[2rem]`}
+                                   ${isGoogleForm ? "w-full" : `w-[94vw] md:w-[54vw]  mx-auto ${formThemes}`} rounded-lg pb-[2rem]`}
                         >
-                              <DivNative className={`${isGoogleForm ? "gap-[4rem]" : "gap-[0rem]"} ${formThemes} rounded-lg flex flex-col  `}>
+                              <DivNative className={`${isGoogleForm ? "gap-[4rem]" : "gap-[0rem] {formThemes}"} $ rounded-lg flex flex-col  `}>
                                     <FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
                                           <RenderInputAnswers formCore={formCore} />
                                     </FormAnswerProvider>
