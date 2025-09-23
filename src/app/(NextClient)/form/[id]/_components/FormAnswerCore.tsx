@@ -116,7 +116,7 @@ const FormAnswerCore = (props: TProps) => {
                                     ${styleEffect.formMarginTop(formCore.form_avatar_state)}
                                    ${isGoogleForm ? "w-full" : `w-[94vw] md:w-[54vw]  mx-auto ${formThemes}`} rounded-lg pb-[2rem]`}
                         >
-                              <DivNative className={`${isGoogleForm ? "gap-[4rem]" : "gap-[0rem] {formThemes}"} $ rounded-lg flex flex-col  `}>
+                              <DivNative className={`${isGoogleForm ? "gap-[4rem]" : `gap-[0rem] ${formThemes}`}  rounded-lg flex flex-col  `}>
                                     <FormAnswerProvider formCore={formCore} form_answer_id={form_answer_id}>
                                           <RenderInputAnswers formCore={formCore} />
                                     </FormAnswerProvider>
