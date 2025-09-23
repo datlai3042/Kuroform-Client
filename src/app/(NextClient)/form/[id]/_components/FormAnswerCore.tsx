@@ -115,7 +115,11 @@ const FormAnswerCore = (props: TProps) => {
                                          isGoogleForm
                                                ? "w-full"
                                                : `w-[94vw] md:w-[54vw]  mx-auto ${
-                                                       formCore.form_styles === "FULL_WIDTH" ? "bg-color-section-theme" : formThemes
+                                                       formCore.form_styles === "FULL_WIDTH"
+                                                             ? formCore?.form_themes === "LIGHT"
+                                                                   ? "bg-color-section-theme"
+                                                                   : "#1e1f22"
+                                                             : ""
                                                  }`
                                    } rounded-lg pb-[2rem]`}
                         >
@@ -123,7 +127,13 @@ const FormAnswerCore = (props: TProps) => {
                                     className={`${
                                           isGoogleForm
                                                 ? "gap-[4rem]"
-                                                : `gap-[0rem] ${formCore.form_styles === "FULL_WIDTH" ? "bg-color-section-theme" : formThemes}`
+                                                : `gap-[0rem] ${
+                                                        formCore.form_styles === "FULL_WIDTH"
+                                                              ? formCore?.form_themes === "LIGHT"
+                                                                    ? "bg-color-section-theme"
+                                                                    : "#1e1f22"
+                                                              : ""
+                                                  }`
                                     } 
                               rounded-lg flex flex-col  `}
                               >
