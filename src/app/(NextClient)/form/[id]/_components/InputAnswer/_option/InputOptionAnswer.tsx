@@ -108,7 +108,7 @@ const InputOptionAnswer = (props: TProps) => {
                                     </DivNative>
                               </DivNative>
                               {choose?.option_value && (
-                                    <p className={`${color} text-[1.4rem] mt-[1.4rem]`}>
+                                    <p className={`text-text-theme text-[1.4rem] mt-[1.4rem]`}>
                                          {'==>'} Đã chọn:
                                           {choose?.option_value ? (
                                                 <span className="ml-[.4rem] border-b-[.2rem] border-gray-400 text-color-main font-bold">{choose.option_value}</span>

@@ -77,18 +77,18 @@ const InputOptionMultipleAnswer = (props: TProps) => {
       };
       const isError = inputItemInArrayGlobal?.globalError?.state;
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
-   const color =
-            formCore.form_themes === "AUTO"
-                  ? "text-text-theme"
-                  : formCore.form_styles === "GOOGLE_FORM"
-                  ? formCore?.form_input_styles?.color
-                        ? formCore?.form_input_styles?.color
-                        : formCore.form_themes === "DARK"
-                        ? "text-[#000]"
-                        : "text-[#000]"
-                  : formCore.form_themes === "DARK"
-                  ? "text-[#000]"
-                  : "text-[#000]";
+//    const color =
+//             formCore.form_themes === "AUTO"
+//                   ? "text-text-theme"
+//                   : formCore.form_styles === "GOOGLE_FORM"
+//                   ? formCore?.form_input_styles?.color
+//                         ? formCore?.form_input_styles?.color
+//                         : formCore.form_themes === "DARK"
+//                         ? "text-[#000]"
+//                         : "text-[#000]"
+//                   : formCore.form_themes === "DARK"
+//                   ? "text-[#000]"
+//                   : "text-[#000]";
       return (
                   <InputAnswerWrapper formCore={formCore} inputItem={inputItem} >
                   <BoxHandlerInputAnswerError formCore={formCore} inputItemInArrayGlobal={inputItemInArrayGlobal} input_id={inputItem._id!} write={true}>
@@ -121,7 +121,7 @@ const InputOptionMultipleAnswer = (props: TProps) => {
                                     </DivNative>
                               </DivNative>
                               {choose.value.map((op) => op.option_value).join(", ") && (
-                                    <p className={`${color} text-[1.4rem] mt-[1.4rem]`}>
+                                    <p className={`text-text-theme text-[1.4rem] mt-[1.4rem]`}>
                                          {'==>'} Đã chọn:
 
                                           {choose.value.map((op) => op.option_value).join(", ") ? (

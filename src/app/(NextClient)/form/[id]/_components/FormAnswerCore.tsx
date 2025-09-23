@@ -118,7 +118,7 @@ const FormAnswerCore = (props: TProps) => {
                                                        formCore.form_styles === "FULL_WIDTH"
                                                              ? formCore?.form_themes === "LIGHT"
                                                                    ? "bg-color-section-theme"
-                                                                   : "#1e1f22"
+                                                                   : "bg-[#1e1f22]"
                                                              : ""
                                                  }`
                                    } rounded-lg pb-[2rem]`}
@@ -131,7 +131,7 @@ const FormAnswerCore = (props: TProps) => {
                                                         formCore.form_styles === "FULL_WIDTH"
                                                               ? formCore?.form_themes === "LIGHT"
                                                                     ? "bg-color-section-theme"
-                                                                    : "#1e1f22"
+                                                                    : "bg-[#1e1f22]"
                                                               : ""
                                                   }`
                                     } 
