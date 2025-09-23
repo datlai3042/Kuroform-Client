@@ -18,7 +18,9 @@ type TProps = {
 const ThemeProvider = (props: TProps) => {
       const { children } = props;
 
-      const [theme, setTheme] = useState<"dark" | "light">(typeof window === "undefined" ? "dark" : (localStorage.getItem("theme") || 'light') as "dark" | "light");
+      const [theme, setTheme] = useState<"dark" | "light">(
+            typeof window === "undefined" ? "dark" : ((localStorage.getItem("theme") || "light") as "dark" | "light"),
+      );
 
       useEffect(() => {
             if (typeof window === "undefined") return;
@@ -33,6 +35,21 @@ const ThemeProvider = (props: TProps) => {
             document.body.classList.add("light");
             document.body.classList.remove("dark");
             return () => {};
+      }, [theme]);
+
+      useEffect(() => {
+            const onReset = () => {
+                  if (theme === "light") {
+                        document.body.style.setProperty("--border-color-input", "rgb(141 145 151 / 27%)");
+                        document.documentElement.style.backgroundColor = "";
+                        document.body.style.setProperty("--color-section-theme", "#fefefe");
+                  } else {
+                        document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
+                        document.documentElement.style.backgroundColor = "";
+                        document.body.style.setProperty("--color-section-theme", "#2c2c2c");
+                  }
+            };
+            onReset();
       }, [theme]);
 
       return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
