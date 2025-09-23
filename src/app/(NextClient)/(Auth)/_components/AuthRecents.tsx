@@ -26,7 +26,7 @@ const AuthRecents = () => {
 
       return (
             <>
-                  <div className="flex flex-col gap-[1.4rem]">
+                  <div className="flex flex-col gap-[1.4rem] text-text-theme">
                         <strong className="text-[3.2rem] text-color-main">@Kuroform - Project</strong>
                         <span className="text-[2.4rem] font-semibold">Đăng nhập lại vào các tài khoản trước</span>
 

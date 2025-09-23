@@ -2,6 +2,7 @@ import React, { SetStateAction, useState } from "react";
 import Portal from "../../_components/Portal";
 import { TUserRecent } from "@/app/_schema/user/user.type";
 import LoginRecents from "./LoginRecents";
+import { User2 } from "lucide-react";
 
 const ShowMoreAccountRecents = () => {
       const [showMoreAccount, setShowMoreAccount] = useState(false);
@@ -10,10 +11,11 @@ const ShowMoreAccountRecents = () => {
             <>
                   <div
                         onClick={() => setShowMoreAccount(true)}
-                        className="border-[.1rem] hover:shadow-2xl cursor-pointer flex flex-col relative border-[#ccc] rounded-lg w-[18rem] h-max"
+                        className="border-[.1rem] bg-[#fff] hover:shadow-2xl cursor-pointer flex flex-col relative border-[var(--border-color-login-recent)] rounded-lg w-[18rem] h-max"
                   >
                         <div className="w-[18rem] h-[18rem] flex items-center justify-center">
-                              <div className="text-color-main text-[1.4rem] flex items-center justify-center">
+                              <div className="text-color-main text-[1.4rem] flex flex-col gap-[1rem] items-center justify-center">
+                                    <User2 size={30}/>
                                     <span className="text-center w-full block font-bold text-color-main">Các Account đã login</span>
                               </div>
                         </div>

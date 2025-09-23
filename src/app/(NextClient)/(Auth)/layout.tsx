@@ -347,7 +347,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
             <Portal>
                   <div
                         style={{ lineHeight: 1.6, backgroundColor: theme === "dark" ? "#232323" : "#f2f4f7" }}
-                        className="relative flex items-center z-[500] w-full justify-between top-0 xl:top-0 left-0 min-h-screen  xl:pt-0 px-[2rem] md:px-[18rem] gap-[6rem]   bg-color-section-theme  "
+                        className="relative flex items-center z-[500] w-full justify-between top-0 xl:top-0 left-0 min-h-screen  xl:pt-0 px-[2rem] md:px-[18rem] gap-[3rem]   bg-color-section-theme  "
                   >
                         <div className="hidden xl:block h-[80vh] mt-[8rem]">
                               <AuthRecents />

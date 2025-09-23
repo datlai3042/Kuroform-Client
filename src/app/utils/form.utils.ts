@@ -218,7 +218,7 @@ export const renderFormThemeAnswer = (formCore: FormCore.Form) => {
       if (formCore.form_themes === 'DARK') {
             return 'bg-[var(--form-theme-dark)]'
       }
-      return 'bg-[var(--form-theme-light)]'
+      return formCore.form_styles === 'GOOGLE_FORM' ? '' : 'bg-[var(--form-theme-light)]'
 }
 
 

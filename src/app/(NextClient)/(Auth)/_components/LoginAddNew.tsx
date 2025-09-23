@@ -24,7 +24,7 @@ const LoginAddNew = () => {
             <>
                   <div
                         onClick={() => setShowFormLogin(true)}
-                        className="border-[.1rem] hover:shadow-2xl cursor-pointer flex flex-col relative border-[#ccc] rounded-lg w-[18rem] h-max"
+                        className="border-[.1rem] bg-[#fff] hover:shadow-2xl cursor-pointer flex flex-col relative border-[var(--border-color-login-recent)] rounded-lg w-[18rem] h-max"
                   >
                         <div className="w-[18rem] h-[18rem] flex items-center justify-center">
                               <div className="bg-color-main w-[4rem] h-[4rem] rounded-full flex items-center justify-center">
@@ -142,7 +142,7 @@ const FormLoginAddNew = (props: TPropsForm) => {
                   style={{
                         boxShadow: "0 2px 4px #0000001a,0 8px 16px #0000001a",
                   }}
-                  className="relative   min-h-[30rem] w-full h-max mx-auto    flex  items-center flex-col  gap-[3.4rem] rounded-[1.2rem] p-[3rem_2rem]"
+                  className="relative    min-h-[30rem] w-full h-max mx-auto    flex  items-center flex-col  gap-[3.4rem] rounded-[1.2rem] p-[3rem_2rem]"
             >
                   {/* <p className=" w-full flex flex-col gap-[0rem]  items-center">
                            <span className="text-text-theme text-[4.2rem]">Kuro</span> 

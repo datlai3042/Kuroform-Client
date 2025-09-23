@@ -248,6 +248,7 @@ body.dark .ant-rate-star-second {
             /* --border-color-input: rgb(218, 220, 224); */
             /* --border-color-input: rgb(209 213 219 / 70%); */
             --border-color-input: rgb(46 76 120 / 27%);
+            --border-color-login-recent: #e2e5f1;
 
             /* --border-color-side: rgb(200 205 214 / 42%); */
             --border-color-side: rgb(200 205 214 / 74%);
@@ -270,7 +271,7 @@ body.dark .ant-rate-star-second {
 
             /* --color-main: #35336a; */
             /* --color-section-theme: #0d1117; */
-
+            --border-color-login-recent: rgb(86 119 206);
             --color-section-theme: #2c2c2c;
             --text-theme: #ccc;
             --color-main-hover: rgb(229 231 235);

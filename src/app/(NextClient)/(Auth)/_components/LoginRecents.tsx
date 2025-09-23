@@ -21,13 +21,13 @@ const LoginRecents = (props: TProps) => {
       return (
             <>
                   <div
-                        className="border-[.1rem] hover:shadow-2xl cursor-pointer relative border-[#ccc] rounded-lg w-[18rem] h-max"
+                        className="border-[.1rem] hover:shadow-2xl cursor-pointer relative border-[var(--border-color-login-recent)] g-[#fff] rounded-lg w-[18rem] h-max"
                         onClick={() => setOpenModel(true)}
                   >
                         {mode !== "more" && (
                               <button
                                     onClick={() => onDeleteUserRecent({ user_id: userItem?._id })}
-                                    className="absolute z-[2] top-[-2%] left-[-2%] bg-none hover:bg-[#ccc] w-[3rem] !h-[3rem] text-[1.4rem] rounded-full text-[#ccc] hover:text-[#000]"
+                                    className="absolute z-[2] top-[-2%] left-[-2%] bg-[#000000] hover:bg-[#ccc] w-[3rem] !h-[3rem] text-[1.4rem] rounded-full text-[#ccc] hover:text-[#000]"
                               >
                                     <>X</>
                               </button>
@@ -39,7 +39,7 @@ const LoginRecents = (props: TProps) => {
                               alt="user_recents"
                               className="w-full h-[18rem] object-cover rounded-tl-lg rounded-tr-lg"
                         />
-                        <div className="p-[1.4rem_.4rem] flex items-center text-[1.4rem] border-t-[.1rem] border-[#ccc]">
+                        <div className="p-[1rem_.4rem] flex items-center text-[1.4rem] border-t-[.1rem] border-[#ccc]">
                               <span
                               style={{fontWeight: mode === 'more'? 700: '', }}
                               className="text-center w-full block font-medium">{userItem?.name}</span>
@@ -47,9 +47,9 @@ const LoginRecents = (props: TProps) => {
                               {mode === "more" && (
                                     <button
                                           onClick={() => onDeleteUserRecent({ user_id: userItem?._id })}
-                                          className=" bg-none flex items-center justify-center hover:bg-red-600 rounded-md w-[3.2rem] !h-[3.2rem] text-[1.4rem] text-red-600  hover:text-[#fff] "
+                                          className=" bg-none flex items-center justify-center hover:bg-red-600 rounded-md w-[3.2rem] !h-[3.2rem] text-[1.4rem] text-red-500  hover:text-[#fff] "
                                     >
-                                          <Trash2 />
+                                          <Trash2 size={18}/>
                                     </button>
                               )}
                         </div>

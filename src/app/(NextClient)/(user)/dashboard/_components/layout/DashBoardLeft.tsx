@@ -47,7 +47,7 @@ const DashBoardLeft = () => {
             <>
                   <div
                         style={{ borderRight: ".1rem solid var(--border-color-side)" }}
-                        className={` max-h-[97%] min-h-screen  p-[1rem]  flex flex-col gap-[2rem]  text-text-theme text-[1.4rem]`}
+                        className={` max-h-[97%] min-h-screen  p-[2rem_1rem]  flex flex-col gap-[2rem]  text-text-theme text-[1.4rem]`}
                   >
                         <div className="relative w-full mb-[2rem] flex items-center justify-center gap-[1.8rem]">
                               {/* <LogoColor /> */}

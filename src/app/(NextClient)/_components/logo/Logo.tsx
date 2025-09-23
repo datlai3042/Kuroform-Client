@@ -17,7 +17,7 @@ const Logo = () => {
 						src={user.user_avatar_current} width={20} height={20} alt="avatar" className="w-[12rem] h-[12rem] object-cover rounded-full" />
                   )}
                   {!user?.user_avatar_current && (
-                        <div className="w-[12rem] h-[12rem] object-cover rounded-full">{user?.user_first_name.slice(0, 1) || user?.user_email?.slice(0, 1)}</div>
+                        <div className="w-[10rem] h-[10rem] object-cover rounded-full">{user?.user_first_name.slice(0, 1) || user?.user_email?.slice(0, 1)}</div>
                   )}
             </Link>
       );
