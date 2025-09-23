@@ -213,7 +213,7 @@ export const renderUnitWidthValueBg = (formBG: FormCore.Form['form_background'])
 
 export const renderFormThemeAnswer = (formCore: FormCore.Form) => {
       if (formCore.form_themes === 'AUTO') {
-            return 'bg-color-section-theme'
+            return 'bg-[var(--form-theme-light)]'
       }
       if (formCore.form_themes === 'DARK') {
             return 'bg-[var(--form-theme-dark)]'
