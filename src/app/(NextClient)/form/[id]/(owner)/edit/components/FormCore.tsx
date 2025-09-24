@@ -202,7 +202,7 @@ const FormCore = () => {
             <>
                   {modeScreen === "NORMAL" && (
                         <DivNative
-                              className={` relative z-[105]  w-full  !px-[2.6rem] pb-[4rem] transition-all duration-700  sm:px-0    xl:ml-0 flex flex-col gap-[3rem] text-text-theme min-h-screen h-max  `}
+                              className={` relative z-[105]  w-full  !px-[1.6rem] pb-[4rem] transition-all duration-700  sm:px-0    xl:ml-0 flex flex-col gap-[3rem] text-text-theme min-h-screen h-max  `}
                         >
                               {showComponentImage && <FormImage />}
                               <div
