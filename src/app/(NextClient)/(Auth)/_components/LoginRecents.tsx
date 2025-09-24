@@ -21,7 +21,7 @@ const LoginRecents = (props: TProps) => {
       return (
             <>
                   <div
-                        className="border-[.1rem] hover:shadow-2xl cursor-pointer relative border-[var(--border-color-login-recent)] g-[#fff] rounded-lg w-[18rem] h-max"
+                        className="border-[.1rem] hover:shadow-2xl cursor-pointer relative border-[var(--border-color-login-recent)] g-[#fff] rounded-lg w-[17rem] h-max"
                         onClick={() => setOpenModel(true)}
                   >
                         {mode !== "more" && (
@@ -37,7 +37,7 @@ const LoginRecents = (props: TProps) => {
                               height={80}
                               src={userItem?.avatar}
                               alt="user_recents"
-                              className="w-full h-[18rem] object-cover rounded-tl-lg rounded-tr-lg"
+                              className="w-full h-[15rem] object-cover rounded-tl-lg rounded-tr-lg"
                         />
                         <div className="p-[1rem_.4rem] flex items-center text-[1.4rem] border-t-[.1rem] border-[#ccc]">
                               <span

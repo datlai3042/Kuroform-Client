@@ -24,9 +24,9 @@ const LoginAddNew = () => {
             <>
                   <div
                         onClick={() => setShowFormLogin(true)}
-                        className="border-[.1rem] bg-[#fff] hover:shadow-2xl cursor-pointer flex flex-col relative border-[var(--border-color-login-recent)] rounded-lg w-[18rem] h-max"
+                        className="border-[.1rem] bg-[#fff] hover:shadow-2xl cursor-pointer flex flex-col relative border-[var(--border-color-login-recent)] rounded-lg w-[17rem] h-max"
                   >
-                        <div className="w-[18rem] h-[18rem] flex items-center justify-center">
+                        <div className="w-[17rem] h-[15rem] flex items-center justify-center">
                               <div className="bg-color-main w-[4rem] h-[4rem] rounded-full flex items-center justify-center">
                                     <PlusIcon className="text-[#fff] font-black" size={30} />
                               </div>
