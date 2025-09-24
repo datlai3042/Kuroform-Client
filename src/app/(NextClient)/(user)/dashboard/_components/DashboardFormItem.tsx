@@ -64,7 +64,7 @@ const DashboardFormItem = (props: TProps) => {
                                           <EllipsisVertical size={18} />
                                           <div
                                                 style={{
-                                                      boxShadow: 'rgb(104 90 90 / 90%) 0px 2px 4px, rgb(31 32 36 / 90%) 0px 8px 16px',
+                                                      boxShadow: "   rgb(43 39 39 / 90%) 0px 2px 4px, rgb(0 0 0 / 90%) 0px 8px 16px",
                                                 }}
                                                 className="absolute hidden group-hover:flex z-[3] top-[90%] left-0"
                                           >
