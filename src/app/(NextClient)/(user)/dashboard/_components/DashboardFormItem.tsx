@@ -33,11 +33,11 @@ const DashboardFormItem = (props: TProps) => {
                   prefetch={false}
                   href={`/form/${form._id}/summary`}
                   key={form._id}
-                  className=" h-[24rem] hover:shadow-2xl text-[1.3rem]  w-full  max-w-full flex flex-col rounded-[1.6rem]    gap-[1.4rem]   text-text-theme bg-[var(--bg-form-nav)]  border-[.1rem] border-[var(--border-form-item)]"
+                  className=" h-[20rem] hover:shadow-2xl text-[1.3rem]  w-full  max-w-full flex flex-col rounded-[1.6rem]    gap-[1.4rem]   text-text-theme bg-[var(--bg-form-nav)]  border-[.1rem] border-[var(--border-form-item)]"
             >
                   {/* <FormStateProvider form_state={form.form_state} /> */}
                   <div className="w-full flex flex-col items-center justify-center gap-[3rem]">
-                        <div className="w-full h-[12rem]">
+                        <div className="w-full h-[9rem]">
                               {form.form_avatar?.form_avatar_url ? (
                                     <Image
                                           src={form.form_avatar.form_avatar_url}
@@ -56,10 +56,10 @@ const DashboardFormItem = (props: TProps) => {
                         <div className=" flex flex-col justify-center gap-[1.2rem] ">
                               <div
                                     dangerouslySetInnerHTML={{ __html: form?.form_title?.form_title_value || "Trống" }}
-                                    className="max-w-[90%] h-[2.4rem] reset-editor truncate text-[1.6rem] text-color-main font-bold"
+                                    className="max-w-[90%] h-[2rem] reset-editor truncate !text-[1.5rem] text-color-main font-bold"
                               ></div>
                               <div className="flex justify-between">
-                                    <span>Chỉnh sửa {moment(new Date(form.updatedAt!)).fromNow()}</span>
+                                    <span className="text-[1.2rem]">Chỉnh sửa {moment(new Date(form.updatedAt!)).fromNow()}</span>
                                     <div className="relative group">
                                           <EllipsisVertical size={18} />
                                           <div
