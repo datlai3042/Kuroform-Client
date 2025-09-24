@@ -21,7 +21,7 @@ const LoginRecents = (props: TProps) => {
       return (
             <>
                   <div
-                        className="border-[.1rem] hover:shadow-2xl cursor-pointer relative border-[var(--border-color-login-recent)] g-[#fff] rounded-lg w-[17rem] h-max"
+                        className="border-[.1rem] hover:shadow-2xl cursor-pointer relative border-[var(--border-color-login-recent)] g-[#fff] rounded-lg w-[17rem] h-[20rem]"
                         onClick={() => setOpenModel(true)}
                   >
                         {mode !== "more" && (
