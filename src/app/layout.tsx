@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import './styles/root.styles.css'
+import './styles/utils.styles.css'
 import ReactQueryProvider from "./(NextClient)/_components/provider/ReactQueryProvider";
 import ReduxProvider from "./_lib/redux/ReduxProvider";
 import AppProvider from "./(NextClient)/_components/AppProvider";

@@ -14,6 +14,12 @@ const config = {
 		},
 		extend: {
 			colors: {
+				'background-page-color': 'var(--background-page-color)',
+				'text-page-color': 'var(--text-page-color)',
+
+				'border-page-color': 'var(--border-page-color)',
+				'primary-color': 'var(--primary-color)',
+
 				'color-main': 'var(--color-main)',
 				'color-main-hover': 'var(--color-main-hover)',
 				'color-section-theme': 'var(--color-section-theme)',

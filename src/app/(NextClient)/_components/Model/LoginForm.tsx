@@ -4,181 +4,190 @@ import React, { useContext, useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginType, loginSchema } from "@/app/_schema/auth/login.schema";
 
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
-import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
 
-import IconClose from "../ui/input/IconClose";
-import Input from "../ui/input/Input";
-import Button from "../ui/button/Button";
 import Link from "next/link";
 import { onFetchUser } from "@/app/_lib/redux/authentication.slice";
+
+import { checkValueHref } from "@/app/_lib/utils";
+;
+import { LockKeyhole, MailCheck } from "lucide-react";
+import { ThemeContext } from "../provider/ThemeProvider";
+import { loginSchema, LoginType } from "@/app/_schema/auth/login.schema";
 import AuthService from "@/app/_services/auth.service";
+import { ResponseApi, ResponseAuth } from "@/app/_schema/api/response.shema";
+import { TUserRecent } from "@/app/_schema/user/user.type";
+import Input from "../ui/input/Input";
+import Button from "../ui/button/Button";
 import ButtonLoginGoogle from "../ui/button/ButtonLoginGoogle";
 import ButtonLoginGithub from "../ui/button/ButtonLoginGithub";
-import SpaceLine from "./SpaceLine";
-import { ThemeContext } from "../provider/ThemeProvider";
-import { checkValueHref } from "@/app/_lib/utils";
-import { TUserRecent } from "@/app/_schema/user/user.type";
+import IconClose from "../ui/input/IconClose";
 
 type TProps = {
-      onClose?: (state: boolean) => void;
+  onClose?: (state: boolean) => void;
 };
 
 const LoginForm = (props: TProps) => {
-      const { onClose } = props;
-      const dispatch = useDispatch();
-      const router = useRouter();
-      const { theme } = useContext(ThemeContext);
+  const { onClose } = props;
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const { theme } = useContext(ThemeContext);
 
-      const loginForm = useForm<LoginType>({
-            defaultValues: {
-                  user_email: "",
-                  user_password: "",
-            },
-            resolver: zodResolver(loginSchema),
-      });
+  const loginForm = useForm<LoginType>({
+    defaultValues: {
+      user_email: "",
+      user_password: "",
+    },
+    resolver: zodResolver(loginSchema),
+  });
 
-      const loginMutation = useMutation({
-            mutationKey: ["login"],
-            mutationFn: (formLogin: LoginType) => AuthService.login<LoginType, ResponseApi<ResponseAuth>>(formLogin),
-            onSuccess: (response) => {},
-      });
+  const loginMutation = useMutation({
+    mutationKey: ["login"],
+    mutationFn: (formLogin: LoginType) =>
+      AuthService.login<LoginType, ResponseApi<ResponseAuth>>(formLogin),
+    onSuccess: (response) => {},
+  });
 
-      const onSubmit = (data: LoginType) => {
-            loginMutation.mutate(data);
-      };
+  const onSubmit = (data: LoginType) => {
+    loginMutation.mutate(data);
+  };
 
-      useEffect(() => {
-            if (loginMutation.isSuccess) {
-                  const { user } = loginMutation?.data.metadata;
+  useEffect(() => {
+    if (loginMutation.isSuccess) {
+      const { user } = loginMutation?.data.metadata;
 
-                  const loginUserRecents = localStorage.getItem("userRecents");
-                  if (loginUserRecents) {
-                        const parseJSON = JSON.parse(loginUserRecents);
-                        const data = (Array.isArray(parseJSON) ? parseJSON : []) as TUserRecent[];
-                        if (data?.filter((userRecent) => userRecent?._id === user?._id).length === 0) {
-                              data.push({
-                                    _id: user?._id,
+      const loginUserRecents = localStorage.getItem("userRecents");
+      if (loginUserRecents) {
+        const parseJSON = JSON.parse(loginUserRecents);
+        const data = (
+          Array.isArray(parseJSON) ? parseJSON : []
+        ) as TUserRecent[];
+        if (
+          data?.filter((userRecent) => userRecent?._id === user?._id).length ===
+          0
+        ) {
+          data.push({
+            _id: user?._id,
 
-                                    avatar: checkValueHref(user?.user_avatar_current) ? user?.user_avatar_current : user?.user_avatar_system,
-                                    name: user?.user_last_name || user?.user_email?.split("@")[0],
-                                    user_first_name: user?.user_first_name,
-                                    user_last_name: user?.user_last_name,
-                                    email: user?.user_email,
-                              });
+            avatar: checkValueHref(user?.user_avatar_current)
+              ? user?.user_avatar_current
+              : user?.user_avatar_system,
+            name: user?.user_last_name || user?.user_email?.split("@")[0],
+            user_first_name: user?.user_first_name,
+            user_last_name: user?.user_last_name,
+            email: user?.user_email,
+          });
+        }
 
-                              
-                        }
+        localStorage.setItem("userRecents", JSON.stringify(data));
+      } else {
+        const data = [
+          {
+            _id: user?._id,
+            avatar: checkValueHref(user?.user_avatar_current)
+              ? user?.user_avatar_current
+              : user?.user_avatar_system,
+            email: user?.user_email,
 
-                        localStorage.setItem("userRecents", JSON.stringify(data));
-                  } else {
-                        const data = [
-                              {
-                                    _id: user?._id,
-                                    avatar: checkValueHref(user?.user_avatar_current) ? user?.user_avatar_current : user?.user_avatar_system,
-                                    email: user?.user_email,
+            name: user?.user_last_name || user?.user_email?.split("@")[0],
+            user_first_name: user?.user_first_name,
+            user_last_name: user?.user_last_name,
+          },
+        ];
+        localStorage.setItem("userRecents", JSON.stringify(data));
+      }
+      router.push("/dashboard");
+      dispatch(onFetchUser({ user }));
+    }
+  }, [loginMutation.isSuccess, onClose, loginMutation.data, dispatch, router]);
 
-                                    name: user?.user_last_name || user?.user_email?.split("@")[0],
-                                    user_first_name: user?.user_first_name,
-                                    user_last_name: user?.user_last_name,
-                              },
-                        ];
-                        localStorage.setItem("userRecents", JSON.stringify(data));
-                  }
-                  router.push("/dashboard");
-                  dispatch(onFetchUser({ user }));
-            }
-      }, [loginMutation.isSuccess, onClose, loginMutation.data, dispatch, router]);
+  useEffect(() => {
+    if (Object.keys(loginForm.formState.errors).length > 0) {
+    }
+  }, [loginForm.formState.errors]);
 
-      useEffect(() => {
-            if (Object.keys(loginForm.formState.errors).length > 0) {
-            }
-      }, [loginForm.formState.errors]);
+  return (
+    <div
+      style={{}}
+      className="relative   min-h-[40rem] w-full  mx-auto    flex justify-center items-center flex-col  gap-[4.4rem] rounded-[1.2rem] p-[2rem_2rem]"
+    >
+      <div className=" w-full flex flex-col gap-[.8rem]  ">
+        <span className="text-[4.2rem]  text-[#1e2934]">Welcome Back :)</span>
+        <span className="text-[#a4a5b9] font-semibold  text-[1.4rem]">
+          Đăng nhập để trải nghiệm các tính năng tạo biểu mẫu đa dạng
+        </span>
+      </div>
 
-      return (
-            <div
-                  style={{
-                        backgroundColor: theme === "dark" ? "rgb(27 26 26)" : "#fff",
+      <div className=" w-full flex flex-col gap-[1.6rem] ">
+        <form
+          className="w-full h-full flex flex-col justify-center  gap-[1.8rem] rounded-[1.2rem]"
+          onSubmit={loginForm.handleSubmit(onSubmit)}
+        >
+          <Input<LoginType>
+            FieldKey="user_email"
+            placeholder="Email"
+            type="email"
+            register={loginForm.register}
+            error={loginForm.formState.errors}
+            watch={loginForm.watch}
+            icon={<MailCheck />}
+          />
+          <Input<LoginType>
+            FieldKey="user_password"
+            placeholder="Mật khẩu"
+            type="password"
+            register={loginForm.register}
+            error={loginForm.formState.errors}
+            watch={loginForm.watch}
+            icon={<LockKeyhole />}
 
-                        boxShadow: "0 2px 4px #0000001a,0 8px 16px #0000001a",
-                  }}
-                  className="relative   min-h-[40rem] w-full h-max mx-auto    flex justify-center items-center flex-col  gap-[3.4rem] rounded-[1.2rem] p-[2rem_2rem]"
-            >
-                  {/* <p className=" w-full flex flex-col gap-[0rem]  items-center">
-                       <span className="text-text-theme text-[4.2rem]">Kuro</span> 
-                        <span className="text-[#6262e5] text-[4.2rem]">form</span> 
-                        <span className="text-[#3d52a2] font-semibold text-[2.8rem]">Đăng nhập 👋</span>
-                        <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Đăng nhập để tiếp tục dịch vụ</span>
-                  </p> */}
-
-                  <div className=" w-full flex flex-col gap-[1.6rem] ">
-                        <form className="w-full h-full flex flex-col justify-center  gap-[1.6rem] rounded-[1.2rem]" onSubmit={loginForm.handleSubmit(onSubmit)}>
-                              <Input<LoginType>
-                                    FieldKey="user_email"
-                                    placeholder="Email"
-                                    type="email"
-                                    register={loginForm.register}
-                                    error={loginForm.formState.errors}
-                                    watch={loginForm.watch}
-                              />
-                              <Input<LoginType>
-                                    FieldKey="user_password"
-                                    placeholder="Mật khẩu"
-                                    type="password"
-                                    register={loginForm.register}
-                                    error={loginForm.formState.errors}
-                                    watch={loginForm.watch}
-                              />
-                              <Button
-                                    disabled={loginMutation.isPending}
-                                    loading={loginMutation.isPending}
-                                    type="submit"
-                                    textContent="Đăng nhập"
-                                    className="!w-full !h-[4rem] !bg-[var(--color-main)] mt-[.8rem]"
-                              />
-                        </form>
-                        {/* <SpaceLine content="Hoặc đăng nhập luôn bằng phương thức khác" /> */}
-                        <div className="w-full flex  gap-[1rem]">
-                              <div className="w-[48%] h-[4.6rem]">
-                                    <ButtonLoginGoogle />
-                              </div>
-
-                              <div className="w-[48%] h-[4.6rem]">
-                                    <ButtonLoginGithub />
-                              </div>
-                        </div>
-
-                        <div className="w-full flex flex-col items-center gap-[.2rem] text-[1.4rem] my-[1.5rem]">
-                              {/* <p className="text-[#6262e5] font-medium text-[1.6rem]">Đăng nhập tài khoản của bạn</p> */}
-
-                              <Button
-                                    textContent={
-                                          <Link href={"/register"} className="!text-[#fff] text-[1.6rem]   font-bold  w-full">
-                                                <span>Tạo tài khoản</span>
-                                          </Link>
-                                    }
-                                    className="!bg-[#42b72a] hover:!bg-[#36a420] !p-[2.4rem_2rem] !rounded-md  !w-[60%] mt-[1rem]"
-                              ></Button>
-                              {/* <p className="text-[1.4rem]">
-                                    Bạn chưa có tài khoản?{" "}
-                                    <Link href={"/register"} className="text-[var(--color-main)] underline font-semibold">
-                                          đăng kí nhé
-                                    </Link>
-                              </p> */}
-                        </div>
-                  </div>
-
-                  {onClose && (
-                        <div className="absolute  top-[-20px] right-[-10px] xl:right-[-20px]">
-                              <IconClose onClose={onClose} />
-                        </div>
-                  )}
+          />
+          <div className="mt-[1.2rem] flex flex-col gap-[1.3rem]">
+            <div className=" flex gap-[1rem]">
+              <Button
+                disabled={loginMutation.isPending}
+                loading={loginMutation.isPending}
+                type="submit"
+                textContent="Đăng nhập"
+                className="!min-w-[15rem] font-semibold text-[1.5rem] !h-[4.6rem] !bg-[var(--color-main)] !rounded-[999px]"
+              />
+              <Button
+                textContent={
+                  <Link href={"/register"} className=" text-[1.5rem]    w-full">
+                    <span>Tạo tài khoản</span>
+                  </Link>
+                }
+                className="!bg-background-page-color hover:!bg-[#36a420] border-[.1rem] !text-[#333] hover:!text-[#fff] hover:border-border-page-color font-semibold text-[1.5rem] !h-[4.6rem]  !rounded-[999px] !w-[15rem] "
+              ></Button>
             </div>
-      );
+            <div className="flex flex-col gap-[1rem]">
+              <span className="mt-[1rem] text-[1.4rem] font-bold text-[#95a5b4]">
+                Hoặc các phương thức khác
+              </span>
+              <div className="w-full flex  gap-[1.4rem]">
+                <div className="">
+                  <ButtonLoginGoogle />
+                </div>
+
+                <div className="">
+                  <ButtonLoginGithub />
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      {onClose && (
+        <div className="absolute  top-[-20px] right-[-10px] xl:right-[-20px]">
+          <IconClose onClose={onClose} />
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default LoginForm;

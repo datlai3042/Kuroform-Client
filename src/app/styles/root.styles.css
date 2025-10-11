@@ -1,0 +1,22 @@
+:root {
+  --background-page-color: #fff;
+  --text-page-color: #000;
+  --border-page-color: #c8d8e1;
+  --primary-color: #3f8bfa;
+}
+
+body.light {
+  --background-page-color: #fff;
+  --text-page-color: #000;
+  --border-page-color: #c8d8e1;
+  --primary-color: #3f8bfa;
+
+}
+
+body.dark {
+  --background-page-color: #000;
+  --text-page-color: #fff;
+  --border-page-color: #c8d8e1;
+  --primary-color: #3f8bfa;
+
+}
