@@ -13,7 +13,7 @@ const ShowMoreAccountRecents = () => {
             <>
                   <div
                         onClick={() => setShowMoreAccount(true)}
-                        className="border-[.1rem] bg-[#fff] h-[15rem] hover:shadow-2xl cursor-pointer flex flex-col relative  border-border-page-color rounded-lg w-[14rem] "
+                        className="border-[.1rem] bg-[#fff] h-[17rem] hover:shadow-2xl cursor-pointer flex flex-col relative  border-border-page-color rounded-lg w-[14rem] "
                   >
                         <div className="p-[1.4rem_.4rem] text-[1.4rem] flex gap-[.6rem] justify-center  items-center  h-full">
                               <UserPlus className="text-primary-color" />
@@ -108,9 +108,9 @@ const AccountLoginRecents = ({
       const [openModel, setOpenModel] = useState(false);
 
       return (
-            <div className="flex gap-[1.4rem] justify-between border-[.1rem] border-border-page-color p-[.7rem_1rem] rounded-[.8rem]">
+            <div className="flex gap-[1.4rem] justify-between border-[.1rem] border-border-page-color p-[2rem_1rem] rounded-[.8rem]">
                   <div>
-                        <Image width={80} height={80} src={user?.avatar} alt="user_recents" className="w-full h-[9rem] object-cover rounded-lg" />
+                        <Image width={80} height={80} src={user?.avatar} alt="user_recents" className="w-[9rem] h-[9rem] object-cover rounded-lg" />
                   </div>
 
                   <div className="flex-1 p-[1rem_.4rem] flex flex-col gap-[1rem]  text-[1.4rem] ">

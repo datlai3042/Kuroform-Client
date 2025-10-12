@@ -45,7 +45,7 @@ const InputPassword = <FormType extends FieldValues>(
 
   return (
     <div className="flex flex-col gap-[.6rem]">
-      <div className="flex items-center p-[.6rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-background-page-color  h-max gap-[.6rem]  rounded-[.8rem] ">
+      <div className="flex items-center p-[.6rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] ">
         <div className="p-[1rem] w-[9rem] flex-center">
           {icon ? icon : <Info />}
         </div>
@@ -63,7 +63,7 @@ const InputPassword = <FormType extends FieldValues>(
             </label>
           )}
 
-          <div className="relative w-full h-[60%]">
+          <div className="relative flex items-center w-full h-[60%]">
             <input
               type={showPassword ? "text" : "password"}
               id={input_id}
@@ -80,7 +80,7 @@ const InputPassword = <FormType extends FieldValues>(
             <button
               tabIndex={-1}
               type="button"
-              className="absolute top-[50%] translate-y-[-50%] right-[1rem]"
+              className="px-[1rem] right-[1rem]"
               onClick={() => setShowPassword((prev) => !prev)}
             >
               {!showPassword ? <Eye size={18} /> : <EyeOff size={18} />}

@@ -50,7 +50,7 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
       style={style}
       className="flex flex-col gap-[.6rem]"
     >
-      <div className="flex items-center p-[.6rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-background-page-color  h-max gap-[.6rem]  rounded-[.8rem] ">
+      <div className="flex items-center p-[.6rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] ">
         <div className="p-[1rem] w-[9rem] flex-center">
           {icon ? icon : <Info />}
         </div>

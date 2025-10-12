@@ -19,7 +19,7 @@ const LoginRecents = (props: TProps) => {
   return (
     <>
       <div
-        className="border-[.1rem] hover:shadow-2xl cursor-pointer relative  border-border-page-color  rounded-lg min-w-[14rem]  h-[15rem]"
+        className="border-[.1rem] hover:shadow-2xl cursor-pointer relative  border-border-page-color  rounded-lg min-w-[12rem]  h-[17rem]"
         onClick={() => setOpenModel(true)}
       >
         {mode !== "more" && (
@@ -35,9 +35,9 @@ const LoginRecents = (props: TProps) => {
           height={80}
           src={userItem?.avatar}
           alt="user_recents"
-          className="w-full h-[11rem] object-cover rounded-tl-lg rounded-tr-lg"
+          className="w-full h-[13rem] object-cover rounded-tl-lg rounded-tr-lg"
         />
-        <div className="p-[1rem_.8rem] flex items-center text-[1.4rem] border-t-[.1rem] border-[#ccc]">
+        <div className="p-[1rem] flex items-center text-[1.4rem] border-t-[.1rem] border-[#ccc]">
           <span
             style={{ fontWeight: mode === "more" ? 700 : "" }}
             className="text-center w-full block font-medium"

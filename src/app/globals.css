@@ -180,7 +180,7 @@ body.dark .ant-rate-star-second {
             --color-gap-empty: #f1f4fb;
             /* --color-main: #6262e5; */
             --color-main: #3d52a2;
-            --color-section-theme: #08112b;
+            --color-section-theme: #16161e;
             --text-theme: #000;
             --color-main-hover: rgb(229 231 235);
             --border-color: hwb(0 10% 88% / 0.189);
@@ -272,7 +272,7 @@ body.dark .ant-rate-star-second {
             /* --color-main: #35336a; */
             /* --color-section-theme: #0d1117; */
             --border-color-login-recent: rgb(86 119 206);
-            --color-section-theme: #2c2c2c;
+            --color-section-theme: #16161e;
             --text-theme: #ccc;
             --color-main-hover: rgb(229 231 235);
             --border-color: #14113c;
@@ -284,7 +284,7 @@ body.dark .ant-rate-star-second {
             --border-color-input: rgb(141 145 151 / 27%);
             --border-color-side: #44444496;
             --bg-scrollbar-thumb-normal: rgba(203, 191, 191, 0.758);
-            --bg-scrollbar-track-normal: #2c2c2c;
+            --bg-scrollbar-track-normal: #16161e;
             --scrol-global-track: rgb(59 35 71 / 76%);
             --scrol-global-thumb: #304c76e8;
       }

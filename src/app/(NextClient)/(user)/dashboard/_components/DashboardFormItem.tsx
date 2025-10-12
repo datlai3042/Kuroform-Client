@@ -33,11 +33,11 @@ const DashboardFormItem = (props: TProps) => {
                   prefetch={false}
                   href={`/form/${form._id}/summary`}
                   key={form._id}
-                  className=" h-[20rem] hover:shadow-2xl text-[1.3rem]  w-full  max-w-full flex flex-col rounded-[1.6rem]    gap-[1.4rem]   text-text-theme bg-[var(--bg-form-nav)]  border-[.1rem] border-[var(--border-form-item)]"
+                  className=" h-[22rem] hover:shadow-2xl text-[1.3rem]  w-full  max-w-full flex flex-col rounded-[1.6rem]    gap-[1.4rem]   text-text-theme bg-[var(--bg-form-nav)]  border-[.1rem] border-[var(--border-form-item)]"
             >
                   {/* <FormStateProvider form_state={form.form_state} /> */}
                   <div className="w-full flex flex-col items-center justify-center gap-[3rem]">
-                        <div className="w-full h-[9rem]">
+                        <div className="w-full h-[11rem]">
                               {form.form_avatar?.form_avatar_url ? (
                                     <Image
                                           src={form.form_avatar.form_avatar_url}
@@ -45,10 +45,10 @@ const DashboardFormItem = (props: TProps) => {
                                           height={20}
                                           alt="avatar"
                                           unoptimized={true}
-                                          className="w-full h-full  object-cover rounded-tl-[1.6rem] rounded-tr-[1.6rem]"
+                                          className="w-full h-full  object-cover rounded-tl-[.8rem] rounded-tr-[.8rem]"
                                     />
                               ) : (
-                                    <div className="w-full h-full  bg-[#000] rounded-tl-[1.6rem] rounded-tr-[1.6rem]"> </div>
+                                    <div className="w-full h-full  bg-[#000] rounded-tl-[.8rem] rounded-tr-[.8rem]"> </div>
                               )}
                         </div>
                   </div>
@@ -63,10 +63,8 @@ const DashboardFormItem = (props: TProps) => {
                                     <div className="relative group">
                                           <EllipsisVertical size={18} />
                                           <div
-                                                style={{
-                                                      boxShadow: "   rgb(43 39 39 / 90%) 0px 2px 4px, rgb(0 0 0 / 90%) 0px 8px 16px",
-                                                }}
-                                                className="absolute hidden group-hover:flex z-[3] top-[90%] left-0"
+                                                
+                                                className="absolute hidden group-hover:flex z-[3] shadow-sm top-[90%] left-0"
                                           >
                                                 <ModalSettingFormItem formItem={form} />
                                           </div>
@@ -141,7 +139,7 @@ const ModalSettingFormItem = ({ formItem }: { formItem: FormCore.Form }) => {
             deleteFormId.mutate(formItem._id);
       };
       return (
-            <div className=" text-[1.2rem]  w-[16rem]  h-max bg-color-section-theme text-text-theme rounded-lg border-[.1rem]  border-[var(--border-color-input)] shadow-lg flex flex-col gap-[.5rem]  ">
+            <div className=" text-[1.2rem]  w-[16rem]  h-max bg-color-section-theme text-text-theme rounded-lg border-[.1rem]  border-[var(--border-color-input)] flex flex-col gap-[.5rem]  ">
                   <button
                         onClick={(e) => {
                               e.stopPropagation();

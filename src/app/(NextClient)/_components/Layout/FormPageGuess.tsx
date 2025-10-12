@@ -76,7 +76,7 @@ const FormPageGuess = (props: TProps) => {
             if (FormCore.form_themes === "DARK") {
                   document.body.style.setProperty("--border-color-input", "rgb(209 213 219 / 27%)");
                   if (FormCore.form_styles === "GOOGLE_FORM") {
-                        document.body.style.setProperty("--color-section-theme", "#2c2c2c");
+                        document.body.style.setProperty("--color-section-theme", "#16161e");
                   } else {
                         document.body.style.setProperty("--color-section-theme", "transparent");
                   }

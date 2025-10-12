@@ -4,11 +4,13 @@ import React, { SetStateAction, createContext, useContext, useEffect, useState }
 type ThemeContextType = {
       theme: "dark" | "light";
       setTheme: React.Dispatch<SetStateAction<"dark" | "light">>;
+      onReset: () => void
 };
 
 export const ThemeContext = createContext<ThemeContextType>({
       theme: "dark",
       setTheme: () => {},
+      onReset: () => {}
 });
 
 type TProps = {
@@ -37,22 +39,22 @@ const ThemeProvider = (props: TProps) => {
             return () => {};
       }, [theme]);
 
+      const onReset = () => {
+            if (theme === "light") {
+                  document.body.style.setProperty("--border-color-input", "rgb(141 145 151 / 27%)");
+                  document.documentElement.style.backgroundColor = "";
+                  document.body.style.setProperty("--color-section-theme", "#fefefe");
+            } else {
+                  document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
+                  document.documentElement.style.backgroundColor = "";
+                  document.body.style.setProperty("--color-section-theme", "#16161e");
+            }
+      };
       useEffect(() => {
-            const onReset = () => {
-                  if (theme === "light") {
-                        document.body.style.setProperty("--border-color-input", "rgb(141 145 151 / 27%)");
-                        document.documentElement.style.backgroundColor = "";
-                        document.body.style.setProperty("--color-section-theme", "#fefefe");
-                  } else {
-                        document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
-                        document.documentElement.style.backgroundColor = "";
-                        document.body.style.setProperty("--color-section-theme", "#2c2c2c");
-                  }
-            };
             onReset();
       }, [theme]);
 
-      return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
+      return <ThemeContext.Provider value={{ theme, setTheme, onReset }}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeProvider;

@@ -190,7 +190,7 @@ const FormCore = () => {
                   } else {
                         document.body.style.setProperty("--border-color-input", "rgb(46 76 120 / 27%)");
                         document.documentElement.style.backgroundColor = "";
-                        document.body.style.setProperty("--color-section-theme", "#2c2c2c");
+                        document.body.style.setProperty("--color-section-theme", "#16161e");
                   }
             };
             if (modeScreen === "NORMAL") {

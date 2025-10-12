@@ -16,7 +16,11 @@ body.light {
 body.dark {
   --background-page-color: #000;
   --text-page-color: #fff;
-  --border-page-color: #c8d8e1;
+  --border-page-color: #454e53;
   --primary-color: #3f8bfa;
 
+}
+
+.field-valid {
+  background-color: #54f68478 !important;
 }

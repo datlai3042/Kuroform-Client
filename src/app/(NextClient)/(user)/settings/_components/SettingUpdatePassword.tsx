@@ -6,6 +6,7 @@ import { UpdatePasswordSchema, updatePasswordSchema } from "@/app/_schema/user/u
 import useCreatePassword from "@/app/hooks/user/useCreatePassword";
 import useUpdatePassword from "@/app/hooks/user/useUpdatePassword";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { LockKeyhole } from "lucide-react";
 import React, { SetStateAction, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -45,7 +46,6 @@ const SettingUpdatePassword = (props: TProps) => {
                               },
                         }),
                   );
-                  
             } else {
                   if (updatePassword.error) {
                         const { detail } = updatePassword.error!.payload;
@@ -65,7 +65,7 @@ const SettingUpdatePassword = (props: TProps) => {
 
       return (
             <div className="min-h-full h-max">
-                  <form className="flex gap-[1.5rem] flex-wrap items-center" onSubmit={updatePasswordForm.handleSubmit(onSubmit)}>
+                  <form className=" flex gap-[2rem] flex-wrap items-center" onSubmit={updatePasswordForm.handleSubmit(onSubmit)}>
                         <Input<UpdatePasswordSchema>
                               FieldKey="password"
                               placeholder="Nhập mật khẩu"
@@ -73,6 +73,7 @@ const SettingUpdatePassword = (props: TProps) => {
                               type="password"
                               watch={updatePasswordForm.watch}
                               error={updatePasswordForm.formState.errors}
+                              icon={<LockKeyhole />}
                         />
 
                         <Input<UpdatePasswordSchema>
@@ -82,15 +83,18 @@ const SettingUpdatePassword = (props: TProps) => {
                               type="password"
                               watch={updatePasswordForm.watch}
                               error={updatePasswordForm.formState.errors}
+                              icon={<LockKeyhole />}
                         />
 
-                        <button
-                              type="submit"
-                              className=" min-w-[15rem] my-[1.2rem] w-max  p-[.8rem] !h-[3.4rem] flex justify-center items-center gap-[.8rem] bg-color-main text-white rounded-lg"
-                        >
-                              Cập nhập mật khẩu
-                              {updatePassword.isPending && <LoadingSpinner color="#fff" width="min-w-[2rem]" height=" min-h-[2rem]" />}
-                        </button>
+                        <div className="block">
+                              <button
+                                    type="submit"
+                                    className=" min-w-[15rem] my-[1.2rem] w-max  p-[.8rem] !h-[3.4rem] flex justify-center items-center gap-[.8rem] bg-color-main text-white rounded-lg"
+                              >
+                                    Cập nhập mật khẩu
+                                    {updatePassword.isPending && <LoadingSpinner color="#fff" width="min-w-[2rem]" height=" min-h-[2rem]" />}
+                              </button>
+                        </div>
                   </form>
             </div>
       );

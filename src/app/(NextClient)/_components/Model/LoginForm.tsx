@@ -115,7 +115,7 @@ const LoginForm = (props: TProps) => {
       className="relative   min-h-[40rem] w-full  mx-auto    flex justify-center items-center flex-col  gap-[4.4rem] rounded-[1.2rem] p-[2rem_2rem]"
     >
       <div className=" w-full flex flex-col gap-[.8rem]  ">
-        <span className="text-[4.2rem]  text-[#1e2934]">Welcome Back :)</span>
+        <span className="text-[4.2rem]  text-[#1e2934] font-medium ">Welcome Back :)</span>
         <span className="text-[#a4a5b9] font-semibold  text-[1.4rem]">
           Đăng nhập để trải nghiệm các tính năng tạo biểu mẫu đa dạng
         </span>

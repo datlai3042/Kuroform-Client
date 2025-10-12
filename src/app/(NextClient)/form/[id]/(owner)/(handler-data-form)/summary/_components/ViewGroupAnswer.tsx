@@ -49,7 +49,7 @@ const ViewGroupAnswer = (props: TProps) => {
                         {Object.keys(dataGroupFilter).map((dt, i) => {
                               const type = dt.split("_#_")[1] as InputCore.InputForm["type"];
                               return (
-                                    <div key={dt + i} className="whitespace-pre  flex flex-col gap-[1.2rem]  ">
+                                    <div key={dt + i} className="whitespace-pre  flex flex-col  ">
                                           <h3 className="px-[.8rem] text-[2.1rem] flex-wrap flex items-center justify-between gap-[.8rem] font-medium text-color-main">
                                                 <p className="flex items-baseline gap-[.6rem]">
                                                       <Circle size={16} />

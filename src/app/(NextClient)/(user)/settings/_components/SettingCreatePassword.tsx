@@ -4,6 +4,7 @@ import { addOneToastSuccess } from "@/app/_lib/redux/toast.slice";
 import { CreatePasswordType, createPasswordSchema } from "@/app/_schema/user/createPassword.schema";
 import useCreatePassword from "@/app/hooks/user/useCreatePassword";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { LockKeyhole } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { SetStateAction, useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -65,6 +66,8 @@ const SettingCreatePassword = (props: TProps) => {
                               type="password"
                               watch={createPasswordForm.watch}
                               error={createPasswordForm.formState.errors}
+            icon={<LockKeyhole />}
+
                         />
 
                         <Input<CreatePasswordType>
@@ -74,6 +77,8 @@ const SettingCreatePassword = (props: TProps) => {
                               type="password"
                               watch={createPasswordForm.watch}
                               error={createPasswordForm.formState.errors}
+                                          icon={<LockKeyhole />}
+                              
                         />
 
                         <button
