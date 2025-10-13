@@ -41,7 +41,7 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                                                 fontWeight: 600,
                                           }}
                                           htmlFor={`${FieldKey}-${id}`}
-                                          className={`${focus ? "field-label-focus" : ""} top-0 first-letter:uppercase text-color-main font-bold text-[1.6rem]`}
+                                          className={`${focus ? "field-label-focus" : ""} top-0 first-letter:uppercase text-color-main font-bold text-[1.5rem]`}
                                     >
                                           {placeholder}
                                     </label>
