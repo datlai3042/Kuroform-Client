@@ -28,8 +28,8 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
       const [focus, setFocus] = useState(false);
 
       return (
-            <div style={style} className={`${focus ? 'my-[.8rem]' : ''} relative flex flex-col gap-[.6rem]`}>
-                  <div className="flex items-center p-[.5rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] ">
+            <div style={style} className={`${focus ? 'my-[.8rem]' : ''}  flex flex-col gap-[.6rem]`}>
+                  <div className="relative flex items-center p-[.5rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] ">
                         <label className="p-[.4rem_1rem] w-[9rem] flex-center" htmlFor={`${FieldKey}-${id}`}>
                               {icon ? icon : <Info />}
                         </label>
