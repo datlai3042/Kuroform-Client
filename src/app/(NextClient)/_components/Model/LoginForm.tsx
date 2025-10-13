@@ -112,7 +112,7 @@ const LoginForm = (props: TProps) => {
   return (
     <div
       style={{}}
-      className="relative   min-h-[40rem] w-full  mx-auto    flex justify-center items-center flex-col  gap-[4.4rem] rounded-[1.2rem] p-[2rem_2rem]"
+      className="relative   min-h-[40rem] w-full  mx-auto    flex justify-center items-center flex-col  gap-[3rem] rounded-[1.2rem] p-[2rem_2rem]"
     >
       <div className=" w-full flex flex-col gap-[.8rem]  ">
         <span className="text-[4.2rem]  text-[#1e2934] font-medium ">Welcome Back :)</span>
@@ -145,7 +145,7 @@ const LoginForm = (props: TProps) => {
             icon={<LockKeyhole />}
 
           />
-          <div className="mt-[1.2rem] flex flex-col gap-[1.3rem]">
+          <div className="mt-[1.4rem] flex flex-col gap-[1.6rem]">
             <div className=" flex gap-[1rem]">
               <Button
                 disabled={loginMutation.isPending}
@@ -163,7 +163,7 @@ const LoginForm = (props: TProps) => {
                 className="!bg-background-page-color hover:!bg-[#36a420] border-[.1rem] !text-[#333] hover:!text-[#fff] hover:border-border-page-color font-semibold text-[1.5rem] !h-[4.6rem]  !rounded-[999px] !w-[15rem] "
               ></Button>
             </div>
-            <div className="flex flex-col gap-[1rem]">
+            <div className="flex flex-col gap-[1.2rem]">
               <span className="mt-[1rem] text-[1.4rem] font-bold text-[#95a5b4]">
                 Hoặc các phương thức khác
               </span>

@@ -1,26 +1,41 @@
 :root {
-  --background-page-color: #fff;
-  --text-page-color: #000;
-  --border-page-color: #c8d8e1;
-  --primary-color: #3f8bfa;
+      --background-page-color: #fff;
+      --text-page-color: #000;
+      --border-page-color: #c8d8e1;
+      --primary-color: #3f8bfa;
 }
 
 body.light {
-  --background-page-color: #fff;
-  --text-page-color: #000;
-  --border-page-color: #c8d8e1;
-  --primary-color: #3f8bfa;
-
+      --background-page-color: #fff;
+      --text-page-color: #000;
+      --border-page-color: #c8d8e1;
+      --primary-color: #3f8bfa;
 }
 
 body.dark {
-  --background-page-color: #000;
-  --text-page-color: #fff;
-  --border-page-color: #454e53;
-  --primary-color: #3f8bfa;
-
+      --background-page-color: #000;
+      --text-page-color: #fff;
+      --border-page-color: #454e53;
+      --primary-color: #3f8bfa;
 }
 
 .field-valid {
-  background-color: #54f68478 !important;
+      background-color: #54f68478 !important;
+}
+
+.field-label-focus {
+      margin-left: -0.8rem;
+      padding: 0rem 0.8rem;
+      position: absolute;
+      color: rgb(103, 113, 130);
+      font-weight: 600;
+      top: -50%;
+      background: var(--background-page-color);
+      z-index: 3;
+      transform: translateY(50%);
+      transition: all 0.1s;
+}
+
+.field-input-focus {
+      padding: 0.8rem 0rem;
 }

@@ -38,7 +38,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                                           <AuthRecents />
                                     </div>
                               </div>
-                              <div className="basis-[50rem] max-w-[100vw] justify-center min-h-screen   overflow-auto flex-grow-[1] flex-shrink-0 md:flex-grow-0 flex flex-col   px-[20px] py-[1rem]">
+                              <div className="basis-[45rem] max-w-[100vw] justify-center min-h-screen   overflow-auto flex-grow-[1] flex-shrink-0 md:flex-grow-0 flex flex-col   px-[20px] py-[1rem]">
                                     <div className="flex-1 flex   w-full text-text-theme   auth-scroll">{children}</div>
                               </div>
                         </div>
