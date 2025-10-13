@@ -13,10 +13,12 @@ type TProps<FormType extends FieldValues> = {
       unActiveLabel?: boolean;
       icon?: React.ReactNode;
       isValid?: boolean;
+            style?: React.CSSProperties;
+
 };
 
 const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) => {
-      const { FieldKey, error, placeholder, register, watch, unActiveLabel = false, icon, isValid = false } = props;
+      const { FieldKey, error, placeholder, register, watch, unActiveLabel = false, icon, isValid = false, style={} } = props;
       const id = useId();
       const [showPassword, setShowPassword] = useState<boolean>(false);
 
