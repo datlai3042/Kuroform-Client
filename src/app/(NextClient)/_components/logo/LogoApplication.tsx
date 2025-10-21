@@ -11,7 +11,7 @@ const LogoApplication = () => {
         width={20}
         height={20}
         alt="avatar"
-        className="w-[6rem] h-[6rem] object-cover rounded-full"
+        className="w-[5rem] h-[5rem] object-cover rounded-full"
       />
       <span className="gradient-app-name text-[3.2rem] font-semibold">
         Kuroform

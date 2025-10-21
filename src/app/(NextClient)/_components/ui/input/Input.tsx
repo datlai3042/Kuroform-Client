@@ -3,8 +3,8 @@ import React, { ReactNode, useId, useState } from "react";
 import { FieldErrors, FieldValues, Path, UseFormRegister, UseFormWatch } from "react-hook-form";
 import InputPassword from "./InputPassword";
 import { Info } from "lucide-react";
-import { InputType } from "@/type";
 import InputError from "./InputError";
+import { InputType } from "@/type";
 
 type TProps<FormType extends FieldValues> = {
       FieldKey: Path<FormType>;
@@ -29,8 +29,8 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
       const input_erros: React.ReactNode = error[FieldKey]?.message as ReactNode;
 
       return (
-            <div style={style} className={`${focus ? "my-[.8rem]" : ""}  flex flex-col gap-[.6rem]`}>
-                  <div className="relative flex items-center p-[.5rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] ">
+            <div style={style} className={`${focus && !unActiveLabel ? "my-[.8rem] field-container-focus" : ""}  flex flex-col gap-[.6rem]`}>
+                  <div className={`${focus  ? ' field-container-focus' : ''} relative flex items-center p-[.5rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] `}>
                         <label className="p-[.4rem_1rem] w-[9rem] flex-center" htmlFor={`${FieldKey}-${id}`}>
                               {icon ? icon : <Info />}
                         </label>
@@ -43,7 +43,7 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
                                                 fontWeight: 600,
                                           }}
                                           htmlFor={`${FieldKey}-${id}`}
-                                          className={`${focus ? "field-label-focus" : ""} top-0 first-letter:uppercase text-color-main font-bold text-[1.5rem]`}
+                                          className={`${focus && !unActiveLabel ? "field-label-focus" : ""} top-0 first-letter:uppercase text-color-main font-bold text-[1.5rem]`}
                                     >
                                           {placeholder}
                                     </label>
@@ -58,8 +58,8 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
                                     })}
                                     onFocus={() => setFocus(true)}
                                     className={`${
-                                          focus ? "field-input-focus" : ""
-                                    } inline-block  input-form w-full  pr-[1.2rem] text-[1.4rem]  opacity-100 text-text-theme  font-semibold outline-transparent bg-transparent  placeholder:opacity-100 `}
+                                          focus && !unActiveLabel ? "field-input-focus" : ""
+                                    } inline-block  input-form w-full  pr-[1.2rem]  py-[.4rem] text-[1.4rem]  opacity-100 text-text-theme  font-semibold outline-transparent bg-transparent  placeholder:opacity-100 `}
                                     placeholder={`Nhập ${placeholder} của bạn`}
                               />
                         </div>

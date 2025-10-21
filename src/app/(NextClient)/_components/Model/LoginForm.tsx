@@ -114,8 +114,10 @@ const LoginForm = (props: TProps) => {
       style={{}}
       className="relative   min-h-[40rem] w-full  mx-auto    flex justify-center items-center flex-col  gap-[3rem] rounded-[1.2rem] p-[2rem_2rem]"
     >
-      <div className=" w-full flex flex-col gap-[.8rem]  ">
-        <span className="text-[4.2rem]  text-[#1e2934] font-medium ">Welcome Back :)</span>
+      <div className=" w-full flex flex-col gap-[1.4em]  ">
+        <span className="text-[3rem] text-[#1e2934]  gradient-app-name font-bold">Chào mừng trở lại 👋</span>
+
+
         <span className="text-[#a4a5b9] font-semibold  text-[1.4rem]">
           Đăng nhập để trải nghiệm các tính năng tạo biểu mẫu đa dạng
         </span>
@@ -123,7 +125,7 @@ const LoginForm = (props: TProps) => {
 
       <div className=" w-full flex flex-col gap-[1.6rem] ">
         <form
-          className="w-full h-full flex flex-col justify-center  gap-[1.8rem] rounded-[1.2rem]"
+          className="w-full h-full flex flex-col justify-center  gap-[2.4rem] rounded-[1.2rem]"
           onSubmit={loginForm.handleSubmit(onSubmit)}
         >
           <Input<LoginType>
@@ -145,7 +147,7 @@ const LoginForm = (props: TProps) => {
             icon={<LockKeyhole />}
 
           />
-          <div className="mt-[1.4rem] flex flex-col gap-[1.6rem]">
+          <div className="mt-[.8rem] flex flex-col gap-[1.6rem]">
             <div className=" flex gap-[1rem]">
               <Button
                 disabled={loginMutation.isPending}
@@ -156,14 +158,14 @@ const LoginForm = (props: TProps) => {
               />
               <Button
                 textContent={
-                  <Link href={"/register"} className=" text-[1.5rem]    w-full">
+                  <Link href={"/register"} className=" text-[1.5rem]  !min-w-[15rem]  w-full">
                     <span>Tạo tài khoản</span>
                   </Link>
                 }
                 className="!bg-background-page-color hover:!bg-[#36a420] border-[.1rem] !text-[#333] hover:!text-[#fff] hover:border-border-page-color font-semibold text-[1.5rem] !h-[4.6rem]  !rounded-[999px] !w-[15rem] "
               ></Button>
             </div>
-            <div className="flex flex-col gap-[1.2rem]">
+            <div className="flex flex-col gap-[1.8rem]">
               <span className="mt-[1rem] text-[1.4rem] font-bold text-[#95a5b4]">
                 Hoặc các phương thức khác
               </span>

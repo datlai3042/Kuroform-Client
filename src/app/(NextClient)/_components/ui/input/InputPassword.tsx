@@ -14,11 +14,11 @@ type TProps<FormType extends FieldValues> = {
       icon?: React.ReactNode;
       isValid?: boolean;
             style?: React.CSSProperties;
-
+      
 };
 
 const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) => {
-      const { FieldKey, error, placeholder, register, watch, unActiveLabel = false, icon, isValid = false, style={} } = props;
+      const { FieldKey, error, placeholder, register, watch, unActiveLabel = false, icon, isValid = false, style = {} } = props;
       const id = useId();
       const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -28,8 +28,8 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
       const [focus, setFocus] = useState(false);
 
       return (
-            <div style={style} className={`${focus ? 'my-[.8rem]' : ''}  flex flex-col gap-[.6rem]`}>
-                  <div className="relative flex items-center p-[.5rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] ">
+            <div style={style} className={`${focus && !unActiveLabel ? 'my-[.8rem] field-container-focus' : ''}  flex flex-col gap-[.6rem]`}>
+                  <div className={`${focus  ? ' field-container-focus' : ''} relative flex items-center p-[.5rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] `}>
                         <label className="p-[.4rem_1rem] w-[9rem] flex-center" htmlFor={`${FieldKey}-${id}`}>
                               {icon ? icon : <Info />}
                         </label>
@@ -47,7 +47,7 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                                     </label>
                               )}
 
-                              <div className="relative flex items-center w-full h-[60%]">
+                              <div className="relative flex items-center w-full ">
                                     <input
                                           type={showPassword ? "text" : "password"}
                                           id={input_id}
@@ -58,8 +58,8 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                                           })}
                                           onFocus={() => setFocus(true)}
                                           className={`${
-                                                focus ? "field-input-focus" : ""
-                                          } inline-block w-full bg-transparent pr-[1.2rem] opacity-100 rounded-[.3rem] text-text-theme   text-[1.4rem]   font-semibold outline-transparent  placeholder:opacity-100 `}
+                                                focus && !unActiveLabel ? "field-input-focus" : ""
+                                          } inline-block w-full bg-transparent pr-[1.2rem]  py-[.4rem] opacity-100 rounded-[.3rem] text-text-theme   text-[1.4rem]   font-semibold outline-transparent  placeholder:opacity-100 `}
                                           placeholder={input_placeholder}
                                     />
 
