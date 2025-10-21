@@ -112,9 +112,9 @@ const LoginForm = (props: TProps) => {
   return (
     <div
       style={{}}
-      className="relative   min-h-[40rem] w-full  mx-auto    flex justify-center items-center flex-col  gap-[3rem] rounded-[1.2rem] p-[2rem_2rem]"
+      className="relative   min-h-[40rem] w-full  mx-auto    flex justify-center items-center flex-col  gap-[4.4rem] rounded-[1.2rem] p-[2rem_2rem]"
     >
-      <div className=" w-full flex flex-col gap-[1.4em]  ">
+      <div className=" w-full flex flex-col gap-[.6em]  ">
         <span className="text-[3rem] text-[#1e2934]  gradient-app-name font-bold">Chào mừng trở lại 👋</span>
 
 

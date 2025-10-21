@@ -32,7 +32,7 @@ body.dark {
       padding: 0rem 0.8rem;
       position: absolute;
       color: rgb(103, 113, 130);
-      font-weight: 600;
+      font-weight: 700;
       top: -50%;
       background: var(--background-page-color);
       z-index: 3;

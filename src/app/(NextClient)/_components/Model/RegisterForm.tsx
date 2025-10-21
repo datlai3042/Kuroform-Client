@@ -97,8 +97,8 @@ const RegisterForm = (props: TProps) => {
       };
 
       return (
-            <div className="relative w-full flex h-full justify-center items-center flex-col  gap-[2rem] rounded-[1.2rem] p-[2rem_2rem] ">
-                  <div className=" w-full flex flex-col gap-[1.4rem]  ">
+            <div className="relative w-full flex h-full justify-center items-center flex-col  gap-[2.4rem] rounded-[1.2rem] p-[2rem_2rem] ">
+                  <div className=" w-full flex flex-col gap-[.6rem]  ">
                         <span className="text-[3rem]   gradient-app-name font-bold">Xin chào bạn 👋</span>
                         <span className="text-[#333] opacity-80 font-semibold  text-[1.5rem]">Hãy tạo tài khoản để bắt đầu cùng Kuroform nhé!</span>
                   </div>

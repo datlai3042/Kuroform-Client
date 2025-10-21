@@ -31,7 +31,7 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
       return (
             <div style={style} className={`${focus && !unActiveLabel ? "my-[.8rem] field-container-focus" : ""}  flex flex-col gap-[.6rem]`}>
                   <div className={`${focus  ? ' field-container-focus' : ''} relative flex items-center p-[.5rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] `}>
-                        <label className="p-[.4rem_1rem] w-[9rem] flex-center" htmlFor={`${FieldKey}-${id}`}>
+                       <label className={`${focus && !unActiveLabel ? "text-color-main" : ""} p-[0rem_1rem] w-[9rem] flex-center`} htmlFor={`${FieldKey}-${id}`}>
                               {icon ? icon : <Info />}
                         </label>
 
@@ -43,7 +43,7 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
                                                 fontWeight: 600,
                                           }}
                                           htmlFor={`${FieldKey}-${id}`}
-                                          className={`${focus && !unActiveLabel ? "field-label-focus" : ""} top-0 first-letter:uppercase text-color-main font-bold text-[1.5rem]`}
+                                          className={`${focus && !unActiveLabel ? "text-color-main field-label-focus" : ""} top-0 first-letter:uppercase text-color-main font-bold text-[1.5rem]`}
                                     >
                                           {placeholder}
                                     </label>
