@@ -35,15 +35,15 @@ body.dark {
       font-weight: 700;
       top: -50%;
       background: var(--background-page-color);
-      z-index: 3;
+      z-index: 99;
       transform: translateY(50%);
-      transition: all 0.1s;
+      transition: all 0.3s;
       color: var(--primary-color) !important;
       font-weight: 700 !important;
 }
 
 .field-input-focus {
-      padding: 1.2rem 0rem !important;
+      padding: 1rem 0rem !important;
       /* color: var(--primary-color) !important; */
 
 }

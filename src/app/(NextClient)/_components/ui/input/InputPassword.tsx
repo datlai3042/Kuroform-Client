@@ -13,8 +13,7 @@ type TProps<FormType extends FieldValues> = {
       unActiveLabel?: boolean;
       icon?: React.ReactNode;
       isValid?: boolean;
-            style?: React.CSSProperties;
-      
+      style?: React.CSSProperties;
 };
 
 const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) => {
@@ -26,14 +25,27 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
       const input_placeholder = `Nhập ${placeholder} của bạn`;
       const input_erros: React.ReactNode = error[FieldKey]?.message as ReactNode;
       const [focus, setFocus] = useState(false);
+ const iconWithProps = React.isValidElement(icon)
+    ? React.cloneElement(icon, {
+        ...icon.props, // ✅ giữ nguyên toàn bộ props gốc
 
+        strokeWidth: focus ? "2.6" : "2",
+      })
+    : icon;
       return (
-            <div style={style} className={`${focus && !unActiveLabel ? 'my-[.8rem] field-container-focus' : ''}  flex flex-col gap-[.6rem]`}>
-                  <div className={`${focus  ? ' field-container-focus' : ''} relative flex items-center p-[.5rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] `}>
-                         <label className={`${focus && !unActiveLabel ? "text-color-main" : ""} p-[0rem_1rem] w-[9rem] flex-center`} htmlFor={`${FieldKey}-${id}`}>
-                                                      {icon ? icon : <Info />}
-                                                </label>
-                        <div className="flex flex-col gap-[.2rem]   w-full  ">
+            <div style={style} className={`${focus && !unActiveLabel ? "my-[.8rem] field-container-focus" : ""}  flex flex-col gap-[.6rem]`}>
+                  <div
+                        className={`${
+                              focus ? " field-container-focus" : ""
+                        } ${unActiveLabel ? ' p-[1rem_0rem]' : ' p-[.5rem_0rem]'} relative flex items-center  w-full border-[.2rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] `}
+                  >
+                        <label
+                              className={`${focus ? "text-color-main" : ""} p-[0rem_1rem] w-[9rem] flex-center`}
+                              htmlFor={`${FieldKey}-${id}`}
+                        >
+                              {icon ? iconWithProps : <Info strokeWidth={focus ? "2.6" : "2"}/>}
+                        </label>
+                        <div className="flex flex-col    w-full  ">
                               {!unActiveLabel && (
                                     <label
                                           style={{
@@ -41,7 +53,9 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                                                 fontWeight: 600,
                                           }}
                                           htmlFor={`${FieldKey}-${id}`}
-                                          className={`${focus ? "text-color-main field-label-focus" : ""} top-0 first-letter:uppercase text-color-main font-bold text-[1.5rem]`}
+                                          className={`${
+                                                focus ? "text-color-main field-label-focus" : ""
+                                          } top-0 first-letter:uppercase text-color-main font-bold text-[1.5rem]`}
                                     >
                                           {placeholder}
                                     </label>
@@ -53,19 +67,30 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                                           id={input_id}
                                           {...register(FieldKey, {
                                                 onBlur: (event) => {
+                                                      if (event?.relatedTarget?.id === "isLabelIcon") {
+                                                            return;
+                                                      }
                                                       setFocus(false);
                                                 },
                                           })}
                                           onFocus={() => setFocus(true)}
                                           className={`${
-                                                focus && !unActiveLabel ? "field-input-focus" : ""
-                                          } inline-block w-full bg-transparent pr-[1.2rem]  py-[.4rem] opacity-100 rounded-[.3rem] text-text-theme   text-[1.4rem]   font-semibold outline-transparent  placeholder:opacity-100 `}
+                                                focus && !unActiveLabel ? "field-input-focus placeholder:opacity-90" : ""
+                                          } inline-block w-full bg-transparent pr-[1.2rem]  py-[.2rem] opacity-100 rounded-[.3rem] text-text-theme   text-[1.4rem]   font-semibold outline-transparent  placeholder:opacity-100 `}
                                           placeholder={input_placeholder}
                                     />
 
-                                    <div tabIndex={-1} className="px-[1rem] right-[1rem]" onClick={() => setShowPassword((prev) => !prev)}>
-                                          {!showPassword ? <Eye size={18} /> : <EyeOff size={18} />}
-                                    </div>
+                                    <label
+                                          htmlFor={`${FieldKey}-${id}`}
+                                          tabIndex={-1}
+                                          id="isLabelIcon"
+                                          className={`${focus  ? "text-color-main" : ""} px-[1rem] right-[1rem]`}
+                                          onClick={() => {
+                                                setShowPassword((prev) => !prev);
+                                          }}
+                                    >
+                                          {showPassword ? <Eye size={18} strokeWidth={focus ? "2.6" : "2"}/> : <EyeOff size={18} strokeWidth={focus ? "2.6" : "2"}/>}
+                                    </label>
                               </div>
                         </div>
                   </div>

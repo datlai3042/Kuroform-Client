@@ -18,7 +18,7 @@ const ModalLoginRecents = (props: TProps) => {
                         <Portal>
                               <div
                                     onClick={() => setOpenModel(false)}
-                                    className="fixed z-[999] inset-0 max-w-full overflow-hidden  flex items-center justify-center bg-[rgba(0,0,0,.3)] hover:cursor-pointer"
+                                    className="fixed z-[999] inset-0 max-w-full overflow-hidden  flex items-center justify-center bg-[rgba(0,0,0,.6)] hover:cursor-pointer"
                               >
                                     <LoginFormRecents onClose={() => setOpenModel(false)} userRecentItem={userRecentItem} />
                               </div>

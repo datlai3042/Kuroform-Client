@@ -27,15 +27,21 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
             return <InputPassword {...props} />;
       }
       const input_erros: React.ReactNode = error[FieldKey]?.message as ReactNode;
+ const iconWithProps = React.isValidElement(icon)
+    ? React.cloneElement(icon, {
+            ...icon.props, // ✅ giữ nguyên toàn bộ props gốc
 
+        strokeWidth: focus ? '2.6' : '2'
+      })
+    : icon;
       return (
             <div style={style} className={`${focus && !unActiveLabel ? "my-[.8rem] field-container-focus" : ""}  flex flex-col gap-[.6rem]`}>
-                  <div className={`${focus  ? ' field-container-focus' : ''} relative flex items-center p-[.5rem_0rem]  w-full border-[.1rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] `}>
-                       <label className={`${focus && !unActiveLabel ? "text-color-main" : ""} p-[0rem_1rem] w-[9rem] flex-center`} htmlFor={`${FieldKey}-${id}`}>
-                              {icon ? icon : <Info />}
+                  <div className={`${focus  ? ' field-container-focus' : ''} ${unActiveLabel ? ' p-[1rem_0rem]' : ' p-[.5rem_0rem]'} relative flex items-center   w-full border-[.2rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] `}>
+                       <label className={`${focus  ? "text-color-main" : ""} p-[0rem_1rem] w-[9rem] flex-center`} htmlFor={`${FieldKey}-${id}`}>
+                              {icon ? iconWithProps : <Info />}
                         </label>
 
-                        <div className=" flex flex-col gap-[.2rem]   w-full">
+                        <div className=" flex flex-col    w-full">
                               {!unActiveLabel && (
                                     <label
                                           style={{
@@ -58,8 +64,8 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
                                     })}
                                     onFocus={() => setFocus(true)}
                                     className={`${
-                                          focus && !unActiveLabel ? "field-input-focus" : ""
-                                    } inline-block  input-form w-full  pr-[1.2rem]  py-[.4rem] text-[1.4rem]  opacity-100 text-text-theme  font-semibold outline-transparent bg-transparent  placeholder:opacity-100 `}
+                                          focus && !unActiveLabel ? "field-input-focus placeholder:opacity-90" : ""
+                                    } inline-block  input-form w-full  pr-[1.2rem]   py-[.2rem] text-[1.4rem]  opacity-100 text-text-theme  font-semibold outline-transparent bg-transparent  placeholder:opacity-100 `}
                                     placeholder={`Nhập ${placeholder} của bạn`}
                               />
                         </div>

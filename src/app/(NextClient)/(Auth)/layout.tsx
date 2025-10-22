@@ -24,7 +24,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
             <Portal>
                   <div
         style={{ lineHeight: 1.6 }}
-        className="relative z-[500] w-full top-0 xl:top-0 left-0 min-h-screen   px-[2rem] md:px-[15rem] md:py-[2rem]    bg-background-page-color  "
+        className="relative z-[500] w-full top-0 xl:top-0 left-0 min-h-screen   px-[2rem] md:px-[22rem] md:py-[2rem]    bg-background-page-color  "
       >
         <div className=" flex  justify-center xl:justify-between gap-[3rem]">
           <div className="hidden xl:flex flex-col gap-[3rem]">
@@ -35,7 +35,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
               <AuthRecents />
             </div>
           </div>
-          <div className="md:basis-[75rem] xl:basis-[54rem] xl:pt-[6rem] max-w-[100vw] justify-center   overflow-auto flex-grow-[1] flex-shrink-0 md:flex-grow-0 flex flex-col   px-[20px] py-[1rem]">
+          <div className="md:basis-[75rem] xl:basis-[49rem] xl:pt-[2rem] max-w-[100vw] justify-center   overflow-auto flex-grow-[1] flex-shrink-0 md:flex-grow-0 flex flex-col   px-[20px] py-[1rem]">
             <div className="flex-1 flex   w-full text-text-theme   auth-scroll">
               {children}
             </div>

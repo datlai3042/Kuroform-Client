@@ -164,7 +164,7 @@ const RegisterForm = (props: TProps) => {
                                           <Button
                                                 textContent={
                                                       <Link href={"/login"} className=" text-[1.5rem]    w-full">
-                                                            <span>Tạo tài khoản</span>
+                                                            <span>Đăng nhập</span>
                                                       </Link>
                                                 }
                                                 className="!bg-background-page-color hover:!bg-[#36a420] border-[.1rem] !text-[#333] hover:!text-[#fff] hover:border-border-page-color font-semibold text-[1.5rem] !h-[4.6rem]  !rounded-[999px] !w-[15rem] "

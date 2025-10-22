@@ -119,7 +119,7 @@ const LoginFormRecents = (props: TProps) => {
       style={{
         boxShadow: "0 2px 4px #0000001a,0 8px 16px #0000001a",
       }}
-      className="relative  bg-[#fff] w-[44rem]   h-max mx-auto    flex justify-center items-center flex-col  gap-[3.4rem] rounded-[1.2rem] p-[2rem_2rem]"
+      className="relative  bg-[#fff] w-[46rem]   h-max mx-auto    flex justify-center items-center flex-col  gap-[3.4rem] rounded-[1.2rem] p-[2rem_2rem]"
     >
       {/* <p className=" w-full flex flex-col gap-[0rem]  items-center">
                        <span className="text-text-theme text-[4.2rem]">Kuro</span> 
