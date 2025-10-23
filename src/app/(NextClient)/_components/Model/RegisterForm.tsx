@@ -97,14 +97,14 @@ const RegisterForm = (props: TProps) => {
       };
 
       return (
-            <div className="relative w-full flex h-full justify-center items-center flex-col  gap-[2.4rem] rounded-[1.2rem] p-[2rem_2rem] ">
+            <div className="relative w-full flex h-full  items-center flex-col  gap-[3.4rem] rounded-[1.2rem]  ">
                   <div className=" w-full flex flex-col gap-[.6rem]  ">
-                        <span className="text-[3rem]   gradient-app-name font-bold">Xin chào bạn 👋</span>
-                        <span className="text-[#333] opacity-80 font-semibold  text-[1.5rem]">Hãy tạo tài khoản để bắt đầu cùng Kuroform nhé!</span>
+                        <span className="text-[2.4rem]   gradient-app-name font-bold">Xin chào bạn 👋</span>
+                        <span className="text-[#333] opacity-80 font-semibold  text-[1.3rem]">Hãy tạo tài khoản để bắt đầu cùng Kuroform nhé!</span>
                   </div>
 
-                  <div className=" w-full flex flex-col gap-[1.8rem] ">
-                        <form className="w-full flex flex-col justify-center  gap-[3rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
+                  <div className=" w-full flex flex-col gap-[2.4rem] ">
+                        <form className="w-full flex flex-col justify-center  gap-[1.6rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
                               {/* <Input<RegisterType>
                                     FieldKey="user_first_name"
                                     placeholder="Nhập họ của bạn"
@@ -151,7 +151,7 @@ const RegisterForm = (props: TProps) => {
                                     error={registerForm.formState.errors}
                                     icon={<LockKeyhole />}
                               />
-                              <div className=" mt-[.8rem] flex flex-col gap-[1.3rem]">
+                              <div className="  flex flex-col gap-[1.3rem]">
                                     <div className=" flex gap-[1rem]">
                                           <Button
                                                 type="submit"

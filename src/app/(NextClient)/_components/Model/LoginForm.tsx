@@ -110,15 +110,13 @@ const LoginForm = (props: TProps) => {
   }, [loginForm.formState.errors]);
 
   return (
-    <div
+      <div
       style={{}}
-      className="relative   min-h-[40rem] w-full  mx-auto    flex justify-center items-center flex-col  gap-[4.4rem] rounded-[1.2rem] p-[2rem_2rem]"
+      className="relative    w-full  mx-auto    flex  items-center flex-col  gap-[3.4rem] rounded-[1.2rem] "
     >
-      <div className=" w-full flex flex-col gap-[.6em]  ">
-        <span className="text-[3rem] text-[#1e2934]  gradient-app-name font-bold">Chào mừng trở lại 👋</span>
-
-
-        <span className="text-[#a4a5b9] font-semibold  text-[1.4rem]">
+      <div className=" w-full flex flex-col gap-[.6rem]  ">
+        <span className="text-[2.4rem]  text-[#1e2934] gradient-app-name font-bold">Chào mừng trở lại 👋</span>
+        <span className="text-[#333] opacity-80 font-semibold  text-[1.4rem]">
           Đăng nhập để trải nghiệm các tính năng tạo biểu mẫu đa dạng
         </span>
       </div>
@@ -147,7 +145,7 @@ const LoginForm = (props: TProps) => {
             icon={<LockKeyhole />}
 
           />
-          <div className="mt-[.8rem] flex flex-col gap-[1.6rem]">
+          <div className=" flex flex-col gap-[1.3rem]">
             <div className=" flex gap-[1rem]">
               <Button
                 disabled={loginMutation.isPending}

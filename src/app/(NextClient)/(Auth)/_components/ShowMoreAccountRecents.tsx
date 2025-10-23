@@ -13,7 +13,7 @@ const ShowMoreAccountRecents = () => {
             <>
                   <div
                         onClick={() => setShowMoreAccount(true)}
-                        className="border-[.1rem] bg-[#fff] hover:shadow-2xl cursor-pointer flex flex-col relative  border-border-page-color rounded-lg h-[17rem] w-[14rem]"
+                        className="border-[.1rem] bg-[#fff] hover:shadow-2xl cursor-pointer flex flex-col relative  border-border-page-color rounded-lg h-[19rem] w-[14rem]"
                   >
                         <div className=" h-[15rem] flex items-center justify-center">
                               <div className="text-color-main w-[4rem] h-[4rem] rounded-full flex items-center justify-center">

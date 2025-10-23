@@ -30,12 +30,12 @@ const AuthRecents = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-[1.4rem] text-text-theme">
-       
-                        <span className="text-[2.4rem] font-medium">Đăng nhập lại vào các tài khoản trước</span>
+      <div className="flex flex-col gap-[2rem] text-text-theme">
+        <span className="text-[2rem] font-semibold">
+          Đăng nhập lại vào các tài khoản trước
+        </span>
 
-        <span className="text-[1.6rem] font-medium">Tài khoản gần đây</span>
-
+        {/* <span className="text-[1.6rem] font-medium">Tài khoản gần đây</span> */}
         <div className="flex flex-wrap gap-[2rem]   mt-[1rem]">
           {limitShowUserRecents?.map((user) => (
             <LoginRecents
