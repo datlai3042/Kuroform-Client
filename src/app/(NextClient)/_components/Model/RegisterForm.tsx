@@ -23,6 +23,7 @@ import Button from "../ui/button/Button";
 import ButtonLoginGoogle from "../ui/button/ButtonLoginGoogle";
 import ButtonLoginGithub from "../ui/button/ButtonLoginGithub";
 import IconClose from "../ui/input/IconClose";
+import SpaceLine from "./SpaceLine";
 type TProps = {
       onClose?: (state: boolean) => void;
 };
@@ -97,13 +98,13 @@ const RegisterForm = (props: TProps) => {
       };
 
       return (
-            <div className="relative w-full flex h-full  items-center flex-col  gap-[3.4rem] rounded-[1.2rem]  ">
-                  <div className=" w-full flex flex-col gap-[.6rem]  ">
-                        <span className="text-[2.4rem]   gradient-app-name font-bold">Xin chào bạn 👋</span>
+            <div className="relative w-full flex h-full  items-center flex-col  gap-[4rem] rounded-[1.2rem]  ">
+                  <div className=" w-full flex flex-col gap-[.5rem] text-center ">
+                        <span className="text-[2rem]   gradient-app-name font-bold">Xin chào bạn 👋</span>
                         <span className="text-[#333] opacity-80 font-semibold  text-[1.3rem]">Hãy tạo tài khoản để bắt đầu cùng Kuroform nhé!</span>
                   </div>
 
-                  <div className=" w-full flex flex-col gap-[2.4rem] ">
+                  <div className=" w-full flex flex-col gap-[2rem] ">
                         <form className="w-full flex flex-col justify-center  gap-[1.6rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
                               {/* <Input<RegisterType>
                                     FieldKey="user_first_name"
@@ -151,36 +152,34 @@ const RegisterForm = (props: TProps) => {
                                     error={registerForm.formState.errors}
                                     icon={<LockKeyhole />}
                               />
-                              <div className="  flex flex-col gap-[1.3rem]">
+                              <div className="mt-[.8rem] flex flex-col gap-[2.4rem]">
                                     <div className=" flex gap-[1rem]">
                                           <Button
                                                 type="submit"
                                                 textContent="Đăng kí"
                                                 disabled={registerMutation.isPending}
                                                 loading={registerMutation.isPending}
-                                                className="!w-[15rem] font-semibold text-[1.5rem] !h-[4.6rem] !bg-[var(--color-main)] !rounded-[999px]"
+                                                className="!min-w-[15rem] !w-full font-semibold text-[1.5rem] !h-[4rem] !bg-[var(--color-main)] !rounded-[.4rem]"
                                           />
-
-                                          <Button
-                                                textContent={
-                                                      <Link href={"/login"} className=" text-[1.5rem]    w-full">
-                                                            <span>Đăng nhập</span>
-                                                      </Link>
-                                                }
-                                                className="!bg-background-page-color hover:!bg-[#36a420] border-[.1rem] !text-[#333] hover:!text-[#fff] hover:border-border-page-color font-semibold text-[1.5rem] !h-[4.6rem]  !rounded-[999px] !w-[15rem] "
-                                          ></Button>
                                     </div>
-                                    <div className="flex flex-col gap-[1.8rem]">
-                                          <span className="mt-[1rem] text-[1.4rem] font-bold text-[#95a5b4]">Hoặc các phương thức khác</span>
-                                          <div className="w-full flex  gap-[1.4rem]">
-                                                <div className="">
+                                    <div className="flex flex-col gap-[1.6rem]">
+                                          <SpaceLine content="Hoặc các phương thức khác" />
+
+                                          <div className="w-full flex  gap-[.4rem]">
+                                                <div className="flex-1">
                                                       <ButtonLoginGoogle />
                                                 </div>
 
-                                                <div className="">
+                                                <div className="flex-1">
                                                       <ButtonLoginGithub />
                                                 </div>
                                           </div>
+                                    </div>
+                                    <div className="border-t-[.1rem] pt-[1rem] border-t-border-page-color">
+                                          <Link href={"/login"} className=" text-[1.5rem] flex gap-[.6rem] justify-center text-center   w-full">
+                                                <span className="text-[#333]">Bạn là người cũ?.</span>
+                                                <span className="hover:text-color-main font-medium">Đăng nhập</span>
+                                          </Link>
                                     </div>
                               </div>
                         </form>

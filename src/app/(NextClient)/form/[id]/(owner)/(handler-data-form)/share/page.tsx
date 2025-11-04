@@ -46,7 +46,7 @@ const ShareFormPage = () => {
                   <input
                         onFocus={() => setFocus(true)}
                         onBlur={() => setFocus(false)}
-                        className={` w-full h-[4rem] px-[1rem] flex items-center text-[1.2rem] xl:text-[1.4rem] hover:border-blue-400  rounded-lg outline-none bg-color-section-theme border-[.1rem] border-[var(--border-color-input)] font-semibold`}
+                        className={` w-full h-[4rem] px-[1rem] flex items-center text-[1.2rem] xl:text-[1.4rem] hover:border-blue-400  rounded-lg outline-none bg-color-section-theme border-[.1rem] border-[var(--border-color-input)] font-medium`}
                         value={`${window.location.origin}/form/${formCore._id}`}
                         readOnly={true}
                   />

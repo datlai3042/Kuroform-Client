@@ -18,11 +18,11 @@ const DashboardForms = () => {
       const getFormPagination = useGetFormPagination({ page, limit: LIMIT_PAGINATION_FORM });
 
       return (
-            <DivNative className="flex-1 w-full flex bg-color-section-theme   min-h-[40rem]   flex-col gap-[0rem] p-[0rem_2rem_1rem_2rem] xl:p-[1.8rem_2rem_1rem_2rem] ">
+            <DivNative className="flex-1 w-full flex bg-color-section-theme   min-h-[40rem]   flex-col gap-[0rem] p-[0rem_2rem_1rem_2rem] xl:p-[1.2rem_2rem_1rem_2rem] ">
                         {!getFormPagination.isPending && getFormPagination.isSuccess && getFormPagination.data.metadata.forms.length > 0 && (
                 
-                  <div className="flex flex-col gap-[1.8rem] h-full">
-                        <div className="flex flex-wrap justify-end items-center gap-[1rem]">
+                  <div className="flex flex-col gap-[1.2rem] h-full">
+                        <div className="flex flex-wrap justify-start items-center gap-[1rem]">
                               {/* <Image
                                     src={"/assets/images/home/form_controller.png"}
                                     width={20}
@@ -41,12 +41,12 @@ const DashboardForms = () => {
                               <ButtonCreateForm
                                     textContent="Tạo Form"
                                     urlNavigation="/"
-                                    className="hidden xl:flex  xl:[&]:p-[2px] !gap-[.5rem] !h-[3rem] !min-w-[10rem] !w-max !text-[1.3rem]"
+                                    className="hidden xl:flex  xl:[&]:p-[2px]  !gap-[.5rem] !h-[3rem] !min-w-[11rem] !w-max !text-[1.3rem]"
                                     position="LEFT"
                                     icon={<Plus size={16} />}
                               />
                         </div>
-                              <DivNative className={`max-w-full flex flex-wrap  gap-[2.4rem] pb-[2rem] text-[1.3rem] `}>
+                              <DivNative className={`max-w-full flex flex-wrap  gap-[1.8rem] pb-[2rem] text-[1.3rem] `}>
                                     {getFormPagination.data.metadata.forms.map((form, index) => (
                                           <div className="w-full sm:w-[45%%] md:w-[47%] xl:w-[18%]" key={form._id}>
                                                 <DashboardFormItem form={form} />

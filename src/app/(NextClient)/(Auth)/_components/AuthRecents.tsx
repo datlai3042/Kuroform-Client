@@ -29,9 +29,9 @@ const AuthRecents = () => {
  
 
   return (
-    <>
-      <div className="flex flex-col gap-[2rem] text-text-theme">
-        <span className="text-[2rem] font-semibold">
+       <>
+      <div className="flex flex-col gap-[1.6rem] text-[#333]">
+        <span className="text-[1.6rem] font-semibold">
           Đăng nhập lại vào các tài khoản trước
         </span>
 

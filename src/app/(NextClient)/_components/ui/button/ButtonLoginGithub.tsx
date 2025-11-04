@@ -10,10 +10,11 @@ const ButtonLoginGithub = () => {
 
       return (
             <button
+                  className="!h-[3.6rem] w-full aspect-square flex hover:bg-[rgb(49_100_189)] text-[1.4rem] font-medium hover:text-[#fff] text-[#333] items-center justify-center gap-[1.4rem] border-[.1rem] border-border-page-color rounded-[.4rem] p-[.8rem_1rem] "
                   onClick={onLoginGithub}
-                  className="!h-[5.4rem] aspect-square flex items-center justify-center gap-[1.4rem] border-[.1rem] border-[var(--border-color-input)] hover:bg-background-page-color rounded-full  text-[#000]"
             >
-                  <Image src={"/assets/images/social/github.png"} width={50} height={50} alt="toast success" className="w-[3rem] h-[3rem]" />
+                  <Image src={"/assets/images/social/github.png"} width={50} height={50} alt="toast success" className="w-[2rem] h-[2rem]" />
+                  <span className="">Github</span>
             </button>
       );
 };

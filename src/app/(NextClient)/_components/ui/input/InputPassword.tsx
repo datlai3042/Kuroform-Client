@@ -76,7 +76,7 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                                           onFocus={() => setFocus(true)}
                                           className={`${
                                                 focus && !unActiveLabel ? "field-input-focus placeholder:opacity-90" : ""
-                                          } inline-block w-full bg-transparent pr-[1.2rem]  py-[.2rem] opacity-100 rounded-[.3rem] text-text-theme   text-[1.4rem]   font-semibold outline-transparent  placeholder:opacity-100 `}
+                                          } inline-block w-full bg-transparent pr-[1.2rem]  py-[.2rem] opacity-100 rounded-[.3rem] text-text-theme   text-[1.4rem]   font-medium outline-transparent  placeholder:opacity-100 `}
                                           placeholder={input_placeholder}
                                     />
 

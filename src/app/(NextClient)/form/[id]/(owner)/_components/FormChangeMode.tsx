@@ -10,6 +10,7 @@ import BoxCopySuccess from "./BoxCopySuccess";
 import { Tabs, TabsProps } from "antd";
 import ContentWrapper from "../(handler-data-form)/ContentWrapper";
 import ButtonDeleteForm from "./ButtonDeleteForm";
+import { DialogFormAction } from "./DialogFormAction";
 
 type TProps = {
       formPageMode: FormPageMode;
@@ -17,7 +18,6 @@ type TProps = {
       children: React.ReactNode;
 };
 
-const iconSize = 16;
 
 const items: TabsProps["items"] = [
       {
@@ -38,7 +38,6 @@ const FormChangeMode = (props: TProps) => {
       const { children, formPageMode, setFormPageMode } = props;
 
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal);
-      const router = useRouter();
       const segment = useSelectedLayoutSegments();
       const defaultTab = segment[1] as FormPageMode;
       const fontSize = formCore.form_title.form_title_size
@@ -58,36 +57,30 @@ const FormChangeMode = (props: TProps) => {
             },
       };
 
-      const [copySuccess, setCopySuccess] = useState<boolean>(false);
-
-      const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-      useEffect(() => {
-            if (copySuccess) {
-                  const time = 3000;
-                  timeoutRef.current = setTimeout(() => setCopySuccess(false), time);
-            }
-
-            return () => {
-                  clearTimeout(timeoutRef.current as NodeJS.Timeout);
-            };
-      }, [copySuccess]);
 
       return (
             <div className=" w-full p-[2rem_2rem]  mx-auto h-full flex  flex-col gap-[1rem] text-text-theme">
-                  <div id="content-info" className="w-full flex flex-col gap-[2rem] xl:flex-row xl:items-center justify-between">
-                      
+                  <div className="flex justify-between">
+                        <span className="text-[#a0a5b3]">##-{formCore._id}-##</span>
+
+                        <div>
+                              <DialogFormAction />
+                             
+                        </div>
+                  </div>
+
+                  <div id="content-info" className="w-full flex  gap-[2rem] flex-row items-center">
                         {avatarSrc ? (
-                                    <Image src={avatarSrc} width={30} height={30} alt="avatar" className="min-w-[3rem] w-[3rem] h-[3rem] rounded-full" />
-                              ) : (
-                                    <div className="animate-pulse min-w-[3rem] w-[3rem] h-[3rem] rounded-full bg-slate-200 "></div>
-                              )}
+                              <Image src={avatarSrc} width={30} height={30} alt="avatar" className="min-w-[3rem] w-[3rem] h-[3rem] rounded-full" />
+                        ) : (
+                              <div className="animate-pulse min-w-[4rem] w-[4rem] h-[4rem] rounded-full bg-slate-200 "></div>
+                        )}
                         <div
                               dangerouslySetInnerHTML={{
                                     __html: formCore.form_title.form_title_plain_text || formCore.form_title.form_title_value || "Không có tiêu đề",
                               }}
                               title={formCore.form_title.form_title_plain_text}
-                              className="reset-editor text-[2.4rem] not-italic line-clamp-2 w-[80%] text-text-theme"
+                              className="reset-editor text-[1.8rem] not-italic line-clamp-2 flex-1 text-text-theme font-medium"
                               style={
                                     {
                                           // fontSize,
@@ -95,47 +88,6 @@ const FormChangeMode = (props: TProps) => {
                                     }
                               }
                         ></div>
-                        <div className="flex  items-center gap-[1rem]">
-                              <div className="relative ">
-                                    <button
-                                          onClick={(e) => {
-                                                e.stopPropagation();
-                                                e.preventDefault();
-                                                navigator.clipboard
-                                                      .writeText(`${window.location.origin}/form/${formCore._id}`)
-                                                      .then(() => setCopySuccess(true));
-                                          }}
-                                          className="text-text-theme flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)] hover:bg-color-main hover:border-transparent hover:text-[#fff] rounded-lg"
-                                    >
-                                          <LinkIcon size={iconSize} />
-                                    </button>
-                                    {copySuccess && (
-                                          <div className="absolute bottom-[-4rem] left-0 text-text-theme">
-                                                <BoxCopySuccess message="Copy link chia sẽ thành công" />
-                                          </div>
-                                    )}
-                              </div>
-
-                            
-
-                              <button
-                                    className=" min-w-[12rem] flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)] hover:bg-color-main hover:border-transparent hover:text-[#fff] text-text-theme rounded-lg"
-                                    onClick={(e) => {
-                                          e.preventDefault();
-                                          router.push(`/form/${formCore._id}/edit`);
-                                    }}
-                              >
-                                    <Pencil size={iconSize} />
-                                    <span>Chỉnh sửa</span>
-                              </button>
-
-                              <ButtonDeleteForm
-                                    form_id={formCore._id}
-                                    className=" min-w-[11rem] flex items-center gap-[1rem] p-[.5rem_.7rem] border-[.1rem] border-[var(--border-color-input)]  hover:border-transparent hover:text-[#fff] text-text-theme rounded-lg"
-                              >
-                                    <span>Xóa form</span>
-                              </ButtonDeleteForm>
-                        </div>
                   </div>
                   <Tabs
                         className="content-tab"

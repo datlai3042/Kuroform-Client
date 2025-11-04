@@ -24,10 +24,19 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
             <Portal>
                   <div
                         style={{ lineHeight: 1.6 }}
-                        className="relative z-[500] w-full top-0 xl:top-0 left-0 min-h-screen   px-[2rem] md:px-[24rem] md:py-[2rem]   bg-[#f2f4f7]  "
+                        className="relative flex items-center justify-center z-[500] w-full top-0 xl:top-0 left-0 min-h-screen   px-[2rem] md:px-[24rem] md:py-[2rem]   bg-[#f2f4f7]  "
                   >
-                        <div className=" flex  justify-center xl:justify-between gap-[3rem]">
-                              <div className="hidden xl:flex flex-col gap-[3rem]">
+                        <div
+                              className="absolute inset-0"
+                              style={{
+                                    opacity: 0.8,
+                                    backgroundSize: "cover",
+                                    backgroundImage:
+                                          'url("https://images.unsplash.com/photo-1499796683658-b659bc751db1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1920")',
+                              }}
+                        ></div>
+                        <div className="relative z-20 flex  justify-center xl:justify-center  gap-[18rem]">
+                              <div className="hidden xl:flex  flex-col gap-[3rem]">
                                     <div className=" flex items-center">
                                           <LogoApplication />
                                     </div>
@@ -35,8 +44,10 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                                           <AuthRecents />
                                     </div>
                               </div>
-                              <div className="md:basis-[75rem] xl:basis-[49rem] xl:pt-[6rem] max-w-[100vw] justify-center items-center   overflow-auto flex-grow-[1] flex-shrink-0 md:flex-grow-0 flex flex-col   ">
-                                    <div className="bg-[#fff] shadow-2xl rounded-md p-[2rem] flex h-max   w-full text-text-theme   auth-scroll">{children}</div>
+                              <div className="basis-[37rem]  max-w-[100vw] justify-center items-center   overflow-auto flex-grow-[1] flex-shrink-0 md:flex-grow-0 flex flex-col   ">
+                                    <div className="bg-[#fff] shadow-2xl rounded-md p-[3.2rem_2.8rem] flex h-max   w-full text-text-theme   auth-scroll">
+                                          {children}
+                                    </div>
                               </div>
                         </div>
                   </div>

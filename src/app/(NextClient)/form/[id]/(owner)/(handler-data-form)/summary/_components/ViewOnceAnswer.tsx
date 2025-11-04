@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { FormCore, UI } from "@/type";
 import moment from "moment";
@@ -7,6 +7,7 @@ import Link from "next/link";
 import LabelNewAnswer from "./LabelNewAnswer";
 import ButtonDeleteReport from "./ButtonDeleteReport";
 import { Maximize } from "lucide-react";
+import { useDebouncedCallback } from "@mantine/hooks";
 moment.locale("vi");
 
 type TProps = {
@@ -90,21 +91,22 @@ const ViewOnceAnswer = (props: TProps) => {
       }, [formAnswer]);
 
       return (
-            <Table className=" text-[1.4rem] !border-none" classContainer="h-full">
-                  <TableHeader>
-                        <TableRow>
-                              <TableHead className="w-[100px] whitespace-pre">Phản hồi</TableHead>
-                              {Object.keys(dataCol).map((dataColKey, index) => {
-                                    return (
-                                          <TableHead className="whitespace-pre" key={index}>
-                                                {dataCol[dataColKey]?.title || "Chưa thiết lập title"}
-                                          </TableHead>
-                                    );
-                              })}
-                        </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                        {/* {Object.keys(dataCol).map((dataColKey) => {
+            <WrapperViewScroll>
+                  <Table className=" text-[1.4rem] !border-none" classContainer="h-full">
+                        <TableHeader>
+                              <TableRow>
+                                    <TableHead className="w-[100px] whitespace-pre">Phản hồi</TableHead>
+                                    {Object.keys(dataCol).map((dataColKey, index) => {
+                                          return (
+                                                <TableHead className="whitespace-pre" key={index}>
+                                                      {dataCol[dataColKey]?.title || "Chưa thiết lập title"}
+                                                </TableHead>
+                                          );
+                                    })}
+                              </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                              {/* {Object.keys(dataCol).map((dataColKey) => {
                               return (
                                     <TableRow>
                                           <TableCell className="font-medium">Đã gửi</TableCell>
@@ -116,89 +118,123 @@ const ViewOnceAnswer = (props: TProps) => {
                                     </TableRow>
                               );
                         })} */}
-                        {formAnswer.reports?.map((rp, index) => {
-                              return (
-                                    <TableRow key={index} className="group">
-                                          <TableCell className="font-medium whitespace-pre flex items-center gap-[1rem] ">
-                                                <div className="  flex justify-center" style={{ width: 200 }}>
-                                                      {moment(new Date(rp.createdAt)).format("HH:mm:ss  -  DD - MM - YYYY")}
-                                                </div>
-                                                <div className="invisible  group-hover:visible flex items-center font-medium whitespace-pre sticky right-[-1rem] z-[10]  gap-[1rem]">
-                                                      <p
-                                                            className="font-medium whitespace-pre cursor-pointer h-full  "
-                                                            onClick={() => {
-                                                                  setFormAnswerDetail(() => {
-                                                                        return formAnswer?.reports.filter((fans) => fans._id === rp._id)[0] || null;
-                                                                  });
-                                                                  setOpenDetailAnswer(true);
-                                                            }}
-                                                      >
-                                                            <Maximize />
-                                                      </p>
+                              {formAnswer.reports?.map((rp, index) => {
+                                    return (
+                                          <TableRow key={index} className="group">
+                                                <TableCell className="font-medium whitespace-pre flex items-center gap-[1rem] ">
+                                                      <div className="  flex justify-center" style={{ width: 200 }}>
+                                                            {moment(new Date(rp.createdAt)).format("HH:mm:ss  -  DD/MM/YYYY")}
+                                                      </div>
+                                                      <div className="invisible  group-hover:visible flex items-center font-medium whitespace-pre sticky right-[-1rem] z-[10]  gap-[1rem]">
+                                                            <p
+                                                                  className="font-medium whitespace-pre cursor-pointer h-full  "
+                                                                  onClick={() => {
+                                                                        setFormAnswerDetail(() => {
+                                                                              return formAnswer?.reports.filter((fans) => fans._id === rp._id)[0] || null;
+                                                                        });
+                                                                        setOpenDetailAnswer(true);
+                                                                  }}
+                                                            >
+                                                                  <Maximize />
+                                                            </p>
 
-                                                      <ButtonDeleteReport formId={formCore._id} reportId={rp._id} title="Xóa trả lời này" />
-                                                </div>
-                                                {newData.includes(rp._id) && <LabelNewAnswer />}
-                                          </TableCell>
+                                                            <ButtonDeleteReport formId={formCore._id} reportId={rp._id} title="Xóa trả lời này" />
+                                                      </div>
+                                                      {newData.includes(rp._id) && <LabelNewAnswer />}
+                                                </TableCell>
 
-                                          {allCol.map((col, lg) => {
-                                                let pass = false;
-                                                return (
-                                                      <>
-                                                            {rp?.answers.map((ans, idx) => {
-                                                                  if (col !== ans._id && !pass && idx + 1 === rp?.answers.length) {
-                                                                        return (
-                                                                              <TableCell key={idx} className="whitespace-pre">
-                                                                                    Không có nội dung
-                                                                              </TableCell>
-                                                                        );
-                                                                  }
-                                                                  if (col === ans._id) {
-                                                                        pass = true;
-                                                                        let viewContent = (
-                                                                              <TableCell key={idx} className="whitespace-pre">
-                                                                                    {ans.value || "Không có nội dung"}
-                                                                              </TableCell>
-                                                                        );
-                                                                        if (ans.type === "ANCHOR" || ans.type === "FILE_IMAGE") {
-                                                                              viewContent = (
+                                                {allCol.map((col, lg) => {
+                                                      let pass = false;
+                                                      return (
+                                                            <>
+                                                                  {rp?.answers.map((ans, idx) => {
+                                                                        if (col !== ans._id && !pass && idx + 1 === rp?.answers.length) {
+                                                                              return (
                                                                                     <TableCell key={idx} className="whitespace-pre">
-                                                                                          <a
-                                                                                                href={ans.value}
-                                                                                                target="_blank"
-                                                                                                rel="noopener noreferrer"
-                                                                                                className="whitespace-pre font-semibold"
-                                                                                          >
-                                                                                                {ans.value ? (
-                                                                                                      <span className="text-color-main">{ans.value}</span>
-                                                                                                ) : (
-                                                                                                      "Không có nội dung"
-                                                                                                )}
-                                                                                          </a>
+                                                                                          -
                                                                                     </TableCell>
                                                                               );
                                                                         }
-                                                                        if (ans.type === "DATE") {
-                                                                              viewContent = (
+                                                                        if (col === ans._id) {
+                                                                              pass = true;
+                                                                              let viewContent = (
                                                                                     <TableCell key={idx} className="whitespace-pre">
-                                                                                          {ans.value
-                                                                                                ? moment(new Date(ans.value)).format("DD - MM - YYYY")
-                                                                                                : "Không có nội dung"}
+                                                                                          {ans.value || "-"}
                                                                                     </TableCell>
                                                                               );
+                                                                              if (ans.type === "ANCHOR" || ans.type === "FILE_IMAGE") {
+                                                                                    viewContent = (
+                                                                                          <TableCell key={idx} className="whitespace-pre">
+                                                                                                <a
+                                                                                                      href={ans.value}
+                                                                                                      target="_blank"
+                                                                                                      rel="noopener noreferrer"
+                                                                                                      className="whitespace-pre "
+                                                                                                >
+                                                                                                      {ans.value ? (
+                                                                                                            <span className="text-color-main font-semibold">
+                                                                                                                  {ans.value}
+                                                                                                            </span>
+                                                                                                      ) : (
+                                                                                                            "-"
+                                                                                                      )}
+                                                                                                </a>
+                                                                                          </TableCell>
+                                                                                    );
+                                                                              }
+                                                                              if (ans.type === "DATE") {
+                                                                                    viewContent = (
+                                                                                          <TableCell key={idx} className="whitespace-pre">
+                                                                                                {ans.value
+                                                                                                      ? moment(new Date(ans.value)).format("DD - MM - YYYY")
+                                                                                                      : "-"}
+                                                                                          </TableCell>
+                                                                                    );
+                                                                              }
+                                                                              return <>{viewContent}</>;
                                                                         }
-                                                                        return <>{viewContent}</>;
-                                                                  }
-                                                                  return <></>;
-                                                            })}
-                                                      </>
-                                                );
-                                          })}
-                                    </TableRow>
-                              );
-                        })}
-                  </TableBody>
-            </Table>
+                                                                        return <></>;
+                                                                  })}
+                                                            </>
+                                                      );
+                                                })}
+                                          </TableRow>
+                                    );
+                              })}
+                        </TableBody>
+                  </Table>
+            </WrapperViewScroll>
+      );
+};
+
+const WrapperViewScroll = ({ children }: { children: React.ReactNode }) => {
+      const containerRef = useRef<HTMLDivElement>(null);
+      const [maxHeight, setMaxHeight] = useState<number | string>("100%");
+      const handleBrowserResize = () => {
+            if (containerRef.current) {
+                  const windowHeight = window.innerHeight;
+                  const rect = containerRef.current.getBoundingClientRect();
+                  const maxHeight = windowHeight - rect?.top - 50;
+                  setMaxHeight(maxHeight);
+            }
+      };
+      const onHandleResizeDelay = useDebouncedCallback(handleBrowserResize, 100);
+
+      useEffect(() => {
+            setTimeout(() => {
+                  handleBrowserResize();
+            }, 200);
+
+            window.addEventListener("resize", onHandleResizeDelay);
+
+            return () => {
+                  window.removeEventListener("resize", onHandleResizeDelay);
+            };
+      }, []);
+      return (
+            <div ref={containerRef} style={{ maxHeight, overflow: "auto" }}>
+                  {children}
+            </div>
       );
 };
 

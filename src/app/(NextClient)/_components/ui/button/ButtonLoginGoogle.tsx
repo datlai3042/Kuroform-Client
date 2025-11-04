@@ -7,8 +7,12 @@ const ButtonLoginGoogle = () => {
       const oAuthUrl = getOAuthGoogleUrl();
 
       return (
-            <Link href={oAuthUrl} className="!h-[5.4rem] aspect-square flex hover:bg-background-page-color items-center justify-center gap-[1.4rem] border-[.1rem] border-[var(--border-color-input)] rounded-full p-[.8rem_1rem] ">
-                  <Image src={"/assets/images/social/google.png"} width={50} height={50} alt="toast success" className="w-[3rem] h-[3rem]" />
+            <Link
+                  href={oAuthUrl}
+                  className="!h-[3.6rem] w-full aspect-square flex hover:bg-[rgb(49_100_189)] text-[1.4rem] font-medium hover:text-[#fff] text-[#333] items-center justify-center gap-[1.4rem] border-[.1rem] border-border-page-color rounded-[.4rem] p-[.8rem_1rem] "
+            >
+                  <Image src={"/assets/images/social/google.png"} width={50} height={50} alt="toast success" className="w-[2rem] h-[2rem]" />
+                  <span className="">Google</span>
             </Link>
       );
 };

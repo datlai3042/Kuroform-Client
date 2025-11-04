@@ -10,23 +10,19 @@ const ShowMoreAccountRecents = () => {
       const [showMoreAccount, setShowMoreAccount] = useState(false);
 
       return (
-            <>
-                  <div
-                        onClick={() => setShowMoreAccount(true)}
-                        className="border-[.1rem] bg-[#fff] hover:shadow-2xl cursor-pointer flex flex-col relative  border-border-page-color rounded-lg h-[19rem] w-[14rem]"
-                  >
-                        <div className=" h-[15rem] flex items-center justify-center">
-                              <div className="text-color-main w-[4rem] h-[4rem] rounded-full flex items-center justify-center">
-                                    <User className=" font-black" size={36} />
-                              </div>
-                        </div>
-                        <div className="p-[1.4rem_.4rem] text-[1.4rem] border-t-[.1rem] border-[#ccc]">
-                              <span className="text-center w-full block font-bold text-color-main">Xem thêm</span>
+            <div
+                  onClick={() => setShowMoreAccount(true)}
+                  className="border-[.1rem] bg-[#fff] hover:shadow-2xl cursor-pointer flex flex-col relative  border-border-page-color rounded-lg h-[15rem] w-[12rem]"
+            >
+                  <div className=" h-[15rem] flex items-center justify-center">
+                        <div className="text-color-main w-[4rem] h-[4rem] rounded-full flex items-center justify-center">
+                              <User className=" font-black" size={28} />
                         </div>
                   </div>
-
-                  <ModalShowMoreAccountRecents openModel={showMoreAccount} setOpenModel={setShowMoreAccount} />
-            </>
+                  <div className="p-[1.4rem_.4rem] text-[1.3rem] border-t-[.1rem] border-[#ccc]">
+                        <span className="text-center w-full block font-bold text-color-main">Xem thêm</span>
+                  </div>
+            </div>
       );
 };
 type TProps = {

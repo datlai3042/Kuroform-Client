@@ -65,7 +65,7 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
                                     onFocus={() => setFocus(true)}
                                     className={`${
                                           focus && !unActiveLabel ? "field-input-focus placeholder:opacity-90" : ""
-                                    } inline-block  input-form w-full  pr-[1.2rem]   py-[.2rem] text-[1.4rem]  opacity-100 text-text-theme  font-semibold outline-transparent bg-transparent  placeholder:opacity-100 `}
+                                    } inline-block  input-form w-full  pr-[1.2rem]   py-[.2rem] text-[1.4rem]  opacity-100 text-text-theme  font-medium outline-transparent bg-transparent  placeholder:opacity-100 `}
                                     placeholder={`Nhập ${placeholder} của bạn`}
                               />
                         </div>
