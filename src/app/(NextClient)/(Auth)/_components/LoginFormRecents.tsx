@@ -107,7 +107,7 @@ const LoginFormRecents = (props: TProps) => {
                   style={{
                         boxShadow: "0 2px 4px #0000001a,0 8px 16px #0000001a",
                   }}
-                  className="relative  bg-[#fff] w-[40rem]   h-max mx-auto    flex justify-center items-center flex-col  gap-[3.4rem] rounded-[1.2rem] p-[2rem_2rem]"
+                  className="relative  bg-[#06122e] w-[40rem] text-text-theme  h-max mx-auto    flex justify-center items-center flex-col  gap-[3.4rem] rounded-[1.2rem] p-[2rem_2rem]"
             >
                   {/* <p className=" w-full flex flex-col gap-[0rem]  items-center">
                        <span className="text-text-theme text-[4.2rem]">Kuro</span> 
@@ -174,7 +174,7 @@ const LoginFormRecents = (props: TProps) => {
                   {onClose && (
                         <div
                               onClick={onClose}
-                              className="absolute  top-[20px] right-[10px] xl:right-[20px] text-[2rem] bg-[#cccccca1] font-bold hover:bg-[#ccc] w-[4rem] h-[4rem] flex items-center justify-center rounded-full"
+                              className="absolute  top-[20px] right-[10px] xl:right-[20px] text-[2rem] bg-[#cccccca1] font-bold hover:bg-color-main w-[4rem] h-[4rem] flex items-center justify-center rounded-full"
                         >
                               X
                         </div>

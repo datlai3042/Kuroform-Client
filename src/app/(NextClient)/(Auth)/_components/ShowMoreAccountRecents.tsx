@@ -12,16 +12,18 @@ const ShowMoreAccountRecents = () => {
       return (
             <div
                   onClick={() => setShowMoreAccount(true)}
-                  className="border-[.1rem] bg-[#fff] hover:shadow-2xl cursor-pointer flex flex-col relative  border-border-page-color rounded-lg h-[15rem] w-[12rem]"
+                  className="border-[.1rem] bg-[#06122e] hover:shadow-2xl cursor-pointer flex flex-col relative  border-border-page-color rounded-lg h-[19rem] w-[15rem]"
             >
                   <div className=" h-[15rem] flex items-center justify-center">
                         <div className="text-color-main w-[4rem] h-[4rem] rounded-full flex items-center justify-center">
                               <User className=" font-black" size={28} />
                         </div>
                   </div>
-                  <div className="p-[1.4rem_.4rem] text-[1.3rem] border-t-[.1rem] border-[#ccc]">
+                  <div className="p-[1.4rem_.4rem] text-[1.3rem] border-t-[.1rem] border-border-page-color">
                         <span className="text-center w-full block font-bold text-color-main">Xem thêm</span>
                   </div>
+
+                  <ModalShowMoreAccountRecents openModel={showMoreAccount} setOpenModel={setShowMoreAccount} />
             </div>
       );
 };
@@ -40,7 +42,7 @@ const ModalShowMoreAccountRecents = (props: TProps) => {
                                     onClick={() => setOpenModel(false)}
                                     className="fixed z-[999] inset-0 max-w-full overflow-hidden  flex items-center justify-center bg-[rgba(0,0,0,.6)] hover:cursor-pointer"
                               >
-                                    <div className="nax-w-[60rem] bg-[#fff] rounded-lg">
+                                    <div className="nax-w-[60rem] bg-[#06122e] rounded-lg">
                                           <ShowMoreAccountContent onClose={() => setOpenModel(false)} />
                                     </div>{" "}
                               </div>
@@ -108,12 +110,12 @@ const AccountLoginRecents = ({
       const [openModel, setOpenModel] = useState(false);
 
       return (
-            <div className="flex gap-[1.4rem] hover:bg-gray-200 justify-between border-[.1rem] border-border-page-color p-[.6rem_1rem] rounded-[.8rem]">
+            <div className="flex gap-[1.4rem] hover:bg-color-main justify-between border-[.1rem] border-border-page-color p-[.6rem_1rem] rounded-[.8rem]">
                   <div className="flex items-center">
                         <Image width={80} height={80} src={user?.avatar} alt="user_recents" className="w-[9rem] h-[9rem] object-cover rounded-lg" />
                   </div>
 
-                  <div className="flex-1 p-[1rem_.4rem] flex flex-col gap-[1.3rem]  text-[1.4rem] ">
+                  <div className="flex-1 p-[1rem_.4rem] flex flex-col gap-[2.8rem] text-text-theme text-[1.4rem] ">
                         <div className="flex flex-col gap-[.3rem]">
                               <span style={{ fontWeight: 600 }} className=" w-full block ">
                                     {user?.user_first_name && user?.user_last_name ? user?.user_first_name + " " + user?.user_last_name : user?.name}
@@ -122,7 +124,7 @@ const AccountLoginRecents = ({
                                     {user?.email}
                               </span>
                         </div>
-                        <div className="flex gap-[.6rem]">
+                        <div className="flex gap-[1.2rem]">
                               <button
                                     onClick={() => setOpenModel(true)}
                                     className=" bg-none flex items-center gap-[.6rem] p-[1rem] justify-center bg-primary-color text-[#fff] rounded-[.6rem]   text-[1.2rem] !h-[2.8rem]  "

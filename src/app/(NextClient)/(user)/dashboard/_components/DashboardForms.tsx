@@ -21,7 +21,7 @@ const DashboardForms = () => {
             <DivNative className="flex-1 w-full flex bg-color-section-theme   min-h-[40rem]   flex-col gap-[0rem] p-[0rem_2rem_1rem_2rem] xl:p-[1.2rem_2rem_1rem_2rem] ">
                         {!getFormPagination.isPending && getFormPagination.isSuccess && getFormPagination.data.metadata.forms.length > 0 && (
                 
-                  <div className="flex flex-col gap-[1.2rem] h-full">
+                  <div className="flex flex-col gap-[2rem] h-full">
                         <div className="flex flex-wrap justify-start items-center gap-[1rem]">
                               {/* <Image
                                     src={"/assets/images/home/form_controller.png"}

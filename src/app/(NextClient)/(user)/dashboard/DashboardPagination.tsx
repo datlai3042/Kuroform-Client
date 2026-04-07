@@ -93,7 +93,7 @@ const DashboardPagination = (props: TProps) => {
                               <ChevronRight className="text-color-main" />
                         </button>
                   </div>
-                  <div className="hidden  absolute right-0 bg-color-main text-[#fff] rounded-[.4rem] p-[.2rem_.8rem] md:flex items-center  gap-[1rem]">
+                  <div className="hidden  absolute right-0 bg-color-main text-[#fff] rounded-[.4rem] p-[.2rem_1.2rem] md:flex items-center  gap-[1rem]">
                         Tổng trang:{" "}
                         <div className="w-[2.4rem] aspect-square rounded-full   flex justify-center items-center text-[1.2rem] text-[#fff]">
                               {total_page}
