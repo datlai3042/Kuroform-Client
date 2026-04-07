@@ -52,14 +52,14 @@ const InputSettingOption = (props: TProps) => {
             <DivNative className="h-max flex flex-col gap-[1rem] text-text-theme">
                   <InputSettingRequire inputItem={inputItemString} setInputItemString={setInputItemString} />
                   <InputSettingErrorState inputItem={inputItemString} setInputItemString={setInputItemString} />
-                  <InputSettingWidth inputItem={inputItemString} setInputItemString={setInputItemString} />
-
                   {inputItemString.core.setting.input_error_state && (
                         <InputSettingError<InputCore.Commom.InputCommonOption, InputCore.Setting.InputSettingOptionCommon>
                               inputItem={inputItemString}
                               setInputItemString={setInputItemString}
                         />
                   )}
+                  <InputSettingWidth inputItem={inputItemString} setInputItemString={setInputItemString} />
+
 
                   <ButtonSaveSetting showLoading={updateTypeInputMutation.isPending} onSubmit={handleSaveSetting} />
             </DivNative>

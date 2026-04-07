@@ -35,7 +35,7 @@ const LoginForm = (props: TProps) => {
   const { onClose } = props;
   const dispatch = useDispatch();
   const router = useRouter();
-  const { theme } = useContext(ThemeContext);
+  const { onReset } = useContext(ThemeContext);
 
   const loginForm = useForm<LoginType>({
     defaultValues: {
@@ -49,7 +49,9 @@ const LoginForm = (props: TProps) => {
     mutationKey: ["login"],
     mutationFn: (formLogin: LoginType) =>
       AuthService.login<LoginType, ResponseApi<ResponseAuth>>(formLogin),
-    onSuccess: (response) => {},
+    onSuccess: (response) => {
+      onReset();
+    },
   });
 
   const onSubmit = (data: LoginType) => {
@@ -115,18 +117,18 @@ const LoginForm = (props: TProps) => {
       style={{}}
       className="relative    w-full  mx-auto    flex  items-center flex-col  gap-[3.6rem] rounded-[1.2rem] "
     >
-      <div className=" w-full flex flex-col gap-[.5rem] text-center ">
-        <span className="text-[2rem]  text-[#1e2934] gradient-app-name font-bold">
+      <div className=" w-full flex flex-col gap-[1.5rem] text-center ">
+        <span className="text-[2rem]    font-bold">
           Chào mừng trở lại 👋
         </span>
-        <span className="text-[#333] opacity-80 font-semibold  text-[1.3rem]">
+        <span className=" opacity-80 font-semibold  text-[1.2rem]">
           Đăng nhập để trải nghiệm các tính năng tạo biểu mẫu đa dạng
         </span>
       </div>
 
       <div className=" w-full flex flex-col gap-[2rem] ">
         <form
-          className="w-full h-full flex flex-col justify-center  gap-[1.4rem] rounded-[1.2rem]"
+          className="w-full h-full flex flex-col justify-center  gap-[1.9rem] rounded-[1.2rem]"
           onSubmit={loginForm.handleSubmit(onSubmit)}
         >
           <Input<LoginType>
@@ -147,7 +149,7 @@ const LoginForm = (props: TProps) => {
             watch={loginForm.watch}
             icon={<LockKeyhole />}
           />
-          <div className="mt-[.8rem] flex flex-col gap-[2.4rem]">
+          <div className="mt-[1.6rem] flex flex-col gap-[3.6rem]">
             <div className="w-full flex gap-[1rem]">
               <Button
                 disabled={loginMutation.isPending}
@@ -160,7 +162,7 @@ const LoginForm = (props: TProps) => {
             <div className="flex flex-col gap-[1.6rem]">
               <SpaceLine content="Hoặc các phương thức khác" />
 
-              <div className="w-full flex  gap-[.4rem]">
+              <div className="w-full flex  gap-[2.2rem]">
                 <div className="flex-1">
                   <ButtonLoginGoogle />
                 </div>
@@ -171,13 +173,13 @@ const LoginForm = (props: TProps) => {
               </div>
             </div>
 
-            <div className="border-t-[.1rem] pt-[1rem] border-t-border-page-color">
+            <div className="border-t-[.1rem] pt-[2.4rem] mt-[-1rem] border-t-border-page-color">
               <Link
                 href={"/register"}
                 className=" text-[1.5rem] flex gap-[.6rem] justify-center text-center   w-full"
               >
-                <span className="text-[#333]">Bạn là người mới?.</span>
-                <span className="hover:text-[#36a420] font-medium">Tạo tài khoản</span>
+                <span className="">Bạn là người mới?.</span>
+                <span className="text-[#36a420] font-medium">Tạo tài khoản</span>
               </Link>
             </div>
           </div>

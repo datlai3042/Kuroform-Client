@@ -126,7 +126,7 @@ const FormAnswerCore = (props: TProps) => {
                               <DivNative
                                     className={`${
                                           isGoogleForm
-                                                ? "gap-[4rem]"
+                                                ? "gap-[3rem]"
                                                 : `gap-[0rem] ${
                                                         formCore.form_styles === "FULL_WIDTH"
                                                               ? formCore?.form_themes === "LIGHT"

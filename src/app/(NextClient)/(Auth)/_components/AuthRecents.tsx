@@ -30,8 +30,8 @@ const AuthRecents = () => {
 
   return (
        <>
-      <div className="flex flex-col gap-[1.6rem] text-[#333]">
-        <span className="text-[1.6rem] font-semibold">
+      <div className="flex flex-col gap-[1.8rem] text-[#fff]">
+        <span className="text-[1.8rem] font-semibold">
           Đăng nhập lại vào các tài khoản trước
         </span>
 

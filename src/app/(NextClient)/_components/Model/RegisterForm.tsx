@@ -31,7 +31,7 @@ type TProps = {
 const RegisterForm = (props: TProps) => {
       const { onClose } = props;
       const router = useRouter();
-      const { theme } = useContext(ThemeContext);
+      const { onReset } = useContext(ThemeContext);
 
       const dispatch = useDispatch();
 
@@ -51,6 +51,10 @@ const RegisterForm = (props: TProps) => {
             // mutationFn: (formRegister: Omit<RegisterType, "confirm_password">) =>
             mutationFn: (formRegister: Omit<RegisterType, "confirm_password">) =>
                   AuthService.register<Omit<RegisterType, "confirm_password">, ResponseApi<ResponseAuth>>(formRegister),
+
+            onSuccess: (response) => {
+                  onReset();
+            },
       });
 
       useEffect(() => {
@@ -98,14 +102,14 @@ const RegisterForm = (props: TProps) => {
       };
 
       return (
-            <div className="relative w-full flex h-full  items-center flex-col  gap-[4rem] rounded-[1.2rem]  ">
+            <div className="relative w-full flex h-full  items-center flex-col  gap-[3.6rem] rounded-[1.2rem]  ">
                   <div className=" w-full flex flex-col gap-[.5rem] text-center ">
-                        <span className="text-[2rem]   gradient-app-name font-bold">Xin chào bạn 👋</span>
-                        <span className="text-[#333] opacity-80 font-semibold  text-[1.3rem]">Hãy tạo tài khoản để bắt đầu cùng Kuroform nhé!</span>
+                        <span className="text-[2rem]    font-bold">Xin chào bạn 👋</span>
+                        <span className=" opacity-80 font-semibold  text-[1.3rem]">Hãy tạo tài khoản để bắt đầu cùng Kuroform nhé!</span>
                   </div>
 
                   <div className=" w-full flex flex-col gap-[2rem] ">
-                        <form className="w-full flex flex-col justify-center  gap-[1.6rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
+                        <form className="w-full flex flex-col justify-center  gap-[2.4rem] rounded-[1.2rem] " onSubmit={registerForm.handleSubmit(onSubmit)}>
                               {/* <Input<RegisterType>
                                     FieldKey="user_first_name"
                                     placeholder="Nhập họ của bạn"
@@ -152,7 +156,7 @@ const RegisterForm = (props: TProps) => {
                                     error={registerForm.formState.errors}
                                     icon={<LockKeyhole />}
                               />
-                              <div className="mt-[.8rem] flex flex-col gap-[2.4rem]">
+                              <div className="mt-[1rem] flex flex-col gap-[2.4rem]">
                                     <div className=" flex gap-[1rem]">
                                           <Button
                                                 type="submit"
@@ -177,8 +181,8 @@ const RegisterForm = (props: TProps) => {
                                     </div>
                                     <div className="border-t-[.1rem] pt-[1rem] border-t-border-page-color">
                                           <Link href={"/login"} className=" text-[1.5rem] flex gap-[.6rem] justify-center text-center   w-full">
-                                                <span className="text-[#333]">Bạn là người cũ?.</span>
-                                                <span className="hover:text-color-main font-medium">Đăng nhập</span>
+                                                <span className="">Bạn đã có tài khoản?</span>
+                                                <span className="text-color-main font-medium">Đăng nhập</span>
                                           </Link>
                                     </div>
                               </div>

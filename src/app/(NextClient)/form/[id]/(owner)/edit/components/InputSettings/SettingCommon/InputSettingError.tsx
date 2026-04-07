@@ -38,7 +38,7 @@ const InputSettingError = <InputType extends InputCore.Commom.InputCommon, Type 
 
       return (
             <DivNative className="h-max flex flex-col  justify-between gap-[.6rem]">
-                  <InputSettingLabel onClick={labelClick} className="hover:cursor-pointer">
+                  <InputSettingLabel onClick={labelClick} className="hover:cursor-pointer !text-red-600 font-medium">
                         Nhập thông báo lỗi
                   </InputSettingLabel>
                   <DivNativeRef

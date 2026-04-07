@@ -33,19 +33,19 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
       })
     : icon;
       return (
-            <div style={style} className={`${focus && !unActiveLabel ? "my-[.8rem] field-container-focus" : ""}  flex flex-col gap-[.6rem]`}>
+            <div style={style} className={`${focus && !unActiveLabel ? "my-[1.2rem] field-container-focus" : ""}  flex flex-col gap-[.6rem]`}>
                   <div
                         className={`${
                               focus ? " field-container-focus" : ""
                         } ${unActiveLabel ? ' p-[1rem_0rem]' : ' p-[.5rem_0rem]'} relative flex items-center  w-full border-[.2rem]  border-border-page-color bg-transparent  h-max gap-[.6rem]  rounded-[.8rem] `}
                   >
                         <label
-                              className={`${focus ? "text-color-main" : ""} p-[0rem_1rem] w-[9rem] flex-center`}
+                              className={`${focus ? "text-color-main" : ""} p-[0rem_1.4rem] w-[9rem] flex-center`}
                               htmlFor={`${FieldKey}-${id}`}
                         >
                               {icon ? iconWithProps : <Info strokeWidth={focus ? "2.6" : "2"}/>}
                         </label>
-                        <div className="flex flex-col    w-full  ">
+                        <div className="flex flex-col gap-[.4rem]   w-full  ">
                               {!unActiveLabel && (
                                     <label
                                           style={{

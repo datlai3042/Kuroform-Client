@@ -179,7 +179,7 @@ body.dark .ant-rate-star-second {
             --bg-client-loading: #3d52a2;
             --color-gap-empty: #f1f4fb;
             /* --color-main: #6262e5; */
-            --color-main: #3d52a2;
+            --color-main: #0d44c4;
             --color-section-theme: #16161e;
             --text-theme: #000;
             --color-main-hover: rgb(229 231 235);
@@ -192,7 +192,7 @@ body.dark .ant-rate-star-second {
             --toast-success: #4299de;
             --toast-error: #f4454c;
             --toast-warning: #ea580c;
-            --form-theme-dark: #000000ba;
+            --form-theme-dark: #030d12e6;
 
             --border-color-input: rgb(218, 220, 224);
             /* --border-color-input: rgb(209 213 219 / 12%); */
@@ -221,7 +221,7 @@ body.dark .ant-rate-star-second {
       }
 
       body.light {
-            --bg-btn-func: #2c52e3;
+            --bg-btn-func: #3e5fe2;
             --scrol-global-track: rgb(208 204 210 / 76%);
             --scrol-global-thumb: #abb1bae8;
             --bg-form-nav: #fff;
@@ -259,7 +259,7 @@ body.dark .ant-rate-star-second {
       }
 
       body.dark {
-            --bg-btn-func: #5d2fbae6;
+            --bg-btn-func: #3e5fe2;
             --bg-input-ans: #04091969;
             --color-main: #3e5fe2;
             --bg-form-nav: #383838;
@@ -837,9 +837,9 @@ body.dark .ant-rate-star-second {
 
       .btn-func {
             background-color: var(--bg-btn-func) !important;
-            font-size: 1.2rem !important;
+            font-size: 1.35rem !important;
             gap: .8rem  !important;
-            height: 3rem !important;
+            height: 4rem !important;
       }
       .hidden-border-table table,
       th,

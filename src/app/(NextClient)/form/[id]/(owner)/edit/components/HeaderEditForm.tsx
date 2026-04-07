@@ -1,6 +1,6 @@
 "use client";
 import { RootState } from "@/app/_lib/redux/store";
-import { ChevronRight, ChevronsRight, Ellipsis, LinkIcon, Pencil, Settings, Trash2 } from "lucide-react";
+import { ChevronRight, ChevronsRight, Ellipsis, Eye, LinkIcon, Pencil, Settings, Trash2 } from "lucide-react";
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -137,7 +137,7 @@ const HeaderEditForm = (props: TProps) => {
 
       return (
             <DivNative
-                  className={`${top}  header_container  bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[200] flex-wrap   w-auto  flex  justify-between  gap-[.6rem]  p-[.6rem_1.8rem] text-[1.3rem]`}
+                  className={`${top}  header_container  bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[200] flex-wrap   w-auto  flex  justify-between  gap-[.6rem]  p-[1.6rem_1.8rem] text-[1.3rem]`}
             >
                   {!matches && (
                         <div className="w-[60%] hidden sm:flex  h-full items-center header-left">
@@ -221,11 +221,16 @@ const HeaderEditForm = (props: TProps) => {
                                     ) : (
                                           <DivNative
                                                 style={{ justifyContent: matches ? "start" : "" }}
-                                                className="w-[27rem] header-right  xl:ml-auto flex flex-wrap justify-end items-center gap-[1rem]"
+                                                className=" header-right  xl:ml-auto flex flex-wrap justify-end items-center gap-[1.2rem]"
                                           >
                                                 <DivNative className=" flex items-center justify-center " title="Review">
                                                       <ButtonNative
-                                                            textContent={`Xem trước  `}
+                                                            textContent={
+                                                                  <div className="flex gap-[.6rem]">
+                                                                        <Eye size={18} />
+                                                                        <span className="hidden xl:inline">Xem trước</span>
+                                                                  </div>
+                                                            }
                                                             className="min-w-[9rem] p-[.8rem] rounded-md text-text-theme"
                                                             onClick={onSetScreen}
                                                       />

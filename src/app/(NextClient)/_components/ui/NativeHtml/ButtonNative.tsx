@@ -3,7 +3,7 @@
 import React from "react";
 
 export interface ButtonNativeProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	textContent: string;
+	textContent: string | React.ReactNode;
 	children?: React.ReactNode;
 }
 

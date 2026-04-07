@@ -109,7 +109,7 @@ const RenderInputAnswers = (props: TProps) => {
                                     </div>
                               )}
 
-                              <div className="flex flex-col gap-[1.2rem] px-[2rem] mt-[2rem] pb-[2rem]">
+                              <div className="flex flex-col gap-[1.2rem] px-[2rem] pb-[2rem]">
                                     {/* <div
                                           // style={{color: formCore.form_title.form_title_color}}
                                           className={`${color} flex flex-wrap gap-[2rem] justify-end text-[1.5rem] text-color-main font-normal`}

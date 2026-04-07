@@ -12,7 +12,7 @@ type TProps = {
 const FormEmpty = (props: TProps) => {
       const {
             content = (
-                  <div className="flex flex-col items-center gap-[2rem]">
+                  <div className="flex flex-col items-center gap-[2rem] text-text-theme">
                         <strong className="text-[4.2rem] text-color-main">Welcome Kuroform</strong>
                         <span className="text-[1.8rem] font-bold">Hãy tạo form để trải nghiệm tính năng</span>
                   </div>
@@ -38,7 +38,7 @@ const FormEmpty = (props: TProps) => {
                   <ButtonCreateForm
                         textContent="Tạo Form"
                         urlNavigation="/"
-                        className="flex  xl:[&]:p-[2px] !gap-[.5rem] !h-[5rem] !min-w-[14rem] !rounded-lg !w-max !text-[1.5rem] font-bold"
+                        className="flex  xl:[&]:p-[2px] !gap-[.5rem] !h-[4rem] !min-w-[12rem] !rounded-lg !w-max !text-[1.5rem] font-bold"
                         position="LEFT"
                         icon={<Plus size={20} className="font-bold" />}
                   />

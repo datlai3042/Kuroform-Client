@@ -19,7 +19,7 @@ const LoginRecents = (props: TProps) => {
   return (
     <>
       <div
-        className="border-[.1rem] hover:shadow-2xl cursor-pointer relative  border-border-page-color  rounded-lg min-w-[12rem]  h-[19rem]"
+        className="border-[.1rem] hover:shadow-2xl cursor-pointer relative  border-border-page-color  rounded-lg min-w-[14rem]  h-[19rem]"
         onClick={() => setOpenModel(true)}
       >
         {mode !== "more" && (
@@ -37,10 +37,10 @@ const LoginRecents = (props: TProps) => {
           alt="user_recents"
           className="w-full h-[15rem] object-cover rounded-tl-lg rounded-tr-lg"
         />
-        <div className="p-[1rem] flex items-center text-[1.4rem] border-t-[.1rem] border-[#ccc]">
+        <div className="p-[1rem] bg-[#06122e] flex items-center text-[1.4rem] border-t-[.1rem] border-border-page-color">
           <span
             style={{ fontWeight: mode === "more" ? 700 : "" }}
-            className="text-center w-full block font-medium"
+            className="text-center text-[#ccc] w-full block font-medium"
           >
             {userItem?.user_first_name && userItem?.user_last_name
               ? userItem?.user_first_name + " " + userItem?.user_last_name

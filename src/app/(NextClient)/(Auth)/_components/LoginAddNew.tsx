@@ -22,14 +22,14 @@ const LoginAddNew = () => {
             <>
                   <div
                         onClick={() => setShowFormLogin(true)}
-                        className="border-[.1rem] bg-[#fff] hover:shadow-2xl cursor-pointer flex flex-col relative  border-border-page-color rounded-lg h-[15rem] w-[12rem]"
+                        className="border-[.1rem] bg-[#06122e] hover:shadow-2xl cursor-pointer flex flex-col relative  border-border-page-color rounded-lg h-[19rem] w-[14rem]"
                   >
                         <div className=" h-[15rem] flex items-center justify-center">
                               <div className="bg-color-main w-[4rem] h-[4rem] rounded-full flex items-center justify-center">
                                     <PlusIcon className="text-[#fff] font-black" size={24} />
                               </div>
                         </div>
-                        <div className="p-[1.4rem_.4rem] text-[1.3rem] border-t-[.1rem] border-[#ccc]">
+                        <div className="p-[1.4rem_.4rem] text-[1.3rem] border-t-[.1rem] border-border-page-color">
                               <span className="text-center w-full block font-bold text-color-main">Thêm tài khoản</span>
                         </div>
                   </div>
@@ -51,9 +51,9 @@ const ModalLoginAddNew = (props: TProps) => {
                         <Portal>
                               <div
                                     onClick={() => setOpenModel(false)}
-                                    className="fixed z-[999] inset-0 max-w-full overflow-hidden  flex items-center justify-center bg-[rgba(0,0,0,.3)] hover:cursor-pointer"
+                                    className="fixed z-[999] inset-0 max-w-full overflow-hidden  flex items-center justify-center bg-[rgba(0,0,0,.8)] hover:cursor-pointer"
                               >
-                                    <div className="w-[34rem] bg-[#fff] rounded-lg">
+                                    <div className="w-[38rem] bg-[#06122e] rounded-lg">
                                           <FormLoginAddNew onClose={() => setOpenModel(false)} />
                                     </div>{" "}
                               </div>
@@ -140,7 +140,7 @@ const FormLoginAddNew = (props: TPropsForm) => {
                   style={{
                         boxShadow: "0 2px 4px #0000001a,0 8px 16px #0000001a",
                   }}
-                  className="relative    w-full h-max mx-auto    flex  items-center flex-col  gap-[3.4rem] rounded-[1.8rem] p-[2.6rem_2rem]"
+                  className="relative bg-[#06122e] text-[#fff]   w-full h-max mx-auto    flex  items-center flex-col  gap-[3.4rem] rounded-[1.8rem] p-[2.6rem_2rem]"
             >
                   {/* <p className=" w-full flex flex-col gap-[0rem]  items-center">
                            <span className="text-text-theme text-[4.2rem]">Kuro</span> 
@@ -149,15 +149,15 @@ const FormLoginAddNew = (props: TPropsForm) => {
                             <span className="text-[#858d8f] text-[1.2rem]">Kuroform - Đăng nhập để tiếp tục dịch vụ</span>
                       </p> */}
 
-                  <div className=" w-full flex flex-col gap-[2.6rem] px-[1rem]">
+                  <div className=" w-full flex flex-col gap-[3rem] px-[1rem]">
                       
-                        <div className=" w-full flex flex-col gap-[.5rem] text-center ">
-                              <span className="text-[2rem]  text-[#1e2934] gradient-app-name font-bold">Chào mừng trở lại 👋</span>
-                              <span className="text-[#333] opacity-80 font-semibold  text-[1.3rem]">
+                        <div className=" w-full flex flex-col gap-[1.8rem] text-center ">
+                              <span className="text-[2rem]   font-bold">Chào mừng trở lại 👋</span>
+                              <span className=" opacity-80 font-semibold  text-[1.3rem]">
                                     Đang đăng nhập bằng tài khoản đã tạo
                               </span>
                         </div>
-                        <form className="w-full h-full flex flex-col justify-center  gap-[1.6rem] rounded-[1.2rem]" onSubmit={loginForm.handleSubmit(onSubmit)}>
+                        <form className="w-full h-full flex flex-col justify-center  gap-[2rem] rounded-[1.2rem]" onSubmit={loginForm.handleSubmit(onSubmit)}>
                               <Input<LoginType>
                                     FieldKey="user_email"
                                     placeholder="Email"
@@ -196,7 +196,7 @@ const FormLoginAddNew = (props: TPropsForm) => {
                                                             <span>Đóng</span>
                                                       </div>
                                                 }
-                                                className=" border-[.1rem] border-border-page-color !bg-transparent !text-[#333] hover:!text-[#fff] hover:!bg-primary-color !rounded-[.4rem] !h-[4rem] mt-[.8rem]"
+                                                className=" border-[.1rem] border-border-page-color !bg-transparent  hover:!text-[#333] hover:!bg-[#ccc] !rounded-[.4rem] !h-[4rem] mt-[.8rem]"
                                           />
                                     )}
                               </div>

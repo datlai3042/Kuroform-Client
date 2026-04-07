@@ -33,7 +33,7 @@ const ModelFormState = () => {
 	return (
 		<div
 			style={{ color: "#000" }}
-			className="min-w-[18rem] min-h-[8rem] p-[1rem_2rem] flex flex-col gap-[1rem] border-[.1rem] border-gray-100 bg-[#ffffff] rounded-2xl text-[1.4rem] font-medium shadow-lg"
+			className="min-w-[16rem] min-h-[8rem] p-[1rem_2rem] flex flex-col g] border-[.1rem] border-gray-100 bg-[#ffffff] rounded-2xl text-[1.4rem] font-medium shadow-lg"
 		>
 			<ButtonSelect
 				disabled={changeFormMode.isPending}

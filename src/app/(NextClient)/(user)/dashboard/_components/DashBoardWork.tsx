@@ -50,7 +50,7 @@ const DashBoardWork = () => {
       const colorTheme = theme === "light" ? "text-text-theme hover:text-[#fff]" : "!text-text-theme ";
 
       return (
-            <div className={`flex flex-col gap-[.8rem] text-[1.4rem] `}>
+            <div className={`flex flex-col gap-[1.8rem] text-[1.4rem] `}>
                   <Link
                         href={"/"}
                         className={`nav ${colorTheme} ${matchPathName("/dashboard") ? "nav__isActive" : "nav__normal hover:bg-color-main "} group  `}

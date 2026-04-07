@@ -52,7 +52,7 @@ const DashboardWorkspaces = () => {
 
       return (
             <div
-                  className="pl-[.6rem]  flex flex-col gap-[.6rem] hover:cursor-pointer"
+                  className="pl-[.6rem]  flex flex-col gap-[1.6rem] hover:cursor-pointer"
                   onClick={() => {
                         setOpenModalWorkSpace((prev) => {
                               // if (!prev) {

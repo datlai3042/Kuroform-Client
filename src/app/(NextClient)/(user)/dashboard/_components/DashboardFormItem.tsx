@@ -33,11 +33,11 @@ const DashboardFormItem = (props: TProps) => {
                   prefetch={false}
                   href={`/form/${form._id}/summary`}
                   key={form._id}
-                  className=" h-[22rem] hover:shadow-2xl text-[1.3rem]  w-full  max-w-full flex flex-col rounded-[1.6rem]    gap-[1.4rem]   text-text-theme bg-[var(--bg-form-nav)]  border-[.1rem] border-[var(--border-form-item)]"
+                  className=" h-[25rem] hover:shadow-2xl text-[1.3rem]  w-full  max-w-full flex flex-col rounded-[1rem]    gap-[1.4rem]   text-text-theme bg-[var(--bg-form-nav)]  border-[.1rem] border-[var(--border-form-item)]"
             >
                   {/* <FormStateProvider form_state={form.form_state} /> */}
                   <div className="w-full flex flex-col items-center justify-center gap-[3rem]">
-                        <div className="w-full h-[11rem]">
+                        <div className="w-full h-[14rem]">
                               {form.form_avatar?.form_avatar_url ? (
                                     <Image
                                           src={form.form_avatar.form_avatar_url}

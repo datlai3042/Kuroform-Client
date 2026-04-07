@@ -87,13 +87,13 @@ const InputSettingText = (props: TProps) => {
                   <InputSettingMinLength inputItem={inputItemString} setInputItemString={setInputItemString} />
                   <InputSettingMaxLength inputItem={inputItemString} setInputItemString={setInputItemString} />
                   <InputSettingErrorState inputItem={inputItemString} setInputItemString={setInputItemString} />
-                  <InputSettingWidth inputItem={inputItemString} setInputItemString={setInputItemString} />
                   {inputItemString.core.setting.input_error_state && (
                         <InputSettingError<InputCore.Commom.InputCommonText, InputCore.Setting.InputSettingTextCommon>
                               inputItem={inputItemString}
                               setInputItemString={setInputItemString}
                         />
                   )}
+                  <InputSettingWidth inputItem={inputItemString} setInputItemString={setInputItemString} />
                   {/* <ButtonNative textContent="Lưu" onClick={(e) => handleSaveSetting(e)} className="w-[14rem] h-[4rem] text-[#ffffff] rounded-lg" /> */}
 
                   <ButtonSaveSetting showLoading={updateTypeInputMutation.isPending} onSubmit={handleSaveSetting} />

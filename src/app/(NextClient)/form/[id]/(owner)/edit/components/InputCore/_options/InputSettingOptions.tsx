@@ -55,7 +55,6 @@ const InputSettingOptions = (props: TProps) => {
                   <InputSettingRequire inputItem={inputItemString} setInputItemString={setInputItemString} />
 
                   <InputSettingErrorState inputItem={inputItemString} setInputItemString={setInputItemString} />
-                  <InputSettingWidth inputItem={inputItemString} setInputItemString={setInputItemString} />
 
                   {inputItemString.core.setting.input_error_state && (
                         <InputSettingError<InputCore.Commom.InputCommonOptions, InputCore.Setting.InputSettingOptionsCommon>
@@ -63,6 +62,7 @@ const InputSettingOptions = (props: TProps) => {
                               setInputItemString={setInputItemString}
                         />
                   )}
+                  <InputSettingWidth inputItem={inputItemString} setInputItemString={setInputItemString} />
                                  <ButtonSaveSetting showLoading={updateTypeInputMutation.isPending} onSubmit={handleSaveSetting} />
                
             </DivNative>
