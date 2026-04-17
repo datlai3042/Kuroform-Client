@@ -96,15 +96,7 @@ const FormTitleImage = (props: TProps) => {
 
       if (!subTitleItem?.core?.url && page === "Edit")
             return (
-                  <div className="flex flex-col	 gap-[1rem]">
-                        <button
-                              className="flex items-center gap-[.5rem] text-[1.4rem] font-bold text-textHeader hover:text-slate-800"
-                              onClick={handleDelete}
-                              disabled={updateFormAPI.isPending}
-                        >
-                              <Trash2 size={16} />
-                              {FormText.title.optionImage.remove}
-                        </button>
+                  <div className="flex items-start 	 gap-[1.6rem]">
                         <div className="flex items-center gap-[2rem]">
                               <button
                                     onClick={onClickButton}
@@ -115,7 +107,14 @@ const FormTitleImage = (props: TProps) => {
 
                               {uploadAvatar.isPending && <LoadingSpinner color={colorMain} />}
                         </div>
-
+                        <button
+                              className="flex items-center gap-[.5rem]  text-[1.4rem] font-bold text-textHeader hover:text-red-600 "
+                              onClick={handleDelete}
+                              disabled={updateFormAPI.isPending}
+                        >
+                              <Trash2 size={16} />
+                              {FormText.title.optionImage.remove}
+                        </button>
                         <input type="file" hidden ref={inputAvatar} onChange={onChangeFile} />
                   </div>
             );
@@ -130,7 +129,7 @@ const FormTitleImage = (props: TProps) => {
       }, []);
       return (
             <div
-                  className={`${widthPage} ${checkModeImage}  flex flex-col justify-center  gap-[1rem]   outline-none rounded-lg `}
+                  className={`${widthPage} ${checkModeImage}  flex flex-col justify-center  gap-[.6rem]   outline-none rounded-lg `}
                   ref={setNodeRef}
                   {...attributes}
                   {...listeners}
@@ -138,7 +137,7 @@ const FormTitleImage = (props: TProps) => {
             >
                   {page === "Edit" && mode === "Normal" && (
                         <button
-                              className="flex items-center gap-[.5rem] text-[1.4rem] font-bold text-textHeader hover:text-slate-800 "
+                              className="flex items-center gap-[.5rem] text-[1.4rem] font-bold text-textHeader hover:text-red-600 "
                               onClick={handleDelete}
                               disabled={updateFormAPI.isPending}
                         >

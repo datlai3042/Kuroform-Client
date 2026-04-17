@@ -69,13 +69,14 @@ const SettingAccount = () => {
                         <>
                               <form onSubmit={formUpdate.handleSubmit(onSubmit)} id="form_update" className="flex my-[1rem]  gap-[3rem_2rem] flex-wrap justify-between">
                                     <Input<UserUpdateInfo>
+                                          
                                           FieldKey="user_first_name"
                                           placeholder="Nhập first name"
                                           register={formUpdate.register}
                                           type="text"
                                           watch={formUpdate.watch}
                                           error={formUpdate.formState.errors}
-                                          style={{ width: "48.5%" }}
+className="xl:w-[48%]"
                                           icon={<User />}
                                     />
 
@@ -86,7 +87,7 @@ const SettingAccount = () => {
                                           type="text"
                                           watch={formUpdate.watch}
                                           error={formUpdate.formState.errors}
-                                          style={{ width: "48.5%" }}
+
                                           icon={<User />}
                                     />
 
@@ -97,7 +98,8 @@ const SettingAccount = () => {
                                           type="text"
                                           watch={formUpdate.watch}
                                           error={formUpdate.formState.errors}
-                                          style={{ width: "48.5%" }}
+
+                                          // style={{ width: "48.5%" }}
                                           icon={<MailCheck />}
                                     />
                               </form>

@@ -124,7 +124,7 @@ const EditorWriter = (props: TProps) => {
             }
       }, []);
       return (
-            <div style={styleObj}>
+            <div style={styleObj} className="text-text-theme">
                   <Editor
 
                   placeholder={props?.placeholder || ''}

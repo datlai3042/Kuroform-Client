@@ -137,7 +137,7 @@ const HeaderEditForm = (props: TProps) => {
 
       return (
             <DivNative
-                  className={`${top}  header_container  bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[200] flex-wrap   w-auto  flex  justify-between  gap-[.6rem]  p-[1.6rem_1.8rem] text-[1.3rem]`}
+                  className={`${top}  header_container  bg-color-section-theme sticky top-0  left-[28rem] right-[3rem] z-[200] flex-wrap   w-auto  flex  justify-between  gap-[.6rem]  p-[1.2rem_1.8rem] text-[1.3rem]`}
             >
                   {!matches && (
                         <div className="w-[60%] hidden sm:flex  h-full items-center header-left">

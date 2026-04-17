@@ -48,7 +48,7 @@ const DashboardFormItem = (props: TProps) => {
                                           className="w-full h-full  object-cover rounded-tl-[.8rem] rounded-tr-[.8rem]"
                                     />
                               ) : (
-                                    <div className="w-full h-full  bg-[#000] rounded-tl-[.8rem] rounded-tr-[.8rem]"> </div>
+                                    <div style={{backgroundColor: 'rgba(0, 0, 0, 0.14)'}} className="w-full h-full   rounded-tl-[.8rem] rounded-tr-[.8rem] flex justify-center items-center">Empty</div>
                               )}
                         </div>
                   </div>
@@ -56,7 +56,7 @@ const DashboardFormItem = (props: TProps) => {
                         <div className=" flex flex-col justify-center gap-[1.2rem] ">
                               <div
                                     dangerouslySetInnerHTML={{ __html: form?.form_title?.form_title_value || "Trống" }}
-                                    className="max-w-[90%] h-[2rem] reset-editor truncate !text-[1.5rem] text-color-main font-bold"
+                                    className="max-w-[90%] h-[2rem] reset-editor truncate !text-[1.6rem] text-text-theme font-bold"
                               ></div>
                               <div className="flex justify-between">
                                     <span className="text-[1.2rem]">Chỉnh sửa {moment(new Date(form.updatedAt!)).fromNow()}</span>

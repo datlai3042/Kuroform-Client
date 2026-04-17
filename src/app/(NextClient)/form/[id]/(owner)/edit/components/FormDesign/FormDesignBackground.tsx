@@ -33,7 +33,7 @@ const FormDesignBackground = () => {
                         ]}
                   /> */}
 
-                              <div className="w-full flex flex-col gap-[2rem] ">
+                              <div className="w-full flex flex-col gap-[1rem] ">
                                     <div className="flex gap-[1rem]">
                                           <div className="basis-[12rem]  relative">{<FormBackground action={"thumb"} />}</div>
                                           <div className="flex-1 flex flex-col gap-[1.4rem]">
@@ -54,7 +54,7 @@ const FormDesignBackground = () => {
                                     )}
                               </div> */}
                                           <div className="flex items-center justify-between">
-                                                <div className="w-max">
+                                                <div className="w-max flex gap-[1rem]">
                                                       <ButtonChangeModeBackground />
                                                 </div>
                                                 <ButtonBackgroundColor direction="col" />

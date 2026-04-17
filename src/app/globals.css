@@ -177,7 +177,7 @@ body.dark .ant-rate-star-second {
             --ring: 222.2 84% 4.9%;
             --radius: 0.5rem;
             --bg-client-loading: #3d52a2;
-            --color-gap-empty: #f1f4fb;
+            --color-gap-empty: #325abb;
             /* --color-main: #6262e5; */
             --color-main: #0d44c4;
             --color-section-theme: #16161e;
@@ -186,7 +186,7 @@ body.dark .ant-rate-star-second {
             --border-color: hwb(0 10% 88% / 0.189);
             --bg-form-nav: #fff;
             --bg-input-theme: #fff;
-            --btn-design: #2d68ff;
+            ---style: #2d68ff;
             --bg-model: #eef1f9;
             --color-btn-primarily: rgb(37, 104, 170);
             --toast-success: #4299de;
@@ -212,8 +212,10 @@ body.dark .ant-rate-star-second {
             --form-theme-light: #dbe3f3;
             --form-theme-light-color: #000;
             --form-theme-dark-color: #fff;
-            --scrol-global-track: rgb(208 204 210 / 76%);
-            --scrol-global-thumb: #abb1bae8;
+           
+
+            --scrol-global-track: rgba(222, 233, 220, 0.76);
+            --scrol-global-thumb: #747bd4e8;
       }
 
       html {
@@ -225,7 +227,7 @@ body.dark .ant-rate-star-second {
             --scrol-global-track: rgb(208 204 210 / 76%);
             --scrol-global-thumb: #abb1bae8;
             --bg-form-nav: #fff;
-            --color-gap-empty: #eef1f9;
+            --color-gap-empty: #325abb;
             --color-main: #2c52e3;
             --bg-scrollbar-thumb-normal: #636363;
             --bg-scrollbar-track-normal: #e9e2e2;
@@ -254,7 +256,8 @@ body.dark .ant-rate-star-second {
             --border-color-side: rgb(200 205 214 / 74%);
             /* --bg-input-ans: #2647fc30; */
             --bg-input-ans: #060913d1;
-
+   --scrol-global-track: rgba(222, 233, 220, 0.76);
+            --scrol-global-thumb: #747bd4e8;
             /* --color-btn-primarily: #2d68ff;ư */
       }
 
@@ -263,7 +266,7 @@ body.dark .ant-rate-star-second {
             --bg-input-ans: #04091969;
             --color-main: #3e5fe2;
             --bg-form-nav: #383838;
-            --color-gap-empty: #383838;
+            --color-gap-empty: #325abb;
             /* --color-main: #3b36db; */
             --bg-answer-option: rgb(222 224 228);
             --form-empty-image: #fff;
@@ -285,8 +288,8 @@ body.dark .ant-rate-star-second {
             --border-color-side: #44444496;
             --bg-scrollbar-thumb-normal: rgba(203, 191, 191, 0.758);
             --bg-scrollbar-track-normal: #16161e;
-            --scrol-global-track: rgb(59 35 71 / 76%);
-            --scrol-global-thumb: #304c76e8;
+            --scrol-global-track: rgba(159, 213, 226, 0.76);
+            --scrol-global-thumb: #2f3be9e8;
       }
 
       body {
@@ -324,8 +327,8 @@ body.dark .ant-rate-star-second {
             border-radius: 50%;
       }
 
-      .btn-design {
-            @apply p-[.8rem] bg-btn-design;
+      .-style {
+            @apply p-[.8rem] bg--style;
       }
 
       .custom-color-title .react-colorful__saturation-pointer {
@@ -481,6 +484,12 @@ body.dark .ant-rate-star-second {
             padding-bottom: 0rem !important;
       }
 
+
+      .btn-primarily.btn-design-style, .btn-design-style {
+            font-size: 1.3rem !important;
+            border-radius: .6rem !important;
+            padding: 0.8rem 1.2rem !important;
+      }
       .control-w-input {
       }
       .wrapper * {
@@ -732,7 +741,7 @@ body.dark .ant-rate-star-second {
 		navigation
 */
       .nav {
-            @apply p-[.8rem_1rem]  flex items-center gap-[1rem]  rounded-[.8rem] text-[1.2rem];
+            @apply !p-[1rem_.6rem]  flex flex-col items-center gap-[.6rem]  rounded-[.8rem] text-[1.2rem];
       }
 
       .nav__isActive {

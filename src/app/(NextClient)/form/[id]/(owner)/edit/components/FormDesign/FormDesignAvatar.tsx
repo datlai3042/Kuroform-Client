@@ -28,8 +28,8 @@ const FormDesignAvatar = () => {
             <>
                   {formAvatar ? (
                         <div className="w-full flex flex-col gap-[1.6rem] ">
-                              <div className="flex gap-[1.2rem] mt-[1.6rem]">
-                                    <div className=" relative group cursor-pointer">
+                              <div className="flex gap-[1.2rem] ">
+                                    <div className="w-[1rem] rounded-[.3rem] flex-shrink-0 relative group cursor-pointer">
                                           <Image
                                                 width={150}
                                                 height={150}
@@ -37,13 +37,13 @@ const FormDesignAvatar = () => {
                                                 quality={100}
                                                 onClick={onControllModel}
                                                 alt="avatar"
-                                                className={`min-w-[7rem] w-[7rem] h-[12rem] cursor-pointer object-cover`}
+                                                className={`min-w-[7rem] w-full h-[12rem] cursor-pointer object-cover`}
                                           />
                                           <div className="hidden absolute inset-0 bg-[rgba(0,0,0,.6)] group-hover:flex  justify-center items-center">
                                                 <Camera color="#fff"/>
                                           </div>
                                     </div>
-                                    <div className=" flex flex-col gap-[.8rem]">
+                                    <div className="flex-1 flex flex-col gap-[.8rem]">
                                           <div className={`${styleEffect.onCheckHasBackground(formAvatar)} flex flex-col gap-[0.6rem]  `}>
                                                 {/* <p className="font-medium flex flex-col gap-[.6rem]">
                                     <span>Tùy chỉnh Avatar</span>

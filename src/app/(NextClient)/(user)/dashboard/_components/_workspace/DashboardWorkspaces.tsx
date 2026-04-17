@@ -65,7 +65,7 @@ const DashboardWorkspaces = () => {
             >
                   {success && (
                         <>
-                              <p className="text-[1.3rem] text-[rgb(137_136_132)]">Các form đã tạo</p>
+                              {/* <p className="text-[1.3rem] text-[rgb(137_136_132)]">Các form đã tạo</p> */}
 
                               <div
                                     className={`nav ${
@@ -76,7 +76,7 @@ const DashboardWorkspaces = () => {
                                           Icon={Icon}
                                           className={`${styleEffect.onCheckFocus(openWorkspace)}  flex bg-color-main !rounded-full !w-[1rem] !h-[1rem]`}
                                     />
-                                    <span className="group-hover:!text-[#fff]">Mở danh sách Form</span>
+                                    <span className="group-hover:!text-[#fff]">Form</span>
                               </div>
                         </>
                   )}

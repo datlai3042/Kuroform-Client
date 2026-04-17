@@ -62,7 +62,7 @@ const SliderImage = (props: TProps) => {
             }
       }, []);
 
-      const widthPage = page === "Edit" ? "w-[26rem] sm:w-[55rem] xl:w-[75rem] " : "w-[26rem] sm:w-[55rem] xl:w-[60rem]";
+      const widthPage = page === "Edit" ? "w-[26rem] sm:w-[55rem] xl:w-[92rem] " : "w-[26rem] sm:w-[55rem] xl:w-[60rem]";
       const centerListImageSub = formCore.form_title.form_title_sub.filter((sub) => (sub.type === "Image" ? true : false)).length > 4 ? true : false;
 
       return (
@@ -108,7 +108,7 @@ const SliderImage = (props: TProps) => {
                               />
                         )}
 
-                        <div className="absolute bottom-[1rem]  left-[50%] translate-x-[-50%] flex gap-[2rem]">
+                        <div className="absolute bottom-[1rem]  left-[50%] translate-x-[-50%] flex gap-[.8rem]">
                               {images.map((btn, i) => (
                                     <button
                                           key={i}
@@ -141,8 +141,8 @@ const SliderImage = (props: TProps) => {
                                                 style={{borderColor:  i === indexImage ? colorMain: ''}}
                                                 className={`${
                                                       i === indexImage
-                                                            ? "z-[3] border-[.4rem] border-color-main "
-                                                            : "border-[.4rem] border-transparent hover:border-color-main"
+                                                            ? "z-[3] border-[.18rem] border-color-main "
+                                                            : "border-[.18rem] border-transparent hover:border-color-main"
                                                 }  relative group min-w-[7rem] min-h-[7rem] rounded-lg `}
                                           >
                                                 <Image
@@ -150,7 +150,7 @@ const SliderImage = (props: TProps) => {
                                                       width={70}
                                                       height={70}
                                                       alt="image form"
-                                                      className={`group-hover:z-[3] transition-all duration-500 absolute inset-0 w-full h-full  flex items-center justify-center  bg-[#000000] opacity-75 object-contain`}
+                                                      className={`group-hover:z-[3] transition-all duration-500 absolute inset-0 w-full h-full  flex items-center justify-center    object-contain`}
                                                 />
                                                 <div className=" absolute inset-0 bg-[rgba(0,0,0,.1)] z-[2]"></div>
                                           </div>

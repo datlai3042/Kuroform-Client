@@ -8,20 +8,20 @@ export const FormText = {
 		message: "Tạo tiêu đề",
 		addOptionTitle: "Thêm các mục phụ cho tiêu đề chính",
 		optionText: {
-			message: "Đoạn mô tả ngắn",
+			message: "Text ít dòng",
 			complete: "Mô tả tiêu đề",
-			remove: "Xóa",
+			remove: "Xóa mục này",
 		},
 
 		optionFullDescription: {
-			message: "Đoạn mô tả nhiều thông tin",
+			message: "Text nhiều dòng",
 			complete: "Mô tả tiêu đề",
-			remove: "Xóa",
+			remove: "Xóa mục này",
 		},
 		optionImage: {
 			message: "Hình Ảnh",
 			complete: "Tải ảnh lên",
-			remove: "Xóa",
+			remove: "Xóa mục này",
 		},
 		optionImageMode: {
 			label: "Chọn dạng hiển thị hình ảnh",

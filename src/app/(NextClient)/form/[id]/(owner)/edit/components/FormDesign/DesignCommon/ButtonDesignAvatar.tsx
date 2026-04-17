@@ -77,7 +77,6 @@ const ButtonDesignAvatar = (props: TProps) => {
                               placeholder="Vị trí"
                               className="customSelect"
                               defaultValue="left"
-                              style={{ width: 180 }}
                               onChange={(value: FormCore.FormAvatarPosition) => {
                                     onChangeAvatarPosition(value);
                                     setPositionAvatar(value);
@@ -97,7 +96,6 @@ const ButtonDesignAvatar = (props: TProps) => {
                               placeholder="Hình dáng"
                               className="customSelect"
                               defaultValue="circle"
-                              style={{ width: 180 }}
                               onChange={(value: FormCore.FormAvatarMode) => {
                                     onChangeAvatarMode(value);
                                     setModeCurrent(value);

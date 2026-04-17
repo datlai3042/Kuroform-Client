@@ -86,7 +86,6 @@ const DashBoardWork = () => {
                         <span className="font-medium">Cài đặt</span>
                   </Link>
 
-                  <ButtonLogOut className={`${colorTheme} nav nav__normal hover:bg-color-main`} />
             </div>
       );
 };

@@ -107,14 +107,14 @@ const FormDesignCustom = () => {
       }, []);
       return (
             <div
-                  style={{ borderLeft: ".1rem solid var(--border-color-side)" }}
+                  style={{ borderLeft: ".1rem solid var(--border-color-side)", boxShadow: "5px 0 10px rgb(32 93 119)" }}
                   id={"section-design"}
-                  className="scroll-desgin-custom px-[1rem] md:px-0  flex-1 fixed  bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen w-full z-[999]  md:w-[32rem]  "
+                  className="scroll-desgin-custom px-[1rem] md:px-0  flex-1 fixed  bg-color-section-theme text-text-theme top-0 right-[0rem] h-screen w-full z-[999]  md:w-[33rem]  "
             >
                   <div className=" relative min-h-full h-max pb-[4rem] px-[1.8rem]  border-b-[.2rem] flex flex-col gap-[1rem]">
                         <div className="sticky top-0 right-0   bg-color-section-theme z-[2] " id="design-header">
                               <div className="flex flex-col items-center ">
-                                    <div className="w-full flex items-center justify-between py-[1rem]   bg-color-section-theme z-[2]">
+                                    <div className="w-full flex items-center justify-between py-[.8rem]  border-b-[.1rem] border-[var(--border-color)]   bg-color-section-theme z-[2]">
                                           <p className="  text-[1.6rem]  font-medium text-center">Thiết kế giao diện</p>
 
                                           <ButtonIcon
@@ -126,11 +126,11 @@ const FormDesignCustom = () => {
                                     {/* <SelectModeDesign modeDesign={modeDesign} setModeDesign={setModeDesign} /> */}
                               </div>
                         </div>
-                        <div ref={refDesignCommon} className="relative w-full min-h-full h-max overflow-auto pb-[8rem] md:pb-[2rem] pr-[1rem]">
+                        <div ref={refDesignCommon} className="relative mt-[.3rem] w-full min-h-full h-max overflow-auto pb-[8rem] md:pb-[2rem] pr-[1rem]">
                               {/* <FormDesignFormMode /> */}
 
-                              <div className="flex flex-col  gap-[.8rem] px-[.4rem] text-[1.3rem]    ">
-                                    <div className="flex flex-col gap-[.8rem]">
+                              <div className="flex flex-col  gap-[2.3rem] px-[.4rem] text-[1.3rem]    ">
+                                    <div className="flex flex-col gap-[.6rem]">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">
                                                       <h4 className="font-semibold">Themes</h4>
@@ -138,7 +138,7 @@ const FormDesignCustom = () => {
                                           </div>
                                           <FormDesignTheme />
                                     </div>
-                                    <div className="flex flex-col gap-[.8rem] my-[1rem]">
+                                    <div className="flex flex-col gap-[.6rem] ">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">
                                                       <h4 className="font-semibold">Kiểu Form</h4>
@@ -157,7 +157,7 @@ const FormDesignCustom = () => {
                                           <FormDesignBackground />
                                     </div>
 
-                                    <div className="flex flex-col gap-[0rem]">
+                                    <div className="flex flex-col gap-[.6rem]">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">
                                                       <h4 className="font-semibold">Avatar</h4>
@@ -166,19 +166,19 @@ const FormDesignCustom = () => {
                                           </div>
                                           <FormDesignAvatar />
                                     </div>
-                                    <div className="flex flex-col gap-[.8rem]">
+                                    <div className="flex flex-col gap-[.6rem]">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">
-                                                      <h4 className="font-semibold">Title</h4>
+                                                      <h4 className="font-semibold text-[1.4rem]">Title</h4>
                                                 </p>
                                           </div>
                                           <FormDesignText title={"Tùy chỉnh tiêu đề chính"} type="Form" />
                                     </div>
 
-                                    <div className="flex flex-col gap-[.8rem]">
+                                    <div className="flex flex-col gap-[.6rem]">
                                           <div className="flex justify-between">
                                                 <p className="flex gap-[.4rem]">
-                                                      <h4 className="font-semibold">Input</h4>
+                                                      <h4 className="font-semibold text-[1.4rem]">Input</h4>
                                                 </p>
                                           </div>
                                           <FormDesignInput />
@@ -201,7 +201,7 @@ const FormDesignCustom = () => {
                                                 // style={{ backgroundColor: theme === "light" ? colorMain : "#fff" }}
                                                 textContent="Lưu"
                                                 onClick={onSaveDesign}
-                                                className="bg-color-main p-[.6rem_1rem] w-[10rem] ml-auto rounded-[.4rem] text-[#fff]"
+                                                className="bg-color-main p-[.6rem_1rem] w-[6rem] ml-auto rounded-[.4rem] text-[#fff]"
                                           />
                                     </div>
                               </div>

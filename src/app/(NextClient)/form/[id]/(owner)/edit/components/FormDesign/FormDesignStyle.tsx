@@ -38,7 +38,7 @@ const FormDesignStyle = () => {
                         onClick={() => onChangeFormStyles("GOOGLE_FORM")}
                         className={`${styleEffect.onCheckModeSelect(
                               formCore.form_styles === "GOOGLE_FORM",
-                        )} min-w-[8rem] px-[.6rem]  h-full rounded-lg disabled:cursor-not-allowed `}
+                        )} min-w-[8rem] px-[.6rem] flex-1 h-full rounded-lg disabled:cursor-not-allowed `}
                   >
                         Google Form
                   </button>
@@ -46,7 +46,7 @@ const FormDesignStyle = () => {
                         onClick={() => onChangeFormStyles("FULL_WIDTH")}
                         className={`${styleEffect.onCheckModeSelect(
                               formCore.form_styles === "FULL_WIDTH",
-                        )} min-w-[8rem]  px-[.6rem] h-full rounded-lg disabled:cursor-not-allowed `}
+                        )} min-w-[8rem]  px-[.6rem] flex-1 h-full rounded-lg disabled:cursor-not-allowed `}
                   >
                         Full Width
                   </button>

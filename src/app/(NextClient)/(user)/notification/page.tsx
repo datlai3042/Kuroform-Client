@@ -10,12 +10,12 @@ const NotficationPage = () => {
       return (
             <LayoutSidebar>
                   <div className=" flex flex-col h-screen   bg-color-gap-empty text-text-theme ">
-                        <div className="px-[2.8rem] fixed  sm:static top-0 left-0 right-0 border-b-[.1rem] border-[var(--border-color-input)] z-[999]  bg-color-section-theme">
+                        <div className="px-[1.8rem] fixed  sm:static top-0 left-0 right-0 border-b-[.1rem] border-[var(--border-color-input)] z-[999]  bg-color-section-theme">
                               <SettingHeader />
                         </div>
 
                         <div className="flex-1 min-h-[60rem] overflow-hidden h-full text-text-theme ">
-                              <h3 className="my-[2rem] pl-[2.8rem] !text-[2.3rem]">Quản lí các thông báo</h3>
+                              <h3 className="xl:my-[2rem] pl-[2rem] !text-[2.3rem] text-[#fff]">Quản lí các thông báo</h3>
                               <div className="h-[94%] overflow-auto  w-full bg-[var(--color-section-theme)] p-[2.8rem_2.8rem_0rem] ">
                                     <div className="h-full flex items-center justify-between pb-[1rem] border-b-[.1rem] border-[var(--border-color-input)] ">
                                           <NotificationMode />

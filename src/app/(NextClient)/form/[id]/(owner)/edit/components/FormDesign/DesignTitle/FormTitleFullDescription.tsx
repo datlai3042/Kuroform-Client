@@ -85,15 +85,15 @@ const FormTitleFullDescription = (props: TProps) => {
                         tabIndex={-1}
                         className={`${renderColorFromFormThemes(
                               formCore.form_themes,
-                        )} flex items-center gap-[.5rem] text-[1.4rem] font-bold  hover:text-slate-800`}
+                        )} flex items-center gap-[.5rem] text-[1.4rem] font-bold  hover:text-red-600`}
                         onClick={handleDelete}
                         disabled={deleteTitleSubItem.isPending}
                   >
                         <Trash2 size={16} />
-                        Xóa
+                        Xóa mục này
                   </button>
                   <div
-                        className={` border-none py-[.4rem] outline-none xl:max-w-[80rem]  text-inherit break-all leading-8  font-semibold`}
+                        className={` border-none  outline-none  text-text-theme  bg-[#85b5f19e] p-[.6rem] break-all leading-8  font-semibold`}
                         contentEditable={setTitleSubDescription.isPending ? false : true}
                         onKeyDown={onKeyEnter}
                         onBlur={(e) => onSetValue(e, "Header")}
@@ -107,8 +107,8 @@ const FormTitleFullDescription = (props: TProps) => {
                   <div
                         className={`${renderColorFromFormThemes(
                               formCore.form_themes,
-                        )} border-none py-[.4rem] outline-none xl:max-w-[80rem] break-all leading-8 opacity-70`}
-                        contentEditable={true}
+                        )} border-none  outline-none  bg-[#afa5a547] p-[.6rem] break-all leading-8 opacity-70`}
+                        contentEditable={true} 
                         onKeyDown={onKeyEnter}
                         onBlur={(e) => onSetValue(e, "Value")}
                         data-text={content.value || "Nhập nội dung"}

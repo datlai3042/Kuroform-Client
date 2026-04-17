@@ -46,7 +46,7 @@ const SidebarMoblie = () => {
                               onClick={(e) => {
                                     e.stopPropagation();
                               }}
-                              className={`showSidebarMobile absolute  w-[50vw] bg-color-section-theme`}
+                              className={`showSidebarMobile absolute  w-[75vw] bg-color-section-theme`}
                         >
                               <DashBoardLeft />
                         </div>
@@ -75,7 +75,7 @@ const LeftSide = () => {
                   {!matches && openSidebar && (
                         <aside
                               id="section-sidebar"
-                              className={`sticky top-0 z-[2] min-w-[24rem] xl:min-w-[24rem] h-[100vh] overflow-hidden transition-[width]  duration-1000  bg-color-section-theme`}
+                              className={`sticky top-0 z-[2] min-w-[11rem] xl:w-[11rem] h-[100vh] overflow-hidden transition-[width]  duration-1000  bg-color-section-theme`}
                         >
                               <DashBoardLeft />
                         </aside>

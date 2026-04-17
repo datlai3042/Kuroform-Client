@@ -18,12 +18,11 @@ const DashboardForms = () => {
       const getFormPagination = useGetFormPagination({ page, limit: LIMIT_PAGINATION_FORM });
 
       return (
-            <DivNative className="flex-1 w-full flex bg-color-section-theme   min-h-[40rem]   flex-col gap-[0rem] p-[0rem_2rem_1rem_2rem] xl:p-[1.2rem_2rem_1rem_2rem] ">
-                        {!getFormPagination.isPending && getFormPagination.isSuccess && getFormPagination.data.metadata.forms.length > 0 && (
-                
-                  <div className="flex flex-col gap-[2rem] h-full">
-                        <div className="flex flex-wrap justify-start items-center gap-[1rem]">
-                              {/* <Image
+            <DivNative className="flex-1 w-full flex bg-color-section-theme   min-h-[40rem]   flex-col gap-[0rem] p-[0rem_2rem_1rem_2rem] xl:p-[1.6rem_2.6rem_1rem_2.6rem] ">
+                  {!getFormPagination.isPending && getFormPagination.isSuccess && getFormPagination.data.metadata.forms.length > 0 && (
+                        <div className="flex flex-col gap-[1.6rem] h-full">
+                              <div className="flex flex-wrap justify-start items-center gap-[1rem]">
+                                    {/* <Image
                                     src={"/assets/images/home/form_controller.png"}
                                     width={20}
                                     height={20}
@@ -32,29 +31,30 @@ const DashboardForms = () => {
                                     className="w-[4rem] h-[4rem] "
                               /> */}
 
-                              {/* <p className="text-color-main font-bold text-[2rem] flex items-center gap-[1rem]">
+                                    {/* <p className="text-color-main font-bold text-[2rem] flex items-center gap-[1rem]">
                                     <Circle width={16}/>
 
                                     <span>Danh sách Form</span>
                               </p> */}
-
-                              <ButtonCreateForm
-                                    textContent="Tạo Form"
-                                    urlNavigation="/"
-                                    className="hidden xl:flex  xl:[&]:p-[2px]  !gap-[.5rem] !h-[3rem] !min-w-[11rem] !w-max !text-[1.3rem]"
-                                    position="LEFT"
-                                    icon={<Plus size={16} />}
-                              />
-                        </div>
+                              </div>
                               <DivNative className={`max-w-full flex flex-wrap  gap-[1.8rem] pb-[2rem] text-[1.3rem] `}>
+                                    <div className="w-full sm:w-[45%%] md:w-[47%] xl:w-[18%]">
+                                          <ButtonCreateForm
+                                                textContent="Tạo Form"
+                                                urlNavigation="/"
+                                                className="hidden xl:flex  xl:[&]:p-[2px]  !gap-[.5rem] !h-[3rem] !min-w-[11rem] !w-max !text-[1.3rem]"
+                                                position="LEFT"
+                                                icon={<Plus size={16} />}
+                                          />
+                                    </div>
                                     {getFormPagination.data.metadata.forms.map((form, index) => (
                                           <div className="w-full sm:w-[45%%] md:w-[47%] xl:w-[18%]" key={form._id}>
                                                 <DashboardFormItem form={form} />
                                           </div>
                                     ))}
                               </DivNative>
-                  </div>
-                        )}
+                        </div>
+                  )}
                   {getFormPagination.isPending && (
                         <div className="w-full min-h-[6rem] mt-[2rem] ">
                               <LoadingClient width="w-full" height="h-[83vh]" style={{ height: "83vh" }} message="Đang lấy thông tin các form" />

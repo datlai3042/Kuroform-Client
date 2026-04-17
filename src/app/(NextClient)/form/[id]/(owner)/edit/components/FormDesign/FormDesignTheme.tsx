@@ -34,7 +34,7 @@ const FormDesignTheme = () => {
             dispatch(onFetchForm({ form: newFormEdit }));
       };
       return (
-            <div className="w-full h-[3.2rem] flex justify-end items-center gap-[.8rem]">
+            <div className="w-full h-[3.2rem] flex  items-center gap-[1rem]">
                   <button
                         onClick={() => onChangeFormThemes("AUTO")}
                         className={`${styleEffect.onCheckModeSelect(

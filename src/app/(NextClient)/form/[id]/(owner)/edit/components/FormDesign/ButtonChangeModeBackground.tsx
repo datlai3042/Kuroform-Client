@@ -38,13 +38,13 @@ const ButtonChangeModeBackground = () => {
       const formBackground = !!formCore.form_background?.form_background_iamge_url || formCore.form_background_state;
 
       return (
-            <div className="w-full h-[3.2rem] flex items-center gap-[.8rem]">
+            <div className="w-full h-[3.2rem] flex-1 flex items-center gap-[.8rem]">
                   <button
                         disabled={!formBackground}
                         onClick={() => onChangeModeBackground("contain")}
                         className={`${styleEffect.onCheckModeSelect(
                               formCore.form_background?.mode_show === "contain",
-                        )} min-w-[8rem]  h-full rounded-lg disabled:cursor-not-allowed `}
+                        )} min-w-[8rem] flex-1  h-full rounded-lg disabled:cursor-not-allowed `}
                   >
                         contain
                   </button>
@@ -53,7 +53,7 @@ const ButtonChangeModeBackground = () => {
                         onClick={() => onChangeModeBackground("cover")}
                         className={`${styleEffect.onCheckModeSelect(
                               formCore.form_background?.mode_show === "cover",
-                        )} min-w-[8rem] h-full rounded-lg disabled:cursor-not-allowed `}
+                        )} min-w-[8rem] flex-1 h-full rounded-lg disabled:cursor-not-allowed `}
                   >
                         cover
                   </button>

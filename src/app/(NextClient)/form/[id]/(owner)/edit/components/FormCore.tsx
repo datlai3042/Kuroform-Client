@@ -206,15 +206,15 @@ const FormCore = () => {
                         >
                               {showComponentImage && <FormImage />}
                               <div
-                                    className={`${isImage ? "mt-[3.8rem]" : ""}
+                                    className={`${isImage ? "mt-[2.8rem]" : ""}
 						min-h-screen h-max`}
                               >
                                     <DivNative
-                                          className={`flex-1 px-[1rem] pb-[5rem] md:pb-0 xl:px-[4rem] min-h-full h-max  w-full lg:max-w-[67rem] xl:max-w-[84rem] mx-auto   xl:pl-0  flex flex-col  xl:py-[2rem] gap-[2rem]  `}
+                                          className={`flex-1 px-[1rem] pb-[5rem] md:pb-0 xl:px-[4rem] min-h-full h-max  w-full lg:max-w-[67rem] xl:max-w-[92rem] mx-auto   xl:pl-0  flex flex-col  xl:py-[2rem] gap-[2rem]  `}
                                     >
                                           <DivNative className={`${gapWhenAppearImage}`}>
                                                 <DivNative className={`${heightWhenAppearImage} group max-h-[18rem] sm:max-h-[8rem] xl:min-h-max `}>
-                                                      <DivNative className="mt-[2rem] w-full xl:min-w-[80rem] xl:w-max h-full   flex flex-wrap flex-col sm:flex-row sm:items-center  gap-[2rem]">
+                                                      <DivNative className="mt-[2rem] w-full xl:min-w-[80rem] xl:w-max h-full   flex flex-wrap flex-col sm:flex-row sm:items-center  gap-[1.6rem]">
                                                             <ButtonDesgin className={`${openFormDesign ? "" : "ml-0"}`} />
 
                                                             <DivNative className="flex flex-col sm:flex-row w-max     gap-[2rem]">
@@ -232,7 +232,7 @@ const FormCore = () => {
                                           <DivNative className={`${openFormDesign ? "" : "ml-0"}  flex flex-col gap-[2rem] min-h-full`}>
                                                 <InputCoreTitle />
                                                 {formCore.form_inputs.length > 0 && (
-                                                      <DivNative className="mt-[4rem] h-max w-full flex flex-row flex-wrap items-end  gap-[6rem_3rem] ">
+                                                      <DivNative className="mt-[2rem] h-max w-full flex flex-row flex-wrap items-end  gap-[6rem_3rem] ">
                                                             <DndContext
                                                                   onDragStart={(event) => {
                                                                         setActiveId(event.active.id as string);

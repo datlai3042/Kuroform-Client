@@ -57,7 +57,7 @@ const FormDesignInput = () => {
                   <div className="flex flex-col gap-[1.6rem]">
                         <div className="flex flex-wrap justify-between gap-[1rem] h-[6rem]">
                               <div className="flex-1 flex flex-col gap-[.6rem]">
-                                    <span>Border Width</span>
+                                    <span className="font-medium">Border Width</span>
                                     <div
                                           className={`  flex items-center gap-[.4rem] h-full p-[.2rem_1rem]
 border-[.1rem]   rounded-lg bg-design-size`}
@@ -73,7 +73,7 @@ border-[.1rem]   rounded-lg bg-design-size`}
                                     </div>
                               </div>
                               <div className="flex-1 flex flex-col gap-[.6rem]">
-                                    <span>Border Radius</span>
+                                    <span className="font-medium">Border Radius</span>
                                     <div
                                           className={`  flex items-center gap-[.4rem] h-full p-[.2rem_1rem]
 border-[.1rem]   rounded-lg bg-design-size`}
@@ -92,14 +92,14 @@ border-[.1rem]   rounded-lg bg-design-size`}
 
                         <div className="flex flex-wrap justify-between gap-[1rem] ">
                               <div className="flex-1 flex flex-col gap-[.6rem]">
-                                    <span>Border Color</span>
+                                    <span className="font-medium">Border Color</span>
                                     <div className="p-[.4rem_1rem] gap-[1rem] rounded-[.4rem]   flex justify-center items-center border-[.1rem] border-[var(--border-color-input)]">
                                           <span>{borderColor || "Mặc định"}</span>
                                           <ButtonPickerColor defaultColor={borderColor} onChange={(color) => onChangeColor("BORDER", color)} />
                                     </div>
                               </div>
                               <div className="flex-1 flex flex-col gap-[.6rem]">
-                                    <span>Text Color</span>
+                                    <span className="font-medium">Text Color</span>
                                     <div className="p-[.4rem_1rem] gap-[1rem] rounded-[.4rem]   flex justify-center items-center border-[.1rem] border-[var(--border-color-input)]">
                                           <span>{color || "Mặc định"}</span>
                                           <ButtonPickerColor defaultColor={color} onChange={(color) => onChangeColor("COLOR", color)} />

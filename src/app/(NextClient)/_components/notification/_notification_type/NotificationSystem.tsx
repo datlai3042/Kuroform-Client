@@ -12,8 +12,8 @@ const NotificationSystem = (props: TProps) => {
 	const { notification_item } = props;
 
 	return (
-		<div className=" my-[2rem] h-max px-[1.4rem] flex  gap-[1rem]   pb-[2rem] border-b-[.1rem] border-[var(--border-color-input)] text-text-theme">
-			<Settings2 size={28} />
+		<div className=" my-[2rem] h-max px-[1.4rem] flex  gap-[10rem]   pb-[2rem] border-b-[.1rem] border-[var(--border-color-input)] text-text-theme">
+			<Settings2 size={48} />
 
 			<div className="w-[80%]  flex flex-col gap-[1rem] text-[1.4rem] leading-10">
 				<p className="font-semibold text-left">Thông báo hệ thống</p>

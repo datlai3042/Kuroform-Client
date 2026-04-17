@@ -20,7 +20,7 @@ const DashBoardRightHeader = () => {
       const pathname = usePathname();
       return (
             <div
-                  className={`w-full px-[.5rem] xl:px-[1.6rem] py-[1rem] xl:p-[2rem] border-b-[.1rem] border-[var(--border-color-side)]  sticky  top-[0rem] z-[2]  h-[6rem]  flex flex-col gap-[1.6rem]  text-[1.3rem] bg-color-section-theme  `}
+                  className={`w-full px-[.5rem] xl:px-[3rem] py-[1rem] xl:p-[2rem] border-b-[.1rem] border-[var(--border-color-side)]  sticky  top-[0rem] z-[2]  h-[6rem]  flex flex-col gap-[1.6rem]  text-[1.3rem] bg-color-section-theme  `}
             >
                   <div className="h-full w-full flex items-center justify-between gap-[2rem] px-[1rem] xl:p-0">
                         <div className="hidden xl:flex gap-[1rem]">
@@ -77,7 +77,7 @@ const DashBoardRightHeader = () => {
                         * 
                         */}
 
-                        <div className=" xl:flex-auto flex items-center justify-end gap-[2.4rem] ">
+                        <div className=" xl:flex-auto flex items-center justify-end gap-[1rem] ">
                               <Link href={"/settings"} className="p-[.2rem_.8rem] flex items-center gap-[.8rem] text-text-theme rounded-md" title="Cài đặt">
                                     <Settings className="w-[1.6rem]" />
                               </Link>

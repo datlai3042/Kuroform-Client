@@ -35,7 +35,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                               className="absolute inset-0"
                               style={{
                                     backgroundSize: "cover",
-                                    backgroundImage: 'url("/assets/images/home/background.png")',
+                                    backgroundImage: 'url("/assets/images/home/bg1.jpg")',
                               }}
                         ></div>
                         <div className="relative z-20 flex w-full  justify-center xl:justify-between  gap-[18rem]">

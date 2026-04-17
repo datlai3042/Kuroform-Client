@@ -100,14 +100,17 @@ const FormTitleText = (props: TProps) => {
                   <button
                         className={`${renderColorFromFormThemes(
                               formCore.form_themes,
-                        )} flex items-center gap-[.5rem] text-[1.4rem] font-bold  hover:text-slate-800`}
+                        )} flex items-center gap-[.5rem] text-[1.4rem] font-bold  hover:text-red-600`}
                         onClick={handleDelete}
                         disabled={deleteTitleSubItem.isPending}
                   >
                         <Trash2 size={16} />
-                        Xóa
+                        Xóa mục này
                   </button>
+                  <div className="bg-[#afa5a547] p-[.6rem]">
+
                   <EditorWriter key={subTitleItem._id} defaultValue={value} namespace="input" onUpdate={(rest) => onSetValue(rest)} config={formCore} styleObj={{}} />
+                  </div>
             </div>
       );
 };

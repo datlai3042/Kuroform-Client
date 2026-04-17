@@ -15,6 +15,7 @@ import { ThemeContext } from "@/app/(NextClient)/_components/provider/ThemeProvi
 import Logo from "@/app/(NextClient)/_components/logo/Logo";
 import { useMediaQuery } from "@mantine/hooks";
 import DashboardProjectInfo from "../DashboardProjectInfo";
+import ButtonLogOut from "@/app/(NextClient)/_components/ui/button/ButtonLogOut";
 
 const DashBoardLeft = () => {
       const dispatch = useDispatch();
@@ -42,31 +43,36 @@ const DashBoardLeft = () => {
       }, [fetchMe.isSuccess, dispatch]);
 
       const scrollThemeStyle = theme === "dark" ? "scroll-color-main" : "scroll-common";
+      const colorTheme = theme === "light" ? "text-text-theme hover:text-[#fff]" : "!text-text-theme ";
 
       return (
             <>
                   <div
                         style={{ borderRight: ".1rem solid var(--border-color-side)" }}
-                        className={` max-h-[97%] min-h-screen  p-[2rem_1rem]  flex flex-col gap-[3rem]  text-text-theme text-[1.4rem]`}
+                        className={` max-h-[97%] min-h-screen  p-[1rem_1rem]  flex flex-col gap-[3rem]  text-text-theme text-[1.4rem]`}
                   >
-                        <div className="relative w-full mb-[2rem] flex items-center justify-center gap-[1.8rem]">
+                        <div className="relative w-full  flex items-center justify-center gap-[1.8rem]">
                               {/* <LogoColor /> */}
                               {/* <DashboardInfoUser /> */}
+                              <div className="flex flex-col gap-[1rem] items-center">
+                                    <span className="gradient-app-name text-[2rem] py-[.6rem] font-semibold">Kuroform</span>
 
-                              <Logo />
-                             
+                                    <Logo />
+                              </div>
+                              {/*                              
                               <ButtonIcon
                                     Icon={<ChevronsLeft className="w-[1.4rem]" />}
                                     onClick={() => setOpenSidebar(false)}
-                                    className=" absolute top-[1rem] right-[1rem] bg-transparent hover:bg-color-main text-text-theme hover:text-[#fff] rounded-lg"
-                              />
+                                    className=" absolute top-[-.6rem] !w-[2.2rem] right-[-.8rem] bg-transparent hover:bg-color-main text-text-theme hover:text-[#fff] rounded-lg"
+                              /> */}
                         </div>
                         <div className="flex flex-col  overflow-auto">
                               <DashBoardWork />
-                              <div className="mt-[1rem] flex flex-col gap-[1.8rem] text-[1.4rem]">
+                              <div className="mt-[2rem] flex flex-col gap-[1.8rem] text-[1.4rem]">
                                     <DashboardWorkspaces />
                                     <DashboardProduct />
                                     {/* <DashboardHelp /> */}
+                              <ButtonLogOut className={`${colorTheme} nav nav__normal hover:bg-color-main !h-auto`} />
                               </div>
                         </div>
 
