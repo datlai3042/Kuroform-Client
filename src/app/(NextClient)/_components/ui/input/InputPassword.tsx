@@ -55,7 +55,7 @@ const InputPassword = <FormType extends FieldValues>(props: TProps<FormType>) =>
                                           htmlFor={`${FieldKey}-${id}`}
                                           className={`${
                                                 focus ? "text-color-main field-label-focus" : ""
-                                          } top-0 first-letter:uppercase text-color-main font-bold text-[1.5rem]`}
+                                          }  first-letter:uppercase text-color-main font-bold text-[1.5rem]`}
                                     >
                                           {placeholder}
                                     </label>

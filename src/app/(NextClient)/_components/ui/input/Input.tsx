@@ -50,7 +50,7 @@ const Input = <FormType extends FieldValues>(props: TProps<FormType>) => {
                                                 fontWeight: 600,
                                           }}
                                           htmlFor={`${FieldKey}-${id}`}
-                                          className={`${focus && !unActiveLabel ? "text-color-main field-label-focus" : ""} top-0 first-letter:uppercase text-color-main font-bold text-[1.5rem]`}
+                                          className={`${focus && !unActiveLabel ? "text-color-main field-label-focus" : ""}  first-letter:uppercase text-color-main font-bold text-[1.5rem]`}
                                     >
                                           {placeholder}
                                     </label>
