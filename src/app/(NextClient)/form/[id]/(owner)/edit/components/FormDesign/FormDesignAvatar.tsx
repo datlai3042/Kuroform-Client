@@ -29,7 +29,7 @@ const FormDesignAvatar = () => {
                   {formAvatar ? (
                         <div className="w-full flex flex-col gap-[1.6rem] ">
                               <div className="flex gap-[1.2rem] ">
-                                    <div className="w-[1rem] rounded-[.3rem] flex-shrink-0 relative group cursor-pointer">
+                                    <div className="w-[12rem] rounded-[.3rem] flex-shrink-0 relative group cursor-pointer">
                                           <Image
                                                 width={150}
                                                 height={150}
