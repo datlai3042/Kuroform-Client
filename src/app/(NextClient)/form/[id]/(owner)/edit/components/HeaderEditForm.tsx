@@ -251,7 +251,7 @@ const HeaderEditForm = (props: TProps) => {
                                                       )}
                                                 </DivNative>
 
-                                                <div style={{ marginLeft: matches ? "auto" : "" }} className="flex gap-[1rem]">
+                                                <div style={{ marginLeft: matches ? "auto" : "" }} className="flex gap-[1rem] h-[3.4rem]">
                                                       <ButtonDarkMode />
                                                       {matches && <ButtonSidebar />}
                                                 </div>
