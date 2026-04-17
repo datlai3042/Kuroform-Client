@@ -79,7 +79,7 @@ const FormAnswerCore = (props: TProps) => {
       const renderBgColor = theme === "light" ? "transparent" : "var(--bg-dark-readOnly)";
       const styleEffect = {
             formMarginTop: (check: boolean) => {
-                  if (check) return "mt-[8rem]";
+                  if (check) return "mt-[5rem]";
                   return "mt-0";
             },
             onCheckModeAvatar: (mode: FormCore.FormAvatarMode) => {

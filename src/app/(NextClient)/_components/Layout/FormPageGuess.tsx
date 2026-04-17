@@ -111,7 +111,7 @@ const FormPageGuess = (props: TProps) => {
                                         ${
                                               isGoogleForm
                                                     ? "w-full"
-                                                    : `w-[94vw] md:w-[54vw]  mx-auto ${
+                                                    : `w-[94vw] md:w-[54vw] rounded-[.8rem]  mx-auto ${
                                                             FormCore.form_styles === "FULL_WIDTH"
                                                                   ? FormCore?.form_themes === "LIGHT"
                                                                         ? "bg-color-section-theme"
