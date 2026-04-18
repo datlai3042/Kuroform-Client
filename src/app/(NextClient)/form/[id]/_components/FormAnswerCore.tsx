@@ -80,7 +80,7 @@ const FormAnswerCore = (props: TProps) => {
       const styleEffect = {
             formMarginTop: (check: boolean) => {
                   if (check) return "mt-[5rem]";
-                  return "mt-0";
+                  return "mt-[5rem]";
             },
             onCheckModeAvatar: (mode: FormCore.FormAvatarMode) => {
                   if (mode === "circle") return "rounded-full";
@@ -94,7 +94,6 @@ const FormAnswerCore = (props: TProps) => {
             },
       };
       const formThemes = renderFormThemeAnswer(formCore);
-      console.log({ formThemes });
       const isGoogleForm = formCore.form_styles === "GOOGLE_FORM" ? true : false;
       return (
             <DivNative className={` ${isGoogleForm ? "px-[2rem]  p-[2rem_2rem_4rem_2rem] xl:px-0" : ""}   min-h-screen  flex justify-center   w-full h-full`}>

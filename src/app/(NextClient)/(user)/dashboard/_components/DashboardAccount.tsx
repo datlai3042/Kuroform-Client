@@ -16,7 +16,7 @@ const DashboardAccount = () => {
       const user = useSelector((state: RootState) => state.authReducer.user) as UserType;
 
       return (
-            <div className="group min-w-[10rem] max-w-[26rem] xl:min-w-[20.2rem]  h-full flex items-center justify-between text-text-theme">
+            <div className="group min-w-[10rem] max-w-[26rem]   h-full flex items-center justify-between text-text-theme">
                   {user && (
                         <>
                               <div className="max-w-full h-full w-full flex gap-[1rem] items-center hover:cursor-pointer " onClick={() => setOpenModel(true)}>
@@ -42,7 +42,7 @@ const DashboardAccount = () => {
                                                 ? user?.user_first_name + " " + user?.user_last_name
                                                 : user?.user_email}
                                     </span>
-                                    <DashBoardButtonModel openModel={openModel} setOpenModel={setOpenModel} />
+                                    {/* <DashBoardButtonModel openModel={openModel} setOpenModel={setOpenModel} /> */}
                               </div>
                         </>
                   )}

@@ -56,16 +56,7 @@ const ModelFormState = () => {
 				}}
 			/>
 
-			<ButtonSelect
-				disabled={changeFormMode.isPending}
-				value="Xóa"
-				color={colorMain}
-				checked={modeForm === "isDelete"}
-				onClick={() => {
-					setModeForm("isDelete");
-					onChangeModeForm("isDelete");
-				}}
-			/>
+			
 		</div>
 	);
 };

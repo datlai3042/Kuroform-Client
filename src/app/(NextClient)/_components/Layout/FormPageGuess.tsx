@@ -39,7 +39,7 @@ const FormPageGuess = (props: TProps) => {
       const styleEffect = {
             formMarginTop: (check: boolean) => {
                   if (check) return FormCore.form_styles === "GOOGLE_FORM" ? "mt-[5rem]" : "mt-[7rem]";
-                  return "mt-0";
+                  return "mt-[5rem]";
             },
             onCheckModeAvatar: (mode: FormCore.FormAvatarMode) => {
                   if (mode === "circle") return "rounded-full";

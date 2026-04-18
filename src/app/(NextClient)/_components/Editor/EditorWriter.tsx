@@ -2,8 +2,6 @@
 
 import { FormCore } from "@/type";
 import Editor from "@draft-js-plugins/editor";
-import createToolbarPlugin from "@draft-js-plugins/static-toolbar";
-import "@draft-js-plugins/static-toolbar/lib/plugin.css"; // cần import CSS
 import { convertFromHTML } from "draft-convert";
 import { ContentBlock, ContentState, EditorState } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
@@ -15,7 +13,7 @@ type TProps = {
       config: FormCore.Form;
       defaultValue: string;
       styleObj: Record<string, string | number>;
-      placeholder?: string
+      placeholder?: string;
 };
 
 const EditorWriter = (props: TProps) => {
@@ -123,17 +121,43 @@ const EditorWriter = (props: TProps) => {
                   editorRef.current?.focus();
             }
       }, []);
+
+      useEffect(() => {
+            const content = editorState.getCurrentContent();
+            const plainText = content.getPlainText();
+            if (!plainText) return;
+            let html = "";
+
+            if (namespace === "title") {
+                  const blocks: ContentBlock[] = content
+                        .getBlockMap()
+                        .toArray()
+                        .map((block) => block.set("type", "header-one") as ContentBlock);
+
+                  const newContent = ContentState.createFromBlockArray(blocks);
+
+                  html = stateToHTML(newContent, {
+                        blockRenderers: {
+                              "header-one": (block) =>
+                                    `<p data-html-editor="true" class='headingOne'  style='${styleToString(styleObj ?? {})}'>${block.getText()}</p>`,
+                        },
+                  });
+            } else {
+                  html = stateToHTML(content); // render mặc định
+            }
+            setHtml(html);
+            console.log({html, styleObj})
+      }, [styleObj]);
       return (
             <div style={styleObj} className="text-text-theme">
                   <Editor
-
-                  placeholder={props?.placeholder || ''}
+                        placeholder={props?.placeholder || ""}
                         key={namespace}
                         editorState={editorState}
                         onBlur={() => {
                               const content = editorState.getCurrentContent();
                               const plainText = content.getPlainText();
-                              console.log({content, plainText})
+                              console.log({ content, plainText });
                               onUpdate(html, plainText?.replaceAll("\\n", ""));
                         }}
                         onChange={(state) => {

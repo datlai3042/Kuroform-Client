@@ -39,7 +39,7 @@ const NotificationFormAnswers = (props: TProps) => {
       return (
             <div className=" my-[.4rem] h-max  flex  gap-[3rem] pb-[2rem] border-b-[.1rem] border-[var(--border-color-input)] text-text-theme" ref={ref}>
                   {image_src ? (
-                        <Image src={image_src} width={50} height={50} alt="avatar form" className="w-[5rem] h-[5rem] xl:w-[10rem] xl:h-[10rem] rounded-full object-cover" />
+                        <Image src={image_src} width={50} height={50} unoptimized alt="avatar form" className="w-[5rem] h-[5rem] xl:w-[10rem] xl:h-[10rem] rounded-full object-cover" />
                   ) : (
                         <div className="w-[5rem] h-[5rem] xl:w-[10rem] xl:h-[10rem] rounded-full">
                               <LoadingArea />

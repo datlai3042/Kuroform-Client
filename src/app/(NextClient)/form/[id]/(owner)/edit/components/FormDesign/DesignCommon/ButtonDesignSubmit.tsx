@@ -92,15 +92,15 @@ const ButtonDesignSubmit = () => {
       return (
             <>
                   <button className="relative group flex-1">
-                        <Settings color={color} />
+                        <Settings  />
 
-                        <div className="absolute group-hover:flex hidden left-[-50%] md:left-0 bottom-[100%]  pb-[1.4rem]">
+                        <div className="absolute group-hover:flex hidden left-[-50%] md:left-0 bottom-[100%]  pb-[1.4rem] bg-color-section-theme">
                               <div
-                                    className={`${renderFormThemes(formCore.form_themes)} ${renderColorFromFormThemes(
+                                    className={` ${renderColorFromFormThemes(
                                           formCore.form_themes,
                                     )} flex-col gap-[1.4rem] flex  rounded-[.6rem]  text-left w-[30rem] border-[.1rem] border-[var(--border-color-input)] p-[1.2rem_1rem] `}
                               >
-                                    <div className="flex justify-between">
+                                    <div className="flex justify-between ">
                                           <div className="flex items-center gap-[1rem]">
                                                 <span>Background: </span>
                                                 <SelectColor typeEdit="ButtonSubmitBackground" setOpenColorModel={setOpenColorSubmitBg} />

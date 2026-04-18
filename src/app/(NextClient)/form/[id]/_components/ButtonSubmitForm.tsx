@@ -7,6 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import FormAnswerService from "@/app/_services/formAnswer.service";
 import LoadingSpinner from "@/app/(NextClient)/_components/ui/loading/LoadingSpinner";
 import { usePathname } from "next/navigation";
+import { Dock } from "lucide-react";
 
 type TProps = {
       formCore: FormCore.Form;
@@ -75,6 +76,8 @@ const ButtonSubmitForm = (props: TProps) => {
                   style={{ backgroundColor: buttonBg || "" }}
                   className="min-w-[10rem] w-max h-[3.2rem] bg-color-main  ml-auto flex items-center justify-center gap-[.5rem] rounded-[.4rem] hover:cursor-pointer"
             >
+                  <Dock style={{ color: buttonColor }} />
+
                   <ButtonNative
                         style={{ color: buttonColor || "" }}
                         textContent={formCore.form_button_text}

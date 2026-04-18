@@ -59,7 +59,7 @@ const FormChangeMode = (props: TProps) => {
 
 
       return (
-            <div className=" w-full p-[1rem_2rem]  mx-auto h-full flex  flex-col gap-[1rem] text-text-theme">
+            <div className=" w-full p-[1rem_2rem]  mx-auto h-full flex  flex-col gap-[2rem] text-text-theme">
                   <div className="flex justify-between">
                         <span className="text-[#a0a5b3]">##-{formCore._id}-##</span>
 

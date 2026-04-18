@@ -39,7 +39,7 @@ const FormAnswerAvatar = (props: TProps) => {
                         height={160}
                         unoptimized={true}
                         alt="form background"
-                        className={` w-[72%] h-[72%] aspect-square z-[2] shadow-xl`}
+                        className={` w-[72%] h-[72%] aspect-square z-[100] shadow-xl`}
                   />
             </div>
       );

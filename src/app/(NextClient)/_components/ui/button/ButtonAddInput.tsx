@@ -1,6 +1,7 @@
 import { RootState } from "@/app/_lib/redux/store";
 import useAddInput from "@/app/hooks/useAddInput";
 import { FormCore } from "@/type";
+import { PencilRulerIcon } from "lucide-react";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -24,6 +25,7 @@ const ButtonAddInput = (props: ButtonAddInputProps) => {
                         buttonProps.className || ""
                   } btn-primarily btn-design-style opacity-100 text-left mt-[1rem] min-w-[4rem] w-max px-[1rem] h-[3.6rem]  flex items-center justify-center bg-color-main  text-white rounded-[.4rem] text-[1.5rem] btn-func`}
             >
+                  <PencilRulerIcon />
                   {textContent}
             </button>
       );

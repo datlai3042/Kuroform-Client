@@ -5,10 +5,11 @@ export interface ButtonCustomProps extends React.ButtonHTMLAttributes<HTMLButton
 	value: string;
 	checked: boolean;
 	color: string;
+	icon?: React.ReactNode;
 }
 
 const ButtonSelect = (props: ButtonCustomProps) => {
-	const { checked, color, value, ...buttonProps } = props;
+	const { checked, color, value, icon, ...buttonProps } = props;
 
 	const styleEffect = {
 		onActiveRequireWrapper: () => {
@@ -22,7 +23,8 @@ const ButtonSelect = (props: ButtonCustomProps) => {
 	};
 
 	return (
-		<button {...buttonProps} className="w-full flex items-center justify-between">
+		<button {...buttonProps} className="w-full flex  gap-[.3rem] items-center justify-between">
+			{icon && <span className="mr-2">{icon}</span>}
 			<span className="font-medium">{value}</span>
 
 			<DivNative

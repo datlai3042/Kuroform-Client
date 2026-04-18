@@ -1,5 +1,5 @@
 import React, { SetStateAction, useContext, useEffect, useRef, useState } from "react";
-import { ChevronDown, ChevronRight, Notebook } from "lucide-react";
+import { ChevronDown, ChevronRight, Dock, Notebook } from "lucide-react";
 import ButtonIcon from "@/app/(NextClient)/_components/ui/button/ButtonIcon";
 import useGetAllFormUser from "@/app/hooks/useGetAllFormUser";
 import LoadingArea from "@/app/(NextClient)/_components/ui/loading/LoadingArea";
@@ -29,14 +29,13 @@ const DashboardWorkspaces = () => {
 
       const pathName = usePathname();
 
-      const Icon = openWorkspace ? <ChevronDown className="w-[1.4rem] text-[#fff] " /> : <ChevronRight className="w-[1.4rem] text-[#fff] " />;
-
-      const styleEffect = {
-            onCheckFocus: (state: boolean) => {
-                  if (state) return "rounded-sm bg-blue-400 text-[#fff]  outline outline-[2px] outline-blue-200";
-                  return "hover:border-[.1rem] hover:border-text-theme rounded-sm";
-            },
-      };
+      const Icon = <Dock className="w-[1.4rem] text-[#fff] " /> 
+      // const styleEffect = {
+      //       onCheckFocus: (state: boolean) => {
+      //             if (state) return "rounded-sm bg-blue-400 text-[#fff]  outline outline-[2px] outline-blue-200";
+      //             return "hover:border-[.1rem] hover:border-text-theme rounded-sm";
+      //       },
+      // };
 
       const hoverThemeStyle = theme === "dark" ? "hover:bg-blue-400 scroll-color-main" : "hover:bg-blue-100 scroll-common";
 
@@ -74,7 +73,7 @@ const DashboardWorkspaces = () => {
                               >
                                     <ButtonIcon
                                           Icon={Icon}
-                                          className={`${styleEffect.onCheckFocus(openWorkspace)}  flex bg-color-main !rounded-full !w-[1rem] !h-[1rem]`}
+                                          className={` flex bg-color-main !rounded-full !w-[1rem] !h-[1rem]`}
                                     />
                                     <span className="group-hover:!text-[#fff]">Form</span>
                               </div>

@@ -1,6 +1,6 @@
 "use client";
 import { RootState } from "@/app/_lib/redux/store";
-import { ChevronRight, ChevronsRight, Ellipsis, Eye, LinkIcon, Pencil, Settings, Trash2 } from "lucide-react";
+import { ChevronRight, ChevronsRight, Ellipsis, Eye, Globe, GlobeLock, LinkIcon, Pencil, Settings, Trash2 } from "lucide-react";
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -26,16 +26,30 @@ import ButtonSidebar from "@/app/(NextClient)/_components/ui/button/ButtonSideba
 import { useMediaQuery } from "@mantine/hooks";
 import ButtonDeleteForm from "../../_components/ButtonDeleteForm";
 import { addOneToastSuccess } from "@/app/_lib/redux/toast.slice";
+import { Button } from "antd";
+import ButtonShareLinkForm from "@/app/(NextClient)/_components/ui/button/ButtonShareLinkForm";
 
 type TProps = {
       showHeaderAction: boolean;
 };
 
 const renderText = (form_state: FormCore.FormState) => {
-      let textMessage = "";
-      if (form_state === "isPublic") textMessage = "Công khai";
-      if (form_state === "isPrivate") textMessage = "Riêng tư";
-      if (form_state === "isDelete") textMessage = "Xóa";
+      let textMessage = <></>;
+      if (form_state === "isPublic")
+            textMessage = (
+                  <div className="flex items-center gap-[.5rem]">
+                        <Globe size={18}/>
+                        <span>Công khai</span>
+                  </div>
+            );
+      if (form_state === "isPrivate")
+            textMessage = (
+                  <div className="flex items-center gap-[.5rem]">
+                        <GlobeLock size={18}/>
+                        <span>Riêng tư</span>
+                  </div>
+            );
+      // if (form_state === "isDelete") textMessage = "Xóa";
       return textMessage;
 };
 const HeaderEditForm = (props: TProps) => {
@@ -176,7 +190,7 @@ const HeaderEditForm = (props: TProps) => {
                                                             />
                                                       </DivNative>
 
-                                                      <DivNative className="relative  z-[103] xl:z-[105]  flex items-center justify-start " title={label}>
+                                                      <DivNative className="relative  z-[103] xl:z-[105]  flex items-center justify-start " >
                                                             <ButtonNative
                                                                   textContent={label}
                                                                   className=" w-full p-[.8rem] rounded-md bg-color-main text-white"
@@ -236,7 +250,7 @@ const HeaderEditForm = (props: TProps) => {
                                                       />
                                                 </DivNative>
 
-                                                <DivNative className="relative  z-[103] xl:z-[105]  flex items-center justify-center " title={label}>
+                                                <DivNative className="relative  z-[103] xl:z-[105]  flex items-center justify-center " >
                                                       <ButtonNative
                                                             textContent={label}
                                                             className=" min-w-[9rem] p-[.8rem] rounded-md bg-color-main text-white"
@@ -255,10 +269,11 @@ const HeaderEditForm = (props: TProps) => {
                                                       <ButtonDarkMode />
                                                       {matches && <ButtonSidebar />}
                                                 </div>
+                                                <ButtonShareLinkForm form_id={formCore._id} />
                                                 <ButtonDeleteForm
                                                       title="Xóa Form"
                                                       form_id={formCore._id}
-                                                      className="  flex items-center gap-[1rem] p-[.5rem_.7rem]  text-text-theme rounded-lg  "
+                                                      className="  flex items-center gap-[1rem] p-[.5rem_.7rem] justify-center !w-[4rem]  text-text-theme rounded-lg  "
                                                 ></ButtonDeleteForm>
                                           </DivNative>
                                     )}

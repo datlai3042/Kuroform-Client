@@ -67,6 +67,7 @@ const SelectColor = (props: TProps) => {
             }
 
             if (typeEdit === "ButtonSubmitBackground") {
+                  console.log("color", color);
                   newFormEdit.form_button_background = color;
             }
             if (typeEdit === "ButtonSubmitColor") {

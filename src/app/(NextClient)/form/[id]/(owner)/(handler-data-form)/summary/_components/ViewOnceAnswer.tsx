@@ -92,7 +92,7 @@ const ViewOnceAnswer = (props: TProps) => {
 
       return (
             <WrapperViewScroll>
-                  <Table className=" text-[1.4rem] !border-none" classContainer="h-full">
+                  <Table className=" text-[1.4rem] !border-none " classContainer="h-full !pl-0">
                         <TableHeader>
                               <TableRow>
                                     <TableHead className="w-[100px] whitespace-pre">Phản hồi</TableHead>
@@ -122,7 +122,7 @@ const ViewOnceAnswer = (props: TProps) => {
                                     return (
                                           <TableRow key={index} className="group">
                                                 <TableCell className="font-medium whitespace-pre flex items-center gap-[1rem] ">
-                                                      <div className="  flex justify-center" style={{ width: 200 }}>
+                                                      <div className="  flex " style={{ width: 200 }}>
                                                             {moment(new Date(rp.createdAt)).format("HH:mm:ss  -  DD/MM/YYYY")}
                                                       </div>
                                                       <div className="invisible  group-hover:visible flex items-center font-medium whitespace-pre sticky right-[-1rem] z-[10]  gap-[1rem]">

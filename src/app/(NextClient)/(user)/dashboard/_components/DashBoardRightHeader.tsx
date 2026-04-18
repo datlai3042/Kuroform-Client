@@ -77,10 +77,10 @@ const DashBoardRightHeader = () => {
                         * 
                         */}
 
-                        <div className=" xl:flex-auto flex items-center justify-end gap-[1rem] ">
-                              <Link href={"/settings"} className="p-[.2rem_.8rem] flex items-center gap-[.8rem] text-text-theme rounded-md" title="Cài đặt">
+                        <div className=" xl:flex-auto flex items-center justify-end gap-[1.8rem] ">
+                              {/* <Link href={"/settings"} className="p-[.2rem_.8rem] flex items-center gap-[.8rem] text-text-theme rounded-md" title="Cài đặt">
                                     <Settings className="w-[1.6rem]" />
-                              </Link>
+                              </Link> */}
                               <Notification />
                               <div className="hidden xl:block">
                                     <DashboardAccount />

@@ -24,7 +24,7 @@ const DashBoardRight = () => {
       return (
             <div className={`  min-h-screen bg-color-section-theme    h-max   flex flex-col   text-[1.4rem] pb-[1rem] px-0`}>
                   <DashBoardRightHeader />
-                  <div className="flex xl:hidden justify-between items-center w-full bg-color-section-theme p-[2rem_1rem]">
+                  <div className="flex xl:hidden justify-between items-center w-full bg-color-section-theme  p-[1rem] xl:p-[2rem_1rem]">
                         <ButtonCreateForm
                               textContent="Tạo Form"
                               urlNavigation="/"

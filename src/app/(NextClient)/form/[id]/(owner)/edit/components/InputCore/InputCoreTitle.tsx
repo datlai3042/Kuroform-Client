@@ -17,6 +17,9 @@ import { addOneToastError } from "@/app/_lib/redux/toast.slice";
 import { v4 as uuid } from "uuid";
 
 export interface InputCoreTitleProps extends React.ComponentProps<"div"> {}
+type EditorRefType = {
+      getText: () => string;
+};
 
 const InputCoreTitle = (props: InputCoreTitleProps) => {
       const dispatch = useDispatch();
@@ -63,7 +66,8 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
                   return formCore.form_title ? "opacity-100 text-slate-700" : "opacity-50 text-textHeader";
             },
       };
-
+      const editorRef = useRef<EditorRefType | null>(null);
+     
       return (
             <div className="flex flex-col gap-[.4rem]">
                   {modeScreen === "NORMAL" && (
@@ -74,7 +78,6 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
                                     defaultValue={value}
                                     namespace="title"
                                     onUpdate={(rest, plainText) => {
-                                          console.log({ rest, plainText });
                                           if (plainText?.length > 200) {
                                                 dispatch(
                                                       addOneToastError({

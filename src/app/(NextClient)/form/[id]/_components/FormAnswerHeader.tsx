@@ -59,7 +59,7 @@ const FormAnswerHeader = (props: TProps) => {
                   )}
 
                   {!formCore.form_background?.form_background_iamge_url && !formCore.form_background_state && (
-                        <div style={{ backgroundColor: colorMain }} className="w-full  h-full rounded-lg opacity-90"></div>
+                        <div  className="w-full  h-full rounded-lg opacity-90"></div>
                   )}
             </div>
       );

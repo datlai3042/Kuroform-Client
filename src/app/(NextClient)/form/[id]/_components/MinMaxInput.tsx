@@ -10,7 +10,7 @@ const MinMaxInput = (props: TProps) => {
 	const { inputItem, value } = props;
 
 	const styleEffect = {
-		checkMinLength: (inputValue: string, inputSettingMin: number, inputRequire: boolean) => {
+		checkMinLength: (inputValue: string = '', inputSettingMin: number, inputRequire: boolean) => {
 			const length = inputValue.length;
 			if (!inputValue.length) return "";
 			if (length < inputSettingMin) return "text-red-800 font-bold underline";

@@ -10,6 +10,7 @@ import DashboardFormItem from "./DashboardFormItem";
 import FormEmpty from "./FormEmpty";
 import { Circle, Plus } from "lucide-react";
 import ButtonCreateForm from "@/app/(NextClient)/_components/ui/button/ButtonCreateForm";
+import ButtonCreateFormV2 from "@/app/(NextClient)/_components/ui/button/ButtonCreateFormV2";
 
 moment.locale("vi");
 
@@ -38,11 +39,11 @@ const DashboardForms = () => {
                               </p> */}
                               </div>
                               <DivNative className={`max-w-full flex flex-wrap  gap-[1.8rem] pb-[2rem] text-[1.3rem] `}>
-                                    <div className="w-full sm:w-[45%%] md:w-[47%] xl:w-[18%]">
-                                          <ButtonCreateForm
+                                    <div className="w-full  xl:flex hidden sm:w-[45%%] md:w-[47%] xl:w-[18%]">
+                                          <ButtonCreateFormV2
                                                 textContent="Tạo Form"
                                                 urlNavigation="/"
-                                                className="hidden xl:flex  xl:[&]:p-[2px]  !gap-[.5rem] !h-[3rem] !min-w-[11rem] !w-max !text-[1.3rem]"
+                                                className="hidden xl:flex  xl:[&]:p-[2px]  !gap-[.5rem] !w-full !h-full !text-[1.3rem]"
                                                 position="LEFT"
                                                 icon={<Plus size={16} />}
                                           />
