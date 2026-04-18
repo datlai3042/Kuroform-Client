@@ -10,6 +10,9 @@ type InitialState = {
       form_public: number;
       form_private: number;
       focus_search: boolean;
+      update_html_title: boolean,
+      update_html_title_value: string,
+      
 };
 
 const formInitital: FormCore.Form = {
@@ -63,6 +66,9 @@ const initialState: InitialState = {
       form_public: 0,
       form_private: 0,
       focus_search: false,
+      update_html_title: false,
+      update_html_title_value: '',
+
 };
 
 const formEditSlice = createSlice({
@@ -75,11 +81,16 @@ const formEditSlice = createSlice({
                   state.colorCore = data.payload.form.form_title.form_title_color || data.payload.form.form_setting_default.form_title_color_default;
             },
 
-            onEditForm: (state, data: PayloadAction<{ form: FormCore.Form }>) => {
+            onEditForm: (state, data: PayloadAction<{ form: FormCore.Form, isUpdateHtmlTitle?: boolean }>) => {
                   state.formCoreOriginal = data.payload.form;
                   state.colorCore = data.payload.form.form_title.form_title_color || data.payload.form.form_setting_default.form_title_color_default;
+                  if (data.payload.isUpdateHtmlTitle) {
+                        state.update_html_title = true;
+                  }
             },
-
+            resetUpdateHTMLTile: (state) => {
+                  state.update_html_title = false;
+            },
             onFetchFormState: (state, data: PayloadAction<{ form_delete: number; form_public: number; form_private: number }>) => {
                   const { form_delete, form_private, form_public } = data.payload;
                   (state.form_delete = form_delete), (state.form_private = form_private);
@@ -90,8 +101,13 @@ const formEditSlice = createSlice({
                   const { focus } = data.payload;
                   state.focus_search = focus;
             },
+
+            onSetHTMLTitle: (state, data: PayloadAction<{ update: string }>) => {
+                  const { update } = data.payload;
+                  state.update_html_title_value = update;
+            }
       },
 });
 
-export const { onFetchForm, onEditForm, onFetchFormState, onFocusSearch } = formEditSlice.actions;
+export const { onFetchForm, onEditForm, onFetchFormState, onFocusSearch, resetUpdateHTMLTile, onSetHTMLTitle } = formEditSlice.actions;
 export default formEditSlice.reducer;

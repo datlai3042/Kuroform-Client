@@ -1,6 +1,7 @@
-'use client'
-import React, { SetStateAction, createContext, useEffect, useState } from "react";
+"use client";
+import React, { RefObject, SetStateAction, createContext, useEffect, useRef, useState } from "react";
 import ModelNotSave from "../../form/[id]/(owner)/edit/components/FormDesign/ModelNotSave";
+import { Editor } from "draft-js";
 
 type TFormDesignContext = {
       openFormDesign: boolean;
@@ -15,6 +16,7 @@ type TFormDesignContext = {
 
       openButtonBottomSave: boolean;
       setOpenButtonBottomSave: React.Dispatch<SetStateAction<boolean>>;
+      editorRef: RefObject<Editor> | null;
 };
 
 export const FormDesignContext = createContext<TFormDesignContext>({
@@ -23,7 +25,7 @@ export const FormDesignContext = createContext<TFormDesignContext>({
       openModelNotSave: false,
       openDesignTitle: false,
       openButtonBottomSave: false,
-
+      editorRef: null,
       setIsDesginForm: () => {},
       setOpenFormDesign: () => {},
       setOpenModelNotSave: () => {},
@@ -43,6 +45,7 @@ const FormDesignProvider = (props: TProps) => {
       const [openModelNotSave, setOpenModelNotSave] = useState<boolean>(false);
       const [openDesignTitle, setOpenDesignTitle] = useState<boolean>(false);
       const [openButtonBottomSave, setOpenButtonBottomSave] = useState<boolean>(false);
+      const editorRef = useRef<Editor>(null);
 
       useEffect(() => {
             setOpenButtonBottomSave(isDesignForm);
@@ -59,8 +62,9 @@ const FormDesignProvider = (props: TProps) => {
                         setOpenModelNotSave,
                         openDesignTitle,
                         setOpenDesignTitle,
-						openButtonBottomSave,
-						setOpenButtonBottomSave
+                        openButtonBottomSave,
+                        setOpenButtonBottomSave,
+                        editorRef: editorRef,
                   }}
             >
                   {openModelNotSave && <ModelNotSave />}

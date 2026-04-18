@@ -39,7 +39,7 @@ const ButtonPickerColor = ({
                   </Col>
             </Row>
       );
-
+console.log({defaultColor})
       return (
             <ColorPicker
             rootClassName="custom-picker-color"

@@ -26,7 +26,7 @@ const ButtonShareLinkForm = ({ form_id }: { form_id: FormCore.Form['_id'] }) => 
                               e.preventDefault();
                               navigator.clipboard.writeText(`${window.location.origin}/form/${form_id}`).then(() => setCopySuccess(true));
                         }}
-                        className="p-[.6rem_1.4rem] relative !w-[4rem]  flex items-center gap-[1.6rem] bg-color-main text-[#fff] rounded-md"
+                        className="p-[.6rem_1.4rem] relative !w-[4rem]  flex items-center gap-[1.6rem] bg-color-main text-[#fff] rounded-lg"
                   >
                         <LinkIcon size={20} />
                         {copySuccess && (

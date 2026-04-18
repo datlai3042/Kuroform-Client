@@ -74,16 +74,16 @@ const ButtonSubmitForm = (props: TProps) => {
             <div
                   onClick={handleSubmit}
                   style={{ backgroundColor: buttonBg || "" }}
-                  className="min-w-[10rem] w-max h-[3.2rem] bg-color-main  ml-auto flex items-center justify-center gap-[.5rem] rounded-[.4rem] hover:cursor-pointer"
+                  className="min-w-[10rem]  w-max h-[3.2rem] bg-color-main  ml-auto flex items-center justify-center gap-[.5rem] rounded-[.4rem] hover:cursor-pointer"
             >
-                  <Dock style={{ color: buttonColor }} />
+                  <Dock className="text-white" style={{ color: buttonColor || "" }} />
 
                   <ButtonNative
                         style={{ color: buttonColor || "" }}
                         textContent={formCore.form_button_text}
-                        className=" text-white text-[1.6rem] text-center px-[1rem]  w-max"
+                        className=" text-white text-[1.6rem] text-center px-[.5rem]  w-max"
                   />
-                  {submitState === "pending" && <LoadingSpinner color="#ffffff" width="min-w-[2.4rem]" height="min-h-[2.4rem]" />}
+                  {submitState === "pending" && <LoadingSpinner color={buttonColor || '#ffffff'} width="min-w-[2rem]" height="min-h-[2rem]" />}
             </div>
       );
 };

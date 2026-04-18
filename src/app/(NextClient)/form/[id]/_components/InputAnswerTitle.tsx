@@ -43,7 +43,10 @@ const InputAnswerTitle = (props: TProps) => {
                   /> */}
 
                   <p style={styleEffect.styleTitle()} className="flex items-center gap-[.6rem] text-[2rem] font-medium">
+                        <span className="">
+
                         {inputItem.input_title || "Không có tiêu đề"}
+                        </span>
                         {inputItem.core.setting.require && <span className="text-red-800">*</span>}
                   </p>
             </div>

@@ -98,16 +98,16 @@ const ButtonDesignSubmit = () => {
                               <div
                                     className={` ${renderColorFromFormThemes(
                                           formCore.form_themes,
-                                    )} flex-col gap-[1.4rem] flex  rounded-[.6rem]  text-left w-[30rem] border-[.1rem] border-[var(--border-color-input)] p-[1.2rem_1rem] `}
+                                    )} flex-col gap-[1.4rem] flex  rounded-[.6rem]  text-left  border-[.1rem] border-[var(--border-color-input)] p-[1.2rem_1rem] `}
                               >
-                                    <div className="flex justify-between ">
-                                          <div className="flex items-center gap-[1rem]">
+                                    <div className="flex justify-between gap-[2rem]">
+                                          <div className="flex items-center gap-[.6rem]">
                                                 <span>Background: </span>
-                                                <SelectColor typeEdit="ButtonSubmitBackground" setOpenColorModel={setOpenColorSubmitBg} />
+                                                <SelectColor typeEdit="ButtonSubmitBackground" setOpenColorModel={setOpenColorSubmitBg} defaultColorProp={formCore.form_button_background} />
                                           </div>
-                                          <div className="flex items-center gap-[1rem]">
-                                                <span>Màu:</span>
-                                                <SelectColor typeEdit="ButtonSubmitColor" setOpenColorModel={setOpenColorSubmitBg} />
+                                          <div className="flex items-center gap-[.6rem]">
+                                                <span>Chữ:</span>
+                                                <SelectColor typeEdit="ButtonSubmitColor" setOpenColorModel={setOpenColorSubmitBg} defaultColorProp={formCore.form_button_color} />
                                           </div>
                                     </div>
                                     <DivNative className="h-max flex flex-col min-w-[60%]  justify-between gap-[1.6rem]" onClick={(e) => {}}>

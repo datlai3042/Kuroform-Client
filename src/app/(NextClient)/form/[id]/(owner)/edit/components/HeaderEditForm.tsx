@@ -240,12 +240,12 @@ const HeaderEditForm = (props: TProps) => {
                                                 <DivNative className=" flex items-center justify-center " title="Review">
                                                       <ButtonNative
                                                             textContent={
-                                                                  <div className="flex gap-[.6rem]">
-                                                                        <Eye size={18} />
+                                                                  <div className="flex gap-[.4rem]">
+                                                                        <Eye size={18} strokeWidth={2.2}/>
                                                                         <span className="hidden xl:inline">Xem trước</span>
                                                                   </div>
                                                             }
-                                                            className="min-w-[9rem] p-[.8rem] rounded-md text-text-theme"
+                                                            className={`${theme === 'dark' ? 'bg-[#fff]'  : ''} min-w-[9rem] p-[.8rem] border-[.1rem] border-[var(--color-main)] text-color-main font-semibold rounded-lg`}
                                                             onClick={onSetScreen}
                                                       />
                                                 </DivNative>

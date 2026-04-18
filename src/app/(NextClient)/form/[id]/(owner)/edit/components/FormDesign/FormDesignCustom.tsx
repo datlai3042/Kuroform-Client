@@ -27,6 +27,7 @@ const FormDesignCustom = () => {
 
       const FormBackUp = useSelector((state: RootState) => state.form.formCoreBackUp);
       const formOriginal = useSelector((state: RootState) => state.form.formCoreOriginal);
+      const htmlTitle = useSelector((state: RootState) => state.form.update_html_title_value);
 
       const [modeDesign, setModeDesign] = useState<ModeDesignForm>("BACKGROUND");
       const dispatch = useDispatch();
@@ -46,7 +47,16 @@ const FormDesignCustom = () => {
       const updateFormAPI = useUpdateForm();
 
       const onSaveDesign = () => {
-            updateFormAPI.mutate(formOriginal);
+            const newForm = structuredClone(formOriginal);
+            if (!htmlTitle.includes(FormBackUp.form_title.form_title_color as string)) {
+                  const newHtmlTitle = htmlTitle.replaceAll(
+                        `color: ${FormBackUp.form_title.form_title_color}`,
+                        `color: ${newForm.form_title.form_title_color}`,
+                  );
+                  newForm.form_title.form_title_value = newHtmlTitle;
+            }
+
+            updateFormAPI.mutate(newForm);
             setOpenFormDesign(false);
             setIsDesginForm(false);
             setOpenModelNotSave(false);

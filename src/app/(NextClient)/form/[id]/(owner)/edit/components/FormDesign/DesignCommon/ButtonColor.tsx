@@ -8,6 +8,7 @@ import { Circle } from "lucide-react";
 export type TypeEdit = "Form" | "Common" | "Input" | "ButtonSubmitBackground" | "ButtonSubmitColor";
 type TProps = {
       typeEdit: TypeEdit;
+      defaultColor?: string;
 };
 
 const selectColorWithMode = (type: TypeEdit, formCore: FormCore.Form) => {
@@ -39,7 +40,7 @@ const selectColorWithMode = (type: TypeEdit, formCore: FormCore.Form) => {
 };
 
 const ButtonColor = (props: TProps) => {
-      const { typeEdit } = props;
+      const { typeEdit, defaultColor } = props;
 
       const [openColorModel, setOpenColorModel] = useState<boolean>(false);
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
@@ -47,7 +48,7 @@ const ButtonColor = (props: TProps) => {
 
       return (
             <div className="relative max-h-[20rem]   flex  flex-col   xl:items-center justify-between gap-[1.6rem]">
-                  {<SelectColor setOpenColorModel={setOpenColorModel} typeEdit={typeEdit} />}
+                  {<SelectColor setOpenColorModel={setOpenColorModel} typeEdit={typeEdit} defaultColorProp={defaultColor} />}
 
                   {/* <p className="flex gap-[1rem]">
                         <Circle className="text-color-main min-w-max" />

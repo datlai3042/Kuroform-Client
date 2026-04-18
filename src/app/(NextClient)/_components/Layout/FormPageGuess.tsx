@@ -107,13 +107,13 @@ const FormPageGuess = (props: TProps) => {
                               } pb-[8rem]  flex flex-col  rounded-lg`}
                         >
                               <DivNative
-                                    className={` flex flex-col gap-[3rem]
+                                    className={` flex flex-col gap-[0rem]
                                         ${
                                               isGoogleForm
                                                     ? "w-full"
                                                     : `w-[94vw] md:w-[54vw] rounded-[.8rem]  mx-auto ${
                                                             FormCore.form_styles === "FULL_WIDTH"
-                                                                  ? FormCore?.form_themes === "LIGHT"
+                                                                  ? FormCore?.form_themes === "LIGHT" || FormCore?.form_themes === "AUTO"
                                                                         ? "bg-color-section-theme"
                                                                         : "bg-[#1e1f22]"
                                                                   : ""

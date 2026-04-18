@@ -14,17 +14,18 @@ type TProps = {
 
       typeEdit: TypeEdit;
       inputItem?: InputCore.InputForm;
+      defaultColorProp?: string;
 };
 
 const SelectColor = (props: TProps) => {
       const { isDesignForm, setIsDesginForm } = useContext(FormDesignContext);
 
-      const { inputItem, typeEdit, setOpenColorModel } = props;
+      const { inputItem, typeEdit, setOpenColorModel, defaultColorProp } = props;
       const formCore = useSelector((state: RootState) => state.form.formCoreOriginal) as FormCore.Form;
 
       const divColorRef = useRef<HTMLDivElement | null>(null);
 
-      const [defaultColor, setDefaultColor] = useState("");
+      const [defaultColor, setDefaultColor] = useState(defaultColorProp || "");
       const dispatch = useDispatch();
 
       const globalClick = useCallback(
@@ -43,6 +44,9 @@ const SelectColor = (props: TProps) => {
             const newFormEdit = structuredClone(formCore);
             if (typeEdit === "Form") {
                   newFormEdit.form_title.form_title_color = color;
+
+                  dispatch(onEditForm({ form: newFormEdit, }));
+                  return;
             }
 
             if (typeEdit === "Common") {
@@ -67,7 +71,6 @@ const SelectColor = (props: TProps) => {
             }
 
             if (typeEdit === "ButtonSubmitBackground") {
-                  console.log("color", color);
                   newFormEdit.form_button_background = color;
             }
             if (typeEdit === "ButtonSubmitColor") {

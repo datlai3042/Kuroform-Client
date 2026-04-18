@@ -66,7 +66,6 @@ const InputCoreTitle = (props: InputCoreTitleProps) => {
                   return formCore.form_title ? "opacity-100 text-slate-700" : "opacity-50 text-textHeader";
             },
       };
-      const editorRef = useRef<EditorRefType | null>(null);
      
       return (
             <div className="flex flex-col gap-[.4rem]">

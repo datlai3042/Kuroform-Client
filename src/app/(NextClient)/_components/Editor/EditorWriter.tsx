@@ -1,11 +1,15 @@
 "use client";
 
+import { onSetHTMLTitle, resetUpdateHTMLTile } from "@/app/_lib/redux/formEdit.slice";
+import { RootState } from "@/app/_lib/redux/store";
+import useUpdateForm from "@/app/hooks/useUpdateForm";
 import { FormCore } from "@/type";
 import Editor from "@draft-js-plugins/editor";
 import { convertFromHTML } from "draft-convert";
 import { ContentBlock, ContentState, EditorState } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
 import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 type TProps = {
       namespace: "title" | "input";
@@ -37,7 +41,10 @@ const EditorWriter = (props: TProps) => {
       });
       const [html, setHtml] = useState("");
       const editorRef = useRef<Editor>(null);
-
+      const updateFormAPI = useUpdateForm();
+      const formOriginal = useSelector((state: RootState) => state.form.formCoreOriginal);
+      const isUpdateHTMLTitle = useSelector((state: RootState) => state.form.update_html_title);
+      const dispatch = useDispatch();
       useEffect(() => {
             if (!defaultValue) {
                   if (!editorState.getCurrentContent().hasText()) return; // tránh set nếu editor rỗng
@@ -146,8 +153,13 @@ const EditorWriter = (props: TProps) => {
                   html = stateToHTML(content); // render mặc định
             }
             setHtml(html);
-            console.log({html, styleObj})
-      }, [styleObj]);
+      }, [styleObj.color, isUpdateHTMLTitle]);
+
+      useEffect(() => {
+            if (namespace === "title") {
+                  dispatch(onSetHTMLTitle({ update: html }));
+            }
+      }, [html]);
       return (
             <div style={styleObj} className="text-text-theme">
                   <Editor
